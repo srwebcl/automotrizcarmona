@@ -53,13 +53,13 @@ export default function Hero() {
     // Let's use a CSS Marquee for the brands to ensure "advance infinito".
 
     return (
-        <section className="relative bg-white pt-32 pb-0 px-6 md:pt-32 md:pb-0 md:px-8" style={{ backgroundColor: '#ffffff' }}>
+        <section className="relative bg-white pt-24 md:pt-32 pb-0 px-4 md:px-8" style={{ backgroundColor: '#ffffff' }}>
             {/* Slider with Symmetrical Margins */}
-            <div className="w-full mx-auto mb-6">
+            <div className="w-full mx-auto mb-2">
                 <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
                     <div className="flex">
                         {SLIDES.map((slide) => (
-                            <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/8] sm:aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
+                            <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/10] sm:aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
@@ -75,19 +75,19 @@ export default function Hero() {
             </div>
 
             {/* Brand Bar - Infinite Marquee with CSS */}
-            <div className="relative w-full overflow-hidden pb-8">
-                {/* Mask edges - Updated to match gradient end (white) */}
-                <div className="absolute left-0 top-0 bottom-8 w-24 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-8 w-24 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+            <div className="relative w-full overflow-hidden pb-4 pt-2">
+                {/* Mask edges - Smoother gradient */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none"></div>
 
                 <div className="inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 md:[&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll">
                         {/* First set of logos */}
                         {BRANDS_LOGOS.map((logo, idx) => (
-                            <li key={`1-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all cursor-pointer opacity-60 hover:opacity-100">
-                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-1.5 md:h-2.5' :
-                                        logo.includes('geely') ? 'h-6 md:h-8' :
-                                            'h-10 md:h-12'
+                            <li key={`1-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
+                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-4 md:h-6' :
+                                    logo.includes('geely') ? 'h-8 md:h-12' :
+                                        'h-12 md:h-16'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}
@@ -98,13 +98,13 @@ export default function Hero() {
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 md:[&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
                         {/* Duplicate set for infinite loop */}
                         {BRANDS_LOGOS.map((logo, idx) => (
-                            <li key={`2-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all cursor-pointer opacity-60 hover:opacity-100">
-                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-1.5 md:h-2.5' :
-                                        logo.includes('geely') ? 'h-6 md:h-8' :
-                                            'h-10 md:h-12'
+                            <li key={`2-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
+                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-4 md:h-6' :
+                                    logo.includes('geely') ? 'h-8 md:h-12' :
+                                        'h-12 md:h-16'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}

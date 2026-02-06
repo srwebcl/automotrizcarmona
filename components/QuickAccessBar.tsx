@@ -11,72 +11,62 @@ const ACTIONS = [
         description: "Representamos a 30 marcas de autos nuevos",
         href: "/nuevos",
         icon: Car,
-        image: "/images/quick_access_nuevos_retry.png" // Will verify filename after generation or fallback
+        image: "/images/toyota/Gazoo-Racing/min_yaris_gr.png"
     },
     {
         label: "Seminuevos",
         description: "Más de 100 autos usados en stock",
         href: "/seminuevos",
         icon: ShoppingBag,
-        image: "/images/quick_access_seminuevos_1770350918685.png"
+        image: "/images/toyota/Hibridos/min_corolla_cross.png"
     },
     {
         label: "Servicio Técnico",
         description: "Expertos certificados para tu mantención",
-        href: "/servicios",
+        href: "/servicio-tecnico",
         icon: Wrench,
-        image: "/images/quick_access_servicio_1770350934207.png"
+        image: "/images/toyota/Pickup/min_hilux.png"
     },
     {
         label: "Repuestos",
         description: "Piezas genuinas para todas las marcas",
         href: "/repuestos",
         icon: Settings,
-        image: "/images/quick_access_repuestos_1770350949447.png"
+        image: "/images/toyota/SUV/min_4runner.png"
     }
 ];
 
 export default function QuickAccessBar() {
     return (
-        <section className="py-12 bg-gray-50">
+        <section className="pt-12 pb-12 md:pt-4 md:pb-16 bg-white overflow-visible"> {/* overflow-visible for section too if needed, though cards need it foremost */}
             <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {ACTIONS.map((action) => (
+                    {ACTIONS.map((action, index) => (
                         <Link
                             key={action.label}
                             href={action.href}
-                            className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 block"
+                            // Mercedes Style Refined: Text-only, powerful button interaction
+                            className={`group relative h-40 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 block z-10 overflow-hidden border-l-4 border-transparent hover:border-gray-900`}
                         >
-                            {/* Background Image */}
-                            <div className="absolute inset-0">
-                                <Image
-                                    src={action.image}
-                                    alt={action.label}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                {/* Gradient Overlay - Stronger at bottom for text readability */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                            <div className="h-full flex items-center justify-between px-8 relative z-20">
+                                <div>
+                                    <span className="block text-xs font-bold tracking-widest text-gray-500 uppercase mb-2 text-[11px]">
+                                        Descúbrelo
+                                    </span>
+                                    <h3 className="text-3xl font-bold text-gray-900 leading-none tracking-tight">
+                                        {action.label}
+                                    </h3>
+                                </div>
+
+                                {/* Enhanced CTA Button */}
+                                <div className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-gray-900 group-hover:border-gray-900 group-hover:scale-110 transition-all duration-300 shadow-sm group-hover:shadow-xl">
+                                    <ArrowRight size={24} className="text-gray-900 group-hover:text-white transition-colors duration-300" />
+                                </div>
                             </div>
 
-                            {/* Content */}
-                            <div className="relative h-full flex flex-col justify-end p-6 z-10 text-white">
-                                <div className="mb-auto opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-4 group-hover:translate-y-0">
-                                    <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-carmona-gold/90 backdrop-blur-sm mb-4">
-                                        <action.icon size={24} className="text-white" />
-                                    </span>
-                                </div>
-
-                                <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                                    <h3 className="text-2xl font-bold mb-2 group-hover:text-carmona-gold transition-colors">{action.label}</h3>
-                                    <p className="text-gray-200 text-sm font-medium leading-snug mb-4 max-w-[80%]">
-                                        {action.description}
-                                    </p>
-
-                                    <span className="inline-flex items-center text-sm font-bold text-carmona-gold group-hover:text-white transition-colors">
-                                        EXPLORAR <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
-                                    </span>
-                                </div>
+                            {/* Subtle Watermark Icon */}
+                            <div className="absolute -right-4 -bottom-8 text-gray-200 opacity-20 transform rotate-12 group-hover:scale-110 group-hover:rotate-0 transition-all duration-500 pointer-events-none">
+                                <action.icon size={140} strokeWidth={1} />
                             </div>
                         </Link>
                     ))}

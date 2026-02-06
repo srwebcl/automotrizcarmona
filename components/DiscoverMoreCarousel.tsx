@@ -11,31 +11,31 @@ const ITEMS = [
         id: 1,
         title: "Compliance",
         link: "/compliance",
-        image: "/images/discover_compliance_1770351789163.png"
+        image: "/images/compliance.jpeg"
     },
     {
         id: 2,
         title: "Sucursales",
         link: "/sucursales",
-        image: "/images/discover_sucursales_retry.png" // Will verify after generation
+        image: "/images/sucursales.jpg"
     },
     {
         id: 3,
         title: "Noticias",
         link: "/noticias",
-        image: "/images/discover_noticias_retry.png" // Will verify after generation
+        image: "/images/noticias.jpg"
     },
     {
         id: 4,
         title: "Reclamos y Sugerencias",
         link: "/reclamos",
-        image: "/images/discover_reclamos_1770351819027.png"
+        image: "/images/reclamos.avif"
     },
     {
         id: 5,
         title: "Car Advisor",
         link: "/advisor",
-        image: "/images/discover_car_advisor_1770351833227.png"
+        image: "/images/car-advisor.jpg"
     }
 ];
 
