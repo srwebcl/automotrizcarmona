@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, MapPin, ChevronDown, Menu, X, User, Calendar, Wrench, Settings, Truck, Car, ShoppingBag, ArrowRight, Search, ChevronLeft, Sparkles, LayoutGrid, Leaf, Bus, Grip, UserCheck } from 'lucide-react';
+import { Phone, MapPin, ChevronDown, Menu, X, User, Calendar, Wrench, Settings, Truck, Car, ShoppingBag, ArrowRight, Search, ChevronLeft, Sparkles, LayoutGrid, Leaf, Bus, Grip, UserCheck, MessageSquare } from 'lucide-react';
 
 const BRAND_LOGOS = [
     { name: "Toyota", src: "/images/logos/TOYOTA_Logo.png", isHybrid: true },
@@ -35,6 +35,7 @@ const TRUCK_LOGOS = [
 ];
 
 type MenuCategory = 'nuevos' | 'camiones' | 'seminuevos' | 'postventa';
+type IntentType = 'QUOTE' | 'SERVICE' | 'PARTS' | 'BRAND_ONLY' | 'GENERAL' | 'NONE';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -80,6 +81,27 @@ export default function Navbar() {
         { id: 'seminuevos', label: 'Seminuevos', icon: ShoppingBag },
         { id: 'postventa', label: 'Post-Venta', icon: Wrench },
     ];
+
+    // --- SMART SEARCH LOGIC ---
+    const searchIntent = useMemo(() => {
+        if (!searchQuery) return { type: 'NONE' as IntentType, brand: null };
+
+        const queryLower = searchQuery.toLowerCase();
+
+        // Detect Brand
+        const detectedBrand = BRAND_LOGOS.find(b => queryLower.includes(b.name.toLowerCase()));
+
+        // Detect Intent Keywords
+        if (queryLower.match(/serv|taller|agend|hora|mantenc|revis|cita/)) return { type: 'SERVICE' as IntentType, brand: detectedBrand };
+        if (queryLower.match(/repuesto|acc|part|pieza/)) return { type: 'PARTS' as IntentType, brand: detectedBrand };
+        if (queryLower.match(/cotiz|compr|nuevo|precio|valor|quiero un/)) return { type: 'QUOTE' as IntentType, brand: detectedBrand };
+
+        // If only Brand detected
+        if (detectedBrand) return { type: 'BRAND_ONLY' as IntentType, brand: detectedBrand };
+
+        // Default fallback info search
+        return { type: 'GENERAL' as IntentType, brand: null };
+    }, [searchQuery]);
 
     return (
         <>
@@ -307,15 +329,11 @@ export default function Navbar() {
                                 <div className="grid grid-cols-3 gap-8 pt-4">
                                     {/* Service */}
                                     <Link href="/servicios" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all">
-                                        {/* Image placeholder - abstract or mechanic */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
                                         <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/0 transition-colors" />
-
-                                        {/* Since I didn't find generic service images, I'll use a styled div with Icon for now, or use the repuesto image for repuesto and similar vibe for others */}
                                         <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
                                             <Wrench size={64} className="text-gray-300 group-hover:scale-110 transition-transform duration-500" />
                                         </div>
-
                                         <div className="absolute bottom-0 left-0 p-8 z-20">
                                             <div className="flex items-center gap-3 mb-2">
                                                 <div className="p-2 bg-blue-600 rounded-lg text-white">
@@ -353,7 +371,6 @@ export default function Navbar() {
                                         <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
                                             <Car size={64} className="text-gray-300 group-hover:scale-110 transition-transform duration-500" />
                                         </div>
-
                                         <div className="absolute bottom-0 left-0 p-8 z-20">
                                             <div className="flex items-center gap-3 mb-2">
                                                 <div className="p-2 bg-purple-600 rounded-lg text-white">
@@ -373,7 +390,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Smart Assistant Overlay / Drawer (Remaining same logic) */}
+            {/* Smart Assistant Overlay / Drawer */}
             <div
                 className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] transition-opacity duration-500 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 onClick={resetAssistant}
@@ -384,7 +401,7 @@ export default function Navbar() {
                 {/* Header */}
                 <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
                     <div className="flex items-center gap-3">
-                        {assistantView !== 'HOME' && (
+                        {assistantView !== 'HOME' && searchIntent.type === 'NONE' && (
                             <button
                                 onClick={() => setAssistantView('HOME')}
                                 className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors group"
@@ -412,96 +429,274 @@ export default function Navbar() {
                         <div className="relative group">
                             <input
                                 type="text"
-                                placeholder="Busca por marca, modelo o servicio..."
-                                className="w-full bg-white border-2 border-gray-100 text-gray-900 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:border-carmona-gold/50 focus:shadow-xl transition-all placeholder:text-gray-400 text-lg"
+                                placeholder="Escribe aquí... (ej: 'Cotizar Toyota', 'Agendar Servicio')"
+                                className={`w-full bg-white border-2 text-gray-900 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:shadow-xl transition-all text-lg ${searchIntent.type !== 'NONE' ? 'border-carmona-gold' : 'border-gray-100 focus:border-carmona-gold/50'}`}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                            <Search size={22} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-carmona-gold transition-colors" />
+                            <Search size={22} className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${searchIntent.type !== 'NONE' ? 'text-carmona-gold' : 'text-gray-400'}`} />
                         </div>
+                        {searchIntent.type !== 'NONE' && (
+                            <div className="px-2 pt-2 text-xs font-bold uppercase text-carmona-gold animate-in fade-in slide-in-from-top-1">
+                                {searchIntent.type === 'QUOTE' && "🚀 Detectado: Interés de Compra"}
+                                {searchIntent.type === 'SERVICE' && "🔧 Detectado: Solicitud de Servicio"}
+                                {searchIntent.type === 'PARTS' && "⚙️ Detectado: Insumos y Repuestos"}
+                                {searchIntent.type === 'BRAND_ONLY' && "🔍 Detectado: Búsqueda de Marca"}
+                            </div>
+                        )}
                     </div>
 
-                    {assistantView === 'HOME' ? (
-                        <div className="px-8 pb-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
-                            <h2 className="text-3xl font-extrabold text-gray-900 mb-2">¿En qué te podemos ayudar?</h2>
-                            <p className="text-gray-500 mb-8">Navega rápidamente a lo que necesitas.</p>
+                    {/* DYNAMIC CONTENT BASED ON SEARCH INTENT */}
+                    {searchIntent.type !== 'NONE' ? (
+                        <div className="px-8 pb-8 animate-in slide-in-from-bottom-4 duration-300">
 
-                            <div className="space-y-4">
-                                <button
-                                    onClick={() => setAssistantView('NEW_CARS')}
-                                    className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left"
-                                >
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="p-3 bg-carmona-gold/10 rounded-xl group-hover:bg-white/10 transition-colors">
-                                            <Car size={28} className="text-carmona-gold group-hover:text-white" />
+                            {/* --- QUOTE INTENT --- */}
+                            {searchIntent.type === 'QUOTE' && (
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-extrabold text-gray-900">¿Quieres cotizar un auto?</h2>
+                                    {searchIntent.brand ? (
+                                        <Link
+                                            href={`/nuevos/${searchIntent.brand.name.toLowerCase()}`}
+                                            onClick={resetAssistant}
+                                            className="block p-6 rounded-2xl bg-white border border-carmona-gold shadow-lg hover:shadow-xl transition-all group"
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="p-3 bg-carmona-gold/10 rounded-xl">
+                                                        <Car size={32} className="text-carmona-gold" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-lg font-bold text-gray-900">Ir al Catálogo {searchIntent.brand.name}</h3>
+                                                        <p className="text-sm text-gray-500">Ver modelos y precios disponibles</p>
+                                                    </div>
+                                                </div>
+                                                <ArrowRight size={24} className="text-carmona-gold group-hover:translate-x-1 transition-transform" />
+                                            </div>
+                                        </Link>
+                                    ) : (
+                                        <div className="grid grid-cols-2 gap-3">
+                                            {BRAND_LOGOS.slice(0, 8).map(brand => (
+                                                <Link
+                                                    key={brand.name}
+                                                    href={`/nuevos/${brand.name.toLowerCase()}`}
+                                                    onClick={resetAssistant}
+                                                    className="p-4 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all flex flex-col items-center gap-2"
+                                                >
+                                                    <div className="relative w-full h-8"><Image src={brand.src} alt={brand.name} fill className="object-contain" /></div>
+                                                    <span className="text-xs font-bold text-gray-400">{brand.name}</span>
+                                                </Link>
+                                            ))}
                                         </div>
-                                        <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Auto Nuevo</h3>
-                                    <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Explorar marcas y modelos disponibles</p>
-                                </button>
+                                    )}
+                                </div>
+                            )}
 
-                                <Link href="/seminuevos" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="p-3 bg-carmona-orange/10 rounded-xl group-hover:bg-white/10 transition-colors">
-                                            <ShoppingBag size={28} className="text-carmona-orange group-hover:text-white" />
-                                        </div>
-                                        <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                            {/* --- SERVICE INTENT --- */}
+                            {searchIntent.type === 'SERVICE' && (
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-extrabold text-gray-900">Agenda tu Servicio Técnico</h2>
+                                    {searchIntent.brand ? (
+                                        <Link
+                                            href={`/servicios?brand=${searchIntent.brand.name}`}
+                                            onClick={resetAssistant}
+                                            className="block p-6 rounded-2xl bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-all group"
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="p-3 bg-white/20 rounded-xl">
+                                                        <Calendar size={32} className="text-white" />
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-lg font-bold">Agendar hora para {searchIntent.brand.name}</h3>
+                                                        <p className="text-sm text-white/80">Mantenciones y reparaciones certificadas</p>
+                                                    </div>
+                                                </div>
+                                                <ArrowRight size={24} className="text-white group-hover:translate-x-1 transition-transform" />
+                                            </div>
+                                        </Link>
+                                    ) : (
+                                        <>
+                                            <p className="text-gray-500 mb-2">Por favor, selecciona la marca de tu vehículo:</p>
+                                            <div className="grid grid-cols-2 gap-3">
+                                                {BRAND_LOGOS.map((brand) => (
+                                                    <Link
+                                                        key={brand.name}
+                                                        href={`/servicios?brand=${brand.name.toLowerCase()}`}
+                                                        onClick={resetAssistant}
+                                                        className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 transition-all group"
+                                                    >
+                                                        <div className="relative w-8 h-8 flex-shrink-0">
+                                                            <Image src={brand.src} alt={brand.name} fill className="object-contain" />
+                                                        </div>
+                                                        <span className="text-sm font-bold text-gray-600 group-hover:text-blue-700">{brand.name}</span>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                    <div className="mt-4 pt-4 border-t border-gray-200">
+                                        <a href="tel:+56912345678" className="flex items-center justify-center gap-2 text-gray-500 hover:text-gray-900 text-sm font-bold">
+                                            <Phone size={16} /> ¿Prefieres llamar? +56 9 1234 5678
+                                        </a>
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Auto Usado</h3>
-                                    <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Stock certificado con entrega inmediata</p>
-                                </Link>
+                                </div>
+                            )}
 
-                                <Link href="/servicios" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="p-3 bg-blue-50 rounded-xl group-hover:bg-white/10 transition-colors">
-                                            <Wrench size={28} className="text-blue-600 group-hover:text-white" />
+                            {/* --- PARTS INTENT --- */}
+                            {searchIntent.type === 'PARTS' && (
+                                <div className="space-y-4">
+                                    <h2 className="text-xl font-extrabold text-gray-900">Repuestos y Accesorios</h2>
+                                    <Link
+                                        href="/repuestos"
+                                        onClick={resetAssistant}
+                                        className="block p-6 rounded-2xl bg-green-600 text-white shadow-lg hover:bg-green-700 transition-all group"
+                                    >
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-4">
+                                                <div className="p-3 bg-white/20 rounded-xl">
+                                                    <Settings size={32} className="text-white" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-bold">Cotizar Repuestos</h3>
+                                                    <p className="text-sm text-white/80">Originales y alternativos garantizados</p>
+                                                </div>
+                                            </div>
+                                            <ArrowRight size={24} className="text-white group-hover:translate-x-1 transition-transform" />
                                         </div>
-                                        <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Agendar Servicio Técnico</h3>
-                                    <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Mantenciones, reparaciones y pintura</p>
-                                </Link>
+                                    </Link>
+                                </div>
+                            )}
 
-                                <Link href="/repuestos" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <div className="p-3 bg-green-50 rounded-xl group-hover:bg-white/10 transition-colors">
-                                            <Settings size={28} className="text-green-600 group-hover:text-white" />
+                            {/* --- BRAND ONLY or GENERAL --- */}
+                            {(searchIntent.type === 'BRAND_ONLY' || searchIntent.type === 'GENERAL') && (
+                                <div className="space-y-6">
+                                    {searchIntent.brand && (
+                                        <div className="bg-white p-4 rounded-xl border border-carmona-gold/30 shadow-sm mb-4">
+                                            <div className="flex items-center gap-4 mb-3">
+                                                <div className="relative w-16 h-10">
+                                                    <Image src={searchIntent.brand.src} alt={searchIntent.brand.name} fill className="object-contain" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-gray-900">{searchIntent.brand.name}</h3>
+                                                    <p className="text-xs text-gray-500">Resultados encontrados</p>
+                                                </div>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-2">
+                                                <Link href={`/nuevos/${searchIntent.brand.name.toLowerCase()}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-black hover:text-white transition-colors text-center">
+                                                    Ver Modelos
+                                                </Link>
+                                                <Link href={`/servicios?brand=${searchIntent.brand.name.toLowerCase()}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center">
+                                                    Agendar Servicio
+                                                </Link>
+                                            </div>
                                         </div>
-                                        <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                    )}
+
+                                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Resultados Generales</h3>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {/* Filter filtered brands if keyword match, or show popular if general */}
+                                        {BRAND_LOGOS.filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).map(brand => (
+                                            <Link
+                                                key={brand.name}
+                                                href={`/nuevos/${brand.name.toLowerCase()}`}
+                                                onClick={resetAssistant}
+                                                className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all"
+                                            >
+                                                <div className="relative w-8 h-8 flex-shrink-0">
+                                                    <Image src={brand.src} alt={brand.name} fill className="object-contain" />
+                                                </div>
+                                                <span className="text-sm font-bold text-gray-700">{brand.name}</span>
+                                            </Link>
+                                        ))}
                                     </div>
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Repuesto</h3>
-                                    <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Piezas originales y accesorios</p>
-                                </Link>
-                            </div>
+                                </div>
+                            )}
+
                         </div>
                     ) : (
-                        <div className="px-8 pb-8 animate-in slide-in-from-right-8 duration-300">
-                            {/* BRAND SELECTION VIEW */}
-                            <h2 className="text-2xl font-extrabold text-gray-900 mb-2">Elige tu Marca</h2>
-                            <p className="text-gray-500 mb-8">Selecciona una marca para ver los modelos disponibles.</p>
+                        // DEFAULT HOME VIEW (No Search)
+                        assistantView === 'HOME' ? (
+                            <div className="px-8 pb-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                                <h2 className="text-3xl font-extrabold text-gray-900 mb-2">¿En qué te podemos ayudar?</h2>
+                                <p className="text-gray-500 mb-8">Navega rápidamente a lo que necesitas.</p>
 
-                            <div className="grid grid-cols-2 gap-4">
-                                {BRAND_LOGOS.filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).map((brand) => (
-                                    <Link
-                                        key={brand.name}
-                                        href={`/nuevos/${brand.name.toLowerCase()}`}
-                                        className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-lg transition-all group"
-                                        onClick={resetAssistant}
+                                <div className="space-y-4">
+                                    <button
+                                        onClick={() => setAssistantView('NEW_CARS')}
+                                        className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left"
                                     >
-                                        <div className="relative w-full h-12 mb-2">
-                                            <Image
-                                                src={brand.src}
-                                                alt={brand.name}
-                                                fill
-                                                className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                                            />
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="p-3 bg-carmona-gold/10 rounded-xl group-hover:bg-white/10 transition-colors">
+                                                <Car size={28} className="text-carmona-gold group-hover:text-white" />
+                                            </div>
+                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
                                         </div>
-                                        <span className="text-sm font-bold text-gray-400 group-hover:text-gray-900">{brand.name}</span>
+                                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Auto Nuevo</h3>
+                                        <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Explorar marcas y modelos disponibles</p>
+                                    </button>
+
+                                    <Link href="/seminuevos" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="p-3 bg-carmona-orange/10 rounded-xl group-hover:bg-white/10 transition-colors">
+                                                <ShoppingBag size={28} className="text-carmona-orange group-hover:text-white" />
+                                            </div>
+                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Auto Usado</h3>
+                                        <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Stock certificado con entrega inmediata</p>
                                     </Link>
-                                ))}
+
+                                    <Link href="/servicios" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="p-3 bg-blue-50 rounded-xl group-hover:bg-white/10 transition-colors">
+                                                <Wrench size={28} className="text-blue-600 group-hover:text-white" />
+                                            </div>
+                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Agendar Servicio Técnico</h3>
+                                        <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Mantenciones, reparaciones y pintura</p>
+                                    </Link>
+
+                                    <Link href="/repuestos" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="p-3 bg-green-50 rounded-xl group-hover:bg-white/10 transition-colors">
+                                                <Settings size={28} className="text-green-600 group-hover:text-white" />
+                                            </div>
+                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Repuesto</h3>
+                                        <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Piezas originales y accesorios</p>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="px-8 pb-8 animate-in slide-in-from-right-8 duration-300">
+                                {/* BRAND SELECTION VIEW (Secondary Flow) */}
+                                <h2 className="text-2xl font-extrabold text-gray-900 mb-2">Elige tu Marca</h2>
+                                <p className="text-gray-500 mb-8">Selecciona una marca para ver los modelos disponibles.</p>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    {BRAND_LOGOS.filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).map((brand) => (
+                                        <Link
+                                            key={brand.name}
+                                            href={`/nuevos/${brand.name.toLowerCase()}`}
+                                            className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-lg transition-all group"
+                                            onClick={resetAssistant}
+                                        >
+                                            <div className="relative w-full h-12 mb-2">
+                                                <Image
+                                                    src={brand.src}
+                                                    alt={brand.name}
+                                                    fill
+                                                    className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                                                />
+                                            </div>
+                                            <span className="text-sm font-bold text-gray-400 group-hover:text-gray-900">{brand.name}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        )
                     )}
                 </div>
 

@@ -197,11 +197,12 @@ export default function ToyotaPage() {
                 {/* Video Background or High Quality Image */}
                 <div className="absolute inset-0 w-full h-full">
                     <Image
-                        src="https://placehold.co/1920x800/e5e7eb/666?text=Toyota+Experience+Banner" // Placeholder
+                        src="/images/toyota-banner.webp"
                         alt="Toyota Banner"
                         fill
                         className="object-cover object-center"
                         draggable={false}
+                        priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
                 </div>
