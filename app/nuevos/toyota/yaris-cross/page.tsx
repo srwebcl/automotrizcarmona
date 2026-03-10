@@ -91,7 +91,7 @@ export default function YarisCrossPage() {
                                         src={model.gallery[activeIdx]}
                                         alt={model.name}
                                         fill
-                                        className="object-contain p-4"
+                                        className="object-cover"
                                         priority
                                     />
                                     {/* Navigation Arrows */}

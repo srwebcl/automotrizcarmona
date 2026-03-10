@@ -6,8 +6,8 @@ import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
-// Banners from 'public/images/banners'
-const SLIDES = [
+// Banners from 'public/images/banners' for Web (Desktop)
+const DESKTOP_SLIDES = [
     {
         id: 1,
         image: '/images/banners/allnewmgzshybrid-1-1920x710.png',
@@ -24,14 +24,37 @@ const SLIDES = [
     },
     {
         id: 3,
-        image: '/images/banners/banner-web-1800x665.png', // Fallback or additional banner
+        image: '/images/banners/banner-web-1800x665.png',
         title: 'Seminuevos Certificados',
         subtitle: 'Calidad garantizada en todas las marcas.',
         cta: 'Ver Stock'
     }
 ];
 
-// Logos from 'public/images/logos' - Mapping plausible filenames
+// Banners for Mobile
+const MOBILE_SLIDES = [
+    {
+        id: 1,
+        image: '/images/banners/banner-movil-1.jpg',
+        title: 'Soueast S6 Hybrid'
+    },
+    {
+        id: 2,
+        image: '/images/banners/banner-movil-2.jpg',
+        title: 'Volkswagen Nueva Amarok'
+    },
+    {
+        id: 3,
+        image: '/images/banners/banner-movil-3.jpg',
+        title: 'Geely New Coolray'
+    },
+    {
+        id: 4,
+        image: '/images/banners/banner-movil-4.jpg',
+        title: 'Audi A3 Sportback'
+    }
+];
+
 // Logos from 'public/images/logos'
 const BRANDS_LOGOS = [
     'logo-toyota.webp',
@@ -59,23 +82,18 @@ const BRANDS_LOGOS = [
 ];
 
 export default function Hero() {
-    // Main Hero Slider
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
-
-    // Brand Carousel - AutoScroll simulation with fast autoplay and no stop
-    // Note: For true smooth continuous scroll 'embla-carousel-auto-scroll' is better, 
-    // but using standard autoplay with short delay and different options works as a fallback or if simple sliding is preferred.
-    // However, user asked for "infinito". The best "no-dependency" way for infinite marquee is CSS.
-    // Let's use a CSS Marquee for the brands to ensure "advance infinito".
+    // Separate Hooks for Desktop and Mobile to handle different counts
+    const [desktopRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
+    const [mobileRef] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000 })]);
 
     return (
         <section className="relative bg-white pt-24 md:pt-32 pb-0 px-4 md:px-8" style={{ backgroundColor: '#ffffff' }}>
-            {/* Slider with Symmetrical Margins */}
-            <div className="w-full mx-auto mb-2">
-                <div className="overflow-hidden rounded-3xl" ref={emblaRef}>
+            {/* Mobile Slider (4 slides) */}
+            <div className="w-full mx-auto mb-2 md:hidden">
+                <div className="overflow-hidden rounded-3xl" ref={mobileRef}>
                     <div className="flex">
-                        {SLIDES.map((slide) => (
-                            <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/10] sm:aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
+                        {MOBILE_SLIDES.map((slide) => (
+                            <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-square">
                                 <Image
                                     src={slide.image}
                                     alt={slide.title}
@@ -83,7 +101,25 @@ export default function Hero() {
                                     className="object-cover"
                                     priority={slide.id === 1}
                                 />
-                                {/* Gradient removed as Navbar is opaque/dark and user wants pure white */}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Desktop Slider (3 slides) */}
+            <div className="w-full mx-auto mb-2 hidden md:block">
+                <div className="overflow-hidden rounded-3xl" ref={desktopRef}>
+                    <div className="flex">
+                        {DESKTOP_SLIDES.map((slide) => (
+                            <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
+                                <Image
+                                    src={slide.image}
+                                    alt={slide.title}
+                                    fill
+                                    className="object-cover"
+                                    priority={slide.id === 1}
+                                />
                             </div>
                         ))}
                     </div>

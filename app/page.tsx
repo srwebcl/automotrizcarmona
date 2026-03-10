@@ -99,24 +99,24 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row gap-6 items-stretch">
 
               {/* ── Banner Promocional (solo imagen, sin texto) ── */}
-              <div className="lg:w-[calc(25%-12px)] flex-shrink-0">
+              <div className="w-full lg:w-[calc(25%-12px)] flex-shrink-0">
                 <Link
                   href="/nuevos/volkswagen"
                   id="promo-banner-card"
-                  className="group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[4/5] lg:aspect-auto lg:h-full bg-white"
+                  className="group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[2/3] lg:aspect-auto lg:h-full bg-white"
                 >
                   <Image
-                    src="/images/banner-global.webp"
+                    src="/images/banner-destacados-web.webp"
                     alt="Banner Promocional"
                     fill
-                    className="object-contain transition-all duration-300"
+                    className="object-cover transition-all duration-300"
                     priority
                   />
                 </Link>
               </div>
 
               {/* ── Carrusel de vehículos destacados ── */}
-              <div className="flex-1 min-w-0 relative">
+              <div className="flex-1 min-w-0 relative w-full lg:w-auto">
                 <VehiclesCarousel />
               </div>
 

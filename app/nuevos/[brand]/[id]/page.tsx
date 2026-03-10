@@ -97,7 +97,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                     src={(model.gallery && model.gallery[activeIdx]) || model.image}
                                     alt={model.name}
                                     fill
-                                    className="object-contain p-8"
+                                    className="object-cover"
                                     priority
                                 />
                             </div>
