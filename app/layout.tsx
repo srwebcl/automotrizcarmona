@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmartWhatsAppButton from "@/components/SmartWhatsAppButton";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Automotriz Carmona | Líderes en Seminuevos",
-  description: "Compra, vende o financia tu próximo auto con el respaldo de 50 años de trayectoria.",
+  title: "Automotriz Carmona | Líderes en Venta de Autos Nuevos & Seminuevos",
+  description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
 };
 
 export default function RootLayout({
@@ -27,10 +28,11 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-gray-900`}
       >
         <Navbar />
         {children}
+        <SmartWhatsAppButton />
         <Footer />
       </body>
     </html>

@@ -6,35 +6,39 @@ import Image from 'next/image';
 import { Phone, MapPin, ChevronDown, Menu, X, User, Calendar, Wrench, Settings, Truck, Car, ShoppingBag, ArrowRight, Search, ChevronLeft, Sparkles, LayoutGrid, Leaf, Bus, Grip, UserCheck, MessageSquare } from 'lucide-react';
 
 const BRAND_LOGOS = [
-    { name: "Toyota", src: "/images/logos/TOYOTA_Logo.png", isHybrid: true },
-    { name: "Maxus", src: "/images/logos/MAXUS_Logo.png", isHybrid: false },
-    { name: "BMW", src: "/images/logos/BMW_Logo.png", isHybrid: true },
-    { name: "Audi", src: "/images/logos/AUDI_Logo.png", isHybrid: true },
-    { name: "BMW Motorrad", src: "/images/logos/BMW-MOTORRAD_Logo.png", isHybrid: false },
-    { name: "Cupra", src: "/images/logos/Cupra-logo.png", isHybrid: true },
-    { name: "Dongfeng", src: "/images/logos/DONGFENG-CIDEF_Logo.png", isHybrid: false },
-    { name: "Foton", src: "/images/logos/FOTON-CIDEF_Logo.png", isHybrid: false },
-    { name: "Honda", src: "/images/logos/HONDA_Logo.png", isHybrid: true },
-    { name: "Jetour", src: "/images/logos/JETOUR-logo.png", isHybrid: false },
-    { name: "Karry", src: "/images/logos/KARRY_Logo.png", isHybrid: false },
-    { name: "Kaiyi", src: "/images/logos/Kaiyi-Auto-Horizontal-03.png", isHybrid: false },
-    { name: "MG", src: "/images/logos/MG_Logo.png", isHybrid: true },
-    { name: "Mini", src: "/images/logos/MINI_Logo.png", isHybrid: true },
-    { name: "Seat", src: "/images/logos/SEAT_Logo.png", isHybrid: false },
-    { name: "Soueast", src: "/images/logos/SOUEAST_BLACK_Logo.png", isHybrid: false },
-    { name: "Volkswagen", src: "/images/logos/VOLKSWAGEN_Logo.png", isHybrid: false },
-    { name: "Geely", src: "/images/logos/logo-geelyy.png", isHybrid: true },
+    { name: "Toyota", src: "/images/logos/logo-toyota.webp", isHybrid: true },
+    // VW Conglomerate
+    { name: "Volkswagen", src: "/images/logos/logo-vw.webp", isHybrid: false },
+    { name: "Audi", src: "/images/logos/logo-audi.webp", isHybrid: true },
+    { name: "Seat", src: "/images/logos/logo-seat.webp", isHybrid: false },
+    { name: "Cupra", src: "/images/logos/logo-cupra.webp", isHybrid: true },
+    { name: "Honda", src: "/images/logos/logo-honda.webp", isHybrid: true },
+    // BMW Group
+    { name: "BMW", src: "/images/logos/logo-bmw.webp", isHybrid: true },
+    { name: "BMW Motorrad", src: "/images/logos/logo-bmw-motorrad.webp", isHybrid: false },
+    { name: "Mini", src: "/images/logos/logo-mini.webp", isHybrid: true },
+    // Third Group
+    { name: "Maxus", src: "/images/logos/logo-maxus.webp", isHybrid: false },
+    { name: "Jetour", src: "/images/logos/logo-jetour.webp", isHybrid: false },
+    { name: "Soueast", src: "/images/logos/logos antiguos/SOUEAST_BLACK_Logo.png", isHybrid: false },
+    { name: "Kaiyi", src: "/images/logos/logo-kaiyi.webp", isHybrid: false },
+    { name: "Karry", src: "/images/logos/logo-karry.webp", isHybrid: false },
+    { name: "Geely", src: "/images/logos/logo-geely.webp", isHybrid: true },
+    // The rest
+    { name: "MG", src: "/images/logos/logo-mg.webp", isHybrid: true },
+    { name: "Dongfeng", src: "/images/logos/logo-dongfeng.webp", isHybrid: false },
+    { name: "Foton", src: "/images/logos/logo-foton.webp", isHybrid: false },
 ];
 
 const TRUCK_LOGOS = [
-    { name: "Iveco", src: "/images/logos/logo-iveco.png" },
-    { name: "MAN", src: "/images/logos/MAN_Logo.png" },
-    { name: "VW Camiones", src: "/images/logos/VW-CAMIONES-Y-BUSES_Logo.png" },
-    { name: "Maxus", src: "/images/logos/MAXUS_Logo.png" },
-    { name: "Foton", src: "/images/logos/FOTON-MDLA_Logo.png" },
+    { name: "Iveco", src: "/images/logos/logo-iveco.webp" },
+    { name: "MAN", src: "/images/logos/logo-man.webp" },
+    { name: "VW Camiones", src: "/images/logos/logo-vw-camiones.webp" },
+    { name: "Maxus", src: "/images/logos/logo-maxus.webp" },
+    { name: "Foton", src: "/images/logos/logo-foton-camiones.webp" },
 ];
 
-type MenuCategory = 'nuevos' | 'camiones' | 'seminuevos' | 'postventa';
+type MenuCategory = 'nuevos' | 'camiones' | 'seminuevos' | 'postventa' | 'contacto';
 type IntentType = 'QUOTE' | 'SERVICE' | 'PARTS' | 'BRAND_ONLY' | 'GENERAL' | 'NONE';
 
 export default function Navbar() {
@@ -80,6 +84,7 @@ export default function Navbar() {
         { id: 'camiones', label: 'Camiones y Buses', icon: Truck },
         { id: 'seminuevos', label: 'Seminuevos', icon: ShoppingBag },
         { id: 'postventa', label: 'Post-Venta', icon: Wrench },
+        { id: 'contacto', label: 'Contacto', icon: MessageSquare },
     ];
 
     // --- SMART SEARCH LOGIC ---
@@ -186,11 +191,11 @@ export default function Navbar() {
             />
 
             {/* Menu Panel */}
-            <div className={`fixed top-0 left-0 w-full bg-white z-[45] shadow-2xl transform transition-transform duration-500 ease-in-out ${isUnifiedMenuOpen ? 'translate-y-[64px]' : '-translate-y-full'}`}>
+            <div className={`fixed top-0 left-0 w-full bg-white z-[45] shadow-2xl transform transition-transform duration-500 ease-in-out ${isUnifiedMenuOpen ? 'translate-y-[70px]' : '-translate-y-full'}`}>
                 <div className="max-w-[1920px] mx-auto min-h-[500px] flex">
 
                     {/* LEFT SIDEBAR - CATEGORIES */}
-                    <div className="w-1/4 bg-gray-50 border-r border-gray-100 flex flex-col p-6">
+                    <div className="w-1/4 bg-gray-50 border-r border-gray-100 flex flex-col pt-10 p-6">
                         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 px-4">Categorías</h3>
                         <div className="flex flex-col gap-2">
                             {menuItems.map((item) => {
@@ -215,7 +220,7 @@ export default function Navbar() {
                     </div>
 
                     {/* RIGHT CONTENT AREA - DYNAMIC */}
-                    <div className="w-3/4 bg-white p-10 min-h-[600px] flex flex-col">
+                    <div className="w-3/4 bg-white pt-10 p-10 min-h-[600px] flex flex-col">
 
                         {/* HEADER OF SECTION */}
                         <div className="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
@@ -238,7 +243,7 @@ export default function Navbar() {
                                     {BRAND_LOGOS.map((brand) => (
                                         <Link
                                             key={brand.name}
-                                            href={`/nuevos/${brand.name.toLowerCase()}`}
+                                            href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                             onClick={closeUnifiedMenu}
                                             className="group flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 bg-white hover:border-carmona-gold/30 hover:shadow-lg transition-all h-32"
                                         >
@@ -262,7 +267,7 @@ export default function Navbar() {
                                     {TRUCK_LOGOS.map((brand) => (
                                         <Link
                                             key={brand.name}
-                                            href={`/camiones/${brand.name.toLowerCase()}`}
+                                            href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                             onClick={closeUnifiedMenu}
                                             className="group flex flex-col items-center justify-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-carmona-gold hover:shadow-xl transition-all h-48"
                                         >
@@ -285,8 +290,9 @@ export default function Navbar() {
                                 <div className="h-full flex items-center justify-center gap-10 px-10">
                                     {/* Standard Seminuevos */}
                                     <a
-                                        href="https://seminuevos.automotrizcarmona.cl/catalogo"
+                                        href="https://seminuevos.automotrizcarmona.cl/"
                                         onClick={closeUnifiedMenu}
+                                        target="_blank" rel="noopener noreferrer"
                                         className="flex-1 group relative h-80 rounded-3xl border-2 border-dashed border-gray-200 hover:border-carmona-orange hover:bg-orange-50/10 flex flex-col items-center justify-center transition-all hover:scale-105"
                                     >
                                         <div className="relative w-64 h-24 mb-6">
@@ -306,6 +312,7 @@ export default function Navbar() {
                                     <a
                                         href="https://seminuevos.automotrizcarmona.cl/catalogo?is_premium=1"
                                         onClick={closeUnifiedMenu}
+                                        target="_blank" rel="noopener noreferrer"
                                         className="flex-1 group relative h-80 rounded-3xl bg-bruno-black border border-white/10 hover:border-carmona-gold hover:shadow-2xl hover:shadow-carmona-gold/20 flex flex-col items-center justify-center transition-all hover:scale-105 overflow-hidden"
                                     >
                                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
@@ -328,57 +335,109 @@ export default function Navbar() {
                             {activeCategory === 'postventa' && (
                                 <div className="grid grid-cols-3 gap-8 pt-4">
                                     {/* Service */}
-                                    <Link href="/servicios" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                                        <div className="absolute inset-0 bg-blue-900/20 group-hover:bg-blue-900/0 transition-colors" />
-                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                                            <Wrench size={64} className="text-gray-300 group-hover:scale-110 transition-transform duration-500" />
+                                    <Link href="/servicios" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-blue-600/5 transition-colors">
+                                            <Wrench size={64} className="text-gray-200 group-hover:text-blue-600/20 group-hover:scale-110 transition-all duration-500" />
                                         </div>
-                                        <div className="absolute bottom-0 left-0 p-8 z-20">
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <div className="p-2 bg-blue-600 rounded-lg text-white">
+                                                <div className="p-2 bg-blue-600 rounded-lg text-white shadow-md shadow-blue-600/30">
                                                     <Wrench size={18} />
                                                 </div>
-                                                <h3 className="text-white text-xl font-bold">Servicio Técnico</h3>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Servicio Técnico</h3>
                                             </div>
-                                            <p className="text-white/70 text-sm leading-relaxed">Agendan tu hora para mantenciones y reparaciones con expertos.</p>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Agenda tu hora para mantenciones y reparaciones con expertos.</p>
                                         </div>
                                     </Link>
 
                                     {/* Repuestos */}
-                                    <Link href="/repuestos" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                                        <Image
-                                            src="/images/quick_access_repuestos_1770350949447.png"
-                                            alt="Repuestos"
-                                            fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                        />
-                                        <div className="absolute bottom-0 left-0 p-8 z-20">
+                                    <Link href="/repuestos" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-green-600/5 transition-colors">
+                                            <Settings size={64} className="text-gray-200 group-hover:text-green-600/20 group-hover:scale-110 transition-all duration-500" />
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <div className="p-2 bg-green-600 rounded-lg text-white">
+                                                <div className="p-2 bg-green-600 rounded-lg text-white shadow-md shadow-green-600/30">
                                                     <Settings size={18} />
                                                 </div>
-                                                <h3 className="text-white text-xl font-bold">Repuestos</h3>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Repuestos</h3>
                                             </div>
-                                            <p className="text-white/70 text-sm leading-relaxed">Cotiza repuestos originales y accesorios para tu vehículo.</p>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Cotiza repuestos originales y accesorios para tu vehículo.</p>
                                         </div>
                                     </Link>
 
                                     {/* DyP */}
-                                    <Link href="/dyp" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                                            <Car size={64} className="text-gray-300 group-hover:scale-110 transition-transform duration-500" />
+                                    <Link href="/dyp" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-purple-600/5 transition-colors">
+                                            <Car size={64} className="text-gray-200 group-hover:text-purple-600/20 group-hover:scale-110 transition-all duration-500" />
                                         </div>
-                                        <div className="absolute bottom-0 left-0 p-8 z-20">
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <div className="p-2 bg-purple-600 rounded-lg text-white">
+                                                <div className="p-2 bg-purple-600 rounded-lg text-white shadow-md shadow-purple-600/30">
                                                     <Car size={18} />
                                                 </div>
-                                                <h3 className="text-white text-xl font-bold">Desabolladura y Pintura</h3>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Desabolladura y Pintura</h3>
                                             </div>
-                                            <p className="text-white/70 text-sm leading-relaxed">Recupera la estética de tu auto con tecnología de punta.</p>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Recupera la estética de tu auto con tecnología de punta.</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            )}
+
+                            {/* CONTACTO */}
+                            {activeCategory === 'contacto' && (
+                                <div className="grid grid-cols-3 gap-8 pt-4">
+                                    {/* Sucursales */}
+                                    <Link href="/sucursales" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-carmona-orange/5 transition-colors">
+                                            <MapPin size={64} className="text-gray-200 group-hover:text-carmona-orange/20 group-hover:scale-110 transition-all duration-500" />
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <div className="p-2 bg-carmona-gold rounded-lg text-white shadow-md shadow-carmona-gold/30">
+                                                    <MapPin size={18} />
+                                                </div>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Sucursales</h3>
+                                            </div>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Encuentra tu sucursal o taller Carmona más cercano en la región.</p>
+                                        </div>
+                                    </Link>
+
+                                    {/* Contacto Directo */}
+                                    <Link href="/contacto" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-carmona-orange/5 transition-colors">
+                                            <Phone size={64} className="text-gray-200 group-hover:text-carmona-orange/20 group-hover:scale-110 transition-all duration-500" />
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <div className="p-2 bg-bruno-black rounded-lg text-white shadow-md">
+                                                    <Phone size={18} />
+                                                </div>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Contáctanos</h3>
+                                            </div>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Llámanos, escríbenos o chatea con un asesor por WhatsApp.</p>
+                                        </div>
+                                    </Link>
+
+                                    {/* Sugerencias / Reclamos */}
+                                    <Link href="/reclamos" onClick={closeUnifiedMenu} className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 hover:shadow-xl transition-all border border-gray-100">
+                                        <div className="absolute inset-0 bg-white/50 group-hover:bg-transparent transition-colors z-10" />
+                                        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 group-hover:bg-blue-600/5 transition-colors">
+                                            <User size={64} className="text-gray-200 group-hover:text-blue-600/20 group-hover:scale-110 transition-all duration-500" />
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 p-8 z-20 w-full bg-gradient-to-t from-white via-white/90 to-transparent">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <div className="p-2 bg-blue-600 rounded-lg text-white shadow-md shadow-blue-600/30">
+                                                    <MessageSquare size={18} />
+                                                </div>
+                                                <h3 className="text-gray-900 text-xl font-extrabold tracking-tight">Sugerencias y Reclamos</h3>
+                                            </div>
+                                            <p className="text-gray-500 text-sm leading-relaxed font-medium">Ayúdanos a mejorar contándonos tu experiencia con nosotros.</p>
                                         </div>
                                     </Link>
                                 </div>
@@ -478,7 +537,7 @@ export default function Navbar() {
                                             {BRAND_LOGOS.slice(0, 8).map(brand => (
                                                 <Link
                                                     key={brand.name}
-                                                    href={`/nuevos/${brand.name.toLowerCase()}`}
+                                                    href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                     onClick={resetAssistant}
                                                     className="p-4 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all flex flex-col items-center gap-2"
                                                 >
@@ -497,7 +556,7 @@ export default function Navbar() {
                                     <h2 className="text-xl font-extrabold text-gray-900">Agenda tu Servicio Técnico</h2>
                                     {searchIntent.brand ? (
                                         <Link
-                                            href={`/servicios?brand=${searchIntent.brand.name}`}
+                                            href={`/servicios/agendar?marca=${encodeURIComponent(searchIntent.brand.name)}`}
                                             onClick={resetAssistant}
                                             className="block p-6 rounded-2xl bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-all group"
                                         >
@@ -521,7 +580,7 @@ export default function Navbar() {
                                                 {BRAND_LOGOS.map((brand) => (
                                                     <Link
                                                         key={brand.name}
-                                                        href={`/servicios?brand=${brand.name.toLowerCase()}`}
+                                                        href={`/servicios/agendar?marca=${encodeURIComponent(brand.name)}`}
                                                         onClick={resetAssistant}
                                                         className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 transition-all group"
                                                     >
@@ -582,10 +641,10 @@ export default function Navbar() {
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-2">
-                                                <Link href={`/nuevos/${searchIntent.brand.name.toLowerCase()}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-black hover:text-white transition-colors text-center">
+                                                <Link href={`/nuevos/${searchIntent.brand.name.toLowerCase().replace(/\s+/g, '-')}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-black hover:text-white transition-colors text-center">
                                                     Ver Modelos
                                                 </Link>
-                                                <Link href={`/servicios?brand=${searchIntent.brand.name.toLowerCase()}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center">
+                                                <Link href={`/servicios/agendar?marca=${encodeURIComponent(searchIntent.brand.name)}`} onClick={resetAssistant} className="px-3 py-2 bg-gray-50 text-gray-700 text-sm font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-center">
                                                     Agendar Servicio
                                                 </Link>
                                             </div>
@@ -598,7 +657,7 @@ export default function Navbar() {
                                         {BRAND_LOGOS.filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).map(brand => (
                                             <Link
                                                 key={brand.name}
-                                                href={`/nuevos/${brand.name.toLowerCase()}`}
+                                                href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                 onClick={resetAssistant}
                                                 className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all"
                                             >
@@ -635,16 +694,16 @@ export default function Navbar() {
                                         <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Explorar marcas y modelos disponibles</p>
                                     </button>
 
-                                    <Link href="/seminuevos" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
+                                    <a href="https://seminuevos.automotrizcarmona.cl/" target="_blank" rel="noopener noreferrer" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="p-3 bg-carmona-orange/10 rounded-xl group-hover:bg-white/10 transition-colors">
                                                 <ShoppingBag size={28} className="text-carmona-orange group-hover:text-white" />
                                             </div>
-                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-carmona-gold opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                                            <ArrowRight size={20} className="text-gray-300 group-hover:text-[#d2001c] opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
                                         </div>
                                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-white transition-colors">Cotizar un Auto Usado</h3>
                                         <p className="text-sm text-gray-500 group-hover:text-gray-400 mt-1 transition-colors">Stock certificado con entrega inmediata</p>
-                                    </Link>
+                                    </a>
 
                                     <Link href="/servicios" className="w-full group block p-6 rounded-2xl bg-white hover:bg-bruno-black transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-black/5 text-left">
                                         <div className="flex items-center justify-between mb-2">
@@ -679,7 +738,7 @@ export default function Navbar() {
                                     {BRAND_LOGOS.filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).map((brand) => (
                                         <Link
                                             key={brand.name}
-                                            href={`/nuevos/${brand.name.toLowerCase()}`}
+                                            href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                             className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-lg transition-all group"
                                             onClick={resetAssistant}
                                         >

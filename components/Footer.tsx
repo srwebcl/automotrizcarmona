@@ -1,80 +1,96 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-black text-gray-400 border-t border-gray-900">
+        <footer className="bg-[#0a0a0a] text-gray-400 border-t border-white/10">
             {/* Main Footer Content */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-                    {/* Column 1: Brand / Explore */}
-                    <div className="space-y-4">
-                        <h4 className="text-white font-bold text-lg border-l-4 border-carmona-gold pl-3">EXPLORAR</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li><a href="/nuevos" className="hover:text-carmona-gold transition-colors block py-1">Autos Nuevos</a></li>
-                            <li><a href="/seminuevos" className="hover:text-carmona-gold transition-colors block py-1">Seminuevos Certificados</a></li>
-                            <li><a href="/servicios" className="hover:text-carmona-gold transition-colors block py-1">Servicio Técnico</a></li>
-                            <li><a href="/repuestos" className="hover:text-carmona-gold transition-colors block py-1">Repuestos Originales</a></li>
-                            <li><a href="/dp" className="hover:text-carmona-gold transition-colors block py-1">Desabolladura y Pintura</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Column 2: Company */}
-                    <div className="space-y-4">
-                        <h4 className="text-white font-bold text-lg border-l-4 border-carmona-gold pl-3">EMPRESA</h4>
-                        <ul className="space-y-2 text-sm">
-                            <li><a href="/nosotros" className="hover:text-carmona-gold transition-colors block py-1">Quiénes Somos</a></li>
-                            <li><a href="/sucursales" className="hover:text-carmona-gold transition-colors block py-1">Nuestras Sucursales</a></li>
-                            <li><a href="/trabaja-con-nosotros" className="hover:text-carmona-gold transition-colors block py-1">Trabaja con Nosotros</a></li>
-                            <li><a href="/legal" className="hover:text-carmona-gold transition-colors block py-1">Términos y Condiciones</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Column 3: Contact */}
-                    <div className="space-y-4">
-                        <h4 className="text-white font-bold text-lg border-l-4 border-carmona-gold pl-3">CONTÁCTANOS</h4>
-                        <ul className="space-y-3 text-sm">
-                            <li className="flex items-start gap-3">
-                                <MapPin className="text-carmona-gold mt-1" size={16} />
-                                <span>Av. Balmaceda 1234,<br />La Serena, IV Región</span>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Phone className="text-carmona-gold" size={16} />
-                                <span>+56 9 1234 5678</span>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Mail className="text-carmona-gold" size={16} />
-                                <span>contacto@automotrizcarmona.cl</span>
-                            </li>
-                        </ul>
-
-                        <div className="pt-4">
-                            <button className="bg-carmona-gold hover:bg-carmona-orange text-white font-bold py-2 px-6 rounded-lg transition-colors text-sm w-full md:w-auto">
-                                Escribir a Whatsapp
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Column 4: Socials & Hours */}
+                    {/* Column 1: Brand & Info */}
                     <div className="space-y-6">
-                        <div>
-                            <h4 className="text-white font-bold text-lg mb-4">SÍGUENOS</h4>
-                            <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded hover:bg-carmona-gold hover:text-white transition-all"><Instagram size={20} /></a>
-                                <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded hover:bg-carmona-gold hover:text-white transition-all"><Facebook size={20} /></a>
-                                <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded hover:bg-carmona-gold hover:text-white transition-all"><Linkedin size={20} /></a>
-                                <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded hover:bg-carmona-gold hover:text-white transition-all"><Youtube size={20} /></a>
-                            </div>
+                        <Link href="/" className="block">
+                            <Image
+                                src="/images/logo-carmona.avif"
+                                alt="Automotriz Carmona"
+                                width={180}
+                                height={40}
+                                className="brightness-0 invert opacity-100 hover:opacity-80 transition-opacity"
+                            />
+                        </Link>
+                        <p className="text-sm leading-relaxed text-gray-400">
+                            Somos el concesionario automotriz más grande de la tercera y cuarta región. Representantes oficiales de las principales marcas del mercado.
+                        </p>
+                        <div className="flex gap-4 pt-2">
+                            <a href="https://www.instagram.com/automotrizcarmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                                <Instagram size={18} />
+                            </a>
+                            <a href="https://www.facebook.com/automotrizcarmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                                <Facebook size={18} />
+                            </a>
+                            <a href="https://www.linkedin.com/company/automotriz-carmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                                <Linkedin size={18} />
+                            </a>
                         </div>
+                    </div>
 
-                        <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
-                            <h5 className="text-white font-bold text-sm mb-2">Horario de Atención</h5>
-                            <p className="text-xs leading-relaxed">
-                                <strong className="text-gray-300">Ventas:</strong><br />
-                                Lun a Vie: 09:00 - 19:00 hrs.<br />
-                                Sábado: 10:00 - 14:00 hrs.
-                            </p>
+                    {/* Column 2: Vehículos */}
+                    <div className="space-y-5 lg:pl-8">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-widest mb-6">Vehículos</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li><Link href="/nuevos" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Autos Nuevos</Link></li>
+                            <li><a href="https://seminuevos.automotrizcarmona.cl/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Seminuevos</a></li>
+                            <li><a href="https://seminuevos.automotrizcarmona.cl/catalogo?is_premium=1" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Seminuevos Premium</a></li>
+                            <li><Link href="/camiones" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Camiones y Buses</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 3: Servicios & Corporativo */}
+                    <div className="space-y-5">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-widest mb-6">Servicios y Empresa</h4>
+                        <ul className="space-y-3 text-sm">
+                            <li><Link href="/servicios" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Servicio Técnico</Link></li>
+                            <li><Link href="/repuestos" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Repuestos Originales</Link></li>
+                            <li><Link href="/dyp/cotizar" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Desabolladura y Pintura</Link></li>
+                            <li className="pt-2"><Link href="/sucursales" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Sucursales</Link></li>
+                            <li><Link href="/noticias" className="hover:text-white transition-colors flex items-center gap-2 group"><ArrowRight size={14} className="text-gray-600 transform group-hover:translate-x-1 group-hover:text-carmona-gold transition-all" /> Noticias</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Column 4: Contacto */}
+                    <div className="space-y-5">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-widest mb-6">Mesa Central</h4>
+                        <ul className="space-y-4 text-sm">
+                            <li className="flex items-start gap-4">
+                                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                                    <MapPin className="text-gray-300" size={16} />
+                                </div>
+                                <span className="pt-1 leading-snug">Av. Balmaceda 1234,<br />La Serena, IV Región</span>
+                            </li>
+                            <li className="flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                                    <Phone className="text-gray-300" size={16} />
+                                </div>
+                                <span className="font-bold text-white">+56 51 220 0200</span>
+                            </li>
+                            <li className="flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                                    <Mail className="text-gray-300" size={16} />
+                                </div>
+                                <span>contacto@carmonaycia.cl</span>
+                            </li>
+                        </ul>
+
+                        <div className="pt-2 flex gap-3">
+                            <Link href="/contacto" className="flex-1 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-4 rounded-xl transition-colors text-xs text-center border border-white/10">
+                                Contactar
+                            </Link>
+                            <Link href="/reclamos" className="flex-1 bg-gradient-to-r from-[#d4af37] to-[#aa8323] hover:opacity-90 text-white shadow-lg font-extrabold py-3 px-4 rounded-xl transition-opacity text-xs text-center border border-transparent">
+                                Reclamos
+                            </Link>
                         </div>
                     </div>
 
@@ -82,12 +98,13 @@ export default function Footer() {
             </div>
 
             {/* Legal Strip */}
-            <div className="bg-bruno-black py-4 border-t border-gray-900/50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                    <p>&copy; {new Date().getFullYear()} Automotriz Carmona. Todos los derechos reservados.</p>
-                    <div className="flex gap-6">
-                        <a href="#" className="hover:text-white">Políticas de Privacidad</a>
-                        <a href="#" className="hover:text-white">Canal de Denuncias</a>
+            <div className="bg-black py-6 border-t border-white/5">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 test-xs text-gray-500">
+                    <p className="text-xs">&copy; {new Date().getFullYear()} Automotriz Carmona. Todos los derechos reservados.</p>
+                    <div className="flex flex-wrap gap-4 md:gap-8 justify-center text-xs font-medium">
+                        <a href="https://compliance.automotrizcarmona.cl/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-carmona-gold"></span> Compliance y Denuncias</a>
+                        <Link href="/legal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Términos y Condiciones</Link>
+                        <Link href="/legal/privacidad" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Privacidad</Link>
                     </div>
                 </div>
             </div>

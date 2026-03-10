@@ -34,12 +34,28 @@ const SLIDES = [
 // Logos from 'public/images/logos' - Mapping plausible filenames
 // Logos from 'public/images/logos'
 const BRANDS_LOGOS = [
-    'TOYOTA_Logo.png', 'MAXUS_Logo.png', 'BMW_Logo.png', 'AUDI_Logo.png',
-    'BMW-MOTORRAD_Logo.png', 'Cupra-logo.png', 'DONGFENG-CIDEF_Logo.png',
-    'FOTON-CIDEF_Logo.png', 'HONDA_Logo.png', 'JETOUR-logo.png', 'KARRY_Logo.png',
-    'Kaiyi-Auto-Horizontal-03.png', 'MG_Logo.png', 'MINI_Logo.png', 'SEAT_Logo.png',
-    'SOUEAST_BLACK_Logo.png', 'VOLKSWAGEN_Logo.png', 'logo-geelyy.png',
-    'logo-iveco.png', 'MAN_Logo.png', 'VW-CAMIONES-Y-BUSES_Logo.png', 'FOTON-MDLA_Logo.png'
+    'logo-toyota.webp',
+    'logo-vw.webp',
+    'logo-audi.webp',
+    'logo-seat.webp',
+    'logo-cupra.webp',
+    'logo-honda.webp',
+    'logo-bmw.webp',
+    'logo-bmw-motorrad.webp',
+    'logo-mini.webp',
+    'logo-maxus.webp',
+    'logo-jetour.webp',
+    'logos antiguos/SOUEAST_BLACK_Logo.png',
+    'logo-kaiyi.webp',
+    'logo-karry.webp',
+    'logo-mg.webp',
+    'logo-geely.webp',
+    'logo-dongfeng.webp',
+    'logo-foton.webp',
+    'logo-iveco.webp',
+    'logo-man.webp',
+    'logo-vw-camiones.webp',
+    'logo-foton-camiones.webp'
 ];
 
 export default function Hero() {
@@ -85,9 +101,9 @@ export default function Hero() {
                         {/* First set of logos */}
                         {BRANDS_LOGOS.map((logo, idx) => (
                             <li key={`1-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
-                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-4 md:h-6' :
-                                    logo.includes('geely') ? 'h-8 md:h-12' :
-                                        'h-12 md:h-16'
+                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-2 md:h-3' :
+                                    logo.toLowerCase().includes('geely') ? 'h-8 md:h-12' :
+                                        'h-10 md:h-14'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}
@@ -102,9 +118,9 @@ export default function Hero() {
                         {/* Duplicate set for infinite loop */}
                         {BRANDS_LOGOS.map((logo, idx) => (
                             <li key={`2-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
-                                <div className={`relative flex items-center justify-center ${logo.includes('SOUEAST') ? 'h-4 md:h-6' :
-                                    logo.includes('geely') ? 'h-8 md:h-12' :
-                                        'h-12 md:h-16'
+                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-2 md:h-3' :
+                                    logo.toLowerCase().includes('geely') ? 'h-8 md:h-12' :
+                                        'h-10 md:h-14'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}

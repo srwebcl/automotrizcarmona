@@ -10,8 +10,9 @@ const ITEMS = [
     {
         id: 1,
         title: "Compliance",
-        link: "/compliance",
-        image: "/images/compliance.jpeg"
+        link: "https://compliance.automotrizcarmona.cl/",
+        image: "/images/compliance.jpeg",
+        external: true
     },
     {
         id: 2,
@@ -27,8 +28,8 @@ const ITEMS = [
     },
     {
         id: 4,
-        title: "Reclamos y Sugerencias",
-        link: "/reclamos",
+        title: "Contacto",
+        link: "/contacto",
         image: "/images/reclamos.avif"
     },
     {
@@ -39,7 +40,26 @@ const ITEMS = [
     }
 ];
 
-export default function DiscoverMoreCarousel() {
+interface DiscoverItem {
+    id: number | string;
+    title: string;
+    subtitle?: string;
+    link: string;
+    image: string;
+    external?: boolean;
+}
+
+interface DiscoverMoreCarouselProps {
+    titlePrefix?: string;
+    titleHighlight?: string;
+    items?: DiscoverItem[];
+}
+
+export default function DiscoverMoreCarousel({
+    titlePrefix = "Más sobre",
+    titleHighlight = "Carmona y Cia",
+    items = ITEMS
+}: DiscoverMoreCarouselProps) {
     const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
@@ -50,17 +70,22 @@ export default function DiscoverMoreCarousel() {
         <section className="py-20 bg-white">
             <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col mb-10 items-center">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight text-center">
-                        Descubra más <span className="text-transparent bg-clip-text bg-gradient-to-r from-carmona-gold to-carmona-orange">Carmona</span>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight text-center">
+                        {titlePrefix} <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700">{titleHighlight}</span>
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-carmona-gold to-carmona-orange rounded-full mt-4"></div>
+                    <div className="w-24 h-1 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 rounded-full mt-4"></div>
                 </div>
 
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex -ml-4 touch-pan-y">
-                        {ITEMS.map((item) => (
+                        {items.map((item) => (
                             <div key={item.id} className="flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_25%] pl-4 min-w-0">
-                                <Link href={item.link} className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+                                <Link
+                                    href={item.link}
+                                    target={item.external ? "_blank" : undefined}
+                                    rel={item.external ? "noopener noreferrer" : undefined}
+                                    className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                                >
                                     {/* Image Background */}
                                     <Image
                                         src={item.image}
@@ -74,7 +99,7 @@ export default function DiscoverMoreCarousel() {
 
                                     {/* Content - Bottom Left */}
                                     <div className="absolute bottom-0 left-0 w-full p-8 text-white z-10 transform transition-transform duration-500 group-hover:-translate-y-2">
-                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-carmona-gold transition-colors block">
+                                        <h3 className="text-2xl font-bold mb-2 group-hover:text-[#d2001c] transition-colors block">
                                             {item.title}
                                         </h3>
 
@@ -84,11 +109,8 @@ export default function DiscoverMoreCarousel() {
                                         </div>
                                     </div>
 
-                                    {/* Arrow icon always visible in Porsche style usually, but lets match the requested 'Descubra mas: y cada tarjeta...' style which implies interactivity. 
-                                        Let's keep a subtle arrow indicator at bottom right or part of the interaction. 
-                                        Porsche uses a simple arrow. Let's add a static arrow that turns gold.
-                                    */}
-                                    <div className="absolute bottom-8 right-8 text-white opacity-80 group-hover:text-carmona-gold group-hover:translate-x-1 transition-all duration-300">
+                                    {/* Arrow icon always visible in bottom right */}
+                                    <div className="absolute bottom-8 right-8 text-white opacity-80 group-hover:text-[#d2001c] group-hover:translate-x-1 transition-all duration-300">
                                         <ArrowRight size={24} />
                                     </div>
                                 </Link>

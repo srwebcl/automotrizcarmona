@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Calendar, Gauge, ChevronRight } from 'lucide-react';
+import ShareButton from './ShareButton';
 
 interface VehicleCardProps {
     vehicle: {
@@ -23,9 +24,9 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
     };
 
     return (
-        <div className="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300">
+        <div className="group relative bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300">
             {/* Image Container */}
-            <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl bg-gray-100">
                 <Image
                     src={vehicle.image}
                     alt={`${vehicle.brand} ${vehicle.model}`}
@@ -37,6 +38,14 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                     {vehicle.isNew && <span className="bg-carmona-gold text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Nuevo</span>}
                     {vehicle.isHybrid && <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Híbrido</span>}
                 </div>
+            </div>
+
+            {/* Botón Compartir */}
+            <div className="absolute top-3 right-3 z-20">
+                <ShareButton
+                    title={`Mira este modelo ${vehicle.brand} ${vehicle.model} en Carmona`}
+                    url={`https://automotrizcarmona.cl/nuevos/${vehicle.brand.toLowerCase()}/${vehicle.model.toLowerCase()}`}
+                />
             </div>
 
             {/* Content */}
