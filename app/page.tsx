@@ -92,42 +92,45 @@ export default function Home() {
           </div>
 
           {/* 
-            Layout: [Banner Promo] | [Carousel de 3 tarjetas]
-            En lg: 1 columna fija para el banner + 3 columnas para el carrusel
-            En mobile: apilado verticalmente
+            Desktop Layout: [Banner (25%)] | [Carousel (75%)]
+            Mobile Layout: Stacked vertically with unified padding
           */}
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+          <div className="px-6 lg:px-0">
+            <div className="flex flex-col lg:flex-row gap-6 items-stretch">
 
-            {/* ── Banner Promocional (solo imagen, sin texto) ── */}
-            <Link
-              href="/nuevos/volkswagen"
-              id="promo-banner-card"
-              className="group flex-shrink-0 lg:w-[calc(25%-12px)] block rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[3/4] lg:aspect-auto lg:self-stretch"
-            >
-              <Image
-                src="/images/banner-global.webp"
-                alt="Banner Promocional"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-            </Link>
+              {/* ── Banner Promocional (solo imagen, sin texto) ── */}
+              <div className="lg:w-[calc(25%-12px)] flex-shrink-0">
+                <Link
+                  href="/nuevos/volkswagen"
+                  id="promo-banner-card"
+                  className="group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[4/5] lg:aspect-auto lg:h-full bg-white"
+                >
+                  <Image
+                    src="/images/banner-global.webp"
+                    alt="Banner Promocional"
+                    fill
+                    className="object-contain transition-all duration-300"
+                    priority
+                  />
+                </Link>
+              </div>
 
-            {/* ── Carrusel de vehículos destacados ── */}
-            <div className="flex-1 min-w-0 relative px-5 lg:px-5">
-              <VehiclesCarousel />
+              {/* ── Carrusel de vehículos destacados ── */}
+              <div className="flex-1 min-w-0 relative">
+                <VehiclesCarousel />
+              </div>
+
             </div>
 
-          </div>
-
-          {/* CTA button */}
-          <div className="mt-14 text-center">
-            <Link
-              href="/nuevos"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition-all hover:scale-105 shadow-xl hover:shadow-2xl"
-            >
-              Ver todo el stock <ArrowRight size={20} />
-            </Link>
+            {/* CTA button */}
+            <div className="mt-14 text-center">
+              <Link
+                href="/nuevos"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition-all hover:scale-105 shadow-xl hover:shadow-2xl"
+              >
+                Ver todo el stock <ArrowRight size={20} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

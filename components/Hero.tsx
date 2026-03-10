@@ -91,41 +91,41 @@ export default function Hero() {
             </div>
 
             {/* Brand Bar - Infinite Marquee with CSS */}
-            <div className="relative w-full overflow-hidden pb-4 pt-2">
-                {/* Mask edges - Smoother gradient */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none"></div>
-                <div className="absolute right-0 top-0 bottom-0 w-32 z-10 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none"></div>
+            <div className="relative w-[100vw] -mx-4 md:mx-0 md:w-full overflow-hidden pb-4 pt-4 border-t border-gray-50 mt-4">
+                {/* Mask edges - Smoother gradient, reduced on mobile */}
+                <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 z-10 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none"></div>
+                <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 z-10 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none"></div>
 
-                <div className="inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 md:[&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll">
+                <div className="flex flex-nowrap overflow-hidden">
+                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll">
                         {/* First set of logos */}
                         {BRANDS_LOGOS.map((logo, idx) => (
-                            <li key={`1-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
-                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-2 md:h-3' :
-                                    logo.toLowerCase().includes('geely') ? 'h-8 md:h-12' :
-                                        'h-10 md:h-14'
+                            <li key={`1-${idx}`} className="w-[25vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 px-3">
+                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-5 md:h-5' :
+                                    logo.toLowerCase().includes('iveco') || logo.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                        'h-12 md:h-24'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}
-                                        alt="Brand"
-                                        className="h-full w-auto object-contain"
+                                        alt="Brand logo"
+                                        className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </div>
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-center md:justify-start [&_li]:mx-4 md:[&_li]:mx-12 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll" aria-hidden="true">
                         {/* Duplicate set for infinite loop */}
                         {BRANDS_LOGOS.map((logo, idx) => (
-                            <li key={`2-${idx}`} className="flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer opacity-50 hover:opacity-100 hover:scale-110">
-                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-2 md:h-3' :
-                                    logo.toLowerCase().includes('geely') ? 'h-8 md:h-12' :
-                                        'h-10 md:h-14'
+                            <li key={`2-${idx}`} className="w-[25vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 px-3">
+                                <div className={`relative flex items-center justify-center ${logo.toLowerCase().includes('soueast') ? 'h-5 md:h-5' :
+                                    logo.toLowerCase().includes('iveco') || logo.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                        'h-12 md:h-24'
                                     }`}>
                                     <img
                                         src={`/images/logos/${logo}`}
-                                        alt="Brand"
-                                        className="h-full w-auto object-contain"
+                                        alt="Brand logo"
+                                        className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </div>
                             </li>

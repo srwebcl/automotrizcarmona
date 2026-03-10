@@ -39,7 +39,7 @@ const ACTIONS = [
 
 export default function QuickAccessBar() {
     return (
-        <section className="pt-12 pb-12 md:pt-4 md:pb-16 bg-white overflow-visible"> {/* overflow-visible for section too if needed, though cards need it foremost */}
+        <section className="pt-4 pb-12 md:pt-4 md:pb-16 bg-white overflow-visible"> {/* overflow-visible for section too if needed, though cards need it foremost */}
             <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {ACTIONS.map((action, index) => (
