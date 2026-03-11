@@ -1,26 +1,9 @@
-export interface ToyotaModel {
-    id: string;
-    name: string;
-    category: string;
-    price: number;
-    image: string;
-    isHybrid: boolean;
-    isNew: boolean;
-    isElectric?: boolean;
-    slogan?: string;
-    desktopBanner?: string;
-    mobileBanner?: string;
-    // adding some generic data for the internal page
-    // adding some generic data for the internal page
-    features?: { title: string; desc: string; icon?: string }[];
-    gallery?: string[];
-    versions?: { name: string; transmission: string; traction: string; fuel: string; listPrice: number; bonusPrice: number }[];
-    videoUrl?: string;
-}
+import { Vehicle } from './types';
 
-export const TOYOTA_MODELS: ToyotaModel[] = [
+export const TOYOTA_MODELS: Vehicle[] = [
     {
         id: 'bz4x',
+        brand: 'toyota',
         name: 'BZ4X',
         category: 'SUV',
         price: 41990000,
@@ -32,6 +15,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'yaris-cross',
+        brand: 'toyota',
         name: 'Yaris Cross',
         category: 'SUV',
         price: 20990000,
@@ -101,6 +85,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'corolla-sedan',
+        brand: 'toyota',
         name: 'Corolla',
         category: 'Sedán',
         price: 21990000,
@@ -111,6 +96,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'corolla-cross',
+        brand: 'toyota',
         name: 'NEW Corolla Cross',
         category: 'SUV',
         price: 24490000,
@@ -121,6 +107,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'rav4',
+        brand: 'toyota',
         name: 'Rav4',
         category: 'SUV',
         price: 30790000,
@@ -131,6 +118,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'yaris-sedan',
+        brand: 'toyota',
         name: 'Yaris',
         category: 'Sedán',
         price: 11490000,
@@ -141,6 +129,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'raize',
+        brand: 'toyota',
         name: 'Raize',
         category: 'SUV',
         price: 13990000,
@@ -151,6 +140,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'land-cruiser-prado',
+        brand: 'toyota',
         name: 'Land Cruiser Prado',
         category: 'SUV',
         price: 48990000,
@@ -161,6 +151,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'hilux',
+        brand: 'toyota',
         name: 'Hilux',
         category: 'Camioneta',
         price: 26990000,
@@ -171,6 +162,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'fortuner',
+        brand: 'toyota',
         name: 'Fortuner',
         category: 'SUV',
         price: 32990000,
@@ -181,6 +173,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: '4runner',
+        brand: 'toyota',
         name: '4Runner',
         category: 'SUV',
         price: 36990000,
@@ -191,6 +184,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'yaris-gr',
+        brand: 'toyota',
         name: 'GR Yaris',
         category: 'Gazoo Racing',
         price: 41990000,
@@ -201,6 +195,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'hilux-gr',
+        brand: 'toyota',
         name: 'Hilux GR-S',
         category: 'Gazoo Racing',
         price: 43990000,
@@ -211,6 +206,7 @@ export const TOYOTA_MODELS: ToyotaModel[] = [
     },
     {
         id: 'fortuner-gr',
+        brand: 'toyota',
         name: 'Fortuner GR-S',
         category: 'Gazoo Racing',
         price: 45990000,

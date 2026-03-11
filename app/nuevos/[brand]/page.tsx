@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import ShareButton from '@/components/ShareButton';
 import { notFound } from 'next/navigation';
 
-import { TOYOTA_MODELS } from '@/lib/toyotaModels';
+import { MODELS_REGISTRY } from '@/lib/models';
 import { getBrandConfig } from '@/lib/brands';
 
 export default function BrandPage({ params }: { params: Promise<{ brand: string }> }) {
@@ -19,18 +19,31 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
 
     // Filter models for this brand. 
     // For now, if not toyota, we show an empty array or fallback.
-    const ALL_MODELS = isToyota ? TOYOTA_MODELS : [];
+    // Dynamic model lookup
+    const ALL_MODELS = MODELS_REGISTRY[brandId.toLowerCase()] || [];
 
     const availableCategories = Array.from(new Set(ALL_MODELS.map(m => m.category)));
-    const hasHybrids = ALL_MODELS.some(m => m.isHybrid || m.isElectric);
+    const hasHybrids = ALL_MODELS.some(m => m.isHybrid);
+    const hasElectrics = ALL_MODELS.some(m => m.isElectric);
+    
+    // Evitar duplicados si la marca ya trae su propia categoría de híbridos/eléctricos
+    const existsHybrid = availableCategories.some(c => 
+        c.toLowerCase().includes('híbrido') || c.toLowerCase().includes('hibrido')
+    );
+    const existsElectric = availableCategories.some(c => 
+        c.toLowerCase().includes('eléctrico') || c.toLowerCase().includes('electrico')
+    );
+
     const dynamicCategories = ['Todos', ...availableCategories];
-    if (hasHybrids && !dynamicCategories.includes('Híbrido')) {
+    
+    if (hasHybrids && !existsHybrid) {
         dynamicCategories.push('Híbrido');
     }
+    if (hasElectrics && !existsElectric) {
+        dynamicCategories.push('Eléctrico');
+    }
 
-    // For non-toyota brands, use dummy categories as requested
-    const DUMMY_CATEGORIES = ['Todos', 'SUV', 'Sedán', 'Hatchback', 'Pick-up'];
-    const CATEGORIES = isToyota ? dynamicCategories : DUMMY_CATEGORIES;
+    const CATEGORIES = dynamicCategories;
 
     const [activeCategory, setActiveCategory] = useState('Todos');
     const [emblaRef] = useEmblaCarousel({
@@ -48,15 +61,13 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
         if (heroEmblaApi) heroEmblaApi.scrollNext();
     }, [heroEmblaApi]);
 
-    const filteredModels = isToyota
-        ? (activeCategory === 'Todos'
-            ? ALL_MODELS
-            : activeCategory === 'Híbrido'
-                ? ALL_MODELS.filter(m => m.isHybrid || m.isElectric)
-                : activeCategory === 'Eléctrico'
-                    ? ALL_MODELS.filter(m => m.isElectric)
-                    : ALL_MODELS.filter(m => m.category === activeCategory))
-        : []; // For other brands, models will be empty for now
+    const filteredModels = activeCategory === 'Todos'
+        ? ALL_MODELS
+        : activeCategory === 'Híbrido'
+            ? ALL_MODELS.filter(m => m.isHybrid)
+            : activeCategory === 'Eléctrico'
+                ? ALL_MODELS.filter(m => m.isElectric)
+                : ALL_MODELS.filter(m => m.category === activeCategory);
 
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
@@ -73,22 +84,22 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                             <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
                                 {slide.web && slide.mobile ? (
                                     <>
-                                        <div className="hidden md:block absolute inset-0 w-full h-full">
+                                        <div className="hidden md:block absolute inset-0">
                                             <Image
                                                 src={slide.web}
                                                 alt={`${config.name} Banner ${index + 1}`}
                                                 fill
-                                                className="object-contain"
+                                                className="object-cover"
                                                 draggable={false}
                                                 priority={index === 0}
                                             />
                                         </div>
-                                        <div className="md:hidden absolute inset-0 w-full h-full">
+                                        <div className="md:hidden absolute inset-0">
                                             <Image
                                                 src={slide.mobile}
                                                 alt={`${config.name} Banner Mobile ${index + 1}`}
                                                 fill
-                                                className="object-contain"
+                                                className="object-cover"
                                                 draggable={false}
                                                 priority={index === 0}
                                             />

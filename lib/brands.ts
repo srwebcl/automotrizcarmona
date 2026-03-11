@@ -38,8 +38,21 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Innovación y Tecnología Alemana para tu camino',
         brandColorCss: 'text-blue-900',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-gray-100', title: 'VOLKSWAGEN SLIDER 1' },
-            { type: 'placeholder', bg: 'bg-gray-200', title: 'VOLKSWAGEN SLIDER 2' }
+            { 
+                web: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg', 
+                mobile: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp', 
+                mobile: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/volkswagen/banner-web-transporter-1280x960-1.webp', 
+                mobile: '/images/volkswagen/banner-web-transporter-1280x960-1.webp', 
+                type: 'image' 
+            }
         ]
     },
     audi: {
@@ -47,49 +60,84 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         name: 'Audi',
         logo: '/images/logos/logo-audi.webp',
         seoTitle: 'Liderazgo a través de la Tecnología y el Diseño',
-        brandColorCss: 'text-black',
+        brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-gray-900', title: 'AUDI SLIDER 1' }
+            { 
+                web: '/images/audi/banner-audi.webp', 
+                mobile: '/images/audi/banner-audi.webp', 
+                type: 'image' 
+            }
         ]
     },
     honda: {
         id: 'honda',
         name: 'Honda',
         logo: '/images/logos/logo-honda.webp',
-        seoTitle: 'El Poder de los Sueños hecho realidad',
+        seoTitle: 'Honda Chile | El Poder de los Sueños en Automotriz Carmona',
         brandColorCss: 'text-red-600',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-red-50', title: 'HONDA SLIDER 1' }
+            { 
+                web: '/images/honda/banner-1.webp', 
+                mobile: '/images/honda/banner-1.webp', 
+                type: 'image' 
+            }
         ]
     },
     cupra: {
         id: 'cupra',
         name: 'Cupra',
         logo: '/images/logos/logo-cupra.webp',
-        seoTitle: 'Siente el Impulso de una nueva era',
-        brandColorCss: 'text-[#2a2a2a]',
+        seoTitle: 'Cupra | Siente el Impulso de una nueva era en Automotriz Carmona',
+        brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-[#2a2a2a]', title: 'CUPRA SLIDER 1' }
+            { 
+                web: '/images/cupra/banner-cupra.webp', 
+                mobile: '/images/cupra/banner-cupra.webp', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/cupra/banner-terramar.png', 
+                mobile: '/images/cupra/banner-terramar.png', 
+                type: 'image' 
+            }
         ]
     },
     seat: {
         id: 'seat',
         name: 'Seat',
         logo: '/images/logos/logo-seat.webp',
-        seoTitle: 'Emoción en Movimiento y Diseño Urbano',
+        seoTitle: 'Seat | Emoción en Movimiento y Diseño Urbano en Automotriz Carmona',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-white', title: 'SEAT SLIDER 1' }
+            { 
+                web: '/images/seat/banner-seat1.jpg', 
+                mobile: '/images/seat/banner-seat1.jpg', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/seat/banner-seat2.jpg', 
+                mobile: '/images/seat/banner-seat2.jpg', 
+                type: 'image' 
+            }
         ]
     },
     bmw: {
         id: 'bmw',
         name: 'BMW',
         logo: '/images/logos/logo-bmw.webp',
-        seoTitle: 'El Placer de Conducir la Máxima Ingeniería',
+        seoTitle: 'BMW Chile | El Placer de Conducir en Automotriz Carmona',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-gray-100', title: 'BMW SLIDER 1' }
+            { 
+                web: '/images/bmw/banner-1.jpg', 
+                mobile: '/images/bmw/banner-1.jpg', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/bmw/banner-2.jpg', 
+                mobile: '/images/bmw/banner-2.jpg', 
+                type: 'image' 
+            }
         ]
     },
     'bmw-motorrad': {

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ShareButton from '@/components/ShareButton';
-import { TOYOTA_MODELS } from '@/lib/toyotaModels';
+import { MODELS_REGISTRY } from '@/lib/models';
 import { getBrandConfig } from '@/lib/brands';
 import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -15,9 +15,8 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     const { brand, id } = resolvedParams;
     const config = getBrandConfig(brand);
 
-    // For now, only Toyota has real models. 
-    // We could expand this to search in a global MODELS registry.
-    const ALL_MODELS = brand.toLowerCase() === 'toyota' ? TOYOTA_MODELS : [];
+    // Dynamic model lookup from registry
+    const ALL_MODELS = MODELS_REGISTRY[brand.toLowerCase()] || [];
     const model = ALL_MODELS.find(m => m.id === id);
     const [activeIdx, setActiveIdx] = useState(0);
 
@@ -43,7 +42,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         }
     });
 
-    const parsedFeatures = model.features?.map(f => ({ ...f, image: f.icon || '' })) || [];
+    const parsedFeatures = model.features?.map((f: any) => ({ ...f, image: f.icon || '' })) || [];
     const highlightFeatures = parsedFeatures.length > 0 ? parsedFeatures : [
         { title: "Diseño Exterior", desc: "Lineas aerodinámicas que definen el carácter del vehículo.", image: model.image },
         { title: "Interior Premium", desc: "Comodidad y tecnología en cada detalle.", image: model.gallery?.[0] || model.image },
@@ -104,7 +103,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
 
                             {model.gallery && model.gallery.length > 0 && (
                                 <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-4">
-                                    {model.gallery.map((img, idx) => (
+                                    {model.gallery.map((img: string, idx: number) => (
                                         <button
                                             key={idx}
                                             onClick={() => setActiveIdx(idx)}
@@ -181,7 +180,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100">
-                                {mockVersions.map((v, i) => (
+                                {mockVersions.map((v: any, i: number) => (
                                     <tr key={i} className="hover:bg-gray-50 transition-colors">
                                         <td className="py-4 px-6 font-bold text-gray-900">{v.name}</td>
                                         <td className="py-5 px-6 text-sm">{v.transmission}</td>

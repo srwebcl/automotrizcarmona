@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { TOYOTA_MODELS } from '@/lib/toyotaModels';
+import { MODELS_REGISTRY } from '@/lib/models';
 import { CheckCircle, Info } from 'lucide-react';
 
 function CotizarContent() {
@@ -30,8 +30,9 @@ function CotizarContent() {
     });
 
     useEffect(() => {
-        if (marca === 'toyota' && modeloId) {
-            const foundModel = TOYOTA_MODELS.find(m => m.id === modeloId);
+        if (modeloId) {
+            const models = MODELS_REGISTRY[marca.toLowerCase()] || [];
+            const foundModel = models.find(m => m.id === modeloId);
             if (foundModel) {
                 setModel(foundModel);
 
@@ -120,7 +121,7 @@ function CotizarContent() {
 
                     <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-left mb-8 shadow-inner">
                         <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-1">Simulación de tu correo (Automotriz Carmona):</p>
-                        <h3 className="text-xl font-extrabold text-[#d2001c] mb-2 uppercase tracking-tight">TOYOTA {version?.name || model?.name}</h3>
+                        <h3 className="text-xl font-extrabold text-[#d2001c] mb-2 uppercase tracking-tight">{marca} {version?.name || model?.name}</h3>
 
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8 mt-6">
                             <div>
@@ -288,7 +289,7 @@ function CotizarContent() {
                                         </div>
                                         <div>
                                             <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-lg">
-                                                TOYOTA {model.name}
+                                                {marca} {model.name}
                                             </h3>
                                             <p className="text-sm text-gray-500 uppercase font-medium mt-0.5">
                                                 {version.name.replace(`${model.name} `, '')}
