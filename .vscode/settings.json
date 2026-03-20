@@ -1,0 +1,25 @@
+{
+    "php.suggest.basic": false,
+    "php.validate.executablePath": "php",
+    "intelephense.environment.phpVersion": "8.2.0",
+    "intelephense.files.exclude": [
+        "**/.git/**",
+        "**/.svn/**",
+        "**/.hg/**",
+        "**/CVS/**",
+        "**/.DS_Store/**",
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/backend/vendor/**",
+        "**/backend/storage/framework/views/**"
+    ],
+    "files.exclude": {
+        "**/backend/vendor": true,
+        "**/backend/storage/framework/views": true
+    },
+    "search.exclude": {
+        "**/backend/vendor": true,
+        "**/node_modules": true,
+        "**/backend/storage/framework/views": true
+    }
+}
