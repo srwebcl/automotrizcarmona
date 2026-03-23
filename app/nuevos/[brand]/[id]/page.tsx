@@ -120,7 +120,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         { title: "Seguridad Avanzada", desc: "Sistemas integrales para tu tranquilidad.", image: model.gallery?.[1] || model.image }
     ];
 
-    const minPrice = model.versions?.length > 0 
+    const minPrice = (model.versions && model.versions.length > 0) 
         ? Math.min(...model.versions.map((v: any) => v.bonusPrice)) 
         : model.price;
 
