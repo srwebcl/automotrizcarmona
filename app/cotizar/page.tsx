@@ -12,7 +12,7 @@ function CotizarContent() {
 
     const marca = searchParams.get('marca') || 'toyota';
     const modeloId = searchParams.get('modelo');
-    const versionIdx = parseInt(searchParams.get('version') || '0', 10);
+    const versionQuery = searchParams.get('version');
 
     const [model, setModel] = useState<any>(null);
     const [version, setVersion] = useState<any>(null);
@@ -64,10 +64,11 @@ function CotizarContent() {
                     }
                 ];
 
-                setVersion(mockVersions[isNaN(versionIdx) ? 0 : versionIdx] || mockVersions[0]);
+                const foundVersion = mockVersions.find((v: any) => v.name === versionQuery);
+                setVersion(foundVersion || mockVersions[0]);
             }
         }
-    }, [marca, modeloId, versionIdx]);
+    }, [marca, modeloId, versionQuery]);
 
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
@@ -125,11 +126,11 @@ function CotizarContent() {
 
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8 mt-6">
                             <div>
-                                <p className="text-xs text-gray-500 font-medium">Precio Crédito Inteligente</p>
-                                <p className="text-lg font-bold text-gray-900">{formatPrice(version?.bonusPrice || model?.price)}</p>
+                                <p className="text-xs text-gray-500 font-medium">Precio con Financiamiento</p>
+                                <p className="text-lg font-bold text-gray-700">{formatPrice(version?.bonusPrice || model?.price)}</p>
                             </div>
                             <div>
-                                <p className="text-xs text-gray-500 font-medium">Precio Lista</p>
+                                <p className="text-xs text-gray-500 font-medium">Precio de Lista</p>
                                 <p className="text-lg font-bold text-gray-400 line-through">{formatPrice(version?.listPrice || model?.price + 1000000)}</p>
                             </div>
                             <div>
@@ -263,7 +264,7 @@ function CotizarContent() {
                             <button
                                 type="submit"
                                 disabled={isSubmitting || !formData.acceptPolicy}
-                                className="w-full sm:w-auto mt-4 px-10 py-4 bg-[#fdb2b9] hover:bg-[#ff9aa3] text-[#d2001c] disabled:opacity-50 disabled:cursor-not-allowed font-extrabold uppercase tracking-widest rounded-xl transition-colors min-w-[200px]"
+                                className="w-full sm:w-auto mt-4 px-10 py-4 bg-gray-900 hover:bg-black text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-extrabold uppercase tracking-widest rounded-xl transition-colors min-w-[200px]"
                             >
                                 {isSubmitting ? 'Procesando...' : 'Cotizar'}
                             </button>
@@ -299,29 +300,23 @@ function CotizarContent() {
 
                                     {/* Pricing List */}
                                     <div className="space-y-4">
-                                        <div className="flex justify-between items-center group">
-                                            <span className="text-gray-500 font-medium flex items-center gap-1.5">
-                                                Crédito inteligente <Info size={14} className="text-gray-300 group-hover:text-[#d2001c] transition-colors" />
-                                            </span>
-                                            <span className="font-extrabold text-[#d2001c] text-lg">{formatPrice(version.bonusPrice)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center group">
-                                            <span className="text-gray-500 font-medium flex items-center gap-1.5">
-                                                Crédito convencional <Info size={14} className="text-gray-300 group-hover:text-gray-600 transition-colors" />
-                                            </span>
-                                            <span className="font-bold text-gray-700 text-base">{formatPrice(version.bonusPrice + 800000)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center group">
-                                            <span className="text-gray-500 font-medium">
-                                                Todo medio de pago
-                                            </span>
-                                            <span className="font-bold text-gray-700 text-base">{formatPrice(version.listPrice - 600000)}</span>
-                                        </div>
-                                        <div className="flex justify-between items-center group pt-4 border-t border-gray-50">
+                                        <div className="flex justify-between items-center group pt-4 pb-2 border-b border-gray-50">
                                             <span className="text-gray-400 font-medium">
-                                                Precio lista
+                                                Precio de Lista
                                             </span>
                                             <span className="font-bold text-gray-400 line-through text-base">{formatPrice(version.listPrice)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center group mb-2">
+                                            <span className="text-gray-500 font-medium flex items-center gap-1.5">
+                                                Bono Financiamiento <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                                            </span>
+                                            <span className="font-bold text-gray-600 text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
+                                        </div>
+                                        <div className="flex justify-between items-center group mt-4">
+                                            <span className="text-gray-900 font-bold flex items-center gap-1.5">
+                                                Precio con Financiamiento
+                                            </span>
+                                            <span className="font-black text-gray-900 text-xl">{formatPrice(version.bonusPrice)}</span>
                                         </div>
                                     </div>
                                 </>

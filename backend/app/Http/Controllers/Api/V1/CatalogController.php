@@ -57,10 +57,24 @@ class CatalogController extends Controller
         $brand = Brand::where('slug', $brand_slug)->firstOrFail();
         
         $models = VehicleModel::where('brand_id', $brand->id)
+            ->where('is_active', true)
+            ->with('vehicleVersions')
             ->orderBy('name')
             ->get();
 
         return VehicleModelResource::collection($models);
+    }
+
+    /**
+     * Get detailed brand information.
+     */
+    public function brandBySlug(string $slug): BrandResource
+    {
+        $brand = Brand::where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+            
+        return new BrandResource($brand);
     }
 
     /**
@@ -76,5 +90,19 @@ class CatalogController extends Controller
             ->firstOrFail();
 
         return new VehicleModelResource($model);
+    }
+
+    /**
+     * Get featured models for Home.
+     */
+    public function featured(): AnonymousResourceCollection
+    {
+        $models = VehicleModel::where('is_active', true)
+            ->where('is_featured', true)
+            ->with(['brand', 'vehicleVersions'])
+            ->limit(10)
+            ->get();
+
+        return VehicleModelResource::collection($models);
     }
 }

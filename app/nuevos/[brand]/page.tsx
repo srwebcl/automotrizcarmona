@@ -8,19 +8,86 @@ import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
 import ShareButton from '@/components/ShareButton';
 import { notFound } from 'next/navigation';
 
+import { fetchModelsByBrand, fetchBrandBySlug } from '@/lib/api';
 import { MODELS_REGISTRY } from '@/lib/models';
 import { getBrandConfig } from '@/lib/brands';
-
+import { Vehicle } from '@/lib/models/types';
 export default function BrandPage({ params }: { params: Promise<{ brand: string }> }) {
+    const [models, setModels] = useState<Vehicle[]>([]);
+    const [brandDetails, setBrandDetails] = useState<any>(null);
+    const [isLoading, setIsLoading] = useState(true);
+
     const resolvedParams = use(params);
     const brandId = resolvedParams.brand;
     const isToyota = brandId.toLowerCase() === 'toyota';
-    const config = getBrandConfig(brandId);
+    const staticConfig = getBrandConfig(brandId);
 
-    // Filter models for this brand. 
-    // For now, if not toyota, we show an empty array or fallback.
-    // Dynamic model lookup
-    const ALL_MODELS = MODELS_REGISTRY[brandId.toLowerCase()] || [];
+    React.useEffect(() => {
+        const loadPageData = async () => {
+            try {
+                setIsLoading(true);
+                
+                // Fetch Brand Details and Models in parallel
+                const [apiBrand, apiModels] = await Promise.all([
+                    fetchBrandBySlug(brandId).catch(err => {
+                        console.warn('Brand API error:', err);
+                        return null;
+                    }),
+                    fetchModelsByBrand(brandId).catch(err => {
+                        console.warn('Models API error:', err);
+                        return [];
+                    })
+                ]);
+
+                if (apiBrand) {
+                    setBrandDetails(apiBrand);
+                }
+                
+                // Map API models to Frontend Vehicle interface
+                const mappedModels: Vehicle[] = apiModels.map((m: any) => ({
+                    id: m.slug,
+                    brand: brandId,
+                    name: m.name,
+                    category: Array.isArray(m.category) ? m.category[0] || 'Varios' : m.category || 'Varios',
+                    price: m.base_price || 0,
+                    image: m.thumbnail_url || '/images/autos-nuevos.webp',
+                    slogan: m.slogan,
+                    isHybrid: m.is_hybrid,
+                    isElectric: m.is_electric,
+                    isNew: m.is_active,
+                }));
+
+                const finalModels = mappedModels.length > 0 ? mappedModels : (MODELS_REGISTRY[brandId.toLowerCase()] || []);
+                setModels(finalModels);
+            } catch (error) {
+                console.error('Error loading data:', error);
+                setModels(MODELS_REGISTRY[brandId.toLowerCase()] || []);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadPageData();
+    }, [brandId]);
+
+    // Merge static and dynamic config
+    const config = {
+        ...staticConfig,
+        name: brandDetails?.name || staticConfig.name,
+        logo: brandDetails?.logo_url || staticConfig.logo,
+        brandColorCss: brandDetails?.brand_color_css || staticConfig.brandColorCss,
+        seoTitle: brandDetails?.seo_title || `${staticConfig.name} | Automotriz Carmona`,
+        legalText: brandDetails?.legal_text,
+        bannerSlides: (brandDetails?.hero_banners?.length > 0) 
+            ? brandDetails.hero_banners.map((b: any) => ({
+                title: b.title,
+                web: b.desktop_image,
+                mobile: b.mobile_image
+            }))
+            : staticConfig.bannerSlides
+    };
+
+    const ALL_MODELS = models;
 
     const availableCategories = Array.from(new Set(ALL_MODELS.map(m => m.category)));
     const hasHybrids = ALL_MODELS.some(m => m.isHybrid);
@@ -80,44 +147,54 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
                 <div className="aspect-square md:aspect-[1200/420] w-full" ref={heroEmblaRef}>
                     <div className="flex h-full">
-                        {config.bannerSlides.map((slide, index) => (
-                            <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
-                                {slide.web && slide.mobile ? (
-                                    <>
-                                        <div className="hidden md:block absolute inset-0">
-                                            <Image
-                                                src={slide.web}
-                                                alt={`${config.name} Banner ${index + 1}`}
-                                                fill
-                                                className="object-cover"
-                                                draggable={false}
-                                                priority={index === 0}
-                                            />
+                        {config.bannerSlides.map((slide, index) => {
+                            const slideContent = (
+                                <>
+                                    {slide.web && slide.mobile ? (
+                                        <>
+                                            <div className="hidden md:block absolute inset-0">
+                                                <Image
+                                                    src={slide.web}
+                                                    alt={slide.title || `${config.name} Banner ${index + 1}`}
+                                                    fill
+                                                    className="object-cover"
+                                                    draggable={false}
+                                                    priority={index === 0}
+                                                />
+                                            </div>
+                                            <div className="md:hidden absolute inset-0">
+                                                <Image
+                                                    src={slide.mobile}
+                                                    alt={slide.title || `${config.name} Banner ${index + 1}`}
+                                                    fill
+                                                    className="object-cover"
+                                                    draggable={false}
+                                                    priority={index === 0}
+                                                />
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="flex items-center justify-center h-full text-gray-500 bg-gray-100">
+                                            {slide.title}
                                         </div>
-                                        <div className="md:hidden absolute inset-0">
-                                            <Image
-                                                src={slide.mobile}
-                                                alt={`${config.name} Banner Mobile ${index + 1}`}
-                                                fill
-                                                className="object-cover"
-                                                draggable={false}
-                                                priority={index === 0}
-                                            />
-                                        </div>
-                                    </>
-                                ) : null}
+                                    )}
+                                </>
+                            );
 
-                                {slide.title && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="bg-black/10 backdrop-blur-sm px-12 py-6 rounded-2xl border border-white/20">
-                                            <h2 className="text-gray-800 text-4xl md:text-6xl font-black uppercase tracking-tighter text-center">
-                                                {slide.title}
-                                            </h2>
+                            return (
+                                <div key={index} className="relative flex-[0_0_100%] min-w-0 h-full">
+                                    {slide.link ? (
+                                        <Link href={slide.link} className="block w-full h-full relative cursor-pointer">
+                                            {slideContent}
+                                        </Link>
+                                    ) : (
+                                        <div className="w-full h-full relative">
+                                            {slideContent}
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -172,7 +249,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h2 className="text-3xl md:text-4xl font-semibold text-gray-500 tracking-tight leading-tight">
-                        <span className={`${config.brandColorCss} font-black uppercase`}>{config.name}</span> | Título SEO para la marca
+                        Cotiza tu próximo <span className={`${config.brandColorCss} font-black uppercase`}>{config.name}</span> en Automotriz Carmona
                     </h2>
                     <div className="w-16 h-1 bg-gray-200 mx-auto mt-6 rounded-full" />
                 </div>
@@ -181,7 +258,17 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             {/* Models Grid */}
             <section className="py-12 bg-white">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                    {filteredModels.length > 0 ? (
+                    {isLoading ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className="animate-pulse">
+                                    <div className="bg-gray-200 h-64 rounded-[2rem] mb-4"></div>
+                                    <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto mb-2"></div>
+                                    <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : filteredModels.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">
                             {filteredModels.map((model) => (
                                 <Link key={model.id} href={`/nuevos/${brandId}/${model.id}`} className="group block">
@@ -193,13 +280,19 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                             />
                                         </div>
                                         <div className="relative z-10">
-                                            <p className="text-gray-500 text-sm font-medium mb-1 uppercase tracking-tighter">{model.slogan || `Calidad ${config.name}`}</p>
+                                            <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{config.name}</p>
                                             <div className="flex items-center gap-2">
                                                 <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight">{model.name}</h3>
-                                                {(model.isHybrid || model.isElectric) && (
-                                                    <div className="flex items-center gap-1 border border-blue-200 rounded-full px-2 py-0.5 bg-white/50">
-                                                        <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
-                                                        <span className="text-[10px] font-bold text-blue-800 tracking-wider">HEV</span>
+                                                {model.isElectric && (
+                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
+                                                        <span className="text-[10px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
+                                                    </div>
+                                                )}
+                                                {model.isHybrid && !model.isElectric && (
+                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
+                                                        <span className="text-[10px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
                                                     </div>
                                                 )}
                                             </div>
@@ -215,7 +308,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     </div>
                                     <div className="mt-20 text-center">
                                         <p className="text-gray-800 text-lg font-medium">
-                                            Desde <span className="font-bold">{formatPrice(model.price)}</span>(*)
+                                            Precio Desde <span className="font-bold">{formatPrice(model.price)}</span>(*)
                                         </p>
                                     </div>
                                 </Link>
@@ -230,6 +323,18 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                 </div>
             </section>
 
+            {/* Legal Section */}
+            {config.legalText && (
+                <section className="py-8 bg-gray-50 border-t border-gray-100">
+                    <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div 
+                            className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
+                            dangerouslySetInnerHTML={{ __html: config.legalText }}
+                        />
+                    </div>
+                </section>
+            )}
+
             {/* Discover More */}
             <section className="py-20 bg-white border-t border-gray-100">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -243,10 +348,43 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                     <div className="overflow-hidden" ref={emblaRef}>
                         <div className="flex -ml-4 touch-pan-y">
                             {[
-                                { id: 1, title: "Servicio Técnico", subtitle: "Agenda tu Hora", link: "/servicios", image: "/images/quick_access_servicio_1770350934207.png" },
-                                { id: 2, title: "Repuestos", subtitle: "Repuestos Originales", link: "/repuestos", image: "/images/quick_access_repuestos_1770350949447.png" },
-                                { id: 3, title: `${config.name}`, subtitle: "Seminuevos", link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, image: isToyota ? "/images/toyota/Pickup/hilux/galeria_2408.jpg" : "/images/sucursales.jpg", isExternal: true },
-                                { id: 4, title: "Sucursales", subtitle: "Encuentra tu Sucursal", link: "/sucursales", image: "/images/sucursales.jpg" }
+                                { 
+                                    id: 1, 
+                                    title: "Servicio Técnico", 
+                                    subtitle: "Agenda tu Hora", 
+                                    link: "/servicios", 
+                                    image: brandId === 'bmw' ? "/images/BMW/bmw-servicio.jpeg" : 
+                                           brandId === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
+                                           "/images/quick_access_servicio_1770350934207.png" 
+                                },
+                                { 
+                                    id: 2, 
+                                    title: "Repuestos", 
+                                    subtitle: "Repuestos Originales", 
+                                    link: "/repuestos", 
+                                    image: brandId === 'bmw' ? "/images/BMW/bmw-repuestos.jpeg" : 
+                                           brandId === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
+                                           "/images/quick_access_repuestos_1770350949447.png" 
+                                },
+                                { 
+                                    id: 3, 
+                                    title: `${config.name} Usados`, 
+                                    subtitle: "Seminuevos", 
+                                    link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, 
+                                    image: brandId === 'bmw' ? "/images/BMW/bmw-usados.jpg" : 
+                                           brandId === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
+                                           brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : "/images/sucursales.jpg", 
+                                    isExternal: true 
+                                },
+                                { 
+                                    id: 4, 
+                                    title: "Sucursales", 
+                                    subtitle: "Encuentra tu Sucursal", 
+                                    link: "/sucursales", 
+                                    image: brandId === 'bmw' ? "/images/BMW/bmw-sucursales.webp" : 
+                                           brandId === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
+                                           "/images/sucursales.jpg" 
+                                }
                             ].map((item) => (
                                 <div key={item.id} className="flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_25%] pl-4 min-w-0">
                                     <Link
@@ -256,7 +394,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                         className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg transition-all duration-500"
                                     >
                                         <div className="absolute inset-0">
-                                            {isToyota ? (
+                                            {item.image ? (
                                                 <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                                             ) : (
                                                 <div className="absolute inset-0 bg-gray-100" />

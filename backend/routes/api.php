@@ -10,6 +10,8 @@ Route::prefix('v1')->group(function () {
     Route::get('/brands', [CatalogController::class, 'brands']);
     Route::get('/models/{brand_slug}', [CatalogController::class, 'modelsByBrand']);
     Route::get('/models/{brand_slug}/{model_slug}', [CatalogController::class, 'modelDetails']);
+    Route::get('/featured', [CatalogController::class, 'featured']);
+    Route::get('/brands/{slug}', [CatalogController::class, 'brandBySlug']);
     
     // Marketing & Información Extra
     Route::get('/banners', [CatalogController::class, 'banners']);

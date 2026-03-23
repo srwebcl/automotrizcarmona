@@ -266,7 +266,7 @@ export default function Navbar() {
                                         className="flex-1 group relative h-80 rounded-3xl border-2 border-dashed border-gray-200 hover:border-carmona-orange hover:bg-orange-50/10 flex flex-col items-center justify-center transition-all hover:scale-105"
                                     >
                                         <div className="relative w-64 h-24 mb-6">
-                                            <Image src="/images/logos/SEMINUEVOS_Logo.png" alt="Carmona Seminuevos" fill className="object-contain" />
+                                            <Image src="/images/logos/logos antiguos/SEMINUEVOS_Logo.png" alt="Carmona Seminuevos" fill className="object-contain" />
                                         </div>
                                         <span className="text-gray-400 group-hover:text-carmona-orange font-bold uppercase tracking-widest text-sm flex items-center gap-2">
                                             Ver Catálogo <ArrowRight size={16} />
@@ -281,7 +281,7 @@ export default function Navbar() {
                                     >
                                         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
                                         <div className="relative w-64 h-24 mb-6">
-                                            <Image src="/images/logos/LOGO-UPREMIUM.png" alt="Carmona U-Premium" fill className="object-contain brightness-0 invert" />
+                                            <Image src="/images/logos/logos antiguos/LOGO-UPREMIUM.png" alt="Carmona U-Premium" fill className="object-contain brightness-0 invert" />
                                         </div>
                                         <span className="text-white/50 group-hover:text-carmona-gold font-bold uppercase tracking-widest text-sm flex items-center gap-2">
                                             Alta Gama <Sparkles size={16} />

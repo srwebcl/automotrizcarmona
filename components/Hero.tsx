@@ -133,7 +133,7 @@ export default function Hero() {
                 <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 z-10 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none"></div>
 
                 <div className="flex flex-nowrap overflow-hidden">
-                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll">
+                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll w-max flex-shrink-0">
                         {/* First set of logos */}
                         {BRANDS_LOGOS.map((logo, idx) => (
                             <li key={`1-${idx}`} className="w-[25vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 px-3">
@@ -150,7 +150,7 @@ export default function Hero() {
                             </li>
                         ))}
                     </ul>
-                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll" aria-hidden="true">
+                    <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll w-max flex-shrink-0" aria-hidden="true">
                         {/* Duplicate set for infinite loop */}
                         {BRANDS_LOGOS.map((logo, idx) => (
                             <li key={`2-${idx}`} className="w-[25vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 px-3">

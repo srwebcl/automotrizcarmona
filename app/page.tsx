@@ -7,12 +7,13 @@ import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Hero from '@/components/Hero';
 import VehicleCard from '@/components/VehicleCard';
+import { fetchFeaturedModels } from '@/lib/api';
 import { MOCK_VEHICLES } from '@/lib/data';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
 
 // ─── Vehicles Carousel ────────────────────────────────────────────────────────
-function VehiclesCarousel() {
+function VehiclesCarousel({ vehicles, isLoading }: { vehicles: any[], isLoading: boolean }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: false,
@@ -21,15 +22,25 @@ function VehiclesCarousel() {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
+  if (isLoading) {
+    return (
+      <div className="flex gap-6 overflow-hidden">
+        {[1, 2, 3].map(i => (
+          <div key={i} className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] animate-pulse bg-gray-100 h-[400px] rounded-xl"></div>
+        ))}
+      </div>
+    );
+  }
+
+
   return (
     <div className="relative">
       {/* Carousel viewport */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-6">
-          {MOCK_VEHICLES.map((vehicle) => (
+          {vehicles.map((vehicle) => (
             <div
               key={vehicle.id}
-              /* 3 cards visible on lg, 2 on sm, 1 on mobile */
               className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
             >
               <VehicleCard vehicle={vehicle} />
@@ -39,7 +50,7 @@ function VehiclesCarousel() {
       </div>
 
       {/* Arrows — only shown when there are more than 3 vehicles */}
-      {MOCK_VEHICLES.length > 3 && (
+      {vehicles.length > 3 && (
         <>
           <button
             onClick={scrollPrev}
@@ -63,6 +74,41 @@ function VehiclesCarousel() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Home() {
+  const [featuredVehicles, setFeaturedVehicles] = React.useState<any[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const loadFeatured = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchFeaturedModels();
+        if (data && data.length > 0) {
+          const mapped = data.map((m: any) => ({
+            id: m.id,
+            brand: m.brand?.name || 'Marca',
+            model: m.name,
+            version: m.slogan || 'Nuevo Modelo',
+            year: 2025,
+            price: m.base_price || 0,
+            mileage: 0,
+            image: m.thumbnail_url || '/images/autos-nuevos.webp',
+            isNew: true,
+            isHybrid: m.is_hybrid || false,
+          }));
+          setFeaturedVehicles(mapped);
+        } else {
+          setFeaturedVehicles(MOCK_VEHICLES);
+        }
+      } catch (error) {
+        console.error('Error loading featured vehicles:', error);
+        setFeaturedVehicles(MOCK_VEHICLES);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadFeatured();
+  }, []);
+
   return (
     <main className="min-h-screen bg-white">
       <Hero />
@@ -117,7 +163,7 @@ export default function Home() {
 
               {/* ── Carrusel de vehículos destacados ── */}
               <div className="flex-1 min-w-0 relative w-full lg:w-auto">
-                <VehiclesCarousel />
+                <VehiclesCarousel vehicles={featuredVehicles} isLoading={isLoading} />
               </div>
 
             </div>

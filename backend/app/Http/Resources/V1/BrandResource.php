@@ -17,7 +17,11 @@ class BrandResource extends JsonResource
             'brand_color_css' => $this->brand_color_css,
             'seo_title' => $this->seo_title,
             'legal_text' => $this->legal_text,
-            'hero_banners' => $this->hero_banners,
+            'hero_banners' => collect($this->hero_banners ?? [])->map(fn($b) => [
+                'title' => $b['title'] ?? '',
+                'desktop_image' => isset($b['desktop_image']) ? asset('storage/' . $b['desktop_image']) : null,
+                'mobile_image' => isset($b['mobile_image']) ? asset('storage/' . $b['mobile_image']) : null,
+            ]),
             'is_active' => (bool)$this->is_active,
             'category' => $this->category,
             'show_in_services' => (bool)$this->show_in_services,

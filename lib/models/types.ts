@@ -10,14 +10,18 @@ export interface Vehicle {
     isElectric?: boolean;
     isNew?: boolean;
     // Campos extendidos para la página de detalle
-    features?: { title: string; desc: string; icon?: string }[];
+    features?: { title: string; desc: string; icon?: string; image?: string }[];
     gallery?: string[];
     versions?: { 
         name: string; 
         transmission: string; 
         traction: string; 
         fuel: string; 
+        motor?: string;
+        power?: string;
+        torque?: string;
         listPrice: number; 
+        bonus: number;
         bonusPrice: number 
     }[];
     desktopBanner?: string;

@@ -68,7 +68,7 @@ export default function Footer() {
                                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
                                     <MapPin className="text-gray-300" size={16} />
                                 </div>
-                                <span className="pt-1 leading-snug">Av. Balmaceda 1234,<br />La Serena, IV Región</span>
+                                <span className="pt-1 leading-snug">Balmaceda 3681,<br />La Serena, IV Región</span>
                             </li>
                             <li className="flex items-center gap-4">
                                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">

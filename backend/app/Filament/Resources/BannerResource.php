@@ -55,7 +55,11 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image_desktop')->label('Imagen'),
+                ImageColumn::make('image_desktop')
+                    ->label('Imagen')
+                    ->disk('public')
+                    ->defaultImageUrl(url('/images/placeholder.png'))
+                    ->square(),
                 TextColumn::make('title')->label('Título')->searchable(),
                 TextColumn::make('order')->label('Orden')->sortable(),
                 ToggleColumn::make('active')->label('Estado'),

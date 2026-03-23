@@ -11,15 +11,30 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\TextInputColumn;
 use Filament\Tables\Table;
 
 class VehicleVersionResource extends Resource
 {
     protected static ?string $model = VehicleVersion::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
+    protected static ?string $navigationIcon = 'heroicon-o-table-cells';
     
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $navigationLabel = 'Lista de Precios';
+    
+    protected static ?string $pluralLabel = 'Lista de Precios';
+    
+    protected static ?string $navigationGroup = 'Catálogo';
+
+    public static function getModelLabel(): string
+    {
+        return 'Versión';
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return 'Versiones (Precios)';
+    }
 
     public static function form(Form $form): Form
     {
@@ -29,39 +44,91 @@ class VehicleVersionResource extends Resource
                     ->relationship('vehicleModel', 'name')
                     ->required(),
                 TextInput::make('name')
-                    ->required(),
-                TextInput::make('price')
-                    ->numeric()
-                    ->prefix('$')
-                    ->required(),
-                TextInput::make('year')
-                    ->numeric()
+                    ->label('Nombre de la Versión')
                     ->required(),
                 TextInput::make('transmission')
-                    ->required(),
-                TextInput::make('fuel_type')
-                    ->required(),
-                TextInput::make('engine_size'),
-                Select::make('features')
-                    ->multiple()
-                    ->relationship('features', 'name')
-                    ->preload(),
+                    ->label('Transmisión'),
+                TextInput::make('traction')
+                    ->label('Tracción'),
+                TextInput::make('fuel')
+                    ->label('Combustible'),
+                TextInput::make('list_price')
+                    ->label('Precio Lista')
+                    ->numeric()
+                    ->prefix('$'),
+                TextInput::make('bonus_price')
+                    ->label('Bono Financiamiento')
+                    ->numeric()
+                    ->prefix('$'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->striped()
+            ->modifyQueryUsing(fn (\Illuminate\Database\Eloquent\Builder $query) => $query->with([
+                'vehicleModel' => fn ($q) => $q->select(['id', 'brand_id', 'name', 'slug', 'category', 'vehicle_type']),
+                'vehicleModel.brand'
+            ]))
+            ->defaultPaginationPageOption(10)
             ->columns([
-                TextColumn::make('vehicleModel.brand.name')->label('Marca'),
-                TextColumn::make('vehicleModel.name')->label('Modelo')->sortable(),
-                TextColumn::make('name')->searchable()->sortable(),
-                TextColumn::make('price')->money('CLP')->sortable(),
-                TextColumn::make('year')->sortable(),
+                TextColumn::make('vehicleModel.brand.name')
+                    ->label('Marca')
+                    ->badge()
+                    ->color('info')
+                    ->wrap()
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('vehicleModel.name')
+                    ->label('Modelo')
+                    ->weight('bold')
+                    ->wrap()
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('name')
+                    ->label('Versión')
+                    ->description(fn (\App\Models\VehicleVersion $record): string => $record->transmission ?? '')
+                    ->wrap()
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextInputColumn::make('list_price')
+                    ->label('Precio Lista')
+                    ->type('number')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;', 'class' => 'font-bold text-primary-600']),
+                Tables\Columns\TextInputColumn::make('bonus_price')
+                    ->label('Precio Bono')
+                    ->type('number')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;', 'class' => 'font-bold text-primary-600']),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('vehicleModel')
-                    ->relationship('vehicleModel', 'name'),
+                Tables\Filters\SelectFilter::make('category')
+                    ->label('CATEGORÍA')
+                    ->multiple()
+                    ->options([
+                        'SUV' => 'SUV',
+                        'Sedán' => 'Sedán',
+                        'Hatchback' => 'Hatchback',
+                        'Pickup' => 'Pickup',
+                        'Coupé' => 'Coupé',
+                        'Convertible' => 'Convertible',
+                        'Van' => 'Van',
+                        'Furgón' => 'Furgón',
+                        'Camión' => 'Camión',
+                        'Moto' => 'Moto',
+                    ])
+                    ->query(function (\Illuminate\Database\Eloquent\Builder $query, array $data): \Illuminate\Database\Eloquent\Builder {
+                        return $query->when($data['values'], function ($q) use ($data) {
+                            $q->whereHas('vehicleModel', function ($q) use ($data) {
+                                foreach ($data['values'] as $value) {
+                                    $q->whereJsonContains('category', $value);
+                                }
+                            });
+                        });
+                    })
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

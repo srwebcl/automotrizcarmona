@@ -122,7 +122,10 @@ class BrandResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('logo_url')
-                    ->label('Logo'),
+                    ->label('Logo')
+                    ->disk('public')
+                    ->defaultImageUrl(url('/images/placeholder.png'))
+                    ->square(),
                 TextColumn::make('name')
                     ->label('Nombre')
                     ->searchable()

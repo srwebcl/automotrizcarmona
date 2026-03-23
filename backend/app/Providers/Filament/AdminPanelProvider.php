@@ -32,7 +32,9 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => '#d2001c',
             ])
             ->font('Inter')
-            ->spa()
+            ->spa() // Activado para navegación instantánea sin recarga de Assets
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth('full')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

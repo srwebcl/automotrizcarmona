@@ -32,6 +32,7 @@ class LeadStoreRequest extends FormRequest
             'vehicle.model_name' => 'nullable|string',
             'vehicle.version_name' => 'nullable|string',
             'vehicle.year' => 'nullable|string',
+            'vehicle.vin' => 'nullable|string',
             'request_details' => 'nullable|array',
             'request_details.service_type' => 'nullable|string',
             'request_details.message' => 'nullable|string'

@@ -12,8 +12,8 @@ class VehicleVersion extends Model
     ];
 
     protected $casts = [
-        'list_price' => 'decimal:2',
-        'bonus_price' => 'decimal:2',
+        'list_price' => 'integer',
+        'bonus_price' => 'integer',
     ];
 
     public function vehicleModel(): BelongsTo

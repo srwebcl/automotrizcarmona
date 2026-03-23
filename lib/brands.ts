@@ -11,6 +11,7 @@ export interface BrandConfig {
         type?: 'placeholder' | 'image';
         bg?: string;
         title?: string;
+        link?: string;
     }[];
 }
 
@@ -23,12 +24,16 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-red-700',
         bannerSlides: [
             {
+                web: '/images/toyota/banner-toyota.png',
+                mobile: '/images/toyota/banner-toyota.png',
+                type: 'image',
+                link: '/nuevos/toyota/All-New-RAV4-Hybrid'
+            },
+            {
                 web: '/images/toyota/Hibridos/corolla-cross-hybrid/banner_68478.jpg',
                 mobile: '/images/toyota/Hibridos/corolla-cross-hybrid/banner_68417.jpg',
                 type: 'image'
-            },
-            { type: 'placeholder', bg: 'bg-gray-200', title: 'Slider 2' },
-            { type: 'placeholder', bg: 'bg-gray-200', title: 'Slider 3' }
+            }
         ]
     },
     volkswagen: {
@@ -129,13 +134,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-600',
         bannerSlides: [
             { 
-                web: '/images/bmw/banner-1.jpg', 
-                mobile: '/images/bmw/banner-1.jpg', 
-                type: 'image' 
-            },
-            { 
-                web: '/images/bmw/banner-2.jpg', 
-                mobile: '/images/bmw/banner-2.jpg', 
+                web: '/images/BMW/banner-bmw.jpg', 
+                mobile: '/images/BMW/banner-bmw.jpg', 
                 type: 'image' 
             }
         ]
