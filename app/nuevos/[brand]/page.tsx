@@ -147,7 +147,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
                 <div className="aspect-square md:aspect-[1200/420] w-full" ref={heroEmblaRef}>
                     <div className="flex h-full">
-                        {config.bannerSlides.map((slide, index) => {
+                        {config.bannerSlides.map((slide: any, index: number) => {
                             const slideContent = (
                                 <>
                                     {slide.web && slide.mobile ? (
@@ -208,7 +208,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                 </div>
 
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-                    {config.bannerSlides.map((_, i) => (
+                    {config.bannerSlides.map((_: any, i: number) => (
                         <div key={i} className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
                     ))}
                 </div>
