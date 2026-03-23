@@ -4,22 +4,21 @@
     "intelephense.environment.phpVersion": "8.2.0",
     "intelephense.files.exclude": [
         "**/.git/**",
-        "**/.svn/**",
-        "**/.hg/**",
-        "**/CVS/**",
         "**/.DS_Store/**",
         "**/node_modules/**",
-        "**/bower_components/**",
-        "**/backend/vendor/**",
-        "**/backend/storage/framework/views/**"
+        "**/backend/storage/framework/views/**",
+        "**/vendor/**",
+        "**/_ide_helper.php"
     ],
     "files.exclude": {
-        "**/backend/vendor": true,
-        "**/backend/storage/framework/views": true
+        "**/backend/storage/framework/views": true,
+        "**/vendor": true,
+        "**/_ide_helper.php": true
     },
     "search.exclude": {
         "**/backend/vendor": true,
         "**/node_modules": true,
         "**/backend/storage/framework/views": true
-    }
+    },
+    "css.lint.unknownAtRules": "ignore"
 }

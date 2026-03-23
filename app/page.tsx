@@ -81,24 +81,8 @@ export default function Home() {
     const loadFeatured = async () => {
       try {
         setIsLoading(true);
-        const data = await fetchFeaturedModels();
-        if (data && data.length > 0) {
-          const mapped = data.map((m: any) => ({
-            id: m.id,
-            brand: m.brand?.name || 'Marca',
-            model: m.name,
-            version: m.slogan || 'Nuevo Modelo',
-            year: 2025,
-            price: m.base_price || 0,
-            mileage: 0,
-            image: m.thumbnail_url || '/images/autos-nuevos.webp',
-            isNew: true,
-            isHybrid: m.is_hybrid || false,
-          }));
-          setFeaturedVehicles(mapped);
-        } else {
-          setFeaturedVehicles(MOCK_VEHICLES);
-        }
+        // Use MOCK_VEHICLES directly as per user request to ensure specific models are visible
+        setFeaturedVehicles(MOCK_VEHICLES);
       } catch (error) {
         console.error('Error loading featured vehicles:', error);
         setFeaturedVehicles(MOCK_VEHICLES);
