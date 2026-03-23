@@ -21,7 +21,7 @@ export interface Vehicle {
         power?: string;
         torque?: string;
         listPrice: number; 
-        bonus: number;
+        bonus?: number;
         bonusPrice: number 
     }[];
     desktopBanner?: string;
