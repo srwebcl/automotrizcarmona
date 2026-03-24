@@ -7,7 +7,7 @@ export const MOCK_VEHICLES = [
         year: 2025,
         price: 29900000,
         mileage: 0,
-        image: "/images/BMW/SERIE 1/MIN-SERIE1.png",
+        image: "/images/bmw/SERIE 1/MIN-SERIE1.png",
         isNew: true,
         isHybrid: false
     },
