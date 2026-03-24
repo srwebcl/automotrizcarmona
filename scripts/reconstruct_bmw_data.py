@@ -2,8 +2,9 @@ import os
 import re
 import json
 
-BASE_PATH = "/Users/sebastianrodriguezmilla/proyectos-web/automotrizcarmona/public/images/BMW"
+BASE_PATH = "/Users/sebastianrodriguezmilla/proyectos-web/automotrizcarmona/public/images/bmw"
 OUTPUT_FILE = "/Users/sebastianrodriguezmilla/proyectos-web/automotrizcarmona/lib/models/bmw.ts"
+REL_PATH_BRAND = "/images/bmw"
 
 def format_currency(val):
     try:
@@ -159,7 +160,7 @@ def parse_bmw_md():
             print(f"Warning: Could not match folder for {model_name}")
             continue
 
-        rel_root = f"/images/BMW/{folder}"
+        rel_root = f"{REL_PATH_BRAND}/{folder}"
         path_root = os.path.join(BASE_PATH, folder)
         
         # Miniature

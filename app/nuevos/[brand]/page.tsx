@@ -353,10 +353,9 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     title: "Servicio Técnico", 
                                     subtitle: "Agenda tu Hora", 
                                     link: "/servicios", 
-                                    image: brandId === 'bmw' ? "/images/BMW/bmw-servicio.jpeg" : 
+                                    image: brandId === 'bmw' ? "/images/bmw/bmw-servicio.jpeg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
-                                           brandId === 'seat' ? "/images/seat/servicio-seat.jpeg" : 
-                                           brandId === 'cupra' ? "/images/cupra/servicio-cupra.png" :
+                                           brandId === 'toyota' ? "/images/toyota/servicio-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/servicio-honda.jpeg" :
                                            "/images/quick_access_servicio_1770350934207.png" 
                                 },
@@ -365,10 +364,9 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     title: "Repuestos", 
                                     subtitle: "Repuestos Originales", 
                                     link: "/repuestos", 
-                                    image: brandId === 'bmw' ? "/images/BMW/bmw-repuestos.jpeg" : 
+                                    image: brandId === 'bmw' ? "/images/bmw/bmw-repuestos.jpeg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
-                                           brandId === 'seat' ? "/images/seat/repuestos-seat.jpeg" :
-                                           brandId === 'cupra' ? "/images/cupra/repuestos-cupra.png" :
+                                           brandId === 'toyota' ? "/images/toyota/repuestos-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/repuestos-honda.jpeg" :
                                            "/images/quick_access_repuestos_1770350949447.png" 
                                 },
@@ -377,10 +375,9 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     title: `${config.name} Usados`, 
                                     subtitle: "Seminuevos", 
                                     link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, 
-                                    image: brandId === 'bmw' ? "/images/BMW/bmw-usados.jpg" : 
+                                    image: brandId === 'bmw' ? "/images/bmw/bmw-usados.jpg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
                                            brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : 
-                                           brandId === 'seat' ? "/images/seat/usados-seat.jpeg" : 
                                            brandId === 'cupra' ? "/images/cupra/cupra-usados.png" : 
                                            brandId === 'honda' ? "/images/honda/usados-honda.jpeg" : "/images/sucursales.jpg", 
                                     isExternal: true 
@@ -390,10 +387,9 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     title: "Sucursales", 
                                     subtitle: "Encuentra tu Sucursal", 
                                     link: "/sucursales", 
-                                    image: brandId === 'bmw' ? "/images/BMW/bmw-sucursales.webp" : 
+                                    image: brandId === 'bmw' ? "/images/bmw/bmw-sucursales.webp" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
-                                           brandId === 'seat' ? "/images/seat/sucursales.jpg" :
-                                           brandId === 'cupra' ? "/images/cupra/sucursales-cupra.jpg" :
+                                           brandId === 'toyota' ? "/images/toyota/sucursal-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/sucursal-honda.png" :
                                            "/images/sucursales.jpg" 
                                 }

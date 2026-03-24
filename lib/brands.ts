@@ -134,8 +134,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-600',
         bannerSlides: [
             { 
-                web: '/images/BMW/banner-bmw.jpg', 
-                mobile: '/images/BMW/banner-bmw.jpg', 
+                web: '/images/bmw/banner-bmw.jpg', 
+                mobile: '/images/bmw/banner-bmw.jpg', 
                 type: 'image' 
             }
         ]

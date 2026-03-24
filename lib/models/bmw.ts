@@ -7,7 +7,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 1",
         "category": "HATCHBACK",
         "price": 29900000,
-        "image": "/images/BMW/SERIE 1/MIN-SERIE1.png",
+        "image": "/images/bmw/SERIE 1/MIN-SERIE1.png",
         "slogan": "THE NEW 1.",
         "isHybrid": false,
         "isElectric": false,
@@ -15,30 +15,30 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "CONTROL ABSOLUTO",
                 "desc": "Disfruta de una dirección precisa y una respuesta ágil que garantiza estabilidad y control en cada curva, manteniendo el dinamismo del nuevo BMW Serie 1 incluso en los giros más exigentes.",
-                "image": "/images/BMW/SERIE 1/caracteristicas/CONTROL_ABSOLUTO (1).jpg"
+                "image": "/images/bmw/SERIE 1/caracteristicas/CONTROL_ABSOLUTO (1).jpg"
             },
             {
                 "title": "DESEMPEÑO QUE EMOCIONA",
                 "desc": "El nuevo BMW Serie 1 se adapta a cualquier entorno gracias a su motor potente y una transmisión de alto rendimiento, ofreciendo una conducción ágil y eficiente tanto en la ciudad como en carretera.",
-                "image": "/images/BMW/SERIE 1/caracteristicas/Desempeno_que_emociona.jpg"
+                "image": "/images/bmw/SERIE 1/caracteristicas/Desempeno_que_emociona.jpg"
             },
             {
                 "title": "CLÁSICO. DEPORTIVO. ÚNICO",
                 "desc": "En la parte delantera, la rejilla doble realza el espíritu deportivo del nuevo BMW Serie 1. El diseño de varillas verticales y diagonales transmite mucho dinamismo.",
-                "image": "/images/BMW/SERIE 1/caracteristicas/Imagen1.jpg"
+                "image": "/images/bmw/SERIE 1/caracteristicas/Imagen1.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 1/galeria/CONTROL_ABSOLUTO.jpg",
-            "/images/BMW/SERIE 1/galeria/Interior_1.jpg",
-            "/images/BMW/SERIE 1/galeria/Interior_3.jpg",
-            "/images/BMW/SERIE 1/galeria/Interior_5.jpg",
-            "/images/BMW/SERIE 1/galeria/Interior_6.jpg",
-            "/images/BMW/SERIE 1/galeria/P90567870_lowRes_the-all-new-bmw-m135 (1).jpg",
-            "/images/BMW/SERIE 1/galeria/P90567870_lowRes_the-all-new-bmw-m135.jpg",
-            "/images/BMW/SERIE 1/galeria/Teconologia_1.jpg",
-            "/images/BMW/SERIE 1/galeria/Teconologia_4.jpg",
-            "/images/BMW/SERIE 1/galeria/Teconologia_5.jpg"
+            "/images/bmw/SERIE 1/galeria/CONTROL_ABSOLUTO.jpg",
+            "/images/bmw/SERIE 1/galeria/Interior_1.jpg",
+            "/images/bmw/SERIE 1/galeria/Interior_3.jpg",
+            "/images/bmw/SERIE 1/galeria/Interior_5.jpg",
+            "/images/bmw/SERIE 1/galeria/Interior_6.jpg",
+            "/images/bmw/SERIE 1/galeria/P90567870_lowRes_the-all-new-bmw-m135 (1).jpg",
+            "/images/bmw/SERIE 1/galeria/P90567870_lowRes_the-all-new-bmw-m135.jpg",
+            "/images/bmw/SERIE 1/galeria/Teconologia_1.jpg",
+            "/images/bmw/SERIE 1/galeria/Teconologia_4.jpg",
+            "/images/bmw/SERIE 1/galeria/Teconologia_5.jpg"
         ],
         "versions": [
             {
@@ -78,8 +78,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 53900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 1/banner/Banner_Serie_1_2.png",
-        "mobileBanner": "/images/BMW/SERIE 1/banner/Banner_Serie_1_2.png",
+        "desktopBanner": "/images/bmw/SERIE 1/banner/Banner_Serie_1_2.png",
+        "mobileBanner": "/images/bmw/SERIE 1/banner/Banner_Serie_1_2.png",
         "videoUrl": "https://www.youtube.com/embed/uNx_WZ3Uezg"
     },
     {
@@ -88,7 +88,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "Serie 2 Gran Coupe",
         "category": "COUPÉ",
         "price": 34900000,
-        "image": "/images/BMW/SERIE 2 GRAN COUPE/MIN-SERIE2-GP.png",
+        "image": "/images/bmw/SERIE 2 GRAN COUPE/MIN-SERIE2-GP.png",
         "slogan": "THE NEW 2.",
         "isHybrid": false,
         "isElectric": false,
@@ -96,30 +96,30 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Siempre inconfundible.",
                 "desc": "La parrilla BMW Iconic Glow atrae todas las miradas, especialmente en la oscuridad. La luz blanca resalta su contorno, siendo muy presente cuando el vehículo están parado o en marcha.",
-                "image": "/images/BMW/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_GC_Atras.jpg"
+                "image": "/images/bmw/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_GC_Atras.jpg"
             },
             {
                 "title": "Conducción más sólida. Control más directo.",
                 "desc": "La suspensión M adaptativa con reducción de altura se adapta de manera autónoma al terreno y tu estilo de conducción. Con dirección deportiva M incluida para tomas curvas con mucha precisión.",
-                "image": "/images/BMW/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_GC_Perfil.jpg"
+                "image": "/images/bmw/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_GC_Perfil.jpg"
             },
             {
                 "title": "Ágil por la curva.",
                 "desc": "El mayor diámetro de las ruedas acentúa el aspecto atlético. Su BMW se agarra bien la carretera. Las maniobras de conducción se estabilizan y las curvas se toman con seguridad.",
-                "image": "/images/BMW/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_Iconic_Glow.png"
+                "image": "/images/bmw/SERIE 2 GRAN COUPE/caracteristicas/BMW_Serie_2_Iconic_Glow.png"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Interior.png",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_1.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_2.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_3.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_Interior_2.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_Interior_3.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/Interior_4_S2_GC (1).jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/Interior_4_S2_GC.jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/foto_0000022820210818163246_A_1320x679 (1).jpg",
-            "/images/BMW/SERIE 2 GRAN COUPE/galeria/foto_0000022820210818163246_A_1320x679.jpg"
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Interior.png",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_1.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_2.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_GC_Tecnologia_3.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_Interior_2.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/BMW_Serie_2_Interior_3.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/Interior_4_S2_GC (1).jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/Interior_4_S2_GC.jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/foto_0000022820210818163246_A_1320x679 (1).jpg",
+            "/images/bmw/SERIE 2 GRAN COUPE/galeria/foto_0000022820210818163246_A_1320x679.jpg"
         ],
         "versions": [
             {
@@ -147,8 +147,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonus": 0
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 2 GRAN COUPE/banner/BANNER_SERIE_2_GRAN_COUPE.jpg",
-        "mobileBanner": "/images/BMW/SERIE 2 GRAN COUPE/banner/BANNER_SERIE_2_GRAN_COUPE.jpg",
+        "desktopBanner": "/images/bmw/SERIE 2 GRAN COUPE/banner/BANNER_SERIE_2_GRAN_COUPE.jpg",
+        "mobileBanner": "/images/bmw/SERIE 2 GRAN COUPE/banner/BANNER_SERIE_2_GRAN_COUPE.jpg",
         "videoUrl": "https://www.youtube.com/embed/pSrjaqolRCU"
     },
     {
@@ -157,7 +157,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 2 COUPE",
         "category": "COUPÉ",
         "price": 47900000,
-        "image": "/images/BMW/SERIE 2 COUPÉ/min-serie-2-coupe.png",
+        "image": "/images/bmw/SERIE 2 COUPÉ/min-serie-2-coupe.png",
         "slogan": "CREADO PARA EMOCIONAR",
         "isHybrid": false,
         "isElectric": false,
@@ -165,25 +165,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Los motores altamente eficientes del BMW Serie 2 Coupé",
                 "desc": "El BMW 220i Coupé M Sport viene con un motor a gasolina de 4 cilindros en línea BMW TwinPower Turbo y el BMW M240i xDrive, un motor de gasolina de 6 cilindros en línea BMW M TwinPower Turbo con 275Kw (375 CV).",
-                "image": "/images/BMW/SERIE 2 COUPÉ/caracteristicas/BMW_220i_Atras.png"
+                "image": "/images/bmw/SERIE 2 COUPÉ/caracteristicas/BMW_220i_Atras.png"
             },
             {
                 "title": "El diseño de la zaga.",
                 "desc": "Las llamativas luces traseras situadas en los extremos acentúan la amplitud del BMW Serie 2 Coupé. Las líneas horizontales generan así un juego de luces y sombras que realza la parte trasera.",
-                "image": "/images/BMW/SERIE 2 COUPÉ/caracteristicas/BMW_220i_Frontal.png"
+                "image": "/images/bmw/SERIE 2 COUPÉ/caracteristicas/BMW_220i_Frontal.png"
             },
             {
                 "title": "Parrilla doble de un solo marco.",
                 "desc": "La parrilla doble con un solo marco subraya el diseño de marcado carácter del BMW Serie 2 Coupé. En lugar de las clásicas varillas de parrilla, se ofrecen solapas de llamativo diseño. Estas se abren o se cierran en función de la demanda de aire y permiten también hacerse una idea de la potencia del motor escondido tras ellas.",
-                "image": "/images/BMW/SERIE 2 COUPÉ/caracteristicas/image.1718186476674_1.jpg"
+                "image": "/images/bmw/SERIE 2 COUPÉ/caracteristicas/image.1718186476674_1.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 2 COUPÉ/galeria/220_Interior_2.jpg",
-            "/images/BMW/SERIE 2 COUPÉ/galeria/BMW_220i_2.jpg",
-            "/images/BMW/SERIE 2 COUPÉ/galeria/COSY_1_1.jpg",
-            "/images/BMW/SERIE 2 COUPÉ/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/SERIE 2 COUPÉ/galeria/foto_0000022820210818163246_A_1320x679.jpg"
+            "/images/bmw/SERIE 2 COUPÉ/galeria/220_Interior_2.jpg",
+            "/images/bmw/SERIE 2 COUPÉ/galeria/BMW_220i_2.jpg",
+            "/images/bmw/SERIE 2 COUPÉ/galeria/COSY_1_1.jpg",
+            "/images/bmw/SERIE 2 COUPÉ/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/SERIE 2 COUPÉ/galeria/foto_0000022820210818163246_A_1320x679.jpg"
         ],
         "versions": [
             {
@@ -211,8 +211,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 65900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 2 COUPÉ/banner/cq5dam.jpg",
-        "mobileBanner": "/images/BMW/SERIE 2 COUPÉ/banner/cq5dam.jpg",
+        "desktopBanner": "/images/bmw/SERIE 2 COUPÉ/banner/cq5dam.jpg",
+        "mobileBanner": "/images/bmw/SERIE 2 COUPÉ/banner/cq5dam.jpg",
         "videoUrl": "https://www.youtube.com/embed/5qByKvvHm6s"
     },
     {
@@ -221,7 +221,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 3 HÍBRIDO",
         "category": "SEDÁN, HÍBRIDO",
         "price": 58900000,
-        "image": "/images/BMW/SERIE 3/min-serie23.png",
+        "image": "/images/bmw/SERIE 3/min-serie23.png",
         "slogan": "LO MEJOR DE AMBOS MUNDOS",
         "isHybrid": true,
         "isElectric": false,
@@ -229,27 +229,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Ingeniería que inspira",
                 "desc": "Su motor deportivo de gasolina, TwinPower Turbo, le da a tu BMW Serie 3 híbrido flexibilidad y potencia para enfrentar cualquier obstáculo. Además de una máxima eficiencia gracias a la distribución inteligente de la energía y al cambio automático entre los motores. Perfecto para las necesidades y requisitos de tu vida diaria, gracias a la combinación de motor de gasolina y motor eléctrico..",
-                "image": "/images/BMW/SERIE 3/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "Tecnología Híbrida",
                 "desc": "Con la tecnología Mild Hybrid podrás reducir las emisiones, el consumo de combustible y obtener más dinamismo. Máxima flexibilidad: ideal para conductores que desean la máxima versatilidad.",
-                "image": "/images/BMW/SERIE 3/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/Modulo_Performance_D_948x619.jpg"
             },
             {
                 "title": "Motor eléctrico",
                 "desc": "Con el BMW serie 3 híbrido podrás conducir un auto con opción eléctrica sin generar emisiones y descubrir un mundo nuevo donde la conducción inteligente es protagonista. Siempre que retiras el pie del acelerador, la energía cinética se transforma en energía eléctrica y se almacena en la batería para disfrutar de más kilómetros de autonomía eléctrica.",
-                "image": "/images/BMW/SERIE 3/caracteristicas/image.1652277822999.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/image.1652277822999.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679 (1).jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679 (1).jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
         ],
         "versions": [
             {
@@ -265,8 +265,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 58900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 3/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/SERIE 3/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/SERIE 3/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/SERIE 3/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/ANU0J5KLn_Y"
     },
     {
@@ -275,7 +275,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 3",
         "category": "SEDAN",
         "price": 43400000,
-        "image": "/images/BMW/SERIE 3/min-serie23.png",
+        "image": "/images/bmw/SERIE 3/min-serie23.png",
         "slogan": "MOCIÓN EN CADA VIAJE",
         "isHybrid": false,
         "isElectric": false,
@@ -283,27 +283,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Ingeniería que inspira",
                 "desc": "Su amplia gama de motores deportivos de gasolina y diésel, TwinPower Turbo, le da a tu BMW Serie 3 flexibilidad y potencia para enfrentar cualquier obstáculo.",
-                "image": "/images/BMW/SERIE 3/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "Conducción dinámica",
                 "desc": "Todas sus características de agilidad, seguridad y dinamismo lo vuelven el sedán deportivo supremo.",
-                "image": "/images/BMW/SERIE 3/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/Modulo_Performance_D_948x619.jpg"
             },
             {
                 "title": "Placer máximo",
                 "desc": "Su motor BMW Twin Power Turbo te sorprenderá con su ágil entrega",
-                "image": "/images/BMW/SERIE 3/caracteristicas/image.1652277822999.jpg"
+                "image": "/images/bmw/SERIE 3/caracteristicas/image.1652277822999.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679 (1).jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
-            "/images/BMW/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679 (1).jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
+            "/images/bmw/SERIE 3/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
         ],
         "versions": [
             {
@@ -355,8 +355,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 74900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 3/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/SERIE 3/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/SERIE 3/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/SERIE 3/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/b98aOUzWPuE"
     },
     {
@@ -365,7 +365,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "M440i Gran Coupé",
         "category": "COUPÉ",
         "price": 82400000,
-        "image": "/images/BMW/M4/min-m4.png",
+        "image": "/images/bmw/M4/min-m4.png",
         "slogan": "MÁS ELEGANCIA, MÁS SIGNIFICADO",
         "isHybrid": false,
         "isElectric": false,
@@ -373,26 +373,26 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Conduce como quieras.",
                 "desc": "La suspensión M adaptativa combina el confort con el máximo dinamismo de conducción. Y se adapta de forma autónoma al estado de la calzada y a tu estilo de conducción personal.",
-                "image": "/images/BMW/M4/caracteristicas/BMW_Motor.png"
+                "image": "/images/bmw/M4/caracteristicas/BMW_Motor.png"
             },
             {
                 "title": "BMW M TwinPower Turbo",
                 "desc": "Régimen de revoluciones elevado, desarrollo de potencia dinámico y el sonido poderoso característico de los modelos M. Un motor que te asegura la máxima diversión al conducir en todo momento.",
-                "image": "/images/BMW/M4/caracteristicas/Exterior_3.png"
+                "image": "/images/bmw/M4/caracteristicas/Exterior_3.png"
             },
             {
                 "title": "Una impresión magnífica",
                 "desc": "Luces traseras láser con delgados filamentos luminosos. Las líneas precisas en las luces traseras dan a tu BMW M una apariencia inconfundible.",
-                "image": "/images/BMW/M4/caracteristicas/Imagen9.png"
+                "image": "/images/bmw/M4/caracteristicas/Imagen9.png"
             }
         ],
         "gallery": [
-            "/images/BMW/M4/galeria/Banner_2_M4.png",
-            "/images/BMW/M4/galeria/Exterior_4.png",
-            "/images/BMW/M4/galeria/Exterior_5.png",
-            "/images/BMW/M4/galeria/Interior_1.png",
-            "/images/BMW/M4/galeria/Interior_10.png",
-            "/images/BMW/M4/galeria/Interior_6.jpg"
+            "/images/bmw/M4/galeria/Banner_2_M4.png",
+            "/images/bmw/M4/galeria/Exterior_4.png",
+            "/images/bmw/M4/galeria/Exterior_5.png",
+            "/images/bmw/M4/galeria/Interior_1.png",
+            "/images/bmw/M4/galeria/Interior_10.png",
+            "/images/bmw/M4/galeria/Interior_6.jpg"
         ],
         "versions": [
             {
@@ -408,8 +408,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 82400000
             }
         ],
-        "desktopBanner": "/images/BMW/M4/banner/Banner.png",
-        "mobileBanner": "/images/BMW/M4/banner/Banner.png",
+        "desktopBanner": "/images/bmw/M4/banner/Banner.png",
+        "mobileBanner": "/images/bmw/M4/banner/Banner.png",
         "videoUrl": "https://www.youtube.com/embed/zEVBMJ62dRY"
     },
     {
@@ -418,7 +418,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "i4",
         "category": "Eléctricos",
         "price": 79900000,
-        "image": "/images/BMW/i4/min-i4.png",
+        "image": "/images/bmw/i4/min-i4.png",
         "slogan": "- 600 km* Autonomía eléctrica",
         "isHybrid": false,
         "isElectric": true,
@@ -426,25 +426,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Más autonomía",
                 "desc": "Con su potente batería podrás realizar viajes más largos y tener una autonomía que alcanza hasta los 590 km. Más energía al motor y mayor placer al conducir.",
-                "image": "/images/BMW/i4/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/i4/caracteristicas/Modulo_Performance_B_948x619.jpg"
             },
             {
                 "title": "Seguro y rápido",
                 "desc": "Disfrute de una precisión en el manejo gracias a los componentes de suspensión, paneles de carrocería y un chasis hechos con materiales innovadores, como acero de alta resistencia y aluminio. La suspensión trasera de aire estándar ofrece una altura de manejo y comodidad consistentes.",
-                "image": "/images/BMW/i4/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/i4/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "BMW WALL BOX",
                 "desc": "Con el BMW WALL BOX podrás cargar desde tu casa el BMW i4 con electricidad e incluso con energía solar. Ahorra tiempo cargando durante la noche.",
-                "image": "/images/BMW/i4/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/i4/caracteristicas/Modulo_Performance_D_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-01-Desktop-v2.jpg",
-            "/images/BMW/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-03-Desktop.webp",
-            "/images/BMW/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-04-Desktop.webp",
-            "/images/BMW/i4/galeria/BMW-MY23-i4-Overview-Tech-Carousel-02-ALL.jpg",
-            "/images/BMW/i4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg"
+            "/images/bmw/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-01-Desktop-v2.jpg",
+            "/images/bmw/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-03-Desktop.webp",
+            "/images/bmw/i4/galeria/BMW-MY23-i4-Overview-MakeItYours-04-Desktop.webp",
+            "/images/bmw/i4/galeria/BMW-MY23-i4-Overview-Tech-Carousel-02-ALL.jpg",
+            "/images/bmw/i4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg"
         ],
         "versions": [
             {
@@ -460,8 +460,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 79900000
             }
         ],
-        "desktopBanner": "/images/BMW/i4/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/i4/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/i4/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/i4/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/BpzxXUesmqY"
     },
     {
@@ -470,7 +470,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "serie 4 convertible",
         "category": "Convertibles",
         "price": 53900000,
-        "image": "/images/BMW/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png",
+        "image": "/images/bmw/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": false,
@@ -478,35 +478,35 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Respuesta para todo.",
                 "desc": "El BMW Serie 4 Convertible ofrece una dirección deportiva variable que aporta respuestas más directas y eficientes al conducirlo. Además distribuye su peso 50:50 de la carga entre los ejes para una mayor agilidad, flexibilidad y versatilidad al volante.",
-                "image": "/images/BMW/SERIE 4 CONVERTIBLE/caracteristicas/Exterior_4.jpeg"
+                "image": "/images/bmw/SERIE 4 CONVERTIBLE/caracteristicas/Exterior_4.jpeg"
             },
             {
                 "title": "Potencia y eficiencia.",
                 "desc": "El BMW Serie 4 Convertible entrega el máximo dinamismo posible con mayor eficiencia por medio de los motores BMW TwinPower Turbo, que ofrecen una eficiencia mejorada.",
-                "image": "/images/BMW/SERIE 4 CONVERTIBLE/caracteristicas/Exterior_5.jpeg"
+                "image": "/images/bmw/SERIE 4 CONVERTIBLE/caracteristicas/Exterior_5.jpeg"
             },
             {
                 "title": "Un símbolo de libertad.",
                 "desc": "El techo textil del BMW Serie 4 Cabrio destaca por su elaboración exclusiva, reduce el ruido en el interior del vehículo y lo protege del frío. Durante el viaje, la capota de tela puede abrirse y cerrarse automáticamente hasta una velocidad de 50 km/h.",
-                "image": "/images/BMW/SERIE 4 CONVERTIBLE/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/SERIE 4 CONVERTIBLE/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "VERSIONES",
                 "desc": "420i Cabriolet Dynamic LCI II Motor: 1,998 Twin Power Turbo Transmisión: Steptronic deportiva 8 vel. Potencia: 258 / 5.000-6.500 (hp/rpm) Torque: 400 / 1.550-4.400 (Nm/rpm) Consumo: 14,7 km/l (mixto) Tracción: Trasera PRECIO DE LISTA: $59,900,000 BONO DEL MES: $6,000,000",
-                "image": "/images/BMW/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png"
+                "image": "/images/bmw/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png"
             },
             {
                 "title": "M440i xDrive Cabriolet LCI II",
                 "desc": "Motor: 2,998 Twin Power Turbo Transmisión: Steptronic deportiva 8 vel. Potencia: 387 / 5.800-6.500 (hp/rpm) Torque: 500 / 1.900-5.000 (Nm/rpm) Consumo: Ciudad: 9,4km/l - Carretera: 14,7km/l - Mixto: 12,2km/l) Tracción: xDrive PRECIO DE LISTA: $89,900,000 BONO DEL MES:$4,500,000",
-                "image": "/images/BMW/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png"
+                "image": "/images/bmw/SERIE 4 CONVERTIBLE/min-serie-4cabrio.png"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 4 CONVERTIBLE/galeria/Interior_1.jpeg",
-            "/images/BMW/SERIE 4 CONVERTIBLE/galeria/Interior_2.jpeg",
-            "/images/BMW/SERIE 4 CONVERTIBLE/galeria/Interior_3.jpeg",
-            "/images/BMW/SERIE 4 CONVERTIBLE/galeria/Interior_6.jpeg",
-            "/images/BMW/SERIE 4 CONVERTIBLE/galeria/Modulo_Performance_A_1440x610.png"
+            "/images/bmw/SERIE 4 CONVERTIBLE/galeria/Interior_1.jpeg",
+            "/images/bmw/SERIE 4 CONVERTIBLE/galeria/Interior_2.jpeg",
+            "/images/bmw/SERIE 4 CONVERTIBLE/galeria/Interior_3.jpeg",
+            "/images/bmw/SERIE 4 CONVERTIBLE/galeria/Interior_6.jpeg",
+            "/images/bmw/SERIE 4 CONVERTIBLE/galeria/Modulo_Performance_A_1440x610.png"
         ],
         "versions": [
             {
@@ -534,8 +534,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 85400000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 4 CONVERTIBLE/banner/SERIE_4_CABRIO_4K.jpeg",
-        "mobileBanner": "/images/BMW/SERIE 4 CONVERTIBLE/banner/SERIE_4_CABRIO_4K.jpeg",
+        "desktopBanner": "/images/bmw/SERIE 4 CONVERTIBLE/banner/SERIE_4_CABRIO_4K.jpeg",
+        "mobileBanner": "/images/bmw/SERIE 4 CONVERTIBLE/banner/SERIE_4_CABRIO_4K.jpeg",
         "videoUrl": "https://www.youtube.com/embed/3aWX8KSMR08"
     },
     {
@@ -544,17 +544,17 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 4 COUPE",
         "category": "SUV",
         "price": 53900000,
-        "image": "/images/BMW/SERIE 4 COUPE/min-serie4-coupe.png",
+        "image": "/images/bmw/SERIE 4 COUPE/min-serie4-coupe.png",
         "slogan": "UN SIMBOLO DE DEPORTIVIDAD",
         "isHybrid": false,
         "isElectric": false,
         "features": [],
         "gallery": [
-            "/images/BMW/SERIE 4 COUPE/galeria/Modulo_Performance_A_1440x610_10.png",
-            "/images/BMW/SERIE 4 COUPE/galeria/SERIE-4-INT-1.jpeg",
-            "/images/BMW/SERIE 4 COUPE/galeria/SERIE-4-INT-2.jpeg",
-            "/images/BMW/SERIE 4 COUPE/galeria/SERIE-4-INT-4 (1).jpeg",
-            "/images/BMW/SERIE 4 COUPE/galeria/SERIE-4-INT-4.jpeg"
+            "/images/bmw/SERIE 4 COUPE/galeria/Modulo_Performance_A_1440x610_10.png",
+            "/images/bmw/SERIE 4 COUPE/galeria/SERIE-4-INT-1.jpeg",
+            "/images/bmw/SERIE 4 COUPE/galeria/SERIE-4-INT-2.jpeg",
+            "/images/bmw/SERIE 4 COUPE/galeria/SERIE-4-INT-4 (1).jpeg",
+            "/images/bmw/SERIE 4 COUPE/galeria/SERIE-4-INT-4.jpeg"
         ],
         "versions": [
             {
@@ -582,8 +582,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 75900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 4 COUPE/banner/SERIE-4-BANNER.jpeg",
-        "mobileBanner": "/images/BMW/SERIE 4 COUPE/banner/SERIE-4-BANNER.jpeg",
+        "desktopBanner": "/images/bmw/SERIE 4 COUPE/banner/SERIE-4-BANNER.jpeg",
+        "mobileBanner": "/images/bmw/SERIE 4 COUPE/banner/SERIE-4-BANNER.jpeg",
         "videoUrl": "https://www.youtube.com/embed/Xe3dxpQlO88"
     },
     {
@@ -592,7 +592,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 4 GRAN COUPE",
         "category": "COUPE",
         "price": 47900000,
-        "image": "/images/BMW/SERIE 4 GRAN COUPE/min-serie4.png",
+        "image": "/images/bmw/SERIE 4 GRAN COUPE/min-serie4.png",
         "slogan": "MÁS ELEGANCIA, MÁS SIGNIFICADO",
         "isHybrid": false,
         "isElectric": false,
@@ -600,24 +600,24 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Un toque más oscuro",
                 "desc": "Las molduras M Shadow Line de brillo intenso casan bien con cualquier acabado exterior de tu BMW. El color negro alrededor de ventanas y retrovisores realza su silueta.",
-                "image": "/images/BMW/SERIE 4 GRAN COUPE/caracteristicas/Exterior_2.jpeg"
+                "image": "/images/bmw/SERIE 4 GRAN COUPE/caracteristicas/Exterior_2.jpeg"
             },
             {
                 "title": "Potencia y eficiencia",
                 "desc": "El Serie 4 Gran Coupé entrega el máximo dinamismo posible con mayor eficiencia por medio de los motores BMW TwinPower Turbo, que ofrecen un sistema de inyección más avanzado, control de potencia variable y una estudiada tecnología de turbocompresión.",
-                "image": "/images/BMW/SERIE 4 GRAN COUPE/caracteristicas/Exterior_3.jpeg"
+                "image": "/images/bmw/SERIE 4 GRAN COUPE/caracteristicas/Exterior_3.jpeg"
             },
             {
                 "title": "Una parrilla clásica con un nuevo marco.",
                 "desc": "Un marco continuo en cromo mate rodea la parrilla. La estructura de malla poligonal plateada sobre fondo negro subraya su aspecto atractivo.",
-                "image": "/images/BMW/SERIE 4 GRAN COUPE/caracteristicas/Exterior_4.jpeg"
+                "image": "/images/bmw/SERIE 4 GRAN COUPE/caracteristicas/Exterior_4.jpeg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 4 GRAN COUPE/galeria/Interior_1.jpeg",
-            "/images/BMW/SERIE 4 GRAN COUPE/galeria/Interior_2.jpeg",
-            "/images/BMW/SERIE 4 GRAN COUPE/galeria/Interior_4.jpeg",
-            "/images/BMW/SERIE 4 GRAN COUPE/galeria/Modulo_Performance_A_1440x610_12.png"
+            "/images/bmw/SERIE 4 GRAN COUPE/galeria/Interior_1.jpeg",
+            "/images/bmw/SERIE 4 GRAN COUPE/galeria/Interior_2.jpeg",
+            "/images/bmw/SERIE 4 GRAN COUPE/galeria/Interior_4.jpeg",
+            "/images/bmw/SERIE 4 GRAN COUPE/galeria/Modulo_Performance_A_1440x610_12.png"
         ],
         "versions": [
             {
@@ -645,8 +645,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 82400000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 4 GRAN COUPE/banner/Serie_4_GC_Banner.jpeg",
-        "mobileBanner": "/images/BMW/SERIE 4 GRAN COUPE/banner/Serie_4_GC_Banner.jpeg",
+        "desktopBanner": "/images/bmw/SERIE 4 GRAN COUPE/banner/Serie_4_GC_Banner.jpeg",
+        "mobileBanner": "/images/bmw/SERIE 4 GRAN COUPE/banner/Serie_4_GC_Banner.jpeg",
         "videoUrl": "https://www.youtube.com/embed/zEVBMJ62dRY"
     },
     {
@@ -655,7 +655,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "serie 5",
         "category": "sedan, híbrido",
         "price": 59900000,
-        "image": "/images/BMW/SERIE 5/min-s5.png",
+        "image": "/images/bmw/SERIE 5/min-s5.png",
         "slogan": "",
         "isHybrid": true,
         "isElectric": false,
@@ -663,26 +663,26 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Estacionamiento inteligente",
                 "desc": "Las funciones de estacionamiento, entre ellas el asistente de reversa, asistente de estacionamiento en paralelo, las cámaras de retroceso y sensores de estacionamiento están incluidas en el Parking Assistant y el Parking Assistant Plus (según versión).",
-                "image": "/images/BMW/SERIE 5/caracteristicas/Foto_COmponente_7.png"
+                "image": "/images/bmw/SERIE 5/caracteristicas/Foto_COmponente_7.png"
             },
             {
                 "title": "BMW Iconic Glow",
                 "desc": "Especialmente en la oscuridad llama la atención la parrilla BMW “ Iconic Glow”. La luz resalta sus contornos cuando el vehículo está parado o en marcha",
-                "image": "/images/BMW/SERIE 5/caracteristicas/Foto_Componente_5.png"
+                "image": "/images/bmw/SERIE 5/caracteristicas/Foto_Componente_5.png"
             },
             {
                 "title": "Deportivo y distinguido",
                 "desc": "La Dirección deportiva variable con Servotronic crea una respuesta de dirección directa y ágil y asegura que se requiera menos esfuerzo para girar el volante a bajas velocidades. Esto mejora el manejo al conducir de manera más dinámica y reduce el esfuerzo necesario para conducir, estacionarse y girar.",
-                "image": "/images/BMW/SERIE 5/caracteristicas/Foto_Componente_6.png"
+                "image": "/images/bmw/SERIE 5/caracteristicas/Foto_Componente_6.png"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 5/galeria/BMW-MY24-5Series-Overview-Tech-Carousel-03-ALL.jpg",
-            "/images/BMW/SERIE 5/galeria/BMW_--_Serie_5_-_Performance.png",
-            "/images/BMW/SERIE 5/galeria/Foto_1_Componente_3.png",
-            "/images/BMW/SERIE 5/galeria/Foto_2_Componente_3.png",
-            "/images/BMW/SERIE 5/galeria/Foto_3_Componente_3.png",
-            "/images/BMW/SERIE 5/galeria/Foto_4_Componente_3.png"
+            "/images/bmw/SERIE 5/galeria/BMW-MY24-5Series-Overview-Tech-Carousel-03-ALL.jpg",
+            "/images/bmw/SERIE 5/galeria/BMW_--_Serie_5_-_Performance.png",
+            "/images/bmw/SERIE 5/galeria/Foto_1_Componente_3.png",
+            "/images/bmw/SERIE 5/galeria/Foto_2_Componente_3.png",
+            "/images/bmw/SERIE 5/galeria/Foto_3_Componente_3.png",
+            "/images/bmw/SERIE 5/galeria/Foto_4_Componente_3.png"
         ],
         "versions": [
             {
@@ -710,8 +710,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 79900000
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 5/banner/Serie_5_Banner_Web.png",
-        "mobileBanner": "/images/BMW/SERIE 5/banner/Serie_5_Banner_Web.png",
+        "desktopBanner": "/images/bmw/SERIE 5/banner/Serie_5_Banner_Web.png",
+        "mobileBanner": "/images/bmw/SERIE 5/banner/Serie_5_Banner_Web.png",
         "videoUrl": "https://www.youtube.com/embed/48cb_0xfrcI"
     },
     {
@@ -720,7 +720,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "SERIE 8 COUPE",
         "category": "COUPPE",
         "price": 146900000,
-        "image": "/images/BMW/SERIE 8 COUPE/min-s8.png",
+        "image": "/images/bmw/SERIE 8 COUPE/min-s8.png",
         "slogan": "REDEFINIENDO EL LUJO",
         "isHybrid": false,
         "isElectric": false,
@@ -728,29 +728,29 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Estaciónalo con facilidad",
                 "desc": "Las funciones de estacionamiento, entre ellas el asistente de reversa, asistente de estacionamiento en paralelo, las cámaras de retroceso y sensores de estacionamiento están incluidas en el Parking Assistant y el Parking Assistant Plus (según versión).",
-                "image": "/images/BMW/SERIE 8 COUPE/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/SERIE 8 COUPE/caracteristicas/Modulo_Performance_B_948x619.jpg"
             },
             {
                 "title": "Contrólalo a tu gusto",
                 "desc": "El BMW Serie 8 Coupé anuncia el BMW Live Cockpit Professional y BMW Operating System 7.0, compuesto por un display de control táctil de 10,25\" de alta resolución y un cuadro de instrumentos completamente digital de 12,3\". Contrólalo de forma intuitiva mediante gestos, control por voz, táctil y más.",
-                "image": "/images/BMW/SERIE 8 COUPE/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/SERIE 8 COUPE/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "BMW Laserlight",
                 "desc": "La luz láser BMW ilumina un campo de hasta 600 mts, casi dos veces más que los focos tradicionales. Tener una visibilidad mayor en la osucridad aumenta la seguridad de forma significativa. Los acentos en azul y las insignias \"BMW Laserlight\" resaltan las normas tecnológicas y deportividad del vehículo.",
-                "image": "/images/BMW/SERIE 8 COUPE/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/SERIE 8 COUPE/caracteristicas/Modulo_Performance_D_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_A_948x619 (1).jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Performance_A_1440x610_15.png",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
-            "/images/BMW/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_A_948x619 (1).jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Performance_A_1440x610_15.png",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
+            "/images/bmw/SERIE 8 COUPE/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
         ],
         "versions": [
             {
@@ -766,8 +766,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonus": 0
             }
         ],
-        "desktopBanner": "/images/BMW/SERIE 8 COUPE/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/SERIE 8 COUPE/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/SERIE 8 COUPE/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/SERIE 8 COUPE/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/1bzr2bKpqws"
     },
     {
@@ -776,7 +776,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X1",
         "category": "SUV",
         "price": 36900000,
-        "image": "/images/BMW/X1/min-x1.png",
+        "image": "/images/bmw/X1/min-x1.png",
         "slogan": "PERSIGUE TUS SUEÑOS",
         "isHybrid": false,
         "isElectric": false,
@@ -784,28 +784,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Ingeniería que inspira",
                 "desc": "El motor TwinPower Turbo combinado con la eficiente transmisión automática STEPTRONIC le da a tu BMW X1 flexibilidad para enfrentar cualquier obstáculo.",
-                "image": "/images/BMW/X1/caracteristicas/06_Componente_E_-_800x800_1.png"
+                "image": "/images/bmw/X1/caracteristicas/06_Componente_E_-_800x800_1.png"
             },
             {
                 "title": "Un chasis único",
                 "desc": "Logra un movimiento casi imperceptible. Gracias a una distribución de peso equilibrada, además de su control dinámico de estabilidad y tracción, el BMW X1 funciona con comodidad y precisión ante cualquier situación y en todo lugar, proporcionando seguridad y confianza para toda la familia.",
-                "image": "/images/BMW/X1/caracteristicas/07_Componente_F_-_800x800.jpg"
+                "image": "/images/bmw/X1/caracteristicas/07_Componente_F_-_800x800.jpg"
             },
             {
                 "title": "Eficiencia y emisiones",
                 "desc": "Los motores del BMW X1 aseguran economía de consumo y bajas emisiones, cumpliendo con los exigentes estándares actuales. Sus versiones a gasolina y diesel te garantizan potencia y desempeño inigualables, sin descuidar el medio ambiente.",
-                "image": "/images/BMW/X1/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/X1/caracteristicas/Modulo_Performance_B_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/X1/galeria/05_Componente_A_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_B_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_C_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_D_-_731x476.jpg",
-            "/images/BMW/X1/galeria/06_Componente_E_-_1440x610.png",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-02-Desktop.jpg",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.jpg",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.webp"
+            "/images/bmw/X1/galeria/05_Componente_A_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_B_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_C_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_D_-_731x476.jpg",
+            "/images/bmw/X1/galeria/06_Componente_E_-_1440x610.png",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-02-Desktop.jpg",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.jpg",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.webp"
         ],
         "versions": [
             {
@@ -893,8 +893,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 46900000
             }
         ],
-        "desktopBanner": "/images/BMW/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
-        "mobileBanner": "/images/BMW/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
+        "desktopBanner": "/images/bmw/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
+        "mobileBanner": "/images/bmw/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/TtrE-I6Yo-E"
     },
     {
@@ -903,7 +903,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X3 Híbrido",
         "category": "SUV, HÍBRIDO",
         "price": 75900000,
-        "image": "/images/BMW/X3/MIN-X3.png",
+        "image": "/images/bmw/X3/MIN-X3.png",
         "slogan": "",
         "isHybrid": true,
         "isElectric": false,
@@ -911,28 +911,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Lo mejor de ambos mundos",
                 "desc": "Sentirás el motor eléctrico del X3 30e xDrive en cuanto pises el acelerador. No obstante, la extraordinaria dinámica de marcha es tan solo una de las ventajas de la propulsión híbrida, que puedes pedir en una variante sin emisiones locales.",
-                "image": "/images/BMW/X3/caracteristicas/COMPONENTE_C.png"
+                "image": "/images/bmw/X3/caracteristicas/COMPONENTE_C.png"
             },
             {
                 "title": "Se ajusta a cualquier situación mientras conduces.",
                 "desc": "La suspensión adaptativa adapta los amortiguadores automáticamente a la calzada. ¿Prefieres una conducción deportiva? El My Mode SPORT te permite conducir el BMW más pegado a la carretera.",
-                "image": "/images/BMW/X3/caracteristicas/Componente_A.png"
+                "image": "/images/bmw/X3/caracteristicas/Componente_A.png"
             },
             {
                 "title": "También en la oscuridad: inconfundible.",
                 "desc": "Especialmente en la oscuridad llama la atención la parrilla BMW Iconic Glow. La luz blanca resalta sus contornos cuandoel vehículo está parado o en marcha.",
-                "image": "/images/BMW/X3/caracteristicas/Componente_B_X3.png"
+                "image": "/images/bmw/X3/caracteristicas/Componente_B_X3.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X3/galeria/BMW_THE_X3_CARRUSEL_V2_2.png",
-            "/images/BMW/X3/galeria/BMW_THE_X3_CARRUSEL_V2_3.png",
-            "/images/BMW/X3/galeria/BMW_X3_-_Componente_A.png",
-            "/images/BMW/X3/galeria/P90567921_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/P90567926_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/P90568043_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/X3_-_Componente_1.jpg",
-            "/images/BMW/X3/galeria/X3_Componente_2.jpg"
+            "/images/bmw/X3/galeria/BMW_THE_X3_CARRUSEL_V2_2.png",
+            "/images/bmw/X3/galeria/BMW_THE_X3_CARRUSEL_V2_3.png",
+            "/images/bmw/X3/galeria/BMW_X3_-_Componente_A.png",
+            "/images/bmw/X3/galeria/P90567921_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/P90567926_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/P90568043_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/X3_-_Componente_1.jpg",
+            "/images/bmw/X3/galeria/X3_Componente_2.jpg"
         ],
         "versions": [
             {
@@ -948,8 +948,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 75900000
             }
         ],
-        "desktopBanner": "/images/BMW/X3/banner/X3_Banner.png",
-        "mobileBanner": "/images/BMW/X3/banner/X3_Banner.png",
+        "desktopBanner": "/images/bmw/X3/banner/X3_Banner.png",
+        "mobileBanner": "/images/bmw/X3/banner/X3_Banner.png",
         "videoUrl": "https://www.youtube.com/embed/_Hsshnc8Q6w"
     },
     {
@@ -958,7 +958,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X2 M35i",
         "category": "SUV",
         "price": 60900000,
-        "image": "/images/BMW/X2 M35i/min-x2-m35i.png",
+        "image": "/images/bmw/X2 M35i/min-x2-m35i.png",
         "slogan": "MAKE IT REAL.",
         "isHybrid": false,
         "isElectric": false,
@@ -966,30 +966,30 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "RUEDAS DE 21\"",
                 "desc": "Llantas de aleación M de 21 pulgadas con radios en Y estilo 874 M en bicolor Jet Black, con fresado brillante. Tamaño de rueda 8J x 21, neumáticos 245/35 R21.",
-                "image": "/images/BMW/X2 M35i/caracteristicas/PERFORMANCE_12.png"
+                "image": "/images/bmw/X2 M35i/caracteristicas/PERFORMANCE_12.png"
             },
             {
                 "title": "INCONFUNDIBLE EN LA OSCURIDAD",
                 "desc": "Especialmente en la oscuridad llama la atención la parrilla BMW Iconic Glow. La luz blanca reslta sus contornos cuando el vehículo está parado o en marcha.",
-                "image": "/images/BMW/X2 M35i/caracteristicas/PERFORMANCE_23.png"
+                "image": "/images/bmw/X2 M35i/caracteristicas/PERFORMANCE_23.png"
             },
             {
                 "title": "DEPORTIVIDAD M",
                 "desc": "El paquete M Sport Pro optimiza la dinámica de marcha e intensifica la óptica M, especialmente por el uso de acentos oscuros en lugar de cromados.",
-                "image": "/images/BMW/X2 M35i/caracteristicas/Performance_2.png"
+                "image": "/images/bmw/X2 M35i/caracteristicas/Performance_2.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X2 M35i/galeria/BMW_Banner_Performance.png",
-            "/images/BMW/X2 M35i/galeria/CARROUSEL_V1_03.png",
-            "/images/BMW/X2 M35i/galeria/CARROUSEL_V1_04.png",
-            "/images/BMW/X2 M35i/galeria/CARROUSEL_V2_04.png",
-            "/images/BMW/X2 M35i/galeria/P90526440_lowRes_the-first-ever-bmw-i.jpg",
-            "/images/BMW/X2 M35i/galeria/bmw_Ix2_2.png",
-            "/images/BMW/X2 M35i/galeria/bmw_Ix2_3.png",
-            "/images/BMW/X2 M35i/galeria/bmw_Ix2_4.png",
-            "/images/BMW/X2 M35i/galeria/bmw_Ix2_5.png",
-            "/images/BMW/X2 M35i/galeria/bmw_Ix2_7.png"
+            "/images/bmw/X2 M35i/galeria/BMW_Banner_Performance.png",
+            "/images/bmw/X2 M35i/galeria/CARROUSEL_V1_03.png",
+            "/images/bmw/X2 M35i/galeria/CARROUSEL_V1_04.png",
+            "/images/bmw/X2 M35i/galeria/CARROUSEL_V2_04.png",
+            "/images/bmw/X2 M35i/galeria/P90526440_lowRes_the-first-ever-bmw-i.jpg",
+            "/images/bmw/X2 M35i/galeria/bmw_Ix2_2.png",
+            "/images/bmw/X2 M35i/galeria/bmw_Ix2_3.png",
+            "/images/bmw/X2 M35i/galeria/bmw_Ix2_4.png",
+            "/images/bmw/X2 M35i/galeria/bmw_Ix2_5.png",
+            "/images/bmw/X2 M35i/galeria/bmw_Ix2_7.png"
         ],
         "versions": [
             {
@@ -1005,8 +1005,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 60900000
             }
         ],
-        "desktopBanner": "/images/BMW/X2 M35i/banner/BMW_x2_M35i_Banner.png",
-        "mobileBanner": "/images/BMW/X2 M35i/banner/BMW_x2_M35i_Banner.png",
+        "desktopBanner": "/images/bmw/X2 M35i/banner/BMW_x2_M35i_Banner.png",
+        "mobileBanner": "/images/bmw/X2 M35i/banner/BMW_x2_M35i_Banner.png",
         "videoUrl": "https://www.youtube.com/embed/lIew4-FyGFE"
     },
     {
@@ -1023,28 +1023,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "El compañero ideal",
                 "desc": "Para recorridos espontáneos: con una autonomía de hasta 440 km.",
-                "image": "/images/BMW/iX1/caracteristicas/cq5dam.resized.img.585.low.time1663251591940.jpg"
+                "image": "/images/bmw/iX1/caracteristicas/cq5dam.resized.img.585.low.time1663251591940.jpg"
             },
             {
                 "title": "Recarga rápida",
                 "desc": "Recarga en solo 10 minutos hasta 120 km* de autonomía en un punto de carga High Power y 29 minutos para obtener hasta el 80% de la autonomía.",
-                "image": "/images/BMW/iX1/caracteristicas/image.1653550482024.jpg"
+                "image": "/images/bmw/iX1/caracteristicas/image.1653550482024.jpg"
             },
             {
                 "title": "Máxima eficiencia",
                 "desc": "Bajo consumo de solo 16,8–18,2 kWh/km gracias a tecnologías como la recuperación en la frenada.",
-                "image": "/images/BMW/iX1/caracteristicas/image.1653978899782.jpg"
+                "image": "/images/bmw/iX1/caracteristicas/image.1653978899782.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/iX1/galeria/1440x610_-_Banner_Performance_3.jpg",
-            "/images/BMW/iX1/galeria/CARROUSEL_V2_02.png",
-            "/images/BMW/iX1/galeria/CARROUSEL_V2_03.png",
-            "/images/BMW/iX1/galeria/DI22_000065707_1.jpg",
-            "/images/BMW/iX1/galeria/P90465694_lowRes_the-first-ever-bmw-i.jpg",
-            "/images/BMW/iX1/galeria/P90465696_lowRes_the-first-ever-bmw-i.jpg",
-            "/images/BMW/iX1/galeria/P90465716_lowRes_the-first-ever-bmw-i.jpg",
-            "/images/BMW/iX1/galeria/cq5dam.resized.img.585.low.time1651441704648.jpg"
+            "/images/bmw/iX1/galeria/1440x610_-_Banner_Performance_3.jpg",
+            "/images/bmw/iX1/galeria/CARROUSEL_V2_02.png",
+            "/images/bmw/iX1/galeria/CARROUSEL_V2_03.png",
+            "/images/bmw/iX1/galeria/DI22_000065707_1.jpg",
+            "/images/bmw/iX1/galeria/P90465694_lowRes_the-first-ever-bmw-i.jpg",
+            "/images/bmw/iX1/galeria/P90465696_lowRes_the-first-ever-bmw-i.jpg",
+            "/images/bmw/iX1/galeria/P90465716_lowRes_the-first-ever-bmw-i.jpg",
+            "/images/bmw/iX1/galeria/cq5dam.resized.img.585.low.time1651441704648.jpg"
         ],
         "versions": [
             {
@@ -1060,8 +1060,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 52400000
             }
         ],
-        "desktopBanner": "/images/BMW/iX1/banner/cq5dam.jpg",
-        "mobileBanner": "/images/BMW/iX1/banner/cq5dam.jpg",
+        "desktopBanner": "/images/bmw/iX1/banner/cq5dam.jpg",
+        "mobileBanner": "/images/bmw/iX1/banner/cq5dam.jpg",
         "videoUrl": "https://www.youtube.com/embed/rJ03d8by2xI"
     },
     {
@@ -1070,7 +1070,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X4",
         "category": "SUV",
         "price": 50900000,
-        "image": "/images/BMW/X4/MIN-X4.png",
+        "image": "/images/bmw/X4/MIN-X4.png",
         "slogan": "PODEROSO Y DINÁMICO COUPÉ",
         "isHybrid": false,
         "isElectric": false,
@@ -1078,28 +1078,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Cambios rápidos",
                 "desc": "Experimenta un mayor rendimiento con los cambios precisos de la transmisión automática deportiva de 8 velocidades estándar. Cuando se combina con el xDrive estándar, la tracción total inteligente de BMW, conquistará las carreteras en cada viaje que tengas.",
-                "image": "/images/BMW/X4/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/X4/caracteristicas/Modulo_Performance_B_948x619.jpg"
             },
             {
                 "title": "Motores dominantes",
                 "desc": "El nuevo BMW X4 está disponible con una amplia gama de motores BMW TwinPower Turbo de última generación, el primero de 2.0L gasolina o diesel de cuatro cilindros y el motor de gasolina de 6 cilindros en línea de tres litros M Performance.",
-                "image": "/images/BMW/X4/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/X4/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "Manejo equilibrado",
                 "desc": "El BMW X4 es un verdadero atleta con su distribución de peso 50/50 casi perfecta y suspensión M adaptativa estándar en el BMW X4 M40i, que ofrece una dinámica de conducción mejorada para una sensación más deportiva.",
-                "image": "/images/BMW/X4/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/X4/caracteristicas/Modulo_Performance_D_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/X4/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/X4/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
-            "/images/BMW/X4/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/X4/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
-            "/images/BMW/X4/galeria/Modulo_Performance_A_1440x610_3.png",
-            "/images/BMW/X4/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/X4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
-            "/images/BMW/X4/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
+            "/images/bmw/X4/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/X4/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
+            "/images/bmw/X4/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/X4/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
+            "/images/bmw/X4/galeria/Modulo_Performance_A_1440x610_3.png",
+            "/images/bmw/X4/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/X4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
+            "/images/bmw/X4/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
         ],
         "versions": [
             {
@@ -1115,8 +1115,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 50900000
             }
         ],
-        "desktopBanner": "/images/BMW/X4/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/X4/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/X4/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/X4/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/-8ygfFi7FWI"
     },
     {
@@ -1125,7 +1125,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X6",
         "category": "SUV, HÍBRIDO",
         "price": 95900000,
-        "image": "/images/BMW/X6/min-x6.png",
+        "image": "/images/bmw/X6/min-x6.png",
         "slogan": "DEPORTIVO Y PODEROSO",
         "isHybrid": true,
         "isElectric": false,
@@ -1133,25 +1133,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Deportividad perfecta",
                 "desc": "Con xDrive, el sistema inteligente de tracción total de BMW, distribuye automáticamente la potencia entre las ruedas para una tracción y control óptimo. La suspensión M adaptativa, en el M60i como en el xDrive40i, te permite elegir entre una conducción más relajada o deportiva, mientras que los frenos deportivos M están siempre listos para la acción con una respuesta precisa y un aspecto destacado.",
-                "image": "/images/BMW/X6/caracteristicas/X6_--_Exterior_4.png"
+                "image": "/images/bmw/X6/caracteristicas/X6_--_Exterior_4.png"
             },
             {
                 "title": "Iconic Glow",
                 "desc": "Envía un mensaje de poder y prestigio con la parrilla iluminada disponible con faros delanteros LED completos es un diseño icónico.",
-                "image": "/images/BMW/X6/caracteristicas/X6_--_Performance_2.png"
+                "image": "/images/bmw/X6/caracteristicas/X6_--_Performance_2.png"
             },
             {
                 "title": "Potencial Puro",
                 "desc": "te sitúa en una posición de potencia con los motores BMW TwinPower Turbo: un motor de 6 cilindros en línea mejorado con la última tecnología híbrida suave de 48 V en el X6 xDrive40i y un motor V-8 en el M60i con escape deportivo M disponible. Sistema.",
-                "image": "/images/BMW/X6/caracteristicas/X6_-_Grilled_2.png"
+                "image": "/images/bmw/X6/caracteristicas/X6_-_Grilled_2.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X6/galeria/X6_--_Interior_2.png",
-            "/images/BMW/X6/galeria/X6_--_Interior_climatizador.png",
-            "/images/BMW/X6/galeria/X6_-_-_Curved_Display.png",
-            "/images/BMW/X6/galeria/X6_-_-_Performance.png",
-            "/images/BMW/X6/galeria/X6_-_Sky_Lounge.png"
+            "/images/bmw/X6/galeria/X6_--_Interior_2.png",
+            "/images/bmw/X6/galeria/X6_--_Interior_climatizador.png",
+            "/images/bmw/X6/galeria/X6_-_-_Curved_Display.png",
+            "/images/bmw/X6/galeria/X6_-_-_Performance.png",
+            "/images/bmw/X6/galeria/X6_-_Sky_Lounge.png"
         ],
         "versions": [
             {
@@ -1191,8 +1191,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 135900000
             }
         ],
-        "desktopBanner": "/images/BMW/X6/banner/cq5dam.jpg",
-        "mobileBanner": "/images/BMW/X6/banner/cq5dam.jpg",
+        "desktopBanner": "/images/bmw/X6/banner/cq5dam.jpg",
+        "mobileBanner": "/images/bmw/X6/banner/cq5dam.jpg",
         "videoUrl": "https://www.youtube.com/embed/cTEQ_kEghUY"
     },
     {
@@ -1201,7 +1201,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X7",
         "category": "SUV",
         "price": 122900000,
-        "image": "/images/BMW/X7/MIN-X7.png",
+        "image": "/images/bmw/X7/MIN-X7.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": false,
@@ -1209,27 +1209,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Controles con estilo",
                 "desc": "Un nuevo interruptor, disponible con acabado de vidrio, hace que la selección de marchas sea fácil e intuitiva.",
-                "image": "/images/BMW/X7/caracteristicas/V11.jpg"
+                "image": "/images/bmw/X7/caracteristicas/V11.jpg"
             },
             {
                 "title": "Increíble interior",
                 "desc": "En el nuevo BMW X7 el lujo te rodea. Cada detalle está bien pensado, cada acabado es elegante y cada viaje se disfruta. Cuenta con un hermoso techo panorámico de vidrio estándar que crea una sensación abierta y espaciosa.",
-                "image": "/images/BMW/X7/caracteristicas/V9.jpg"
+                "image": "/images/bmw/X7/caracteristicas/V9.jpg"
             },
             {
                 "title": "Suspensión de aire.",
                 "desc": "El confort se extiende más allá de la cabina del BMW X7. La suspensión neumática de dos ejes estándar brinda una comodidad de manejo increíble, mientras que la altura ajustable permite una entrada y carga más fácil.",
-                "image": "/images/BMW/X7/caracteristicas/v8.jpg"
+                "image": "/images/bmw/X7/caracteristicas/v8.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/X7/galeria/731x476_A.jpg",
-            "/images/BMW/X7/galeria/731x476_B.jpg",
-            "/images/BMW/X7/galeria/731x476_C.jpg",
-            "/images/BMW/X7/galeria/731x476_D.jpg",
-            "/images/BMW/X7/galeria/Banner_2.jpg",
-            "/images/BMW/X7/galeria/Componente_D_v2.jpg",
-            "/images/BMW/X7/galeria/Componetne_C_v2.jpg"
+            "/images/bmw/X7/galeria/731x476_A.jpg",
+            "/images/bmw/X7/galeria/731x476_B.jpg",
+            "/images/bmw/X7/galeria/731x476_C.jpg",
+            "/images/bmw/X7/galeria/731x476_D.jpg",
+            "/images/bmw/X7/galeria/Banner_2.jpg",
+            "/images/bmw/X7/galeria/Componente_D_v2.jpg",
+            "/images/bmw/X7/galeria/Componetne_C_v2.jpg"
         ],
         "versions": [
             {
@@ -1269,8 +1269,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonus": 0
             }
         ],
-        "desktopBanner": "/images/BMW/X7/banner/Banner.jpg",
-        "mobileBanner": "/images/BMW/X7/banner/Banner.jpg",
+        "desktopBanner": "/images/bmw/X7/banner/Banner.jpg",
+        "mobileBanner": "/images/bmw/X7/banner/Banner.jpg",
         "videoUrl": "https://www.youtube.com/embed/hxD1d-wR1Qg"
     },
     {
@@ -1279,7 +1279,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X5",
         "category": "SUV, HÍBRIDO",
         "price": 77900000,
-        "image": "/images/BMW/X5/MIN-X5.png",
+        "image": "/images/bmw/X5/MIN-X5.png",
         "slogan": "",
         "isHybrid": true,
         "isElectric": false,
@@ -1287,25 +1287,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "El poder de hacer más",
                 "desc": "Disfruta de la aceleración y la capacidad de respuesta mejoradas del sistema Mild-Hybrid de 48 V de BMW, incluida la tecnología de última generación, ahora incluida de serie en el BMW M TwinPower Turbo V-8 de 4,4 litros que impulsa el X5 M60i. ¿Busca una mayor eficiencia? El BMW X5 xDrive50e híbrido eléctrico enchufable ahora es capaz de alcanzar hasta 40 millas de autonomía totalmente eléctrica.. También disponible en versión diesel.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_EXterior_3 (1).png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_EXterior_3 (1).png"
             },
             {
                 "title": "Afronta cualquier camino con facilidad.",
                 "desc": "No hay límites para la confianza cuando conduces un BMW X5. Disfruta de la precisión del control dinámico de la amortiguación, estándar en todos los modelos, o de su elección entre suspensión M adaptativa o suspensión de 2 ejes, disponible en modelos específicos. Por último, el xDrive50e y el M60i incluyen de serie el sistema inteligente de tracción total de BMW.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_Motor.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_Motor.png"
             },
             {
                 "title": "Un futuro brillante",
                 "desc": "La nueva parrilla iluminada disponible resalta un exterior rediseñado, con una apariencia renovada para los parachoques, los faros, los respiraderos de aire, los embellecedores del escape y las luces traseras 3D.",
-                "image": "/images/BMW/X5/caracteristicas/X5_-_Exterior_3.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_-_Exterior_3.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X5/galeria/X5--_Interior_1.png",
-            "/images/BMW/X5/galeria/X5_--_EXterior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_5.png",
-            "/images/BMW/X5/galeria/X5_--_Performance.png"
+            "/images/bmw/X5/galeria/X5--_Interior_1.png",
+            "/images/bmw/X5/galeria/X5_--_EXterior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_5.png",
+            "/images/bmw/X5/galeria/X5_--_Performance.png"
         ],
         "versions": [
             {
@@ -1393,8 +1393,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 129900000
             }
         ],
-        "desktopBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
-        "mobileBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "desktopBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "mobileBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
         "videoUrl": "https://www.youtube.com/embed/YkyIkD8eJ-k"
     },
     {
@@ -1403,7 +1403,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X2",
         "category": "SUV",
         "price": 43900000,
-        "image": "/images/BMW/X2/MIN-X2.png",
+        "image": "/images/bmw/X2/MIN-X2.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": false,
@@ -1411,28 +1411,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "TECNOLOGÍA LED INTELIGENTE.",
                 "desc": "Radiantemente claro e inconfundible: Los faros, las luces traseras, las luces de conducción diurna y de posición iluminan tanto en estático como en movimiento con los LED más modernos.",
-                "image": "/images/BMW/X2/caracteristicas/BMW_Componente_B.png"
+                "image": "/images/bmw/X2/caracteristicas/BMW_Componente_B.png"
             },
             {
                 "title": "DEPORTIVAMENTE EXTROVERTIDO.",
                 "desc": "El diseño deportivo de las rejillas del radiador en Perlglanz cromado con rejilla de malla de serie resalta el llamativo aspecto.",
-                "image": "/images/BMW/X2/caracteristicas/BMW_Componente_C.png"
+                "image": "/images/bmw/X2/caracteristicas/BMW_Componente_C.png"
             },
             {
                 "title": "GRAN POTENCIA",
                 "desc": "Su versión a bencina le garantizan potencia y desempeño inigualables, sin descuidar el medio ambiente.",
-                "image": "/images/BMW/X2/caracteristicas/Interior_5.jpg"
+                "image": "/images/bmw/X2/caracteristicas/Interior_5.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/X2/galeria/BMW_Head_Up_Display.jpg",
-            "/images/BMW/X2/galeria/BMW_X2_Performance.png",
-            "/images/BMW/X2/galeria/Carga_inalambrica.jpg",
-            "/images/BMW/X2/galeria/Componente_3.jpg",
-            "/images/BMW/X2/galeria/Componente_4.jpg",
-            "/images/BMW/X2/galeria/Interior_3.jpg",
-            "/images/BMW/X2/galeria/Interior_6.jpg",
-            "/images/BMW/X2/galeria/Techo_1.jpg"
+            "/images/bmw/X2/galeria/BMW_Head_Up_Display.jpg",
+            "/images/bmw/X2/galeria/BMW_X2_Performance.png",
+            "/images/bmw/X2/galeria/Carga_inalambrica.jpg",
+            "/images/bmw/X2/galeria/Componente_3.jpg",
+            "/images/bmw/X2/galeria/Componente_4.jpg",
+            "/images/bmw/X2/galeria/Interior_3.jpg",
+            "/images/bmw/X2/galeria/Interior_6.jpg",
+            "/images/bmw/X2/galeria/Techo_1.jpg"
         ],
         "versions": [
             {
@@ -1472,8 +1472,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 43900000
             }
         ],
-        "desktopBanner": "/images/BMW/X2/banner/BMW_x2_Header.png",
-        "mobileBanner": "/images/BMW/X2/banner/BMW_x2_Header.png",
+        "desktopBanner": "/images/bmw/X2/banner/BMW_x2_Header.png",
+        "mobileBanner": "/images/bmw/X2/banner/BMW_x2_Header.png",
         "videoUrl": "https://www.youtube.com/embed/SaMqMDbi_ak"
     },
     {
@@ -1482,7 +1482,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X3",
         "category": "SUV",
         "price": 49900000,
-        "image": "/images/BMW/X3/MIN-X3.png",
+        "image": "/images/bmw/X3/MIN-X3.png",
         "slogan": "THE NEW X3",
         "isHybrid": false,
         "isElectric": false,
@@ -1490,28 +1490,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Ser uno con la carretera",
                 "desc": "La dirección deportiva variable con Servotronic mejora la sensación de conducción. Y hace que cada movimiento de la dirección sea más preciso.",
-                "image": "/images/BMW/X3/caracteristicas/COMPONENTE_C.png"
+                "image": "/images/bmw/X3/caracteristicas/COMPONENTE_C.png"
             },
             {
                 "title": "Una experiencia de conducción renovada.",
                 "desc": "Un ambiente de conducción optimizado para ofrecerte confort y paz, mientras disfrutas de un viaje lleno de novedades. Una sensación de tranquilidad que solo la última tecnología puede proporcionar.",
-                "image": "/images/BMW/X3/caracteristicas/Componente_A.png"
+                "image": "/images/bmw/X3/caracteristicas/Componente_A.png"
             },
             {
                 "title": "Se ajusta a cualquier situación mientras conduces.",
                 "desc": "La suspensión adaptativa adapta los amortiguadores automáticamente a la calzada. ¿Prefieres una conducción deportiva? El My Mode SPORT te permite conducir el BMW más pegado a la carretera.",
-                "image": "/images/BMW/X3/caracteristicas/Componente_B_X3.png"
+                "image": "/images/bmw/X3/caracteristicas/Componente_B_X3.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X3/galeria/BMW_THE_X3_CARRUSEL_V2_2.png",
-            "/images/BMW/X3/galeria/BMW_THE_X3_CARRUSEL_V2_3.png",
-            "/images/BMW/X3/galeria/BMW_X3_-_Componente_A.png",
-            "/images/BMW/X3/galeria/P90567921_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/P90567926_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/P90568043_highRes_the-new-bmw-x3-20-xd.jpg",
-            "/images/BMW/X3/galeria/X3_-_Componente_1.jpg",
-            "/images/BMW/X3/galeria/X3_Componente_2.jpg"
+            "/images/bmw/X3/galeria/BMW_THE_X3_CARRUSEL_V2_2.png",
+            "/images/bmw/X3/galeria/BMW_THE_X3_CARRUSEL_V2_3.png",
+            "/images/bmw/X3/galeria/BMW_X3_-_Componente_A.png",
+            "/images/bmw/X3/galeria/P90567921_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/P90567926_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/P90568043_highRes_the-new-bmw-x3-20-xd.jpg",
+            "/images/bmw/X3/galeria/X3_-_Componente_1.jpg",
+            "/images/bmw/X3/galeria/X3_Componente_2.jpg"
         ],
         "versions": [
             {
@@ -1574,8 +1574,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 75900000
             }
         ],
-        "desktopBanner": "/images/BMW/X3/banner/X3_Banner.png",
-        "mobileBanner": "/images/BMW/X3/banner/X3_Banner.png",
+        "desktopBanner": "/images/bmw/X3/banner/X3_Banner.png",
+        "mobileBanner": "/images/bmw/X3/banner/X3_Banner.png",
         "videoUrl": "https://www.youtube.com/embed/_Hsshnc8Q6w"
     },
     {
@@ -1584,7 +1584,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X1 HÍBRIDO",
         "category": "SUV, HÍBRIDOS",
         "price": 46900000,
-        "image": "/images/BMW/X1/min-x1.png",
+        "image": "/images/bmw/X1/min-x1.png",
         "slogan": "PERSIGUE TUS SUEÑOS",
         "isHybrid": true,
         "isElectric": false,
@@ -1592,28 +1592,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Lo mejor de dos mundos",
                 "desc": "Elige el modo de manejo, a combustión o completamente eléctrico.",
-                "image": "/images/BMW/X1/caracteristicas/06_Componente_E_-_800x800_1.png"
+                "image": "/images/bmw/X1/caracteristicas/06_Componente_E_-_800x800_1.png"
             },
             {
                 "title": "Un chasis único",
                 "desc": "Logra un movimiento casi imperceptible. Gracias a una distribución de peso equilibrada, además de su control dinámico de estabilidad y tracción, el BMW X1 Híbrido funciona con comodidad y precisión ante cualquier situación y en todo lugar.",
-                "image": "/images/BMW/X1/caracteristicas/07_Componente_F_-_800x800.jpg"
+                "image": "/images/bmw/X1/caracteristicas/07_Componente_F_-_800x800.jpg"
             },
             {
                 "title": "Máximo placer de conducir con la máxima eficiencia.",
                 "desc": "Con un motor de combustión con 110 kW (150 CV) y propulsión BMW eDrive con 130 kW (177 CV). Tendrás hasta 88 km* de autonomía totalmente eléctrica (WLTP) y modos de conducción inteligentes para una flexibilidad total.",
-                "image": "/images/BMW/X1/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/X1/caracteristicas/Modulo_Performance_B_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/X1/galeria/05_Componente_A_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_B_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_C_-_731x476.jpg",
-            "/images/BMW/X1/galeria/05_Componente_D_-_731x476.jpg",
-            "/images/BMW/X1/galeria/06_Componente_E_-_1440x610.png",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-02-Desktop.jpg",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.jpg",
-            "/images/BMW/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.webp"
+            "/images/bmw/X1/galeria/05_Componente_A_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_B_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_C_-_731x476.jpg",
+            "/images/bmw/X1/galeria/05_Componente_D_-_731x476.jpg",
+            "/images/bmw/X1/galeria/06_Componente_E_-_1440x610.png",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-02-Desktop.jpg",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.jpg",
+            "/images/bmw/X1/galeria/BMW-MY23-X1-Overview-Tech-Carousel-03-Desktop-v2.webp"
         ],
         "versions": [
             {
@@ -1641,8 +1641,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 54900000
             }
         ],
-        "desktopBanner": "/images/BMW/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
-        "mobileBanner": "/images/BMW/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
+        "desktopBanner": "/images/bmw/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
+        "mobileBanner": "/images/bmw/X1/banner/03_Foto_Principal_Modelo_-_1440x720.jpg",
         "videoUrl": "https://www.youtube.com/embed/TtrE-I6Yo-E"
     },
     {
@@ -1651,7 +1651,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "iX2",
         "category": "SUV, ELÉCTRICO",
         "price": 69900000,
-        "image": "/images/BMW/iX2/min-ix2.png",
+        "image": "/images/bmw/iX2/min-ix2.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": true,
@@ -1659,26 +1659,26 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Fácil de cargar en cualquier momento.",
                 "desc": "Llegar más lejos, ver más. Con una capacidad de la batería de hasta 64,8 kWh y una autonomía estimada de hasta 449 km, El BMW iX2 te lleva a tus destinos con toda tranquilidad. Y para trayectos más largos, la batería se recarga hasta el 80 % en tan solo 30 minutos",
-                "image": "/images/BMW/iX2/caracteristicas/BMW_Iconic_Glow.png"
+                "image": "/images/bmw/iX2/caracteristicas/BMW_Iconic_Glow.png"
             },
             {
                 "title": "BMW Iconic Glow",
                 "desc": "Especialmente de noche destaca el BMW Iconic Glow de la rejilla del radiador, ya sea con el vehículo parado o en marcha: una luz blanca resalta sus marcados contornos. Una innovadora tecnología de fibras LED permite conseguir efectos de iluminación espectaculares que se ven al conducir, abrir y cerrar el vehículo.",
-                "image": "/images/BMW/iX2/caracteristicas/BMW_iX2_1.png"
+                "image": "/images/bmw/iX2/caracteristicas/BMW_iX2_1.png"
             },
             {
                 "title": "Mas luz, más visión",
                 "desc": "Los faros de LED iluminan la calzada de forma óptima. Para conducir de forma segura con la mejor luz por carreteras oscuras. También las luces traseras son en tecnología LED.",
-                "image": "/images/BMW/iX2/caracteristicas/CARROUSEL_V2_05.png"
+                "image": "/images/bmw/iX2/caracteristicas/CARROUSEL_V2_05.png"
             }
         ],
         "gallery": [
-            "/images/BMW/iX2/galeria/BMW_X2_Performance.png",
-            "/images/BMW/iX2/galeria/CARROUSEL_V1_03.png",
-            "/images/BMW/iX2/galeria/CARROUSEL_V1_04.png",
-            "/images/BMW/iX2/galeria/CARROUSEL_V2_04.png",
-            "/images/BMW/iX2/galeria/P90526440_lowRes_the-first-ever-bmw-i.jpg",
-            "/images/BMW/iX2/galeria/bmw_Ix2_5.png"
+            "/images/bmw/iX2/galeria/BMW_X2_Performance.png",
+            "/images/bmw/iX2/galeria/CARROUSEL_V1_03.png",
+            "/images/bmw/iX2/galeria/CARROUSEL_V1_04.png",
+            "/images/bmw/iX2/galeria/CARROUSEL_V2_04.png",
+            "/images/bmw/iX2/galeria/P90526440_lowRes_the-first-ever-bmw-i.jpg",
+            "/images/bmw/iX2/galeria/bmw_Ix2_5.png"
         ],
         "versions": [
             {
@@ -1694,8 +1694,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 69900000
             }
         ],
-        "desktopBanner": "/images/BMW/iX2/banner/1920x1080.png",
-        "mobileBanner": "/images/BMW/iX2/banner/1920x1080.png",
+        "desktopBanner": "/images/bmw/iX2/banner/1920x1080.png",
+        "mobileBanner": "/images/bmw/iX2/banner/1920x1080.png",
         "videoUrl": "https://www.youtube.com/embed/se5CdhST4Cs"
     },
     {
@@ -1704,7 +1704,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "iX",
         "category": "Eléctricos",
         "price": 99900000,
-        "image": "/images/BMW/iX/min-ix.png",
+        "image": "/images/bmw/iX/min-ix.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": true,
@@ -1712,27 +1712,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Batería de alto voltaje",
                 "desc": "EL BMW IX esta equipado con una tecnología de última generación para maximizar la autonomía, sin sacrificar potencia ni dinamismo. Su eficiencia energética superior permite recorrer hasta 602 Km con una sola carga*.",
-                "image": "/images/BMW/iX/caracteristicas/BMW_iX_Exterior_1.jpg"
+                "image": "/images/bmw/iX/caracteristicas/BMW_iX_Exterior_1.jpg"
             },
             {
                 "title": "Mas ágil en un espacio reducido",
                 "desc": "Con la dirección activa integral, las ruedas traseras de tu BMW también giran. Eso hace que en estacionamientos estrechos se necesite menos espacio para maniobrar",
-                "image": "/images/BMW/iX/caracteristicas/BMW_iX_Exterior_2.jpg"
+                "image": "/images/bmw/iX/caracteristicas/BMW_iX_Exterior_2.jpg"
             },
             {
                 "title": "La altura adecuada en cada situación",
                 "desc": "Para obstáculos, un maletero lleno, o una conducción más deportiva. La suspensión neumática adaptativa en los dos ejes ajusta el tren de rodaje automáticamente o pulsando un botón",
-                "image": "/images/BMW/iX/caracteristicas/BMW_iX_Exterior_3.jpg"
+                "image": "/images/bmw/iX/caracteristicas/BMW_iX_Exterior_3.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/iX/galeria/BME_iX_Banner_2.png",
-            "/images/BMW/iX/galeria/BMW_iX_Interior_1 (1).jpg",
-            "/images/BMW/iX/galeria/BMW_iX_Interior_1.jpg",
-            "/images/BMW/iX/galeria/BMW_iX_Interior_2.jpg",
-            "/images/BMW/iX/galeria/BMW_iX_Interior_5.jpg",
-            "/images/BMW/iX/galeria/Banner_Form_Lanzamietno.png",
-            "/images/BMW/iX/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg"
+            "/images/bmw/iX/galeria/BME_iX_Banner_2.png",
+            "/images/bmw/iX/galeria/BMW_iX_Interior_1 (1).jpg",
+            "/images/bmw/iX/galeria/BMW_iX_Interior_1.jpg",
+            "/images/bmw/iX/galeria/BMW_iX_Interior_2.jpg",
+            "/images/bmw/iX/galeria/BMW_iX_Interior_5.jpg",
+            "/images/bmw/iX/galeria/Banner_Form_Lanzamietno.png",
+            "/images/bmw/iX/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg"
         ],
         "versions": [
             {
@@ -1748,8 +1748,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 99900000
             }
         ],
-        "desktopBanner": "/images/BMW/iX/banner/BMW_iX_Banner_1.jpg",
-        "mobileBanner": "/images/BMW/iX/banner/BMW_iX_Banner_1.jpg",
+        "desktopBanner": "/images/bmw/iX/banner/BMW_iX_Banner_1.jpg",
+        "mobileBanner": "/images/bmw/iX/banner/BMW_iX_Banner_1.jpg",
         "videoUrl": "https://www.youtube.com/embed/iBZJ1wH5WN0"
     },
     {
@@ -1758,7 +1758,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X5 HÍBRIDO",
         "category": "SUV",
         "price": 97900000,
-        "image": "/images/BMW/X5/MIN-X5.png",
+        "image": "/images/bmw/X5/MIN-X5.png",
         "slogan": "CARTEGORÍA: SUV, HÍBRIDO",
         "isHybrid": false,
         "isElectric": false,
@@ -1766,25 +1766,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Ingeniería excepcional",
                 "desc": "El BMW X5 Híbrido está disponible en gasolina, diesel y su opción eléctrica. Es el único modelo en toda su clase que funciona con motores de seis cilindros en línea, que se caracterizan por un refinamiento suave y acústica sedosa.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_EXterior_3 (1).png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_EXterior_3 (1).png"
             },
             {
                 "title": "Preparado para desafíos",
                 "desc": "El equipamiento de serie del BMW X5 HÍBRIDO incluye un sistema de control de crucero con función de frenado. Además de aviso de salida de carril y alerta de colisión frontal con intervención de frenado, que ahora también responde a los ciclistas.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_Motor.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_Motor.png"
             },
             {
                 "title": "Eficiencia y emisiones",
                 "desc": "Los motores del BMW X5 Híbrido aseguran economía de consumo y bajas emisiones. Sus versiones a gasolina y diesel garantizan potencia y desempeño inigualables. Y con su opción eléctrica, podrás conducir sin generar emisiones y prácticamente en silencio.",
-                "image": "/images/BMW/X5/caracteristicas/X5_-_Exterior_3.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_-_Exterior_3.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X5/galeria/X5--_Interior_1.png",
-            "/images/BMW/X5/galeria/X5_--_EXterior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_5.png",
-            "/images/BMW/X5/galeria/X5_--_Performance.png"
+            "/images/bmw/X5/galeria/X5--_Interior_1.png",
+            "/images/bmw/X5/galeria/X5_--_EXterior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_5.png",
+            "/images/bmw/X5/galeria/X5_--_Performance.png"
         ],
         "versions": [
             {
@@ -1812,8 +1812,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 112900000
             }
         ],
-        "desktopBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
-        "mobileBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "desktopBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "mobileBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
         "videoUrl": "https://www.youtube.com/embed/RhjjzyuwDsM"
     },
     {
@@ -1822,7 +1822,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "XM",
         "category": "BMW M",
         "price": 223900000,
-        "image": "/images/BMW/XM/min-xm.png",
+        "image": "/images/bmw/XM/min-xm.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": false,
@@ -1830,28 +1830,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Motor híbrido enchufable de 8 cilindros",
                 "desc": "El motor híbrido enchufable de 8 cilindros ofrece una experiencia de conducción emocionante, con una entrega de potencia superior y un sonido característico \"M\". El BMW XM utiliza una combinación experta de un motor eléctrico de 145 kW y un motor de gasolina V8 de 4.4 litros, equipado con dos turbocompresores, un sistema de control de válvulas totalmente variable VALVETRONIC y una inyección de combustible de alta precisión. Esta combinación permite al BMW XM acelerar sin límites y ofrecer una experiencia de conducción única.",
-                "image": "/images/BMW/XM/caracteristicas/Captura_de_pantalla_2023-03-28_180418.png"
+                "image": "/images/bmw/XM/caracteristicas/Captura_de_pantalla_2023-03-28_180418.png"
             },
             {
                 "title": "Suspensión M Adaptativa",
                 "desc": "La suspensión M adaptativa profesional proporciona un manejo deportivo sin comprometer la comodidad. La dirección activa integral ayuda a estabilizar el vehículo a altas velocidades y también reduce el radio de giro. Además, los estabilizadores activos disminuyen los movimientos laterales de la carrocería, lo que mejora tanto la dinámica como la comodidad del vehículo.",
-                "image": "/images/BMW/XM/caracteristicas/Captura_de_pantalla_2023-03-28_180454.png"
+                "image": "/images/bmw/XM/caracteristicas/Captura_de_pantalla_2023-03-28_180454.png"
             },
             {
                 "title": "Diferencial M Sport",
                 "desc": "El diferencial M Sport garantiza que la potencia de tu vehículo se transmita de manera óptima a la carretera. Este sistema distribuye la fuerza de manera variable entre las ruedas traseras, mejorando así la tracción y estabilidad en diversas situaciones, como al acelerar para salir de una curva, al tomar curvas a gran velocidad o cuando las condiciones de la carretera son variables.",
-                "image": "/images/BMW/XM/caracteristicas/XM_MOTOR.png"
+                "image": "/images/bmw/XM/caracteristicas/XM_MOTOR.png"
             }
         ],
         "gallery": [
-            "/images/BMW/XM/galeria/BMW-MY23-XM-Gallery-14.webp",
-            "/images/BMW/XM/galeria/BMW-MY23-XM-Gallery-21.jpg",
-            "/images/BMW/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-03-Desktop.webp",
-            "/images/BMW/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-04-Desktop-v2.webp",
-            "/images/BMW/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-05-Desktop-v2.webp",
-            "/images/BMW/XM/galeria/Banner_XM_v2.png",
-            "/images/BMW/XM/galeria/Captura_de_pantalla_2023-03-28_180325.png",
-            "/images/BMW/XM/galeria/Captura_de_pantalla_2023-03-30_155447.png"
+            "/images/bmw/XM/galeria/BMW-MY23-XM-Gallery-14.webp",
+            "/images/bmw/XM/galeria/BMW-MY23-XM-Gallery-21.jpg",
+            "/images/bmw/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-03-Desktop.webp",
+            "/images/bmw/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-04-Desktop-v2.webp",
+            "/images/bmw/XM/galeria/BMW-MY23-XM-Overview-Tech-Carousel-05-Desktop-v2.webp",
+            "/images/bmw/XM/galeria/Banner_XM_v2.png",
+            "/images/bmw/XM/galeria/Captura_de_pantalla_2023-03-28_180325.png",
+            "/images/bmw/XM/galeria/Captura_de_pantalla_2023-03-30_155447.png"
         ],
         "versions": [
             {
@@ -1867,8 +1867,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 223900000
             }
         ],
-        "desktopBanner": "/images/BMW/XM/banner/cq5dam.jpg",
-        "mobileBanner": "/images/BMW/XM/banner/cq5dam.jpg",
+        "desktopBanner": "/images/bmw/XM/banner/cq5dam.jpg",
+        "mobileBanner": "/images/bmw/XM/banner/cq5dam.jpg",
         "videoUrl": "https://www.youtube.com/embed/weEMOJmtTyw"
     },
     {
@@ -1877,7 +1877,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "M4 CONVERTIBLE",
         "category": "CONVERTIBLE, BMW M",
         "price": 123900000,
-        "image": "/images/BMW/M4 CONVERTIBLE/min-m4.png",
+        "image": "/images/bmw/M4 CONVERTIBLE/min-m4.png",
         "slogan": "THE M4",
         "isHybrid": false,
         "isElectric": false,
@@ -1885,27 +1885,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Motor de alta precisión",
                 "desc": "El motor BMW M TwinPower Turbo de 3.0 litros de 6 cilindros en línea de este cupé de alto rendimiento puede generar hasta 503 caballos de fuerza en los modelos M4 Competition, lo que te lleva de 0 a 60 mph en tan solo 3,7 segundos.",
-                "image": "/images/BMW/M4 CONVERTIBLE/caracteristicas/Exterior_3.jpg"
+                "image": "/images/bmw/M4 CONVERTIBLE/caracteristicas/Exterior_3.jpg"
             },
             {
                 "title": "Suspensión única",
                 "desc": "Dispone de un sistema inteligente de tracción a las cuatro ruedas M xDrive, desarrollado especialmente para el uso en el BMW M4 Competition. Con una perfecta distribución de su peso, una suspensión optimizada y un sistema de tracción poderoso, una vez más es líder en conducción y experiencia.",
-                "image": "/images/BMW/M4 CONVERTIBLE/caracteristicas/Luces_traseras.jpg"
+                "image": "/images/bmw/M4 CONVERTIBLE/caracteristicas/Luces_traseras.jpg"
             },
             {
                 "title": "Luces traseras inconfundibles.",
                 "desc": "El mejor estilo hasta por detrás: las luces traseras con tecnología láser impresionan por su patrón de luz ultra-preciso. Las haces de fibra óptica tridimensionales generan contornos extremadamente nítidos y mejoran la visibilidad.",
-                "image": "/images/BMW/M4 CONVERTIBLE/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/M4 CONVERTIBLE/caracteristicas/Modulo_Performance_B_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/M4 CONVERTIBLE/galeria/Asientos_M_Carbon.jpg",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Banner_2_M4_Cabrio.png",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Interior.jpg",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Interior_3.jpg",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Teconologia_y_Seguridad_3.jpg",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Teconologia_y_segurdad_4.jpg",
-            "/images/BMW/M4 CONVERTIBLE/galeria/Volante_M.jpg"
+            "/images/bmw/M4 CONVERTIBLE/galeria/Asientos_M_Carbon.jpg",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Banner_2_M4_Cabrio.png",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Interior.jpg",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Interior_3.jpg",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Teconologia_y_Seguridad_3.jpg",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Teconologia_y_segurdad_4.jpg",
+            "/images/bmw/M4 CONVERTIBLE/galeria/Volante_M.jpg"
         ],
         "versions": [
             {
@@ -1921,8 +1921,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 123900000
             }
         ],
-        "desktopBanner": "/images/BMW/M4 CONVERTIBLE/banner/4k_Banner_M4_Cabrio.png",
-        "mobileBanner": "/images/BMW/M4 CONVERTIBLE/banner/4k_Banner_M4_Cabrio.png",
+        "desktopBanner": "/images/bmw/M4 CONVERTIBLE/banner/4k_Banner_M4_Cabrio.png",
+        "mobileBanner": "/images/bmw/M4 CONVERTIBLE/banner/4k_Banner_M4_Cabrio.png",
         "videoUrl": "https://www.youtube.com/embed/GIzm8TW_294"
     },
     {
@@ -1931,7 +1931,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "X5 M",
         "category": "SUV, BMW M",
         "price": 185900000,
-        "image": "/images/BMW/X5/MIN-X5.png",
+        "image": "/images/bmw/X5/MIN-X5.png",
         "slogan": "THE NEW X5 M",
         "isHybrid": false,
         "isElectric": false,
@@ -1939,25 +1939,25 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "BMW M TwinPower Turbo",
                 "desc": "El motor de gasolina V8 BMW M TwinPower Turbo es un motor de elevadas prestaciones que entusiasma por su eficiente desarrollo de potencia y sonido deportivo.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_EXterior_3 (1).png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_EXterior_3 (1).png"
             },
             {
                 "title": "Un atleta innato",
                 "desc": "Equipado con dos turbo cargadores de doble entrada, inyección de alta presión y Valvetronic, la unidad de energía de alto desempeño impresiona tanto en el camino como en las pistas: Un torque de 750 Nm, aceleración de 0 a 100 km/h en 3,8 segundos y de 0 a 200 km/h en 13,4 segundos.",
-                "image": "/images/BMW/X5/caracteristicas/X5_--_Motor.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_--_Motor.png"
             },
             {
                 "title": "Precisión de cambio",
                 "desc": "La transmisión automática deportiva M de 8 velocidades de cambio rápido con Drivelogic está finamente diseñada para brindar una respuesta rápida y suave, brindando una sensación deportiva a medida que se desliza a través de las marchas.",
-                "image": "/images/BMW/X5/caracteristicas/X5_-_Exterior_3.png"
+                "image": "/images/bmw/X5/caracteristicas/X5_-_Exterior_3.png"
             }
         ],
         "gallery": [
-            "/images/BMW/X5/galeria/X5--_Interior_1.png",
-            "/images/BMW/X5/galeria/X5_--_EXterior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_3.png",
-            "/images/BMW/X5/galeria/X5_--_Interior_5.png",
-            "/images/BMW/X5/galeria/X5_--_Performance.png"
+            "/images/bmw/X5/galeria/X5--_Interior_1.png",
+            "/images/bmw/X5/galeria/X5_--_EXterior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_3.png",
+            "/images/bmw/X5/galeria/X5_--_Interior_5.png",
+            "/images/bmw/X5/galeria/X5_--_Performance.png"
         ],
         "versions": [
             {
@@ -1973,8 +1973,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 185900000
             }
         ],
-        "desktopBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
-        "mobileBanner": "/images/BMW/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "desktopBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
+        "mobileBanner": "/images/bmw/X5/banner/cq5dam.resized.img.1680.large.time1673960417242.jpg",
         "videoUrl": "https://www.youtube.com/embed/HmAK4_PYNnQ"
     },
     {
@@ -1983,7 +1983,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "M2",
         "category": "BMW M",
         "price": 97900000,
-        "image": "/images/BMW/M2/min-m2.png",
+        "image": "/images/bmw/M2/min-m2.png",
         "slogan": "THE M2",
         "isHybrid": false,
         "isElectric": false,
@@ -1991,27 +1991,27 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Deportista de élite",
                 "desc": "El motor de gasolina de 6 cilindros en línea BMW M TwinPower Turbo ofrece una entrega de potencia dinámica y el característico sonido del motor M. Tecnologías altamente eficientes como doble VANOS, VALVETRONIC, High Precision Injection y un turbocompresor TwinScroll garantizan una deportividad de élite.",
-                "image": "/images/BMW/M2/caracteristicas/BMW-MY23-M2Coupe-Overview-Performance-02-all.webp"
+                "image": "/images/bmw/M2/caracteristicas/BMW-MY23-M2Coupe-Overview-Performance-02-all.webp"
             },
             {
                 "title": "Se adapta a su entorno",
                 "desc": "Con el chasis M adaptativo con ajuste variable del amortiguador, se pueden ajustar individualmente las características del chasis: desde sensaciones cómodas de conducción diaria hasta especialmente deportivas para un manejo ágil. El sistema Driving Experience Control permite adaptar rápida y fácilmente el bastidor controlado electrónicamente a las condiciones de la carretera y a la situación de conducción.",
-                "image": "/images/BMW/M2/caracteristicas/Componente_A_M2.jpg"
+                "image": "/images/bmw/M2/caracteristicas/Componente_A_M2.jpg"
             },
             {
                 "title": "Máxima agilidad",
                 "desc": "La tracción trasera, el diferencial activo M estándar y la suspensión adaptativa M estándar trabajan en armonía, una potente combinación de agilidad y manejo. Siéntete en control cada vez que hagas una parada rápida con los frenos compuestos M estándar.",
-                "image": "/images/BMW/M2/caracteristicas/Componente_B_M2.jpg"
+                "image": "/images/bmw/M2/caracteristicas/Componente_B_M2.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/M2/galeria/BMW_M2_Componente_3.jpg",
-            "/images/BMW/M2/galeria/BMW_M2_Componente_4.jpg",
-            "/images/BMW/M2/galeria/Banner_m2_2.png",
-            "/images/BMW/M2/galeria/EXTERIOR_7_M2.jpg",
-            "/images/BMW/M2/galeria/Interior_1.jpg",
-            "/images/BMW/M2/galeria/Interior_2.jpg",
-            "/images/BMW/M2/galeria/Interior_5_M2.jpg"
+            "/images/bmw/M2/galeria/BMW_M2_Componente_3.jpg",
+            "/images/bmw/M2/galeria/BMW_M2_Componente_4.jpg",
+            "/images/bmw/M2/galeria/Banner_m2_2.png",
+            "/images/bmw/M2/galeria/EXTERIOR_7_M2.jpg",
+            "/images/bmw/M2/galeria/Interior_1.jpg",
+            "/images/bmw/M2/galeria/Interior_2.jpg",
+            "/images/bmw/M2/galeria/Interior_5_M2.jpg"
         ],
         "versions": [
             {
@@ -2051,8 +2051,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 140900000
             }
         ],
-        "desktopBanner": "/images/BMW/M2/banner/BMW_M2_Banner.png",
-        "mobileBanner": "/images/BMW/M2/banner/BMW_M2_Banner.png",
+        "desktopBanner": "/images/bmw/M2/banner/BMW_M2_Banner.png",
+        "mobileBanner": "/images/bmw/M2/banner/BMW_M2_Banner.png",
         "videoUrl": "https://www.youtube.com/embed/GX1JGLVshWM"
     },
     {
@@ -2061,7 +2061,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "M3",
         "category": "BMW M",
         "price": 118900000,
-        "image": "/images/BMW/M3/min-m3.png",
+        "image": "/images/bmw/M3/min-m3.png",
         "slogan": "THE M3",
         "isHybrid": false,
         "isElectric": false,
@@ -2069,23 +2069,23 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Motor de alta precisión",
                 "desc": "El motor BMW M TwinPower Turbo de 3.0 litros de 6 cilindros en línea de este sedán de alto rendimiento puede generar hasta 510 caballos de fuerza , lo que te lleva de 0 a 100 km/hr en tan solo 3,9 segundos.",
-                "image": "/images/BMW/M3/caracteristicas/Componente_A.png"
+                "image": "/images/bmw/M3/caracteristicas/Componente_A.png"
             },
             {
                 "title": "Suspensión única",
                 "desc": "Dispone de un sistema de tracción trasera con un diferencial deportivo M, desarrollado especialmente para este modelo. Con una perfecta distribución de su peso, una suspensión optimizada y un sistema de tracción poderoso, una vez más es líder en conducción y experiencia.",
-                "image": "/images/BMW/M3/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/M3/caracteristicas/Modulo_Performance_B_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/M3/galeria/BMW_CUrved_Display_4.png",
-            "/images/BMW/M3/galeria/Banner_2_M3.png",
-            "/images/BMW/M3/galeria/M3.jpg",
-            "/images/BMW/M3/galeria/M3_Curved_Display.png",
-            "/images/BMW/M3/galeria/M3_Curved_Display_1.png",
-            "/images/BMW/M3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/M3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/M3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg"
+            "/images/bmw/M3/galeria/BMW_CUrved_Display_4.png",
+            "/images/bmw/M3/galeria/Banner_2_M3.png",
+            "/images/bmw/M3/galeria/M3.jpg",
+            "/images/bmw/M3/galeria/M3_Curved_Display.png",
+            "/images/bmw/M3/galeria/M3_Curved_Display_1.png",
+            "/images/bmw/M3/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/M3/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/M3/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg"
         ],
         "versions": [
             {
@@ -2113,8 +2113,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 185000000
             }
         ],
-        "desktopBanner": "/images/BMW/M3/banner/M3_Banner_4K.jpg",
-        "mobileBanner": "/images/BMW/M3/banner/M3_Banner_4K.jpg",
+        "desktopBanner": "/images/bmw/M3/banner/M3_Banner_4K.jpg",
+        "mobileBanner": "/images/bmw/M3/banner/M3_Banner_4K.jpg",
         "videoUrl": "https://www.youtube.com/embed/sMI8NimLXdw"
     },
     {
@@ -2123,7 +2123,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "M5",
         "category": "BMW M",
         "price": 164900000,
-        "image": "/images/BMW/M5/min-m5.png",
+        "image": "/images/bmw/M5/min-m5.png",
         "slogan": "THE M5",
         "isHybrid": false,
         "isElectric": false,
@@ -2131,28 +2131,28 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Conduce hasta el límite.",
                 "desc": "El eficiente sistema BMW eDrive tiene una autonomía totalmente eléctrica de hasta 40km*.",
-                "image": "/images/BMW/M5/caracteristicas/M5_PHEV.jpg"
+                "image": "/images/bmw/M5/caracteristicas/M5_PHEV.jpg"
             },
             {
                 "title": "Torque total desde la primera revolución.",
                 "desc": "El motor eléctrico de 194 hp proporciona un potente empuje hacia adelante y maximiza la aceleración en una interacción perfecta con el motor V8 de 4.4 litros.",
-                "image": "/images/BMW/M5/caracteristicas/Suspension.jpg"
+                "image": "/images/bmw/M5/caracteristicas/Suspension.jpg"
             },
             {
                 "title": "Modos que dejan huella.",
                 "desc": "El M Drive Professional disponible es tu compañero confiable para vueltas rápidas, mientras que el Boost Control ofrece una aceleración impresionante.",
-                "image": "/images/BMW/M5/caracteristicas/Versatilidad.jpg"
+                "image": "/images/bmw/M5/caracteristicas/Versatilidad.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/M5/galeria/BMW_M5_-_PERFORMANCE.png",
-            "/images/BMW/M5/galeria/Banner.png",
-            "/images/BMW/M5/galeria/Componente_3.jpg",
-            "/images/BMW/M5/galeria/Interior_1.jpg",
-            "/images/BMW/M5/galeria/Interior_2.jpg",
-            "/images/BMW/M5/galeria/Interior_3.jpg",
-            "/images/BMW/M5/galeria/Interior_4.jpg",
-            "/images/BMW/M5/galeria/Seguridad.jpg"
+            "/images/bmw/M5/galeria/BMW_M5_-_PERFORMANCE.png",
+            "/images/bmw/M5/galeria/Banner.png",
+            "/images/bmw/M5/galeria/Componente_3.jpg",
+            "/images/bmw/M5/galeria/Interior_1.jpg",
+            "/images/bmw/M5/galeria/Interior_2.jpg",
+            "/images/bmw/M5/galeria/Interior_3.jpg",
+            "/images/bmw/M5/galeria/Interior_4.jpg",
+            "/images/bmw/M5/galeria/Seguridad.jpg"
         ],
         "versions": [
             {
@@ -2168,8 +2168,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 164900000
             }
         ],
-        "desktopBanner": "/images/BMW/M5/banner/Banner_M5.png",
-        "mobileBanner": "/images/BMW/M5/banner/Banner_M5.png",
+        "desktopBanner": "/images/bmw/M5/banner/Banner_M5.png",
+        "mobileBanner": "/images/bmw/M5/banner/Banner_M5.png",
         "videoUrl": "https://www.youtube.com/embed/-TPUS6Tqa4c"
     },
     {
@@ -2178,7 +2178,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "Z4",
         "category": "CONVERTIBLE",
         "price": 86400000,
-        "image": "/images/BMW/Z4/min-z4.png",
+        "image": "/images/bmw/Z4/min-z4.png",
         "slogan": "",
         "isHybrid": false,
         "isElectric": false,
@@ -2186,29 +2186,29 @@ export const BMW_MODELS: Vehicle[] = [
             {
                 "title": "Dinamismo puro",
                 "desc": "El Z4 tiene presencia que se traduce en increíble desempeño en la carretera. Con la tecnología más avanzada y los innovadores componentes de propulsión y suspensión, se alcanza un impresionante desempeño y un dinamismo de conducción de primera clase.",
-                "image": "/images/BMW/Z4/caracteristicas/Modulo_Performance_B_948x619.jpg"
+                "image": "/images/bmw/Z4/caracteristicas/Modulo_Performance_B_948x619.jpg"
             },
             {
                 "title": "Vértigo apasionado",
                 "desc": "Conducir un BMW Z4 siempre ha sido un momento totalmente vertiginoso. Las razones de esto incluyen una suspensión perfectamente ajustada y una precisión de dirección superior, un subproducto de la tracción trasera, que permite una experiencia absolutamente superior.",
-                "image": "/images/BMW/Z4/caracteristicas/Modulo_Performance_C_948x619.jpg"
+                "image": "/images/bmw/Z4/caracteristicas/Modulo_Performance_C_948x619.jpg"
             },
             {
                 "title": "Cambio deportivo Steptronic",
                 "desc": "El cambio deportivo Steptronic de 8 velocidades con sistema Launch Control hace posible cambios muy deportivos, tanto en modo automático como manual, por medio de las levas o la palanca de cambio, para deslizarse con comodidad o conducir con especial dinamismo.",
-                "image": "/images/BMW/Z4/caracteristicas/Modulo_Performance_D_948x619.jpg"
+                "image": "/images/bmw/Z4/caracteristicas/Modulo_Performance_D_948x619.jpg"
             }
         ],
         "gallery": [
-            "/images/BMW/Z4/galeria/Modulo_Diseno_Interior_A_948x619 (1).jpg",
-            "/images/BMW/Z4/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Performance_A_1440x610_28.png",
-            "/images/BMW/Z4/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
-            "/images/BMW/Z4/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
+            "/images/bmw/Z4/galeria/Modulo_Diseno_Interior_A_948x619 (1).jpg",
+            "/images/bmw/Z4/galeria/Modulo_Diseno_Interior_A_948x619.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Diseno_Interior_B_948x619.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Diseno_Interior_C_948x619.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Diseno_Interior_D_948x619.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Performance_A_1440x610_28.png",
+            "/images/bmw/Z4/galeria/Modulo_Tecnologia_Seguridad_C_1320x679.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Tecnologia_Seguridad_D_1320x679.jpg",
+            "/images/bmw/Z4/galeria/Modulo_Tecnologia_Seguridad_E_1320x679.jpg"
         ],
         "versions": [
             {
@@ -2224,8 +2224,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "bonusPrice": 86400000
             }
         ],
-        "desktopBanner": "/images/BMW/Z4/banner/Banner_Hero_1440x720.jpg",
-        "mobileBanner": "/images/BMW/Z4/banner/Banner_Hero_1440x720.jpg",
+        "desktopBanner": "/images/bmw/Z4/banner/Banner_Hero_1440x720.jpg",
+        "mobileBanner": "/images/bmw/Z4/banner/Banner_Hero_1440x720.jpg",
         "videoUrl": ""
     }
 ];
