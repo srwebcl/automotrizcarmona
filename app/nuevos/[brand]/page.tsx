@@ -357,6 +357,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                            brandId === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
                                            brandId === 'seat' ? "/images/seat/servicio-seat.jpeg" : 
                                            brandId === 'cupra' ? "/images/cupra/servicio-cupra.png" :
+                                           brandId === 'honda' ? "/images/honda/servicio-honda.jpeg" :
                                            "/images/quick_access_servicio_1770350934207.png" 
                                 },
                                 { 
@@ -368,6 +369,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                            brandId === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
                                            brandId === 'seat' ? "/images/seat/repuestos-seat.jpeg" :
                                            brandId === 'cupra' ? "/images/cupra/repuestos-cupra.png" :
+                                           brandId === 'honda' ? "/images/honda/repuestos-honda.jpeg" :
                                            "/images/quick_access_repuestos_1770350949447.png" 
                                 },
                                 { 
@@ -379,7 +381,8 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                            brandId === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
                                            brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : 
                                            brandId === 'seat' ? "/images/seat/usados-seat.jpeg" : 
-                                           brandId === 'cupra' ? "/images/cupra/cupra-usados.png" : "/images/sucursales.jpg", 
+                                           brandId === 'cupra' ? "/images/cupra/cupra-usados.png" : 
+                                           brandId === 'honda' ? "/images/honda/usados-honda.jpeg" : "/images/sucursales.jpg", 
                                     isExternal: true 
                                 },
                                 { 
@@ -391,6 +394,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                            brandId === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
                                            brandId === 'seat' ? "/images/seat/sucursales.jpg" :
                                            brandId === 'cupra' ? "/images/cupra/sucursales-cupra.jpg" :
+                                           brandId === 'honda' ? "/images/honda/sucursal-honda.png" :
                                            "/images/sucursales.jpg" 
                                 }
                             ].map((item) => (
