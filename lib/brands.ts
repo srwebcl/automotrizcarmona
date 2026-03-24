@@ -120,8 +120,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
                 type: 'image' 
             },
             { 
-                web: '/images/seat/banner-seat2.jpg', 
-                mobile: '/images/seat/banner-seat2.jpg', 
+                web: '/images/seat/ibiza/banner/banner-seat2.jpg', 
+                mobile: '/images/seat/ibiza/banner/banner-seat2.jpg', 
                 type: 'image' 
             }
         ]
