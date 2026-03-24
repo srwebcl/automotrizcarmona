@@ -47,7 +47,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <div className="p-5">
                     <div className="mb-2">
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{vehicle.brand}</span>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors">{vehicle.model}</h3>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase">{vehicle.model}</h3>
                         <p className="text-sm text-gray-500 truncate">{vehicle.version}</p>
                     </div>
 

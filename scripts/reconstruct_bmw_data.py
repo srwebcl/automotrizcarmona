@@ -1,10 +1,32 @@
 import os
 import re
 import json
+import unicodedata
 
 BASE_PATH = "/Users/sebastianrodriguezmilla/proyectos-web/automotrizcarmona/public/images/bmw"
 OUTPUT_FILE = "/Users/sebastianrodriguezmilla/proyectos-web/automotrizcarmona/lib/models/bmw.ts"
 REL_PATH_BRAND = "/images/bmw"
+
+CATEGORY_MAP = {
+    'BMW M': 'BMW M',
+    'CONVERTIBLE': 'Convertible',
+    'CONVERTIBLES': 'Convertible',
+    'COUPE': 'Coupé',
+    'COUPÉ': 'Coupé',
+    'COUPPE': 'Coupé',
+    'COUPÉ': 'Coupé',
+    'ELÉCTRICO': 'Eléctrico',
+    'ELECTRICO': 'Eléctrico',
+    'ELÉCTRICOS': 'Eléctrico',
+    'ELECTRICOS': 'Eléctrico',
+    'HATCHBACK': 'Hatchback',
+    'HIBRIDO': 'Híbrido',
+    'HÍBRIDO': 'Híbrido',
+    'HÍBRIDOS': 'Híbrido',
+    'SEDAN': 'Sedán',
+    'SEDÁN': 'Sedán',
+    'SUV': 'SUV'
+}
 
 def format_currency(val):
     try:
@@ -12,19 +34,36 @@ def format_currency(val):
         return int(val)
     except: return 0
 
-import unicodedata
-
-def normalize(name):
-    if not name: return ""
-    # Normalize unicode to decomposed form then filter out combining marks
-    nfkd_form = unicodedata.normalize('NFKD', name)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore').decode('ASCII')
-    return re.sub(r'[^A-Z0-9]', '', only_ascii.upper())
+def normalize_text(text):
+    if not text: return ""
+    # Strip accents for matching and IDs
+    nfkd_form = unicodedata.normalize('NFKD', text)
+    return "".join([c for c in nfkd_form if not unicodedata.combining(c)]).upper()
 
 def safe_id(name):
-    nfkd_form = unicodedata.normalize('NFKD', name)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore').decode('ASCII')
-    return only_ascii.replace(" ", "-").lower()
+    # IDs should be ASCII and no accents
+    n_text = normalize_text(name)
+    return n_text.replace(" ", "-").lower()
+
+def safe_path(text):
+    # Crucial for Vercel: enforce NFC normalization for paths
+    return unicodedata.normalize('NFC', text)
+
+def clean_category(cat_str):
+    parts = [p.strip() for p in cat_str.split(',') if p.strip()]
+    cleaned = []
+    for p in parts:
+        search_key = normalize_text(p)
+        found = False
+        for k, v in CATEGORY_MAP.items():
+            if normalize_text(k) == search_key:
+                cleaned.append(v)
+                found = True
+                break
+        if not found:
+            cleaned.append(p.capitalize())
+    # Remove duplicates and sort canoniacally
+    return ", ".join(sorted(list(set(cleaned))))
 
 def get_image_paths(folder_path, rel_prefix):
     images = []
@@ -32,41 +71,36 @@ def get_image_paths(folder_path, rel_prefix):
         try:
             for f in sorted(os.listdir(folder_path)):
                 if f.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
-                    images.append(f"{rel_prefix}/{f}")
+                    # Folder and filename must be NFC for Linux/Vercel
+                    images.append(safe_path(f"{rel_prefix}/{f}"))
         except: pass
     return images
 
 def match_folder_to_section(folder_name, sections):
-    nf = normalize(folder_name)
-    
-    # Priority 1: Exact Match MODELO
+    nf = normalize_text(folder_name)
+    # Exact Match
     for sec in sections:
-        if normalize(sec["name"]) == nf: return sec
-        
-    # Priority 2: Exact Match URL part
+        if normalize_text(sec["name"]) == nf: return sec
+    # URL Part Match
     for sec in sections:
-        if normalize(sec["url"].split("/")[-1]) == nf: return sec
-        
-    # Priority 3: Substring
+        if normalize_text(sec["url"].split("/")[-1]) == nf: return sec
+    # Substring
     for sec in sections:
-        ns = normalize(sec["name"])
-        nu = normalize(sec["url"].split("/")[-1])
+        ns = normalize_text(sec["name"])
+        nu = normalize_text(sec["url"].split("/")[-1])
         if nf in ns or ns in nf or nf in nu or nu in nf:
-            # Special case avoidance
             if nf == "X1" and "IX1" in nu: continue
             if nf == "X2" and "IX2" in nu: continue
             if nf == "X" and "IX" in nu: continue
             return sec
-            
     return None
 
 def parse_bmw():
     with open(os.path.join(BASE_PATH, "info-modelos.md"), 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # Folders in BASE_PATH (excluding non-dir)
     folders = sorted([d for d in os.listdir(BASE_PATH) if os.path.isdir(os.path.join(BASE_PATH, d))])
-    
-    # Exclude certain folders if needed
     folders = [f for f in folders if f.upper() != "ANTIGUO"]
 
     # Split MD by URL
@@ -82,13 +116,13 @@ def parse_bmw():
     all_models = []
     for folder in folders:
         sec = match_folder_to_section(folder, sections)
-        
-        rel_root = f"{REL_PATH_BRAND}/{folder}"
+        folder_nfc = safe_path(folder)
+        rel_root = f"{REL_PATH_BRAND}/{folder_nfc}"
         path_root = os.path.join(BASE_PATH, folder)
         
         if not sec:
             model_name = folder
-            category = "Gama BMW"
+            category = "SUV" if (folder.startswith("X") or folder.startswith("iX")) else "Sedán"
             slogan = "The Power of Choice"
             content = ""
             versions = [{"name": folder, "transmission": "Steptronic", "traction": "Trasera", "fuel": "Gasolina", "listPrice": 0, "bonusPrice": 0}]
@@ -96,7 +130,15 @@ def parse_bmw():
             model_name = sec["name"]
             content = sec["content"]
             cat_match = re.search(r"(?:CATEGORÍA|CATEGORIA):\s*(.*)", content, re.I)
-            category = cat_match.group(1).strip() if cat_match else ("SUV" if folder.startswith("X") else "Gama BMW")
+            if cat_match:
+                category = clean_category(cat_match.group(1))
+            else:
+                # Fallback based on name/folder
+                if folder.startswith("X") or folder.startswith("iX"): category = "SUV"
+                elif "CONVERTIBLE" in folder.upper() or "CABRIO" in folder.upper(): category = "Convertible"
+                elif "COUP" in folder.upper(): category = "Coupé"
+                elif "HATCH" in folder.upper() or "SERIE 1" in folder.upper(): category = "Hatchback"
+                else: category = "Sedán"
             
             # Slogan
             lines = [l.strip() for l in content.split('\n') if l.strip()]
@@ -109,7 +151,7 @@ def parse_bmw():
 
             # Versions
             versions = []
-            v_match = re.search(r"VERSIONES:?\n(.*?)(?=\n===|\nhttp|$)", content, re.DOTALL | re.I)
+            v_match = re.search(r"VERSIONES:?\n(.*?)(?=\n===|\nhttp|$)", data, re.DOTALL | re.I)
             if v_match:
                 blocks = re.split(r'\n\n+', v_match.group(1).strip())
                 for block in blocks:
@@ -130,16 +172,12 @@ def parse_bmw():
                             elif "consumo" in kl: v_item["fuel"] = v
                             elif "precio de lista" in kl: v_item["listPrice"] = format_currency(v)
                             elif "bono" in kl: v_item["bonus"] = format_currency(v)
-                    
                     v_item.setdefault("transmission", "Steptronic")
                     v_item.setdefault("traction", "Trasera")
-                    
-                    # Fuel logic
-                    fuel = "Gasolina"
-                    if "HÍBRIDO" in category.upper() or "HIBRIDO" in category.upper(): fuel = "Híbrido"
-                    elif "ELÉCTRICO" in category.upper() or "ELECTRICO" in category.upper() or folder.upper().startswith("I"): fuel = "Eléctrico"
-                    v_item.setdefault("fuel", fuel)
-                    
+                    f_type = "Gasolina"
+                    if "Híbrido" in category: f_type = "Híbrido"
+                    elif "Eléctrico" in category or folder.upper().startswith("I"): f_type = "Eléctrico"
+                    v_item.setdefault("fuel", f_type)
                     v_item["bonus"] = v_item.get("bonus", 0)
                     v_item["listPrice"] = v_item.get("listPrice", 0)
                     v_item["bonusPrice"] = v_item["listPrice"] - v_item["bonus"]
@@ -158,17 +196,16 @@ def parse_bmw():
         feat_images = get_image_paths(os.path.join(path_root, "caracteristicas"), f"{rel_root}/caracteristicas")
         banners = get_image_paths(os.path.join(path_root, "banner"), f"{rel_root}/banner")
 
-        # Features from MD
+        # Features
         features = []
-        f_match = re.search(r"CARACTER[IÍ]STICAS:?\n(.*?)(?=\nVERSIONES:|\n===|$)", content, re.DOTALL | re.I)
+        f_match = re.search(r"CARACTER[IÍ]STICAS:?\n(.*?)(?=\nVERSIONES:|\n===|$)", data, re.DOTALL | re.I)
         if f_match:
             blocks = [b.strip() for b in f_match.group(1).split('\n\n') if b.strip()]
             for idx, block in enumerate(blocks):
                 blines = [l.strip() for l in block.split('\n') if l.strip()]
                 if not blines: continue
                 features.append({
-                    "title": blines[0],
-                    "desc": " ".join(blines[1:]),
+                    "title": blines[0], "desc": " ".join(blines[1:]),
                     "image": feat_images[idx] if idx < len(feat_images) else miniature
                 })
 
@@ -178,16 +215,16 @@ def parse_bmw():
             "name": model_name,
             "category": category,
             "price": min(v["bonusPrice"] for v in versions) if versions else 0,
-            "image": miniature,
+            "image": safe_path(miniature),
             "slogan": slogan,
-            "isHybrid": "HÍBRIDO" in category.upper() or "HIBRIDO" in category.upper() or "HIBRIDO" in folder.upper(),
-            "isElectric": "ELÉCTRICO" in category.upper() or "ELECTRICO" in category.upper() or folder.upper().startswith("I"),
+            "isHybrid": "Híbrido" in category,
+            "isElectric": "Eléctrico" in category or folder.upper().startswith("I"),
             "features": features,
             "gallery": gallery,
             "versions": versions,
             "desktopBanner": banners[0] if banners else f"{REL_PATH_BRAND}/banner-bmw.jpg",
             "mobileBanner": banners[0] if banners else f"{REL_PATH_BRAND}/banner-bmw.jpg",
-            "videoUrl": f"https://www.youtube.com/embed/{re.search(r'youtu\.be/([A-Za-z0-9_-]+)', content).group(1)}" if re.search(r'youtu\.be/([A-Za-z0-9_-]+)', content) else ""
+            "videoUrl": f"https://www.youtube.com/embed/{re.search(r'youtu\.be/([A-Za-z0-9_-]+)', data).group(1)}" if re.search(r'youtu\.be/([A-Za-z0-9_-]+)', data) else ""
         })
 
     return all_models
@@ -197,4 +234,4 @@ with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
     f.write(f"import {{ Vehicle }} from './types';\n\n")
     f.write(f"export const BMW_MODELS: Vehicle[] = {json.dumps(models, indent=4, ensure_ascii=False)};\n")
 
-print(f"Finished! Total folders processed: {len(models)}")
+print(f"Finished! Total folders: {len(models)}")
