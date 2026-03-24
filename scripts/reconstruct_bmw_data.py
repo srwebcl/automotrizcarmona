@@ -120,6 +120,23 @@ def parse_bmw_md():
                         elif "precio de lista" in k_lower: v_data["listPrice"] = format_currency(val)
                         elif "bono del mes" in k_lower or "bono" in k_lower: v_data["bonus"] = format_currency(val)
                 
+                # Default values for mandatory fields
+                v_data.setdefault("transmission", "N/A")
+                v_data.setdefault("traction", "Trasera")
+                
+                # Smart fuel detection
+                fuel_type = "Gasolina"
+                cat_low = category.lower()
+                name_low = model_name.lower()
+                if "híbrido" in cat_low or "hibrido" in cat_low or "hibrido" in name_low:
+                    fuel_type = "Híbrido"
+                elif "eléctrico" in cat_low or "electrico" in cat_low or "eléctrico" in name_low or model_name.startswith("i"):
+                    fuel_type = "Eléctrico"
+                elif "diésel" in name_low or "diesel" in name_low:
+                    fuel_type = "Diésel"
+                
+                v_data.setdefault("fuel", fuel_type)
+                
                 if "bonus" in v_data and "listPrice" in v_data:
                     v_data["bonusPrice"] = v_data["listPrice"] - v_data["bonus"]
                 elif "listPrice" in v_data:

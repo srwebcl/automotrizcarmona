@@ -50,6 +50,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Delantera",
                 "listPrice": 35900000,
                 "bonus": 6000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 29900000
             },
             {
@@ -61,6 +62,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Delantera",
                 "listPrice": 42900000,
                 "bonus": 4000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 38900000
             },
             {
@@ -129,6 +131,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Delantera",
                 "listPrice": 39900000,
                 "bonus": 5000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 34900000
             },
             {
@@ -139,6 +142,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "torque": "400 / 2.000-4.500",
                 "traction": "xDrive (4x4 inteligente)",
                 "listPrice": 69900000,
+                "fuel": "Gasolina",
                 "bonusPrice": 69900000,
                 "bonus": 0
             }
@@ -257,6 +261,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 65900000,
                 "bonus": 7000000,
+                "fuel": "Híbrido",
                 "bonusPrice": 58900000
             }
         ],
@@ -310,6 +315,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 47900000,
                 "bonus": 4500000,
+                "fuel": "Gasolina",
                 "bonusPrice": 43400000
             },
             {
@@ -321,6 +327,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 65900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 58900000
             },
             {
@@ -332,6 +339,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 53900000,
                 "bonus": 3500000,
+                "fuel": "Gasolina",
                 "bonusPrice": 50400000
             },
             {
@@ -343,6 +351,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 79900000,
                 "bonus": 5000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 74900000
             }
         ],
@@ -395,6 +404,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 86900000,
                 "bonus": 4500000,
+                "fuel": "Gasolina",
                 "bonusPrice": 82400000
             }
         ],
@@ -446,6 +456,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Edrive",
                 "listPrice": 87900000,
                 "bonus": 8000000,
+                "fuel": "Eléctrico",
                 "bonusPrice": 79900000
             }
         ],
@@ -618,6 +629,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 54900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 47900000
             },
             {
@@ -629,6 +641,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 86900000,
                 "bonus": 4500000,
+                "fuel": "Gasolina",
                 "bonusPrice": 82400000
             }
         ],
@@ -804,6 +817,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "sDrive",
                 "listPrice": 41900000,
                 "bonus": 5000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 36900000
             },
             {
@@ -839,6 +853,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "BMW sDrive (delantera)",
                 "listPrice": 51900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 44900000
             },
             {
@@ -850,6 +865,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "BMW sDrive (delantera)",
                 "listPrice": 53900000,
                 "bonus": 6000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 47900000
             },
             {
@@ -873,6 +889,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "BMW xDrive (4x4 inteligente)",
                 "listPrice": 53900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 46900000
             }
         ],
@@ -927,6 +944,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 79900000,
                 "bonus": 4000000,
+                "fuel": "Híbrido",
                 "bonusPrice": 75900000
             }
         ],
@@ -1038,6 +1056,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Delantera",
                 "listPrice": 56900000,
                 "bonus": 4500000,
+                "fuel": "Eléctrico",
                 "bonusPrice": 52400000
             }
         ],
@@ -1092,6 +1111,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 59900000,
                 "bonus": 9000000,
+                "transmission": "N/A",
                 "bonusPrice": 50900000
             }
         ],
@@ -1357,6 +1377,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 121900000,
                 "bonus": 9000000,
+                "fuel": "Híbrido",
                 "bonusPrice": 112900000
             },
             {
@@ -1423,6 +1444,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "sDrive",
                 "listPrice": 55900000,
                 "bonus": 6000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 49900000
             },
             {
@@ -1434,6 +1456,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 58900000,
                 "bonus": 6000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 52900000
             },
             {
@@ -1445,6 +1468,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "sDrive",
                 "listPrice": 49900000,
                 "bonus": 6000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 43900000
             }
         ],
@@ -1499,6 +1523,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "sDrive",
                 "listPrice": 65900000,
                 "bonus": 5000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 60900000
             },
             {
@@ -1510,6 +1535,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 91900000,
                 "bonus": 4000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 87900000
             },
             {
@@ -1521,6 +1547,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "sDrive",
                 "listPrice": 57900000,
                 "bonus": 8000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 49900000
             },
             {
@@ -1531,6 +1558,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 62900000,
                 "bonus": 9000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 53900000
             },
             {
@@ -1542,6 +1570,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 79900000,
                 "bonus": 4000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 75900000
             }
         ],
@@ -1608,6 +1637,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xLine",
                 "listPrice": 60900000,
                 "bonus": 6000000,
+                "fuel": "Híbrido",
                 "bonusPrice": 54900000
             }
         ],
@@ -1660,6 +1690,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 77900000,
                 "bonus": 8000000,
+                "fuel": "Eléctrico",
                 "bonusPrice": 69900000
             }
         ],
@@ -1712,6 +1743,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "torque": "700 Nm desde 0 rpm",
                 "listPrice": 108900000,
                 "bonus": 9000000,
+                "traction": "Trasera",
+                "fuel": "Eléctrico",
                 "bonusPrice": 99900000
             }
         ],
@@ -1775,6 +1808,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 121900000,
                 "bonus": 9000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 112900000
             }
         ],
@@ -1829,6 +1863,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 232900000,
                 "bonus": 9000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 223900000
             }
         ],
@@ -1988,6 +2023,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 104900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 97900000
             },
             {
@@ -1999,6 +2035,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 110900000,
                 "bonus": 5000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 105900000
             },
             {
@@ -2009,6 +2046,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "torque": "650 / 2.750-5.500 (Nm/rpm)",
                 "listPrice": 149900000,
                 "bonus": 9000000,
+                "traction": "Trasera",
+                "fuel": "Gasolina",
                 "bonusPrice": 140900000
             }
         ],
@@ -2058,6 +2097,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "M xDrive",
                 "listPrice": 125900000,
                 "bonus": 7000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 118900000
             },
             {
@@ -2068,6 +2108,8 @@ export const BMW_MODELS: Vehicle[] = [
                 "torque": "650 / 2.750-5.950 (Nm/rpm)",
                 "listPrice": 200000000,
                 "bonus": 15000000,
+                "traction": "Trasera",
+                "fuel": "Gasolina",
                 "bonusPrice": 185000000
             }
         ],
@@ -2122,6 +2164,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "M xDrive",
                 "listPrice": 173900000,
                 "bonus": 9000000,
+                "fuel": "Gasolina",
                 "bonusPrice": 164900000
             }
         ],
