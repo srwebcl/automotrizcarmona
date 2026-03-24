@@ -6,11 +6,43 @@ export const HONDA_MODELS: Vehicle[] = [
         brand: 'honda',
         name: 'Honda Civic',
         category: 'Sedán',
-        price: 24990000,
+        price: 29990000,
         image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp',
         isHybrid: false,
         isNew: false,
         slogan: 'El legado continúa',
+        features: [
+            {
+                title: 'Motor Turbo 1.5L',
+                desc: 'Nueva generación con motor de aleación de aluminio y 16 válvulas DOHC i-VTEC.',
+                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+            },
+            {
+                title: 'VSA - Estabilizador de Vehículo',
+                desc: 'Optimiza la seguridad equilibrando automáticamente la tracción y el frenado de forma independiente.',
+                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+            },
+            {
+                title: 'Equipamiento Tecnológico',
+                desc: 'Pantalla táctil de 9", navegador integrado y sistema de audio de 6 parlantes.',
+                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+            }
+        ],
+        versions: [
+            {
+                name: 'Civic Touring CVT 1.5T',
+                motor: '1.5T',
+                transmission: 'CVT',
+                power: '176 hp',
+                traction: 'FWD',
+                fuel: 'Gasolina',
+                listPrice: 31390000,
+                bonus: 1400000,
+                bonusPrice: 29990000
+            }
+        ],
+        desktopBanner: '/images/honda/CIVIC/banner/Precio-_-Cuota-26-de-Marzo_Civic-Escritorio-scaled.webp',
+        mobileBanner: '/images/honda/CIVIC/banner/Precio-_-Cuota-26-de-Marzo_Civic-Escritorio-scaled.webp'
     },
     {
         id: 'wr-v',
@@ -74,40 +106,176 @@ export const HONDA_MODELS: Vehicle[] = [
     {
         id: 'hr-v',
         brand: 'honda',
-        name: 'New Honda HR-V',
+        name: 'New HR-V',
         category: 'SUV',
-        price: 19990000,
+        price: 25990000,
         image: '/images/honda/New HR-V/Menu-HRV-Touring.webp',
         isHybrid: false,
         isNew: true,
         slogan: 'Sofisticación en cada detalle',
+        features: [
+            {
+                title: 'Sistema ULT',
+                desc: 'Sistema de configuración de asientos versátil exclusivo de Honda para maximizar el espacio de carga.',
+                image: '/images/honda/New HR-V/Menu-HRV-Touring.webp'
+            },
+            {
+                title: 'HDC - Control de descenso de pendientes',
+                desc: 'Permite bajar superficies inclinadas de forma controlada sin intervención manual de los frenos.',
+                image: '/images/honda/New HR-V/Menu-HRV-Touring.webp'
+            },
+            {
+                title: 'Iluminación Full LED',
+                desc: 'Sistema de iluminación completo en LED para mayor visibilidad y estética moderna.',
+                image: '/images/honda/New HR-V/Menu-HRV-Touring.webp'
+            }
+        ],
+        gallery: [
+            '/images/honda/New HR-V/galeria/1.webp',
+            '/images/honda/New HR-V/galeria/2.webp',
+            '/images/honda/New HR-V/galeria/3.webp',
+            '/images/honda/New HR-V/galeria/4.webp',
+            '/images/honda/New HR-V/galeria/5.webp',
+            '/images/honda/New HR-V/galeria/6.webp',
+            '/images/honda/New HR-V/galeria/7.webp',
+            '/images/honda/New HR-V/galeria/8.jpg'
+        ],
+        versions: [
+            {
+                name: 'New HR-V Touring',
+                motor: '1.5L i-VTEC',
+                transmission: 'Automática CVT',
+                power: '119 hp',
+                traction: 'FWD',
+                fuel: 'Gasolina',
+                listPrice: 26990000,
+                bonus: 1000000,
+                bonusPrice: 25990000
+            }
+        ],
+        desktopBanner: '/images/honda/New HR-V/banner/Precio-_-Cuota-26-de-Marzo_HRV-Desktop-1-scaled.webp',
+        mobileBanner: '/images/honda/New HR-V/banner/Precio-_-Cuota-26-de-Marzo_HRV-Desktop-1-scaled.webp'
     },
     {
         id: 'zr-v',
         brand: 'honda',
         name: 'Honda ZR-V',
         category: 'SUV',
-        price: 26990000,
+        price: 29490000,
         image: '/images/honda/ZR-V/Honda-ZRV-1024x427.webp',
         isHybrid: false,
         isNew: false,
+        slogan: 'Sofisticación deportiva',
+        features: [
+            {
+                title: 'LKAS - Asistencia para mantenerse en el carril',
+                desc: 'Facilita la conducción manteniendo el vehículo centrado en el carril.',
+                image: '/images/honda/ZR-V/caracteristicas/asistencia-cambio-carril.jpg'
+            },
+            {
+                title: 'ACC - Control crucero adaptable',
+                desc: 'Sistema inteligente que se adapta a la velocidad de los vehículos delante.',
+                image: '/images/honda/ZR-V/caracteristicas/control-crucero.jpg'
+            },
+            {
+                title: 'RDM - Mitigación de salida de carril',
+                desc: 'Alerta mediante vibración del volante y señal en tablero si el vehículo cruza el límite de la vía.',
+                image: '/images/honda/ZR-V/caracteristicas/salida-carril.jpg'
+            }
+        ],
+        gallery: [
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-1.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-2.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-3.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-4.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-5.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-diseno-web-6.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-confort-web-1.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-confort-web-4.jpg',
+            '/images/honda/ZR-V/galeria/ZRV-carrusel-confort-web-verdadera4.jpg'
+        ],
+        versions: [
+            {
+                name: 'ZR-V EXL 2.0 AUT. 4X2',
+                motor: '2.0L',
+                transmission: 'CVT',
+                power: '155 hp',
+                traction: '4x2',
+                fuel: 'Gasolina',
+                listPrice: 31990000,
+                bonus: 2500000,
+                bonusPrice: 29490000
+            },
+            {
+                name: 'ZR-V TOURING 2.0 AUT. 4X2',
+                motor: '2.0L',
+                transmission: 'CVT',
+                power: '155 hp',
+                traction: '4x2',
+                fuel: 'Gasolina',
+                listPrice: 33490000,
+                bonus: 3000000,
+                bonusPrice: 30490000
+            }
+        ],
+        desktopBanner: '/images/honda/ZR-V/banner/Precio-_-Cuota-26-de-Marzo_ZRV-Desktop-1-scaled.webp'
     },
     {
         id: 'cr-v',
         brand: 'honda',
         name: 'Honda CR-V',
         category: 'SUV',
-        price: 31990000,
+        price: 39990000,
         image: '/images/honda/CR-V/Honda-CRV-1024x427.webp',
         isHybrid: false,
         isNew: false,
         slogan: 'Liderazgo en movimiento',
+        features: [
+            {
+                title: 'Motor 1.5 Turbo VTEC',
+                desc: 'Equilibrio entre potencia y eficiencia con tecnología VTEC Turbo.',
+                image: '/images/honda/CR-V/caracteristicas/Civic-carrusel-motor-2.webp'
+            },
+            {
+                title: 'Sistema de audio Bose premium',
+                desc: 'Equipamiento con 12 altavoces para una experiencia de sonido superior.',
+                image: '/images/honda/CR-V/caracteristicas/RENDIMIENTO.webp'
+            },
+            {
+                title: 'Tracción Real Time 4x4',
+                desc: 'Control y tracción inteligente para cualquier terreno.',
+                image: '/images/honda/CR-V/caracteristicas/AWD.webp'
+            }
+        ],
+        gallery: [
+            '/images/honda/CR-V/galeria/CRV-carrusel-diseno-1.webp',
+            '/images/honda/CR-V/galeria/CRV-carrusel-diseno-2.webp',
+            '/images/honda/CR-V/galeria/CRV-carrusel-diseno-3.webp',
+            '/images/honda/CR-V/galeria/CRV-carrusel-tecnologia-1.jpg',
+            '/images/honda/CR-V/galeria/CRV-carrusel-tecnologia-2.webp',
+            '/images/honda/CR-V/galeria/CRV-carrusel-tecnologia-3.webp',
+            '/images/honda/CR-V/galeria/crv-portada-v2.webp'
+        ],
+        versions: [
+            {
+                name: 'CR-V Touring 1.5 Turbo Aut. 4x4',
+                motor: '1.5 Turbo VTEC',
+                transmission: 'Automática',
+                power: '188 hp',
+                traction: '4x4',
+                fuel: 'Gasolina',
+                listPrice: 42990000,
+                bonus: 3000000,
+                bonusPrice: 39990000
+            }
+        ],
+        desktopBanner: '/images/honda/CR-V/banner/Precio-_-Cuota-26-de-Marzo_CRV-Desktop-1-scaled.webp'
     },
     {
         id: 'cr-v-hybrid',
         brand: 'honda',
         name: 'Honda CR-V e:HEV',
-        category: 'SUV',
+        category: 'SUV, Híbrido',
         price: 46990000,
         image: '/images/honda/CR-V e:HEV/Honda-CRV-Hybrid-1024x427.webp',
         isHybrid: true,
@@ -193,7 +361,7 @@ export const HONDA_MODELS: Vehicle[] = [
                 power: '285 hp',
                 traction: '4x4',
                 fuel: 'Gasolina',
-                listPrice: 59990000, // Guessing from bonus
+                listPrice: 59990000,
                 bonus: 3000000,
                 bonusPrice: 56990000
             },

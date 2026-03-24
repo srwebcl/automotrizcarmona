@@ -3,7 +3,7 @@ Este archivo contiene la metadata y la matriz de precios detallada para la Honda
 1. Metadata del Modelo
 marca: "Honda"
 modelo: "CR-V"
-categoria: "SUV Hybrid"
+categoria: "SUV, Híbrido"
 combustible: "Híbrido (e:HEV)"
 tecnologia_motor: "Honda e:HEV"
 seguridad:

@@ -82,8 +82,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-red-600',
         bannerSlides: [
             { 
-                web: '/images/honda/banner-1.webp', 
-                mobile: '/images/honda/banner-1.webp', 
+                web: '/images/honda/banner-honda.webp', 
+                mobile: '/images/honda/banner-honda.webp', 
                 type: 'image' 
             }
         ]
