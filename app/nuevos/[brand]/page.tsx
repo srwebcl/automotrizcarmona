@@ -89,7 +89,10 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
 
     const ALL_MODELS = models;
 
-    const availableCategories = Array.from(new Set(ALL_MODELS.map(m => m.category)));
+    const availableCategories = Array.from(new Set(
+        ALL_MODELS.flatMap(m => m.category.split(',').map(c => c.trim()))
+    )).sort();
+
     const hasHybrids = ALL_MODELS.some(m => m.isHybrid);
     const hasElectrics = ALL_MODELS.some(m => m.isElectric);
     
@@ -134,7 +137,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             ? ALL_MODELS.filter(m => m.isHybrid)
             : activeCategory === 'Eléctrico'
                 ? ALL_MODELS.filter(m => m.isElectric)
-                : ALL_MODELS.filter(m => m.category === activeCategory);
+                : ALL_MODELS.filter(m => m.category.split(',').map(c => c.trim()).includes(activeCategory));
 
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);

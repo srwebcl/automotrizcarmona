@@ -494,7 +494,7 @@ export const BMW_MODELS: Vehicle[] = [
         "videoUrl": "https://www.youtube.com/embed/uNx_WZ3Uezg"
     },
     {
-        "id": "serie-2-coupé",
+        "id": "serie-2-coupe",
         "brand": "bmw",
         "name": "SERIE 2 COUPE",
         "category": "COUPÉ",
@@ -717,7 +717,7 @@ export const BMW_MODELS: Vehicle[] = [
         "videoUrl": "https://www.youtube.com/embed/b98aOUzWPuE"
     },
     {
-        "id": "serie-3-híbrido",
+        "id": "serie-3-hibrido",
         "brand": "bmw",
         "name": "SERIE 3 HÍBRIDO",
         "category": "SEDÁN, HÍBRIDO",
@@ -762,7 +762,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Trasera",
                 "listPrice": 65900000,
                 "bonus": 7000000,
-                "fuel": "Gasolina",
+                "fuel": "Híbrido",
                 "bonusPrice": 58900000
             }
         ],
@@ -1021,46 +1021,36 @@ export const BMW_MODELS: Vehicle[] = [
         "videoUrl": "https://www.youtube.com/embed/48cb_0xfrcI"
     },
     {
-        "id": "serie-5-hibrido",
-        "brand": "bmw",
-        "name": "SERIE 5 HIBRIDO",
-        "category": "Gama BMW",
-        "price": 0,
-        "image": "/images/bmw/SERIE 5 HIBRIDO/min-s5-hibrido.png",
-        "slogan": "The Power of Choice",
-        "isHybrid": true,
-        "isElectric": false,
-        "features": [],
-        "gallery": [],
-        "versions": [
-            {
-                "name": "SERIE 5 HIBRIDO",
-                "transmission": "Steptronic",
-                "traction": "Trasera",
-                "fuel": "Gasolina",
-                "listPrice": 0,
-                "bonusPrice": 0
-            }
-        ],
-        "desktopBanner": "/images/bmw/banner-bmw.jpg",
-        "mobileBanner": "/images/bmw/banner-bmw.jpg",
-        "videoUrl": ""
-    },
-    {
         "id": "serie-7-hibrido",
         "brand": "bmw",
-        "name": "SERIE 7 HIBRIDO",
+        "name": "SERIE 7",
         "category": "Gama BMW",
         "price": 0,
         "image": "/images/bmw/SERIE 7 HIBRIDO/min-s7.png",
-        "slogan": "The Power of Choice",
+        "slogan": "THE NEW 7.",
         "isHybrid": true,
         "isElectric": false,
-        "features": [],
+        "features": [
+            {
+                "title": "LO MEJOR DE DOS MUNDOS",
+                "desc": "El BMW 750e híbrido enchufable transforma la interacción entre el motor de combustión y el motor eléctrico en una perfecta armonía de conducción. En rutas cortas, puedes deslizarte hasta tu destino solo con energía eléctrica, casi sin ruido y sin emisiones locales.",
+                "image": "/images/bmw/SERIE 7 HIBRIDO/caracteristicas/Modulo_Performance_A_800x522.jpg"
+            },
+            {
+                "title": "MY MODES Y BMW ICONIC SOUNDS",
+                "desc": "Disfruta de una interacción de luz, sonido y clima optimizada para tu estado de ánimo con My Modes. Descubre el sonido compuesto por Hans Zimmer para cada modo de conducción. En el nuevo BMW Serie 7, cada viaje se convierte en un experiencia nueva y fascinante.",
+                "image": "/images/bmw/SERIE 7 HIBRIDO/caracteristicas/Modulo_Performance_B_800x522.jpg"
+            },
+            {
+                "title": "UN TOQUE DE CLASE",
+                "desc": "Los controles de vidrio agregan un atractivo visual exquisito y hacen que conducir este sedán sea un ejercicio táctil de lujo.",
+                "image": "/images/bmw/SERIE 7 HIBRIDO/caracteristicas/Modulo_Performance_C_800x522.jpg"
+            }
+        ],
         "gallery": [],
         "versions": [
             {
-                "name": "SERIE 7 HIBRIDO",
+                "name": "SERIE 7",
                 "transmission": "Steptronic",
                 "traction": "Trasera",
                 "fuel": "Gasolina",
@@ -1070,7 +1060,7 @@ export const BMW_MODELS: Vehicle[] = [
         ],
         "desktopBanner": "/images/bmw/SERIE 7 HIBRIDO/banner/BMW-MY23-7Series-Overview-Tech-Carousel-02-Desk.jpg",
         "mobileBanner": "/images/bmw/SERIE 7 HIBRIDO/banner/BMW-MY23-7Series-Overview-Tech-Carousel-02-Desk.jpg",
-        "videoUrl": ""
+        "videoUrl": "https://www.youtube.com/embed/QYVX1aYRYdQ"
     },
     {
         "id": "serie-8-coupe",
@@ -1314,7 +1304,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xLine",
                 "listPrice": 60900000,
                 "bonus": 6000000,
-                "fuel": "Gasolina",
+                "fuel": "Híbrido",
                 "bonusPrice": 54900000
             }
         ],
@@ -1605,7 +1595,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 79900000,
                 "bonus": 4000000,
-                "fuel": "Gasolina",
+                "fuel": "Híbrido",
                 "bonusPrice": 75900000
             }
         ],
@@ -1772,7 +1762,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 121900000,
                 "bonus": 9000000,
-                "fuel": "Gasolina",
+                "fuel": "Híbrido",
                 "bonusPrice": 112900000
             },
             {
@@ -2275,7 +2265,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Edrive",
                 "listPrice": 87900000,
                 "bonus": 8000000,
-                "fuel": "Gasolina",
+                "fuel": "Eléctrico",
                 "bonusPrice": 79900000
             }
         ],
@@ -2439,7 +2429,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "listPrice": 108900000,
                 "bonus": 9000000,
                 "traction": "Trasera",
-                "fuel": "Gasolina",
+                "fuel": "Eléctrico",
                 "bonusPrice": 99900000
             }
         ],
@@ -2453,7 +2443,7 @@ export const BMW_MODELS: Vehicle[] = [
         "name": "iX1",
         "category": "SUV, Eléctricos",
         "price": 52400000,
-        "image": "",
+        "image": "/images/bmw/iX1/min-ix1.webp",
         "slogan": "THE NEW iX1",
         "isHybrid": false,
         "isElectric": true,
@@ -2494,7 +2484,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "Delantera",
                 "listPrice": 56900000,
                 "bonus": 4500000,
-                "fuel": "Gasolina",
+                "fuel": "Eléctrico",
                 "bonusPrice": 52400000
             }
         ],
@@ -2547,7 +2537,7 @@ export const BMW_MODELS: Vehicle[] = [
                 "traction": "xDrive",
                 "listPrice": 77900000,
                 "bonus": 8000000,
-                "fuel": "Gasolina",
+                "fuel": "Eléctrico",
                 "bonusPrice": 69900000
             }
         ],
