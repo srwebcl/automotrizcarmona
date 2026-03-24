@@ -355,6 +355,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     link: "/servicios", 
                                     image: brandId === 'bmw' ? "/images/BMW/bmw-servicio.jpeg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
+                                           brandId === 'seat' ? "/images/seat/servicio-seat.jpeg" : 
                                            "/images/quick_access_servicio_1770350934207.png" 
                                 },
                                 { 
@@ -364,6 +365,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     link: "/repuestos", 
                                     image: brandId === 'bmw' ? "/images/BMW/bmw-repuestos.jpeg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
+                                           brandId === 'seat' ? "/images/seat/repuestos-seat.jpeg" :
                                            "/images/quick_access_repuestos_1770350949447.png" 
                                 },
                                 { 
@@ -373,7 +375,8 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, 
                                     image: brandId === 'bmw' ? "/images/BMW/bmw-usados.jpg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
-                                           brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : "/images/sucursales.jpg", 
+                                           brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : 
+                                           brandId === 'seat' ? "/images/seat/usados-seat.jpeg" : "/images/sucursales.jpg", 
                                     isExternal: true 
                                 },
                                 { 
@@ -383,6 +386,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     link: "/sucursales", 
                                     image: brandId === 'bmw' ? "/images/BMW/bmw-sucursales.webp" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
+                                           brandId === 'seat' ? "/images/seat/sucursales.jpg" :
                                            "/images/sucursales.jpg" 
                                 }
                             ].map((item) => (
