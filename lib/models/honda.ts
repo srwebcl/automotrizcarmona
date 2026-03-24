@@ -15,18 +15,25 @@ export const HONDA_MODELS: Vehicle[] = [
             {
                 title: 'Motor Turbo 1.5L',
                 desc: 'Nueva generación con motor de aleación de aluminio y 16 válvulas DOHC i-VTEC.',
-                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+                image: '/images/honda/CIVIC/caracteristicas/motor.webp'
             },
             {
                 title: 'VSA - Estabilizador de Vehículo',
                 desc: 'Optimiza la seguridad equilibrando automáticamente la tracción y el frenado de forma independiente.',
-                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+                image: '/images/honda/CIVIC/caracteristicas/vsa.jpg'
             },
             {
                 title: 'Equipamiento Tecnológico',
                 desc: 'Pantalla táctil de 9", navegador integrado y sistema de audio de 6 parlantes.',
-                image: '/images/honda/CIVIC/Honda-Civic-1024x427.webp'
+                image: '/images/honda/CIVIC/caracteristicas/pantalla-tactil.jpg'
             }
+        ],
+        gallery: [
+            '/images/honda/CIVIC/galeria/1.webp',
+            '/images/honda/CIVIC/galeria/2.jpg',
+            '/images/honda/CIVIC/galeria/3.webp',
+            '/images/honda/CIVIC/galeria/4.jpg',
+            '/images/honda/CIVIC/galeria/5.webp'
         ],
         versions: [
             {
