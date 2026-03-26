@@ -1,0 +1,49 @@
+Catálogo Estructurado: BMW R 12
+Este archivo contiene la metadata técnica y comercial de la BMW R 12, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 12"
+categoria: "Heritage"
+combustible: "Súper sin plomo (95 octanos)"
+motorizacion: "1.170 cm3 | 95 CV"
+link_youtube: "[https://youtu.be/qr7-k2hK9Io](https://youtu.be/qr7-k2hK9Io)"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "Sistema de frenos semi-integral con distribución automática"
+    - "Gestión digital del motor BMS-O"
+    - "Acelerador electrónico"
+caracteristicas_destacadas:
+  - nombre: "Motor Boxer Legendario"
+    descripcion: "Motor de dos cilindros refrigerado por aire/aceite con eje de compensación central para un carácter único."
+  - nombre: "Asiento Extrabajo"
+    descripcion: "Situado a solo 754 mm de altura, facilita la accesibilidad y el control para todo tipo de pilotos."
+  - nombre: "Faro LED con luz diurna"
+    descripcion: "Iluminación de alta visibilidad para garantizar seguridad tanto de día como de noche."
+  - nombre: "Frenos Semi-integrales"
+    descripcion: "Garantiza una distribución automática de la fuerza de frenado con adaptación dinámica."
+  - nombre: "Estética #Soulfuel"
+    descripcion: "Diseño clásico con llantas de radios opcionales en oro y negro y bastidor tubular de rejilla."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW R 12"
+    especificaciones:
+      motor: "1.170 cm3 (Boxer)"
+      hp: 95
+      caja: "6 velocidades con corte helicoidal"
+      traccion: "Cardán"
+      peso_vacio: "Información no especificada"
+      consumo_wmtc: "5.1 l / 100km"
+      equipamiento_clave:
+        - "Faro LED"
+        - "DTC"
+        - "Asiento monoplaza 754mm"
+        - "Embrague monodisco en seco"
+        - "Horquilla invertida 45mm"
+    precios:
+      precio_lista: 18790000
+      bono_todo_medio_pago: 1000000
+      bono_autofin: 0
+      precio_final_con_bono: 17790000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (9 unidades).Simulación Crédito Inteligente: 50% de pie ($8.895.000), 24 cuotas de $200.990 y cuota n° 25 (VFMG) de $8.895.000. CAE 26,19%. Costo total del crédito: $13.718.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye fletes ni impuesto verde. No válido para Zona Franca.

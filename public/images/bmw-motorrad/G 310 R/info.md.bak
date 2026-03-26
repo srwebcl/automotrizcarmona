@@ -1,0 +1,42 @@
+Catálogo Estructurado: BMW G 310 R
+Este archivo contiene la metadata técnica y comercial de la BMW G 310 R, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "G 310 R"
+categoria: "Roadster"
+combustible: "Gasolina (mínimo 91 octanos RON)"
+motorizacion: "313 cc | 34 hp"
+seguridad:
+  sistemas_activos: 
+    - "ABS estabilizador (evita bloqueo de ruedas)"
+    - "Faro e intermitentes LED de serie"
+    - "Catalizador regulado de 3 vías (EU5)"
+caracteristicas_destacadas:
+  - nombre: "Manillar y mandos ergonómicos"
+    descripcion: "Garantizan una conducción excelente y visión completa para el entorno urbano."
+  - nombre: "Faro e intermitentes LED"
+    descripcion: "Mejoran la visibilidad del piloto y permiten que otros conductores lo vean mejor."
+  - nombre: "Asiento ergonómico"
+    descripcion: "Accesorio disponible en tres alturas diferentes para máxima comodidad en carretera."
+  - nombre: "Manetas ajustables"
+    descripcion: "Palancas de freno y embrague regulables para reducir la distancia al manillar."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW G 310 R"
+    especificaciones:
+      motor: "313 cc (Monocilíndrico)"
+      hp: 34
+      caja: "6 marchas secuencial"
+      traccion: "Cadena sin fin con eslabones en X"
+      consumo_wmtc: "3.5 l / 100km"
+      equipamiento_clave:
+        - "ABS estabilizador"
+        - "Iluminación LED completa"
+        - "Embrague anti-hopping"
+        - "Ride by Wire"
+    precios:
+      precio_lista: 5790000
+      bono_todo_medio_pago: 800000
+      bono_autofin: 0
+      precio_final_con_bono: 4990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (10 unidades).Simulación Crédito Inteligente: 50% de pie ($2.495.000), 24 cuotas de $83.990 y cuota n° 25 (VFMG) de $2.495.000. CAE 39,3%. Costo total del crédito: $4.510.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye fletes. No válido para Zona Franca.

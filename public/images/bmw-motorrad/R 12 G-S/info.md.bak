@@ -1,0 +1,49 @@
+Catálogo Estructurado: BMW R 12 G/S
+
+Este archivo contiene la metadata técnica y comercial de la BMW R 12 G/S, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 12 G/S"
+categoria: "Heritage"
+combustible: "Gasolina (95 ROZ/RON)"
+motorizacion: "1.170 cc | 109 hp"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "Faro LED con iconos en forma de X"
+    - "Catalizador regulado de 3 vías"
+    - "Gestión digital del motor BMS-O con throttle-by-wire"
+caracteristicas_destacadas:
+  - nombre: "Espíritu todoterreno: Faro LED"
+    descripcion: "Iconos luminosos en forma de X que simbolizan el carácter off-road y mejoran la visibilidad en oscuridad."
+  - nombre: "Suspensión Enduro"
+    descripcion: "Recorrido de 210 mm en la horquilla y 200 mm en el amortiguador, optimizado para tierra y asfalto."
+  - nombre: "Paquete Enduro Pro"
+    descripcion: "Equipamiento opcional con rueda trasera de 18 pulgadas, estriberas de enduro y elevación del manillar."
+  - nombre: "ConnectedRide Control"
+    descripcion: "Soporte para smartphone con toma USB-C para mantener la conexión y navegación en todo momento."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW R 12 G/S"
+    especificaciones:
+      motor: "1.170 cc (Boxer aire/aceite)"
+      hp: 109
+      par_motor: "115 Nm"
+      caja: "6 marchas secuencial"
+      traccion: "Cardán"
+      consumo_wmtc: "5.1 l / 100km"
+      suspension_delantera: "210 mm"
+      suspension_trasera: "200 mm"
+      equipamiento_clave:
+        - "Faro LED"
+        - "DTC"
+        - "Embrague monodisco en seco"
+        - "BMS-O con acelerador electrónico"
+    precios:
+      precio_lista: 21890000
+      bono_todo_medio_pago: 1000000
+      bono_autofin: 0
+      precio_final_con_bono: 20890000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (7 unidades).Simulación Crédito Inteligente: 50% de pie ($10.445.000), 24 cuotas de $231.990 y cuota n° 25 (VFMG) de $10.445.000. CAE 25,79%. Costo total del crédito: $16.012.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde ni fletes. No válido para Zona Franca.

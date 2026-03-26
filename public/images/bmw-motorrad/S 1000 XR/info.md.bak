@@ -1,0 +1,39 @@
+Catálogo Estructurado: BMW S 1000 XREste archivo contiene la metadata técnica y comercial de la BMW S 1000 XR, adaptada al estándar unificado de la red para procesamiento de datos.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "S 1000 XR"
+categoria: "Sport"
+combustible: "Premium sin plomo"
+motorizacion: "999 cm3 | 170 CV"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad"
+    - "BMW Motorrad Integral ABS (versión integral parcial)"
+    - "Dynamic ESA (Ajuste electrónico de suspensión)"
+    - "Control de presión de neumáticos RDC"
+caracteristicas_destacadas:
+  - nombre: "Diseño frontal sorprendente"
+    descripcion: "Faro LED con aspecto deportivo-agresivo y 'pico de pato' pintado en color de la carrocería."
+  - nombre: "Paquete de touring"
+    descripcion: "Equipamiento óptimo para viajes largos: puente portaequipajes y puños calefactables."
+  - nombre: "Gama de accesorios M Performance"
+    descripcion: "Piezas fresadas exclusivas y equipamientos en fibra de carbono para entusiastas."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW S 1000 XR"
+    especificaciones:
+      motor: "999 cm3"
+      hp: 170
+      caja: "6 velocidades en toma constante"
+      traccion: "Cadena 525 17/45"
+      peso_vacio: "227 kg"
+      equipamiento_clave:
+        - "Faros LED"
+        - "Dynamic ESA"
+        - "Acelerador electrónico"
+        - "Embrague anti-hopping"
+        - "Gestión digital del motor BMS-O"
+    precios:
+      precio_lista: 27390000
+      bono_todo_medio_pago: 1100000
+      bono_autofin: 0
+      precio_final_con_bono: 26290000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (2 unidades).Simulación Crédito Inteligente: 50% de pie ($13.145.000), 24 cuotas de $286.990 y cuota n° 25 (VFMG) de $13.145.000. CAE 25,37%. Sujeto a evaluación crediticia por tercera entidad financiera. No incluye impuesto verde.

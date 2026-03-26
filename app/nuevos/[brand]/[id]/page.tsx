@@ -9,7 +9,7 @@ import { fetchModelDetails } from '@/lib/api';
 import { Vehicle } from '@/lib/models/types';
 import { MODELS_REGISTRY } from '@/lib/models';
 import { getBrandConfig } from '@/lib/brands';
-import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft } from 'lucide-react';
+import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft, Activity, Gauge, Settings2, Route } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
 export default function GenericModelPage({ params }: { params: Promise<{ brand: string; id: string }> }) {
@@ -20,6 +20,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     const [model, setModel] = useState<Vehicle | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [activeIdx, setActiveIdx] = useState(0);
+    const [activeVersionIdx, setActiveVersionIdx] = useState(0);
     const [showQuoteModal, setShowQuoteModal] = useState(false);
     const router = useRouter();
 
@@ -36,6 +37,11 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         align: 'start',
         slidesToScroll: 1,
     });
+
+    React.useEffect(() => {
+        if (!versionsApi) return;
+        versionsApi.on('select', () => setActiveVersionIdx(versionsApi.selectedScrollSnap()));
+    }, [versionsApi]);
 
     React.useEffect(() => {
         const loadModel = async () => {
@@ -128,25 +134,32 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[76px]">
             {/* Banner Section */}
             {model.desktopBanner ? (
-                <section className="relative w-full bg-black border-b border-gray-100 overflow-hidden">
-                    <picture className="w-full h-full block">
-                        <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
-                        <img src={model.mobileBanner || model.desktopBanner} alt={`Banner ${model.name}`} className="w-full min-h-[400px] md:h-auto object-cover opacity-80" />
-                    </picture>
-                    {brand !== 'toyota' && <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />}
-                    {brand !== 'toyota' && (
-                        <div className="absolute inset-0 flex items-center px-8 md:px-20 z-10 pointer-events-none">
-                            <div className="flex flex-col text-white max-w-2xl">
-                                {model.slogan && <p className="text-sm md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
-                                <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight">{config.name} {model.name}</h1>
-                                <p className="text-md md:text-lg font-medium mt-2 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
+                brand === 'bmw-motorrad' ? (
+                    <section className="relative w-full h-[calc(100vh-76px)] bg-black overflow-hidden flex flex-col md:flex-row">
+                        {/* Background Image */}
+                        <div className="absolute inset-0 w-full h-full">
+                            <Image 
+                                src={model.desktopBanner || model.image} 
+                                alt={model.name} 
+                                fill 
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                        
+                        {/* Dark Overlay/Content Container - inspired by screenshot */}
+                        <div className="relative z-10 w-full md:w-1/2 ml-auto h-full md:bg-gradient-to-l from-black/90 via-black/40 to-transparent flex items-center justify-end px-8 md:px-20">
+                            <div className="flex flex-col text-white text-right items-end max-w-lg">
+                                <p className="text-sm font-bold uppercase tracking-[0.3em] mb-2 opacity-80">2026</p>
+                                <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-6">
+                                    {model.name}
+                                </h1>
+                                <div className="flex flex-col items-end mb-12">
+                                    <p className="text-lg md:text-xl font-medium opacity-90 border-t border-white/20 pt-4">Precio lista desde:</p>
+                                    <p className="text-3xl md:text-5xl font-black tracking-tight mt-1">{formatPrice(minPrice)}</p>
+                                </div>
                                 
-                                <div className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
-                                    <button 
-                                        onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                        className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
-                                        Elige el tuyo
-                                    </button>
+                                <div className="flex flex-col gap-4 w-full sm:w-80 pointer-events-auto">
                                     <button 
                                         onClick={() => {
                                             if (mockVersions.length === 1) {
@@ -155,14 +168,62 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                                 setShowQuoteModal(true);
                                             }
                                         }}
-                                        className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all">
+                                        className="w-full py-4 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-gray-200 transition-all shadow-2xl">
                                         Cotizar
+                                    </button>
+                                    <button 
+                                        onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                        className="w-full py-4 border-2 border-white text-white font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all">
+                                        Ver Más
                                     </button>
                                 </div>
                             </div>
                         </div>
-                    )}
-                </section>
+
+                        {/* Legal text at bottom left like screenshot */}
+                        <div className="absolute bottom-8 left-8 z-10 text-[10px] text-white/50 max-w-xl pointer-events-none hidden md:block">
+                            <p className="leading-relaxed">
+                                *Los precios y especificaciones pueden variar según modelo año 2026. IVA Incluido. No incluyen Permiso de Circulación, Patentes, accesorios, seguro y gastos administrativos. BMW MOTORRAD CHILE se reserva el derecho de modificar precios en cualquier momento.
+                            </p>
+                        </div>
+                    </section>
+                ) : (
+                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-[calc(100vh-76px)]' : ''}`}>
+                        <picture className="w-full h-full block">
+                            <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
+                            <img src={model.mobileBanner || model.desktopBanner} alt={`Banner ${model.name}`} className={`w-full ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-full' : 'min-h-[400px] md:h-auto'} object-cover opacity-80`} />
+                        </picture>
+                        {brand !== 'toyota' && brand !== 'honda' && <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />}
+                        {brand !== 'toyota' && brand !== 'honda' && (
+                            <div className="absolute inset-0 flex items-center px-8 md:px-20 z-10 pointer-events-none">
+                                <div className="flex flex-col text-white max-w-2xl">
+                                    {model.slogan && <p className="text-sm md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
+                                    <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight">{config.name} {model.name}</h1>
+                                    <p className="text-md md:text-lg font-medium mt-2 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
+                                    
+                                    <div className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
+                                        <button 
+                                            onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                            className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
+                                            Elige el tuyo
+                                        </button>
+                                        <button 
+                                            onClick={() => {
+                                                if (mockVersions.length === 1) {
+                                                    router.push(`/cotizar?marca=${brand}&modelo=${model.id}&version=${encodeURIComponent(mockVersions[0].name)}`);
+                                                } else {
+                                                    setShowQuoteModal(true);
+                                                }
+                                            }}
+                                            className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all">
+                                            Cotizar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </section>
+                )
             ) : (
                 <div className="w-full h-20 bg-white border-b border-gray-100" />
             )}
@@ -219,101 +280,120 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                         </div>
 
                         {/* Details Sidebar with Versions Carousel */}
-                        <div id="seccion-versiones" className="lg:col-span-5 flex flex-col pt-8 scroll-mt-24">
-                            <div className="flex items-center justify-between mb-8">
-                                <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight uppercase">
-                                    <span className="text-gray-900">{config.name}</span> <span className="text-gray-400">{model.name}</span>
-                                </h1>
-                                <div className="flex gap-2 pb-2">
-                                    <button onClick={() => versionsApi?.scrollPrev()} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all shadow-sm">
-                                        <ChevronLeft size={20} />
-                                    </button>
-                                    <button onClick={() => versionsApi?.scrollNext()} className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all shadow-sm">
-                                        <ChevronRight size={20} />
-                                    </button>
-                                </div>
-                            </div>
+                        <div id="seccion-versiones" className="lg:col-span-5 flex flex-col scroll-mt-24">
+                            {/* No external header - all inside cards per new design */}
 
+                            {/* Carousel Box */}
                             <div className="overflow-hidden" ref={versionsRef}>
                                 <div className="flex -ml-4">
                                     {mockVersions.map((v: any, i: number) => (
                                         <div key={i} className="flex-[0_0_100%] min-w-0 pl-4">
-                                            <div className="bg-white rounded-3xl p-6 h-full border border-gray-200 hover:border-red-600 hover:shadow-xl shadow-sm transition-all flex flex-col justify-between group">
-                                                
+                                            <div className="bg-white rounded-3xl p-6 h-full border border-gray-200 hover:shadow-xl shadow-sm transition-all flex flex-col justify-between group">
                                                 <div>
-                                                    <div className="flex justify-between items-start mb-6">
-                                                        <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tight pr-4 leading-tight">
-                                                            {v.name}
-                                                        </h3>
-                                                        <ShareButton
-                                                            title={`Mira la versión ${v.name} del ${config.name} ${model.name} en Carmona`}
-                                                            url={`https://automotrizcarmona.cl/nuevos/${brand}/${id}`}
-                                                        />
-                                                    </div>
-
-                                                    {/* Attributes Grid */}
-                                                    <div className="flex flex-col gap-2.5 mb-8">
-                                                        {v.motor && v.motor !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Motor</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.motor}</span>
-                                                            </div>
-                                                        )}
-                                                        {v.transmission && v.transmission !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Transmisión</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.transmission}</span>
-                                                            </div>
-                                                        )}
-                                                        {v.power && v.power !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Potencia</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.power}</span>
-                                                            </div>
-                                                        )}
-                                                        {v.torque && v.torque !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Torque</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.torque}</span>
-                                                            </div>
-                                                        )}
-                                                        {v.fuel && v.fuel !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Consumo</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.fuel}</span>
-                                                            </div>
-                                                        )}
-                                                        {v.traction && v.traction !== 'N/A' && (
-                                                            <div className="flex justify-between border-b border-gray-100 pb-2">
-                                                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Tracción</span>
-                                                                <span className="text-sm font-bold text-gray-800 text-right w-2/3">{v.traction}</span>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                </div>
-
-                                                {/* Pricing & CTA */}
-                                                <div className="mt-auto pt-6 border-t border-gray-100 bg-gray-50 -mx-6 px-6 -mb-6 pb-6 rounded-b-[1.3rem]">
-                                                    {v.listPrice > 0 && (
-                                                        <div className="flex justify-between items-center mb-1.5 pt-4">
-                                                            <span className="text-[11px] font-black tracking-widest text-gray-400 uppercase">Precio de Lista</span>
-                                                            <span className="text-sm font-bold text-gray-400 line-through">{formatPrice(v.listPrice)}</span>
+                                                    {/* ── TOP SECTION: MARCA, MODELO, PRECIO DESDE ── */}
+                                                    <div>
+                                                        <div className="flex justify-between items-start mb-1">
+                                                            <span className="text-[10px] font-black tracking-widest text-gray-400 uppercase">{config.name}</span>
+                                                            <ShareButton
+                                                                title={`Mira el ${config.name} ${model.name} en Automotriz Carmona`}
+                                                                url={`https://automotrizcarmona.cl/nuevos/${brand}/${id}`}
+                                                            />
                                                         </div>
-                                                    )}
-                                                    {v.bonus > 0 && (
-                                                        <div className="flex justify-between items-center mb-1.5">
-                                                            <span className="text-[11px] font-black tracking-widest text-gray-500 uppercase">Bono Financiamiento</span>
-                                                            <span className="text-sm font-black text-gray-500">{formatPrice(v.bonus)}</span>
+                                                        <h2 className="text-2xl lg:text-3xl font-medium text-gray-800 tracking-tight uppercase leading-none mb-3">
+                                                            {model.name}
+                                                        </h2>
+                                                        
+                                                        <div className="mt-4">
+                                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-0.5">Precio desde</span>
+                                                            <span className="text-4xl lg:text-[44px] font-black text-gray-900 tracking-tighter leading-none block">{formatPrice(v.bonusPrice)}</span>
+                                                            
+                                                            {(v.brandBonus > 0 || v.financingBonus > 0 || v.bonus > 0) && (
+                                                                <p className="text-[12px] font-bold text-gray-500 mt-2 max-w-[80%] leading-tight">
+                                                                    Incluye Bono de <span className="text-gray-700">{formatPrice((v.brandBonus || 0) + (v.financingBonus || 0) + (v.bonus || 0))}</span> con financiamiento
+                                                                </p>
+                                                            )}
+                                                            {model.ivaIncluded === false && (
+                                                                <span className="inline-block mt-3 text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-2.5 py-1 rounded">Precio + IVA No Incluido</span>
+                                                            )}
                                                         </div>
-                                                    )}
-                                                    <div className="flex justify-between items-end mb-6 mt-4">
-                                                        <span className="text-xs font-black text-gray-500 uppercase tracking-widest leading-tight">Precio con<br/>Financiamiento</span>
-                                                        <span className="text-3xl lg:text-4xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(v.bonusPrice)}</span>
                                                     </div>
 
-                                                    <Link href={`/cotizar?marca=${brand}&modelo=${id}&version=${encodeURIComponent(v.name)}`} className="flex items-center justify-center w-full py-4 bg-gray-900 hover:bg-black text-white font-bold rounded-xl transition-all uppercase text-sm tracking-widest shadow-xl shadow-gray-900/10">
-                                                        Cotizar Versión
-                                                    </Link>
+                                                    <div className="border-t border-gray-100 my-6"></div>
+
+                                                    {/* ── 4 ICONS (Motor, Combustible, Transmisión, Rendimiento) ── */}
+                                                    <div className="grid grid-cols-4 gap-2 mb-6 px-1">
+                                                        {[  
+                                                            { label: 'Motor', value: v.motor, icon: <Cog size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
+                                                            { label: 'Combustible', value: v.fuel, icon: <Fuel size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
+                                                            { label: 'Transmisión', value: v.transmission, icon: <Settings2 size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
+                                                            { label: 'Rendimiento', value: v.electricRange || v.consumptionMixed || v.consumo, icon: v.electricRange ? <Zap size={24} className="text-gray-600 stroke-[1.5] mb-1" /> : <Route size={24} className="text-gray-600 stroke-[1.5] mb-1" /> },
+                                                        ].map(({ label, value, icon }, idx) => (
+                                                            <div key={idx} className="flex flex-col items-center justify-start text-center">
+                                                                <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">{label}</span>
+                                                                {icon}
+                                                                <span className="text-[11px] font-bold text-gray-700 leading-tight break-words max-w-full">{value || '—'}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+
+                                                    {/* ── INFO POR VERSIÓN (BOTTOM SECTION) ── */}
+                                                    <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200/60 mt-auto flex flex-col">
+                                                        {/* Versión + Flechas */}
+                                                        <div className="flex items-center justify-between gap-3 mb-5 border-b border-gray-200/60 pb-4">
+                                                            <div>
+                                                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block mb-0.5">Versión</span>
+                                                                <h3 className="text-lg lg:text-xl font-black text-gray-800 uppercase tracking-tight leading-tight">
+                                                                    {v.name}
+                                                                </h3>
+                                                            </div>
+                                                            {mockVersions.length > 1 && (
+                                                                <div className="flex gap-1 shrink-0">
+                                                                    <button onClick={() => versionsApi?.scrollPrev()} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 bg-white hover:bg-gray-900 hover:text-white transition-all shadow-sm">
+                                                                        <ChevronLeft size={16} />
+                                                                    </button>
+                                                                    <button onClick={() => versionsApi?.scrollNext()} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 bg-white hover:bg-gray-900 hover:text-white transition-all shadow-sm">
+                                                                        <ChevronRight size={16} />
+                                                                    </button>
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        {/* Specs Extra y Precios Unificados */}
+                                                        <div className="flex flex-col mb-6 border-t border-gray-100">
+                                                            {[  
+                                                                { label: 'Potencia', value: v.power },
+                                                                { label: 'Tracción', value: v.traction },
+                                                            ]
+                                                            .map(({ label, value }) => (
+                                                                <div key={label} className="flex justify-between items-center py-3 border-b border-gray-100">
+                                                                    <span className="text-[13px] text-gray-600 font-medium">{label}</span>
+                                                                    <span className="text-[13px] font-bold text-gray-800">{value && value.toString().trim() !== '' && value !== '-' ? value : '-'}</span>
+                                                                </div>
+                                                            ))}
+                                                            
+                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                                                                <span className="text-[13px] text-gray-600 font-medium">Precio de lista</span>
+                                                                <span className="text-[13px] font-bold text-gray-800">{v.listPrice > 0 ? formatPrice(v.listPrice) : '-'}</span>
+                                                            </div>
+                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                                                                <span className="text-[13px] text-gray-600 font-medium">Bono Financiamiento</span>
+                                                                <span className="text-[13px] font-bold text-gray-800">{(v.financingBonus > 0 || v.bonus > 0) ? `- ${formatPrice(v.financingBonus || v.bonus)}` : '-'}</span>
+                                                            </div>
+                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
+                                                                <span className="text-[13px] text-gray-600 font-medium">Bono Marca</span>
+                                                                <span className="text-[13px] font-bold text-gray-800">{v.brandBonus > 0 ? `- ${formatPrice(v.brandBonus)}` : '-'}</span>
+                                                            </div>
+                                                            <div className="flex justify-between items-center py-3">
+                                                                <span className="text-[13px] text-gray-900 font-bold">Precio con financiamiento</span>
+                                                                <span className="text-[14px] font-black text-gray-900">{formatPrice(v.bonusPrice || v.listPrice)}</span>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Botón Cotizar */}
+                                                        <Link href={`/cotizar?marca=${brand}&modelo=${id}&version=${encodeURIComponent(v.name)}`} className="mt-auto flex items-center justify-center w-full py-4 bg-gray-900 hover:bg-black text-white font-medium rounded-xl transition-colors tracking-widest text-sm shadow-sm">
+                                                            COTIZAR
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -326,6 +406,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
             </section>
             
             {/* Features Section */}
+            {highlightFeatures && highlightFeatures.length > 0 && (
             <section className="bg-gray-50 py-24 overflow-hidden border-t border-gray-100">
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -362,9 +443,10 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                     </div>
                 </div>
             </section>
+            )}
 
             {/* Video Section */}
-            {model.videoUrl && (
+            {model.videoUrl && model.videoUrl.startsWith('http') && (
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="text-center mb-12">
@@ -383,6 +465,106 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                 </div>
             </section>
             )}
+            {/* Descubre más Section */}
+            <section className="bg-white py-24 overflow-hidden border-t border-gray-100">
+                <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                        <div>
+                            <p className="text-red-600 font-bold uppercase tracking-widest text-sm mb-2">Continuar Explorando</p>
+                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter">
+                                Descubre <span className="text-gray-400">más</span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div className="overflow-hidden">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[
+                                { 
+                                    id: 1, 
+                                    title: "Servicio Técnico", 
+                                    subtitle: "Agenda tu Hora", 
+                                    link: `/servicios/agendar?marca=${config.name}`, 
+                                    image: config.serviceImages?.servicio ??
+                                           (brand === 'bmw' ? "/images/bmw/bmw-servicio.jpeg" : 
+                                           brand === 'bmw-motorrad' ? "/images/bmw-motorrad/servicio-bmw-motorrad.jpeg" : 
+                                           brand === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
+                                           brand === 'toyota' ? "/images/toyota/servicio-toyota.png" : 
+                                           brand === 'honda' ? "/images/honda/servicio-honda.jpeg" :
+                                           "/images/quick_access_servicio_1770350934207.png")
+                                },
+                                { 
+                                    id: 2, 
+                                    title: "Repuestos", 
+                                    subtitle: "Repuestos Originales", 
+                                    link: `/repuestos/cotizar?marca=${config.name}`, 
+                                    image: config.serviceImages?.repuestos ??
+                                           (brand === 'bmw' ? "/images/bmw/bmw-repuestos.jpeg" : 
+                                           brand === 'bmw-motorrad' ? "/images/bmw-motorrad/repuestos-bmw-motorrad.png" : 
+                                           brand === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
+                                           brand === 'toyota' ? "/images/toyota/repuestos-toyota.png" : 
+                                           brand === 'honda' ? "/images/honda/repuestos-honda.jpeg" :
+                                           "/images/quick_access_repuestos_1770350949447.png")
+                                },
+                                { 
+                                    id: 3, 
+                                    title: `${config.name} Usados`, 
+                                    subtitle: "Seminuevos", 
+                                    link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brand}`, 
+                                    image: config.serviceImages?.usados ??
+                                           (brand === 'bmw' ? "/images/bmw/bmw-usados.jpg" : 
+                                           brand === 'bmw-motorrad' ? "/images/bmw-motorrad/usados-bmw-motorrad.png" : 
+                                           brand === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
+                                           brand === 'toyota' ? "/images/toyota/usados-toyota.png" : 
+                                           brand === 'honda' ? "/images/honda/usados-honda.jpeg" : "/images/sucursales.jpg"),
+                                    isExternal: true 
+                                },
+                                { 
+                                    id: 4, 
+                                    title: "Sucursales", 
+                                    subtitle: "Encuentra tu Sucursal", 
+                                    link: `/sucursales?marca=${config.name}`, 
+                                    image: config.serviceImages?.sucursales ??
+                                           (brand === 'bmw' ? "/images/bmw/bmw-sucursales.webp" : 
+                                           brand === 'bmw-motorrad' ? "/images/bmw-motorrad/sucursal-bmw.png" : 
+                                           brand === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
+                                           brand === 'toyota' ? "/images/toyota/sucursal-toyota.png" : 
+                                           brand === 'honda' ? "/images/honda/sucursal-honda.png" :
+                                           "/images/sucursales.jpg")
+                                }
+                            ].map((item) => (
+                                <div key={item.id} className="min-w-0">
+                                    <Link
+                                        href={item.link}
+                                        target={(item as any).isExternal ? '_blank' : undefined}
+                                        rel={(item as any).isExternal ? 'noopener noreferrer' : undefined}
+                                        className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg transition-all duration-500"
+                                    >
+                                        <div className="absolute inset-0">
+                                            {item.image ? (
+                                                <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                            ) : (
+                                                <div className="absolute inset-0 bg-gray-100" />
+                                            )}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 transition-opacity" />
+                                        </div>
+                                        <div className="absolute bottom-0 left-0 w-full p-8 text-white z-10">
+                                            <p className="text-sm font-bold text-white mb-1 uppercase tracking-widest drop-shadow-sm opacity-80">{item.subtitle}</p>
+                                            <h3 className="text-2xl font-black mb-4 group-hover:text-white transition-colors uppercase leading-tight">
+                                                {item.title}
+                                            </h3>
+                                            <div className="flex items-center gap-2 text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all">
+                                                <span className="text-white">EXPLORAR</span>
+                                                <ChevronRight size={16} className="text-white" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Legal Section */}
             <section className="bg-gray-100 py-16 border-t border-gray-200">

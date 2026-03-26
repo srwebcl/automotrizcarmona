@@ -8,7 +8,6 @@ const NUMBER = "56984749397"; // Número único especificado en requerimientos a
 
 export default function SmartWhatsAppButton() {
     const pathname = usePathname();
-    const [showBubble, setShowBubble] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [config, setConfig] = useState({
         text: "¡Hola! ¿Necesitas ayuda?",
@@ -69,12 +68,8 @@ export default function SmartWhatsAppButton() {
 
         setConfig(newConfig);
 
-        // Reset interactions and show bubble after short delay
+        // Reset interactions
         setShowMenu(false);
-        const timer = setTimeout(() => {
-            setShowBubble(true);
-        }, 2000);
-        return () => clearTimeout(timer);
     }, [pathname]);
 
     // Close menu when clicking outside
@@ -106,7 +101,6 @@ export default function SmartWhatsAppButton() {
         if (pathname === '/') {
             e.preventDefault();
             setShowMenu(!showMenu);
-            setShowBubble(false);
         }
     };
 
@@ -116,20 +110,14 @@ export default function SmartWhatsAppButton() {
     return (
         <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3 group" ref={menuRef}>
 
-            {/* Context Bubble (Se oculta si el menú está abierto) */}
+            {/* Context Bubble (Solo en Hover y si el menú no está abierto) */}
             <div
                 className={`
                     relative max-w-[280px] w-max bg-white text-gray-800 p-4 rounded-3xl rounded-br-md shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-gray-100
-                    transform transition-all duration-500 ease-out origin-bottom
-                    ${showBubble && !showMenu ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-75 translate-y-8 pointer-events-none'}
+                    transform transition-all duration-300 ease-out origin-bottom
+                    ${showMenu ? 'hidden' : 'opacity-0 scale-75 translate-y-8 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto'}
                 `}
             >
-                <button
-                    onClick={(e) => { e.stopPropagation(); setShowBubble(false); }}
-                    className="absolute top-2 right-2 bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-gray-600 rounded-full p-1 transition-colors"
-                >
-                    <X size={14} />
-                </button>
                 <div className="flex items-start gap-3 pr-4">
                     <div className="relative shrink-0">
                         <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-lg">

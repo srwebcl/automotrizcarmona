@@ -1,0 +1,45 @@
+Catálogo Estructurado: BMW K 1600 GT
+Este archivo contiene la metadata técnica y comercial de la BMW K 1600 GT, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "K 1600 GT"
+categoria: "Tour"
+combustible: "Súper sin plomo (95 octanos)"
+motorizacion: "1.649 ccm | 118 kW (160 hp)"
+seguridad:
+  sistemas_activos: 
+    - "BMW Motorrad Integral ABS Pro (Optimizado para inclinación)"
+    - "Compensación automática de la posición de conducción (Dynamic ESA)"
+    - "Gestión digital del motor BMS-O"
+    - "Acelerador electrónico"
+caracteristicas_destacadas:
+  - nombre: "Compensación automática de posición"
+    descripcion: "Sensores que detectan aceleración y compresión para un confort de amortiguación óptimo y marcha estable."
+  - nombre: "Compartimento de carga para smartphone"
+    descripcion: "Espacio protegido contra salpicaduras con ventilación propia y conexión USB-C integrada."
+  - nombre: "Motor de seis cilindros en línea"
+    descripcion: "Propulsor legendario que ofrece mayor potencia en rectas y dinamismo superior en curvas."
+  - nombre: "Style Sport"
+    descripcion: "Opción de diseño enfocada en resaltar el carácter dinámico y deportivo para viajes largos."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW K 1600 GT"
+    especificaciones:
+      motor: "1.649 ccm (6 cilindros en línea)"
+      kw: 118
+      par_motor: "180 Nm"
+      caja: "6 marchas secuencial (dentado oblicuo)"
+      traccion: "Cardán"
+      consumo_wmtc: "5,9 l / 100km"
+      equipamiento_clave:
+        - "Integral ABS Pro"
+        - "Marcha atrás (implícita en motorización)"
+        - "Pantalla TFT de alta resolución"
+        - "Compartimento USB-C ventilado"
+    precios:
+      precio_lista: 34890000
+      bono_todo_medio_pago: 1400000
+      bono_autofin: 0
+      precio_final_con_bono: 33490000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: .Simulación Crédito Inteligente: 50% de pie ($16.745.000), 24 cuotas de $360.990 y cuota n° 25 (VFMG) de $16.745.000. CAE 25,05%. Costo total del crédito: $25.408.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

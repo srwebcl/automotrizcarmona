@@ -1,0 +1,43 @@
+Catálogo Estructurado: BMW M 1000 RREste archivo contiene la metadata técnica y comercial de la BMW M 1000 RR, organizada para procesamiento de datos masivo con el estándar unificado de la red.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "M 1000 RR"
+categoria: "M"
+combustible: "Premium sin plomo (93-98 ROZ/RON)"
+motorizacion: "999 cm3 | 218 hp"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "ABS Pro BMW Motorrad"
+    - "Frenos M con conductos de refrigeración"
+    - "Brake Lever Guard"
+caracteristicas_destacadas:
+  - nombre: "Conductos de refrigeración de frenos M"
+    descripcion: "Garantizan un flujo de aire constante a las pinzas de freno para máxima precisión y rendimiento en pista."
+  - nombre: "Aletas aerodinámicas 3.0"
+    descripcion: "Generan hasta 30 kg de carga aerodinámica según la velocidad para un control máximo en circuito."
+  - nombre: "Piezas fresadas M"
+    descripcion: "Manetas y reposapiés de aluminio de alta resistencia, fresadas y anodizadas para optimizar peso y ergonomía."
+  - nombre: "Frontal aerodinámico con parabrisas alto"
+    descripcion: "Flujo de aire optimizado que alivia al conductor, permitiendo un rendimiento sostenido a altas velocidades."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW M 1000 RR M CARBON"
+    especificaciones:
+      motor: "999 cm3 (4 cilindros en línea)"
+      hp: 218
+      par_motor: "113 Nm"
+      caja: "6 velocidades secuencial (dentado recto)"
+      traccion: "Cadena 525 17/46"
+      velocidad_maxima: "314 km/h"
+      consumo_wmtc: "6.5 l / 100km"
+      equipamiento_clave:
+        - "BMW ShiftCam"
+        - "Batería M Lightweight (Iones de litio)"
+        - "Aletas 3.0"
+        - "Paquete M Carbon"
+        - "Conductos de aire para frenos"
+    precios:
+      precio_lista: 48290000
+      bono_todo_medio_pago: 2000000
+      bono_autofin: 0
+      precio_final_con_bono: 46290000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (5 unidades).Simulación Crédito Inteligente: 50% de pie ($23.145.000), 24 cuotas de $490.990 y cuota n° 25 (VFMG) de $23.145.000. CAE 24,63%. Costo total del crédito: $34.928.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

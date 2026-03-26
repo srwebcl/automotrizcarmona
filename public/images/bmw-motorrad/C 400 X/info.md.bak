@@ -1,0 +1,62 @@
+Catálogo Estructurado: BMW C 400 X
+
+Este archivo contiene la metadata técnica y comercial de la BMW C 400 X, adaptada al estándar unificado de la red para procesamiento de datos masivo.
+
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "C 400 X"
+categoria: "Urban Mobility"
+combustible: "Gasolina súper plus sin plomo (95-98 octanos)"
+motorizacion: "350 cm3 | 34 CV"
+link_youtube: "[https://youtu.be/Z5wO5in4ol0](https://youtu.be/Z5wO5in4ol0)"
+seguridad:
+  sistemas_activos: 
+    - "BMW Motorrad ABS"
+    - "Gestión digital del motor BMS-ME con acelerador electrónico"
+caracteristicas_destacadas:
+  - nombre: "Diseño frontal deportivo"
+    descripcion: "Panel protector en acabado negro piano con logotipo multicolor y guardabarros en color de la carrocería."
+  - nombre: "Conexión inteligente Connectivity"
+    descripcion: "Pantalla TFT de 6,5\" que permite gestionar llamadas, música y navegación de forma clara."
+  - nombre: "Preparación para navegación"
+    descripcion: "Sujeción opcional para BMW ConnectedRide Navigator o Smartphone Cradle para uso de GPS móvil."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW New C 400 X"
+    especificaciones:
+      motor: "350 cm3"
+      hp: 34
+      caja: "Cambio progresivo CVT"
+      traccion: "Engranaje reductor de dos niveles"
+      peso_vacio: "208 kg"
+      equipamiento_clave:
+        - "Connectivity con pantalla TFT 6,5\""
+        - "BMW Motorrad ABS"
+        - "Iluminación LED"
+        - "Acelerador electrónico (E-Gas)"
+    precios:
+      precio_lista: 11990000
+      bono_todo_medio_pago: 500000
+      bono_autofin: 0
+      precio_final_con_bono: 11490000
+      financiamiento: "Crédito Inteligente"
+
+  - version: "BMW New C 400 X RUGGED"
+    especificaciones:
+      motor: "350 cm3"
+      hp: 34
+      caja: "Cambio progresivo CVT"
+      traccion: "Engranaje reductor de dos niveles"
+      peso_vacio: "208 kg"
+      equipamiento_clave:
+        - "Equipamiento versión X"
+        - "Acabado de diseño Rugged"
+        - "Preparación de navegación"
+    precios:
+      precio_lista: 12490000
+      bono_todo_medio_pago: 0
+      bono_autofin: 500000
+      precio_final_con_bono: 11990000
+      financiamiento: "Crédito Inteligente"
+
+      
+3. Condiciones y LegalesVigencia C 400 X: Hasta el 28 de febrero de 2026. Stock de 4 unidades.Vigencia C 400 X RUGGED: Hasta el 31 de enero de 2026. Stock de 3 unidades.Simulación Crédito Inteligente (Ref. X): 50% de pie ($5.745.000), 24 cuotas de $139.990 y cuota n° 25 (VFMG) de $5.745.000. CAE 28,26%.Simulación Crédito Inteligente (Ref. RUGGED): 50% de pie ($5.995.000), 24 cuotas de $144.990 y cuota n° 25 (VFMG) de $5.995.000. CAE 28,06%.Sujeto a verificación de antecedentes financieros por la entidad otorgante. No incluye impuesto verde.

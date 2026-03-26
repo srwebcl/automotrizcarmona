@@ -1,0 +1,40 @@
+Catálogo Estructurado: BMW F 900 GSEste archivo contiene la metadata técnica y comercial de la BMW F 900 GS, adaptada al estándar unificado de la red para procesamiento de datos masivo.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "F 900 GS"
+categoria: "Adventure"
+combustible: "Súper sin plomo (95 octanos)"
+motorizacion: "895 cm3 | 105 CV"
+seguridad:
+  sistemas_activos: 
+    - "Gestión digital del motor BMS-X"
+    - "Acelerador electrónico"
+    - "Catalizador regulado de 3 vías"
+caracteristicas_destacadas:
+  - nombre: "Cadena M Endurance"
+    descripcion: "Recubrimiento DLC de baja fricción que reduce drásticamente el mantenimiento de la rueda trasera."
+  - nombre: "Horquilla Showa ajustable"
+    descripcion: "Suspensión deportiva de 45 mm totalmente ajustable, lista para cualquier tipo de terreno."
+  - nombre: "Guardamanos enduro"
+    descripcion: "Alta calidad con varillas metálicas y paneles protectores para resguardar manos y puños de impactos."
+  - nombre: "Elevación del manillar"
+    descripcion: "Pieza forjada de aluminio que permite un ajuste 24 mm más alto que el estándar para uso todoterreno."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW F 900 GS I"
+    especificaciones:
+      motor: "895 cm3 (Bicilíndrico)"
+      hp: 105
+      caja: "6 velocidades (Cárter seco)"
+      traccion: "Cadena M Endurance"
+      peso_vacio: "Peso reducido (Uso todoterreno)"
+      consumo_wmtc: "4.4 l / 100km"
+      equipamiento_clave:
+        - "Paquete Enduro Pro compatible"
+        - "Horquilla Showa 45mm"
+        - "Batería 12V / 9Ah"
+        - "Iluminación LED"
+    precios:
+      precio_lista: 17990000
+      bono_todo_medio_pago: 1500000
+      bono_autofin: 0
+      precio_final_con_bono: 16490000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (09 unidades).Simulación Crédito Inteligente: 50% de pie ($8.245.000), 24 cuotas de $187.990 y cuota n° 25 (VFMG) de $8.245.000. CAE 26,4%. Costo total del crédito: $12.756.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde ni fletes. No válido para Zona Franca.

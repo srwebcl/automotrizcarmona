@@ -1,0 +1,49 @@
+Catálogo Estructurado: BMW R 1300 GS Adventure
+Este archivo contiene la metadata técnica y comercial de la BMW R 1300 GS Adventure, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 1300 GS Adventure"
+categoria: "Adventure"
+combustible: "Súper sin plomo (95 octanos)"
+motorizacion: "1.300 cc | 145 CV"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "Motorrad Full Integral ABS Pro (Implícito)"
+    - "Defensa de protección de motor"
+    - "Faro adicional integrado"
+caracteristicas_destacadas:
+  - nombre: "Protección superior contra el viento"
+    descripcion: "Parabrisas de gran tamaño y guardamanos con intermitentes integrados de serie para viajes prolongados."
+  - nombre: "Autonomía extrema"
+    descripcion: "Depósito de combustible de 30 litros diseñado para expediciones y recorridos de larga distancia."
+  - nombre: "Look de enduro robusto"
+    descripcion: "Chasis trasero independiente con entramado de tubos de aluminio que refuerza su estética y funcionalidad off-road."
+  - nombre: "Preparada para cualquier terreno"
+    descripcion: "Equipada de serie con defensa de protección y faro adicional para máxima visibilidad y seguridad."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW R 1300 GS ADV"
+    especificaciones:
+      motor: "1.300 cc (Bicilíndrico Boxer ShiftCam)"
+      hp: 145
+      par_motor: "149 Nm"
+      caja: "6 velocidades integrada en el cárter"
+      traccion: "Cardán"
+      deposito: "30 litros"
+      aceleracion_0_100: "3.4 s"
+      consumo_wmtc: "4.9 l / 100km"
+      equipamiento_clave:
+        - "BMW ShiftCam"
+        - "Parabrisas Touring"
+        - "Guardamanos con intermitentes"
+        - "Defensas de motor"
+        - "Faros auxiliares"
+        - "Batería AGM 14 Ah"
+    precios:
+      precio_lista: 31990000
+      bono_todo_medio_pago: 0
+      bono_autofin: 1000000
+      precio_final_con_bono: 30990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Hasta el 31 de marzo de 2026 o hasta agotar stock (10 unidades).Simulación Crédito Inteligente: 50% de pie ($15.495.000), 24 cuotas de $335.990 y cuota n° 25 (VFMG) de $15.495.000. CAE 25,17%. Costo total del crédito: $23.558.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde ni fletes. No válido para Zona Franca.

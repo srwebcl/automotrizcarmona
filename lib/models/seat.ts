@@ -5,7 +5,7 @@ export const SEAT_MODELS: Vehicle[] = [
         id: 'ibiza',
         brand: 'seat',
         name: 'Ibiza',
-        category: 'Hatchback',
+        category: "Hatchback",
         price: 17890000,
         image: '/images/seat/ibiza/ibiza.webp',
         slogan: 'Creado en Barcelona',

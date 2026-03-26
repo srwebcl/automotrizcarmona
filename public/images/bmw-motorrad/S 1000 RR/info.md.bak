@@ -1,0 +1,41 @@
+Catálogo Estructurado: BMW S 1000 RR
+Este archivo contiene la metadata técnica y comercial de la BMW S 1000 RR, basada exclusivamente en la información proporcionada.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "S 1000 RR"
+categoria: "Sport"
+motor:
+  tipo: "Motor en línea de cuatro tiempos y cuatro cilindros refrigerado por agua o por aceite"
+  cilindrada: "999 cm3"
+  potencia: "154 kW (210 hp) a 13,750 rpm"
+  par_motor: "113 Nm a 11,000 rpm"
+prestaciones:
+  velocidad_maxima: "303 km/h"
+  aceleracion_0_100: "3.21 s"
+  consumo_wmct: "6.4 l a 100 km"
+caracteristicas_destacadas:
+  - nombre: "Aerodinámica"
+    descripcion: "Revestimiento frontal y lateral con aletas que incrementan la fuerza descendente hasta 23,10 kg a 300 km/h."
+  - nombre: "Batería M Lightweight"
+    descripcion: "Tecnología de iones de litio que supone un ahorro de 2 kg de peso."
+  - nombre: "Equipamiento de Serie"
+    descripcion: "Modo de conducción Pro, ABS Pro, DTC, HSC Pro, Asistente del cambio Pro y Pantalla TFT de 6,5\"."
+2. Matriz de Versiones y Precios (Dataset)versiones:
+  - version: "BMW New S 1000 RR"
+    especificaciones:
+      transmision: "Cambio de seis velocidades secuencial"
+      peso_vacio: "198 kg"
+      combustible: "Premium sin plomo"
+    precios:
+      precio_lista: 29690000
+      bono_todo_medio_pago: 1200000
+      precio_con_bono: 28490000
+    financiamiento:
+      producto: "Crédito Inteligente"
+      pie_50_porciento: 14245000
+      cuotas: 24
+      valor_cuota: 309990
+      cuota_25_vfmg: 14245000
+      cae: "25.23%"
+      costo_total_credito: 21684760
+      vigencia: "Hasta 28 de Febrero 2026"

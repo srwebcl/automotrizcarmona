@@ -1,0 +1,47 @@
+Catálogo Estructurado: BMW R 1300 RT
+Este archivo contiene la metadata técnica y comercial de la BMW R 1300 RT, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 1300 RT"
+categoria: "Tour"
+combustible: "Gasolina"
+motorizacion: "1.300 cc | 145 CV"
+link_youtube: "[https://youtu.be/dcTLHCTowps](https://youtu.be/dcTLHCTowps)"
+seguridad:
+  sistemas_activos: 
+    - "Headlight Pro (Luz de giro)"
+    - "DCA - Dynamic Chassis Adaption (Suspensión opcional)"
+    - "Gestión digital del motor con E-Gas"
+    - "Catalizador regulado de 3 vías (EU 5+)"
+caracteristicas_destacadas:
+  - nombre: "Dynamic Chassis Adaption (DCA)"
+    descripcion: "Suspensión con regulación variable de rigidez, dos modos de amortiguación y posiciones de conducción independientes."
+  - nombre: "Tecnología Headlight Pro"
+    descripcion: "Iluminación óptima de la calzada mediante función de luz de giro, ideal para trayectos nocturnos extensos."
+  - nombre: "Protección optimizada"
+    descripcion: "Aletas deflectoras variables que permiten regular la corriente de aire manualmente para un viaje más relajado."
+  - nombre: "Asistente de cambio automático"
+    descripcion: "Realización automática del accionamiento del embrague y cambio de marchas para una conducción sin fatiga."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW New R 1300 RT"
+    especificaciones:
+      motor: "1.300 cc (Bicilíndrico en línea aire/líquido)"
+      hp: 145
+      par_motor: "149 Nm"
+      caja: "6 velocidades con levas (Asistente automático)"
+      traccion: "Cardán"
+      consumo_wmtc: "4.9 l / 100km"
+      equipamiento_clave:
+        - "DCA compatible"
+        - "Headlight Pro"
+        - "Embrague antirrebote húmedo"
+        - "Batería 12.5 Ah (exenta de mantenimiento)"
+        - "Aletas deflectoras variables"
+    precios:
+      precio_lista: 33990000
+      bono_todo_medio_pago: 1000000
+      bono_autofin: 0
+      precio_final_con_bono: 32990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (4 unidades).Simulación Crédito Inteligente: 50% de pie ($16.495.000), 24 cuotas de $355.990 y cuota n° 25 (VFMG) de $16.495.000. CAE 25,07%. Costo total del crédito: $25.038.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye fletes ni impuesto verde. No válido para Zona Franca.

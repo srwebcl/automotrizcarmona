@@ -285,7 +285,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{config.name}</p>
                                             <div className="flex items-center gap-2">
-                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight">{model.name}</h3>
+                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase">{model.name}</h3>
                                                 {model.isElectric && (
                                                     <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
@@ -355,46 +355,53 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     id: 1, 
                                     title: "Servicio Técnico", 
                                     subtitle: "Agenda tu Hora", 
-                                    link: "/servicios", 
-                                    image: brandId === 'bmw' ? "/images/bmw/bmw-servicio.jpeg" : 
+                                    link: `/servicios/agendar?marca=${config.name}`, 
+                                    image: config.serviceImages?.servicio ??
+                                           (brandId === 'bmw' ? "/images/bmw/bmw-servicio.jpeg" : 
+                                           brandId === 'bmw-motorrad' ? "/images/bmw-motorrad/servicio-bmw-motorrad.jpeg" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/servicio-vw.jpeg" :
                                            brandId === 'toyota' ? "/images/toyota/servicio-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/servicio-honda.jpeg" :
-                                           "/images/quick_access_servicio_1770350934207.png" 
+                                           "/images/quick_access_servicio_1770350934207.png")
                                 },
                                 { 
                                     id: 2, 
                                     title: "Repuestos", 
                                     subtitle: "Repuestos Originales", 
-                                    link: "/repuestos", 
-                                    image: brandId === 'bmw' ? "/images/bmw/bmw-repuestos.jpeg" : 
+                                    link: `/repuestos/cotizar?marca=${config.name}`, 
+                                    image: config.serviceImages?.repuestos ??
+                                           (brandId === 'bmw' ? "/images/bmw/bmw-repuestos.jpeg" : 
+                                           brandId === 'bmw-motorrad' ? "/images/bmw-motorrad/repuestos-bmw-motorrad.png" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/repuestos-vw.jpeg" :
                                            brandId === 'toyota' ? "/images/toyota/repuestos-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/repuestos-honda.jpeg" :
-                                           "/images/quick_access_repuestos_1770350949447.png" 
+                                           "/images/quick_access_repuestos_1770350949447.png")
                                 },
                                 { 
                                     id: 3, 
                                     title: `${config.name} Usados`, 
                                     subtitle: "Seminuevos", 
                                     link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, 
-                                    image: brandId === 'bmw' ? "/images/bmw/bmw-usados.jpg" : 
+                                    image: config.serviceImages?.usados ??
+                                           (brandId === 'bmw' ? "/images/bmw/bmw-usados.jpg" : 
+                                           brandId === 'bmw-motorrad' ? "/images/bmw-motorrad/usados-bmw-motorrad.png" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/usados-volkswagen.png" :
                                            brandId === 'toyota' ? "/images/toyota/usados-toyota.png" : 
-                                           brandId === 'cupra' ? "/images/cupra/cupra-usados.png" : 
-                                           brandId === 'honda' ? "/images/honda/usados-honda.jpeg" : "/images/sucursales.jpg", 
+                                           brandId === 'honda' ? "/images/honda/usados-honda.jpeg" : "/images/sucursales.jpg"),
                                     isExternal: true 
                                 },
                                 { 
                                     id: 4, 
                                     title: "Sucursales", 
                                     subtitle: "Encuentra tu Sucursal", 
-                                    link: "/sucursales", 
-                                    image: brandId === 'bmw' ? "/images/bmw/bmw-sucursales.webp" : 
+                                    link: `/sucursales?marca=${config.name}`, 
+                                    image: config.serviceImages?.sucursales ??
+                                           (brandId === 'bmw' ? "/images/bmw/bmw-sucursales.webp" : 
+                                           brandId === 'bmw-motorrad' ? "/images/bmw-motorrad/sucursal-bmw.png" : 
                                            brandId === 'volkswagen' ? "/images/volkswagen/sucursal-vw.jpeg" :
                                            brandId === 'toyota' ? "/images/toyota/sucursal-toyota.png" : 
                                            brandId === 'honda' ? "/images/honda/sucursal-honda.png" :
-                                           "/images/sucursales.jpg" 
+                                           "/images/sucursales.jpg")
                                 }
                             ].map((item) => (
                                 <div key={item.id} className="flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_25%] pl-4 min-w-0">

@@ -1,0 +1,41 @@
+Catálogo Estructurado: BMW F 900 GS AdventureEste archivo contiene la metadata técnica y comercial de la BMW F 900 GS Adventure, organizada para procesamiento de datos masivo con el estándar unificado de la red.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "F 900 GS Adventure"
+categoria: "Adventure"
+combustible: "Súper sin plomo (95 octanos)"
+motorizacion: "895 cm3 | 105 CV"
+seguridad:
+  sistemas_activos: 
+    - "Dynamic ESA (Suspensión electrónica opcional)"
+    - "Gestión digital del motor BMS-X"
+    - "Acelerador electrónico"
+    - "Protección del motor de aluminio de serie"
+caracteristicas_destacadas:
+  - nombre: "Parabrisas touring regulable"
+    descripcion: "Protege del viento y vibraciones en el casco, ajustable según las inclemencias climatológicas."
+  - nombre: "Capacidad de largo alcance"
+    descripcion: "Depósito de 23 litros diseñado para viajes de larga distancia y exploración."
+  - nombre: "Asiento Confort"
+    descripcion: "Diseño ergonómico pensado para resistir muchas horas de conducción en viajes largos."
+  - nombre: "Dynamic ESA"
+    descripcion: "Mejora el contacto entre la carretera y los neumáticos, ofreciendo máxima seguridad y rendimiento."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW F 900 GS ADV II"
+    especificaciones:
+      motor: "895 cm3 (Bicilíndrico paralelo)"
+      hp: 105
+      caja: "6 velocidades en toma constante"
+      traccion: "Cadena sin fin de anillos toroidales"
+      deposito: "23 litros"
+      equipamiento_clave:
+        - "Dynamic ESA"
+        - "Parabrisas Touring"
+        - "Protección de motor aluminio"
+        - "Asiento Confort"
+        - "Embrague anti-hopping"
+    precios:
+      precio_lista: 21790000
+      bono_todo_medio_pago: 1500000
+      bono_autofin: 0
+      precio_final_con_bono: 20290000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (8 unidades).Simulación Crédito Inteligente: 50% de pie ($10.145.000), 24 cuotas de $225.990 y cuota n° 25 (VFMG) de $10.145.000. CAE 25,86%. Costo total del crédito: $15.568.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde ni fletes. No válido para Zona Franca.

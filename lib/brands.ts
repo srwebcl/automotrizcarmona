@@ -13,6 +13,12 @@ export interface BrandConfig {
         title?: string;
         link?: string;
     }[];
+    serviceImages?: {
+        repuestos?: string;
+        sucursales?: string;
+        usados?: string;
+        servicio?: string;
+    };
 }
 
 export const BRANDS_CONFIG: Record<string, BrandConfig> = {
@@ -96,16 +102,17 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-gray-900',
         bannerSlides: [
             { 
-                web: '/images/cupra/banner-cupra.webp', 
-                mobile: '/images/cupra/banner-cupra.webp', 
-                type: 'image' 
-            },
-            { 
-                web: '/images/cupra/banner-terramar.png', 
-                mobile: '/images/cupra/banner-terramar.png', 
+                web: '/images/cupra/banner-cupra.png', 
+                mobile: '/images/cupra/banner-cupra.png', 
                 type: 'image' 
             }
-        ]
+        ],
+        serviceImages: {
+            repuestos: '/images/cupra/repuestos-cupra.png',
+            sucursales: '/images/cupra/sucursales-cupra.jpg',
+            usados: '/images/cupra/cupra-usados.png',
+            servicio: '/images/cupra/servicio-cupra.png',
+        }
     },
     seat: {
         id: 'seat',
@@ -147,7 +154,16 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Make Life a Ride',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
-            { type: 'placeholder', bg: 'bg-gray-100', title: 'BMW MOTORRAD SLIDER 1' }
+            { 
+                web: '/images/bmw-motorrad/banner-1.avif', 
+                mobile: '/images/bmw-motorrad/banner-1.avif', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/bmw-motorrad/banner-2.avif', 
+                mobile: '/images/bmw-motorrad/banner-2.avif', 
+                type: 'image' 
+            }
         ]
     },
     foton: {
@@ -259,8 +275,43 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-200', title: 'FOTON CAMIONES SLIDER 1' }
         ]
+    },
+    kaiyi: {
+        id: 'kaiyi',
+        name: 'Kaiyi',
+        logo: '/images/logos/logo-kaiyi.webp',
+        seoTitle: 'Kaiyi | Innovación y Confort para tu Familia',
+        brandColorCss: 'text-blue-600',
+        bannerSlides: [
+            { 
+                web: '/images/kaiyi/banner-kaiyi-1.webp', 
+                mobile: '/images/kaiyi/banner-kaiyi-1.webp', 
+                type: 'image' 
+            },
+            { 
+                web: '/images/kaiyi/banner-kaiyi-2.webp', 
+                mobile: '/images/kaiyi/banner-kaiyi-2.webp', 
+                type: 'image' 
+            }
+        ],
+        serviceImages: {
+            repuestos: '/images/kaiyi/repuestos-kaiyi.png',
+            sucursales: '/images/kaiyi/sucursal-kaiyi.png',
+            usados: '/images/kaiyi/usados-kaiyi.png',
+            servicio: '/images/kaiyi/servicio-kaiyi.png',
+        }
+    },
+    soueast: {
+        id: 'soueast',
+        name: 'Soueast',
+        logo: '/images/logos/logo-soueast.webp',
+        seoTitle: 'Soueast | Diseño y Calidad Superior',
+        brandColorCss: 'text-red-600',
+        bannerSlides: [
+            { type: 'placeholder', bg: 'bg-red-50', title: 'SOUEAST SLIDER 1' }
+        ]
     }
-};
+}
 
 export const getBrandConfig = (brandId: string): BrandConfig => {
     // Normalize brandId from URL (handles decode and spaces)

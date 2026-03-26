@@ -1,0 +1,43 @@
+Catálogo Estructurado: BMW G 310 GS
+Este archivo contiene la metadata técnica y comercial de la BMW G 310 GS, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "G 310 GS"
+categoria: "Adventure"
+combustible: "Gasolina (mínimo 91 octanos RON)"
+motorizacion: "313 cc | 34 hp"
+seguridad:
+  sistemas_activos: 
+    - "BMW Motorrad ABS"
+    - "Ride by Wire (Acelerador electrónico)"
+    - "Catalizador regulado de 3 vías (EU 5)"
+caracteristicas_destacadas:
+  - nombre: "Ride by Wire"
+    descripcion: "Sistema de aceleración electrónica que permite una admisión de gas más precisa y eficiente."
+  - nombre: "Manetas ajustables"
+    descripcion: "Palancas de freno y embrague regulables para adaptar la distancia al manillar según la comodidad del piloto."
+  - nombre: "Diseño GS Flyline"
+    descripcion: "Elementos estéticos inconfundibles de la familia GS con ergonomía optimizada para todo tipo de terrenos."
+  - nombre: "Horquilla invertida dorada"
+    descripcion: "Suspensión delantera anodizada en dorado que ofrece estabilidad y precisión en los giros."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW G 310 GS"
+    especificaciones:
+      motor: "313 cc (Monocilíndrico)"
+      hp: 34
+      caja: "6 marchas secuencial"
+      traccion: "Cadena sin fin con eslabones en X"
+      peso_vacio: "Información no especificada"
+      consumo_wmtc: "3.5 l / 100km"
+      equipamiento_clave:
+        - "Horquilla invertida"
+        - "Ride by Wire"
+        - "Iluminación LED"
+        - "Embrague anti-hopping"
+    precios:
+      precio_lista: 6790000
+      bono_todo_medio_pago: 0
+      bono_autofin: 1600000
+      precio_final_con_bono: 5190000
+      financiamiento: "Financiamiento Autofin"
+3. Condiciones y LegalesVigencia: Hasta el 31 de marzo de 2026 o hasta agotar stock (10 unidades).Simulación Crédito: 50% de pie ($2.595.000), 24 cuotas de $85.990 y cuota n° 25 (VFMG) de $2.595.000. CAE 38,28%. Costo total del crédito: $4.658.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye fletes. No válido para Zona Franca.

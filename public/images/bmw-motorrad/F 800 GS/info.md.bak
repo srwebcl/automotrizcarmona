@@ -1,0 +1,41 @@
+Catálogo Estructurado: BMW F 800 GSEste archivo contiene la metadata técnica y comercial de la BMW F 800 GS, adaptada al estándar unificado de la red para procesamiento de datos masivo.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "F 800 GS"
+categoria: "Adventure"
+combustible: "Gasolina"
+motorizacion: "F 800 GS"
+seguridad:
+  sistemas_activos: 
+    - "ABS Pro de serie (Control en curvas)"
+    - "DTC (Control dinámico de tracción)"
+    - "Dynamic ESA (Ajuste electrónico de la amortiguación)"
+    - "BMW Motorrad ABS"
+caracteristicas_destacadas:
+  - nombre: "Dynamic ESA"
+    descripcion: "Adapta automáticamente la amortiguación al terreno y permite el ajuste electrónico del pretensado sin herramientas."
+  - nombre: "Estribos del guardamanos de serie"
+    descripcion: "Fabricados en plástico resistente a impactos y UV; protege manos y controles de elementos del terreno y clima."
+  - nombre: "Puerto USB de serie"
+    descripcion: "Ubicado a la derecha del puesto de conducción para mantener dispositivos cargados durante el trayecto."
+  - nombre: "ABS Pro y DTC"
+    descripcion: "Garantiza control al frenar en curvas y evita el patinado de la rueda trasera en condiciones variables."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW F 800 GS I"
+    especificaciones:
+      motor: "Bicilíndrico (basado en denominación F 800)"
+      caja: "Caja de cambios de seis velocidades"
+      traccion: "Cadena sin fin con eslabones en X"
+      embrague: "Multidisco en baño de aceite (anti-hopping)"
+      equipamiento_clave:
+        - "Dynamic ESA"
+        - "ABS Pro"
+        - "DTC"
+        - "Puerto USB"
+        - "Protectores de puños"
+        - "Llantas de aluminio fundido"
+    precios:
+      precio_lista: 14990000
+      bono_todo_medio_pago: 1500000
+      bono_autofin: 0
+      precio_final_con_bono: 13490000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (10 unidades).Simulación Crédito Inteligente: 50% de pie ($6.745.000), 24 cuotas de $159.990 y cuota n° 25 (VFMG) de $6.745.000. CAE 27,6%. Costo total del crédito: $10.584.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante. No incluye impuesto verde. Simulación gestionada por Sociedad de Créditos Automotrices S.A.

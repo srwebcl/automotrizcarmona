@@ -1,0 +1,46 @@
+Catálogo Estructurado: BMW CE 04
+Este archivo contiene la metadata técnica y comercial de la BMW CE 04, adaptada al estándar unificado de la red para procesamiento de datos masivo.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "CE 04"
+categoria: "Urban Mobility"
+combustible: "Eléctrico"
+motorizacion: "15 kW (Nominal) | 31 kW (Máxima)"
+link_youtube: "[https://youtu.be/3VRmsR-SsRs](https://youtu.be/3VRmsR-SsRs)"
+seguridad:
+  sistemas_activos: 
+    - "BMW Motorrad ABS"
+    - "Recuperación automática en deceleración"
+    - "Bastidor de acero con doble pulido"
+caracteristicas_destacadas:
+  - nombre: "Conjuntos de adhesivos decorativos elegantes"
+    descripcion: "Toque adicional e individual con el juego de adhesivos opcionales para los paneles de revestimiento y la rueda de disco."
+  - nombre: "Gran pantalla TFT a color"
+    descripcion: "Pantalla de 10,25” de serie con visión perfecta de datos vitales y servicios de BMW Motorrad Connectivity."
+  - nombre: "Propulsión eléctrica"
+    descripcion: "Eficiente y con transmisión por correa dentada sin mantenimiento. Cero emisiones y conducción silenciosa."
+  - nombre: "Práctico compartimento de almacenamiento"
+    descripcion: "Compartimento de carga lateral con iluminación integrada para guardar casco y cable de carga de forma segura."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW CE 04"
+    especificaciones:
+      motor: "Sincrónico de imán permanente refrigerado por líquido"
+      hp_max: 42
+      par_motor: "62 Nm"
+      aceleracion_0_50: "2.6 s"
+      autonomia_wmtc: "130 km"
+      velocidad_maxima: "120 km/h"
+      bateria_traccion: "8,5 kWh (Iones de litio)"
+      equipamiento_clave:
+        - "Pantalla TFT 10.25\""
+        - "Cargador integrado 2.3 kW"
+        - "Transmisión por correa dentada"
+        - "Marcha atrás eléctrica"
+    precios:
+      precio_lista: 16290000
+      bono_todo_medio_pago: 300000
+      bono_autofin: 0
+      precio_final_con_bono: 15990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Simulación Crédito Inteligente: 50% de pie ($7.995.000), 24 cuotas de $182.990 y cuota n° 25 (VFMG) de $7.995.000. CAE 26,57%. Costo total del crédito: $12.386.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante. No incluye impuesto verde.

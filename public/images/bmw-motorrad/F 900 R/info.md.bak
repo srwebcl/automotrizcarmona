@@ -1,0 +1,41 @@
+Catálogo Estructurado: BMW F 900 REste archivo contiene la metadata técnica y comercial de la BMW F 900 R, organizada para procesamiento de datos masivo con el estándar unificado de la red.1. Metadata del Modelomarca: "BMW Motorrad"
+modelo: "F 900 R"
+categoria: "Roadster"
+combustible: "Súper sin plomo (95 RON)"
+motorizacion: "895 cm3 | 105 hp"
+seguridad:
+  sistemas_activos: 
+    - "ABS Pro BMW Motorrad"
+    - "Gestión digital del motor BMS-X"
+    - "Acelerador electrónico"
+    - "Embrague anti-hopping (baño de aceite multidisco)"
+caracteristicas_destacadas:
+  - nombre: "Llantas ligeras y pilotaje ágil"
+    descripcion: "Llantas heredadas de la S 1000 R que reducen el peso en 1,8 kg, mejorando la agilidad."
+  - nombre: "Diseño de faro deportivo"
+    descripcion: "Careta de faro con diseño agresivo que se integra cromáticamente con el resto de la carrocería."
+  - nombre: "Horquilla telescópica invertida regulable"
+    descripcion: "Permite un control óptimo del recorrido de amortiguación para un pilotaje preciso y gran estabilidad."
+  - nombre: "Estética Superdeportiva"
+    descripcion: "Parte trasera esbelta que completa un aspecto intrépido y dinámico."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW New F 900 R I"
+    especificaciones:
+      motor: "895 cm3 (Bicilíndrico)"
+      hp: 105
+      caja: "6 velocidades integrada en el cárter"
+      traccion: "Cadena sin fin con eslabones en X"
+      peso_vacio: "Información no especificada"
+      consumo_wmtc: "4.2 l / 100km"
+      equipamiento_clave:
+        - "ABS Pro"
+        - "Horquilla invertida 43 mm"
+        - "Panel TFT de alta definición"
+        - "Iluminación LED"
+    precios:
+      precio_lista: 14890000
+      bono_todo_medio_pago: 1500000
+      bono_autofin: 0
+      precio_final_con_bono: 13390000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (4 unidades).Simulación Crédito Inteligente: 50% de pie ($6.695.000), 24 cuotas de $158.990 y cuota n° 25 (VFMG) de $6.695.000. CAE 27,63%. Costo total del crédito: $10.510.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

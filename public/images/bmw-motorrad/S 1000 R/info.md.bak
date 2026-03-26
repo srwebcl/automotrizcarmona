@@ -1,0 +1,49 @@
+Catálogo Estructurado: BMW S 1000 RE
+ste archivo contiene la metadata técnica y comercial de la BMW S 1000 R, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "S 1000 R"
+categoria: "Roadster"
+combustible: "Premium sin plomo (98 ROZ/RON)"
+motorizacion: "999 cm3 | 170 CV"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "Gestión digital del motor BMS-O"
+    - "Acelerador electrónico"
+    - "Embrague anti-hopping con automultiplicación"
+caracteristicas_destacadas:
+  - nombre: "Motor de Superbike"
+    descripcion: "Combinación de potencia Superbike y agilidad Roadster con 170 CV y par motor optimizado."
+  - nombre: "Puño del acelerador de acción rápida M"
+    descripcion: "Dosificación excelente y desarrollo estable de la potencia sin necesidad de cambiar el agarre."
+  - nombre: "Llantas M forjadas"
+    descripcion: "Equipamiento opcional más ligero que mejora significativamente el manejo y el rendimiento dinámico."
+  - nombre: "Parabrisas Sport tintado"
+    descripcion: "Elemento dinámico que mejora la estética deportiva y la protección aerodinámica."
+
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW New S 1000 R"
+    especificaciones:
+      motor: "999 cm3 (4 cilindros en línea)"
+      hp: 170
+      par_motor: "114 Nm"
+      caja: "6 velocidades en toma constante"
+      traccion: "Cadena 525 17/45"
+      consumo_wmtc: "6.2 l / 100km"
+      equipamiento_clave:
+        - "Puño rápido M"
+        - "DTC"
+        - "Embrague anti-hopping"
+        - "Iluminación LED"
+        - "Pantalla TFT con conectividad"
+    precios:
+      precio_lista: 23990000
+      bono_todo_medio_pago: 1000000
+      bono_autofin: 0
+      precio_final_con_bono: 22990000
+      financiamiento: "Crédito Inteligente"
+
+      
+3. Conditions y Legales
+Vigencia: Hasta el 28 de febrero de 2026 o hasta agotar stock (5 unidades).Simulación Crédito Inteligente: 50% de pie ($11.495.000), 24 cuotas de $252.990 y cuota n° 25 (VFMG) de $11.495.000. CAE 25,58%. Costo total del crédito: $17.566.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

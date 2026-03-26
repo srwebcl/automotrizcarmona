@@ -2,9 +2,15 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { MODELS_REGISTRY } from '@/lib/models';
-import { CheckCircle, Info } from 'lucide-react';
+import { CheckCircle, Info, ArrowLeft, Car, User } from 'lucide-react';
+
+const STEPS = [
+    { id: 1, label: 'Tu vehículo', icon: Car },
+    { id: 2, label: 'Tus datos', icon: User },
+];
 
 function CotizarContent() {
     const searchParams = useSearchParams();
@@ -18,6 +24,13 @@ function CotizarContent() {
     const [version, setVersion] = useState<any>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setIsScrolled(window.scrollY > 10);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     // Form data
     const [formData, setFormData] = useState({
@@ -159,9 +172,40 @@ function CotizarContent() {
     }
 
     return (
-        <main className="min-h-screen pt-24 pb-12 bg-[#f4f6f8] font-sans selection:bg-[#d2001c] selection:text-white">
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        <main className="min-h-screen pt-[88px] pb-12 bg-[#f4f6f8] font-sans selection:bg-[#d2001c] selection:text-white">
+            {/* ── TOPBAR ── */}
+            <div className={`sticky z-40 bg-white border-b border-gray-100 shadow-sm transition-all duration-300 ${isScrolled ? 'top-[72px]' : 'top-[88px]'}`}>
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
+                    <Link href={`/nuevos/${marca.toLowerCase()}/${modeloId}`}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap flex-shrink-0">
+                        <ArrowLeft size={15} />
+                        <span className="hidden sm:inline">Volver a Versiones</span>
+                        <span className="sm:hidden">Volver</span>
+                    </Link>
 
+                    <div className="flex items-center gap-1 sm:gap-2">
+                        {STEPS.map((s, idx) => {
+                            const stepStr = 2; // Hardcoded we are on step 2 (Cotización)
+                            const done = s.id < stepStr; const active = s.id === stepStr; const Icon = s.icon;
+                            return (
+                                <React.Fragment key={s.id}>
+                                    <div className="flex items-center gap-1.5">
+                                        <div className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${done ? 'bg-[#d2001c] text-white' : active ? 'bg-[#d2001c] text-white ring-2 ring-[#d2001c]/20' : 'bg-gray-100 text-gray-400'}`}>
+                                            {done ? <CheckCircle size={14} /> : <Icon size={14} />}
+                                        </div>
+                                        <span className={`text-xs font-bold hidden sm:inline whitespace-nowrap ${active ? 'text-[#d2001c]' : done ? 'text-gray-500' : 'text-gray-300'}`}>{s.label}</span>
+                                    </div>
+                                    {idx < STEPS.length - 1 && (
+                                        <div className={`w-6 sm:w-10 h-0.5 rounded-full mx-1 flex-shrink-0 ${done ? 'bg-[#d2001c]' : 'bg-gray-100'}`} />
+                                    )}
+                                </React.Fragment>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
                     {/* LEFT COLUMN: Form */}

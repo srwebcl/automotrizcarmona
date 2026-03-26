@@ -1,0 +1,63 @@
+Catálogo Estructurado: BMW CE 02
+
+Este archivo contiene la metadata técnica y comercial de la BMW CE 02 (e-parkourer), adaptada al estándar unificado de la red para procesamiento de datos masivo.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "CE 02"
+categoria: "Urban Mobility"
+combustible: "Eléctrico"
+motorizacion: "6 kW (Nominal) | 11 kW (Máxima)"
+link_youtube: "[https://youtu.be/M0mtpuPqYA0](https://youtu.be/M0mtpuPqYA0)"
+seguridad:
+  sistemas_activos: 
+    - "BMW Motorrad ABS (Rueda delantera)"
+    - "Recuperación automática en deceleración"
+caracteristicas_destacadas:
+  - nombre: "Soporte para smartphone SP Connect"
+    descripcion: "Integración completa del smartphone en el diseño de la e-parkourer mediante soporte opcional."
+  - nombre: "Modos de conducción (SURF / FLOW / FLASH)"
+    descripcion: "Experiencia armonizada: SURF para deslizamiento, FLOW para ritmo urbano y FLASH para arranque poderoso."
+  - nombre: "Asiento Pro Highline"
+    descripcion: "Diseño ergonómico en combinación de colores blanco, negro y Petrol para mayor confort y estilo."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW CE 02"
+    especificaciones:
+      motor: "Síncrono refrigerado por aire"
+      hp_equivalente: 15
+      par_motor: "55 Nm"
+      traccion: "Banda"
+      peso_vacio: "132 kg"
+      autonomia_wmtc: "95 km"
+      velocidad_maxima: "95 km/h"
+      equipamiento_clave:
+        - "Carga 900 W"
+        - "Modos Flow y Surf"
+        - "BMW Motorrad ABS"
+        - "Toma doméstica 230 V"
+    precios:
+      precio_lista: 12490000
+      bono_todo_medio_pago: 2000000
+      bono_autofin: 0
+      precio_final_con_bono: 10490000
+      financiamiento: "Crédito Inteligente"
+
+  - version: "BMW CE 02 H LINE (Highline)"
+    especificaciones:
+      motor: "Síncrono refrigerado por aire"
+      hp_equivalente: 15
+      par_motor: "55 Nm"
+      traccion: "Banda"
+      peso_vacio: "132 kg"
+      autonomia_wmtc: "95 km"
+      equipamiento_adicional:
+        - "Modo de conducción FLASH"
+        - "Asiento Pro"
+        - "Cargador rápido opcional (1.500 kW)"
+        - "Soporte Smartphone SP Connect"
+    precios:
+      precio_lista: 13590000
+      bono_todo_medio_pago: 0
+      bono_autofin: 2000000
+      precio_final_con_bono: 11590000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia CE 02: Hasta el 28 de febrero de 2026. Stock de 3 unidades.Vigencia CE 02 H LINE: Hasta el 31 de enero de 2026. Stock de 3 unidades.Simulación Crédito Inteligente (Ref. CE 02): 50% de pie ($5.245.000), 24 cuotas de $129.990 y cuota n° 25 (VFMG) de $5.245.000. CAE 28,65%.Simulación Crédito Inteligente (Ref. H LINE): 50% de pie ($5.795.000), 24 cuotas de $140.990 y cuota n° 25 (VFMG) de $5.795.000. CAE 28,22%.Sujeto a verificación de antecedentes financieros por la entidad otorgante. No incluye impuesto verde.

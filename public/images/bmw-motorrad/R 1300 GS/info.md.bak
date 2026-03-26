@@ -1,0 +1,47 @@
+Catálogo Estructurado: BMW R 1300 GS
+Este archivo contiene la metadata técnica y comercial de la BMW R 1300 GS, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 1300 GS"
+categoria: "Adventure"
+combustible: "Súper sin plomo (95 ROZ/RON)"
+motorizacion: "1.300 cc | 145 CV"
+link_youtube: "[https://youtu.be/B7cV_JrD0YE](https://youtu.be/B7cV_JrD0YE)"
+seguridad:
+  sistemas_activos: 
+    - "Motorrad Full Integral ABS Pro (Optimizado para inclinación)"
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "EVO Paralever y EVO Telelever"
+    - "Gestión digital del motor BMS-O con ShiftCam"
+caracteristicas_destacadas:
+  - nombre: "Guiding Light: Faro LED Matricial"
+    descripcion: "Diseño simétrico que integra luces de carretera y cruce en una sola unidad; intermitentes integrados en el guardamanos."
+  - nombre: "EVO Paralever y EVO Telelever"
+    descripcion: "Sistemas de suspensión de última generación que garantizan estabilidad extraordinaria y manejo impresionante."
+  - nombre: "Concepto de bastidor multifuncional"
+    descripcion: "Chasis principal y trasero optimizados para mayor personalización y placer de conducción máximo."
+  - nombre: "Parabrisas ajustable Sport"
+    descripcion: "Regulación sencilla para protección variable contra el viento y visibilidad excelente de la carretera."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW R 1300 GS"
+    especificaciones:
+      motor: "1.300 cc (Bicilíndrico Boxer ShiftCam)"
+      hp: 145
+      par_motor: "149 Nm"
+      caja: "6 velocidades con levas"
+      traccion: "Cardán"
+      consumo_wmtc: "4.8 l / 100km"
+      equipamiento_clave:
+        - "Full Integral ABS Pro"
+        - "DTC"
+        - "EVO-Telelever / EVO-Paralever"
+        - "Batería de 14 Ah (sin mantenimiento)"
+        - "Parabrisas ajustable"
+    precios:
+      precio_lista: 28990000
+      bono_todo_medio_pago: 0
+      bono_autofin: 1000000
+      precio_final_con_bono: 27990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Hasta el 31 de marzo de 2026 o hasta agotar stock (10 unidades).Simulación Crédito Inteligente: 50% de pie ($13.995.000), 24 cuotas de $303.990 y cuota n° 25 (VFMG) de $13.995.000. CAE 25,26%. Costo total del crédito: $21.290.760.Sujeto a verificación de antecedentes financieros por la entidad otorgante (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde ni fletes. No válido para Zona Franca.

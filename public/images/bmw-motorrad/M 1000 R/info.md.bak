@@ -1,0 +1,47 @@
+Catálogo Estructurado: BMW M 1000 RE
+ste archivo contiene la metadata técnica y comercial de la BMW M 1000 R, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "M 1000 R"
+categoria: "M"
+combustible: "Gasolina súper sin plomo (95 octanos)"
+motorizacion: "999 cm3 | 210 hp"
+seguridad:
+  sistemas_activos: 
+    - "ABS Pro BMW Motorrad"
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "DDC Dynamic Damping Control (Control electrónico de amortiguación)"
+    - "Freno M de alto rendimiento"
+caracteristicas_destacadas:
+  - nombre: "Potente freno M"
+    descripcion: "Excelente rendimiento y punto de presión estable, visualmente reconocible por su recubrimiento anodizado azul con logotipo M."
+  - nombre: "Aletas M Carbon"
+    descripcion: "Componentes del paquete M Competition que aportan exclusividad aerodinámica y reducción de peso."
+  - nombre: "BMW ShiftCam"
+    descripcion: "Control variable del árbol de levas de admisión para optimizar el rendimiento en todo el rango de revoluciones."
+  - nombre: "Detalles de diseño exclusivos"
+    descripcion: "Tapa del embrague y generador en negro, con chasis trasero y basculante en gris antracita."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW M 1000 R"
+    especificaciones:
+      motor: "999 cm3 (4 cilindros en línea)"
+      hp: 210
+      par_motor: "113 Nm"
+      caja: "6 velocidades en toma constante"
+      traccion: "Cadena 525 17/47"
+      velocidad_maxima: "280 km/h"
+      consumo_wmtc: "6.4 l / 100km"
+      equipamiento_clave:
+        - "BMW ShiftCam"
+        - "DDC (Dynamic Damping Control)"
+        - "Ruedas forjadas de aluminio"
+        - "Freno M"
+        - "Panel TFT con Connectivity"
+    precios:
+      precio_lista: 29190000
+      bono_todo_medio_pago: 1200000
+      bono_autofin: 0
+      precio_final_con_bono: 27990000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+Vigencia: Simulación Crédito Inteligente: 50% de pie ($13.995.000), 24 cuotas de $303.990 y cuota n° 25 (VFMG) de $13.995.000. CAE 25,26%. Costo total del crédito: $21.290.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

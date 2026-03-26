@@ -1,0 +1,47 @@
+Catálogo Estructurado: BMW K 1600 GTL
+Este archivo contiene la metadata técnica y comercial de la BMW K 1600 GTL, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "K 1600 GTL"
+categoria: "Tour"
+combustible: "Gasolina súper sin plomo (95 octanos)"
+motorizacion: "1.649 ccm | 118 kW (160 hp)"
+seguridad:
+  sistemas_activos: 
+    - "Gestión digital del motor BMS-O"
+    - "Acelerador electrónico"
+    - "Catalizador regulado de 3 vías (UE 5)"
+    - "BMW Motorrad Integral ABS (implícito)"
+caracteristicas_destacadas:
+  - nombre: "Un motor de leyenda"
+    descripcion: "Motor de seis cilindros con suavidad de marcha y valores de rendimiento inigualables."
+  - nombre: "Compartimento de carga para smartphone"
+    descripcion: "Espacio protegido contra salpicaduras, ventilado y con conexión USB-C integrada."
+  - nombre: "Botones configurables para favoritos"
+    descripcion: "Cuatro botones físicos en el panel para asignar funciones preferidas y tenerlas al alcance de la mano."
+  - nombre: "Rueda forjada Classic"
+    descripcion: "La rueda forjada de la Option 719 muestra de dónde vienes y hasta dónde quieres llegar. La fabricación y el diseño son de la más alta calidad y representan el buen gusto."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW K 1600 GTL"
+    especificaciones:
+      motor: "1.649 ccm (6 cilindros en línea)"
+      kw: 118
+      par_motor: "180 Nm"
+      caja: "6 marchas secuencial (dentado oblicuo)"
+      traccion: "Cardán"
+      consumo_wmtc: "5,9 l / 100km"
+      equipamiento_clave:
+        - "Compartimento USB-C ventilado"
+        - "Botones de favoritos"
+        - "Panel TFT de alta resolución"
+        - "Embrague multidisco en baño de aceite"
+    precios:
+      precio_lista: 35790000
+      bono_todo_medio_pago: 1400000
+      bono_autofin: 0
+      precio_final_con_bono: 34390000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y Legales
+
+
+Vigencia: Simulación Crédito Inteligente: 50% de pie ($17.195.000), 24 cuotas de $369.990 y cuota n° 25 (VFMG) de $17.195.000. CAE 25,01%. Costo total del crédito: $26.074.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.

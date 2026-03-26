@@ -1,53 +1,61 @@
-Catálogo Estructurado: Honda WR-V
-Este archivo contiene la metadata y la matriz de precios detallada para el New Honda WR-V, organizada para procesamiento de datos masivo.
-1. Metadata del Modelo
-marca: "Honda"
-modelo: "New WR-V"
-categoria: "SUV"
-combustible: "Gasolina"
-seguridad:
-  cantidad_airbags: 6
-  sistemas: ["HSA (Asistente de arranque en pendientes)", "Honda SENSING (Versión Touring)", "Sensores de estacionamiento traseros"]
-caracteristicas_destacadas:
-  - nombre: "HSA – Asistente de arranque en pendientes"
-    descripcion: "Evita el retroceso del vehículo en pendientes manteniendo el freno accionado por segundos tras soltar el pedal."
-  - nombre: "6 Airbags"
-    descripcion: "Protección integral con airbags frontales, laterales y de cortina distribuidos estratégicamente."
-  - nombre: "Conectividad y Confort"
-    descripcion: "Pantalla multimedia de 10'', Climatizador automático con salidas traseras y Smart Entry con botón de encendido."
-2. Matriz de Versiones (Dataset)versiones:
-  - version: "WR-V EX"
-    especificaciones:
-      motor: "1.5 i-VTEC"
-      caja: "CVT con Paddle Shift"
-      traccion: "FWD"
-      llantas: "Aleación 17\""
-      equipamiento_clave: 
-        - "Pantalla Multimedia 10\""
-        - "Sensores traseros"
-        - "Luces LED con DLA"
-    precios:
-      precio_lista: 23990000
-      bono_todo_medio_pago: 1000000
-      bono_autofin: 2000000
-      precio_final_con_autofin: 21990000
-      impuesto_verde_ref: 345624
+MARCA: Honda
+MODELO: New WR-V
+TIPO: liviano
+CATEGORÍA: SUV
+SLOGAN: Aventuras sin límites
+IVA INCLUIDO: SÍ
 
-  - version: "WR-V Touring"
-    especificaciones:
-      motor: "1.5 i-VTEC"
-      caja: "CVT con Paddle Shift"
-      traccion: "FWD"
-      llantas: "Aleación 17\""
-      equipamiento_adicional:
-        - "Honda SENSING"
-        - "Asientos de Cuero"
-        - "Cargador Inalámbrico"
-        - "Faros Antiniebla"
-        - "Roof Rails"
-    precios:
-      precio_lista: 24990000
-      bono_todo_medio_pago: 1000000
-      bono_autofin: 2000000
-      precio_final_con_autofin: 22990000
-      impuesto_verde_ref: 360228
+VIDEO: 
+
+CARACTERÍSTICAS:
+
+CARACTERÍSTICA 1:
+Título: Diseño Dinámico
+Descripción: Diseño hecho a la medida de tus deseos y necesidades.
+
+CARACTERÍSTICA 2:
+Título: Conducción Eficiente
+Descripción: Dinámica y eficiencia excepcional en su conducción.
+
+CARACTERÍSTICA 3:
+Título: Tecnologías Innovadoras
+Descripción: Equipado con las últimas innovaciones para el día a día.
+
+VERSIONES:
+
+VERSIÓN:
+Nombre: EX 1.5 Aut.
+Motor: 1.5 i-VTEC
+Combustible: Gasolina
+Transmisión: CVT
+Rendimiento Mixto: -
+Autonomía Eléctrica: -
+Potencia: 121 HP
+Torque: -
+Tracción: 4x2
+Puertas: -
+Asientos: -
+Airbags: -
+PRECIO DE LISTA: $23990000
+BONO MARCA: $1000000
+BONO FINANCIAMIENTO: $1000000
+PRECIO CON FINANCIAMIENTO: $21990000
+
+VERSIÓN:
+Nombre: TOURING 1.5 Aut.
+Motor: 1.5 i-VTEC
+Combustible: Gasolina
+Transmisión: CVT
+Rendimiento Mixto: -
+Autonomía Eléctrica: -
+Potencia: 121 HP
+Torque: -
+Tracción: 4x2
+Puertas: -
+Asientos: -
+Airbags: -
+PRECIO DE LISTA: $24990000
+BONO MARCA: $1000000
+BONO FINANCIAMIENTO: $1000000
+PRECIO CON FINANCIAMIENTO: $22990000
+

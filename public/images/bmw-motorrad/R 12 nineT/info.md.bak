@@ -1,0 +1,44 @@
+Catálogo Estructurado: BMW R 12 nineT
+Este archivo contiene la metadata técnica y comercial de la BMW R 12 nineT, organizada para procesamiento de datos masivo con el estándar unificado de la red.
+1. Metadata del Modelo
+marca: "BMW Motorrad"
+modelo: "R 12 nineT"
+categoria: "Heritage"
+combustible: "Gasolina (95 octanos)"
+motorizacion: "1.170 cc | 109 hp"
+seguridad:
+  sistemas_activos: 
+    - "DTC BMW Motorrad (Control dinámico de tracción)"
+    - "BMW Motorrad Integral ABS Pro (Integral parcial)"
+    - "Gestión digital del motor BMS-O"
+    - "Acelerador electrónico"
+caracteristicas_destacadas:
+  - nombre: "Superficies de aluminio cepillado"
+    descripcion: "Detalles exclusivos en el depósito y paneles que enfatizan la exclusividad y el brillo radiante del modelo."
+  - nombre: "Motor Bóxer emblemático"
+    descripcion: "Evolución del clásico motor de 1.170 cc refrigerado por aire/aceite con 109 CV y 115 Nm de par."
+  - nombre: "Sistema de escape modificado"
+    descripcion: "Colector cromado con silenciador previo y silenciador final doble con terminales cónicos pulidos."
+  - nombre: "Llantas de radios negras"
+    descripcion: "Equipamiento opcional que ofrece un aspecto más potente y atractivo sobre el asfalto."
+2. Matriz de Versiones (Dataset)versiones:
+  - version: "BMW R 12 nineT"
+    especificaciones:
+      motor: "1.170 cc (Boxer aire/aceite)"
+      hp: 109
+      par_motor: "115 Nm"
+      caja: "6 velocidades con corte helicoidal"
+      traccion: "Cardán"
+      consumo_wmtc: "5.1 l / 100km"
+      equipamiento_clave:
+        - "Depósito de aluminio"
+        - "Horquilla invertida 45 mm ajustable"
+        - "Frenos radiales monobloque de 4 pistones"
+        - "Panel de instrumentos Heritage"
+    precios:
+      precio_lista: 21790000
+      bono_todo_medio_pago: 1000000
+      bono_autofin: 0
+      precio_final_con_bono: 20790000
+      financiamiento: "Crédito Inteligente"
+3. Condiciones y LegalesVigencia: Consultar disponibilidad de stock (Sujeto a renovación de campaña).Simulación Crédito Inteligente: 50% de pie ($10.395.000), 24 cuotas de $230.990 y cuota n° 25 (VFMG) de $10.395.000. CAE 25,8%. Costo total del crédito: $15.938.760.Sujeto a verificación de antecedentes financieros por la entidad financiera (Sociedad de Créditos Automotrices S.A.). No incluye impuesto verde. No válido para Zona Franca.
