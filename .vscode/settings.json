@@ -6,7 +6,7 @@
         "**/.git/**",
         "**/.DS_Store/**",
         "**/node_modules/**",
-        "**/backend/storage/framework/views/**",
+        "**/backend/**",
         "**/vendor/**",
         "**/_ide_helper.php"
     ],

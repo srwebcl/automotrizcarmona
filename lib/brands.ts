@@ -35,11 +35,6 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
                 type: 'image',
                 link: '/nuevos/toyota/All-New-RAV4-Hybrid'
             },
-            {
-                web: '/images/toyota/Hibridos/corolla-cross-hybrid/banner_68478.jpg',
-                mobile: '/images/toyota/Hibridos/corolla-cross-hybrid/banner_68417.jpg',
-                type: 'image'
-            }
         ]
     },
     volkswagen: {
@@ -49,20 +44,20 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Innovación y Tecnología Alemana para tu camino',
         brandColorCss: 'text-blue-900',
         bannerSlides: [
-            { 
-                web: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg', 
-                mobile: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg', 
-                type: 'image' 
+            {
+                web: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg',
+                mobile: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg',
+                type: 'image'
             },
-            { 
-                web: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp', 
-                mobile: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp', 
-                type: 'image' 
+            {
+                web: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp',
+                mobile: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp',
+                type: 'image'
             },
-            { 
-                web: '/images/volkswagen/banner-web-transporter-1280x960-1.webp', 
-                mobile: '/images/volkswagen/banner-web-transporter-1280x960-1.webp', 
-                type: 'image' 
+            {
+                web: '/images/volkswagen/banner-web-transporter-1280x960-1.webp',
+                mobile: '/images/volkswagen/banner-web-transporter-1280x960-1.webp',
+                type: 'image'
             }
         ]
     },
@@ -73,10 +68,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Liderazgo a través de la Tecnología y el Diseño',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { 
-                web: '/images/audi/banner-audi.webp', 
-                mobile: '/images/audi/banner-audi.webp', 
-                type: 'image' 
+            {
+                web: '/images/audi/banner-audi.webp',
+                mobile: '/images/audi/banner-audi.webp',
+                type: 'image'
             }
         ]
     },
@@ -87,10 +82,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Honda Chile | El Poder de los Sueños en Automotriz Carmona',
         brandColorCss: 'text-red-600',
         bannerSlides: [
-            { 
-                web: '/images/honda/banner-honda.webp', 
-                mobile: '/images/honda/banner-honda.webp', 
-                type: 'image' 
+            {
+                web: '/images/honda/banner-honda.webp',
+                mobile: '/images/honda/banner-honda.webp',
+                type: 'image'
             }
         ]
     },
@@ -101,10 +96,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Cupra | Siente el Impulso de una nueva era en Automotriz Carmona',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { 
-                web: '/images/cupra/banner-cupra.png', 
-                mobile: '/images/cupra/banner-cupra.png', 
-                type: 'image' 
+            {
+                web: '/images/cupra/banner-cupra.png',
+                mobile: '/images/cupra/banner-cupra.png',
+                type: 'image'
             }
         ],
         serviceImages: {
@@ -121,15 +116,15 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Seat | Emoción en Movimiento y Diseño Urbano en Automotriz Carmona',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
-            { 
-                web: '/images/seat/banner-seat1.jpg', 
-                mobile: '/images/seat/banner-seat1.jpg', 
-                type: 'image' 
+            {
+                web: '/images/seat/banner-seat1.jpg',
+                mobile: '/images/seat/banner-seat1.jpg',
+                type: 'image'
             },
-            { 
-                web: '/images/seat/ibiza/banner/banner-seat2.jpg', 
-                mobile: '/images/seat/ibiza/banner/banner-seat2.jpg', 
-                type: 'image' 
+            {
+                web: '/images/seat/ibiza/banner/banner-seat2.jpg',
+                mobile: '/images/seat/ibiza/banner/banner-seat2.jpg',
+                type: 'image'
             }
         ]
     },
@@ -140,10 +135,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'BMW Chile | El Placer de Conducir en Automotriz Carmona',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
-            { 
-                web: '/images/bmw/banner-bmw.jpg', 
-                mobile: '/images/bmw/banner-bmw.jpg', 
-                type: 'image' 
+            {
+                web: '/images/bmw/banner-bmw.jpg',
+                mobile: '/images/bmw/banner-bmw.jpg',
+                type: 'image'
             }
         ]
     },
@@ -154,15 +149,15 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Make Life a Ride',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
-            { 
-                web: '/images/bmw-motorrad/banner-1.avif', 
-                mobile: '/images/bmw-motorrad/banner-1.avif', 
-                type: 'image' 
+            {
+                web: '/images/bmw-motorrad/banner-1.avif',
+                mobile: '/images/bmw-motorrad/banner-1.avif',
+                type: 'image'
             },
-            { 
-                web: '/images/bmw-motorrad/banner-2.avif', 
-                mobile: '/images/bmw-motorrad/banner-2.avif', 
-                type: 'image' 
+            {
+                web: '/images/bmw-motorrad/banner-2.avif',
+                mobile: '/images/bmw-motorrad/banner-2.avif',
+                type: 'image'
             }
         ]
     },
@@ -283,15 +278,15 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         seoTitle: 'Kaiyi | Innovación y Confort para tu Familia',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
-            { 
-                web: '/images/kaiyi/banner-kaiyi-1.webp', 
-                mobile: '/images/kaiyi/banner-kaiyi-1.webp', 
-                type: 'image' 
+            {
+                web: '/images/kaiyi/banner-kaiyi-1.webp',
+                mobile: '/images/kaiyi/banner-kaiyi-1.webp',
+                type: 'image'
             },
-            { 
-                web: '/images/kaiyi/banner-kaiyi-2.webp', 
-                mobile: '/images/kaiyi/banner-kaiyi-2.webp', 
-                type: 'image' 
+            {
+                web: '/images/kaiyi/banner-kaiyi-2.webp',
+                mobile: '/images/kaiyi/banner-kaiyi-2.webp',
+                type: 'image'
             }
         ],
         serviceImages: {
@@ -316,15 +311,22 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
 export const getBrandConfig = (brandId: string): BrandConfig => {
     // Normalize brandId from URL (handles decode and spaces)
     const id = decodeURIComponent(brandId).toLowerCase().replace(/\s+/g, '-');
-    const config = BRANDS_CONFIG[id];
+    const existingConfig = BRANDS_CONFIG[id];
 
-    if (config) return config;
+    if (existingConfig) return existingConfig;
 
-    // Fallback logic
+    // Fallback logic for brands not in static config
     const name = decodeURIComponent(brandId)
         .split(/[ -]/)
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
+
+    const defaultServiceImages = {
+        repuestos: `/images/${id}/repuestos-${id}`,
+        sucursales: `/images/${id}/sucursal-${id}`,
+        usados: `/images/${id}/usados-${id}`,
+        servicio: `/images/${id}/servicio-${id}`,
+    };
 
     return {
         id,
@@ -335,6 +337,7 @@ export const getBrandConfig = (brandId: string): BrandConfig => {
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-100', title: `${name.toUpperCase()} SLIDER 1` },
             { type: 'placeholder', bg: 'bg-gray-200', title: `${name.toUpperCase()} SLIDER 2` }
-        ]
+        ],
+        serviceImages: defaultServiceImages
     };
 };

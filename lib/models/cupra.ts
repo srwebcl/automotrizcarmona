@@ -12,7 +12,8 @@ export const CUPRA_MODELS: Vehicle[] = [
         ivaIncluded: true,
         isHybrid: false,
         isElectric: false,
-        isNew: false,
+        isNew: true,
+        isFeatured: true,
         versions: [
             {
                 name: "Formentor 2.0 TSI 204hp 4Drive",

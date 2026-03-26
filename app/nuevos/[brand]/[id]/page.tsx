@@ -83,7 +83,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
             } catch (error) {
                 console.error('Error loading model details:', error);
                 // Fallback to static registry
-                const fallback = (MODELS_REGISTRY[brand.toLowerCase()] || []).find(m => m.id === id);
+                const fallback = (MODELS_REGISTRY[brand.toLowerCase()] || []).find(m => m.id.toLowerCase() === id.toLowerCase());
                 setModel(fallback || null);
             } finally {
                 setIsLoading(false);

@@ -97,7 +97,8 @@ export const TOYOTA_MODELS: Vehicle[] = [
         ivaIncluded: true,
         isHybrid: false,
         isElectric: false,
-        isNew: false,
+        isNew: true,
+        isFeatured: true,
         versions: [
             {
             name: "All New Rav4 LE 2.0 4x2 CVT",

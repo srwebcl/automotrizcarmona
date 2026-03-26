@@ -65,6 +65,7 @@ export const VOLKSWAGEN_MODELS: Vehicle[] = [
         "slogan": "El nuevo ícono para tu nueva era",
         "isHybrid": false,
         "isElectric": false,
+        "isFeatured": true,
         "features": [
             {
                 "title": "Máxima puntuación en seguridad",

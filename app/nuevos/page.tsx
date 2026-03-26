@@ -56,7 +56,7 @@ export default function NuevosPage() {
             </section>
 
             {/* Brands Content */}
-            <div className="max-w-7xl mx-auto px-6 pb-32">
+            <div className="max-w-7xl mx-auto px-6 py-20 lg:py-24">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                     {ALL_BRANDS.map((brand, idx) => (
                         <Link

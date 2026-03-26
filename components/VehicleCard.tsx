@@ -5,16 +5,16 @@ import ShareButton from './ShareButton';
 
 interface VehicleCardProps {
     vehicle: {
-        id: number;
+        id: string;
         brand: string;
-        model: string;
-        version: string;
-        year: number;
+        name: string;
         price: number;
-        mileage: number;
         image: string;
-        isNew: boolean;
-        isHybrid: boolean;
+        isNew?: boolean;
+        isHybrid?: boolean;
+        version?: string;
+        year?: number;
+        mileage?: number;
     }
 }
 
@@ -23,7 +23,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
     };
 
-    const detailUrl = `/nuevos/${vehicle.brand.toLowerCase()}/${vehicle.model.toLowerCase().replace(/\s+/g, '-')}`;
+    const detailUrl = `/nuevos/${vehicle.brand.toLowerCase()}/${vehicle.id.toLowerCase()}`;
 
     return (
         <div className="group relative bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300">
@@ -32,7 +32,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl bg-gray-100">
                     <Image
                         src={vehicle.image}
-                        alt={`${vehicle.brand} ${vehicle.model}`}
+                        alt={`${vehicle.brand} ${vehicle.name}`}
                         fill
                         className="object-contain object-bottom p-4 group-hover:scale-105 transition-transform duration-500"
                     />
@@ -47,20 +47,17 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <div className="p-5">
                     <div className="mb-2">
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{vehicle.brand}</span>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase">{vehicle.model}</h3>
-                        <p className="text-sm text-gray-500 truncate">{vehicle.version}</p>
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase">{vehicle.name}</h3>
+                        {vehicle.version && <p className="text-sm text-gray-500 truncate">{vehicle.version}</p>}
                     </div>
 
                     {/* Specs */}
-                    <div className="flex gap-4 text-xs text-gray-500 mb-4 border-b border-gray-100 pb-4">
-                        {!vehicle.isNew && (
-                            <>
-                                <span className="flex items-center gap-1"><Calendar size={12} /> {vehicle.year}</span>
-                                <span className="flex items-center gap-1"><Gauge size={12} /> {vehicle.mileage.toLocaleString()} km</span>
-                            </>
-                        )}
-                        {vehicle.isNew && <span className="text-carmona-gold font-medium">0 km • Entrega Inmediata</span>}
-                    </div>
+                    {!vehicle.isNew && (vehicle.year || vehicle.mileage !== undefined) && (
+                        <div className="flex gap-4 text-xs text-gray-500 mb-4 border-b border-gray-100 pb-4">
+                            {vehicle.year && <span className="flex items-center gap-1"><Calendar size={12} /> {vehicle.year}</span>}
+                            {vehicle.mileage !== undefined && <span className="flex items-center gap-1"><Gauge size={12} /> {vehicle.mileage.toLocaleString()} km</span>}
+                        </div>
+                    )}
 
                     {/* Price */}
                     <div className="flex justify-between items-end">
@@ -78,7 +75,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             {/* Botón Compartir - Outside the main Link to avoid nested links */}
             <div className="absolute top-3 right-3 z-20">
                 <ShareButton
-                    title={`Mira este modelo ${vehicle.brand} ${vehicle.model} en Carmona`}
+                    title={`Mira este modelo ${vehicle.brand} ${vehicle.name} en Carmona`}
                     url={`https://automotrizcarmona.cl${detailUrl}`}
                 />
             </div>

@@ -427,7 +427,8 @@ export const BMW_MODELS: Vehicle[] = [
         ivaIncluded: true,
         isHybrid: false,
         isElectric: false,
-        isNew: false,
+        isNew: true,
+        isFeatured: true,
         versions: [
             {
             name: "120 Hatch Dynamic",

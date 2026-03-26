@@ -55,6 +55,7 @@ export interface Vehicle {
     isHybrid?: boolean;
     isElectric?: boolean;
     isNew?: boolean;
+    isFeatured?: boolean;
     /** Características/equipamiento destacado (máx. 4 tarjetas) */
     features?: { title: string; desc: string; icon?: string; image?: string }[];
     /** URLs de imágenes de galería */

@@ -8,7 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Hero from '@/components/Hero';
 import VehicleCard from '@/components/VehicleCard';
 import { fetchFeaturedModels } from '@/lib/api';
-import { MOCK_VEHICLES } from '@/lib/data';
+import { ALL_MODELS } from '@/lib/models';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
 
@@ -81,11 +81,11 @@ export default function Home() {
     const loadFeatured = async () => {
       try {
         setIsLoading(true);
-        // Use MOCK_VEHICLES directly as per user request to ensure specific models are visible
-        setFeaturedVehicles(MOCK_VEHICLES);
+        // Filtrar modelos que tengan la propiedad isFeatured activa
+        const featured = ALL_MODELS.filter(m => m.isFeatured);
+        setFeaturedVehicles(featured);
       } catch (error) {
         console.error('Error loading featured vehicles:', error);
-        setFeaturedVehicles(MOCK_VEHICLES);
       } finally {
         setIsLoading(false);
       }

@@ -122,7 +122,8 @@ export const HONDA_MODELS: Vehicle[] = [
         ivaIncluded: true,
         isHybrid: true,
         isElectric: false,
-        isNew: false,
+        isNew: true,
+        isFeatured: true,
         versions: [
             {
                 name: "ADVANCE HYBRID Aut. 4X4",

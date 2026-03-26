@@ -143,6 +143,34 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
     };
 
+    // Componente interno para manejar imágenes con múltiples extensiones
+    const DynamicDiscoverImage = ({ basePath, alt }: { basePath: string, alt: string }) => {
+        const [extensionIdx, setExtensionIdx] = useState(0);
+        const extensions = ['.webp', '.png', '.jpg', '.jpeg'];
+        
+        // Si la ruta ya tiene extensión (definida manualmente), no la procesamos
+        const hasExtension = basePath.match(/\.(webp|png|jpg|jpeg)$/i);
+        if (hasExtension) {
+            return <Image src={basePath} alt={alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />;
+        }
+
+        const currentSrc = `${basePath}${extensions[extensionIdx]}`;
+
+        return (
+            <Image 
+                src={currentSrc} 
+                alt={alt} 
+                fill 
+                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                onError={() => {
+                    if (extensionIdx < extensions.length - 1) {
+                        setExtensionIdx(extensionIdx + 1);
+                    }
+                }}
+            />
+        );
+    };
+
     return (
         <main className="min-h-screen bg-white font-sans">
 
@@ -413,7 +441,10 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     >
                                         <div className="absolute inset-0">
                                             {item.image ? (
-                                                <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                                <DynamicDiscoverImage 
+                                                    basePath={item.image} 
+                                                    alt={item.title} 
+                                                />
                                             ) : (
                                                 <div className="absolute inset-0 bg-gray-100" />
                                             )}
