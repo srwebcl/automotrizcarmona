@@ -26,10 +26,10 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
     const detailUrl = `/nuevos/${vehicle.brand.toLowerCase()}/${vehicle.id.toLowerCase()}`;
 
     return (
-        <div className="group relative bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300">
-            <Link href={detailUrl} className="block">
+        <div className="group relative bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-2xl hover:border-carmona-orange/30 transition-all duration-500 h-full flex flex-col">
+            <Link href={detailUrl} className="block h-full">
                 {/* Image Container */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-t-xl bg-gray-100">
+                <div className="relative aspect-[4/3] rounded-t-2xl bg-gray-50/50">
                     <Image
                         src={vehicle.image}
                         alt={`${vehicle.brand} ${vehicle.name}`}
@@ -44,29 +44,30 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 </div>
 
                 {/* Content */}
-                <div className="p-5">
-                    <div className="mb-2">
-                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{vehicle.brand}</span>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase">{vehicle.name}</h3>
-                        {vehicle.version && <p className="text-sm text-gray-500 truncate">{vehicle.version}</p>}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div className="mb-3">
+                            <span className="text-[10px] font-extrabold text-carmona-orange uppercase tracking-[0.2em] mb-1 block">{vehicle.brand}</span>
+                            <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase leading-tight">{vehicle.name}</h3>
+                            {vehicle.version && <p className="text-sm text-gray-500 truncate mt-1">{vehicle.version}</p>}
+                        </div>
                     </div>
 
-                    {/* Specs */}
-                    {!vehicle.isNew && (vehicle.year || vehicle.mileage !== undefined) && (
-                        <div className="flex gap-4 text-xs text-gray-500 mb-4 border-b border-gray-100 pb-4">
-                            {vehicle.year && <span className="flex items-center gap-1"><Calendar size={12} /> {vehicle.year}</span>}
-                            {vehicle.mileage !== undefined && <span className="flex items-center gap-1"><Gauge size={12} /> {vehicle.mileage.toLocaleString()} km</span>}
+                    {/* Footer - Price & Link */}
+                    <div className="pt-4 mt-auto border-t border-gray-50 flex items-center justify-between">
+                        <div className="flex flex-col">
+                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Precio desde</span>
+                            <span className="text-2xl font-black text-gray-900 leading-tight tracking-tight">
+                                {formatPrice(vehicle.price)}
+                            </span>
+                            <p className="text-[10px] text-gray-400 font-bold mt-1 italic">
+                                *Consultar condiciones
+                            </p>
                         </div>
-                    )}
-
-                    {/* Price */}
-                    <div className="flex justify-between items-end">
-                        <div>
-                            <p className="text-xs text-gray-400 mb-0.5">Precio desde</p>
-                            <p className="text-xl font-bold text-gray-900">{formatPrice(vehicle.price)}</p>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 group-hover:bg-carmona-gold group-hover:text-white transition-colors">
-                            <ChevronRight size={18} />
+                        <div className="flex items-center gap-2 text-carmona-orange group/btn">
+                             <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover/btn:bg-carmona-orange group-hover/btn:text-white transition-all duration-300">
+                                <ChevronRight size={16} />
+                             </div>
                         </div>
                     </div>
                 </div>

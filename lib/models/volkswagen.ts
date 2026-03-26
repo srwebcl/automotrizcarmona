@@ -66,6 +66,7 @@ export const VOLKSWAGEN_MODELS: Vehicle[] = [
         "isHybrid": false,
         "isElectric": false,
         "isFeatured": true,
+        "isNew": true,
         "features": [
             {
                 "title": "Máxima puntuación en seguridad",

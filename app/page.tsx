@@ -36,14 +36,17 @@ function VehiclesCarousel({ vehicles, isLoading }: { vehicles: any[], isLoading:
   return (
     <div className="relative">
       {/* Carousel viewport */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-6">
-          {vehicles.map((vehicle) => (
+      <div className="overflow-hidden py-8 -my-8 px-4 -mx-4" ref={emblaRef}>
+        <div className="flex gap-8">
+            {vehicles.map((vehicle) => (
             <div
               key={vehicle.id}
-              className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
+              className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)] min-w-0"
             >
-              <VehicleCard vehicle={vehicle} />
+              <VehicleCard vehicle={{
+                ...vehicle,
+                financingBonus: vehicle.versions?.[0]?.financingBonus
+              }} />
             </div>
           ))}
         </div>
@@ -146,7 +149,7 @@ export default function Home() {
               </div>
 
               {/* ── Carrusel de vehículos destacados ── */}
-              <div className="flex-1 min-w-0 relative w-full lg:w-auto">
+                <div className="flex-1 min-w-0 relative w-full lg:w-auto py-8 -my-8">
                 <VehiclesCarousel vehicles={featuredVehicles} isLoading={isLoading} />
               </div>
 

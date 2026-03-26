@@ -9,7 +9,7 @@ import { fetchModelDetails } from '@/lib/api';
 import { Vehicle } from '@/lib/models/types';
 import { MODELS_REGISTRY } from '@/lib/models';
 import { getBrandConfig } from '@/lib/brands';
-import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft, Activity, Gauge, Settings2, Route } from 'lucide-react';
+import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft, Activity, Gauge, Settings2, Route, Sparkles } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
 export default function GenericModelPage({ params }: { params: Promise<{ brand: string; id: string }> }) {
@@ -24,14 +24,24 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     const [showQuoteModal, setShowQuoteModal] = useState(false);
     const router = useRouter();
 
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
     const [emblaRef, emblaApi] = useEmblaCarousel({
-        align: 'start',
+        align: 'center',
+        loop: true,
         slidesToScroll: 1,
-        breakpoints: {
-            '(min-width: 768px)': { slidesToScroll: 2 },
-            '(min-width: 1024px)': { slidesToScroll: 3 }
-        }
     });
+
+    const onSelect = React.useCallback(() => {
+        if (!emblaApi) return;
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+    }, [emblaApi]);
+
+    React.useEffect(() => {
+        if (!emblaApi) return;
+        onSelect();
+        emblaApi.on('select', onSelect);
+        emblaApi.on('reInit', onSelect);
+    }, [emblaApi, onSelect]);
 
     const [versionsRef, versionsApi] = useEmblaCarousel({
         align: 'start',
@@ -130,8 +140,44 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         ? Math.min(...model.versions.map((v: any) => v.bonusPrice)) 
         : model.price;
 
+    // Sub-component for features for consistency
+    const FeatureCard = ({ feature, isActive }: { feature: any, isActive: boolean }) => (
+        <div className={`transition-all duration-1000 ease-in-out flex flex-col h-full transform origin-center ${isActive ? 'scale-100 opacity-100 z-20' : 'scale-[0.8] opacity-20 z-0 grayscale-[0.8]'}`}>
+            <div className={`bg-[#1a1a1a] rounded-[2rem] border border-white/5 shadow-2xl flex flex-col overflow-hidden h-full relative transition-colors duration-700 ${isActive ? 'bg-[#222]' : ''}`}>
+                
+                {/* Brand Badge - like 'Terramar' in the ref */}
+                {isActive && (
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 animate-in fade-in zoom-in duration-700">
+                        <div className="bg-[#333]/80 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-lg shadow-2xl">
+                            <span className="text-white text-[10px] font-bold uppercase tracking-[0.2em]">{model.name}</span>
+                        </div>
+                    </div>
+                )}
+
+                <div className="relative aspect-[16/7] w-full overflow-hidden shrink-0 bg-neutral-900 border-b border-white/5">
+                    <Image 
+                        src={feature.image} 
+                        alt={feature.title} 
+                        fill 
+                        className={`object-cover transition-transform duration-1000 ${isActive ? 'scale-105' : 'scale-100'}`} 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
+                </div>
+                
+                <div className="p-6 md:p-8 flex flex-col items-start text-left flex-1">
+                    <h3 className="text-lg md:text-2xl font-bold text-white uppercase tracking-tight mb-3">
+                        {feature.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs md:text-base leading-relaxed font-medium max-w-[90%]">
+                        {feature.desc}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
-        <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[76px]">
+        <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[80px]">
             {/* Banner Section */}
             {model.desktopBanner ? (
                 brand === 'bmw-motorrad' ? (
@@ -191,7 +237,11 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                     <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-[calc(100vh-76px)]' : ''}`}>
                         <picture className="w-full h-full block">
                             <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
-                            <img src={model.mobileBanner || model.desktopBanner} alt={`Banner ${model.name}`} className={`w-full ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-full' : 'min-h-[400px] md:h-auto'} object-cover opacity-80`} />
+                            <img 
+                                src={model.mobileBanner || model.desktopBanner} 
+                                alt={`Banner ${model.name}`} 
+                                className={`w-full ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-full' : 'h-auto md:h-auto'} object-cover opacity-80`} 
+                            />
                         </picture>
                         {brand !== 'toyota' && brand !== 'honda' && <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />}
                         {brand !== 'toyota' && brand !== 'honda' && (
@@ -405,42 +455,75 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                 </div>
             </section>
             
-            {/* Features Section */}
+            {/* Features Section - Dark Mode focal version */}
             {highlightFeatures && highlightFeatures.length > 0 && (
-            <section className="bg-gray-50 py-24 overflow-hidden border-t border-gray-100">
-                <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                        <div>
-                            <p className="text-red-600 font-bold uppercase tracking-widest text-sm mb-2">Equipamiento</p>
-                            <h2 className="text-4xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter">
-                                Características <span className="text-gray-400">Destacadas</span>
-                            </h2>
+            <section className="bg-[#0f0f0f] py-32 overflow-hidden border-t border-white/5">
+                <div className="max-w-[1600px] mx-auto">
+                    {/* Header - Unified Design Style */}
+                    <div className="flex flex-col items-center text-center mb-20 gap-4 px-4">
+                        <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.3em] text-gray-500 uppercase">
+                            <div className="w-10 h-[1.5px] bg-gray-600 rounded-full" />
+                            <span>Explora su ADN</span>
+                            <div className="w-10 h-[1.5px] bg-gray-600 rounded-full" />
                         </div>
-                        <div className="flex gap-2">
-                            <button onClick={() => emblaApi?.scrollPrev()} className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all">
-                                <ChevronLeft size={24} />
-                            </button>
-                            <button onClick={() => emblaApi?.scrollNext()} className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-900 hover:bg-gray-900 hover:text-white transition-all">
-                                <ChevronRight size={24} />
-                            </button>
-                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium text-white tracking-tighter leading-none">
+                            Conoce el{' '}
+                            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-gray-400 uppercase">
+                                {config.name} {model.name}
+                            </span>
+                        </h2>
                     </div>
 
-                    <div className="overflow-hidden" ref={emblaRef}>
-                        <div className="flex -ml-6">
-                            {highlightFeatures.map((feature: any, idx: number) => (
-                                <div key={idx} className="flex-[0_0_85%] md:flex-[0_0_45%] lg:flex-[0_0_30%] pl-6">
-                                    <div className="bg-white rounded-3xl p-8 h-full border border-gray-200 hover:border-red-600 transition-all group shadow-sm flex flex-col">
-                                        <div className="relative aspect-video rounded-2xl overflow-hidden mb-6 bg-gray-100 flex-shrink-0">
-                                            <Image src={feature.image} alt={feature.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    {highlightFeatures.length >= 3 ? (
+                        <div className="relative px-0">
+                            {/* Navigation Arrows - Desktop Only */}
+                            <div className="hidden md:block">
+                                <button 
+                                    onClick={() => emblaApi?.scrollPrev()} 
+                                    className="absolute left-10 lg:left-24 top-1/2 -translate-y-1/2 z-40 w-20 h-20 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-500 shadow-2xl group"
+                                >
+                                    <ChevronLeft size={32} className="group-hover:-translate-x-2 transition-transform" />
+                                </button>
+                                <button 
+                                    onClick={() => emblaApi?.scrollNext()} 
+                                    className="absolute right-10 lg:right-24 top-1/2 -translate-y-1/2 z-40 w-20 h-20 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-500 shadow-2xl group"
+                                >
+                                    <ChevronRight size={32} className="group-hover:translate-x-2 transition-transform" />
+                                </button>
+                            </div>
+
+                            <div className="overflow-hidden py-24 -my-24" ref={emblaRef}>
+                                <div className="flex -ml-4 md:-ml-20">
+                                    {highlightFeatures.map((feature: any, idx: number) => (
+                                        <div 
+                                            key={idx} 
+                                            className="flex-[0_0_85%] md:flex-[0_0_70%] lg:flex-[0_0_60%] pl-4 md:pl-20"
+                                        >
+                                            <FeatureCard feature={feature} isActive={idx === selectedIndex} />
                                         </div>
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 uppercase">{feature.title}</h3>
-                                        <p className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">{feature.desc}</p>
-                                    </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Mobile Swipe Hint - Clean & Separate */}
+                            <div className={`md:hidden mt-8 flex flex-col items-center gap-2 transition-all duration-700 ${selectedIndex > 0 ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-100 animate-float'}`}>
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400">Desliza para explorar</span>
+                                <div className="flex gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] animate-pulse" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gray-800" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-gray-800" />
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="flex flex-wrap justify-center gap-12 px-4">
+                            {highlightFeatures.map((feature: any, idx: number) => (
+                                <div key={idx} className="w-full md:w-[70%] lg:w-[45%]">
+                                    <FeatureCard feature={feature} isActive={true} />
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    )}
                 </div>
             </section>
             )}
@@ -450,7 +533,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="text-center mb-12">
-                        <h2 className="text-4xl font-black uppercase tracking-tighter mb-4 text-gray-900">Experiencia <span className="text-red-600">{config.name} {model.name}</span></h2>
+                        <h2 className="text-4xl font-black uppercase tracking-tighter mb-4 text-gray-900">Experiencia <span className="text-gray-900 opacity-50">{config.name} {model.name}</span></h2>
                         <p className="text-gray-500">Conoce cada detalle del {model.name} en movimiento.</p>
                     </div>
                     <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
@@ -470,7 +553,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                 <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                         <div>
-                            <p className="text-red-600 font-bold uppercase tracking-widest text-sm mb-2">Continuar Explorando</p>
+                            <p className="text-gray-400 font-bold uppercase tracking-widest text-sm mb-2">Continuar Explorando</p>
                             <h2 className="text-4xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter">
                                 Descubre <span className="text-gray-400">más</span>
                             </h2>

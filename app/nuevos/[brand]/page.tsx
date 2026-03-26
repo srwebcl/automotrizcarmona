@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, use } from 'react';
+import React, { useState, use, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -16,6 +16,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
     const [models, setModels] = useState<Vehicle[]>([]);
     const [brandDetails, setBrandDetails] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const catalogRef = useRef<HTMLDivElement>(null);
 
     const resolvedParams = use(params);
     const brandId = resolvedParams.brand;
@@ -139,6 +140,15 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                 ? ALL_MODELS.filter(m => m.isElectric)
                 : ALL_MODELS.filter(m => m.category.split(',').map(c => c.trim()).includes(activeCategory));
 
+    const handleCategoryChange = (cat: string) => {
+        setActiveCategory(cat);
+        if (catalogRef.current) {
+            const yOffset = -150; // Ajuste para que no quede pegado al sticky navbar
+            const y = catalogRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
     };
@@ -175,15 +185,15 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
         <main className="min-h-screen bg-white font-sans">
 
             {/* Hero Section - Adaptive Slider */}
-            <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
-                <div className="aspect-square md:aspect-[1200/420] w-full" ref={heroEmblaRef}>
+            <section className="relative w-full bg-gray-100 overflow-hidden pt-20">
+                <div className="w-full md:aspect-[1200/420]" ref={heroEmblaRef}>
                     <div className="flex h-full">
                         {config.bannerSlides.map((slide: any, index: number) => {
                             const slideContent = (
                                 <>
                                     {slide.web && slide.mobile ? (
                                         <>
-                                            <div className="hidden md:block absolute inset-0">
+                                            <div className="hidden md:block relative w-full h-full">
                                                 <Image
                                                     src={slide.web}
                                                     alt={slide.title || `${config.name} Banner ${index + 1}`}
@@ -193,12 +203,13 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                                     priority={index === 0}
                                                 />
                                             </div>
-                                            <div className="md:hidden absolute inset-0">
+                                            <div className="md:hidden relative w-full">
                                                 <Image
                                                     src={slide.mobile}
                                                     alt={slide.title || `${config.name} Banner ${index + 1}`}
-                                                    fill
-                                                    className="object-cover"
+                                                    width={800}
+                                                    height={800}
+                                                    className="w-full h-auto object-contain"
                                                     draggable={false}
                                                     priority={index === 0}
                                                 />
@@ -229,20 +240,26 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                     </div>
                 </div>
 
-                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 pointer-events-none">
-                    <button onClick={scrollPrev} className="group pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all shadow-2xl">
-                        <ChevronLeft size={32} />
-                    </button>
-                    <button onClick={scrollNext} className="group pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all shadow-2xl">
-                        <ChevronRight size={32} />
-                    </button>
-                </div>
+                {config.bannerSlides.length > 1 && (
+                    <>
+                        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3 md:px-8 pointer-events-none">
+                            <button onClick={scrollPrev} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
+                                <ChevronLeft size={20} className="md:hidden" />
+                                <ChevronLeft size={32} className="hidden md:block" />
+                            </button>
+                            <button onClick={scrollNext} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
+                                <ChevronRight size={20} className="md:hidden" />
+                                <ChevronRight size={32} className="hidden md:block" />
+                            </button>
+                        </div>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-                    {config.bannerSlides.map((_: any, i: number) => (
-                        <div key={i} className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
-                    ))}
-                </div>
+                        <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-10">
+                            {config.bannerSlides.map((_: any, i: number) => (
+                                <div key={i} className="w-1.5 md:w-3 h-1.5 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
+                            ))}
+                        </div>
+                    </>
+                )}
             </section>
 
             {/* Filter Bar */}
@@ -262,7 +279,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
-                                    onClick={() => setActiveCategory(cat)}
+                                    onClick={() => handleCategoryChange(cat)}
                                     className={`whitespace-nowrap text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all ${activeCategory === cat
                                         ? 'bg-gray-900 text-white shadow-lg'
                                         : 'bg-transparent text-gray-400 hover:text-gray-900'
@@ -277,17 +294,20 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
             </section>
 
             {/* SEO Section */}
-            <section className="py-12 bg-white">
+            <section className="pt-6 pb-4 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-gray-500 tracking-tight leading-tight">
-                        Cotiza tu próximo <span className={`${config.brandColorCss} font-black uppercase`}>{config.name}</span> en Automotriz Carmona
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-900 tracking-tight mb-4">
+                        Cotiza tu próximo{' '}
+                        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 uppercase">
+                            {config.name}
+                        </span>
+                        {' '}en Automotriz Carmona
                     </h2>
-                    <div className="w-16 h-1 bg-gray-200 mx-auto mt-6 rounded-full" />
                 </div>
             </section>
 
             {/* Models Grid */}
-            <section className="py-12 bg-white">
+            <section ref={catalogRef} className="pb-24 pt-0 bg-white">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                     {isLoading ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">
