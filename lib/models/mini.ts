@@ -7,6 +7,7 @@ export const MINI_MODELS: Vehicle[] = [
         name: "Aceman",
         category: "Aceman, Eléctrico",
         price: 29990000,
+        image: "/images/mini/aceman.png",
         vehicleType: "liviano",
         ivaIncluded: true,
         isHybrid: false,
