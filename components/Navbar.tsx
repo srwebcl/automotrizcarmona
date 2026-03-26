@@ -50,6 +50,7 @@ export default function Navbar() {
     // Unified Menu State
     const [isUnifiedMenuOpen, setIsUnifiedMenuOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState<MenuCategory>('nuevos');
+    const [mobileActiveCategory, setMobileActiveCategory] = useState<string>('');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -73,7 +74,10 @@ export default function Navbar() {
     const toggleUnifiedMenu = () => {
         setIsUnifiedMenuOpen(!isUnifiedMenuOpen);
         if (isOpen) setIsOpen(false);
-        if (!isUnifiedMenuOpen) setActiveCategory('nuevos');
+        if (!isUnifiedMenuOpen) {
+            setActiveCategory('nuevos');
+            setMobileActiveCategory('');
+        }
     }
 
     const closeUnifiedMenu = () => {
@@ -84,8 +88,8 @@ export default function Navbar() {
     const menuItems = [
         { id: 'nuevos', label: 'Autos Nuevos', icon: Car },
         { id: 'camiones', label: 'Camiones y Buses', icon: Truck },
-        { id: 'seminuevos', label: 'Seminuevos', icon: ShoppingBag },
-        { id: 'postventa', label: 'Post-Venta', icon: Wrench },
+        { id: 'seminuevos', label: 'Autos Usados', icon: ShoppingBag },
+        { id: 'postventa', label: 'Postventa', icon: Wrench },
         { id: 'contacto', label: 'Contacto', icon: MessageSquare },
     ];
 
@@ -162,13 +166,24 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <div className="lg:hidden">
+                        <div className="lg:hidden flex items-center gap-3">
+                            {/* Unified Menu Toggle (Mobile) - Icon Only */}
                             <button
-                                onClick={() => setIsOpen(true)}
-                                className="flex items-center gap-2 text-white p-2 px-4 bg-white/5 rounded-full border border-white/10 hover:bg-white/10 transition-all"
+                                onClick={toggleUnifiedMenu}
+                                className={`w-11 h-11 flex items-center justify-center rounded-2xl border transition-all ${isUnifiedMenuOpen ? 'bg-white text-black border-white' : 'bg-white/5 text-white border-white/10 hover:bg-white/10'}`}
                             >
-                                <Sparkles size={20} className="text-carmona-gold" />
-                                <span className="text-xs font-bold uppercase tracking-wider">Menú</span>
+                                {isUnifiedMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                            </button>
+
+                            {/* Assistant Toggle (Mobile) - Icon Only Square */}
+                            <button
+                                onClick={() => {
+                                    setIsOpen(true);
+                                    closeUnifiedMenu();
+                                }}
+                                className="w-11 h-11 flex items-center justify-center bg-gradient-to-r from-carmona-gold to-carmona-orange text-white rounded-2xl border border-white/10 shadow-lg shadow-carmona-gold/20 active:scale-95 transition-all"
+                            >
+                                <Sparkles size={20} className="fill-white/20 animate-pulse" />
                             </button>
                         </div>
                     </div>
@@ -181,8 +196,8 @@ export default function Navbar() {
             />
 
             <div className={`fixed top-0 left-0 w-full bg-white z-[45] shadow-2xl transform transition-transform duration-500 ease-in-out ${isUnifiedMenuOpen ? 'translate-y-[70px]' : '-translate-y-full'}`}>
-                <div className="max-w-[1920px] mx-auto min-h-[500px] flex">
-
+                {/* DESKTOP VERSION */}
+                <div className="hidden lg:flex max-w-[1920px] mx-auto min-h-[500px]">
                     <div className="w-1/4 bg-gray-50 border-r border-gray-100 flex flex-col pt-10 p-6">
                         <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 px-4">Categorías</h3>
                         <div className="flex flex-col gap-2">
@@ -391,6 +406,217 @@ export default function Navbar() {
                             )}
                         </div>
                     </div>
+                </div>
+
+                {/* MOBILE MEGA MENU (Accordion Pro Layout) */}
+                <div className="lg:hidden w-full h-[calc(100vh-70px)] bg-white overflow-y-auto pb-24">
+                    <div className="flex flex-col">
+                        
+                        {/* 1. AUTOS NUEVOS */}
+                        <div className="border-b border-gray-100">
+                            <button 
+                                onClick={() => setMobileActiveCategory(mobileActiveCategory === 'nuevos' ? '' : 'nuevos')}
+                                className="w-full flex items-center justify-between p-7 active:bg-gray-50 transition-colors"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className={`p-3 rounded-2xl transition-colors ${mobileActiveCategory === 'nuevos' ? 'bg-carmona-gold text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <Car size={24} />
+                                    </div>
+                                    <span className={`text-lg font-black uppercase tracking-tight ${mobileActiveCategory === 'nuevos' ? 'text-gray-900' : 'text-gray-500'}`}>Autos Nuevos</span>
+                                </div>
+                                <ChevronDown size={20} className={`text-gray-300 transition-transform duration-300 ${mobileActiveCategory === 'nuevos' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'nuevos' ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
+                                    {BRAND_LOGOS.map((brand) => (
+                                        <Link 
+                                            key={brand.name} 
+                                            href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                            onClick={closeUnifiedMenu}
+                                            className="flex flex-col items-center justify-center p-5 rounded-[1.5rem] bg-gray-50 active:scale-95 transition-all gap-2"
+                                        >
+                                            <div className="relative w-full h-8">
+                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
+                                            </div>
+                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none text-center">{brand.name}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 2. CAMIONES Y BUSES */}
+                        <div className="border-b border-gray-100">
+                            <button 
+                                onClick={() => setMobileActiveCategory(mobileActiveCategory === 'camiones' ? '' : 'camiones')}
+                                className="w-full flex items-center justify-between p-7 active:bg-gray-50 transition-colors"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className={`p-3 rounded-2xl transition-colors ${mobileActiveCategory === 'camiones' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <Truck size={24} />
+                                    </div>
+                                    <span className={`text-lg font-black uppercase tracking-tight ${mobileActiveCategory === 'camiones' ? 'text-gray-900' : 'text-gray-500'}`}>Camiones y Buses</span>
+                                </div>
+                                <ChevronDown size={20} className={`text-gray-300 transition-transform duration-300 ${mobileActiveCategory === 'camiones' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'camiones' ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
+                                    {TRUCK_LOGOS.map((brand) => (
+                                        <Link 
+                                            key={brand.name} 
+                                            href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                            onClick={closeUnifiedMenu}
+                                            className="flex flex-col items-center justify-center p-5 rounded-[1.5rem] bg-gray-50 active:scale-95 transition-all gap-2"
+                                        >
+                                            <div className="relative w-full h-8">
+                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
+                                            </div>
+                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none text-center">{brand.name}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 3. AUTOS USADOS */}
+                        <div className="border-b border-gray-100">
+                            <button 
+                                onClick={() => setMobileActiveCategory(mobileActiveCategory === 'seminuevos' ? '' : 'seminuevos')}
+                                className="w-full flex items-center justify-between p-7 active:bg-gray-50 transition-colors"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className={`p-3 rounded-2xl transition-colors ${mobileActiveCategory === 'seminuevos' ? 'bg-bruno-black text-carmona-gold shadow-lg shadow-black/10' : 'bg-gray-100 text-gray-500'}`}>
+                                        <ShoppingBag size={24} />
+                                    </div>
+                                    <span className={`text-lg font-black uppercase tracking-tight ${mobileActiveCategory === 'seminuevos' ? 'text-gray-900' : 'text-gray-500'}`}>Autos Usados</span>
+                                </div>
+                                <ChevronDown size={20} className={`text-gray-300 transition-transform duration-300 ${mobileActiveCategory === 'seminuevos' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'seminuevos' ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-6 pt-0 space-y-4 pb-8">
+                                    <a 
+                                        href="https://seminuevos.automotrizcarmona.cl/" 
+                                        target="_blank" rel="noopener noreferrer"
+                                        onClick={closeUnifiedMenu}
+                                        className="flex flex-col items-center justify-center p-8 rounded-[2rem] border-2 border-dashed border-gray-100 bg-gray-50/30 active:scale-95 transition-all gap-4"
+                                    >
+                                        <div className="relative w-48 h-12">
+                                            <Image src="/images/logos/logos antiguos/SEMINUEVOS_Logo.png" alt="Seminuevos Standard" fill className="object-contain" />
+                                        </div>
+                                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Ver Catálogo Multimarca</span>
+                                    </a>
+
+                                    <a 
+                                        href="https://seminuevos.automotrizcarmona.cl/catalogo?is_premium=1" 
+                                        target="_blank" rel="noopener noreferrer"
+                                        onClick={closeUnifiedMenu}
+                                        className="flex flex-col items-center justify-center p-8 rounded-[2rem] bg-bruno-black active:scale-95 transition-all gap-4 relative overflow-hidden"
+                                    >
+                                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                                        <div className="relative w-48 h-12">
+                                            <Image src="/images/logos/logos antiguos/LOGO-UPREMIUM.png" alt="U-Premium" fill className="object-contain brightness-0 invert" />
+                                        </div>
+                                        <span className="text-[10px] font-black text-carmona-gold uppercase tracking-[0.2em] relative z-10 text-center">Selección Alta Gama</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 4. POSTVENTA */}
+                        <div className="border-b border-gray-100">
+                            <button 
+                                onClick={() => setMobileActiveCategory(mobileActiveCategory === 'postventa' ? '' : 'postventa')}
+                                className="w-full flex items-center justify-between p-7 active:bg-gray-50 transition-colors"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className={`p-3 rounded-2xl transition-colors ${mobileActiveCategory === 'postventa' ? 'bg-orange-500 text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <Wrench size={24} />
+                                    </div>
+                                    <span className={`text-lg font-black uppercase tracking-tight ${mobileActiveCategory === 'postventa' ? 'text-gray-900' : 'text-gray-500'}`}>Postventa</span>
+                                </div>
+                                <ChevronDown size={20} className={`text-gray-300 transition-transform duration-300 ${mobileActiveCategory === 'postventa' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'postventa' ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-6 pt-0 space-y-3 pb-8">
+                                    <Link href="/servicios" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-2xl bg-blue-50/50 border border-blue-100/50 active:bg-blue-100 transition-colors">
+                                        <div className="p-2 bg-blue-600 rounded-lg text-white shadow-md shadow-blue-600/20"><Wrench size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Servicio Técnico</h4>
+                                            <p className="text-[9px] text-blue-600 font-bold uppercase tracking-widest">Agendar Mantención</p>
+                                        </div>
+                                        <ArrowRight size={16} className="text-blue-200" />
+                                    </Link>
+                                    
+                                    <Link href="/repuestos" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-2xl bg-green-50/50 border border-green-100/50 active:bg-green-100 transition-colors">
+                                        <div className="p-2 bg-green-600 rounded-lg text-white shadow-md shadow-green-600/20"><Settings size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Repuestos</h4>
+                                            <p className="text-[9px] text-green-600 font-bold uppercase tracking-widest">Cotizar Repuestos</p>
+                                        </div>
+                                        <ArrowRight size={16} className="text-green-200" />
+                                    </Link>
+
+                                    <Link href="/dyp" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-2xl bg-purple-50/50 border border-purple-100/50 active:bg-purple-100 transition-colors">
+                                        <div className="p-2 bg-purple-600 rounded-lg text-white shadow-md shadow-purple-600/20"><Car size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Desabolladura y Pintura</h4>
+                                            <p className="text-[9px] text-purple-600 font-bold uppercase tracking-widest">Recuperación Estética</p>
+                                        </div>
+                                        <ArrowRight size={16} className="text-purple-200" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 5. CONTACTO */}
+                        <div className="border-b border-gray-100">
+                             <button 
+                                onClick={() => setMobileActiveCategory(mobileActiveCategory === 'contacto' ? '' : 'contacto')}
+                                className="w-full flex items-center justify-between p-7 active:bg-gray-50 transition-colors"
+                            >
+                                <div className="flex items-center gap-5">
+                                    <div className={`p-3 rounded-2xl transition-colors ${mobileActiveCategory === 'contacto' ? 'bg-bruno-black text-white' : 'bg-gray-100 text-gray-500'}`}>
+                                        <MessageSquare size={24} />
+                                    </div>
+                                    <span className={`text-lg font-black uppercase tracking-tight ${mobileActiveCategory === 'contacto' ? 'text-gray-900' : 'text-gray-500'}`}>Contacto</span>
+                                </div>
+                                <ChevronDown size={20} className={`text-gray-300 transition-transform duration-300 ${mobileActiveCategory === 'contacto' ? 'rotate-180' : ''}`} />
+                            </button>
+                            
+                            <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'contacto' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                <div className="p-6 pt-0 space-y-3 pb-8">
+                                    <Link href="/sucursales" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-gray-50 border border-gray-100 active:bg-gray-100">
+                                        <div className="p-2 bg-carmona-gold rounded-lg text-white"><MapPin size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Sucursales</h4>
+                                            <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Ubicaciones y Horarios</p>
+                                        </div>
+                                    </Link>
+                                    <Link href="/contacto" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-gray-50 border border-gray-100 active:bg-gray-100">
+                                        <div className="p-2 bg-bruno-black rounded-lg text-white"><Phone size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Canales Directos</h4>
+                                            <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">WhatsApp y Teléfono</p>
+                                        </div>
+                                    </Link>
+                                    <Link href="/reclamos" onClick={closeUnifiedMenu} className="flex items-center gap-4 p-5 rounded-[1.5rem] bg-gray-50 border border-gray-100 active:bg-gray-100">
+                                        <div className="p-2 bg-blue-600 rounded-lg text-white"><User size={18} /></div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xs font-black uppercase text-gray-900">Sugerencias y Reclamos</h4>
+                                            <p className="text-[9px] text-gray-400 font-bold uppercase tracking-widest">Cuéntanos tu experiencia</p>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Removed Direct Call Footer for cleaner mobile UI */}
+                    <div className="pb-12" />
                 </div>
             </div>
 
