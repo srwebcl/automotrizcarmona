@@ -45,21 +45,15 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-900',
         bannerSlides: [
             {
-                web: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg',
-                mobile: '/images/volkswagen/banner-web-tcross-1280x960-copy1 (1).jpeg',
+                web: '/images/volkswagen/banner-vw-1.png',
+                mobile: '/images/volkswagen/banner-vw-1.png',
                 type: 'image'
             },
             {
-                web: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp',
-                mobile: '/images/volkswagen/banner-web-tiguan-1280x960-1.webp',
+                web: '/images/volkswagen/banner-vw-2.png',
+                mobile: '/images/volkswagen/banner-vw-2.png',
                 type: 'image'
-            },
-            {
-                web: '/images/volkswagen/banner-web-transporter-1280x960-1.webp',
-                mobile: '/images/volkswagen/banner-web-transporter-1280x960-1.webp',
-                type: 'image'
-            }
-        ]
+            },]
     },
     audi: {
         id: 'audi',
@@ -83,10 +77,20 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-red-600',
         bannerSlides: [
             {
-                web: '/images/honda/banner-honda.webp',
-                mobile: '/images/honda/banner-honda.webp',
+                web: '/images/honda/banner-wr-v_web.webp',
+                mobile: '/images/honda/banner-wr-v_movil.webp',
                 type: 'image'
-            }
+            },
+            {
+                web: '/images/honda/banner-hr-v_web.webp',
+                mobile: '/images/honda/banner-hr-v_movil.webp',
+                type: 'image'
+            },
+            {
+                web: '/images/honda/banner-cr-v_web.webp',
+                mobile: '/images/honda/banner-cr-v_movil.webp',
+                type: 'image'
+            },
         ]
     },
     cupra: {
@@ -117,13 +121,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-gray-900',
         bannerSlides: [
             {
-                web: '/images/seat/banner-seat1.jpg',
-                mobile: '/images/seat/banner-seat1.jpg',
-                type: 'image'
-            },
-            {
-                web: '/images/seat/ibiza/banner/banner-seat2.jpg',
-                mobile: '/images/seat/ibiza/banner/banner-seat2.jpg',
+                web: '/images/seat/banner-seat1.webp',
+                mobile: '/images/seat/banner-seat1.webp',
                 type: 'image'
             }
         ]
@@ -136,8 +135,8 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-600',
         bannerSlides: [
             {
-                web: '/images/bmw/banner-bmw.jpg',
-                mobile: '/images/bmw/banner-bmw.jpg',
+                web: '/images/bmw/banner-bmw.webp',
+                mobile: '/images/bmw/banner-bmw.webp',
                 type: 'image'
             }
         ]
@@ -150,15 +149,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-600',
         bannerSlides: [
             {
-                web: '/images/bmw-motorrad/banner-1.avif',
-                mobile: '/images/bmw-motorrad/banner-1.avif',
+                web: '/images/bmw-motorrad/banner-1.webp',
+                mobile: '/images/bmw-motorrad/banner-1-mobile.webp',
                 type: 'image'
             },
-            {
-                web: '/images/bmw-motorrad/banner-2.avif',
-                mobile: '/images/bmw-motorrad/banner-2.avif',
-                type: 'image'
-            }
         ]
     },
     foton: {

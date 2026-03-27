@@ -186,19 +186,20 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
 
             {/* Hero Section - Adaptive Slider */}
             <section className="relative w-full bg-gray-100 overflow-hidden pt-20">
-                <div className="w-full md:aspect-[1200/420]" ref={heroEmblaRef}>
-                    <div className="flex h-full">
+                <div className="relative group" ref={heroEmblaRef}>
+                    <div className="flex">
                         {config.bannerSlides.map((slide: any, index: number) => {
                             const slideContent = (
                                 <>
                                     {slide.web && slide.mobile ? (
                                         <>
-                                            <div className="hidden md:block relative w-full h-full">
+                                            <div className="hidden md:block relative w-full">
                                                 <Image
                                                     src={slide.web}
                                                     alt={slide.title || `${config.name} Banner ${index + 1}`}
-                                                    fill
-                                                    className="object-cover"
+                                                    width={1920}
+                                                    height={600}
+                                                    className="w-full h-auto object-contain block"
                                                     draggable={false}
                                                     priority={index === 0}
                                                 />
@@ -209,14 +210,14 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                                     alt={slide.title || `${config.name} Banner ${index + 1}`}
                                                     width={800}
                                                     height={800}
-                                                    className="w-full h-auto object-contain"
+                                                    className="w-full h-auto object-contain block"
                                                     draggable={false}
                                                     priority={index === 0}
                                                 />
                                             </div>
                                         </>
                                     ) : (
-                                        <div className="flex items-center justify-center h-full text-gray-500 bg-gray-100">
+                                        <div className="flex items-center justify-center min-h-[300px] text-gray-500 bg-gray-100">
                                             {slide.title}
                                         </div>
                                     )}
@@ -224,13 +225,13 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                             );
 
                             return (
-                                <div key={index} className="relative flex-[0_0_100%] min-w-0 h-full">
+                                <div key={index} className="relative flex-[0_0_100%] min-w-0">
                                     {slide.link ? (
-                                        <Link href={slide.link} className="block w-full h-full relative cursor-pointer">
+                                        <Link href={slide.link} className="block w-full relative cursor-pointer">
                                             {slideContent}
                                         </Link>
                                     ) : (
-                                        <div className="w-full h-full relative">
+                                        <div className="w-full relative">
                                             {slideContent}
                                         </div>
                                     )}
@@ -238,28 +239,30 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                             );
                         })}
                     </div>
+
+                    {config.bannerSlides.length > 1 && (
+                        <>
+                            {/* Navigation Arrows - Moved inside to be centred with image */}
+                            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex items-center justify-between px-3 md:px-8 pointer-events-none z-20">
+                                <button onClick={scrollPrev} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
+                                    <ChevronLeft size={20} className="md:hidden" />
+                                    <ChevronLeft size={32} className="hidden md:block" />
+                                </button>
+                                <button onClick={scrollNext} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/20 hover:bg-black/40 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
+                                    <ChevronRight size={20} className="md:hidden" />
+                                    <ChevronRight size={32} className="hidden md:block" />
+                                </button>
+                            </div>
+
+                            {/* Indicators */}
+                            <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-10">
+                                {config.bannerSlides.map((_: any, i: number) => (
+                                    <div key={i} className="w-1.5 md:w-3 h-1.5 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </div>
-
-                {config.bannerSlides.length > 1 && (
-                    <>
-                        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3 md:px-8 pointer-events-none">
-                            <button onClick={scrollPrev} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
-                                <ChevronLeft size={20} className="md:hidden" />
-                                <ChevronLeft size={32} className="hidden md:block" />
-                            </button>
-                            <button onClick={scrollNext} className="group pointer-events-auto w-9 h-9 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/10 hover:bg-black/20 md:bg-white/10 md:hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all shadow-xl">
-                                <ChevronRight size={20} className="md:hidden" />
-                                <ChevronRight size={32} className="hidden md:block" />
-                            </button>
-                        </div>
-
-                        <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 md:gap-3 z-10">
-                            {config.bannerSlides.map((_: any, i: number) => (
-                                <div key={i} className="w-1.5 md:w-3 h-1.5 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
-                            ))}
-                        </div>
-                    </>
-                )}
             </section>
 
             {/* Filter Bar */}

@@ -226,7 +226,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                             </div>
                         </div>
 
-                        {/* Legal text at bottom left like screenshot */}
+                        {/* Legal text at bottom left */}
                         <div className="absolute bottom-8 left-8 z-10 text-[10px] text-white/50 max-w-xl pointer-events-none hidden md:block">
                             <p className="leading-relaxed">
                                 *Los precios y especificaciones pueden variar según modelo año 2026. IVA Incluido. No incluyen Permiso de Circulación, Patentes, accesorios, seguro y gastos administrativos. BMW MOTORRAD CHILE se reserva el derecho de modificar precios en cualquier momento.
@@ -234,43 +234,45 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                         </div>
                     </section>
                 ) : (
-                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-[calc(100vh-76px)]' : ''}`}>
+                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) ? 'h-[calc(100vh-76px)]' : ''}`}>
                         <picture className="w-full h-full block">
                             <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
                             <img 
                                 src={model.mobileBanner || model.desktopBanner} 
                                 alt={`Banner ${model.name}`} 
-                                className={`w-full ${['cupra', 'kaiyi', 'volkswagen'].includes(brand) ? 'h-full' : 'h-auto md:h-auto'} object-cover opacity-80`} 
+                                className={`w-full ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) ? 'h-full' : 'h-auto md:h-auto'} object-cover opacity-80`} 
                             />
                         </picture>
-                        {brand !== 'toyota' && brand !== 'honda' && <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />}
-                        {brand !== 'toyota' && brand !== 'honda' && (
-                            <div className="absolute inset-0 flex items-center px-8 md:px-20 z-10 pointer-events-none">
-                                <div className="flex flex-col text-white max-w-2xl">
-                                    {model.slogan && <p className="text-sm md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
-                                    <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight">{config.name} {model.name}</h1>
-                                    <p className="text-md md:text-lg font-medium mt-2 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
-                                    
-                                    <div className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
-                                        <button 
-                                            onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                            className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
-                                            Elige el tuyo
-                                        </button>
-                                        <button 
-                                            onClick={() => {
-                                                if (mockVersions.length === 1) {
-                                                    router.push(`/cotizar?marca=${brand}&modelo=${model.id}&version=${encodeURIComponent(mockVersions[0].name)}`);
-                                                } else {
-                                                    setShowQuoteModal(true);
-                                                }
-                                            }}
-                                            className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all">
-                                            Cotizar
-                                        </button>
+                        {['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) && (
+                            <>
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />
+                                <div className="absolute inset-0 flex items-center px-8 md:px-20 z-10 pointer-events-none">
+                                    <div className="flex flex-col text-white max-w-2xl">
+                                        {model.slogan && <p className="text-sm md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
+                                        <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight">{config.name} {model.name}</h1>
+                                        <p className="text-md md:text-lg font-medium mt-2 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
+                                        
+                                        <div className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
+                                            <button 
+                                                onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                                className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
+                                                Elige el tuyo
+                                            </button>
+                                            <button 
+                                                onClick={() => {
+                                                    if (mockVersions.length === 1) {
+                                                        router.push(`/cotizar?marca=${brand}&modelo=${model.id}&version=${encodeURIComponent(mockVersions[0].name)}`);
+                                                    } else {
+                                                        setShowQuoteModal(true);
+                                                    }
+                                                }}
+                                                className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all">
+                                                Cotizar
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </>
                         )}
                     </section>
                 )
