@@ -357,15 +357,14 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                                         
                                                         <div className="mt-4">
                                                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-0.5">Precio desde</span>
-                                                            <span className="text-4xl lg:text-[44px] font-black text-gray-900 tracking-tighter leading-none block">{formatPrice(v.bonusPrice)}</span>
+                                                            <span className="text-4xl lg:text-[44px] font-black text-gray-900 tracking-tighter leading-none block">
+                                                                {formatPrice(v.bonusPrice)}{model.ivaIncluded === false && <span className="text-lg ml-1 opacity-50 font-bold">+ IVA</span>}
+                                                            </span>
                                                             
                                                             {(v.brandBonus > 0 || v.financingBonus > 0 || v.bonus > 0) && (
                                                                 <p className="text-[12px] font-bold text-gray-500 mt-2 max-w-[80%] leading-tight">
                                                                     Incluye Bono de <span className="text-gray-700">{formatPrice((v.brandBonus || 0) + (v.financingBonus || 0) + (v.bonus || 0))}</span> con financiamiento
                                                                 </p>
-                                                            )}
-                                                            {model.ivaIncluded === false && (
-                                                                <span className="inline-block mt-3 text-[10px] font-black uppercase tracking-widest text-orange-600 bg-orange-50 px-2.5 py-1 rounded">Precio + IVA No Incluido</span>
                                                             )}
                                                         </div>
                                                     </div>
@@ -425,7 +424,10 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                                             
                                                             <div className="flex justify-between items-center py-3 border-b border-gray-100">
                                                                 <span className="text-[13px] text-gray-600 font-medium">Precio de lista</span>
-                                                                <span className="text-[13px] font-bold text-gray-800">{v.listPrice > 0 ? formatPrice(v.listPrice) : '-'}</span>
+                                                                <span className="text-[13px] font-bold text-gray-800">
+                                                                    {v.listPrice > 0 ? formatPrice(v.listPrice) : '-'}
+                                                                    {v.listPrice > 0 && model.ivaIncluded === false && <span className="text-[10px] ml-1 opacity-50 font-bold">+ IVA</span>}
+                                                                </span>
                                                             </div>
                                                             <div className="flex justify-between items-center py-3 border-b border-gray-100">
                                                                 <span className="text-[13px] text-gray-600 font-medium">Bono Financiamiento</span>
@@ -437,7 +439,10 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                                             </div>
                                                             <div className="flex justify-between items-center py-3">
                                                                 <span className="text-[13px] text-gray-900 font-bold">Precio con financiamiento</span>
-                                                                <span className="text-[14px] font-black text-gray-900">{formatPrice(v.bonusPrice || v.listPrice)}</span>
+                                                                <span className="text-[14px] font-black text-gray-900">
+                                                                    {formatPrice(v.bonusPrice || v.listPrice)}
+                                                                    {model.ivaIncluded === false && <span className="text-[10px] ml-1 opacity-50 font-bold">+ IVA</span>}
+                                                                </span>
                                                             </div>
                                                         </div>
 
