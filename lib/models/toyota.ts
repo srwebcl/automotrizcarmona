@@ -40,7 +40,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Ready for Everything",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -164,7 +164,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Todos los destinos. Todas las historias",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -233,7 +233,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Más que un eléctrico, un eléctrico Toyota",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "https://www.youtube.com/embed/3Zm1NHePW70",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -307,7 +307,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "La tradición de innovar",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -413,7 +413,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Sigue haciendo historia",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -512,7 +512,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Espacio para la familia, no para las excusas",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -581,7 +581,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Gazoo Racing Sport",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -745,7 +745,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Nada detiene tu próximo paso",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -815,7 +815,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Gazoo Racing Sport",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -891,7 +891,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "La leyenda continúa",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -992,7 +992,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Completamente equipado y eficiente",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -1096,7 +1096,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Fácil de conducir, simple de disfrutar",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -1193,7 +1193,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Recorriendo los caminos",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -1274,7 +1274,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Todo eso y más",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -1348,7 +1348,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Adrenaline has a new Generation",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",
@@ -1408,7 +1408,7 @@ export const TOYOTA_MODELS: Vehicle[] = [
             },
         ],
         slogan: "Completamente equipado y eficiente",
-        videoUrl: "CARACTERÍSTICAS:",
+        videoUrl: "",
         features: [
             {
                 title: "Diseño Dinámico",

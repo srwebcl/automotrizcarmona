@@ -469,7 +469,13 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                             <div className="w-10 h-[1.5px] bg-gray-600 rounded-full" />
                         </div>
                         <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium text-white tracking-tighter leading-none">
-                            Conoce el{' '}
+                            Conoce {
+                                model.category?.toLowerCase().includes('pick-up') || 
+                                model.category?.toLowerCase().includes('camioneta') || 
+                                model.category?.toLowerCase().includes('moto') ||
+                                brand === 'bmw-motorrad'
+                                ? 'la' : 'el'
+                            }{' '}
                             <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-100 to-gray-400 uppercase">
                                 {config.name} {model.name}
                             </span>
@@ -536,7 +542,13 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                 <div className="max-w-5xl mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-4xl font-black uppercase tracking-tighter mb-4 text-gray-900">Experiencia <span className="text-gray-900 opacity-50">{config.name} {model.name}</span></h2>
-                        <p className="text-gray-500">Conoce cada detalle del {model.name} en movimiento.</p>
+                        <p className="text-gray-500">Conoce cada detalle {
+                            model.category?.toLowerCase().includes('pick-up') || 
+                            model.category?.toLowerCase().includes('camioneta') || 
+                            model.category?.toLowerCase().includes('moto') ||
+                            brand === 'bmw-motorrad'
+                            ? 'de la' : 'del'
+                        } {model.name} en movimiento.</p>
                     </div>
                     <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
                         <iframe
