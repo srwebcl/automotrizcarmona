@@ -216,7 +216,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         return (
             <div className="bg-white rounded-[24px] p-6 h-full border border-gray-200 shadow-sm transition-all flex flex-col group relative">
                 {/* Miniature Image */}
-                <div className="relative flex-shrink-0 h-[100px] w-full mb-3 bg-transparent flex items-center justify-center">
+                <div className="relative flex-shrink-0 h-[80px] w-full mb-3 bg-transparent flex items-center justify-center">
                     <Image
                         src={v.image || model.image}
                         alt={v.name}
@@ -272,7 +272,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                     <button onClick={() => setActiveTab('specs')} className={`flex-1 text-[12px] font-bold pb-2 border-b-2 transition-all ${activeTab === 'specs' ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-400 hover:text-gray-600'}`}>Características</button>
                 </div>
 
-                <div className="min-h-[100px] flex flex-col mb-6 mt-1 flex-1">
+                <div className="min-h-[80px] flex flex-col mb-6 mt-1 flex-1">
                     {activeTab === 'precio' && (
                         <div className="flex flex-col gap-2.5 w-full text-[12px]">
                             <div className="flex justify-between items-center text-gray-600">
