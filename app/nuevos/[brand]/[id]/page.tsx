@@ -506,7 +506,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                             {formatPrice(minPrice)}{model.ivaIncluded === false && <span className="text-xl ml-1 opacity-50 font-bold text-[#0B1221]">+ IVA</span>}
                                         </span>
                                         <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest leading-tight">
-                                            {(mockVersions[0]?.financingBonus > 0 || mockVersions[0]?.bonus > 0 || mockVersions[0]?.brandBonus > 0) 
+                                            {((mockVersions[0]?.financingBonus || 0) > 0 || (mockVersions[0]?.bonus || 0) > 0 || (mockVersions[0]?.brandBonus || 0) > 0) 
                                                 ? `*Incluye bono de financiamiento de ${formatPrice((mockVersions[0]?.financingBonus||0) + (mockVersions[0]?.bonus||0) + (mockVersions[0]?.brandBonus||0))}`
                                                 : `*Precio con todo medio de pago`}
                                         </p>
@@ -519,7 +519,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                         { label: 'Motor', value: mockVersions[0]?.motor, icon: <Cog size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
                                         { label: 'Combustible', value: mockVersions[0]?.fuel, icon: <Fuel size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
                                         { label: 'Transmisión', value: mockVersions[0]?.transmission?.includes('Auto') ? 'Automática' : (mockVersions[0]?.transmission || 'Manual'), icon: <Settings2 size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
-                                        { label: 'Rendimiento', value: mockVersions[0]?.electricRange || mockVersions[0]?.consumptionMixed || mockVersions[0]?.consumo, icon: mockVersions[0]?.electricRange ? <Zap size={22} strokeWidth={1.5} className="text-[#0B1221]" /> : <Route size={22} strokeWidth={1.5} className="text-[#0B1221]" /> },
+                                        { label: 'Rendimiento', value: mockVersions[0]?.electricRange || mockVersions[0]?.consumptionMixed || (mockVersions[0] as any)?.consumo, icon: mockVersions[0]?.electricRange ? <Zap size={22} strokeWidth={1.5} className="text-[#0B1221]" /> : <Route size={22} strokeWidth={1.5} className="text-[#0B1221]" /> },
                                     ].map(({ label, value, icon }, idx) => (
                                         <div key={idx} className={`flex items-center py-4 ${idx !== 0 ? 'border-t border-gray-100' : ''}`}>
                                             <div className="w-8 flex justify-start">{icon}</div>
@@ -534,7 +534,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                     <div className="grid grid-cols-2 gap-3">
                                         <button 
                                             onClick={() => {
-                                                if (mockVersions.length === 1) {
+                                                if (mockVersions.length === 1 && mockVersions[0]) {
                                                     router.push(`/cotizar?marca=${brand}&modelo=${model.id}&version=${encodeURIComponent(mockVersions[0].name)}`);
                                                 } else {
                                                     setShowQuoteModal(true);
@@ -550,9 +550,9 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                         </button>
                                     </div>
                                     
-                                    {model.dataSheetUrl && (
+                                    {(model as any).dataSheetUrl && (
                                         <button 
-                                            onClick={() => window.open(model.dataSheetUrl, '_blank')}
+                                            onClick={() => window.open((model as any).dataSheetUrl, '_blank')}
                                             className="flex mx-auto items-center justify-center gap-2 mt-2 py-2 text-[#9CA3AF] hover:text-[#0B1221] font-bold transition-all tracking-widest text-[10px] uppercase">
                                             <FileText size={14} strokeWidth={2} />
                                             Descargar Ficha Técnica
