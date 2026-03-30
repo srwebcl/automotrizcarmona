@@ -461,7 +461,7 @@ function CotizarDypContent() {
                                     </div>
                                     <div>
                                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Dirección</p>
-                                        <p className="text-sm font-semibold text-gray-900">Planella 1234, Coquimbo</p>
+                                        <p className="text-sm font-semibold text-gray-900">Ruta 5 Norte KM 470, La Serena</p>
                                         <p className="text-xs text-gray-500 mt-0.5">IV Región, Chile</p>
                                     </div>
                                 </div>
@@ -471,20 +471,15 @@ function CotizarDypContent() {
                                     </div>
                                     <div>
                                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Correo DyP</p>
-                                        <a href="mailto:dyp@carmonaycia.cl"
+                                        <a href="mailto:vgallay@carmonaycia.cl"
                                             className="text-sm font-semibold text-gray-900 hover:text-[#d2001c] transition-colors break-all">
-                                            dyp@carmonaycia.cl
+                                            vgallay@carmonaycia.cl
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="border-t border-gray-100 pt-6 space-y-3">
-                                <a href="https://wa.me/56984749397?text=Hola%2C%20necesito%20agendar%20en%20Desabolladura%20y%20Pintura"
-                                    target="_blank" rel="noopener noreferrer" id="dyp-whatsapp-btn"
-                                    className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#25D366] hover:bg-[#1ebe5c] text-white transition-colors">
-                                    <MessageCircle size={18} /> Hablar con un Asesor
-                                </a>
                                 <a href="tel:+56512200201" id="dyp-phone-btn"
                                     className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
                                     <Phone size={18} /> Llamar +56 51 220 0201

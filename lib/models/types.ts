@@ -34,6 +34,19 @@ export interface VehicleVersion {
     bonus?: number;
 }
 
+export interface PromotionUnit {
+    vin: string;
+    versionName: string;
+    /** Descuento adicional sobre el precio con bonos estándar */
+    promoBonus: number;
+    /** Precio final de venta para esta unidad específica */
+    promoPrice: number;
+    color?: string;
+    year?: number;
+    /** Comentario adicional (ej: "Unidad Test Drive", "Única unidad") */
+    note?: string;
+}
+
 export interface Vehicle {
     id: string;
     /** Slug de la marca en minúsculas (ej: 'toyota', 'volkswagen', 'bmw-motorrad') */
@@ -56,6 +69,14 @@ export interface Vehicle {
     isElectric?: boolean;
     isNew?: boolean;
     isFeatured?: boolean;
+    /** Indica si el modelo está en promoción/oferta especial */
+    isPromotion?: boolean;
+    /** Descuento adicional por promoción vigente */
+    promoBonus?: number;
+    /** Etiqueta descriptiva global para el modelo en promoción */
+    promotionTag?: string;
+    /** Unidades específicas en promoción con VIN y precio único */
+    promoUnits?: PromotionUnit[];
     /** Características/equipamiento destacado (máx. 4 tarjetas) */
     features?: { title: string; desc: string; icon?: string; image?: string }[];
     /** URLs de imágenes de galería */

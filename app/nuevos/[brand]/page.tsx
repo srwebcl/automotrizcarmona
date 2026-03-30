@@ -362,7 +362,7 @@ export default function BrandPage({ params }: { params: Promise<{ brand: string 
                                     </div>
                                     <div className="mt-20 text-center">
                                         <p className="text-gray-800 text-lg font-medium">
-                                            Precio Desde <span className="font-bold">{formatPrice(model.price)}</span>(*)
+                                            Precio Desde <span className="font-bold">{formatPrice(model.price)}</span>
                                         </p>
                                     </div>
                                 </Link>

@@ -10,16 +10,16 @@ VIDEO:
 CARACTERÍSTICAS:
 
 CARACTERÍSTICA 1:
-Título: Diseño Dinámico
-Descripción: Diseño hecho a la medida de tus deseos y necesidades.
+Título: Compañeros Inteligentes
+Descripción: Conducción y aparcamiento cómodos. Además del Asistente de Aparcamiento plus, cuatro cámaras de visión periférica te ayudan con las maniobras. El Asistente de Crucero Adaptativo plus, te ayuda a mantener la velocidad y la distancia de seguridad, además de la guía de carril, entre otras funciones.
 
-CARACTERÍSTICA 2:
-Título: Conducción Eficiente
-Descripción: Dinámica y eficiencia excepcional en su conducción.
+CARACTERÍSTICA 2: 
+Título: Se arrastra
+Descripción: Con una capacidad de remolque de hasta 2100 kg, el nuevo Audi A6 Sportback e-tron también demuestra su valía como vehículo de remolque. El enganche de remolque pivotante se bloquea y desbloquea cómodamente mediante un mecanismo de desbloqueo.
 
 CARACTERÍSTICA 3:
-Título: Tecnologías Innovadoras
-Descripción: Equipado con las últimas innovaciones para el día a día.
+Título: Diseño
+Descripción: El Audi A6 Sportback e-tron encarna un nuevo lenguaje de diseño eléctrico de Audi. Sus ruedas grandes, voladizos cortos y un habitáculo bajo el techo curvado del coupé realzan sus proporciones deportivas.
 
 VERSIONES:
 

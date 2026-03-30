@@ -8,14 +8,13 @@ IVA INCLUIDO: SÍ
 VIDEO: 
 
 CARACTERÍSTICAS:
-
 CARACTERÍSTICA 1:
-Título: Diseño Dinámico
-Descripción: Diseño hecho a la medida de tus deseos y necesidades.
+Título: Característica llamativa en la parte trasera.
+Descripción: Firmas lumínicas traseras marcadas, intermitentes dinámicos y una franja luminosa continua: un diseño que se queda en la memoria.
 
 CARACTERÍSTICA 2:
-Título: Conducción Eficiente
-Descripción: Dinámica y eficiencia excepcional en su conducción.
+Título: Tu escenario digital.
+Descripción: Manejo intuitivo: el display panorámico OLED curvo está orientado hacia el conductor para una experiencia de conducción más cómoda.
 
 CARACTERÍSTICA 3:
 Título: Tecnologías Innovadoras

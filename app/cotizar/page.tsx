@@ -22,6 +22,7 @@ function CotizarContent() {
 
     const [model, setModel] = useState<any>(null);
     const [version, setVersion] = useState<any>(null);
+    const [availableVersions, setAvailableVersions] = useState<any[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -79,6 +80,7 @@ function CotizarContent() {
 
                 const foundVersion = mockVersions.find((v: any) => v.name === versionQuery);
                 setVersion(foundVersion || mockVersions[0]);
+                setAvailableVersions(mockVersions);
             }
         }
     }, [marca, modeloId, versionQuery]);
@@ -332,13 +334,33 @@ function CotizarContent() {
                                                 className="object-contain p-1"
                                             />
                                         </div>
-                                        <div>
-                                            <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-lg">
+                                        <div className="flex-1 min-w-0 pr-2">
+                                            <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-lg leading-tight mb-1">
                                                 {marca} {model.name}
                                             </h3>
-                                            <p className="text-sm text-gray-500 uppercase font-medium mt-0.5">
-                                                {version.name.replace(`${model.name} `, '')}
-                                            </p>
+                                            {(availableVersions.length > 1) ? (
+                                                <div className="relative w-full mt-1.5">
+                                                    <select 
+                                                        className="w-full text-[13px] font-bold text-gray-700 bg-[#f8f9fa] border-2 border-transparent hover:border-gray-200 focus:border-[#d2001c] focus:bg-white rounded-lg pl-3 pr-8 py-2 outline-none appearance-none cursor-pointer transition-colors truncate shadow-sm"
+                                                        value={version.name}
+                                                        onChange={(e) => {
+                                                            const newVersion = e.target.value;
+                                                            router.push(`/cotizar?marca=${marca}&modelo=${modeloId}&version=${encodeURIComponent(newVersion)}`);
+                                                        }}
+                                                    >
+                                                        {availableVersions.map((v: any, idx: number) => (
+                                                            <option key={idx} value={v.name}>{v.name.replace(new RegExp(`^${model.name}\\s*`, 'i'), '')}</option>
+                                                        ))}
+                                                    </select>
+                                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#d2001c]">
+                                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <p className="text-sm text-gray-500 uppercase font-medium mt-0.5">
+                                                    {version.name.replace(new RegExp(`^${model.name}\\s*`, 'i'), '')}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
 

@@ -22,6 +22,10 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     const [activeIdx, setActiveIdx] = useState(0);
     const [activeVersionIdx, setActiveVersionIdx] = useState(0);
     const [showQuoteModal, setShowQuoteModal] = useState(false);
+    const [sortOrder, setSortOrder] = useState('price-asc');
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(false);
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
     const router = useRouter();
 
     const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -44,13 +48,24 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     }, [emblaApi, onSelect]);
 
     const [versionsRef, versionsApi] = useEmblaCarousel({
-        align: 'start',
+        align: 'center',
+        breakpoints: {
+            '(min-width: 768px)': { align: 'start' }
+        },
         slidesToScroll: 1,
     });
 
     React.useEffect(() => {
         if (!versionsApi) return;
-        versionsApi.on('select', () => setActiveVersionIdx(versionsApi.selectedScrollSnap()));
+        const updateScroll = () => {
+            setActiveVersionIdx(versionsApi.selectedScrollSnap());
+            setCanScrollPrev(versionsApi.canScrollPrev());
+            setCanScrollNext(versionsApi.canScrollNext());
+            setScrollSnaps(versionsApi.scrollSnapList());
+        };
+        versionsApi.on('select', updateScroll);
+        versionsApi.on('reInit', updateScroll);
+        updateScroll();
     }, [versionsApi]);
 
     React.useEffect(() => {
@@ -103,6 +118,35 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
         loadModel();
     }, [brand, id]);
 
+    const formatPrice = (price: number) => {
+        return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
+    };
+
+    const mockVersions = React.useMemo(() => {
+        if (!model) return [];
+        return model.versions || [
+            { name: `${model.name} Base`, transmission: 'Manual', traction: '4x2', fuel: 'Gasolina', listPrice: model.price + 1000000, bonusPrice: model.price },
+            { name: `${model.name} Full`, transmission: 'Automática', traction: '4x2', fuel: 'Gasolina', listPrice: model.price + 2500000, bonusPrice: model.price + 1500000 }
+        ];
+    }, [model]);
+
+    const sortedVersions = React.useMemo(() => {
+        return [...mockVersions].sort((a, b) => {
+            const priceA = a.bonusPrice > 0 ? a.bonusPrice : a.listPrice;
+            const priceB = b.bonusPrice > 0 ? b.bonusPrice : b.listPrice;
+            if (sortOrder === 'price-asc') return priceA - priceB;
+            if (sortOrder === 'price-desc') return priceB - priceA;
+            if (sortOrder === 'name-asc') return a.name.localeCompare(b.name);
+            return 0;
+        });
+    }, [mockVersions, sortOrder]);
+
+    React.useEffect(() => {
+        if (versionsApi) {
+            versionsApi.scrollTo(0);
+        }
+    }, [sortOrder, versionsApi]);
+
     if (isLoading) {
         return (
             <div className="min-h-screen bg-white flex items-center justify-center">
@@ -117,15 +161,6 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
     if (!model) {
         notFound();
     }
-
-    const formatPrice = (price: number) => {
-        return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
-    };
-
-    const mockVersions = model.versions || [
-        { name: `${model.name} Base`, transmission: 'Manual', traction: '4x2', fuel: 'Gasolina', listPrice: model.price + 1000000, bonusPrice: model.price },
-        { name: `${model.name} Full`, transmission: 'Automática', traction: '4x2', fuel: 'Gasolina', listPrice: model.price + 2500000, bonusPrice: model.price + 1500000 }
-    ];
 
 
 
@@ -175,6 +210,112 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
             </div>
         </div>
     );
+
+    const VersionCard = ({ v, model, brand, id, config, formatPrice }: any) => {
+        const [activeTab, setActiveTab] = React.useState('precio');
+        return (
+            <div className="bg-white rounded-[24px] p-6 h-full border border-gray-200 shadow-sm transition-all flex flex-col group relative">
+                {/* Miniature Image */}
+                <div className="relative flex-shrink-0 h-[100px] w-full mb-3 bg-transparent flex items-center justify-center">
+                    <Image
+                        src={v.image || model.image}
+                        alt={v.name}
+                        fill
+                        className="object-contain drop-shadow-md group-hover:scale-110 transition-transform duration-500"
+                    />
+                </div>
+
+                {/* Brand & Model - Top */}
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{config.name} {model.name}</span>
+                <h3 className="text-sm md:text-base font-semibold text-gray-900 uppercase tracking-tight leading-tight mt-1 mb-3 line-clamp-2 min-h-[40px]">
+                    {v.name}
+                </h3>
+                
+                {/* Huge Price */}
+                <span className="text-3xl font-black text-gray-900 tracking-tighter mb-1 block">
+                    {formatPrice(v.bonusPrice || v.listPrice)}
+                </span>
+                
+                <p className="text-[11px] text-gray-500 font-medium mb-6 leading-tight min-h-[32px]">
+                    {(v.financingBonus > 0 || v.bonus > 0 || v.brandBonus > 0) 
+                        ? `Incluye Bono de ${formatPrice((v.financingBonus||0) + (v.bonus||0) + (v.brandBonus||0))} con financiamiento`
+                        : `Precio al contado o con cualquier medio de pago`}
+                </p>
+
+                {/* Icons Grid */}
+                <div className="grid grid-cols-4 gap-1 mb-6 border-t border-b border-gray-100 py-4">
+                    <div className="flex flex-col items-center justify-start text-center">
+                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Motor</span>
+                        <Cog size={18} className="text-gray-900 mb-1.5 stroke-[1.5]"/>
+                        <span className="text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight">{v.motor || '-'}</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-start text-center">
+                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Combust.</span>
+                        <Fuel size={18} className="text-gray-900 mb-1.5 stroke-[1.5]"/>
+                        <span className="text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight">{v.fuel || '-'}</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-start text-center">
+                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Transm.</span>
+                        <Settings2 size={18} className="text-gray-900 mb-1.5 stroke-[1.5]"/>
+                        <span className="text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight truncate px-1 w-full text-center">{v.transmission?.includes('Auto') ? 'Automática' : 'Manual'}</span>
+                    </div>
+                    <div className="flex flex-col items-center justify-start text-center">
+                        <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">Rendim.</span>
+                        <Route size={18} className="text-gray-900 mb-1.5 stroke-[1.5]"/>
+                        <span className="text-[10px] sm:text-[11px] font-bold text-gray-600 leading-tight">{v.consumptionMixed || v.electricRange || '-'}</span>
+                    </div>
+                </div>
+
+                {/* Tabs Base */}
+                <div className="flex border-b border-gray-200 mb-4">
+                    <button onClick={() => setActiveTab('precio')} className={`flex-1 text-[12px] font-bold pb-2 border-b-2 transition-all ${activeTab === 'precio' ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-400 hover:text-gray-600'}`}>Precio</button>
+                    <button onClick={() => setActiveTab('specs')} className={`flex-1 text-[12px] font-bold pb-2 border-b-2 transition-all ${activeTab === 'specs' ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-400 hover:text-gray-600'}`}>Características</button>
+                </div>
+
+                <div className="min-h-[100px] flex flex-col mb-6 mt-1 flex-1">
+                    {activeTab === 'precio' && (
+                        <div className="flex flex-col gap-2.5 w-full text-[12px]">
+                            <div className="flex justify-between items-center text-gray-600">
+                                <span>Precio con Financiamiento</span>
+                                <b>{formatPrice(v.bonusPrice || v.listPrice)}</b>
+                            </div>
+                            <div className="flex justify-between items-center text-gray-500">
+                                <span>Todo medio de pago</span>
+                                <b>{formatPrice(v.listPrice - (v.brandBonus || 0))}</b>
+                            </div>
+                            <div className="flex justify-between items-center text-gray-400">
+                                <span>Precio de lista</span>
+                                <b>{formatPrice(v.listPrice)}</b>
+                            </div>
+                        </div>
+                    )}
+                    {activeTab === 'specs' && (
+                        <div className="flex flex-col gap-2.5 w-full text-[12px]">
+                            <div className="flex justify-between items-center text-gray-600">
+                                <span>Potencia</span>
+                                <b>{v.power || '-'}</b>
+                            </div>
+                            <div className="flex justify-between items-center text-gray-600">
+                                <span>Tracción</span>
+                                <b>{v.traction || '-'}</b>
+                            </div>
+                            <div className="flex justify-between items-center text-gray-600">
+                                <span>Rendimiento</span>
+                                <b>{v.consumptionMixed || v.electricRange || '-'}</b>
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* Buttons Bottom */}
+                <div className="mt-auto">
+                    <Link href={`/cotizar?marca=${brand}&modelo=${id}&version=${encodeURIComponent(v.name)}`} className="w-full bg-gray-900 hover:bg-black text-white text-[13px] font-bold tracking-wider uppercase py-4 rounded-xl text-center transition-all shadow-md hover:shadow-lg flex items-center justify-center">
+                        COTIZAR
+                    </Link>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[80px]">
@@ -234,7 +375,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                         </div>
                     </section>
                 ) : (
-                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) ? 'h-[calc(100vh-76px)]' : ''}`}>
+                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) ? 'h-[60vh] md:h-[calc(100vh-76px)]' : ''}`}>
                         <picture className="w-full h-full block">
                             <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
                             <img 
@@ -245,17 +386,17 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                         </picture>
                         {['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat'].includes(brand) && (
                             <>
-                                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />
-                                <div className="absolute inset-0 flex items-center px-8 md:px-20 z-10 pointer-events-none">
-                                    <div className="flex flex-col text-white max-w-2xl">
-                                        {model.slogan && <p className="text-sm md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
-                                        <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight">{config.name} {model.name}</h1>
-                                        <p className="text-md md:text-lg font-medium mt-2 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
+                                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/40 md:via-black/30 to-black/20 md:to-transparent pointer-events-none" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center md:items-start md:justify-center px-6 md:px-20 z-10 pointer-events-none mt-12 md:mt-0">
+                                    <div className="flex flex-col text-center md:text-left items-center md:items-start text-white max-w-2xl w-full">
+                                        {model.slogan && <p className="text-[10px] md:text-xl md:mb-2 font-bold uppercase tracking-widest">{model.slogan}</p>}
+                                        <h1 className="text-4xl md:text-6xl font-black uppercase leading-tight mt-1">{config.name} {model.name}</h1>
+                                        <p className="text-sm md:text-lg font-medium mt-1 md:mt-4 text-gray-200">Precio Desde: {formatPrice(minPrice)}</p>
                                         
-                                        <div className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
+                                        <div className="flex flex-col md:flex-row flex-wrap w-full md:w-auto gap-3 md:gap-4 mt-6 md:mt-8 pointer-events-auto">
                                             <button 
                                                 onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                                                className="px-8 py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
+                                                className="w-full md:w-auto px-8 py-3 md:py-3 bg-gray-900 hover:bg-black text-white font-bold rounded transition-all">
                                                 Elige el tuyo
                                             </button>
                                             <button 
@@ -266,7 +407,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                                         setShowQuoteModal(true);
                                                     }
                                                 }}
-                                                className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all">
+                                                className="w-full md:w-auto px-8 py-3 md:py-3 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold rounded transition-all border border-white/10 md:border-none">
                                                 Cotizar
                                             </button>
                                         </div>
@@ -306,7 +447,7 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                 </div>
                             </div>
 
-                            <div className="flex-1 bg-white rounded-3xl border border-gray-100 relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] flex items-center justify-center overflow-hidden mb-4">
+                            <div className="flex-1 bg-white rounded-3xl border border-gray-100 relative min-h-[300px] sm:min-h-[350px] lg:min-h-[450px] flex items-center justify-center overflow-hidden mb-4 group shadow-sm z-0">
                                 <Image
                                     src={(model.gallery && model.gallery[activeIdx]) || model.image}
                                     alt={model.name}
@@ -314,6 +455,16 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                                     className="object-cover"
                                     priority
                                 />
+                                {model.gallery && model.gallery.length > 1 && (
+                                    <>
+                                        <button onClick={() => setActiveIdx(prev => prev > 0 ? prev - 1 : model.gallery!.length - 1)} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-black/10 flex items-center justify-center text-gray-800 hover:bg-white transition-all opacity-100 md:opacity-0 group-hover:opacity-100 shadow-md z-10">
+                                            <ChevronLeft size={20} />
+                                        </button>
+                                        <button onClick={() => setActiveIdx(prev => prev < model.gallery!.length - 1 ? prev + 1 : 0)} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/50 backdrop-blur-sm border border-black/10 flex items-center justify-center text-gray-800 hover:bg-white transition-all opacity-100 md:opacity-0 group-hover:opacity-100 shadow-md z-10">
+                                            <ChevronRight size={20} />
+                                        </button>
+                                    </>
+                                )}
                             </div>
 
                             {model.gallery && model.gallery.length > 0 && (
@@ -331,133 +482,193 @@ export default function GenericModelPage({ params }: { params: Promise<{ brand: 
                             )}
                         </div>
 
-                        {/* Details Sidebar with Versions Carousel */}
-                        <div id="seccion-versiones" className="lg:col-span-5 flex flex-col scroll-mt-24">
-                            {/* No external header - all inside cards per new design */}
+                        {/* Summary Sidebar (No carousel) */}
+                        <div className="lg:col-span-5 flex flex-col z-0 lg:z-10 lg:pl-6">
+                            <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-8 lg:p-10 border border-gray-50 flex flex-col h-full sticky top-[150px]">
+                                {/* MARCA, MODELO, PRECIO DESDE */}
+                                <div>
+                                    <div className="flex justify-between items-center mb-1">
+                                        <span className="text-[10px] font-bold tracking-widest text-[#9CA3AF] uppercase">{config.name}</span>
+                                        <div className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-100 text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition-colors">
+                                            <ShareButton
+                                                title={`Mira el ${config.name} ${model.name} en Automotriz Carmona`}
+                                                url={`https://automotrizcarmona.cl/nuevos/${brand}/${id}`}
+                                            />
+                                        </div>
+                                    </div>
+                                    <h2 className="text-3xl lg:text-[34px] font-semibold text-[#0B1221] tracking-tight uppercase leading-none mt-1 mb-8">
+                                        {model.name}
+                                    </h2>
+                                    
+                                    <div className="mb-10 mt-6">
+                                        <span className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest block mb-2">Precio desde</span>
+                                        <span className="text-4xl lg:text-5xl font-black text-[#0B1221] tracking-tighter leading-none block mb-3">
+                                            {formatPrice(minPrice)}{model.ivaIncluded === false && <span className="text-xl ml-1 opacity-50 font-bold text-[#0B1221]">+ IVA</span>}
+                                        </span>
+                                        <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest leading-tight">
+                                            {(mockVersions[0]?.financingBonus > 0 || mockVersions[0]?.bonus > 0 || mockVersions[0]?.brandBonus > 0) 
+                                                ? `*Incluye bono de financiamiento de ${formatPrice((mockVersions[0]?.financingBonus||0) + (mockVersions[0]?.bonus||0) + (mockVersions[0]?.brandBonus||0))}`
+                                                : `*Precio con todo medio de pago`}
+                                        </p>
+                                    </div>
+                                </div>
 
-                            {/* Carousel Box */}
-                            <div className="overflow-hidden" ref={versionsRef}>
-                                <div className="flex -ml-4">
-                                    {mockVersions.map((v: any, i: number) => (
-                                        <div key={i} className="flex-[0_0_100%] min-w-0 pl-4">
-                                            <div className="bg-white rounded-3xl p-6 h-full border border-gray-200 hover:shadow-xl shadow-sm transition-all flex flex-col justify-between group">
-                                                <div>
-                                                    {/* ── TOP SECTION: MARCA, MODELO, PRECIO DESDE ── */}
-                                                    <div>
-                                                        <div className="flex justify-between items-start mb-1">
-                                                            <span className="text-[10px] font-black tracking-widest text-gray-400 uppercase">{config.name}</span>
-                                                            <ShareButton
-                                                                title={`Mira el ${config.name} ${model.name} en Automotriz Carmona`}
-                                                                url={`https://automotrizcarmona.cl/nuevos/${brand}/${id}`}
-                                                            />
-                                                        </div>
-                                                        <h2 className="text-2xl lg:text-3xl font-medium text-gray-800 tracking-tight uppercase leading-none mb-3">
-                                                            {model.name}
-                                                        </h2>
-                                                        
-                                                        <div className="mt-4">
-                                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-0.5">Precio desde</span>
-                                                            <span className="text-4xl lg:text-[44px] font-black text-gray-900 tracking-tighter leading-none block">
-                                                                {formatPrice(v.bonusPrice)}{model.ivaIncluded === false && <span className="text-lg ml-1 opacity-50 font-bold">+ IVA</span>}
-                                                            </span>
-                                                            
-                                                            {(v.brandBonus > 0 || v.financingBonus > 0 || v.bonus > 0) && (
-                                                                <p className="text-[12px] font-bold text-gray-500 mt-2 max-w-[80%] leading-tight">
-                                                                    Incluye Bono de <span className="text-gray-700">{formatPrice((v.brandBonus || 0) + (v.financingBonus || 0) + (v.bonus || 0))}</span> con financiamiento
-                                                                </p>
-                                                            )}
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="border-t border-gray-100 my-6"></div>
-
-                                                    {/* ── 4 ICONS (Motor, Combustible, Transmisión, Rendimiento) ── */}
-                                                    <div className="grid grid-cols-4 gap-2 mb-6 px-1">
-                                                        {[  
-                                                            { label: 'Motor', value: v.motor, icon: <Cog size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
-                                                            { label: 'Combustible', value: v.fuel, icon: <Fuel size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
-                                                            { label: 'Transmisión', value: v.transmission, icon: <Settings2 size={24} className="text-gray-600 stroke-[1.5] mb-1"/> },
-                                                            { label: 'Rendimiento', value: v.electricRange || v.consumptionMixed || v.consumo, icon: v.electricRange ? <Zap size={24} className="text-gray-600 stroke-[1.5] mb-1" /> : <Route size={24} className="text-gray-600 stroke-[1.5] mb-1" /> },
-                                                        ].map(({ label, value, icon }, idx) => (
-                                                            <div key={idx} className="flex flex-col items-center justify-start text-center">
-                                                                <span className="text-[8px] font-bold text-gray-400 uppercase tracking-widest mb-1.5">{label}</span>
-                                                                {icon}
-                                                                <span className="text-[11px] font-bold text-gray-700 leading-tight break-words max-w-full">{value || '—'}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-
-                                                    {/* ── INFO POR VERSIÓN (BOTTOM SECTION) ── */}
-                                                    <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200/60 mt-auto flex flex-col">
-                                                        {/* Versión + Flechas */}
-                                                        <div className="flex items-center justify-between gap-3 mb-5 border-b border-gray-200/60 pb-4">
-                                                            <div>
-                                                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block mb-0.5">Versión</span>
-                                                                <h3 className="text-lg lg:text-xl font-black text-gray-800 uppercase tracking-tight leading-tight">
-                                                                    {v.name}
-                                                                </h3>
-                                                            </div>
-                                                            {mockVersions.length > 1 && (
-                                                                <div className="flex gap-1 shrink-0">
-                                                                    <button onClick={() => versionsApi?.scrollPrev()} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 bg-white hover:bg-gray-900 hover:text-white transition-all shadow-sm">
-                                                                        <ChevronLeft size={16} />
-                                                                    </button>
-                                                                    <button onClick={() => versionsApi?.scrollNext()} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 bg-white hover:bg-gray-900 hover:text-white transition-all shadow-sm">
-                                                                        <ChevronRight size={16} />
-                                                                    </button>
-                                                                </div>
-                                                            )}
-                                                        </div>
-
-                                                        {/* Specs Extra y Precios Unificados */}
-                                                        <div className="flex flex-col mb-6 border-t border-gray-100">
-                                                            {[  
-                                                                { label: 'Potencia', value: v.power },
-                                                                { label: 'Tracción', value: v.traction },
-                                                            ]
-                                                            .map(({ label, value }) => (
-                                                                <div key={label} className="flex justify-between items-center py-3 border-b border-gray-100">
-                                                                    <span className="text-[13px] text-gray-600 font-medium">{label}</span>
-                                                                    <span className="text-[13px] font-bold text-gray-800">{value && value.toString().trim() !== '' && value !== '-' ? value : '-'}</span>
-                                                                </div>
-                                                            ))}
-                                                            
-                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                                                                <span className="text-[13px] text-gray-600 font-medium">Precio de lista</span>
-                                                                <span className="text-[13px] font-bold text-gray-800">
-                                                                    {v.listPrice > 0 ? formatPrice(v.listPrice) : '-'}
-                                                                    {v.listPrice > 0 && model.ivaIncluded === false && <span className="text-[10px] ml-1 opacity-50 font-bold">+ IVA</span>}
-                                                                </span>
-                                                            </div>
-                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                                                                <span className="text-[13px] text-gray-600 font-medium">Bono Financiamiento</span>
-                                                                <span className="text-[13px] font-bold text-gray-800">{(v.financingBonus > 0 || v.bonus > 0) ? `- ${formatPrice(v.financingBonus || v.bonus)}` : '-'}</span>
-                                                            </div>
-                                                            <div className="flex justify-between items-center py-3 border-b border-gray-100">
-                                                                <span className="text-[13px] text-gray-600 font-medium">Bono Marca</span>
-                                                                <span className="text-[13px] font-bold text-gray-800">{v.brandBonus > 0 ? `- ${formatPrice(v.brandBonus)}` : '-'}</span>
-                                                            </div>
-                                                            <div className="flex justify-between items-center py-3">
-                                                                <span className="text-[13px] text-gray-900 font-bold">Precio con financiamiento</span>
-                                                                <span className="text-[14px] font-black text-gray-900">
-                                                                    {formatPrice(v.bonusPrice || v.listPrice)}
-                                                                    {model.ivaIncluded === false && <span className="text-[10px] ml-1 opacity-50 font-bold">+ IVA</span>}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        {/* Botón Cotizar */}
-                                                        <Link href={`/cotizar?marca=${brand}&modelo=${id}&version=${encodeURIComponent(v.name)}`} className="mt-auto flex items-center justify-center w-full py-4 bg-gray-900 hover:bg-black text-white font-medium rounded-xl transition-colors tracking-widest text-sm shadow-sm">
-                                                            COTIZAR
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                {/* ICONS (General data from first version or model) */}
+                                <div className="flex flex-col mb-10 w-full">
+                                    {[  
+                                        { label: 'Motor', value: mockVersions[0]?.motor, icon: <Cog size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Combustible', value: mockVersions[0]?.fuel, icon: <Fuel size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Transmisión', value: mockVersions[0]?.transmission?.includes('Auto') ? 'Automática' : (mockVersions[0]?.transmission || 'Manual'), icon: <Settings2 size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Rendimiento', value: mockVersions[0]?.electricRange || mockVersions[0]?.consumptionMixed || mockVersions[0]?.consumo, icon: mockVersions[0]?.electricRange ? <Zap size={22} strokeWidth={1.5} className="text-[#0B1221]" /> : <Route size={22} strokeWidth={1.5} className="text-[#0B1221]" /> },
+                                    ].map(({ label, value, icon }, idx) => (
+                                        <div key={idx} className={`flex items-center py-4 ${idx !== 0 ? 'border-t border-gray-100' : ''}`}>
+                                            <div className="w-8 flex justify-start">{icon}</div>
+                                            <span className="text-[11px] font-bold text-[#9CA3AF] uppercase tracking-widest">{label}</span>
+                                            <span className="text-[13px] font-bold text-[#0B1221] uppercase ml-auto text-right">{value || '—'}</span>
                                         </div>
                                     ))}
                                 </div>
+
+                                {/* Cotizar General Button */}
+                                <div className="mt-auto flex flex-col gap-3">
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <button 
+                                            onClick={() => {
+                                                if (mockVersions.length === 1) {
+                                                    router.push(`/cotizar?marca=${brand}&modelo=${model.id}&version=${encodeURIComponent(mockVersions[0].name)}`);
+                                                } else {
+                                                    setShowQuoteModal(true);
+                                                }
+                                            }}
+                                            className="flex items-center justify-center w-full py-4 bg-[#0B1221] hover:bg-black text-white font-bold rounded-[1.25rem] transition-all tracking-widest text-[10px] lg:text-[11px] shadow-lg hover:shadow-xl hover:scale-[1.02] text-center leading-none">
+                                            COTIZAR AHORA
+                                        </button>
+                                        <button 
+                                            onClick={() => document.getElementById('seccion-versiones')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                            className="flex items-center justify-center w-full py-4 bg-[#F8F9FA] text-[#0B1221] font-bold rounded-[1.25rem] transition-all tracking-widest text-[10px] lg:text-[11px] hover:bg-gray-100 border border-gray-100 shadow-sm hover:scale-[1.02] text-center leading-none">
+                                            VERSIONES
+                                        </button>
+                                    </div>
+                                    
+                                    {model.dataSheetUrl && (
+                                        <button 
+                                            onClick={() => window.open(model.dataSheetUrl, '_blank')}
+                                            className="flex mx-auto items-center justify-center gap-2 mt-2 py-2 text-[#9CA3AF] hover:text-[#0B1221] font-bold transition-all tracking-widest text-[10px] uppercase">
+                                            <FileText size={14} strokeWidth={2} />
+                                            Descargar Ficha Técnica
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Versiones Section */}
+            <section id="seccion-versiones" className="py-20 bg-gray-50 border-b border-gray-100 scroll-mt-24">
+                <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex flex-col md:flex-row items-center justify-between mb-12">
+                        <div className="text-center md:text-left mb-6 md:mb-0">
+                            <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter">
+                                Versiones <span className="text-gray-400">Disponibles</span>
+                            </h2>
+                            <span className="text-sm font-bold tracking-wide text-gray-500 block mt-2">Tenemos {sortedVersions.length} opciones para ti</span>
+                        </div>
+                        <div className="w-full md:w-auto flex items-center gap-3">
+                            <span className="text-xs font-bold text-gray-400 tracking-widest uppercase hidden md:block whitespace-nowrap">Ordenar por</span>
+                            <div className="relative w-full md:w-[250px]">
+                                <select 
+                                    value={sortOrder}
+                                    onChange={(e) => setSortOrder(e.target.value)}
+                                    className="w-full appearance-none bg-white border-2 border-gray-200 text-gray-700 font-medium py-3.5 px-4 pr-10 rounded-xl leading-tight focus:outline-none focus:border-gray-900 transition-colors shadow-sm"
+                                >
+                                    <option value="price-asc">Menor a mayor precio</option>
+                                    <option value="price-desc">Mayor a menor precio</option>
+                                    <option value="name-asc">Nombre (A-Z)</option>
+                                </select>
+                                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                    <ChevronRight size={16} className="rotate-90" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Versions Container */}
+                    <div className="relative md:px-16 xl:px-20">
+                        {sortedVersions.length > 3 ? (
+                            <>
+                                {scrollSnaps.length > 1 && (
+                                    <>
+                                        <div className={`absolute top-1/2 -translate-y-1/2 left-0 z-10 hidden md:block transition-opacity duration-300 ${!canScrollPrev ? 'opacity-30 pointer-events-none' : 'opacity-100'}`}>
+                                            <button onClick={() => versionsApi?.scrollPrev()} className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors hover:-translate-x-1 group">
+                                                <ChevronLeft size={24} className="text-gray-500 group-hover:text-gray-900" />
+                                            </button>
+                                        </div>
+                                        <div className={`absolute top-1/2 -translate-y-1/2 right-0 z-10 hidden md:block transition-opacity duration-300 ${!canScrollNext ? 'opacity-30 pointer-events-none' : 'opacity-100'}`}>
+                                            <button onClick={() => versionsApi?.scrollNext()} className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors hover:translate-x-1 group">
+                                                <ChevronRight size={24} className="text-gray-500 group-hover:text-gray-900" />
+                                            </button>
+                                        </div>
+                                    </>
+                                )}
+                                <div className="overflow-hidden md:px-0" ref={versionsRef}>
+                                    <div className="flex -ml-4">
+                                        {sortedVersions.map((v: any, i: number) => (
+                                            <div key={i} className="flex-[0_0_90%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333333%] xl:flex-[0_0_25%] min-w-0 pl-4 py-4">
+                                                <VersionCard v={v} model={model} brand={brand} id={id} config={config} formatPrice={formatPrice} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                {/* Mobile Dots */}
+                                {scrollSnaps.length > 1 && (
+                                    <div className="flex justify-center flex-wrap gap-2 mt-4 md:mt-8 px-4">
+                                        {scrollSnaps.map((_, idx: number) => (
+                                            <button key={idx} onClick={() => versionsApi?.scrollTo(idx)} className={`w-2 h-2 rounded-full transition-all ${activeVersionIdx === idx ? 'bg-gray-900 w-6' : 'bg-gray-300 hover:bg-gray-400'}`} />
+                                        ))}
+                                    </div>
+                                )}
+                            </>
+                        ) : (
+                            <>
+                                <div className="hidden md:flex justify-center gap-8 px-4">
+                                    {sortedVersions.map((v: any, i: number) => (
+                                        <div key={i} className="w-full max-w-sm py-4">
+                                            <VersionCard v={v} model={model} brand={brand} id={id} config={config} formatPrice={formatPrice} />
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="md:hidden">
+                                    {sortedVersions.length === 1 ? (
+                                        <div className="flex justify-center px-4 py-4">
+                                            <div className="w-full max-w-sm">
+                                                <VersionCard v={sortedVersions[0]} model={model} brand={brand} id={id} config={config} formatPrice={formatPrice} />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className="relative">
+                                            <div className="overflow-hidden" ref={versionsRef}>
+                                                <div className="flex -ml-4">
+                                                    {sortedVersions.map((v: any, i: number) => (
+                                                        <div key={i} className="flex-[0_0_90%] sm:flex-[0_0_50%] min-w-0 pl-4 py-4">
+                                                            <VersionCard v={v} model={model} brand={brand} id={id} config={config} formatPrice={formatPrice} />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            {scrollSnaps.length > 1 && (
+                                                <div className="flex justify-center flex-wrap gap-2 mt-4 px-4">
+                                                    {scrollSnaps.map((_, idx: number) => (
+                                                        <button key={idx} onClick={() => versionsApi?.scrollTo(idx)} className={`w-2 h-2 rounded-full transition-all ${activeVersionIdx === idx ? 'bg-gray-900 w-6' : 'bg-gray-300 hover:bg-gray-400'}`} />
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>

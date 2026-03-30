@@ -6,7 +6,7 @@ export const CUPRA_MODELS: Vehicle[] = [
         brand: "cupra",
         name: "Formentor",
         category: "SUV",
-        price: 33490000,
+        price: 32490000,
         image: "/images/cupra/Formentor/formentor.webp",
         vehicleType: "liviano",
         ivaIncluded: true,
@@ -14,6 +14,18 @@ export const CUPRA_MODELS: Vehicle[] = [
         isElectric: false,
         isNew: true,
         isFeatured: true,
+        isPromotion: true,
+        promotionTag: "Unidades en Oferta",
+        promoUnits: [
+            {
+                vin: "VSSZZZKMZ-FOR-001",
+                versionName: "Formentor 2.0 TSI 204hp 4Drive",
+                promoBonus: 1000000,
+                promoPrice: 31490000, 
+                color: "Midnight Black",
+                note: "Unidad en stock para entrega inmediata"
+            }
+        ],
         versions: [
             {
                 name: "Formentor 2.0 TSI 204hp 4Drive",

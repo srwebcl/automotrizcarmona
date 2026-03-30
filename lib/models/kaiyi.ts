@@ -22,6 +22,18 @@ export const KAIYI_MODELS: Vehicle[] = [
         isHybrid: false,
         isElectric: false,
         isNew: false,
+        isPromotion: true,
+        promotionTag: "Unidades en Oferta",
+        promoUnits: [
+            {
+                vin: "LVBKJE5-PRO-001",
+                versionName: "1.5T MT LUX",
+                promoBonus: 1000000,
+                promoPrice: 7990000,
+                color: "Steel Grey",
+                note: "Unidad física disponible"
+            }
+        ],
         versions: [
             {
             name: "1.5T MT LUX",

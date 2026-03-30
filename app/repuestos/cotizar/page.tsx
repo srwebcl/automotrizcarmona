@@ -497,11 +497,6 @@ function CotizarContent() {
                             </div>
 
                             <div className="border-t border-gray-100 pt-6 space-y-3">
-                                <a href="https://wa.me/56984749397?text=Hola%2C%20quiero%20cotizar%20un%20repuesto"
-                                    target="_blank" rel="noopener noreferrer" id="rep-whatsapp-btn"
-                                    className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#25D366] hover:bg-[#1ebe5c] text-white transition-colors">
-                                    <MessageCircle size={18} /> Hablar con un Asesor
-                                </a>
                                 <a href="tel:+56512200201" id="rep-phone-btn"
                                     className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
                                     <Phone size={18} /> Llamar +56 51 220 0201

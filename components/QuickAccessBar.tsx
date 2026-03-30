@@ -49,21 +49,21 @@ export default function QuickAccessBar() {
                             target={(action as any).external ? "_blank" : undefined}
                             rel={(action as any).external ? "noopener noreferrer" : undefined}
                             // Mercedes Style Refined: Text-only, powerful button interaction
-                            className={`group relative h-40 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 block z-10 overflow-hidden border-l-4 border-transparent hover:border-gray-900`}
+                            className={`group relative h-20 md:h-40 bg-gray-50 hover:bg-gray-100 transition-colors duration-300 block z-10 overflow-hidden border-l-4 border-transparent hover:border-gray-900`}
                         >
-                            <div className="h-full flex items-center justify-between px-8 relative z-20">
+                            <div className="h-full flex items-center justify-between px-6 md:px-8 relative z-20">
                                 <div>
-                                    <span className="block text-xs font-bold tracking-widest text-gray-500 uppercase mb-2 text-[11px]">
+                                    <span className="hidden md:block text-xs font-bold tracking-widest text-gray-500 uppercase mb-2 text-[11px]">
                                         Ir a
                                     </span>
-                                    <h3 className="text-3xl font-bold text-gray-900 leading-none tracking-tight">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 leading-none tracking-tight">
                                         {action.label}
                                     </h3>
                                 </div>
 
                                 {/* Enhanced CTA Button */}
-                                <div className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-gray-900 group-hover:border-gray-900 group-hover:scale-110 transition-all duration-300 shadow-sm group-hover:shadow-xl">
-                                    <ArrowRight size={24} className="text-gray-900 group-hover:text-white transition-colors duration-300" />
+                                <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center group-hover:bg-gray-900 group-hover:border-gray-900 group-hover:scale-110 transition-all duration-300 shadow-sm group-hover:shadow-xl shrink-0">
+                                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-gray-900 group-hover:text-white transition-colors duration-300" />
                                 </div>
                             </div>
 

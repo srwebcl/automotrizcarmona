@@ -10,16 +10,19 @@ VIDEO:
 CARACTERÍSTICAS:
 
 CARACTERÍSTICA 1:
-Título: Diseño Dinámico
-Descripción: Diseño hecho a la medida de tus deseos y necesidades.
+Título: La verdadera belleza viene de dentro
+Descripción: Disfruta de un excelente confort de asiento en un ambiente elegante. Las butacas con diseño S-Line acentúan el interior deportivo y elegante del nuevo Audi A3 Sedán.
 
 CARACTERÍSTICA 2:
-Título: Conducción Eficiente
-Descripción: Dinámica y eficiencia excepcional en su conducción.
+
+Título: Conectado de manera inteligente.
+Descripción: El nuevo Audi A3 Sedán totalmente conectado impresiona con una gran cantidad de funciones digitales innovadoras a través del MMI.
+
 
 CARACTERÍSTICA 3:
-Título: Tecnologías Innovadoras
-Descripción: Equipado con las últimas innovaciones para el día a día.
+Título: Experiencia de conducción, totalmente personalizada.
+Descripción: Numerosos sistemas de asistencia, y otras características, como la transmisión de 8 velocidades, garantizan una experiencia superior, para que puedas conducir con dinamismo en la ciudad y con comodidad en viajes largos.
+
 
 VERSIONES:
 
@@ -33,8 +36,8 @@ Autonomía Eléctrica: -
 Potencia: 150 HP
 Torque: 250 Nm
 Tracción: 4x2
-Puertas: -
-Asientos: -
+Puertas: 5
+Asientos: 5
 Airbags: -
 PRECIO DE LISTA: $41990000
 BONO MARCA: $2290000

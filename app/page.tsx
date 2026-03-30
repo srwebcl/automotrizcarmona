@@ -104,7 +104,7 @@ export default function Home() {
       <QuickAccessBar />
 
       {/* Featured Vehicles */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="pt-0 pb-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Header */}
@@ -129,7 +129,7 @@ export default function Home() {
             Mobile Layout: Stacked vertically with unified padding
           */}
           <div className="px-6 lg:px-0">
-            <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+            <div className="flex flex-col-reverse lg:flex-row gap-6 items-stretch">
 
               {/* ── Banner Promocional (solo imagen, sin texto) ── */}
               <div className="w-full lg:w-[calc(25%-12px)] flex-shrink-0">
