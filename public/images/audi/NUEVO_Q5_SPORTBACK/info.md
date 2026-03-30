@@ -10,16 +10,16 @@ VIDEO:
 CARACTERÍSTICAS:
 
 CARACTERÍSTICA 1:
-Título: Diseño Dinámico
-Descripción: Diseño hecho a la medida de tus deseos y necesidades.
+Título: Visualización Panorámica
+Descripción: La amplia pantalla panorámica curva, orientada hacia el conductor, integra el Audi virtual cockpit plus (11,9 pulgadas) y la pantalla central MMI (14,5 pulgadas). La pantalla del acompañante MMI, (10,9 pulgadas) permite el manejo independiente de funciones como la navegación y el entretenimiento.
 
 CARACTERÍSTICA 2:
-Título: Conducción Eficiente
-Descripción: Dinámica y eficiencia excepcional en su conducción.
+Título: Operación Suave al Tacto
+Descripción: La unidad de control de la puerta del conductor, con manejo suave al tacto, forma parte del diseño interior del nuevo Q5. Controla intuitivamente numerosas funciones, como los espejos, las luces y el sistema de cierre, con un toque suave.
 
 CARACTERÍSTICA 3:
-Título: Tecnologías Innovadoras
-Descripción: Equipado con las últimas innovaciones para el día a día.
+Título: Almacenamiento Adicional
+Descripción: Mejora tu Audi Q5 Sportback con Accesorios Originales Audi, como el enganche de remolque giratorio o el cofre portaobjetos trasero con diseño Audi. Este cofre portaobjetos trasero  ofrece espacio de almacenamiento adicional con una capacidad de 300 litros, se puede cerrar con llave y cuenta con ruedas plegables.
 
 VERSIONES:
 
