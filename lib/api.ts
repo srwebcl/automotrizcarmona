@@ -85,7 +85,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
                 power: v.power || v.power_hp || '-',
                 torque: v.torque || v.torque_nm || '-',
                 airbags: Number(v.airbags) || 0,
-                ivaIncluded: Boolean(v.iva_included),
+                ivaIncluded: Boolean(v.includes_iva || v.iva_included),
                 listPrice: Number(v.list_price) || 0,
                 brandBonus: Number(v.brand_bonus) || 0,
                 financingBonus: Number(v.finance_bonus || v.financing_bonus) || 0,

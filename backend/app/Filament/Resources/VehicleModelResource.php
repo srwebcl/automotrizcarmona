@@ -170,7 +170,7 @@ class VehicleModelResource extends Resource
                                             ->label('Precio Lista')
                                             ->numeric()
                                             ->prefix('$'),
-                                        TextInput::make('bonus_price')
+                                        TextInput::make('finance_bonus')
                                             ->label('Bono Financiamiento')
                                             ->numeric()
                                             ->prefix('$'),
@@ -238,7 +238,11 @@ class VehicleModelResource extends Resource
                 TextColumn::make('vehicleVersions.list_price')
                     ->label('Precio (Desde)')
                     ->money('clp')
-                    ->getStateUsing(fn (\App\Models\VehicleModel $record) => $record->vehicleVersions->min('list_price'))
+                    ->getStateUsing(function (\App\Models\VehicleModel $record) {
+                        return $record->vehicleVersions->count() > 0 
+                            ? $record->vehicleVersions->min('list_price') 
+                            : 0;
+                    })
                     ->sortable(),
                 TextColumn::make('vehicle_type')
                     ->label('Tipo')
@@ -265,7 +269,7 @@ class VehicleModelResource extends Resource
                 Tables\Filters\SelectFilter::make('brand_id')
                     ->label('MARCA')
                     ->multiple()
-                    ->options(fn() => \Illuminate\Support\Facades\Cache::remember('brands_pluck', 300, fn() => \App\Models\Brand::pluck('name', 'id')->toArray()))
+                    ->options(\App\Models\Brand::pluck('name', 'id')->toArray())
                     ->preload(),
                 Tables\Filters\SelectFilter::make('vehicle_type')
                     ->label('TIPO')
@@ -335,7 +339,7 @@ class VehicleModelResource extends Resource
                                     ->label('Precio Lista')
                                     ->numeric()
                                     ->prefix('$'),
-                                Forms\Components\TextInput::make('bonus_price')
+                                Forms\Components\TextInput::make('finance_bonus')
                                     ->label('Bono Financiamiento')
                                     ->numeric()
                                     ->prefix('$'),

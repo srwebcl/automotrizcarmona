@@ -29,7 +29,6 @@ const TRUCK_LOGOS = [
     { name: "Iveco", src: "/images/logos/logo-iveco.webp" },
     { name: "MAN", src: "/images/logos/logo-man.webp" },
     { name: "VW Camiones", src: "/images/logos/logo-vw-camiones.webp" },
-    { name: "Maxus", src: "/images/logos/logo-maxus.webp" },
     { name: "Foton", src: "/images/logos/logo-foton-camiones.webp" },
 ];
 
