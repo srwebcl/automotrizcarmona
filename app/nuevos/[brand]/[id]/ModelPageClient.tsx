@@ -125,24 +125,30 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
                     </div>
                 )}
 
-                <div className="relative aspect-[16/7] w-full overflow-hidden shrink-0 bg-neutral-900 border-b border-white/5">
+                <div className="relative aspect-[16/7] w-full overflow-hidden shrink-0 bg-neutral-900 border-b border-white/5 flex-1">
                     <Image 
                         src={feature.image} 
-                        alt={feature.title} 
+                        alt={feature.title || 'Feature'} 
                         fill 
                         className={`object-cover transition-transform duration-1000 ${isActive ? 'scale-105' : 'scale-100'}`} 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
                 </div>
                 
-                <div className="p-6 md:p-8 flex flex-col items-start text-left flex-1">
-                    <h3 className="text-lg md:text-2xl font-bold text-white uppercase tracking-tight mb-3">
-                        {feature.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs md:text-base leading-relaxed font-medium max-w-[90%]">
-                        {feature.desc}
-                    </p>
-                </div>
+                {(feature.title || feature.desc) && (
+                    <div className="p-6 md:p-8 flex flex-col items-start text-left shrink-0">
+                        {feature.title && (
+                            <h3 className="text-lg md:text-2xl font-bold text-white uppercase tracking-tight mb-3">
+                                {feature.title}
+                            </h3>
+                        )}
+                        {feature.desc && (
+                            <p className="text-gray-400 text-xs md:text-base leading-relaxed font-medium max-w-[90%]">
+                                {feature.desc}
+                            </p>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );
