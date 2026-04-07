@@ -2819,7 +2819,7 @@
     },
     "models": {
       "all-new-t90": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90/banner/NEW T90 GLX - Banner DESKTOP (3713x800) (1).webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90/banner/NEW T90 GLX - Banner DESKTOP (3713x800) (1).webp",
         "gallery": [
@@ -2835,7 +2835,7 @@
         ]
       },
       "all-new-t90-ev": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90-ev/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90-ev/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90-ev/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/all-new-t90-ev/banner/banner.webp",
         "gallery": [
@@ -2870,7 +2870,7 @@
         ]
       },
       "d60": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d60/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d60/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d60/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d60/banner/banner.webp",
         "gallery": [
@@ -2887,7 +2887,7 @@
         ]
       },
       "d90": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d90/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d90/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d90/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/d90/banner/banner.webp",
         "gallery": [
@@ -2904,7 +2904,7 @@
         ]
       },
       "deliver-9-cargo": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-cargo/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-cargo/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-cargo/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-cargo/banner/banner.webp",
         "gallery": [
@@ -2922,7 +2922,7 @@
         ]
       },
       "deliver-9-escolar": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-escolar/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-escolar/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-escolar/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-escolar/banner/banner.webp",
         "gallery": [
@@ -2939,7 +2939,7 @@
         ]
       },
       "deliver-9-pasajeros": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-pasajeros/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-pasajeros/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-pasajeros/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/deliver-9-pasajeros/banner/banner.webp",
         "gallery": [
@@ -2956,7 +2956,7 @@
         ]
       },
       "edeliver-9-cargo": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/edeliver-9-cargo/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/edeliver-9-cargo/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/edeliver-9-cargo/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/edeliver-9-cargo/banner/banner.webp",
         "gallery": [
