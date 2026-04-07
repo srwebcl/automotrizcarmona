@@ -280,10 +280,10 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                     <div className="overflow-hidden" ref={emblaRef}>
                         <div className="flex -ml-4 touch-pan-y">
                             {[
-                                { id: 1, title: "Servicio Técnico", subtitle: "Agenda tu Hora", link: "/servicios", image: "/images/quick_access_servicio_1770350934207.png" },
-                                { id: 2, title: "Repuestos", subtitle: "Repuestos Originales", link: "/repuestos", image: "/images/quick_access_repuestos_1770350949447.png" },
-                                { id: 3, title: `${config.name}`, subtitle: "Seminuevos", link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, image: "/images/sucursales.jpg", isExternal: true },
-                                { id: 4, title: "Sucursales", subtitle: "Encuentra tu Sucursal", link: "/sucursales", image: "/images/sucursales.jpg" }
+                                { id: 1, title: "Servicio Técnico", subtitle: "Agenda tu Hora", link: "/servicios", image: config.serviceImages?.servicio ?? "/images/quick_access_servicio_1770350934207.png" },
+                                { id: 2, title: "Repuestos", subtitle: "Repuestos Originales", link: "/repuestos", image: config.serviceImages?.repuestos ?? "/images/quick_access_repuestos_1770350949447.png" },
+                                { id: 3, title: `${config.name}`, subtitle: "Seminuevos", link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, image: config.serviceImages?.usados ?? "/images/sucursales.jpg", isExternal: true },
+                                { id: 4, title: "Sucursales", subtitle: "Encuentra tu Sucursal", link: "/sucursales", image: config.serviceImages?.sucursales ?? "/images/sucursales.jpg" }
                             ].map((item) => (
                                 <div key={item.id} className="flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_25%] pl-4 min-w-0">
                                     <Link

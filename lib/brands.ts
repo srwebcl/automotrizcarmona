@@ -225,7 +225,13 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-800',
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-blue-900', title: 'IVECO SLIDER 1' }
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/iveco/mas-info/repuestos-iveco.png',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/iveco/mas-info/sucursal-iveco.png',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/iveco/mas-info/usados-iveco.png',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/iveco/mas-info/servicio-iveco.png',
+        }
     },
     man: {
         id: 'man',
