@@ -102,9 +102,9 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
 
     const parsedFeatures = model.features?.map((f: any) => ({ ...f, image: f.image || f.icon || '' })) || [];
     const highlightFeatures = parsedFeatures.length > 0 ? parsedFeatures : [
-        { title: "Diseño Exterior", desc: "Lineas aerodinámicas que definen el carácter del vehículo.", image: model.image },
-        { title: "Interior Premium", desc: "Comodidad y tecnología en cada detalle.", image: model.gallery?.[0] || model.image },
-        { title: "Seguridad Avanzada", desc: "Sistemas integrales para tu tranquilidad.", image: model.gallery?.[1] || model.image }
+        { title: "", desc: "", image: model.image },
+        { title: "", desc: "", image: model.gallery?.[0] || model.image },
+        { title: "", desc: "", image: model.gallery?.[1] || model.image }
     ];
 
     const minPrice = (model.versions && model.versions.length > 0) 
