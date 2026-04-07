@@ -155,7 +155,13 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-black',
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-200', title: 'FOTON SLIDER 1' }
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/repuestos-foton.png',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/sucursal-foton.png',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/usados-foton.png',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/servicio-foton.png',
+        }
     },
     mg: {
         id: 'mg',
@@ -241,7 +247,13 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-red-700',
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-900', title: 'MAN SLIDER 1' }
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/man/mas-info/repuestos-man.png',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/man/mas-info/sucursal-man.png',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/man/mas-info/usados-man.png',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/man/mas-info/servicio-man.png',
+        }
     },
     'vw-camiones': {
         id: 'vw-camiones',
@@ -251,7 +263,13 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-blue-900',
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-100', title: 'VW CAMIONES SLIDER 1' }
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/volkswagen-camiones/mas-info/repuestos-vw-camiones.png',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/volkswagen-camiones/mas-info/sucursal-vw.png',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/volkswagen-camiones/mas-info/usados-vw-camiones.png',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/volkswagen-camiones/mas-info/servicio-volkswagen.png',
+        }
     },
     'foton-camiones': {
         id: 'foton-camiones',
@@ -261,7 +279,13 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
         brandColorCss: 'text-black',
         bannerSlides: [
             { type: 'placeholder', bg: 'bg-gray-200', title: 'FOTON CAMIONES SLIDER 1' }
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/repuestos-foton.png',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/sucursal-foton.png',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/usados-foton.png',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/camiones/foton/mas-info/servicio-foton.png',
+        }
     },
     kaiyi: {
         id: 'kaiyi',
