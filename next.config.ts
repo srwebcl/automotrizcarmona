@@ -14,11 +14,15 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'szm-jou.s3.amazonaws.com',
+        hostname: 'pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev',
       },
       {
         protocol: 'https',
         hostname: 'www.automotrizcarmona.cl',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.automotrizcarmona.cl',
       },
       {
         protocol: 'http',

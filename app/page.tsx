@@ -8,6 +8,8 @@ import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
 import HomeVehiclesCarousel from '@/components/HomeVehiclesCarousel';
 
+import HomeClient from './HomeClient';
+
 export const revalidate = 60;
 
 export default async function Home() {
@@ -41,43 +43,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <div className="px-6 lg:px-0">
-            <div className="flex flex-col-reverse lg:flex-row gap-6 items-stretch">
-
-              {/* ── Banner Promocional (solo imagen, sin texto) ── */}
-              <div className="w-full lg:w-[calc(25%-12px)] flex-shrink-0">
-                <Link
-                  href="/nuevos/volkswagen"
-                  id="promo-banner-card"
-                  className="group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[2/3] lg:aspect-auto lg:h-full bg-white"
-                >
-                  <Image
-                    src="https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/banner-destacados-web.webp"
-                    alt="Banner Promocional"
-                    fill
-                    className="object-cover transition-all duration-300"
-                    priority
-                  />
-                </Link>
-              </div>
-
-              {/* ── Carrusel de vehículos destacados ── */}
-                <div className="flex-1 min-w-0 relative w-full lg:w-auto py-8 -my-8">
-                <HomeVehiclesCarousel vehicles={featuredVehicles} />
-              </div>
-
-            </div>
-
-            {/* CTA button */}
-            <div className="mt-14 text-center">
-              <Link
-                href="/nuevos"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition-all hover:scale-105 shadow-xl hover:shadow-2xl"
-              >
-                Ver todo el stock <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
+          <HomeClient featuredVehicles={featuredVehicles} />
         </div>
       </section>
 
