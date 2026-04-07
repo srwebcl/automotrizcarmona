@@ -23,6 +23,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
     const CATEGORIES = TRUCK_CATEGORIES;
 
     const [activeCategory, setActiveCategory] = useState('Todos');
+    const [brand, setBrand] = useState<any>(null);
     const [trucks, setTrucks] = useState<Truck[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -34,20 +35,21 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
     const [heroEmblaRef, heroEmblaApi] = useEmblaCarousel({ loop: true });
 
     useEffect(() => {
-        const loadTrucks = async () => {
+        const loadData = async () => {
             setIsLoading(true);
             try {
                 const data = await getTrucksByBrand(brandId);
-                if (data && data.trucks) {
-                    setTrucks(data.trucks);
+                if (data) {
+                    setBrand(data.brand);
+                    setTrucks(data.trucks || []);
                 }
             } catch (error) {
-                console.error('Error loading trucks:', error);
+                console.error('Error loading brand data:', error);
             } finally {
                 setIsLoading(false);
             }
         };
-        loadTrucks();
+        loadData();
     }, [brandId]);
 
     const scrollPrev = React.useCallback(() => {
@@ -66,6 +68,17 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
         router.push(`/cotizar?marca=${brandId}&modelo=${truck.slug}`);
     };
 
+    // Combinamos banners din\u00e1micos con est\u00e1ticos
+    const dynamicBanners = brand?.hero_banner_desktop ? [{
+        web: brand.hero_banner_desktop,
+        mobile: brand.hero_banner_mobile || brand.hero_banner_desktop,
+        bg: 'bg-white',
+        title: '',
+        link: ''
+    }] : [];
+
+    const allBanners = dynamicBanners.length > 0 ? dynamicBanners : config.bannerSlides;
+
     return (
         <main className="min-h-screen bg-white font-sans selection:bg-gray-900 selection:text-white">
 
@@ -73,7 +86,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
             <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
                 <div className="aspect-square md:aspect-[16/9] lg:aspect-[1200/420] w-full" ref={heroEmblaRef}>
                     <div className="flex h-full">
-                        {config.bannerSlides.map((slide, index) => (
+                        {allBanners.map((slide: any, index: number) => (
                             <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
                                 {slide.web && slide.mobile ? (
                                     <>

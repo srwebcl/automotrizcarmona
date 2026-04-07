@@ -7,6 +7,8 @@ export interface TruckBrand {
     name: string;
     slug: string;
     logo_url: string | null;
+    hero_banner_desktop: string | null;
+    hero_banner_mobile: string | null;
     is_active: boolean;
 }
 
@@ -194,10 +196,12 @@ export async function getTruckBrands(): Promise<TruckBrand[]> {
         if (!res.ok) return [];
         const json = await res.json();
         const data = Array.isArray(json) ? json : (json.data || []);
-        // Formatear logos de marcas si existen
+        
         return data.map((b: any) => ({
             ...b,
-            logo_url: formatImageUrl(b.logo_url)
+            logo_url: formatImageUrl(b.logo_url),
+            hero_banner_desktop: formatImageUrl(b.hero_banner_desktop),
+            hero_banner_mobile: formatImageUrl(b.hero_banner_mobile),
         }));
     } catch (e) {
         console.error('Error fetching truck brands:', e);
@@ -214,7 +218,9 @@ export async function getTrucksByBrand(slug: string): Promise<{ brand: TruckBran
         return {
             brand: {
                 ...json.brand,
-                logo_url: formatImageUrl(json.brand.logo_url)
+                logo_url: formatImageUrl(json.brand.logo_url),
+                hero_banner_desktop: formatImageUrl(json.brand.hero_banner_desktop),
+                hero_banner_mobile: formatImageUrl(json.brand.hero_banner_mobile),
             },
             trucks: (json.trucks || []).map(mapTruck)
         };
