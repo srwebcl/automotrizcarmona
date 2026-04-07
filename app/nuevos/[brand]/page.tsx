@@ -56,20 +56,23 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             };
         }
 
-        // Merge CSV fallback data into models for prices and IVA
         const csvBrandData = (require('@/lib/csvFallback.json') as any)[brandId] || {};
-        const modelsWithFallback = models.map((m: any) => {
+
+        // Precios ya calculados en la API (Neon)
+        const modelsWithData = models.map((m: any) => {
             const csvModel = csvBrandData[m.id.toLowerCase()];
+            
+            // Si la API trae precio, lo usamos. Si no, calculamos desde CSV.
+            if (m.price > 0) return m;
+
             if (!csvModel) return m;
             
-            // Calculate true MIN price from ALL versions
             const versionsKeys = Object.keys(csvModel);
             let minPrice = Infinity;
             let ivaIncludedFinal = true;
 
             versionsKeys.forEach(key => {
                 const v = csvModel[key];
-                // Priority: Financial Bonus Price -> Brand Bonus Price (if applicable) -> List Price
                 const currentPrice = v.bonusPrice || v.listPrice;
                 if (currentPrice > 0 && currentPrice < minPrice) {
                     minPrice = currentPrice;
@@ -81,12 +84,12 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
 
             return {
                 ...m,
-                price: (m.price === 0 || finalPrice < m.price) ? finalPrice : m.price,
+                price: finalPrice,
                 ivaIncluded: finalPrice > 0 ? ivaIncludedFinal : m.ivaIncluded
             };
         });
 
-        return <BrandPageClient brandId={brandId} models={modelsWithFallback} config={config} r2BrandBanners={r2BrandBanners} />;
+        return <BrandPageClient brandId={brandId} models={modelsWithData} config={config} r2BrandBanners={r2BrandBanners} />;
     } catch (e) {
         console.error('Error in Server Component:', e);
         // Fallback robusto a datos estáticos en caso de fallo absoluto de red con el backend

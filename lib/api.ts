@@ -72,18 +72,18 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
 
             return {
                 name: v.name,
-                motor: v.motor || fallbackData.motor || '',
+                motor: v.motor || fallbackData.motor || '-',
                 fuel: v.fuel,
                 transmission: v.transmission,
-                consumptionMixed: v.consumption_mixed || fallbackData.consumptionMixed || '',
-                electricRange: v.electric_range,
-                power: v.power || fallbackData.power || '',
-                torque: v.torque || fallbackData.torque || '',
+                consumptionMixed: v.consumption_mixed || fallbackData.consumptionMixed || '-',
+                electricRange: v.electric_range || fallbackData.autonomy_km || '-',
+                power: v.power || fallbackData.power || '-',
+                torque: v.torque || fallbackData.torque || '-',
                 traction: v.traction,
-                listPrice: fallbackData.listPrice || v.list_price,
-                brandBonus: fallbackData.brandBonus || v.brand_bonus,
-                financingBonus: fallbackData.financingBonus || v.financing_bonus,
-                bonusPrice: fallbackData.bonusPrice || v.final_price // Final price already calculated or we fallback
+                listPrice: v.list_price || fallbackData.listPrice || 0,
+                brandBonus: v.brand_bonus || fallbackData.brandBonus || 0,
+                financingBonus: v.financing_bonus || fallbackData.financingBonus || 0,
+                bonusPrice: v.final_price || fallbackData.bonusPrice || v.list_price || 0
             };
         }),
         slogan: data.slogan || '',
