@@ -95,7 +95,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                                 src={slide.web}
                                                 alt={`${config.name} Banner ${index + 1}`}
                                                 fill
-                                                className="object-contain"
+                                                className="object-cover object-center"
                                                 draggable={false}
                                                 priority={index === 0}
                                             />
@@ -105,7 +105,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                                 src={slide.mobile}
                                                 alt={`${config.name} Banner Mobile ${index + 1}`}
                                                 fill
-                                                className="object-contain"
+                                                className="object-cover object-center"
                                                 draggable={false}
                                                 priority={index === 0}
                                             />
@@ -155,7 +155,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                         </div>
 
                         <div className="flex items-center gap-4 md:gap-6 overflow-x-auto h-full scrollbar-hide flex-1">
-                            {CATEGORIES.map((cat) => (
+                            {/* CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
@@ -166,7 +166,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                 >
                                     {cat}
                                 </button>
-                            ))}
+                            )) */}
                         </div>
                     </div>
                 </div>
