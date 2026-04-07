@@ -4909,7 +4909,7 @@
         "financingBonus": 500000,
         "listPrice": 33990000,
         "bonusPrice": 33490000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x2-24-mt-dx-euro-vi-tss": {
         "motor": "2.4L",
@@ -4920,7 +4920,7 @@
         "financingBonus": 0,
         "listPrice": 35790000,
         "bonusPrice": 35790000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x2-24-mt-sr-euro-vi": {
         "motor": "2.4L",
@@ -4931,7 +4931,7 @@
         "financingBonus": 300000,
         "listPrice": 34790000,
         "bonusPrice": 33090000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x4-24-mt-dx-euro-vi": {
         "motor": "2.4L",
@@ -4942,7 +4942,7 @@
         "financingBonus": 500000,
         "listPrice": 38690000,
         "bonusPrice": 37190000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x4-24-mt-dx-euro-vi-tss": {
         "motor": "2.4L",
@@ -4953,7 +4953,7 @@
         "financingBonus": 0,
         "listPrice": 40490000,
         "bonusPrice": 40490000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x4-24-mt-sr-euro-vi": {
         "motor": "2.4L",
@@ -4964,7 +4964,7 @@
         "financingBonus": 300000,
         "listPrice": 41290000,
         "bonusPrice": 39990000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x4-28-mt-sr-euro-vi": {
         "motor": "2.8L",
@@ -4975,7 +4975,7 @@
         "financingBonus": 500000,
         "listPrice": 45290000,
         "bonusPrice": 44790000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       },
       "4x4-28-at-srv-euro-vi": {
         "motor": "2.8L",
@@ -4986,7 +4986,7 @@
         "financingBonus": 800000,
         "listPrice": 48590000,
         "bonusPrice": 47790000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       }
     },
     "hilux-gr-s": {
@@ -4999,7 +4999,7 @@
         "financingBonus": 400000,
         "listPrice": 52990000,
         "bonusPrice": 52590000,
-        "ivaIncluded": false
+        "ivaIncluded": true
       }
     },
     "land-cruiser-prado": {
