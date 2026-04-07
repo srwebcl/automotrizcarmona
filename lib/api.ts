@@ -98,11 +98,21 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
     };
 }
 
+const FETCH_OPTIONS = {
+    next: { revalidate: 0 }, // Forzamos 0 para diagnóstico actual
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'es-CL,es;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+    }
+};
+
 export async function getBrands() {
     try {
-        const res = await fetch(`${API_URL}/brands`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/brands`, FETCH_OPTIONS);
         const json = await res.json();
-        // Si no es un array, buscar en .data. Si no, retornar array vac\u00edo.
         return Array.isArray(json) ? json : (json.data || []);
     } catch (e) {
         console.error('Error fetching brands:', e);
@@ -112,7 +122,7 @@ export async function getBrands() {
 
 export async function getBrandBySlug(slug: string) {
     try {
-        const res = await fetch(`${API_URL}/brands/${slug}`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/brands/${slug}`, FETCH_OPTIONS);
         if (!res.ok) return null;
         const json = await res.json();
         return json.data || json || null;
@@ -124,7 +134,7 @@ export async function getBrandBySlug(slug: string) {
 
 export async function getModelsByBrand(brandSlug: string): Promise<Vehicle[]> {
     try {
-        const res = await fetch(`${API_URL}/models/${brandSlug}`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/models/${brandSlug}`, FETCH_OPTIONS);
         if (!res.ok) {
             console.error(`Fetch for ${brandSlug} failed status ${res.status}`);
             return [];
@@ -140,7 +150,7 @@ export async function getModelsByBrand(brandSlug: string): Promise<Vehicle[]> {
 
 export async function getModelDetails(brandSlug: string, modelSlug: string): Promise<Vehicle | null> {
     try {
-        const res = await fetch(`${API_URL}/models/${brandSlug}/${modelSlug}`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/models/${brandSlug}/${modelSlug}`, FETCH_OPTIONS);
         if (!res.ok) return null;
         const json = await res.json();
         return mapVehicleModel(json.data || json, brandSlug);
@@ -152,7 +162,7 @@ export async function getModelDetails(brandSlug: string, modelSlug: string): Pro
 
 export async function getFeaturedModels(): Promise<Vehicle[]> {
     try {
-        const res = await fetch(`${API_URL}/featured`, { next: { revalidate: 60 } });
+        const res = await fetch(`${API_URL}/featured`, FETCH_OPTIONS);
         if (!res.ok) return [];
         const json = await res.json();
         const rawData = Array.isArray(json) ? json : (json.data || []);
