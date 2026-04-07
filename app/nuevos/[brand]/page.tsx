@@ -62,14 +62,27 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             const csvModel = csvBrandData[m.id.toLowerCase()];
             if (!csvModel) return m;
             
-            // Find first version in CSV
-            const firstVersionKey = Object.keys(csvModel)[0];
-            const firstVersion = firstVersionKey ? csvModel[firstVersionKey] : null;
+            // Calculate true MIN price from ALL versions
+            const versionsKeys = Object.keys(csvModel);
+            let minPrice = Infinity;
+            let ivaIncludedFinal = true;
+
+            versionsKeys.forEach(key => {
+                const v = csvModel[key];
+                // Priority: Financial Bonus Price -> Brand Bonus Price (if applicable) -> List Price
+                const currentPrice = v.bonusPrice || v.listPrice;
+                if (currentPrice > 0 && currentPrice < minPrice) {
+                    minPrice = currentPrice;
+                    ivaIncludedFinal = v.ivaIncluded;
+                }
+            });
+
+            const finalPrice = minPrice === Infinity ? 0 : minPrice;
 
             return {
                 ...m,
-                price: (m.price === 0 && firstVersion) ? firstVersion.bonusPrice || firstVersion.listPrice : m.price,
-                ivaIncluded: firstVersion ? firstVersion.ivaIncluded : m.ivaIncluded
+                price: (m.price === 0 || finalPrice < m.price) ? finalPrice : m.price,
+                ivaIncluded: finalPrice > 0 ? ivaIncludedFinal : m.ivaIncluded
             };
         });
 
