@@ -5,7 +5,7 @@ import { MODELS_REGISTRY } from '@/lib/models';
 import BrandPageClient from './BrandPageClient';
 import R2_ASSETS from '@/lib/assetMap.json';
 
-export const revalidate = 60; // ISR cada minuto
+export const revalidate = 0; // Desactivar ISR temporalmente para diagnóstico
 
 export default async function BrandPage({ params }: { params: Promise<{ brand: string }> }) {
     const { brand } = await params;
