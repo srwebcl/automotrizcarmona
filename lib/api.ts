@@ -37,42 +37,23 @@ function formatImageUrl(url: string | null | undefined): string {
     
     const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || '';
     
-    // Si la url ya viene desde R2 u otro CDN absoluto por otras vías
-    if (url.includes('pub-') || url.startsWith('http')) {
-        // Mapeo dinámico para camiones si vienen de storage de filament
-        if (url.includes('/storage/trucks/')) {
-            let cleanUrl = url.replace(/^https?:\/\/[^\/]+\/storage\/trucks\//, '').replace(/^\/+/, '');
-            return `${cdnUrl}/carmona-assets/camiones/${cleanUrl}`;
+    // Si la URL ya es absoluta (empieza con http o https)
+    if (url.startsWith('http')) {
+        // Caso especial: Imágenes subidas vía Filament que Laravel devuelve como URL absoluta pero queremos que pasen por el CDN
+        if (url.includes('/storage/truck-brands/') || url.includes('/storage/trucks/')) {
+             const cleanPath = url.split('/storage/')[1];
+             return `${cdnUrl}/carmona-assets/${cleanPath}`;
         }
-
-        // Mapeo dinámico de Laravel a Estructura manual de Cloudflare R2
-        if (url.includes('/storage/automotriz/autos-nuevos/')) {
-            // url de laravel: https://api.../storage/automotriz/autos-nuevos/marca/modelo/thumb.webp
-            // regex extrae: 1: marca, 2: modelo, 3: resto
-            const regex = /\/storage\/automotriz\/autos-nuevos\/([^\/]+)\/([^\/]+)\/(.*)$/;
-            const match = url.match(regex);
-            
-            if (match) {
-                const brand = match[1];
-                const model = match[2];
-                const rest = match[3];
-                // Retornamos el path exacto estructurado de Cloudflare
-                return `${cdnUrl}/carmona-assets/autos-nuevos/${brand}/modelos/${model}/${rest}`;
-            }
-        }
-        
-        // Si no concuerda con autos-nuevos, pero viene de storage, intentamos limpiarlo tradicionalmente
-        if (url.includes('/storage/')) {
-             let cleanUrl = url.replace(/^https?:\/\/[^\/]+\/storage\//, '').replace(/^\/+/, '');
-             // asumimos que el resto de cosas también van dentro de carmona-assets
-             return `${cdnUrl}/carmona-assets/${cleanUrl}`;
-        }
-        
-        // Si no viene de storage, es un avatar externo, lo dejamos intacto.
         return url;
     }
+
+    // Si la URL es una ruta relativa (ej: 'trucks/imagen.png') 
+    // Filament guarda la ruta relativa cuando se usa un disco externo
+    if (!url.startsWith('/')) {
+        return `${cdnUrl}/carmona-assets/${url}`;
+    }
     
-    // Fallback relativo puro
+    // Fallback para rutas relativas con slash inicial
     return `${cdnUrl}/carmona-assets/${url.replace(/^\/+/, '')}`;
 }
 
