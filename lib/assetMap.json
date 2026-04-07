@@ -1425,23 +1425,23 @@
           "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12/caracteristicas/llantas.webp"
         ]
       },
-      "r-12-g-s": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/min.webp",
-        "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/banner/nsc-r12gs-P0N4B-multiimage-2560x1440.jpg.asset.1749115148447.jpg.16_10_1920.webp",
-        "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/banner/nsc-r12gs-P0N4B-multiimage-2560x1440.jpg.asset.1749115148447.jpg.16_10_1920.webp",
+      "r-12-gs": {
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/min.webp",
+        "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/banner/nsc-r12gs-P0N4B-multiimage-2560x1440.jpg.asset.1749115148447.jpg.16_10_1920.webp",
+        "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/banner/nsc-r12gs-P0N4B-multiimage-2560x1440.jpg.asset.1749115148447.jpg.16_10_1920.webp",
         "gallery": [
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/1.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/2.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/3.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/4.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/5.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/galeria/6.webp"
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/1.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/2.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/3.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/4.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/5.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/galeria/6.webp"
         ],
         "features": [
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/caracteristicas/connectride.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/caracteristicas/enduro-pro.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/caracteristicas/faro-led.webp",
-          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-g-s/caracteristicas/suspension.webp"
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/caracteristicas/connectride.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/caracteristicas/enduro-pro.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/caracteristicas/faro-led.webp",
+          "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/bmw-motorrad/modelos/r-12-gs/caracteristicas/suspension.webp"
         ]
       },
       "r-12-ninet": {
@@ -2853,7 +2853,7 @@
         ]
       },
       "c35": {
-        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/c35/min.webp",
+        "image": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/c35/min.webp?v=2",
         "desktopBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/c35/banner/banner.webp",
         "mobileBanner": "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/maxus/modelos/c35/banner/banner.webp",
         "gallery": [
