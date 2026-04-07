@@ -71,7 +71,6 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         mobileBanner: r2Data?.mobileBanner || data.mobile_banner_url || null,
         gallery: r2Data?.gallery?.length ? r2Data.gallery : data.gallery || [],
         vehicleType: data.vehicle_type,
-        ivaIncluded: true,
         isHybrid: data.is_hybrid,
         isElectric: data.is_electric,
         isNew: true, // Esto en producci\u00f3n lo sacamos seg\u00fan reglas de stock, asumimos true para el cat\u00e1logo "nuevos"
@@ -85,7 +84,8 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
                 electricRange: v.electric_range || '-',
                 power: v.power || v.power_hp || '-',
                 torque: v.torque || v.torque_nm || '-',
-                traction: v.traction || '-',
+                airbags: Number(v.airbags) || 0,
+                ivaIncluded: Boolean(v.iva_included),
                 listPrice: Number(v.list_price) || 0,
                 brandBonus: Number(v.brand_bonus) || 0,
                 financingBonus: Number(v.finance_bonus || v.financing_bonus) || 0,
