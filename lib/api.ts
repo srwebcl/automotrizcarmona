@@ -35,26 +35,24 @@ export const API_URL = rawUrl;
 function formatImageUrl(url: string | null | undefined): string {
     if (!url) return '';
     
-    const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || '';
-    
-    // Si la URL ya es absoluta (empieza con http o https)
+    // Verificamos si ya es una URL absoluta de Cloudflare R2 u otro origen
     if (url.startsWith('http')) {
-        // Caso especial: Imágenes subidas vía Filament que Laravel devuelve como URL absoluta pero queremos que pasen por el CDN
-        if (url.includes('/storage/truck-brands/') || url.includes('/storage/trucks/')) {
-             const cleanPath = url.split('/storage/')[1];
-             return `${cdnUrl}/carmona-assets/${cleanPath}`;
-        }
         return url;
     }
 
-    // Si la URL es una ruta relativa (ej: 'trucks/imagen.png') 
-    // Filament guarda la ruta relativa cuando se usa un disco externo
-    if (!url.startsWith('/')) {
-        return `${cdnUrl}/carmona-assets/${url}`;
-    }
+    const cdnUrl = (process.env.NEXT_PUBLIC_CDN_URL || '').trim().replace(/\/+$/, '');
     
-    // Fallback para rutas relativas con slash inicial
-    return `${cdnUrl}/carmona-assets/${url.replace(/^\/+/, '')}`;
+    // Si Filament/Laravel solo nos dio la ruta relativa (ej: 'trucks/imagen.png')
+    // Simplemente la unimos al CDN de R2
+    return `${cdnUrl}/${url.replace(/^\/+/, '')}`;
+}
+
+// Convertidor para Camiones
+function mapTruck(truck: any): Truck {
+    return {
+        ...truck,
+        image_url: formatImageUrl(truck.image_url)
+    };
 }
 
 // Convertidor de backend payload a Frontend Interface
@@ -195,7 +193,12 @@ export async function getTruckBrands(): Promise<TruckBrand[]> {
         const res = await fetch(`${API_URL}/truck-brands`, FETCH_OPTIONS);
         if (!res.ok) return [];
         const json = await res.json();
-        return Array.isArray(json) ? json : (json.data || []);
+        const data = Array.isArray(json) ? json : (json.data || []);
+        // Formatear logos de marcas si existen
+        return data.map((b: any) => ({
+            ...b,
+            logo_url: formatImageUrl(b.logo_url)
+        }));
     } catch (e) {
         console.error('Error fetching truck brands:', e);
         return [];
@@ -207,7 +210,14 @@ export async function getTrucksByBrand(slug: string): Promise<{ brand: TruckBran
         const res = await fetch(`${API_URL}/truck-brands/${slug}/trucks`, FETCH_OPTIONS);
         if (!res.ok) return null;
         const json = await res.json();
-        return json;
+        
+        return {
+            brand: {
+                ...json.brand,
+                logo_url: formatImageUrl(json.brand.logo_url)
+            },
+            trucks: (json.trucks || []).map(mapTruck)
+        };
     } catch (e) {
         console.error(`Error fetching trucks for brand ${slug}:`, e);
         return null;
