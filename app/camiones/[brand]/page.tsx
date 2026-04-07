@@ -180,46 +180,30 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 )}
             </section>
 
-            {/* Filter Bar */}
-            <section className="sticky top-[68px] z-40 bg-white shadow-md border-b border-gray-100">
-                <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center gap-12 h-20">
-                        <div className="hidden md:block relative w-48 h-12 flex-shrink-0">
-                            <Image
-                                src={config.logo}
-                                alt={`${config.name} Logo`}
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
-
-                        <div className="flex items-center gap-4 md:gap-6 overflow-x-auto h-full scrollbar-hide flex-1">
-                            {/* CATEGORIES.map((cat) => (
-                                <button
-                                    key={cat}
-                                    onClick={() => setActiveCategory(cat)}
-                                    className={`whitespace-nowrap text-xs font-bold uppercase tracking-wider px-6 py-2 rounded-full transition-all border ${activeCategory === cat
-                                        ? 'bg-gray-900 border-gray-900 text-white shadow-lg'
-                                        : 'bg-transparent border-gray-200 text-gray-500 hover:border-gray-900 hover:text-gray-900'
-                                        }`}
-                                >
-                                    {cat}
-                                </button>
-                            )) */}
-                        </div>
+            {/* Logo & SEO Title Section */}
+            <section className="pt-16 pb-8 bg-[#f8f9fa] overflow-hidden relative z-20">
+                <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+                    <div className="relative w-48 h-16 sm:w-56 sm:h-20 mb-8">
+                        <Image
+                            src={config.logo}
+                            alt={`${config.name} Logo`}
+                            fill
+                            className="object-contain object-center"
+                        />
                     </div>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-900 tracking-tight">
+                        Cotiza tu próximo{' '}
+                        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 uppercase">
+                            {config.name}
+                        </span>
+                        {' '}en Automotriz Carmona
+                    </h2>
                 </div>
             </section>
 
             {/* Models Grid */}
-            <section className="py-20 bg-[#f8f9fa]">
+            <section className="pb-20 bg-[#f8f9fa]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div className="mb-16">
-                        <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase mb-4">
-                            Catálogo {config.name}
-                        </h2>
-                        <div className="w-20 h-2 bg-gray-900 rounded-full" />
-                    </div>
 
                     {isLoading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
