@@ -33,6 +33,19 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
         containScroll: 'trimSnaps'
     });
     const [heroEmblaRef, heroEmblaApi] = useEmblaCarousel({ loop: true });
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const onSelect = React.useCallback(() => {
+        if (!heroEmblaApi) return;
+        setSelectedIndex(heroEmblaApi.selectedScrollSnap());
+    }, [heroEmblaApi]);
+
+    useEffect(() => {
+        if (!heroEmblaApi) return;
+        onSelect();
+        heroEmblaApi.on('select', onSelect);
+        heroEmblaApi.on('reInit', onSelect);
+    }, [heroEmblaApi, onSelect]);
 
     useEffect(() => {
         const loadData = async () => {
@@ -131,14 +144,32 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                     </div>
                 </div>
 
-                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 pointer-events-none">
-                    <button onClick={scrollPrev} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
-                        <ChevronLeft size={32} />
-                    </button>
-                    <button onClick={scrollNext} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
-                        <ChevronRight size={32} />
-                    </button>
-                </div>
+                {allBanners.length > 1 && (
+                    <>
+                        <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 pointer-events-none z-10">
+                            <button onClick={scrollPrev} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
+                                <ChevronLeft size={32} />
+                            </button>
+                            <button onClick={scrollNext} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
+                                <ChevronRight size={32} />
+                            </button>
+                        </div>
+                        <div className="absolute bottom-6 md:bottom-8 left-0 right-0 flex flex-wrap items-center justify-center gap-2 z-20 px-4">
+                            {allBanners.map((_: any, index: number) => (
+                                <button
+                                    key={index}
+                                    onClick={() => heroEmblaApi?.scrollTo(index)}
+                                    className={`h-2 md:h-2.5 rounded-full transition-all duration-300 ${
+                                        index === selectedIndex
+                                            ? 'bg-white w-6 md:w-8'
+                                            : 'bg-white/50 hover:bg-white/80 w-2 md:w-2.5'
+                                    }`}
+                                    aria-label={`Ir a banner ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </>
+                )}
             </section>
 
             {/* Filter Bar */}
