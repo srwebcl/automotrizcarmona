@@ -2,12 +2,16 @@ import { Vehicle, VehicleVersion } from './models/types';
 import R2_ASSETS from './assetMap.json';
 import CSV_FALLBACK from './csvFallback.json';
 
-// Limpiar la URL de barras finales y asegurar el prefijo /api/v1
-let BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'https://api.automotrizcarmona.cl/api/v1').replace(/\/+$/, '');
-if (!BASE_URL.endsWith('/api/v1') && BASE_URL.includes('api.automotrizcarmona.cl')) {
-    BASE_URL += '/api/v1';
+// Forzar la URL correcta y limpiar cualquier error de concatenaci\u00f3n
+const DEFAULT_API = 'https://api.automotrizcarmona.cl/api/v1';
+let rawUrl = (process.env.NEXT_PUBLIC_API_URL || DEFAULT_API).trim().replace(/\/+$/, '');
+
+// Si la URL no tiene /api/v1, se lo a\u00f1adimos al final (no al principio)
+if (!rawUrl.endsWith('/api/v1') && rawUrl.includes('api.automotrizcarmona.cl')) {
+    rawUrl += '/api/v1';
 }
-export const API_URL = BASE_URL;
+
+export const API_URL = rawUrl;
 
 // Helpers para limpiar las URLs en caso de que vengan formateadas por el backend con su dominio
 function formatImageUrl(url: string | null | undefined): string {
