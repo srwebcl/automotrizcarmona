@@ -281,7 +281,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                         <div className="flex -ml-4 touch-pan-y">
                             {[
                                 { id: 1, title: "Servicio Técnico", subtitle: "Agenda tu Hora", link: `/servicios/agendar?marca=${encodeURIComponent(config.name)}`, image: config.serviceImages?.servicio ?? "/images/quick_access_servicio_1770350934207.png" },
-                                { id: 2, title: "Repuestos", subtitle: "Repuestos Originales", link: "/repuestos", image: config.serviceImages?.repuestos ?? "/images/quick_access_repuestos_1770350949447.png" },
+                                { id: 2, title: "Repuestos", subtitle: "Repuestos Originales", link: `/repuestos/cotizar?marca=${encodeURIComponent(config.name)}`, image: config.serviceImages?.repuestos ?? "/images/quick_access_repuestos_1770350949447.png" },
                                 { id: 3, title: `${config.name}`, subtitle: "Seminuevos", link: `https://seminuevos.automotrizcarmona.cl/catalogo?category=camion`, image: config.serviceImages?.usados ?? "/images/sucursales.jpg", isExternal: true },
                                 { id: 4, title: "Sucursales", subtitle: "Encuentra tu Sucursal", link: "/sucursales", image: config.serviceImages?.sucursales ?? "/images/sucursales.jpg" }
                             ].map((item) => (
