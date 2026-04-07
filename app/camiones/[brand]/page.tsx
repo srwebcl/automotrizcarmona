@@ -85,19 +85,27 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
     const dynamicBanners = brand?.hero_banner_desktop ? [{
         web: brand.hero_banner_desktop,
         mobile: brand.hero_banner_mobile || brand.hero_banner_desktop,
+        hasMobileSpecific: !!brand.hero_banner_mobile,
         bg: 'bg-white',
         title: '',
         link: ''
     }] : [];
 
-    const allBanners = dynamicBanners.length > 0 ? dynamicBanners : config.bannerSlides;
+    const allBanners = dynamicBanners.length > 0 ? dynamicBanners : config.bannerSlides.map((b: any) => ({
+        ...b,
+        hasMobileSpecific: b.web !== b.mobile
+    }));
+    
+    const mobileAspectRatio = allBanners.some((b: any) => b.hasMobileSpecific) 
+        ? 'aspect-square' 
+        : 'aspect-video';
 
     return (
         <main className="min-h-screen bg-white font-sans selection:bg-gray-900 selection:text-white">
 
             {/* Hero Section - Adaptive Slider */}
             <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
-                <div className="aspect-square md:aspect-[16/9] lg:aspect-[1200/420] w-full" ref={heroEmblaRef}>
+                <div className={`${mobileAspectRatio} md:aspect-[16/9] lg:aspect-[1200/420] w-full`} ref={heroEmblaRef}>
                     <div className="flex h-full">
                         {allBanners.map((slide: any, index: number) => (
                             <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
@@ -118,7 +126,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                                 src={slide.mobile}
                                                 alt={`${config.name} Banner Mobile ${index + 1}`}
                                                 fill
-                                                className="object-cover object-center"
+                                                className={slide.hasMobileSpecific ? "object-cover object-center" : "object-contain object-center bg-gray-900"}
                                                 draggable={false}
                                                 priority={index === 0}
                                             />
