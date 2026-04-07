@@ -4,8 +4,8 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { getModelDetails } from '@/lib/api';
-import { CheckCircle, Info, ArrowLeft, Car, User } from 'lucide-react';
+import { getModelDetails, getTruckBrands, getTrucksByBrand } from '@/lib/api';
+import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon } from 'lucide-react';
 
 const STEPS = [
     { id: 1, label: 'Tu vehículo', icon: Car },
@@ -39,6 +39,7 @@ function CotizarContent() {
         nombre: '',
         apellido: '',
         correo: '',
+        empresa: '',
         celular: '+56 9 ',
         acceptPolicy: false
     });
@@ -46,10 +47,11 @@ function CotizarContent() {
     useEffect(() => {
         const loadModelData = async () => {
             if (modeloId) {
-                const apiModel = await getModelDetails(marca.toLowerCase(), modeloId);
+                // Primero intentamos como auto nuevo
+                let apiModel = await getModelDetails(marca.toLowerCase(), modeloId);
+                
                 if (apiModel) {
                     setModel(apiModel);
-                    
                     const availableVers = (apiModel.versions && apiModel.versions.length > 0) ? apiModel.versions : [
                         {
                             name: `${apiModel.name} Base`,
@@ -59,10 +61,35 @@ function CotizarContent() {
                             bonusPrice: apiModel.price
                         }
                     ];
-                    
                     const foundVersion = availableVers.find((v: any) => v.name === versionQuery);
                     setVersion(foundVersion || availableVers[0]);
                     setAvailableVersions(availableVers);
+                } else {
+                    // Si no es un auto, buscamos en camiones
+                    const trucksData = await getTrucksByBrand(marca.toLowerCase());
+                    if (trucksData) {
+                        const truckModel = trucksData.trucks.find(t => t.slug === modeloId);
+                        if (truckModel) {
+                            // Adaptamos el formato de camion a la vista de cotización
+                            const adaptedTruck = {
+                                name: truckModel.name,
+                                image: truckModel.image_url,
+                                price: 0, // Los camiones no tienen precio base definido aún
+                                isTruck: true
+                            };
+                            setModel(adaptedTruck);
+                            const truckVersion = {
+                                name: truckModel.name,
+                                transmission: '-',
+                                fuel: '-',
+                                listPrice: 0,
+                                bonusPrice: 0,
+                                isTruck: true
+                            };
+                            setVersion(truckVersion);
+                            setAvailableVersions([truckVersion]);
+                        }
+                    }
                 }
             }
         };
@@ -106,15 +133,17 @@ function CotizarContent() {
                         last_name: formData.apellido,
                         email: formData.correo,
                         phone: formData.celular,
+                        company: formData.empresa,
                     },
                     vehicle: {
                         brand_name: marca,
                         model_name: model?.name,
                         version_name: version?.name,
                         year: new Date().getFullYear().toString(),
+                        is_truck: !!model?.isTruck
                     },
                     request_details: {
-                        message: `Cotización solicitada para ${marca} ${model?.name} - Versión: ${version?.name}`
+                        message: `Cotización solicitada para ${marca} ${model?.name}${!model?.isTruck ? ` - Versión: ${version?.name}` : ''}. Empresa: ${formData.empresa || 'N/A'}`
                     }
                 }),
             });
@@ -293,16 +322,29 @@ function CotizarContent() {
                             </div>
 
                             {/* Phone */}
-                            <div>
-                                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Celular *</label>
-                                <input
-                                    type="tel"
-                                    name="celular"
-                                    value={formData.celular}
-                                    onChange={handleChange}
-                                    className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all"
-                                    required
-                                />
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Celular *</label>
+                                    <input
+                                        type="tel"
+                                        name="celular"
+                                        value={formData.celular}
+                                        onChange={handleChange}
+                                        className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Empresa (Opcional)</label>
+                                    <input
+                                        type="text"
+                                        name="empresa"
+                                        value={formData.empresa}
+                                        onChange={handleChange}
+                                        placeholder="Nombre de tu empresa"
+                                        className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all"
+                                    />
+                                </div>
                             </div>
 
                             {/* Checkbox */}
@@ -344,18 +386,24 @@ function CotizarContent() {
                                 <>
                                     <div className="flex items-center gap-4 border-b border-gray-100 pb-6 mb-6">
                                         <div className="relative w-24 h-14 bg-[#f8f9fa] rounded-lg">
-                                            <Image
-                                                src={model.image}
-                                                alt={model.name}
-                                                fill
-                                                className="object-contain p-1"
-                                            />
+                                            {model.image ? (
+                                                <Image
+                                                    src={model.image}
+                                                    alt={model.name}
+                                                    fill
+                                                    className="object-contain p-1"
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-gray-300">
+                                                    <TruckIcon size={24} />
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="flex-1 min-w-0 pr-2">
                                             <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-lg leading-tight mb-1">
                                                 {marca} {model.name}
                                             </h3>
-                                            {(availableVersions.length > 1) ? (
+                                            {(availableVersions.length > 1 && !model.isTruck) ? (
                                                 <div className="relative w-full mt-1.5">
                                                     <select 
                                                         className="w-full text-[13px] font-bold text-gray-700 bg-[#f8f9fa] border-2 border-transparent hover:border-gray-200 focus:border-[#d2001c] focus:bg-white rounded-lg pl-3 pr-8 py-2 outline-none appearance-none cursor-pointer transition-colors truncate shadow-sm"
@@ -375,33 +423,44 @@ function CotizarContent() {
                                                 </div>
                                             ) : (
                                                 <p className="text-sm text-gray-500 uppercase font-medium mt-0.5">
-                                                    {version.name.replace(new RegExp(`^${model.name}\\s*`, 'i'), '')}
+                                                    {model.isTruck ? 'Modelo Camión' : version.name.replace(new RegExp(`^${model.name}\\s*`, 'i'), '')}
                                                 </p>
                                             )}
                                         </div>
                                     </div>
 
                                     {/* Pricing List */}
-                                    <div className="space-y-4">
-                                        <div className="flex justify-between items-center group pt-4 pb-2 border-b border-gray-50">
-                                            <span className="text-gray-400 font-medium">
-                                                Precio de Lista
-                                            </span>
-                                            <span className="font-bold text-gray-400 line-through text-base">{formatPrice(version.listPrice)}</span>
+                                    {!model.isTruck ? (
+                                        <div className="space-y-4">
+                                            <div className="flex justify-between items-center group pt-4 pb-2 border-b border-gray-50">
+                                                <span className="text-gray-400 font-medium">
+                                                    Precio de Lista
+                                                </span>
+                                                <span className="font-bold text-gray-400 line-through text-base">{formatPrice(version.listPrice)}</span>
+                                            </div>
+                                            <div className="flex justify-between items-center group mb-2">
+                                                <span className="text-gray-500 font-medium flex items-center gap-1.5">
+                                                    Bono Financiamiento <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                                                </span>
+                                                <span className="font-bold text-gray-600 text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
+                                            </div>
+                                            <div className="flex justify-between items-center group mt-4">
+                                                <span className="text-gray-900 font-bold flex items-center gap-1.5">
+                                                    Precio con Financiamiento
+                                                </span>
+                                                <span className="font-black text-gray-900 text-xl">{formatPrice(version.bonusPrice)}</span>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center group mb-2">
-                                            <span className="text-gray-500 font-medium flex items-center gap-1.5">
-                                                Bono Financiamiento <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
-                                            </span>
-                                            <span className="font-bold text-gray-600 text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
+                                    ) : (
+                                        <div className="mt-8 p-4 bg-blue-50 border border-blue-100 rounded-xl">
+                                            <div className="flex gap-3">
+                                                <Info className="text-blue-500 flex-shrink-0" size={18} />
+                                                <p className="text-sm text-blue-700 leading-snug">
+                                                    Debido a la naturaleza técnica de los camiones, el precio final y las especificaciones se entregarán de forma personalizada por un ejecutivo.
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div className="flex justify-between items-center group mt-4">
-                                            <span className="text-gray-900 font-bold flex items-center gap-1.5">
-                                                Precio con Financiamiento
-                                            </span>
-                                            <span className="font-black text-gray-900 text-xl">{formatPrice(version.bonusPrice)}</span>
-                                        </div>
-                                    </div>
+                                    )}
                                 </>
                             ) : (
                                 <div className="py-12 flex flex-col items-center justify-center text-center">

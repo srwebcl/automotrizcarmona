@@ -1,30 +1,54 @@
 'use client';
 
-import React, { useState, use } from 'react';
+import React, { useState, use, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
-import { notFound } from 'next/navigation';
+import { ChevronLeft, ChevronRight, Info, Truck as TruckIcon } from 'lucide-react';
+import { notFound, useRouter } from 'next/navigation';
 
 import { getBrandConfig } from '@/lib/brands';
+import { getTrucksByBrand, Truck } from '@/lib/api';
 
 export default function TruckBrandPage({ params }: { params: Promise<{ brand: string }> }) {
     const resolvedParams = use(params);
     const brandId = resolvedParams.brand;
     const config = getBrandConfig(brandId);
+    const router = useRouter();
+
+    if (!config) return notFound();
 
     // Truck specific categories
     const TRUCK_CATEGORIES = ['Todos', 'Pesados', 'Medianos', 'Buses', 'Pick-up'];
     const CATEGORIES = TRUCK_CATEGORIES;
 
     const [activeCategory, setActiveCategory] = useState('Todos');
+    const [trucks, setTrucks] = useState<Truck[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
         containScroll: 'trimSnaps'
     });
     const [heroEmblaRef, heroEmblaApi] = useEmblaCarousel({ loop: true });
+
+    useEffect(() => {
+        const loadTrucks = async () => {
+            setIsLoading(true);
+            try {
+                const data = await getTrucksByBrand(brandId);
+                if (data && data.trucks) {
+                    setTrucks(data.trucks);
+                }
+            } catch (error) {
+                console.error('Error loading trucks:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        loadTrucks();
+    }, [brandId]);
 
     const scrollPrev = React.useCallback(() => {
         if (heroEmblaApi) heroEmblaApi.scrollPrev();
@@ -34,19 +58,20 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
         if (heroEmblaApi) heroEmblaApi.scrollNext();
     }, [heroEmblaApi]);
 
-    // No actual truck models data yet, so filteredModels is always empty for now
-    const filteredModels: any[] = [];
+    const filteredModels = activeCategory === 'Todos' 
+        ? trucks 
+        : trucks.filter(t => (t as any).category === activeCategory);
 
-    const formatPrice = (price: number) => {
-        return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
+    const quoteTruck = (truck: Truck) => {
+        router.push(`/cotizar?marca=${brandId}&modelo=${truck.slug}`);
     };
 
     return (
-        <main className="min-h-screen bg-white font-sans">
+        <main className="min-h-screen bg-white font-sans selection:bg-gray-900 selection:text-white">
 
             {/* Hero Section - Adaptive Slider */}
             <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
-                <div className="aspect-square md:aspect-[1200/420] w-full" ref={heroEmblaRef}>
+                <div className="aspect-square md:aspect-[16/9] lg:aspect-[1200/420] w-full" ref={heroEmblaRef}>
                     <div className="flex h-full">
                         {config.bannerSlides.map((slide, index) => (
                             <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
@@ -73,12 +98,16 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                             />
                                         </div>
                                     </>
-                                ) : null}
+                                ) : (
+                                    <div className="flex items-center justify-center h-full bg-gray-900">
+                                        <h2 className="text-white text-4xl font-black uppercase tracking-tighter">{config.name}</h2>
+                                    </div>
+                                )}
 
                                 {slide.title && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="bg-black/10 backdrop-blur-sm px-12 py-6 rounded-2xl border border-white/20">
-                                            <h2 className="text-gray-800 text-4xl md:text-6xl font-black uppercase tracking-tighter text-center">
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+                                        <div className="px-12 py-6 rounded-2xl">
+                                            <h2 className="text-white drop-shadow-lg text-4xl md:text-6xl font-black uppercase tracking-tighter text-center">
                                                 {slide.title}
                                             </h2>
                                         </div>
@@ -90,26 +119,20 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 </div>
 
                 <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 md:px-8 pointer-events-none">
-                    <button onClick={scrollPrev} className="group pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all shadow-2xl">
+                    <button onClick={scrollPrev} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
                         <ChevronLeft size={32} />
                     </button>
-                    <button onClick={scrollNext} className="group pointer-events-auto w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all shadow-2xl">
+                    <button onClick={scrollNext} className="group pointer-events-auto w-10 h-10 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white transition-all">
                         <ChevronRight size={32} />
                     </button>
-                </div>
-
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
-                    {config.bannerSlides.map((_, i) => (
-                        <div key={i} className="w-2 md:w-3 h-2 md:h-3 rounded-full bg-white/30 backdrop-blur-sm border border-white/10" />
-                    ))}
                 </div>
             </section>
 
             {/* Filter Bar */}
             <section className="sticky top-[68px] z-40 bg-white shadow-md border-b border-gray-100">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center gap-12">
-                        <div className="hidden md:block relative w-64 h-20 flex-shrink-0">
+                    <div className="flex items-center gap-12 h-20">
+                        <div className="hidden md:block relative w-48 h-12 flex-shrink-0">
                             <Image
                                 src={config.logo}
                                 alt={`${config.name} Logo`}
@@ -118,14 +141,14 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                             />
                         </div>
 
-                        <div className="flex items-center gap-6 overflow-x-auto py-4 scrollbar-hide flex-1">
+                        <div className="flex items-center gap-4 md:gap-6 overflow-x-auto h-full scrollbar-hide flex-1">
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => setActiveCategory(cat)}
-                                    className={`whitespace-nowrap text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all ${activeCategory === cat
-                                        ? 'bg-gray-900 text-white shadow-lg'
-                                        : 'bg-transparent text-gray-400 hover:text-gray-900'
+                                    className={`whitespace-nowrap text-xs font-bold uppercase tracking-wider px-6 py-2 rounded-full transition-all border ${activeCategory === cat
+                                        ? 'bg-gray-900 border-gray-900 text-white shadow-lg'
+                                        : 'bg-transparent border-gray-200 text-gray-500 hover:border-gray-900 hover:text-gray-900'
                                         }`}
                                 >
                                     {cat}
@@ -136,27 +159,73 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 </div>
             </section>
 
-            {/* SEO Section */}
-            <section className="py-12 bg-white">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-gray-500 tracking-tight leading-tight">
-                        <span className={`${config.brandColorCss} font-black uppercase`}>{config.name}</span> | Título SEO para la marca
-                    </h2>
-                    <div className="w-16 h-1 bg-gray-200 mx-auto mt-6 rounded-full" />
-                </div>
-            </section>
-
             {/* Models Grid */}
-            <section className="py-12 bg-white">
-                <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                    {filteredModels.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">
-                            {/* Models would go here */}
+            <section className="py-20 bg-[#f8f9fa]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="mb-16">
+                        <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase mb-4">
+                            Catálogo {config.name}
+                        </h2>
+                        <div className="w-20 h-2 bg-gray-900 rounded-full" />
+                    </div>
+
+                    {isLoading ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className="bg-white rounded-3xl p-8 h-[400px] animate-pulse" />
+                            ))}
+                        </div>
+                    ) : filteredModels.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                            {filteredModels.map((truck) => (
+                                <div key={truck.id} className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
+                                    <div className="relative aspect-[16/10] mb-8 overflow-hidden rounded-2xl bg-gray-50">
+                                        {truck.image_url ? (
+                                            <Image
+                                                src={truck.image_url}
+                                                alt={truck.name}
+                                                fill
+                                                className="object-contain p-4 group-hover:scale-110 transition-transform duration-700"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex items-center justify-center text-gray-200">
+                                                <TruckIcon size={64} />
+                                            </div>
+                                        )}
+                                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <p className="text-[10px] font-black uppercase text-gray-900 tracking-widest">Nueva Unidad</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div className="mb-6">
+                                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{config.name}</p>
+                                            <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tighter mb-2 group-hover:text-gray-900 transition-colors">
+                                                {truck.name}
+                                            </h3>
+                                            <div className="flex items-center gap-2 text-blue-600 bg-blue-50 w-fit px-3 py-1 rounded-lg">
+                                                <Info size={14} />
+                                                <span className="text-xs font-bold uppercase tracking-wider">Precio a consultar</span>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            onClick={() => quoteTruck(truck)}
+                                            className="w-full py-4 bg-gray-900 text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-black transition-all transform active:scale-95 shadow-xl hover:shadow-gray-900/20"
+                                        >
+                                            Cotizar ahora
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     ) : (
-                        <div className="py-20 text-center border-2 border-dashed border-gray-100 rounded-3xl">
-                            <h3 className="text-2xl font-bold text-gray-400 mb-2">Próximamente Catálogo {config.name}</h3>
-                            <p className="text-gray-500">Estamos preparando los mejores modelos para ti.</p>
+                        <div className="py-20 text-center bg-white border border-gray-100 rounded-[2rem] shadow-sm">
+                            <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-300">
+                                <TruckIcon size={40} />
+                            </div>
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">Próximamente UNIDADES {config.name}</h3>
+                            <p className="text-gray-500 max-w-sm mx-auto px-4">Estamos actualizando nuestro catálogo para ofrecerte los mejores camiones de alta gama.</p>
                         </div>
                     )}
                 </div>
@@ -167,9 +236,9 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col mb-12 items-center">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight text-center">
-                            Descubre más <span className={`${config.brandColorCss} uppercase font-extrabold`}>{config.name}</span>
+                            Descubre más <span className="uppercase font-extrabold text-gray-900">{config.name}</span>
                         </h2>
-                        <div className="w-24 h-1 bg-gray-400 rounded-full mt-4"></div>
+                        <div className="w-24 h-1 bg-gray-900 rounded-full mt-4"></div>
                     </div>
 
                     <div className="overflow-hidden" ref={emblaRef}>

@@ -2,6 +2,24 @@ import { Vehicle, VehicleVersion } from './models/types';
 import R2_ASSETS from './assetMap.json';
 import CSV_FALLBACK from './csvFallback.json';
 
+export interface TruckBrand {
+    id: number;
+    name: string;
+    slug: string;
+    logo_url: string | null;
+    is_active: boolean;
+}
+
+export interface Truck {
+    id: number;
+    truck_brand_id: number;
+    name: string;
+    slug: string;
+    image_url: string | null;
+    is_active: boolean;
+    brand?: TruckBrand;
+}
+
 // Forzar la URL correcta y limpiar cualquier error de concatenaci\u00f3n
 const DEFAULT_API = 'https://api.automotrizcarmona.cl/api/v1';
 let rawUrl = (process.env.NEXT_PUBLIC_API_URL || DEFAULT_API).trim().replace(/\/+$/, '');
@@ -21,6 +39,12 @@ function formatImageUrl(url: string | null | undefined): string {
     
     // Si la url ya viene desde R2 u otro CDN absoluto por otras vías
     if (url.includes('pub-') || url.startsWith('http')) {
+        // Mapeo dinámico para camiones si vienen de storage de filament
+        if (url.includes('/storage/trucks/')) {
+            let cleanUrl = url.replace(/^https?:\/\/[^\/]+\/storage\/trucks\//, '').replace(/^\/+/, '');
+            return `${cdnUrl}/carmona-assets/camiones/${cleanUrl}`;
+        }
+
         // Mapeo dinámico de Laravel a Estructura manual de Cloudflare R2
         if (url.includes('/storage/automotriz/autos-nuevos/')) {
             // url de laravel: https://api.../storage/automotriz/autos-nuevos/marca/modelo/thumb.webp
@@ -181,5 +205,30 @@ export async function getFeaturedModels(): Promise<Vehicle[]> {
     } catch (e) {
         console.error('Error fetching featured models:', e);
         return [];
+    }
+}
+
+// APIs para Camiones
+export async function getTruckBrands(): Promise<TruckBrand[]> {
+    try {
+        const res = await fetch(`${API_URL}/truck-brands`, FETCH_OPTIONS);
+        if (!res.ok) return [];
+        const json = await res.json();
+        return Array.isArray(json) ? json : (json.data || []);
+    } catch (e) {
+        console.error('Error fetching truck brands:', e);
+        return [];
+    }
+}
+
+export async function getTrucksByBrand(slug: string): Promise<{ brand: TruckBrand, trucks: Truck[] } | null> {
+    try {
+        const res = await fetch(`${API_URL}/truck-brands/${slug}/trucks`, FETCH_OPTIONS);
+        if (!res.ok) return null;
+        const json = await res.json();
+        return json;
+    } catch (e) {
+        console.error(`Error fetching trucks for brand ${slug}:`, e);
+        return null;
     }
 }
