@@ -2,7 +2,12 @@ import { Vehicle, VehicleVersion } from './models/types';
 import R2_ASSETS from './assetMap.json';
 import CSV_FALLBACK from './csvFallback.json';
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.automotrizcarmona.cl/api/v1';
+// Limpiar la URL de barras finales y asegurar el prefijo /api/v1
+let BASE_URL = (process.env.NEXT_PUBLIC_API_URL || 'https://api.automotrizcarmona.cl/api/v1').replace(/\/+$/, '');
+if (!BASE_URL.endsWith('/api/v1') && BASE_URL.includes('api.automotrizcarmona.cl')) {
+    BASE_URL += '/api/v1';
+}
+export const API_URL = BASE_URL;
 
 // Helpers para limpiar las URLs en caso de que vengan formateadas por el backend con su dominio
 function formatImageUrl(url: string | null | undefined): string {
@@ -97,7 +102,8 @@ export async function getBrands() {
     try {
         const res = await fetch(`${API_URL}/brands`, { next: { revalidate: 60 } });
         const json = await res.json();
-        return json.data || [];
+        // Si no es un array, buscar en .data. Si no, retornar array vac\u00edo.
+        return Array.isArray(json) ? json : (json.data || []);
     } catch (e) {
         console.error('Error fetching brands:', e);
         return [];
@@ -109,7 +115,7 @@ export async function getBrandBySlug(slug: string) {
         const res = await fetch(`${API_URL}/brands/${slug}`, { next: { revalidate: 60 } });
         if (!res.ok) return null;
         const json = await res.json();
-        return json.data || null;
+        return json.data || json || null;
     } catch (e) {
         console.error(`Error fetching brand ${slug}:`, e);
         return null;
@@ -119,9 +125,13 @@ export async function getBrandBySlug(slug: string) {
 export async function getModelsByBrand(brandSlug: string): Promise<Vehicle[]> {
     try {
         const res = await fetch(`${API_URL}/models/${brandSlug}`, { next: { revalidate: 60 } });
-        if (!res.ok) return [];
+        if (!res.ok) {
+            console.error(`Fetch for ${brandSlug} failed status ${res.status}`);
+            return [];
+        }
         const json = await res.json();
-        return (json.data || []).map((data: any) => mapVehicleModel(data, brandSlug));
+        const rawData = Array.isArray(json) ? json : (json.data || []);
+        return rawData.map((data: any) => mapVehicleModel(data, brandSlug));
     } catch (e) {
         console.error(`Error fetching models for ${brandSlug}:`, e);
         return [];
@@ -133,7 +143,7 @@ export async function getModelDetails(brandSlug: string, modelSlug: string): Pro
         const res = await fetch(`${API_URL}/models/${brandSlug}/${modelSlug}`, { next: { revalidate: 60 } });
         if (!res.ok) return null;
         const json = await res.json();
-        return mapVehicleModel(json.data, brandSlug);
+        return mapVehicleModel(json.data || json, brandSlug);
     } catch (e) {
         console.error(`Error fetching model ${modelSlug}:`, e);
         return null;
@@ -145,7 +155,8 @@ export async function getFeaturedModels(): Promise<Vehicle[]> {
         const res = await fetch(`${API_URL}/featured`, { next: { revalidate: 60 } });
         if (!res.ok) return [];
         const json = await res.json();
-        return (json.data || []).map((data: any) => mapVehicleModel(data));
+        const rawData = Array.isArray(json) ? json : (json.data || []);
+        return rawData.map((data: any) => mapVehicleModel(data));
     } catch (e) {
         console.error('Error fetching featured models:', e);
         return [];
