@@ -56,40 +56,9 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             };
         }
 
-        const csvBrandData = (require('@/lib/csvFallback.json') as any)[brandId] || {};
-
-        // Precios ya calculados en la API (Neon)
-        const modelsWithData = models.map((m: any) => {
-            const csvModel = csvBrandData[m.id.toLowerCase()];
-            
-            // Si la API trae precio, lo usamos. Si no, calculamos desde CSV.
-            if (m.price > 0) return m;
-
-            if (!csvModel) return m;
-            
-            const versionsKeys = Object.keys(csvModel);
-            let minPrice = Infinity;
-            let ivaIncludedFinal = true;
-
-            versionsKeys.forEach(key => {
-                const v = csvModel[key];
-                const currentPrice = v.bonusPrice || v.listPrice;
-                if (currentPrice > 0 && currentPrice < minPrice) {
-                    minPrice = currentPrice;
-                    ivaIncludedFinal = v.ivaIncluded;
-                }
-            });
-
-            const finalPrice = minPrice === Infinity ? 0 : minPrice;
-
-            return {
-                ...m,
-                price: finalPrice,
-                ivaIncluded: finalPrice > 0 ? ivaIncludedFinal : m.ivaIncluded
-            };
-        });
-
-        return <BrandPageClient brandId={brandId} models={modelsWithData} config={config} r2BrandBanners={r2BrandBanners} />;
+        // Confianza total en los datos de la API (Neon / Laravel)
+        // Ya no realizamos cálculos extra en el servidor para evitar fallos de renderización
+        return <BrandPageClient brandId={brandId} models={apiModels} config={config} r2BrandBanners={r2BrandBanners} />;
     } catch (e) {
         console.error('Error in Server Component:', e);
         // Fallback robusto a datos estáticos en caso de fallo absoluto de red con el backend

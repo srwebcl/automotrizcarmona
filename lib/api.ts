@@ -67,23 +67,20 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         isElectric: data.is_electric,
         isNew: true, // Esto en producci\u00f3n lo sacamos seg\u00fan reglas de stock, asumimos true para el cat\u00e1logo "nuevos"
         versions: (data.versions || []).map((v: any) => {
-            const versionSlug = v.slug || (v.name ? v.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '') : '');
-            const fallbackData = (CSV_FALLBACK as any)[brandSlug]?.[id]?.[versionSlug] || {};
-
             return {
                 name: v.name,
-                motor: v.motor || fallbackData.motor || '-',
-                fuel: v.fuel,
-                transmission: v.transmission,
-                consumptionMixed: v.consumption_mixed || fallbackData.consumptionMixed || '-',
-                electricRange: v.electric_range || fallbackData.autonomy_km || '-',
-                power: v.power || fallbackData.power || '-',
-                torque: v.torque || fallbackData.torque || '-',
-                traction: v.traction,
-                listPrice: v.list_price || fallbackData.listPrice || 0,
-                brandBonus: v.brand_bonus || fallbackData.brandBonus || 0,
-                financingBonus: v.financing_bonus || fallbackData.financingBonus || 0,
-                bonusPrice: v.final_price || fallbackData.bonusPrice || v.list_price || 0
+                motor: v.motor || v.engine || '-',
+                fuel: v.fuel || '-',
+                transmission: v.transmission || '-',
+                consumptionMixed: v.consumption_mixed || v.mixed_performance || '-',
+                electricRange: v.electric_range || '-',
+                power: v.power || v.power_hp || '-',
+                torque: v.torque || v.torque_nm || '-',
+                traction: v.traction || '-',
+                listPrice: Number(v.list_price) || 0,
+                brandBonus: Number(v.brand_bonus) || 0,
+                financingBonus: Number(v.finance_bonus || v.financing_bonus) || 0,
+                bonusPrice: Number(v.final_price || v.finance_price) || 0
             };
         }),
         slogan: data.slogan || '',
