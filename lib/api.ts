@@ -138,14 +138,21 @@ export async function getBrandBySlug(slug: string) {
 
 export async function getModelsByBrand(brandSlug: string): Promise<Vehicle[]> {
     try {
-        const res = await fetch(`${API_URL}/models/${brandSlug}`, FETCH_OPTIONS);
+        const res = await fetch(`${API_URL}/models/${brandSlug}`, { 
+            cache: 'no-store',
+            headers: FETCH_OPTIONS.headers 
+        });
+        
         if (!res.ok) {
-            console.error(`Fetch for ${brandSlug} failed status ${res.status}`);
+            console.error(`API Error: ${res.status} for brand ${brandSlug}`);
             return [];
         }
+
         const json = await res.json();
-        const rawData = Array.isArray(json) ? json : (json.data || []);
-        return rawData.map((data: any) => mapVehicleModel(data, brandSlug));
+        const rawData = json.data || json; // Robustez para .data o array directo
+        const modelsArray = Array.isArray(rawData) ? rawData : [];
+
+        return modelsArray.map((data: any) => mapVehicleModel(data, brandSlug));
     } catch (e) {
         console.error(`Error fetching models for ${brandSlug}:`, e);
         return [];
