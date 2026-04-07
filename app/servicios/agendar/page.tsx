@@ -156,7 +156,43 @@ function AgendarContent() {
         e.preventDefault();
         if (!step3Valid) return;
         setIsSubmitting(true);
-        setTimeout(() => { setIsSubmitting(false); setSuccess(true); }, 1500);
+
+        try {
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: 'servicio_tecnico',
+                    customer: {
+                        rut: form.rut,
+                        first_name: form.nombre,
+                        last_name: form.apellido,
+                        email: form.correo,
+                        phone: form.celular,
+                    },
+                    vehicle: {
+                        brand_name: form.marca,
+                    },
+                    request_details: {
+                        service_type: form.tipoServicio,
+                        message: `Fecha tentativa: ${form.fechaTentativa} | Bloque: ${form.bloqueHorario} | Comentarios: ${form.comentarios}`
+                    }
+                }),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+            } else {
+                throw new Error('Failed to submit service booking');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert("Hubo un problema al agendar tu hora. Por favor intentalo de nuevo.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // ── SUCCESS ─────────────────────────────────────────────────────────────

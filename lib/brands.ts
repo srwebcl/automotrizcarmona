@@ -25,22 +25,28 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     toyota: {
         id: 'toyota',
         name: 'Toyota',
-        logo: '/images/logos/logo-toyota.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-toyota.webp',
         seoTitle: 'Electromovilidad que se adapta a tu estilo de vida',
         brandColorCss: 'text-red-700',
         bannerSlides: [
             {
-                web: '/images/toyota/banner-toyota.png',
-                mobile: '/images/toyota/banner-toyota.png',
+                web: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/banner/banner-toyota.webp',
+                mobile: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/banner/banner-toyota.webp',
                 type: 'image',
-                link: '/nuevos/toyota/All-New-RAV4-Hybrid'
+                link: '/nuevos/toyota/rav4-hibrido'
             },
-        ]
+        ],
+        serviceImages: {
+            repuestos: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/mas-info/repuestos-toyota.webp',
+            sucursales: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/mas-info/sucursal-toyota.webp',
+            usados: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/mas-info/usados-toyota.webp',
+            servicio: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/toyota/mas-info/servicio-toyota.webp',
+        }
     },
     volkswagen: {
         id: 'volkswagen',
         name: 'Volkswagen',
-        logo: '/images/logos/logo-vw.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-vw.webp',
         seoTitle: 'Innovación y Tecnología Alemana para tu camino',
         brandColorCss: 'text-blue-900',
         bannerSlides: [
@@ -58,7 +64,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     audi: {
         id: 'audi',
         name: 'Audi',
-        logo: '/images/logos/logo-audi.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-audi.webp',
         seoTitle: 'Liderazgo a través de la Tecnología y el Diseño',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
@@ -72,7 +78,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     honda: {
         id: 'honda',
         name: 'Honda',
-        logo: '/images/logos/logo-honda.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-honda.webp',
         seoTitle: 'Honda Chile | El Poder de los Sueños en Automotriz Carmona',
         brandColorCss: 'text-red-600',
         bannerSlides: [
@@ -96,7 +102,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     cupra: {
         id: 'cupra',
         name: 'Cupra',
-        logo: '/images/logos/logo-cupra.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-cupra.webp',
         seoTitle: 'Cupra | Siente el Impulso de una nueva era en Automotriz Carmona',
         brandColorCss: 'text-gray-900',
         bannerSlides: [
@@ -113,24 +119,10 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
             servicio: '/images/cupra/servicio-cupra.png',
         }
     },
-    seat: {
-        id: 'seat',
-        name: 'Seat',
-        logo: '/images/logos/logo-seat.webp',
-        seoTitle: 'Seat | Emoción en Movimiento y Diseño Urbano en Automotriz Carmona',
-        brandColorCss: 'text-gray-900',
-        bannerSlides: [
-            {
-                web: '/images/seat/banner-seat1.webp',
-                mobile: '/images/seat/banner-seat1.webp',
-                type: 'image'
-            }
-        ]
-    },
     bmw: {
         id: 'bmw',
         name: 'BMW',
-        logo: '/images/logos/logo-bmw.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw.webp',
         seoTitle: 'BMW Chile | El Placer de Conducir en Automotriz Carmona',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
@@ -144,7 +136,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     'bmw-motorrad': {
         id: 'bmw-motorrad',
         name: 'BMW Motorrad',
-        logo: '/images/logos/logo-bmw-motorrad.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw-motorrad.webp',
         seoTitle: 'Make Life a Ride',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
@@ -158,7 +150,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     foton: {
         id: 'foton',
         name: 'Foton',
-        logo: '/images/logos/logo-foton.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-foton.webp',
         seoTitle: 'Líder en Transporte y Eficiencia para tu Negocio',
         brandColorCss: 'text-black',
         bannerSlides: [
@@ -168,7 +160,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     mg: {
         id: 'mg',
         name: 'MG',
-        logo: '/images/logos/logo-mg.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mg.webp',
         seoTitle: 'MG | Driving Forward with Innovation',
         brandColorCss: 'text-red-600',
         bannerSlides: [
@@ -178,7 +170,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     maxus: {
         id: 'maxus',
         name: 'Maxus',
-        logo: '/images/logos/logo-maxus.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-maxus.webp',
         seoTitle: 'Maxus | Deliver the Future',
         brandColorCss: 'text-blue-800',
         bannerSlides: [
@@ -188,7 +180,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     geely: {
         id: 'geely',
         name: 'Geely',
-        logo: '/images/logos/logo-geely.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-geely.webp',
         seoTitle: 'Geely | Bring Happy Life into Your Drive',
         brandColorCss: 'text-blue-900',
         bannerSlides: [
@@ -198,7 +190,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     mini: {
         id: 'mini',
         name: 'Mini',
-        logo: '/images/logos/logo-mini.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mini.webp',
         seoTitle: 'Mini | Big Love',
         brandColorCss: 'text-black',
         bannerSlides: [
@@ -208,7 +200,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     jetour: {
         id: 'jetour',
         name: 'Jetour',
-        logo: '/images/logos/logo-jetour.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-jetour.webp',
         seoTitle: 'Jetour | Drive Your Future',
         brandColorCss: 'text-red-700',
         bannerSlides: [
@@ -218,7 +210,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     dongfeng: {
         id: 'dongfeng',
         name: 'Dongfeng',
-        logo: '/images/logos/logo-dongfeng.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-dongfeng.webp',
         seoTitle: 'Dongfeng | Drive Your Dreams',
         brandColorCss: 'text-red-700',
         bannerSlides: [
@@ -228,7 +220,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     iveco: {
         id: 'iveco',
         name: 'Iveco',
-        logo: '/images/logos/logo-iveco.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-iveco.webp',
         seoTitle: 'Iveco | Tu Socio para el Transporte Sustentable',
         brandColorCss: 'text-blue-800',
         bannerSlides: [
@@ -238,7 +230,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     man: {
         id: 'man',
         name: 'MAN',
-        logo: '/images/logos/logo-man.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-man.webp',
         seoTitle: 'MAN | Simplifying Business',
         brandColorCss: 'text-red-700',
         bannerSlides: [
@@ -248,7 +240,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     'vw-camiones': {
         id: 'vw-camiones',
         name: 'VW Camiones y Buses',
-        logo: '/images/logos/logo-vw-camiones.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-vw-camiones.webp',
         seoTitle: 'Volkswagen Camiones y Buses | Menos, Usted no merece. Más, Usted no necesita.',
         brandColorCss: 'text-blue-900',
         bannerSlides: [
@@ -258,7 +250,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     'foton-camiones': {
         id: 'foton-camiones',
         name: 'Foton Camiones',
-        logo: '/images/logos/logo-foton-camiones.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-foton-camiones.webp',
         seoTitle: 'Foton Camiones | Eficiencia y Potencia para tu Negocio',
         brandColorCss: 'text-black',
         bannerSlides: [
@@ -268,7 +260,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     kaiyi: {
         id: 'kaiyi',
         name: 'Kaiyi',
-        logo: '/images/logos/logo-kaiyi.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-kaiyi.webp',
         seoTitle: 'Kaiyi | Innovación y Confort para tu Familia',
         brandColorCss: 'text-blue-600',
         bannerSlides: [
@@ -293,7 +285,7 @@ export const BRANDS_CONFIG: Record<string, BrandConfig> = {
     soueast: {
         id: 'soueast',
         name: 'Soueast',
-        logo: '/images/logos/logo-soueast.webp',
+        logo: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-soueast.webp',
         seoTitle: 'Soueast | Diseño y Calidad Superior',
         brandColorCss: 'text-red-600',
         bannerSlides: [
@@ -322,10 +314,12 @@ export const getBrandConfig = (brandId: string): BrandConfig => {
         servicio: `/images/${id}/servicio-${id}`,
     };
 
+    const cdnUrl = process.env.NEXT_PUBLIC_CDN_URL || 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev';
+
     return {
         id,
         name,
-        logo: `/images/logos/logo-${id}.webp`,
+        logo: `${cdnUrl}/logos/logo-${id}.webp`,
         seoTitle: `Descubre la Calidad Superior de ${name}`,
         brandColorCss: 'text-gray-900',
         bannerSlides: [

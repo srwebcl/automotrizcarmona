@@ -7,52 +7,61 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
-// Banners from 'public/images/banners' for Web (Desktop)
+const CDN_BASE = 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home';
+
+// Banners from R2 for Web (Desktop)
 const DESKTOP_SLIDES = [
     {
         id: 1,
-        image: '/images/banners/allnewmgzshybrid-1-1920x710.png',
-        title: 'Nueva MG ZS Hybrid',
-        subtitle: 'Eficiencia y tecnología para tu día a día.',
-        cta: 'Cotizar Ahora'
+        image: `${CDN_BASE}/banner-web/banner-volkswagen.webp`,
+        title: 'Volkswagen Innovación',
+        subtitle: 'Descubre la tecnología alemana en cada detalle.',
+        cta: 'Ver Modelos'
     },
     {
         id: 2,
-        image: '/images/banners/NUEVA-AMAROK-04-1350x499.png',
-        title: 'Nueva VW Amarok',
-        subtitle: 'La potencia que necesitas para el trabajo duro.',
-        cta: 'Ver Detalles'
+        image: `${CDN_BASE}/banner-web/banner-toyota.webp`,
+        title: 'Toyota Hybrid System',
+        subtitle: 'Liderando el camino hacia la movilidad sustentable.',
+        cta: 'Explorar Híbridos'
     },
     {
         id: 3,
-        image: '/images/banners/banner-web-1800x665.png',
-        title: 'Seminuevos Certificados',
-        subtitle: 'Calidad garantizada en todas las marcas.',
-        cta: 'Ver Stock'
-    }
-];
-
-// Banners for Mobile
-const MOBILE_SLIDES = [
-    {
-        id: 1,
-        image: '/images/banners/banner-movil-1.jpg',
-        title: 'Soueast S6 Hybrid'
-    },
-    {
-        id: 2,
-        image: '/images/banners/banner-movil-2.jpg',
-        title: 'Volkswagen Nueva Amarok'
-    },
-    {
-        id: 3,
-        image: '/images/banners/banner-movil-3.jpg',
-        title: 'Geely New Coolray'
+        image: `${CDN_BASE}/banner-web/banner-mg.webp`,
+        title: 'MG: Drive Evolution',
+        subtitle: 'Diseño británico con tecnología de vanguardia.',
+        cta: 'Conocer MG'
     },
     {
         id: 4,
-        image: '/images/banners/banner-movil-4.jpg',
-        title: 'Audi A3 Sportback'
+        image: `${CDN_BASE}/banner-web/banner-geely.webp`,
+        title: 'Geely: Nueva Generación',
+        subtitle: 'Redefiniendo el estándar de confort y seguridad.',
+        cta: 'Descubrir Geely'
+    }
+];
+
+// Banners for Mobile from R2
+const MOBILE_SLIDES = [
+    {
+        id: 1,
+        image: `${CDN_BASE}/banner-movil/banner-vw-movil.webp`,
+        title: 'Volkswagen'
+    },
+    {
+        id: 2,
+        image: `${CDN_BASE}/banner-movil/banner-souesat-movil.webp`,
+        title: 'Soueast'
+    },
+    {
+        id: 3,
+        image: `${CDN_BASE}/banner-movil/banner-geely-movil.webp`,
+        title: 'Geely'
+    },
+    {
+        id: 4,
+        image: `${CDN_BASE}/banner-movil/banner-audi-movil.webp`,
+        title: 'Audi'
     }
 ];
 
@@ -61,7 +70,6 @@ const BRANDS_DATA = [
     { src: 'logo-toyota.webp', slug: 'toyota', alt: 'Toyota' },
     { src: 'logo-vw.webp', slug: 'volkswagen', alt: 'Volkswagen' },
     { src: 'logo-audi.webp', slug: 'audi', alt: 'Audi' },
-    { src: 'logo-seat.webp', slug: 'seat', alt: 'Seat' },
     { src: 'logo-cupra.webp', slug: 'cupra', alt: 'Cupra' },
     { src: 'logo-honda.webp', slug: 'honda', alt: 'Honda' },
     { src: 'logo-bmw.webp', slug: 'bmw', alt: 'BMW' },
@@ -69,7 +77,7 @@ const BRANDS_DATA = [
     { src: 'logo-mini.webp', slug: 'mini', alt: 'MINI' },
     { src: 'logo-maxus.webp', slug: 'maxus', alt: 'Maxus' },
     { src: 'logo-jetour.webp', slug: 'jetour', alt: 'Jetour' },
-    { src: 'logos antiguos/SOUEAST_BLACK_Logo.png', slug: 'soueast', alt: 'Soueast' },
+    { src: 'logo-soueast.webp', slug: 'soueast', alt: 'Soueast' },
     { src: 'logo-kaiyi.webp', slug: 'kaiyi', alt: 'Kaiyi' },
     { src: 'logo-karry.webp', slug: 'karry', alt: 'Karry' },
     { src: 'logo-mg.webp', slug: 'mg', alt: 'MG' },
@@ -229,12 +237,12 @@ export default function Hero() {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0">
                         {MARQUEE_ROW_1.map((brand, idx) => (
                             <li key={`1-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
+                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
                                     brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`/images/logos/${brand.src}`}
+                                        src={`https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/${brand.src}`}
                                         alt={brand.alt}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />
@@ -245,12 +253,12 @@ export default function Hero() {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0" aria-hidden="true">
                         {MARQUEE_ROW_1.map((brand, idx) => (
                             <li key={`2-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
+                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
                                     brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`/images/logos/${brand.src}`}
+                                        src={`https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/${brand.src}`}
                                         alt={brand.alt}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />

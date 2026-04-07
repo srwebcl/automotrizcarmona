@@ -31,7 +31,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 {/* Image Container */}
                 <div className="relative aspect-[4/3] rounded-t-2xl bg-gray-50/50">
                     <Image
-                        src={vehicle.image}
+                        src={vehicle.image.startsWith('http') ? vehicle.image : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${vehicle.image.replace(/^\//, '')}`}
                         alt={`${vehicle.brand} ${vehicle.name}`}
                         fill
                         className="object-contain object-bottom p-4 group-hover:scale-105 transition-transform duration-500"

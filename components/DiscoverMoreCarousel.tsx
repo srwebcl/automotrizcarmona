@@ -6,37 +6,39 @@ import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowRight } from 'lucide-react';
 
+const CDN_HOME = 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home';
+
 const ITEMS = [
     {
         id: 1,
         title: "Compliance",
         link: "https://compliance.automotrizcarmona.cl/",
-        image: "/images/compliance.jpeg",
+        image: `${CDN_HOME}/compliance.webp`,
         external: true
     },
     {
         id: 2,
         title: "Sucursales",
         link: "/sucursales",
-        image: "/images/sucursales.jpg"
+        image: `${CDN_HOME}/sucursales.webp`
     },
     {
         id: 3,
         title: "Noticias",
         link: "/noticias",
-        image: "/images/noticias.jpg"
+        image: `${CDN_HOME}/noticias.webp`
     },
     {
         id: 4,
         title: "Contacto",
         link: "/contacto",
-        image: "/images/reclamos.avif"
+        image: `${CDN_HOME}/contacto.webp`
     },
     {
         id: 5,
         title: "Car Advisor",
         link: "/advisor",
-        image: "/images/car-advisor.jpg"
+        image: `${CDN_HOME}/car-advisor.webp`
     }
 ];
 

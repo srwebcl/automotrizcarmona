@@ -6,24 +6,23 @@ import Image from 'next/image';
 import { Phone, MapPin, ChevronDown, Menu, X, User, Calendar, Wrench, Settings, Truck, Car, ShoppingBag, ArrowRight, Search, ChevronLeft, Sparkles, LayoutGrid, Leaf, Bus, Grip, UserCheck, MessageSquare, Tag } from 'lucide-react';
 
 const BRAND_LOGOS = [
-    { name: "Toyota", src: "/images/logos/logo-toyota.webp", isHybrid: true },
-    { name: "Volkswagen", src: "/images/logos/logo-vw.webp", isHybrid: false },
-    { name: "Audi", src: "/images/logos/logo-audi.webp", isHybrid: true },
-    { name: "Seat", src: "/images/logos/logo-seat.webp", isHybrid: false },
-    { name: "Cupra", src: "/images/logos/logo-cupra.webp", isHybrid: true },
-    { name: "Honda", src: "/images/logos/logo-honda.webp", isHybrid: true },
-    { name: "BMW", src: "/images/logos/logo-bmw.webp", isHybrid: true },
-    { name: "BMW Motorrad", src: "/images/logos/logo-bmw-motorrad.webp", isHybrid: false },
-    { name: "Mini", src: "/images/logos/logo-mini.webp", isHybrid: true },
-    { name: "Maxus", src: "/images/logos/logo-maxus.webp", isHybrid: false },
-    { name: "Jetour", src: "/images/logos/logo-jetour.webp", isHybrid: false },
-    { name: "Soueast", src: "/images/logos/logos antiguos/SOUEAST_BLACK_Logo.png", isHybrid: false },
-    { name: "Kaiyi", src: "/images/logos/logo-kaiyi.webp", isHybrid: false },
-    { name: "Karry", src: "/images/logos/logo-karry.webp", isHybrid: false },
-    { name: "Geely", src: "/images/logos/logo-geely.webp", isHybrid: true },
-    { name: "MG", src: "/images/logos/logo-mg.webp", isHybrid: true },
-    { name: "Dongfeng", src: "/images/logos/logo-dongfeng.webp", isHybrid: false },
-    { name: "Foton", src: "/images/logos/logo-foton.webp", isHybrid: false },
+    { name: "Toyota", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-toyota.webp", isHybrid: true },
+    { name: "Volkswagen", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-vw.webp", isHybrid: false },
+    { name: "Audi", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-audi.webp", isHybrid: true },
+    { name: "Cupra", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-cupra.webp", isHybrid: true },
+    { name: "Honda", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-honda.webp", isHybrid: true },
+    { name: "BMW", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw.webp", isHybrid: true },
+    { name: "BMW Motorrad", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw-motorrad.webp", isHybrid: false },
+    { name: "Mini", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mini.webp", isHybrid: true },
+    { name: "Maxus", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-maxus.webp", isHybrid: false },
+    { name: "Jetour", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-jetour.webp", isHybrid: false },
+    { name: "Soueast", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-soueast.webp", isHybrid: false },
+    { name: "Kaiyi", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-kaiyi.webp", isHybrid: false },
+    { name: "Karry", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-karry.webp", isHybrid: false },
+    { name: "Geely", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-geely.webp", isHybrid: true },
+    { name: "MG", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mg.webp", isHybrid: true },
+    { name: "Dongfeng", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-dongfeng.webp", isHybrid: false },
+    { name: "Foton", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-foton.webp", isHybrid: false },
 ];
 
 const TRUCK_LOGOS = [
@@ -133,8 +132,9 @@ export default function Navbar() {
                                 <Image
                                     src="/images/logo-carmona.avif"
                                     alt="Carmona Automotriz"
-                                    fill
-                                    className="object-contain object-left"
+                                    width={192}
+                                    height={48}
+                                    className="object-contain object-left w-full h-full"
                                     priority
                                 />
                             </div>

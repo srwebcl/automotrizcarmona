@@ -15,16 +15,54 @@ export default function ContactoPage() {
         motivo: '',
         mensaje: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Here you would normally send the data mapping to the backend or CRM
-        console.log("Form Submitted", formData);
-        alert("Mensaje enviado con éxito. Te contactaremos pronto.");
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: 'ventas',
+                    customer: {
+                        first_name: formData.nombre.split(' ')[0],
+                        last_name: formData.nombre.split(' ').slice(1).join(' ') || '.',
+                        email: formData.email,
+                        phone: formData.telefono,
+                    },
+                    request_details: {
+                        message: `Motivo: ${formData.motivo} | Mensaje: ${formData.mensaje}`
+                    }
+                }),
+            });
+
+            if (response.ok) {
+                alert("Mensaje enviado con éxito. Te contactaremos pronto.");
+                setFormData({
+                    nombre: '',
+                    email: '',
+                    telefono: '',
+                    motivo: '',
+                    mensaje: ''
+                });
+            } else {
+                throw new Error('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert("Hubo un problema al enviar tu mensaje. Por favor intentalo más tarde.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -190,9 +228,10 @@ export default function ContactoPage() {
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-[#d2001c] hover:bg-black text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-[#d2001c] hover:bg-black text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 disabled:bg-gray-400"
                                 >
-                                    Enviar Mensaje
+                                    {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                                     <Send size={18} />
                                 </button>
                                 <p className="text-xs text-gray-400 text-center mt-4">

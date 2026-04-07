@@ -206,7 +206,45 @@ function CotizarContent() {
         e.preventDefault();
         if (!step3Valid) return;
         setIsSubmitting(true);
-        setTimeout(() => { setIsSubmitting(false); setSuccess(true); }, 1500);
+
+        try {
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: 'repuestos',
+                    customer: {
+                        rut: form.rut,
+                        first_name: form.nombre,
+                        last_name: form.apellido,
+                        email: form.correo,
+                        phone: form.telefono,
+                    },
+                    vehicle: {
+                        brand_name: form.marca,
+                        model_name: form.modelo,
+                        year: form.anio,
+                        vin: form.vin,
+                    },
+                    request_details: {
+                        message: `Categoría: ${form.categoria} | Detalles: ${form.detalles}`
+                    }
+                }),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+            } else {
+                throw new Error('Failed to submit parts lead');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert("Hubo un problema al procesar tu solicitud de repuestos. Por favor intentalo de nuevo.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // ── SUCCESS ─────────────────────────────────────────────────────────────

@@ -1,100 +1,17 @@
-'use client';
-
-import React, { useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import Hero from '@/components/Hero';
-import VehicleCard from '@/components/VehicleCard';
-import { fetchFeaturedModels } from '@/lib/api';
-import { ALL_MODELS } from '@/lib/models';
+import { getFeaturedModels } from '@/lib/api';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
+import HomeVehiclesCarousel from '@/components/HomeVehiclesCarousel';
 
-// ─── Vehicles Carousel ────────────────────────────────────────────────────────
-function VehiclesCarousel({ vehicles, isLoading }: { vehicles: any[], isLoading: boolean }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: false,
-    slidesToScroll: 1,
-  });
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+export const revalidate = 60;
 
-  if (isLoading) {
-    return (
-      <div className="flex gap-6 overflow-hidden">
-        {[1, 2, 3].map(i => (
-          <div key={i} className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] animate-pulse bg-gray-100 h-[400px] rounded-xl"></div>
-        ))}
-      </div>
-    );
-  }
-
-
-  return (
-    <div className="relative">
-      {/* Carousel viewport */}
-      <div className="overflow-hidden py-8 -my-8 px-4 -mx-4" ref={emblaRef}>
-        <div className="flex gap-8">
-            {vehicles.map((vehicle) => (
-            <div
-              key={vehicle.id}
-              className="flex-[0_0_100%] sm:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)] min-w-0"
-            >
-              <VehicleCard vehicle={{
-                ...vehicle,
-                financingBonus: vehicle.versions?.[0]?.financingBonus
-              }} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Arrows — only shown when there are more than 3 vehicles */}
-      {vehicles.length > 3 && (
-        <>
-          <button
-            onClick={scrollPrev}
-            aria-label="Anterior"
-            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={scrollNext}
-            aria-label="Siguiente"
-            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white border border-gray-200 shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </>
-      )}
-    </div>
-  );
-}
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
-export default function Home() {
-  const [featuredVehicles, setFeaturedVehicles] = React.useState<any[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    const loadFeatured = async () => {
-      try {
-        setIsLoading(true);
-        // Filtrar modelos que tengan la propiedad isFeatured activa
-        const featured = ALL_MODELS.filter(m => m.isFeatured);
-        setFeaturedVehicles(featured);
-      } catch (error) {
-        console.error('Error loading featured vehicles:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadFeatured();
-  }, []);
+export default async function Home() {
+  const featuredVehicles = await getFeaturedModels();
 
   return (
     <main className="min-h-screen bg-white">
@@ -124,10 +41,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 
-            Desktop Layout: [Banner (25%)] | [Carousel (75%)]
-            Mobile Layout: Stacked vertically with unified padding
-          */}
           <div className="px-6 lg:px-0">
             <div className="flex flex-col-reverse lg:flex-row gap-6 items-stretch">
 
@@ -139,7 +52,7 @@ export default function Home() {
                   className="group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-carmona-gold/30 transition-all duration-300 relative aspect-[2/3] lg:aspect-auto lg:h-full bg-white"
                 >
                   <Image
-                    src="/images/banner-destacados-web.webp"
+                    src="https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/banner-destacados-web.webp"
                     alt="Banner Promocional"
                     fill
                     className="object-cover transition-all duration-300"
@@ -150,7 +63,7 @@ export default function Home() {
 
               {/* ── Carrusel de vehículos destacados ── */}
                 <div className="flex-1 min-w-0 relative w-full lg:w-auto py-8 -my-8">
-                <VehiclesCarousel vehicles={featuredVehicles} isLoading={isLoading} />
+                <HomeVehiclesCarousel vehicles={featuredVehicles} />
               </div>
 
             </div>

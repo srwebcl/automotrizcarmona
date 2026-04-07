@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { MODELS_REGISTRY } from '@/lib/models';
+import { getModelDetails } from '@/lib/api';
 import { CheckCircle, Info, ArrowLeft, Car, User } from 'lucide-react';
 
 const STEPS = [
@@ -44,45 +44,29 @@ function CotizarContent() {
     });
 
     useEffect(() => {
-        if (modeloId) {
-            const models = MODELS_REGISTRY[marca.toLowerCase()] || [];
-            const foundModel = models.find(m => m.id === modeloId);
-            if (foundModel) {
-                setModel(foundModel);
-
-                // Use real versions from data if defined, otherwise Mock
-                const mockVersions = foundModel.versions || [
-                    {
-                        name: `${foundModel.name} 1.5 MT`,
-                        transmission: 'Manual',
-                        traction: '4x2',
-                        fuel: foundModel.isElectric ? 'Eléctrico' : (foundModel.isHybrid ? 'Híbrido' : 'Gasolina'),
-                        listPrice: foundModel.price + 1000000,
-                        bonusPrice: foundModel.price
-                    },
-                    {
-                        name: `${foundModel.name} 1.5 CVT`,
-                        transmission: 'Automática CVT',
-                        traction: '4x2',
-                        fuel: foundModel.isElectric ? 'Eléctrico' : (foundModel.isHybrid ? 'Híbrido' : 'Gasolina'),
-                        listPrice: foundModel.price + 2000000,
-                        bonusPrice: foundModel.price + 1000000
-                    },
-                    {
-                        name: `${foundModel.name} 1.5 CVT ELITE`,
-                        transmission: 'Automática CVT',
-                        traction: '4x2',
-                        fuel: foundModel.isElectric ? 'Eléctrico' : (foundModel.isHybrid ? 'Híbrido' : 'Gasolina'),
-                        listPrice: foundModel.price + 3000000,
-                        bonusPrice: foundModel.price + 2000000
-                    }
-                ];
-
-                const foundVersion = mockVersions.find((v: any) => v.name === versionQuery);
-                setVersion(foundVersion || mockVersions[0]);
-                setAvailableVersions(mockVersions);
+        const loadModelData = async () => {
+            if (modeloId) {
+                const apiModel = await getModelDetails(marca.toLowerCase(), modeloId);
+                if (apiModel) {
+                    setModel(apiModel);
+                    
+                    const availableVers = (apiModel.versions && apiModel.versions.length > 0) ? apiModel.versions : [
+                        {
+                            name: `${apiModel.name} Base`,
+                            transmission: 'Manual',
+                            fuel: 'Gasolina',
+                            listPrice: apiModel.price,
+                            bonusPrice: apiModel.price
+                        }
+                    ];
+                    
+                    const foundVersion = availableVers.find((v: any) => v.name === versionQuery);
+                    setVersion(foundVersion || availableVers[0]);
+                    setAvailableVersions(availableVers);
+                }
             }
-        }
+        };
+        loadModelData();
     }, [marca, modeloId, versionQuery]);
 
     const formatPrice = (price: number) => {
@@ -108,14 +92,47 @@ function CotizarContent() {
         if (!formData.acceptPolicy) return;
         setIsSubmitting(true);
 
-        // Simulate API call to CRM and email service
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: 'ventas',
+                    customer: {
+                        rut: formData.rut,
+                        first_name: formData.nombre,
+                        last_name: formData.apellido,
+                        email: formData.correo,
+                        phone: formData.celular,
+                    },
+                    vehicle: {
+                        brand_name: marca,
+                        model_name: model?.name,
+                        version_name: version?.name,
+                        year: new Date().getFullYear().toString(),
+                    },
+                    request_details: {
+                        message: `Cotización solicitada para ${marca} ${model?.name} - Versión: ${version?.name}`
+                    }
+                }),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+                setTimeout(() => {
+                    router.push('/');
+                }, 6000);
+            } else {
+                throw new Error('Failed to submit');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert("Hubo un problema al procesar tu cotización. Por favor reintenta.");
+        } finally {
             setIsSubmitting(false);
-            setSuccess(true);
-            setTimeout(() => {
-                router.push('/');
-            }, 6000);
-        }, 1500);
+        }
     };
 
     if (success) {

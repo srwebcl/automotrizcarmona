@@ -1,0 +1,5747 @@
+{
+  "audi": {
+    "a3-sedan": {
+      "pi-35-tfsi-s-line-mhev": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "19,6 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 2290000,
+        "financingBonus": 1200000,
+        "listPrice": 41990000,
+        "bonusPrice": 38500000,
+        "ivaIncluded": true
+      }
+    },
+    "a3-sportback": {
+      "pi-35-tfsi-mhev": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "19,6 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 4090000,
+        "financingBonus": 3000000,
+        "listPrice": 37990000,
+        "bonusPrice": 30900000,
+        "ivaIncluded": true
+      },
+      "pi-35-tfsi-s-line-mhev": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "19,6 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 2590000,
+        "financingBonus": 3000000,
+        "listPrice": 42490000,
+        "bonusPrice": 36900000,
+        "ivaIncluded": true
+      },
+      "pi-35-tfsi-s-line-mhev-special-edition": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "19,6 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1990000,
+        "financingBonus": 3000000,
+        "listPrice": 44490000,
+        "bonusPrice": 39500000,
+        "ivaIncluded": true
+      }
+    },
+    "a6-sportback-e-tron": {
+      "s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "16,0 kWh/100km",
+        "power": "285 HP",
+        "torque": "565 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1700000,
+        "listPrice": 89900000,
+        "bonusPrice": 88200000,
+        "ivaIncluded": true
+      },
+      "performance-s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "16,0 kWh/100km",
+        "power": "367 HP",
+        "torque": "610 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1700000,
+        "listPrice": 104900000,
+        "bonusPrice": 103200000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-a5": {
+      "tfsi": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,2 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 53900000,
+        "bonusPrice": 49900000,
+        "ivaIncluded": true
+      },
+      "tfsi-quattro-s-line": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,7 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 59900000,
+        "bonusPrice": 55900000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-q3": {
+      "tfsi": {
+        "motor": "1.5L",
+        "consumptionMixed": "13,4 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2500000,
+        "listPrice": 44990000,
+        "bonusPrice": 41490000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-q3-sportback": {
+      "tfsi": {
+        "motor": "1.5L",
+        "consumptionMixed": "13,4 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2500000,
+        "listPrice": 47490000,
+        "bonusPrice": 43990000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-q5": {
+      "45-tfsi-s-line": {
+        "motor": "2.0L",
+        "consumptionMixed": "11,8 km/l",
+        "power": "249 HP",
+        "torque": "370 Nm",
+        "brandBonus": 14290000,
+        "financingBonus": 1700000,
+        "listPrice": 74390000,
+        "bonusPrice": 58400000,
+        "ivaIncluded": true
+      },
+      "tfsi-quattro": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,5 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 56700000,
+        "bonusPrice": 52700000,
+        "ivaIncluded": true
+      },
+      "tfsi-quattro-s-line": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,5 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 63700000,
+        "bonusPrice": 59700000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-q5-sportback": {
+      "tfsi-quattro": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,5 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 59200000,
+        "bonusPrice": 55200000,
+        "ivaIncluded": true
+      },
+      "tfsi-quattro-s-line": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,5 km/l",
+        "power": "204 HP",
+        "torque": "370 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 66200000,
+        "bonusPrice": 62200000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-s5": {
+      "tfsi-quattro": {
+        "motor": "3.0L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "367 HP",
+        "torque": "500 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 78900000,
+        "bonusPrice": 74900000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-sq5": {
+      "tfsi-quattro": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,8 km/l",
+        "power": "367 HP",
+        "torque": "550 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 83700000,
+        "bonusPrice": 79700000,
+        "ivaIncluded": true
+      }
+    },
+    "q3": {
+      "35-tfsi": {
+        "motor": "1.4L",
+        "consumptionMixed": "14,1 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 3390000,
+        "financingBonus": 2700000,
+        "listPrice": 42990000,
+        "bonusPrice": 36900000,
+        "ivaIncluded": true
+      },
+      "35-tfsi-my26": {
+        "motor": "1.5L",
+        "consumptionMixed": "14,1 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 2390000,
+        "financingBonus": 2700000,
+        "listPrice": 43490000,
+        "bonusPrice": 38400000,
+        "ivaIncluded": true
+      }
+    },
+    "q3-sportback": {
+      "35-tfsi-my26": {
+        "motor": "1.5L",
+        "consumptionMixed": "14,1 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 3690000,
+        "financingBonus": 3400000,
+        "listPrice": 45490000,
+        "bonusPrice": 38400000,
+        "ivaIncluded": true
+      },
+      "35-tfsi-s-line": {
+        "motor": "1.5L",
+        "consumptionMixed": "14,1 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 3190000,
+        "financingBonus": 3400000,
+        "listPrice": 50990000,
+        "bonusPrice": 44400000,
+        "ivaIncluded": true
+      }
+    },
+    "q4-sportback-e-tron": {
+      "q4-sportback-e-tron": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "18,0 kWh/100km",
+        "power": "285 HP",
+        "torque": "545 Nm",
+        "brandBonus": 2890000,
+        "financingBonus": 1700000,
+        "listPrice": 66990000,
+        "bonusPrice": 62400000,
+        "ivaIncluded": true
+      },
+      "s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "18,0 kWh/100km",
+        "power": "285 HP",
+        "torque": "545 Nm",
+        "brandBonus": 3890000,
+        "financingBonus": 1700000,
+        "listPrice": 71990000,
+        "bonusPrice": 66400000,
+        "ivaIncluded": true
+      }
+    },
+    "q6-e-tron": {
+      "45": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "18,0 kWh/100km",
+        "power": "252 HP",
+        "torque": "485 Nm",
+        "brandBonus": 1090000,
+        "financingBonus": 1700000,
+        "listPrice": 75990000,
+        "bonusPrice": 73200000,
+        "ivaIncluded": true
+      },
+      "50-s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "18,0 kWh/100km",
+        "power": "306 HP",
+        "torque": "535 Nm",
+        "brandBonus": 1090000,
+        "financingBonus": 1700000,
+        "listPrice": 85990000,
+        "bonusPrice": 83200000,
+        "ivaIncluded": true
+      },
+      "55-quattro-s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "19,0 kWh/100km",
+        "power": "388 HP",
+        "torque": "650 Nm",
+        "brandBonus": 1090000,
+        "financingBonus": 1700000,
+        "listPrice": 92990000,
+        "bonusPrice": 90200000,
+        "ivaIncluded": true
+      }
+    },
+    "q6-sportback-e-tron": {
+      "50-s-line": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "17,5 kWh/100km",
+        "power": "306 HP",
+        "torque": "535 Nm",
+        "brandBonus": 1090000,
+        "financingBonus": 1700000,
+        "listPrice": 88490000,
+        "bonusPrice": 85700000,
+        "ivaIncluded": true
+      },
+      "55-s-line-quattro": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "18,5 kWh/100km",
+        "power": "388 HP",
+        "torque": "650 Nm",
+        "brandBonus": 1090000,
+        "financingBonus": 1700000,
+        "listPrice": 95490000,
+        "bonusPrice": 92700000,
+        "ivaIncluded": true
+      }
+    },
+    "q7": {
+      "pi-55-tfsi-7p": {
+        "motor": "3.0L",
+        "consumptionMixed": "10,8 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 6700000,
+        "financingBonus": 3500000,
+        "listPrice": 85600000,
+        "bonusPrice": 75400000,
+        "ivaIncluded": true
+      },
+      "pi-55-tfsi-s-line-7p": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,6 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 7700000,
+        "financingBonus": 3500000,
+        "listPrice": 104600000,
+        "bonusPrice": 93400000,
+        "ivaIncluded": true
+      },
+      "pi-55-tfsi-7p---my26": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,6 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 6700000,
+        "financingBonus": 3500000,
+        "listPrice": 90600000,
+        "bonusPrice": 80400000,
+        "ivaIncluded": true
+      },
+      "pi-55-tfsi-s-line-7p---my26": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,6 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 7700000,
+        "financingBonus": 3500000,
+        "listPrice": 109600000,
+        "bonusPrice": 98400000,
+        "ivaIncluded": true
+      }
+    },
+    "q8": {
+      "55-tfsi": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,4 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 7200000,
+        "financingBonus": 3500000,
+        "listPrice": 92600000,
+        "bonusPrice": 81900000,
+        "ivaIncluded": true
+      },
+      "55-tfsi-s-line": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,5 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 9200000,
+        "financingBonus": 3500000,
+        "listPrice": 105600000,
+        "bonusPrice": 92900000,
+        "ivaIncluded": true
+      },
+      "55-tfsi---my26": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,5 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 7200000,
+        "financingBonus": 3500000,
+        "listPrice": 97600000,
+        "bonusPrice": 86900000,
+        "ivaIncluded": true
+      },
+      "55-tfsi-s-line---my26": {
+        "motor": "3.0L",
+        "consumptionMixed": "11,5 km/l",
+        "power": "340 HP",
+        "torque": "500 Nm",
+        "brandBonus": 9200000,
+        "financingBonus": 3500000,
+        "listPrice": 110600000,
+        "bonusPrice": 97900000,
+        "ivaIncluded": true
+      }
+    },
+    "rs-q8-performance": {
+      "performance": {
+        "motor": "4.0L",
+        "consumptionMixed": "7,8 km/l",
+        "power": "640 HP",
+        "torque": "850 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1700000,
+        "listPrice": 199400000,
+        "bonusPrice": 197700000,
+        "ivaIncluded": true
+      }
+    },
+    "sq7": {
+      "sq7": {
+        "motor": "4.0L",
+        "consumptionMixed": "8,5 km/l",
+        "power": "507 HP",
+        "torque": "770 Nm",
+        "brandBonus": 7200000,
+        "financingBonus": 3500000,
+        "listPrice": 134600000,
+        "bonusPrice": 123900000,
+        "ivaIncluded": true
+      }
+    },
+    "sq8": {
+      "sq8": {
+        "motor": "4.0L",
+        "consumptionMixed": "8,4 km/l",
+        "power": "507 HP",
+        "torque": "770 Nm",
+        "brandBonus": 7200000,
+        "financingBonus": 3500000,
+        "listPrice": 137600000,
+        "bonusPrice": 126900000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "bmw": {
+    "i4": {
+      "edrive40-gran-coupe-m-sport-lci-ii": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,1 km/kWh",
+        "power": "340 HP",
+        "torque": "430 Nm",
+        "brandBonus": 0,
+        "financingBonus": 8000000,
+        "listPrice": 87900000,
+        "bonusPrice": 79900000,
+        "ivaIncluded": true
+      }
+    },
+    "i5": {
+      "edrive40-m-sport": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,3 km/kWh",
+        "power": "340 HP",
+        "torque": "430 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 104900000,
+        "bonusPrice": 99900000,
+        "ivaIncluded": true
+      }
+    },
+    "i7": {
+      "m70-xdrive": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "4,8 km/kWh",
+        "power": "660 HP",
+        "torque": "1100 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 203900000,
+        "bonusPrice": 194900000,
+        "ivaIncluded": true
+      }
+    },
+    "ix": {
+      "xdrive45-atelier": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "5,2 km/kWh",
+        "power": "326 HP",
+        "torque": "630 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 108900000,
+        "bonusPrice": 99900000,
+        "ivaIncluded": true
+      }
+    },
+    "ix1": {
+      "edrive20-comfort": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,0 km/kWh",
+        "power": "204 HP",
+        "torque": "250 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4500000,
+        "listPrice": 56900000,
+        "bonusPrice": 52400000,
+        "ivaIncluded": true
+      }
+    },
+    "ix2": {
+      "xdrive30-m-sport": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,1 km/kWh",
+        "power": "313 HP",
+        "torque": "494 Nm",
+        "brandBonus": 0,
+        "financingBonus": 8000000,
+        "listPrice": 77900000,
+        "bonusPrice": 69900000,
+        "ivaIncluded": true
+      }
+    },
+    "m2": {
+      "coupe-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "10,2 km/l",
+        "power": "460 HP",
+        "torque": "550 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 104900000,
+        "bonusPrice": 97900000,
+        "ivaIncluded": true
+      },
+      "coupe-cs-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "9,8 km/l",
+        "power": "530 HP",
+        "torque": "600 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 149900000,
+        "bonusPrice": 140900000,
+        "ivaIncluded": true
+      },
+      "coupe-mt-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "10,0 km/l",
+        "power": "460 HP",
+        "torque": "550 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 110900000,
+        "bonusPrice": 105900000,
+        "ivaIncluded": true
+      }
+    },
+    "m3": {
+      "competition-xdrive-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "9,8 km/l",
+        "power": "510 HP",
+        "torque": "650 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 125900000,
+        "bonusPrice": 118900000,
+        "ivaIncluded": true
+      },
+      "cs-touring-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "9,8 km/l",
+        "power": "551 HP",
+        "torque": "650 Nm",
+        "brandBonus": 0,
+        "financingBonus": 15000000,
+        "listPrice": 200000000,
+        "bonusPrice": 185000000,
+        "ivaIncluded": true
+      }
+    },
+    "m4": {
+      "competition-xdrive-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "10,4 km/l",
+        "power": "530 HP",
+        "torque": "650 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 132900000,
+        "bonusPrice": 125900000,
+        "ivaIncluded": true
+      },
+      "competition-xdrive-cabriolet-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "11,5 km/l",
+        "power": "510 HP",
+        "torque": "650 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 130900000,
+        "bonusPrice": 123900000,
+        "ivaIncluded": true
+      }
+    },
+    "m440i-gran-coupe": {
+      "xdrive-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "12,5 km/l",
+        "power": "387 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4500000,
+        "listPrice": 86900000,
+        "bonusPrice": 82400000,
+        "ivaIncluded": true
+      }
+    },
+    "m5": {
+      "berlina": {
+        "motor": "4.4L PHEV",
+        "consumptionMixed": "52,6 km/l",
+        "power": "727 HP",
+        "torque": "1000 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 173900000,
+        "bonusPrice": 164900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-1": {
+      "120-hatch-dynamic": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "18,2 km/l",
+        "power": "170 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 35900000,
+        "bonusPrice": 29900000,
+        "ivaIncluded": true
+      },
+      "120-hatch-m-sport": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "18,2 km/l",
+        "power": "156 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4000000,
+        "listPrice": 42900000,
+        "bonusPrice": 38900000,
+        "ivaIncluded": true
+      },
+      "m135-hatch-xdrive": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "12,8 km/l",
+        "power": "317 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 59900000,
+        "bonusPrice": 53900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-2-coupe": {
+      "220i-m-sport-lci": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "11,5 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 49900000,
+        "bonusPrice": 47900000,
+        "ivaIncluded": true
+      },
+      "m240i-xdrive-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "12,5 km/l",
+        "power": "387 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 70900000,
+        "bonusPrice": 65900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-2-gran-coupe": {
+      "220-dynamic": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "18,5 km/l",
+        "power": "170 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 39900000,
+        "bonusPrice": 34900000,
+        "ivaIncluded": true
+      },
+      "m235-xdrive": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "12,2 km/l",
+        "power": "317 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 64900000,
+        "bonusPrice": 59900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-3": {
+      "320i-urban-lci-ii": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,0 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4500000,
+        "listPrice": 47900000,
+        "bonusPrice": 43400000,
+        "ivaIncluded": true
+      },
+      "320i-m-sport-se-lci-ii": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,0 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3500000,
+        "listPrice": 53900000,
+        "bonusPrice": 50400000,
+        "ivaIncluded": true
+      },
+      "m340i-xdrive-50th-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "13,0 km/l",
+        "power": "387 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 79900000,
+        "bonusPrice": 74900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-3-hibrido": {
+      "330e-dynamic-lci-ii": {
+        "motor": "2.0L PHEV",
+        "consumptionMixed": "47,6 km/l",
+        "power": "292 HP",
+        "torque": "420 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 65900000,
+        "bonusPrice": 58900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-4": {
+      "430i-m-sport-se-lci-ii": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,1 km/l",
+        "power": "258 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 60900000,
+        "bonusPrice": 53900000,
+        "ivaIncluded": true
+      },
+      "m440i-xdrive-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "12,5 km/l",
+        "power": "374 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 10000000,
+        "listPrice": 85900000,
+        "bonusPrice": 75900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-4-convertible": {
+      "420i-cabriolet-dynamic-lci-ii": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "14,7 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 59900000,
+        "bonusPrice": 53900000,
+        "ivaIncluded": true
+      },
+      "m440i-xdrive-cabriolet-lci-ii": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "12,2 km/l",
+        "power": "374 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4500000,
+        "listPrice": 89900000,
+        "bonusPrice": 85400000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-4-gran-coupe": {
+      "420i-dynamic-lci-ii": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "13,6 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 54900000,
+        "bonusPrice": 47900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-5": {
+      "520i-heritage": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,6 km/l",
+        "power": "190 HP",
+        "torque": "310 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 68900000,
+        "bonusPrice": 59900000,
+        "ivaIncluded": true
+      },
+      "530e-m-sport": {
+        "motor": "2.0L PHEV",
+        "consumptionMixed": "47,6 km/l",
+        "power": "299 HP",
+        "torque": "450 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 85900000,
+        "bonusPrice": 79900000,
+        "ivaIncluded": true
+      }
+    },
+    "serie-7-hibrido": {
+      "750e-pure-excellence": {
+        "motor": "3.0L PHEV",
+        "consumptionMixed": "63,6 km/l",
+        "power": "489 HP",
+        "torque": "700 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 175900000,
+        "bonusPrice": 166900000,
+        "ivaIncluded": true
+      }
+    },
+    "x1": {
+      "sdrive18i-comfort": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,4 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 41900000,
+        "bonusPrice": 36900000,
+        "ivaIncluded": true
+      },
+      "sdrive18i-dynamic": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,4 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 46900000,
+        "bonusPrice": 41900000,
+        "ivaIncluded": true
+      },
+      "sdrive18i-m-sport": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,4 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 51900000,
+        "bonusPrice": 44900000,
+        "ivaIncluded": true
+      },
+      "sdrive18d-dynamic": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "20,0 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 48900000,
+        "bonusPrice": 43900000,
+        "ivaIncluded": true
+      },
+      "sdrive18d-m-sport": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "20,0 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 53900000,
+        "bonusPrice": 47900000,
+        "ivaIncluded": true
+      }
+    },
+    "x1-hibrido": {
+      "xdrive25e-dynamic": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "50,0 km/l",
+        "power": "245 HP",
+        "torque": "477 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 53900000,
+        "bonusPrice": 46900000,
+        "ivaIncluded": true
+      },
+      "xdrive25e-m-sport": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "50,0 km/l",
+        "power": "245 HP",
+        "torque": "477 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 60900000,
+        "bonusPrice": 54900000,
+        "ivaIncluded": true
+      }
+    },
+    "x2": {
+      "sdrive20i-dynamic": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "15,0 km/l",
+        "power": "170 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 49900000,
+        "bonusPrice": 43900000,
+        "ivaIncluded": true
+      },
+      "sdrive20i-m-sport": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "15,0 km/l",
+        "power": "170 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 55900000,
+        "bonusPrice": 49900000,
+        "ivaIncluded": true
+      },
+      "xdrive20d-m-sport": {
+        "motor": "2.0L MHEV",
+        "consumptionMixed": "19,0 km/l",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 58900000,
+        "bonusPrice": 52900000,
+        "ivaIncluded": true
+      }
+    },
+    "x2-m35i": {
+      "xdrive": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "12,8 km/l",
+        "power": "300 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 65900000,
+        "bonusPrice": 60900000,
+        "ivaIncluded": true
+      }
+    },
+    "x3": {
+      "20-sdrive-dynamic": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "13,5 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 8000000,
+        "listPrice": 57900000,
+        "bonusPrice": 49900000,
+        "ivaIncluded": true
+      },
+      "20-sdrive-heritage": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "13,5 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 65900000,
+        "bonusPrice": 60900000,
+        "ivaIncluded": true
+      },
+      "20-sdrive-m-sport": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "13,5 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 65900000,
+        "bonusPrice": 60900000,
+        "ivaIncluded": true
+      },
+      "20d-xdrive-dynamic": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "17,2 km/l",
+        "power": "190 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 62900000,
+        "bonusPrice": 53900000,
+        "ivaIncluded": true
+      },
+      "m50-xdrive": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "12,0 km/l",
+        "power": "398 HP",
+        "torque": "580 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4000000,
+        "listPrice": 91900000,
+        "bonusPrice": 87900000,
+        "ivaIncluded": true
+      }
+    },
+    "x3-hibrido": {
+      "30e-xdrive-heritage": {
+        "motor": "2.0L PHEV",
+        "consumptionMixed": "35,7 km/l",
+        "power": "292 HP",
+        "torque": "420 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4000000,
+        "listPrice": 79900000,
+        "bonusPrice": 75900000,
+        "ivaIncluded": true
+      }
+    },
+    "x4": {
+      "xdrive20i-dynamic-s-lci": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "12,9 km/l",
+        "power": "184 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 59900000,
+        "bonusPrice": 50900000,
+        "ivaIncluded": true
+      }
+    },
+    "x5": {
+      "xdrive40i-xline-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "10,8 km/l",
+        "power": "381 HP",
+        "torque": "540 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 86900000,
+        "bonusPrice": 77900000,
+        "ivaIncluded": true
+      },
+      "xdrive40i-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "10,8 km/l",
+        "power": "381 HP",
+        "torque": "540 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 108900000,
+        "bonusPrice": 99900000,
+        "ivaIncluded": true
+      },
+      "xdrive30d-xline-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "13,0 km/l",
+        "power": "298 HP",
+        "torque": "670 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 88900000,
+        "bonusPrice": 79900000,
+        "ivaIncluded": true
+      },
+      "xdrive30d-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "13,0 km/l",
+        "power": "298 HP",
+        "torque": "670 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 113900000,
+        "bonusPrice": 104900000,
+        "ivaIncluded": true
+      },
+      "m60i-xdrive-lci": {
+        "motor": "4.4L MHEV",
+        "consumptionMixed": "8,4 km/l",
+        "power": "530 HP",
+        "torque": "750 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 138900000,
+        "bonusPrice": 129900000,
+        "ivaIncluded": true
+      }
+    },
+    "x5-hibrido": {
+      "xdrive50e-xline-lci": {
+        "motor": "3.0L PHEV",
+        "consumptionMixed": "52,63 km/l",
+        "power": "489 HP",
+        "torque": "700 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 104900000,
+        "bonusPrice": 97900000,
+        "ivaIncluded": true
+      },
+      "xdrive50e-m-sport-lci": {
+        "motor": "3.0L PHEV",
+        "consumptionMixed": "52,63 km/l",
+        "power": "489 HP",
+        "torque": "700 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 121900000,
+        "bonusPrice": 112900000,
+        "ivaIncluded": true
+      }
+    },
+    "x5-m": {
+      "competition-lci": {
+        "motor": "4.4L MHEV",
+        "consumptionMixed": "8,0 km/l",
+        "power": "625 HP",
+        "torque": "750 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 194900000,
+        "bonusPrice": 185900000,
+        "ivaIncluded": true
+      }
+    },
+    "x6": {
+      "xdrive40i-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "10,8 km/l",
+        "power": "381 HP",
+        "torque": "540 Nm",
+        "brandBonus": 0,
+        "financingBonus": 18000000,
+        "listPrice": 113900000,
+        "bonusPrice": 95900000,
+        "ivaIncluded": true
+      },
+      "xdrive30d-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "13,0 km/l",
+        "power": "298 HP",
+        "torque": "670 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 116900000,
+        "bonusPrice": 107900000,
+        "ivaIncluded": true
+      },
+      "m60i-xdrive-lci": {
+        "motor": "4.4L MHEV",
+        "consumptionMixed": "8,4 km/l",
+        "power": "530 HP",
+        "torque": "750 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 144900000,
+        "bonusPrice": 135900000,
+        "ivaIncluded": true
+      }
+    },
+    "x6-m": {
+      "competition-lci": {
+        "motor": "4.4L MHEV",
+        "consumptionMixed": "8,0 km/l",
+        "power": "625 HP",
+        "torque": "750 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 197900000,
+        "bonusPrice": 188900000,
+        "ivaIncluded": true
+      }
+    },
+    "x7": {
+      "xdrive40i-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "9,4 km/l",
+        "power": "381 HP",
+        "torque": "520 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 114900000,
+        "bonusPrice": 105900000,
+        "ivaIncluded": true
+      },
+      "xdrive40i-pure-excellence-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "10,3 km/l",
+        "power": "381 HP",
+        "torque": "520 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 131900000,
+        "bonusPrice": 122900000,
+        "ivaIncluded": true
+      },
+      "xdrive40d-m-sport-lci": {
+        "motor": "3.0L MHEV",
+        "consumptionMixed": "11,6 km/l",
+        "power": "352 HP",
+        "torque": "720 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 117900000,
+        "bonusPrice": 108900000,
+        "ivaIncluded": true
+      },
+      "m60i-xdrive-lci": {
+        "motor": "4.4L MHEV",
+        "consumptionMixed": "8,2 km/l",
+        "power": "530 HP",
+        "torque": "750 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 154900000,
+        "bonusPrice": 145900000,
+        "ivaIncluded": true
+      }
+    },
+    "xm": {
+      "xm": {
+        "motor": "4.4L PHEV",
+        "consumptionMixed": "62,5 km/l",
+        "power": "653 HP",
+        "torque": "800 Nm",
+        "brandBonus": 0,
+        "financingBonus": 9000000,
+        "listPrice": 232900000,
+        "bonusPrice": 223900000,
+        "ivaIncluded": true
+      }
+    },
+    "z4": {
+      "m40i-roadster-lci": {
+        "motor": "3.0L Turbo",
+        "consumptionMixed": "13,2 km/l",
+        "power": "387 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5500000,
+        "listPrice": 91900000,
+        "bonusPrice": 86400000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "bmw-motorrad": {
+    "c-400-gt": {
+      "c-400-gt": {
+        "motor": "350 cc",
+        "consumptionMixed": "8,6 l/100km",
+        "power": "34 HP",
+        "torque": "35 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 0,
+        "listPrice": 14090000,
+        "bonusPrice": 13490000,
+        "ivaIncluded": true
+      }
+    },
+    "c-400-x": {
+      "c-400-x": {
+        "motor": "350 cc",
+        "consumptionMixed": "8,8 l/100km",
+        "power": "34 HP",
+        "torque": "35 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 0,
+        "listPrice": 11990000,
+        "bonusPrice": 11490000,
+        "ivaIncluded": true
+      }
+    },
+    "ce-02": {
+      "ce-02": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,0 kWh/100km",
+        "power": "15 HP",
+        "torque": "55 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 0,
+        "listPrice": 12490000,
+        "bonusPrice": 10490000,
+        "ivaIncluded": true
+      }
+    },
+    "ce-04": {
+      "ce-04": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "7,7 kWh/100 km",
+        "power": "42 HP",
+        "torque": "62 Nm",
+        "brandBonus": 300000,
+        "financingBonus": 0,
+        "listPrice": 16290000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      }
+    },
+    "f-800-gs": {
+      "f-800-gs": {
+        "motor": "895 cc",
+        "consumptionMixed": "4,3 l/100km",
+        "power": "87 HP",
+        "torque": "91 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 14990000,
+        "bonusPrice": 13490000,
+        "ivaIncluded": true
+      }
+    },
+    "f-900-gs": {
+      "f-900-gs": {
+        "motor": "895 cc",
+        "consumptionMixed": "4,4 l/100km",
+        "power": "105 HP",
+        "torque": "93 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 17990000,
+        "bonusPrice": 16490000,
+        "ivaIncluded": true
+      }
+    },
+    "f-900-gs-adventure": {
+      "f-900-gs-adventure": {
+        "motor": "895 cc",
+        "consumptionMixed": "4,4 l/100km",
+        "power": "105 HP",
+        "torque": "93 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 21790000,
+        "bonusPrice": 20290000,
+        "ivaIncluded": true
+      }
+    },
+    "f-900-r": {
+      "f-900-r": {
+        "motor": "895 cc",
+        "consumptionMixed": "4,2 l/100km",
+        "power": "105 HP",
+        "torque": "92 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 14890000,
+        "bonusPrice": 13390000,
+        "ivaIncluded": true
+      }
+    },
+    "f-900-xr": {
+      "f-900-xr": {
+        "motor": "895 cc",
+        "consumptionMixed": "4,2 l/100km",
+        "power": "105 HP",
+        "torque": "92 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 17690000,
+        "bonusPrice": 16190000,
+        "ivaIncluded": true
+      }
+    },
+    "g-310-gs": {
+      "g-310-gs": {
+        "motor": "313 cc",
+        "consumptionMixed": "3,5 l/100km",
+        "power": "34 HP",
+        "torque": "28 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 6790000,
+        "bonusPrice": 6790000,
+        "ivaIncluded": true
+      }
+    },
+    "g-310-r": {
+      "g-310-r": {
+        "motor": "313 cc",
+        "consumptionMixed": "3,3 l/100km",
+        "power": "34 HP",
+        "torque": "28 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 5790000,
+        "bonusPrice": 5790000,
+        "ivaIncluded": true
+      }
+    },
+    "k-1600-gt": {
+      "k-1600-gt": {
+        "motor": "1.649 cc",
+        "consumptionMixed": "5,9 l/100km",
+        "power": "160 HP",
+        "torque": "180 Nm",
+        "brandBonus": 1400000,
+        "financingBonus": 0,
+        "listPrice": 34890000,
+        "bonusPrice": 33490000,
+        "ivaIncluded": true
+      }
+    },
+    "k-1600-gtl": {
+      "k-1600-gtl": {
+        "motor": "1.649 cc",
+        "consumptionMixed": "5,9 l/100km",
+        "power": "160 HP",
+        "torque": "180 Nm",
+        "brandBonus": 1400000,
+        "financingBonus": 0,
+        "listPrice": 35790000,
+        "bonusPrice": 34390000,
+        "ivaIncluded": true
+      }
+    },
+    "m-1000-r": {
+      "m-1000-r": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,4 l/100km",
+        "power": "210 HP",
+        "torque": "113 Nm",
+        "brandBonus": 1200000,
+        "financingBonus": 0,
+        "listPrice": 29190000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      }
+    },
+    "m-1000-rr": {
+      "m-1000-rr": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,5 l/100km",
+        "power": "218 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 48290000,
+        "bonusPrice": 48290000,
+        "ivaIncluded": true
+      }
+    },
+    "m-1000-xr": {
+      "m-1000-xr": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,5 l/100km",
+        "power": "201 HP",
+        "torque": "113 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 0,
+        "listPrice": 40590000,
+        "bonusPrice": 38590000,
+        "ivaIncluded": true
+      }
+    },
+    "r-12": {
+      "r-12": {
+        "motor": "1.170 cc",
+        "consumptionMixed": "5,1 l/100km",
+        "power": "95 HP",
+        "torque": "110 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 18790000,
+        "bonusPrice": 17790000,
+        "ivaIncluded": true
+      }
+    },
+    "r-12-gs": {
+      "r-12-gs": {
+        "motor": "1.170 cc",
+        "consumptionMixed": "5,1 l/100km",
+        "power": "109 HP",
+        "torque": "115 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 21890000,
+        "bonusPrice": 20890000,
+        "ivaIncluded": true
+      }
+    },
+    "r-12-ninet": {
+      "r-12-ninet": {
+        "motor": "1.170 cc",
+        "consumptionMixed": "5,1 l/100km",
+        "power": "109 HP",
+        "torque": "115 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 21790000,
+        "bonusPrice": 20790000,
+        "ivaIncluded": true
+      }
+    },
+    "r-1300-gs": {
+      "r-1300-gs": {
+        "motor": "1.300 cc",
+        "consumptionMixed": "4,8 l/100km",
+        "power": "145 HP",
+        "torque": "149 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 28990000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      }
+    },
+    "r-1300-gs-adventure": {
+      "r-1300-gs-adventure": {
+        "motor": "1.300 cc",
+        "consumptionMixed": "4,9 l/100km",
+        "power": "145 HP",
+        "torque": "149 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 31990000,
+        "bonusPrice": 31990000,
+        "ivaIncluded": true
+      }
+    },
+    "r-1300-rt": {
+      "r-1300-rt": {
+        "motor": "1.300 cc",
+        "consumptionMixed": "4,9 l/100km",
+        "power": "145 HP",
+        "torque": "149 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 33990000,
+        "bonusPrice": 32990000,
+        "ivaIncluded": true
+      }
+    },
+    "s-1000-r": {
+      "s-1000-r": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,2 l/100km",
+        "power": "170 HP",
+        "torque": "114 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 23990000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": true
+      }
+    },
+    "s-1000-rr": {
+      "s-1000-rr": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,4 l/100km",
+        "power": "210 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 29690000,
+        "bonusPrice": 29690000,
+        "ivaIncluded": true
+      }
+    },
+    "s-1000-xr": {
+      "s-1000-xr": {
+        "motor": "999 cc",
+        "consumptionMixed": "6,2 l/100km",
+        "power": "170 HP",
+        "torque": "114 Nm",
+        "brandBonus": 1100000,
+        "financingBonus": 0,
+        "listPrice": 27390000,
+        "bonusPrice": 26290000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "cupra": {
+    "formentor": {
+      "20-tsi-204hp-4drive": {
+        "motor": "2.0L",
+        "consumptionMixed": "10,4 km/l",
+        "power": "204 HP",
+        "torque": "320 Nm",
+        "brandBonus": 1300000,
+        "financingBonus": 2200000,
+        "listPrice": 36990000,
+        "bonusPrice": 33490000,
+        "ivaIncluded": true
+      },
+      "vz-20-tsi-at-4drive": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,5 km/l",
+        "power": "333 HP",
+        "torque": "420 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1700000,
+        "listPrice": 44990000,
+        "bonusPrice": 42490000,
+        "ivaIncluded": true
+      },
+      "vz-20-tsi-at-4drive--pintura-mate--llantas-cobre": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,5 km/l",
+        "power": "333 HP",
+        "torque": "420 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1700000,
+        "listPrice": 47990000,
+        "bonusPrice": 45490000,
+        "ivaIncluded": true
+      },
+      "vz-black-rebel-20-tsi-at-4drive": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,5 km/l",
+        "power": "333 HP",
+        "torque": "420 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1700000,
+        "listPrice": 47990000,
+        "bonusPrice": 45490000,
+        "ivaIncluded": true
+      }
+    },
+    "formentor-e-hybrid": {
+      "15-tsi-e-hybrid": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "204 HP",
+        "torque": "350 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 4000000,
+        "listPrice": 40990000,
+        "bonusPrice": 35490000,
+        "ivaIncluded": true
+      }
+    },
+    "leon": {
+      "15-tsi-mhev-at--colores-cat-a": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "14,5 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2500000,
+        "listPrice": 31490000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      },
+      "15-tsi-mhev-at--colores-cat-b": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "14,5 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 300000,
+        "financingBonus": 2500000,
+        "listPrice": 31490000,
+        "bonusPrice": 28690000,
+        "ivaIncluded": true
+      },
+      "vz-20-tsi-at": {
+        "motor": "2.0L",
+        "consumptionMixed": "12,5 km/l",
+        "power": "300 HP",
+        "torque": "400 Nm",
+        "brandBonus": 700000,
+        "financingBonus": 1900000,
+        "listPrice": 40490000,
+        "bonusPrice": 37890000,
+        "ivaIncluded": true
+      },
+      "vz-20-tsi-at--pintura-mate--llantas-cobre": {
+        "motor": "2.0L",
+        "consumptionMixed": "12,5 km/l",
+        "power": "300 HP",
+        "torque": "400 Nm",
+        "brandBonus": 700000,
+        "financingBonus": 1900000,
+        "listPrice": 43490000,
+        "bonusPrice": 40890000,
+        "ivaIncluded": true
+      }
+    },
+    "tavascan": {
+      "adrenaline-82-kwh": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "16,8 kWh/100km",
+        "power": "286 HP",
+        "torque": "545 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 50990000,
+        "bonusPrice": 47990000,
+        "ivaIncluded": true
+      },
+      "extreme-82-kwh": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "17,2 kWh/100km",
+        "power": "286 HP",
+        "torque": "545 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 53990000,
+        "bonusPrice": 50990000,
+        "ivaIncluded": true
+      },
+      "extreme-82-kwh--pintura-mate": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "17,2 kWh/100km",
+        "power": "286 HP",
+        "torque": "545 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 55490000,
+        "bonusPrice": 52490000,
+        "ivaIncluded": true
+      }
+    },
+    "terramar": {
+      "15-tsi-mhev-at": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "14,2 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1800000,
+        "listPrice": 39990000,
+        "bonusPrice": 37390000,
+        "ivaIncluded": true
+      },
+      "high-15-tsi-mhev-at": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "14,2 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1300000,
+        "listPrice": 43990000,
+        "bonusPrice": 41890000,
+        "ivaIncluded": true
+      },
+      "high-15-tsi-mhev-at--pintura-mate": {
+        "motor": "1.5L MHEV",
+        "consumptionMixed": "14,2 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1300000,
+        "listPrice": 45490000,
+        "bonusPrice": 43390000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "dongfeng": {
+    "aeolus-gs-cross": {
+      "gs": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "123 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 13990000,
+        "bonusPrice": 11490000,
+        "ivaIncluded": true
+      }
+    },
+    "aeolus-y3": {
+      "mt": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "123 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 11490000,
+        "bonusPrice": 9990000,
+        "ivaIncluded": true
+      },
+      "at-comfort": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "123 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 12590000,
+        "bonusPrice": 11390000,
+        "ivaIncluded": true
+      },
+      "at-luxury": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "123 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 13290000,
+        "bonusPrice": 11890000,
+        "ivaIncluded": true
+      }
+    },
+    "huge": {
+      "aeolus-e1": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "305 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 18990000,
+        "bonusPrice": 16390000,
+        "ivaIncluded": true
+      },
+      "aeolus-e2": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "305 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 19990000,
+        "bonusPrice": 17390000,
+        "ivaIncluded": true
+      }
+    },
+    "mage": {
+      "e1": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "305 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 15590000,
+        "bonusPrice": 13990000,
+        "ivaIncluded": true
+      },
+      "e2": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "305 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 16990000,
+        "bonusPrice": 14490000,
+        "ivaIncluded": true
+      },
+      "e2-bicolor": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "305 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 17290000,
+        "bonusPrice": 14490000,
+        "ivaIncluded": true
+      }
+    },
+    "mage-ev": {
+      "-": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "120 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 21990000,
+        "bonusPrice": 19990000,
+        "ivaIncluded": true
+      }
+    },
+    "new-sx6": {
+      "16": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "121 HP",
+        "torque": "151 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 11990000,
+        "bonusPrice": 10890000,
+        "ivaIncluded": true
+      }
+    },
+    "rich-6-euro-vi": {
+      "4x2": {
+        "motor": "2.3L",
+        "consumptionMixed": "",
+        "power": "161 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 14290000,
+        "bonusPrice": 13490000,
+        "ivaIncluded": false
+      },
+      "mt-4x4": {
+        "motor": "2.3L",
+        "consumptionMixed": "",
+        "power": "161 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 16390000,
+        "bonusPrice": 15490000,
+        "ivaIncluded": false
+      },
+      "at-4x4": {
+        "motor": "2.3L",
+        "consumptionMixed": "",
+        "power": "161 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 17990000,
+        "bonusPrice": 17490000,
+        "ivaIncluded": false
+      }
+    },
+    "s50-ev": {
+      "eve": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "120 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 26990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      }
+    },
+    "t5": {
+      "-": {
+        "motor": "1.6l",
+        "consumptionMixed": "",
+        "power": "120 HP",
+        "torque": "151 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 13290000,
+        "bonusPrice": 10590000,
+        "ivaIncluded": true
+      }
+    },
+    "t5-evo": {
+      "mt-luxury": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "275 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 15990000,
+        "bonusPrice": 13390000,
+        "ivaIncluded": true
+      },
+      "luxury": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "275 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 19990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "noble": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "195 HP",
+        "torque": "275 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 21690000,
+        "bonusPrice": 16390000,
+        "ivaIncluded": true
+      }
+    },
+    "t5-evo-hev": {
+      "-": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 23990000,
+        "bonusPrice": 19390000,
+        "ivaIncluded": true
+      }
+    },
+    "t5l": {
+      "mt-15t": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "",
+        "power": "190 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 14990000,
+        "bonusPrice": 13390000,
+        "ivaIncluded": true
+      },
+      "mt-18t": {
+        "motor": "1.8L Turbo",
+        "consumptionMixed": "",
+        "power": "190 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 15690000,
+        "bonusPrice": 13790000,
+        "ivaIncluded": true
+      },
+      "at": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "",
+        "power": "190 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 16990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "foton": {
+    "ft-crew": {
+      "diesel": {
+        "motor": "2.8L",
+        "consumptionMixed": "",
+        "power": "147 HP",
+        "torque": "330 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 26990000,
+        "bonusPrice": 26490000,
+        "ivaIncluded": false
+      }
+    },
+    "g7": {
+      "lite-4x2": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "388 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 14490000,
+        "bonusPrice": 12390000,
+        "ivaIncluded": false
+      },
+      "lite-4x4": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "388 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 15490000,
+        "bonusPrice": 13390000,
+        "ivaIncluded": false
+      },
+      "ultimate-4x4": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "388 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 17490000,
+        "bonusPrice": 15390000,
+        "ivaIncluded": false
+      },
+      "ultimate-4x4-at": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "388 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 19590000,
+        "bonusPrice": 17890000,
+        "ivaIncluded": false
+      }
+    },
+    "g7-ev": {
+      "-": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 31900000,
+        "bonusPrice": 30000000,
+        "ivaIncluded": false
+      }
+    },
+    "g9": {
+      "4x2-mt": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "390 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 15990000,
+        "bonusPrice": 15390000,
+        "ivaIncluded": false
+      },
+      "4x4-mt": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "390 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 17490000,
+        "bonusPrice": 16390000,
+        "ivaIncluded": false
+      },
+      "4x4-at": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "160 HP",
+        "torque": "390 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 21290000,
+        "bonusPrice": 19090000,
+        "ivaIncluded": false
+      }
+    },
+    "midi": {
+      "cabina-simple--12": {
+        "motor": "1.2L",
+        "consumptionMixed": "",
+        "power": "83 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 7990000,
+        "bonusPrice": 6290000,
+        "ivaIncluded": false
+      },
+      "cabina-doble--12": {
+        "motor": "1.2L",
+        "consumptionMixed": "",
+        "power": "83 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 8690000,
+        "bonusPrice": 6890000,
+        "ivaIncluded": false
+      },
+      "cargo-box": {
+        "motor": "1.2L",
+        "consumptionMixed": "",
+        "power": "83 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 9790000,
+        "bonusPrice": 8690000,
+        "ivaIncluded": false
+      },
+      "refrigerado": {
+        "motor": "1.2L",
+        "consumptionMixed": "",
+        "power": "83 HP",
+        "torque": "113 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 12890000,
+        "bonusPrice": 12090000,
+        "ivaIncluded": false
+      }
+    },
+    "tm3": {
+      "cabina-simple-16": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 9690000,
+        "bonusPrice": 8390000,
+        "ivaIncluded": false
+      },
+      "cabina-simple-16--2-airbags": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 9990000,
+        "bonusPrice": 9390000,
+        "ivaIncluded": false
+      },
+      "doble-cabina-16": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 10490000,
+        "bonusPrice": 8890000,
+        "ivaIncluded": false
+      },
+      "doble-cabina-16--2-airbags": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 10990000,
+        "bonusPrice": 10390000,
+        "ivaIncluded": false
+      },
+      "mas-cargo-box": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 10980000,
+        "bonusPrice": 10280000,
+        "ivaIncluded": false
+      },
+      "refrigerado": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 13990000,
+        "bonusPrice": 13490000,
+        "ivaIncluded": false
+      }
+    },
+    "tm5": {
+      "cabina-simple--16": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 10790000,
+        "bonusPrice": 10490000,
+        "ivaIncluded": false
+      },
+      "cabina-doble--16": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 11290000,
+        "bonusPrice": 10990000,
+        "ivaIncluded": false
+      },
+      "cargo-box": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 12290000,
+        "bonusPrice": 11690000,
+        "ivaIncluded": false
+      }
+    },
+    "v7": {
+      "luxury-mt-4x4": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "160 HP ",
+        "torque": "415 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 20990000,
+        "bonusPrice": 20390000,
+        "ivaIncluded": false
+      },
+      "elite-at-4x4": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "160 HP ",
+        "torque": "415 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 22990000,
+        "bonusPrice": 21390000,
+        "ivaIncluded": false
+      },
+      "luxury-at-4x4": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "160 HP ",
+        "torque": "415 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 27990000,
+        "bonusPrice": 25990000,
+        "ivaIncluded": false
+      }
+    },
+    "v9": {
+      "elite-at-4x4": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "160 HP ",
+        "torque": "415 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 24990000,
+        "bonusPrice": 23390000,
+        "ivaIncluded": false
+      },
+      "ultimate-at-4x4": {
+        "motor": "Híbrido",
+        "consumptionMixed": "",
+        "power": "160 HP ",
+        "torque": "415 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 29990000,
+        "bonusPrice": 27490000,
+        "ivaIncluded": false
+      }
+    },
+    "wonder": {
+      "simple-chasis": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "111 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 9990000,
+        "bonusPrice": 7490000,
+        "ivaIncluded": false
+      },
+      "cabina-simple": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "111 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 10490000,
+        "bonusPrice": 7490000,
+        "ivaIncluded": false
+      },
+      "cabina-doble": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "111 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 11290000,
+        "bonusPrice": 8990000,
+        "ivaIncluded": false
+      },
+      "cargo-box": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "111 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 12290000,
+        "bonusPrice": 10490000,
+        "ivaIncluded": false
+      }
+    }
+  },
+  "geely": {
+    "cityray": {
+      "comfort": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1100000,
+        "listPrice": 17890000,
+        "bonusPrice": 16790000,
+        "ivaIncluded": true
+      },
+      "exclusive": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1100000,
+        "listPrice": 19490000,
+        "bonusPrice": 18390000,
+        "ivaIncluded": true
+      },
+      "signature": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1100000,
+        "listPrice": 20890000,
+        "bonusPrice": 19790000,
+        "ivaIncluded": true
+      }
+    },
+    "coolray": {
+      "15td-at-exclusive": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "18,3 km/l",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2500000,
+        "listPrice": 18490000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "15td-at-sport": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "18,3 km/l",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 19990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": true
+      }
+    },
+    "coolray-lite": {
+      "15-mt-pop": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "121 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 12490000,
+        "bonusPrice": 10990000,
+        "ivaIncluded": true
+      },
+      "15-cvt-prime": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "121 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 13490000,
+        "bonusPrice": 11990000,
+        "ivaIncluded": true
+      },
+      "15-mt-pop-": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "121 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 13290000,
+        "bonusPrice": 11790000,
+        "ivaIncluded": true
+      },
+      "15-cvt-prime-": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "121 HP",
+        "torque": "152 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 14290000,
+        "bonusPrice": 12790000,
+        "ivaIncluded": true
+      }
+    },
+    "ex2": {
+      "pro": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "150 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 0,
+        "bonusPrice": 16990000,
+        "ivaIncluded": true
+      }
+    },
+    "ex5": {
+      "pro": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "214 HP",
+        "torque": "320 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 30990000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      },
+      "max": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "214 HP",
+        "torque": "320 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 33990000,
+        "bonusPrice": 30990000,
+        "ivaIncluded": true
+      }
+    },
+    "gx3-pro": {
+      "gc-active": {
+        "motor": "1.5L",
+        "consumptionMixed": "16 km/l",
+        "power": "102HP",
+        "torque": "140Nm",
+        "brandBonus": 0,
+        "financingBonus": 1300000,
+        "listPrice": 11990000,
+        "bonusPrice": 10690000,
+        "ivaIncluded": true
+      },
+      "gf-elite": {
+        "motor": "1.5L",
+        "consumptionMixed": "16 km/l",
+        "power": "102HP",
+        "torque": "140Nm",
+        "brandBonus": 0,
+        "financingBonus": 1300000,
+        "listPrice": 12990000,
+        "bonusPrice": 11690000,
+        "ivaIncluded": true
+      }
+    },
+    "new-coolray": {
+      "15td-comfort": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "18,2 km/l",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 15490000,
+        "bonusPrice": 14490000,
+        "ivaIncluded": true
+      },
+      "15td-sport": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "18,2 km/l",
+        "power": "174 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 17990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": true
+      }
+    },
+    "okavango": {
+      "exclusive-gk-20-t-7dct-color-negro": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "14,9 km/l",
+        "power": "218 HP",
+        "torque": "235 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 24690000,
+        "bonusPrice": 20690000,
+        "ivaIncluded": true
+      },
+      "exclusive-gk-20-t-7dct": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "14,9 km/l",
+        "power": "218 HP",
+        "torque": "235 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 24690000,
+        "bonusPrice": 21690000,
+        "ivaIncluded": true
+      },
+      "signature-gf-20-t-7dct": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "14,9 km/l",
+        "power": "218 HP",
+        "torque": "235 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 26690000,
+        "bonusPrice": 23690000,
+        "ivaIncluded": true
+      }
+    },
+    "starray": {
+      "exclusive-gk-20t-7dct": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,7 km/l",
+        "power": "218 HP",
+        "torque": "325 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 2000000,
+        "listPrice": 23990000,
+        "bonusPrice": 19990000,
+        "ivaIncluded": true
+      },
+      "signature-gf-20t-7dct": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "15,7 km/l",
+        "power": "218 HP",
+        "torque": "325 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 25690000,
+        "bonusPrice": 22690000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "honda": {
+    "civic": {
+      "touring-cvt-15t": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,6 km/l",
+        "power": "176 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 1400000,
+        "listPrice": 31390000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      }
+    },
+    "new-wr-v": {
+      "ex-15-aut": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "119 HP",
+        "torque": "145 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 23990000,
+        "bonusPrice": 21990000,
+        "ivaIncluded": true
+      },
+      "touring-15-aut": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "119 HP",
+        "torque": "145 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 24990000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": true
+      }
+    },
+    "new-hr-v": {
+      "touring-15-aut-4x2": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "119 HP",
+        "torque": "145 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 26990000,
+        "bonusPrice": 25990000,
+        "ivaIncluded": true
+      }
+    },
+    "cr-v": {
+      "touring-15-turbo-aut-4x4": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "13,0 km/l",
+        "power": "188 HP",
+        "torque": "240 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 42990000,
+        "bonusPrice": 39990000,
+        "ivaIncluded": true
+      }
+    },
+    "cr-v-hibrido": {
+      "advance-hybrid-aut-4x4": {
+        "motor": "2.0L Híbrido",
+        "consumptionMixed": "",
+        "power": "146 HP",
+        "torque": "183 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 49990000,
+        "bonusPrice": 46990000,
+        "ivaIncluded": true
+      }
+    },
+    "zr-v": {
+      "exl-20-aut-4x2": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "155 HP",
+        "torque": "185 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1500000,
+        "listPrice": 31990000,
+        "bonusPrice": 29490000,
+        "ivaIncluded": true
+      },
+      "touring-20-aut-4x2": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "155 HP",
+        "torque": "185 Nm",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 33490000,
+        "bonusPrice": 30490000,
+        "ivaIncluded": true
+      }
+    },
+    "pilot": {
+      "touring-35-10-aut-4x4": {
+        "motor": "3.5L",
+        "consumptionMixed": "",
+        "power": "285 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 59990000,
+        "bonusPrice": 56990000,
+        "ivaIncluded": true
+      },
+      "elite-35-10-aut-4x4": {
+        "motor": "3.5L",
+        "consumptionMixed": "",
+        "power": "285 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 61990000,
+        "bonusPrice": 58990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "jetour": {
+    "dashing": {
+      "6mt-15l-turbo-special-edition-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 16490000,
+        "bonusPrice": 13490000,
+        "ivaIncluded": true
+      },
+      "15l-6mt-turbo-lux-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 2500000,
+        "financingBonus": 1000000,
+        "listPrice": 17490000,
+        "bonusPrice": 13990000,
+        "ivaIncluded": true
+      },
+      "6dct-15l-turbo-special-edition-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 3500000,
+        "financingBonus": 1000000,
+        "listPrice": 18490000,
+        "bonusPrice": 13990000,
+        "ivaIncluded": true
+      },
+      "6dct-15l-turbo-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 2500000,
+        "financingBonus": 1000000,
+        "listPrice": 19490000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "7dct-16l-turbo-gdi-limited": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "188 HP",
+        "torque": "",
+        "brandBonus": 2500000,
+        "financingBonus": 1000000,
+        "listPrice": 21990000,
+        "bonusPrice": 18490000,
+        "ivaIncluded": true
+      }
+    },
+    "t1": {
+      "15t-7dct-luxury": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "167 HP",
+        "torque": "",
+        "brandBonus": 2500000,
+        "financingBonus": 1500000,
+        "listPrice": 22990000,
+        "bonusPrice": 18990000,
+        "ivaIncluded": true
+      },
+      "15t-7dct-luxury-mate": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "167 HP",
+        "torque": "",
+        "brandBonus": 2500000,
+        "financingBonus": 1500000,
+        "listPrice": 23490000,
+        "bonusPrice": 19490000,
+        "ivaIncluded": true
+      },
+      "20t-8at-xwd-limited": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 26990000,
+        "bonusPrice": 23990000,
+        "ivaIncluded": true
+      },
+      "20t-8at-xwd-limited-mate": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 27490000,
+        "bonusPrice": 24490000,
+        "ivaIncluded": true
+      }
+    },
+    "t1-phev": {
+      "15t-phev-limited": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "341 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 29990000,
+        "bonusPrice": 26990000,
+        "ivaIncluded": true
+      },
+      "15t-phev-limited-mate": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "341 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 30490000,
+        "bonusPrice": 27490000,
+        "ivaIncluded": true
+      }
+    },
+    "t2": {
+      "20t-gdi-awd-7dct-limited": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 29990000,
+        "bonusPrice": 26990000,
+        "ivaIncluded": true
+      },
+      "20t-gdi-awd-7dct-limited-mate": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 30490000,
+        "bonusPrice": 27490000,
+        "ivaIncluded": true
+      }
+    },
+    "t2-phev": {
+      "15t-phev-limited": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "375 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 36990000,
+        "bonusPrice": 34990000,
+        "ivaIncluded": true
+      },
+      "15t-phev-limited-mate": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "375 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 37490000,
+        "bonusPrice": 35490000,
+        "ivaIncluded": true
+      }
+    },
+    "x50": {
+      "15l-mt-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "114 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 1500000,
+        "listPrice": 12490000,
+        "bonusPrice": 9990000,
+        "ivaIncluded": true
+      },
+      "15t-6dct-turbo-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 15490000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      }
+    },
+    "x70": {
+      "15t-6mt-turbo-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 4000000,
+        "financingBonus": 1000000,
+        "listPrice": 17490000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      },
+      "15t-6dct-turbo-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 4500000,
+        "financingBonus": 1000000,
+        "listPrice": 19490000,
+        "bonusPrice": 13990000,
+        "ivaIncluded": true
+      }
+    },
+    "x70-plus": {
+      "15t-6dct-fl": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "145 HP",
+        "torque": "",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 20990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": true
+      },
+      "16t-gdi-7dct-lux-fl": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "188 HP",
+        "torque": "",
+        "brandBonus": 3500000,
+        "financingBonus": 1000000,
+        "listPrice": 22490000,
+        "bonusPrice": 17990000,
+        "ivaIncluded": true
+      }
+    },
+    "x90-plus": {
+      "20t-gdi-7dct": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "",
+        "brandBonus": 3000000,
+        "financingBonus": 1500000,
+        "listPrice": 27490000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "kaiyi": {
+    "kye5": {
+      "15t-mt-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,6 km/l",
+        "power": "145 HP",
+        "torque": "230 Nm",
+        "brandBonus": 5000000,
+        "financingBonus": 1000000,
+        "listPrice": 14990000,
+        "bonusPrice": 8990000,
+        "ivaIncluded": true
+      },
+      "15t-cvt-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "145 HP",
+        "torque": "230 Nm",
+        "brandBonus": 4700000,
+        "financingBonus": 1000000,
+        "listPrice": 15690000,
+        "bonusPrice": 9990000,
+        "ivaIncluded": true
+      }
+    },
+    "kyx3": {
+      "15l-mt-std": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,7 km/l",
+        "power": "111 HP",
+        "torque": "143 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 12990000,
+        "bonusPrice": 8990000,
+        "ivaIncluded": true
+      },
+      "15l-mt-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,7 km/l",
+        "power": "111 HP",
+        "torque": "143 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 13990000,
+        "bonusPrice": 9990000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,7 km/l",
+        "power": "111 HP",
+        "torque": "143 Nm",
+        "brandBonus": 3700000,
+        "financingBonus": 1000000,
+        "listPrice": 14990000,
+        "bonusPrice": 10290000,
+        "ivaIncluded": true
+      }
+    },
+    "kyx3-pro": {
+      "15l-turbo-cvt": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,2 km/l",
+        "power": "145 HP",
+        "torque": "230 Nm",
+        "brandBonus": 3500000,
+        "financingBonus": 1000000,
+        "listPrice": 15990000,
+        "bonusPrice": 11490000,
+        "ivaIncluded": true
+      }
+    },
+    "kyx7": {
+      "16t-7dct-std": {
+        "motor": "1.6L",
+        "consumptionMixed": "15,7 km/l",
+        "power": "183 HP",
+        "torque": "275 Nm",
+        "brandBonus": 3500000,
+        "financingBonus": 1500000,
+        "listPrice": 19990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": true
+      },
+      "16t-7dct-lux": {
+        "motor": "1.6L",
+        "consumptionMixed": "15,7 km/l",
+        "power": "183 HP",
+        "torque": "275 Nm",
+        "brandBonus": 3500000,
+        "financingBonus": 1500000,
+        "listPrice": 20990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "20t-7dct-lux": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,5 km/l",
+        "power": "234 HP",
+        "torque": "375 Nm",
+        "brandBonus": 4500000,
+        "financingBonus": 1500000,
+        "listPrice": 22990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "karry": {
+    "q22-cabina-doble": {
+      "13l-e6": {
+        "motor": "1.3L",
+        "consumptionMixed": "15,1 km/l",
+        "power": "80 HP",
+        "torque": "108 Nm",
+        "brandBonus": 400000,
+        "financingBonus": 600000,
+        "listPrice": 8690000,
+        "bonusPrice": 7690000,
+        "ivaIncluded": false
+      },
+      "15l-e6": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "114 HP",
+        "torque": "150 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 9990000,
+        "bonusPrice": 9390000,
+        "ivaIncluded": false
+      }
+    },
+    "q22-cabina-simple": {
+      "13l-e6": {
+        "motor": "1.3L",
+        "consumptionMixed": "15,1 km/l",
+        "power": "80 HP",
+        "torque": "108 Nm",
+        "brandBonus": 400000,
+        "financingBonus": 600000,
+        "listPrice": 7990000,
+        "bonusPrice": 6990000,
+        "ivaIncluded": false
+      },
+      "15l-e6": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "114 HP",
+        "torque": "150 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 9090000,
+        "bonusPrice": 8490000,
+        "ivaIncluded": false
+      }
+    },
+    "q51-cabina-simple": {
+      "16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 10390000,
+        "bonusPrice": 9790000,
+        "ivaIncluded": false
+      },
+      "doble-rodado-16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 10990000,
+        "bonusPrice": 10390000,
+        "ivaIncluded": false
+      },
+      "cargo-box-16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 11690000,
+        "bonusPrice": 11090000,
+        "ivaIncluded": false
+      },
+      "cargo-box---doble-rodado-16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 12490000,
+        "bonusPrice": 11890000,
+        "ivaIncluded": false
+      }
+    },
+    "q52-cabina-doble": {
+      "rodado-simple-16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,2 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 11390000,
+        "bonusPrice": 10790000,
+        "ivaIncluded": false
+      },
+      "doble-rodado-16l": {
+        "motor": "1.6L",
+        "consumptionMixed": "18,2 km/l",
+        "power": "114 HP",
+        "torque": "158 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 11990000,
+        "bonusPrice": 11390000,
+        "ivaIncluded": false
+      }
+    }
+  },
+  "maxus": {
+    "all-new-t90": {
+      "4x4-gl-8at-e6": {
+        "motor": "2.5L",
+        "consumptionMixed": "",
+        "power": "221 HP",
+        "torque": "520 Nm",
+        "brandBonus": 4000000,
+        "financingBonus": 1000000,
+        "listPrice": 30990000,
+        "bonusPrice": 25990000,
+        "ivaIncluded": false
+      },
+      "4x4-glx-8at-e6": {
+        "motor": "2.5L",
+        "consumptionMixed": "",
+        "power": "221 HP",
+        "torque": "520 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 33990000,
+        "bonusPrice": 31990000,
+        "ivaIncluded": false
+      }
+    },
+    "all-new-t90-ev": {
+      "gl": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "310 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 500000,
+        "listPrice": 53990000,
+        "bonusPrice": 52990000,
+        "ivaIncluded": false
+      },
+      "glx": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "310 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 500000,
+        "listPrice": 57990000,
+        "bonusPrice": 56990000,
+        "ivaIncluded": false
+      }
+    },
+    "c35": {
+      "e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "129 HP",
+        "torque": "350 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 600000,
+        "listPrice": 18990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": false
+      },
+      "cplana-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "129 HP",
+        "torque": "350 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 600000,
+        "listPrice": 19990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": false
+      },
+      "l-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "11,4 km/l",
+        "power": "129 HP",
+        "torque": "350 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 600000,
+        "listPrice": 19990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": false
+      },
+      "l-cplana-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "129 HP",
+        "torque": "350 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 600000,
+        "listPrice": 20990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": false
+      },
+      "dc-cplana-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "129 HP",
+        "torque": "350 Nm",
+        "brandBonus": 4400000,
+        "financingBonus": 600000,
+        "listPrice": 21990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": false
+      }
+    },
+    "d60": {
+      "4x2-elite-7dct": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "180 HP",
+        "torque": "285 Nm",
+        "brandBonus": 4000000,
+        "financingBonus": 2000000,
+        "listPrice": 20990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": true
+      },
+      "4x2-luxury-7dct": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "180 HP",
+        "torque": "285 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 2000000,
+        "listPrice": 22990000,
+        "bonusPrice": 17990000,
+        "ivaIncluded": true
+      }
+    },
+    "d90": {
+      "4x4-elite-8at": {
+        "motor": "2.0L Híbrido",
+        "consumptionMixed": "",
+        "power": "215 HP",
+        "torque": "500 Nm",
+        "brandBonus": 9000000,
+        "financingBonus": 1000000,
+        "listPrice": 36490000,
+        "bonusPrice": 26490000,
+        "ivaIncluded": true
+      },
+      "4x4-luxury-8at": {
+        "motor": "2.0L Híbrido",
+        "consumptionMixed": "",
+        "power": "215 HP",
+        "torque": "500 Nm",
+        "brandBonus": 8500000,
+        "financingBonus": 1000000,
+        "listPrice": 39490000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      },
+      "4x4-flagship-8at": {
+        "motor": "2.0L Híbrido",
+        "consumptionMixed": "",
+        "power": "215 HP",
+        "torque": "500 Nm",
+        "brandBonus": 5000000,
+        "financingBonus": 1000000,
+        "listPrice": 41490000,
+        "bonusPrice": 35490000,
+        "ivaIncluded": true
+      }
+    },
+    "deliver-9-cargo": {
+      "l2h2": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,2 km/l",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 1600000,
+        "financingBonus": 600000,
+        "listPrice": 24690000,
+        "bonusPrice": 22490000,
+        "ivaIncluded": false
+      },
+      "l3h2": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,2 km/l",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 25490000,
+        "bonusPrice": 24890000,
+        "ivaIncluded": false
+      },
+      "l3h3": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 25990000,
+        "bonusPrice": 25390000,
+        "ivaIncluded": false
+      },
+      "l3h3-rwd-glx": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,2 km/l",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 31990000,
+        "bonusPrice": 31390000,
+        "ivaIncluded": false
+      }
+    },
+    "deliver-9-escolar": {
+      "escolar-261-color-blanco": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "148 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 35990000,
+        "bonusPrice": 35390000,
+        "ivaIncluded": false
+      }
+    },
+    "deliver-9-pasajeros": {
+      "minibus-151-l3h2-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "148 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 34990000,
+        "bonusPrice": 34390000,
+        "ivaIncluded": false
+      },
+      "minibus-151-l3h2-8at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "148 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 37090000,
+        "bonusPrice": 36490000,
+        "ivaIncluded": false
+      }
+    },
+    "edeliver-9-cargo": {
+      "l2h2": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "200 HP",
+        "torque": "310 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 34990000,
+        "bonusPrice": 34990000,
+        "ivaIncluded": false
+      },
+      "l3h2": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "200 HP",
+        "torque": "310 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 41990000,
+        "bonusPrice": 41990000,
+        "ivaIncluded": false
+      }
+    },
+    "euniq-5": {
+      "euniq-5": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "3,9 km/kWh",
+        "power": "174 HP",
+        "torque": "310 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 27251000,
+        "bonusPrice": 27251000,
+        "ivaIncluded": true
+      }
+    },
+    "g10-cargo": {
+      "cargo-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "8,9 km/l",
+        "power": "160 HP",
+        "torque": "390 Nm",
+        "brandBonus": 400000,
+        "financingBonus": 600000,
+        "listPrice": 20990000,
+        "bonusPrice": 19990000,
+        "ivaIncluded": false
+      }
+    },
+    "g10-minibus": {
+      "minibus-91-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "12,7 km/l",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 1800000,
+        "financingBonus": 600000,
+        "listPrice": 25390000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": false
+      },
+      "minibus-61-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "12,7 km/l",
+        "power": "163 HP",
+        "torque": "375 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 25390000,
+        "bonusPrice": 24790000,
+        "ivaIncluded": false
+      }
+    },
+    "g90-minibus": {
+      "minibus-elite-61-at": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,3 km/l",
+        "power": "159 HP",
+        "torque": "390 Nm",
+        "brandBonus": 2400000,
+        "financingBonus": 600000,
+        "listPrice": 28990000,
+        "bonusPrice": 25990000,
+        "ivaIncluded": false
+      },
+      "minibus-luxury-61-at": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,3 km/l",
+        "power": "159 HP",
+        "torque": "390 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 500000,
+        "listPrice": 35990000,
+        "bonusPrice": 34490000,
+        "ivaIncluded": false
+      }
+    },
+    "mifa-9": {
+      "mifa-9": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "242 HP",
+        "torque": "350 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 54590000,
+        "bonusPrice": 54590000,
+        "ivaIncluded": true
+      }
+    },
+    "t60-dx": {
+      "4x2-dx-mt-e6-gasolina": {
+        "motor": "2.4L",
+        "consumptionMixed": "",
+        "power": "158 HP",
+        "torque": "225 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 14990000,
+        "bonusPrice": 11990000,
+        "ivaIncluded": false
+      },
+      "sc-4x2-dx-plus-6mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 2700000,
+        "financingBonus": 1000000,
+        "listPrice": 19690000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": false
+      },
+      "4x2-dx-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 5000000,
+        "financingBonus": 1000000,
+        "listPrice": 19990000,
+        "bonusPrice": 13990000,
+        "ivaIncluded": false
+      },
+      "4x2-dx-plus-6mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 19990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": false
+      },
+      "sc-4x4-dx-plus-6mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 1600000,
+        "financingBonus": 1000000,
+        "listPrice": 20590000,
+        "bonusPrice": 17990000,
+        "ivaIncluded": false
+      },
+      "4x4-dx-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3200000,
+        "financingBonus": 1000000,
+        "listPrice": 21490000,
+        "bonusPrice": 17290000,
+        "ivaIncluded": false
+      },
+      "4x4-dx-plus-6mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 2600000,
+        "financingBonus": 1000000,
+        "listPrice": 21490000,
+        "bonusPrice": 17890000,
+        "ivaIncluded": false
+      },
+      "4x4-ancap-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3200000,
+        "financingBonus": 1000000,
+        "listPrice": 24190000,
+        "bonusPrice": 19990000,
+        "ivaIncluded": false
+      }
+    },
+    "t60-gl-glx": {
+      "4x2-gl-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 20990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": false
+      },
+      "4x2-gl-6mt-e6-4ab": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 20990000,
+        "bonusPrice": 16990000,
+        "ivaIncluded": false
+      },
+      "4x2-gl-at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 2600000,
+        "financingBonus": 1000000,
+        "listPrice": 21590000,
+        "bonusPrice": 17990000,
+        "ivaIncluded": false
+      },
+      "4x2-gl-8at-e6-4ab": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 1600000,
+        "financingBonus": 1000000,
+        "listPrice": 21590000,
+        "bonusPrice": 18990000,
+        "ivaIncluded": false
+      },
+      "4x4-gl-mt-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3100000,
+        "financingBonus": 1000000,
+        "listPrice": 22590000,
+        "bonusPrice": 18490000,
+        "ivaIncluded": false
+      },
+      "4x4-gl-6mt-e6-4ab": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 2600000,
+        "financingBonus": 1000000,
+        "listPrice": 22590000,
+        "bonusPrice": 18990000,
+        "ivaIncluded": false
+      },
+      "4x4-glx-at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 4200000,
+        "financingBonus": 1000000,
+        "listPrice": 26690000,
+        "bonusPrice": 21490000,
+        "ivaIncluded": false
+      }
+    },
+    "t60-max": {
+      "4x4-gl-8at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 1000000,
+        "listPrice": 24990000,
+        "bonusPrice": 20590000,
+        "ivaIncluded": false
+      },
+      "4x4-glx-8at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "163 HP",
+        "torque": "400 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 1000000,
+        "listPrice": 26990000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": false
+      }
+    },
+    "t90": {
+      "4x4-at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,1 km/l",
+        "power": "215 HP",
+        "torque": "500 Nm",
+        "brandBonus": 5700000,
+        "financingBonus": 1000000,
+        "listPrice": 29690000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": false
+      },
+      "adventure-4x4-at-e6": {
+        "motor": "2.0L",
+        "consumptionMixed": "9,1 km/l",
+        "power": "215 HP",
+        "torque": "500 Nm",
+        "brandBonus": 4000000,
+        "financingBonus": 1000000,
+        "listPrice": 34990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": false
+      }
+    },
+    "t90-ev": {
+      "4x2-at": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "174 HP",
+        "torque": "310 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 27990000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": false
+      }
+    }
+  },
+  "mg": {
+    "cyberster": {
+      "77-khw": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "446 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 59990000,
+        "bonusPrice": 59990000,
+        "ivaIncluded": true
+      },
+      "77-khw-awd": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "535 HP",
+        "torque": "725 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 67990000,
+        "bonusPrice": 67990000,
+        "ivaIncluded": true
+      }
+    },
+    "marvel-r": {
+      "dlx": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "177 HP",
+        "torque": "410 Nm",
+        "brandBonus": 10000000,
+        "financingBonus": 1000000,
+        "listPrice": 40990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-3": {
+      "15l-mt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,8 km/l",
+        "power": "108 HP",
+        "torque": "142 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 500000,
+        "listPrice": 12090000,
+        "bonusPrice": 10990000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,8 km/l",
+        "power": "108 HP",
+        "torque": "142 Nm",
+        "brandBonus": 0,
+        "financingBonus": 500000,
+        "listPrice": 13290000,
+        "bonusPrice": 12790000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-dlx": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,8 km/l",
+        "power": "108 HP",
+        "torque": "142 Nm",
+        "brandBonus": 0,
+        "financingBonus": 500000,
+        "listPrice": 14290000,
+        "bonusPrice": 13790000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-3-hybrid": {
+      "15l-hev-com": {
+        "motor": "1.5L Híbrido",
+        "consumptionMixed": "43,5 km/l",
+        "power": "191 HP",
+        "torque": "425 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1200000,
+        "listPrice": 16990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-4-ev": {
+      "51kwh-std": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "167 HP",
+        "torque": "",
+        "brandBonus": 4000000,
+        "financingBonus": 1000000,
+        "listPrice": 26990000,
+        "bonusPrice": 21990000,
+        "ivaIncluded": true
+      },
+      "64kwh-dlx": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "201 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 29990000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      },
+      "77kwh-dlx": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "241 HP",
+        "torque": "350 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 31990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-4-xpower": {
+      "64kwh-dlx-4wd-xpower": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "402 HP",
+        "torque": "600 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 34990000,
+        "bonusPrice": 32990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-5": {
+      "15l-mt-std": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "114 HP",
+        "torque": "142 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 500000,
+        "listPrice": 12290000,
+        "bonusPrice": 9790000,
+        "ivaIncluded": true
+      },
+      "15l-mt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "114 HP",
+        "torque": "142 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 500000,
+        "listPrice": 12990000,
+        "bonusPrice": 10490000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "114 HP",
+        "torque": "142 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 500000,
+        "listPrice": 13990000,
+        "bonusPrice": 11490000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-dlx": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "114 HP",
+        "torque": "142 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 500000,
+        "listPrice": 14990000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-gt": {
+      "15l-mt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "20,4 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 3800000,
+        "financingBonus": 500000,
+        "listPrice": 14790000,
+        "bonusPrice": 10490000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "20,4 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 3800000,
+        "financingBonus": 500000,
+        "listPrice": 16490000,
+        "bonusPrice": 12190000,
+        "ivaIncluded": true
+      },
+      "15t-dct-dlx": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "20,4 km/l",
+        "power": "160 HP",
+        "torque": "150 Nm",
+        "brandBonus": 4100000,
+        "financingBonus": 500000,
+        "listPrice": 19290000,
+        "bonusPrice": 14690000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-hs": {
+      "15t-dct-dlx": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "14,8 km/l",
+        "power": "168 HP",
+        "torque": "250 Nm",
+        "brandBonus": 4500000,
+        "financingBonus": 700000,
+        "listPrice": 19990000,
+        "bonusPrice": 14790000,
+        "ivaIncluded": true
+      },
+      "15t-dct-trophy": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "14,8 km/l",
+        "power": "168 HP",
+        "torque": "250 Nm",
+        "brandBonus": 4500000,
+        "financingBonus": 700000,
+        "listPrice": 21490000,
+        "bonusPrice": 16290000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-one": {
+      "15t-cvt-com-euro-6b": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "16,5 km/l",
+        "power": "168 HP",
+        "torque": "275 Nm",
+        "brandBonus": 2500000,
+        "financingBonus": 700000,
+        "listPrice": 17990000,
+        "bonusPrice": 14790000,
+        "ivaIncluded": true
+      },
+      "15t-cvt-dlx-euro-6b": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "16,5 km/l",
+        "power": "168 HP",
+        "torque": "275 Nm",
+        "brandBonus": 2500000,
+        "financingBonus": 700000,
+        "listPrice": 19790000,
+        "bonusPrice": 16590000,
+        "ivaIncluded": true
+      },
+      "15t-cvt-com-euro-6c": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "16,5 km/l",
+        "power": "168 HP",
+        "torque": "275 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 17990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": true
+      },
+      "15t-cvt-dlx-euro-6c": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "16,5 km/l",
+        "power": "168 HP",
+        "torque": "275 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2800000,
+        "listPrice": 19790000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-rx5": {
+      "15t-dct-com": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,9 km/l",
+        "power": "168 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 700000,
+        "listPrice": 18490000,
+        "bonusPrice": 16790000,
+        "ivaIncluded": true
+      },
+      "15t-dct-dlx": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "15,9 km/l",
+        "power": "168 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 700000,
+        "listPrice": 19990000,
+        "bonusPrice": 18290000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-zs": {
+      "15l-mt-std": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,6 km/l",
+        "power": "114 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 15890000,
+        "bonusPrice": 11890000,
+        "ivaIncluded": true
+      },
+      "15l-mt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,6 km/l",
+        "power": "114 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 16890000,
+        "bonusPrice": 12890000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-std": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,6 km/l",
+        "power": "114 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 16490000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-com": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,6 km/l",
+        "power": "114 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 17790000,
+        "bonusPrice": 13790000,
+        "ivaIncluded": true
+      },
+      "15t-cvt-dlx": {
+        "motor": "1.5L Turbo",
+        "consumptionMixed": "17,6 km/l",
+        "power": "168 HP",
+        "torque": "275 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 3000000,
+        "listPrice": 20490000,
+        "bonusPrice": 16490000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-zs-ev": {
+      "dlx-72khw": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "154 HP",
+        "torque": "280 Nm",
+        "brandBonus": 6000000,
+        "financingBonus": 1000000,
+        "listPrice": 33990000,
+        "bonusPrice": 26990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-zs-hybrid": {
+      "15l-hev-com": {
+        "motor": "1.5L Híbrido",
+        "consumptionMixed": "43,5 km/l",
+        "power": "191 HP",
+        "torque": "465 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 2000000,
+        "listPrice": 20990000,
+        "bonusPrice": 17990000,
+        "ivaIncluded": true
+      }
+    },
+    "mg-zx": {
+      "15l-cvt-com-euro-6b": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 2800000,
+        "financingBonus": 700000,
+        "listPrice": 14990000,
+        "bonusPrice": 11490000,
+        "ivaIncluded": true
+      },
+      "15l-8-cvt-dlx-euro-6b": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 2900000,
+        "financingBonus": 700000,
+        "listPrice": 16090000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      },
+      "15l-mt-com-euro-6c": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 2300000,
+        "listPrice": 14290000,
+        "bonusPrice": 8990000,
+        "ivaIncluded": true
+      },
+      "15l-mt-dlx-euro-6c": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 3400000,
+        "financingBonus": 1600000,
+        "listPrice": 14990000,
+        "bonusPrice": 9990000,
+        "ivaIncluded": true
+      },
+      "15l-cvt-com-euro-6c": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,1 km/l",
+        "power": "112 HP",
+        "torque": "150 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1700000,
+        "listPrice": 14990000,
+        "bonusPrice": 12490000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "mini": {
+    "aceman": {
+      "e-classic": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "14,1 kWh/100km",
+        "power": "",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 7000000,
+        "listPrice": 36990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      },
+      "se-favoured": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "14,0 kWh/100km",
+        "power": "",
+        "torque": "330 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 41990000,
+        "bonusPrice": 36990000,
+        "ivaIncluded": true
+      }
+    },
+    "cooper-3-puertas": {
+      "c-15-hb-3p-classic": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,5 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 34990000,
+        "bonusPrice": 28990000,
+        "ivaIncluded": true
+      },
+      "c-15-hb-3p-favoured": {
+        "motor": "1.5L",
+        "consumptionMixed": "17,0 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 36990000,
+        "bonusPrice": 33990000,
+        "ivaIncluded": true
+      },
+      "s-20-hb-3p-favoured": {
+        "motor": "2.0L",
+        "consumptionMixed": "15,0 km/l",
+        "power": "204 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 4000000,
+        "listPrice": 39990000,
+        "bonusPrice": 35990000,
+        "ivaIncluded": true
+      }
+    },
+    "cooper-5-puertas": {
+      "c-15-hb-5p-classic": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,8 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 35990000,
+        "bonusPrice": 33990000,
+        "ivaIncluded": true
+      },
+      "s-20-hb-5p-favoured": {
+        "motor": "2.0L",
+        "consumptionMixed": "15,3 km/l",
+        "power": "204 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 40990000,
+        "bonusPrice": 35990000,
+        "ivaIncluded": true
+      }
+    },
+    "cooper-cabrio": {
+      "s-20-cabrio-favoured": {
+        "motor": "2.0L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "204 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 45990000,
+        "bonusPrice": 43990000,
+        "ivaIncluded": true
+      }
+    },
+    "cooper-electrico": {
+      "e-classic": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "5,5 km/kWh",
+        "power": "184 HP",
+        "torque": "290 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 35990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      },
+      "se-favoured": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,3 km/kWh",
+        "power": "218 HP",
+        "torque": "330 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 40990000,
+        "bonusPrice": 37990000,
+        "ivaIncluded": true
+      }
+    },
+    "countryman": {
+      "c-15-classic": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,4 km/l",
+        "power": "156 HP",
+        "torque": "280 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 37990000,
+        "bonusPrice": 34990000,
+        "ivaIncluded": true
+      },
+      "c-15-favoured": {
+        "motor": "1.5L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "156 HP",
+        "torque": "230 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 41990000,
+        "bonusPrice": 41990000,
+        "ivaIncluded": true
+      },
+      "s-all4-20-favoured": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,5 km/l",
+        "power": "204 HP",
+        "torque": "300 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 48990000,
+        "bonusPrice": 47990000,
+        "ivaIncluded": true
+      },
+      "d-20-favoured": {
+        "motor": "2.0L",
+        "consumptionMixed": "15,4 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 0,
+        "financingBonus": 5000000,
+        "listPrice": 43990000,
+        "bonusPrice": 38990000,
+        "ivaIncluded": true
+      },
+      "e-classic-electrico": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "204 HP",
+        "torque": "250 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 48990000,
+        "bonusPrice": 48990000,
+        "ivaIncluded": true
+      }
+    },
+    "jcw-3-puertas": {
+      "spitfire-20-hb-3p": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "231 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 6000000,
+        "listPrice": 44990000,
+        "bonusPrice": 38990000,
+        "ivaIncluded": true
+      },
+      "20-hb-3p": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "231 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 48990000,
+        "bonusPrice": 46990000,
+        "ivaIncluded": true
+      },
+      "20-hb-3p-gp-inspired": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "231 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 49990000,
+        "bonusPrice": 47990000,
+        "ivaIncluded": true
+      }
+    },
+    "jcw-aceman": {
+      "jcw-e": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "16,4 kWh/100km",
+        "power": "258 HP",
+        "torque": "350 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 48990000,
+        "bonusPrice": 46990000,
+        "ivaIncluded": true
+      }
+    },
+    "jcw-cabrio": {
+      "spitfire-cabrio-20": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "231 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 47990000,
+        "bonusPrice": 46490000,
+        "ivaIncluded": true
+      },
+      "cabrio-20": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "231 HP",
+        "torque": "380 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 50990000,
+        "bonusPrice": 49490000,
+        "ivaIncluded": true
+      }
+    },
+    "jcw-countryman-all4": {
+      "jcw-all4-20": {
+        "motor": "2.0L",
+        "consumptionMixed": "12,8 km/l",
+        "power": "300 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1500000,
+        "listPrice": 54990000,
+        "bonusPrice": 53490000,
+        "ivaIncluded": true
+      }
+    },
+    "jcw-electrico": {
+      "e-hea": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,3 km/kWh",
+        "power": "258 HP",
+        "torque": "350 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3500000,
+        "listPrice": 46990000,
+        "bonusPrice": 43490000,
+        "ivaIncluded": true
+      },
+      "e": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "6,3 km/kWh",
+        "power": "258 HP",
+        "torque": "350 Nm",
+        "brandBonus": 0,
+        "financingBonus": 2000000,
+        "listPrice": 47990000,
+        "bonusPrice": 45990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "soueast": {
+    "s06": {
+      "15t-6dct-lux": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "154 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 17990000,
+        "bonusPrice": 14990000,
+        "ivaIncluded": true
+      },
+      "16t-7dct-lux": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "194 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 18990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "16t-7dct-limited": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "194 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 1000000,
+        "listPrice": 20490000,
+        "bonusPrice": 17490000,
+        "ivaIncluded": true
+      }
+    },
+    "s06-phev": {
+      "limited": {
+        "motor": "1.5L PHEV",
+        "consumptionMixed": "",
+        "power": "355 HP",
+        "torque": "",
+        "brandBonus": 3000000,
+        "financingBonus": 2000000,
+        "listPrice": 26990000,
+        "bonusPrice": 21990000,
+        "ivaIncluded": true
+      }
+    },
+    "s07": {
+      "15t-6dct": {
+        "motor": "1.5L",
+        "consumptionMixed": "",
+        "power": "154 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 17990000,
+        "bonusPrice": 15990000,
+        "ivaIncluded": true
+      },
+      "16t-7dct": {
+        "motor": "1.6L",
+        "consumptionMixed": "",
+        "power": "194 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 19490000,
+        "bonusPrice": 17490000,
+        "ivaIncluded": true
+      }
+    },
+    "s09": {
+      "20t-7dct": {
+        "motor": "2.0L",
+        "consumptionMixed": "",
+        "power": "255 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 1500000,
+        "listPrice": 25990000,
+        "bonusPrice": 22990000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "toyota": {
+    "4runner": {
+      "sr5-24-ta-4x4": {
+        "motor": "2.4L",
+        "consumptionMixed": "9,3 km/l",
+        "power": "",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 500000,
+        "listPrice": 52990000,
+        "bonusPrice": 51490000,
+        "ivaIncluded": true
+      },
+      "limited-24-ta-4x4": {
+        "motor": "2.4L",
+        "consumptionMixed": "9,3 km/l",
+        "power": "",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 500000,
+        "listPrice": 58990000,
+        "bonusPrice": 57490000,
+        "ivaIncluded": true
+      }
+    },
+    "bz4x": {
+      "limited-4x2": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "221 HP",
+        "torque": "269 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 44990000,
+        "bonusPrice": 41990000,
+        "ivaIncluded": true
+      },
+      "limited-awd": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "338 HP",
+        "torque": "338 Nm",
+        "brandBonus": 0,
+        "financingBonus": 3000000,
+        "listPrice": 49990000,
+        "bonusPrice": 46990000,
+        "ivaIncluded": true
+      }
+    },
+    "corolla-cross-hibrido": {
+      "18-xei-cvt-hv": {
+        "motor": "1.8L Híbrido",
+        "consumptionMixed": "23,3 km/l",
+        "power": "122 HP",
+        "torque": "",
+        "brandBonus": 2000000,
+        "financingBonus": 500000,
+        "listPrice": 27990000,
+        "bonusPrice": 25490000,
+        "ivaIncluded": true
+      },
+      "18-seg-cvt-hv": {
+        "motor": "1.8L Híbrido",
+        "consumptionMixed": "23,3 km/l",
+        "power": "122 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 29990000,
+        "bonusPrice": 29990000,
+        "ivaIncluded": true
+      }
+    },
+    "corolla-sedan-hibrido": {
+      "xli-18-ecvt-hibrido": {
+        "motor": "1.8L Híbrido",
+        "consumptionMixed": "22,6 km/l",
+        "power": "122 HP",
+        "torque": "142 Nm",
+        "brandBonus": 900000,
+        "financingBonus": 600000,
+        "listPrice": 24790000,
+        "bonusPrice": 23290000,
+        "ivaIncluded": true
+      },
+      "xei-18-ecvt-hibrido": {
+        "motor": "1.8L Híbrido",
+        "consumptionMixed": "22,6 km/l",
+        "power": "122 HP",
+        "torque": "142 Nm",
+        "brandBonus": 400000,
+        "financingBonus": 500000,
+        "listPrice": 25790000,
+        "bonusPrice": 24890000,
+        "ivaIncluded": true
+      },
+      "seg-18-ecvt-hibrido": {
+        "motor": "1.8L Híbrido",
+        "consumptionMixed": "22,6 km/l",
+        "power": "122 HP",
+        "torque": "142 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 725000,
+        "listPrice": 28490000,
+        "bonusPrice": 27265000,
+        "ivaIncluded": true
+      }
+    },
+    "fortuner": {
+      "sr5-4x4-at-tdi-28l-diesel": {
+        "motor": "2.8L",
+        "consumptionMixed": "13,1 km/l",
+        "power": "201 HP",
+        "torque": "420 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 44390000,
+        "bonusPrice": 42390000,
+        "ivaIncluded": true
+      },
+      "srx-4x4-at-tdi-28l-diesel": {
+        "motor": "2.8L",
+        "consumptionMixed": "13,1 km/l",
+        "power": "201 HP",
+        "torque": "500 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 51090000,
+        "bonusPrice": 49090000,
+        "ivaIncluded": true
+      },
+      "sr5-4x4-mt-tdi-28l-diesel": {
+        "motor": "2.8L",
+        "consumptionMixed": "13,8 km/l",
+        "power": "201 HP",
+        "torque": "420 Nm",
+        "brandBonus": 1800000,
+        "financingBonus": 1300000,
+        "listPrice": 42890000,
+        "bonusPrice": 39790000,
+        "ivaIncluded": true
+      }
+    },
+    "fortuner-gr-s": {
+      "4x4-28-at": {
+        "motor": "2.8L",
+        "consumptionMixed": "9,1 km/l",
+        "power": "221 HP",
+        "torque": "550 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 53090000,
+        "bonusPrice": 52490000,
+        "ivaIncluded": true
+      }
+    },
+    "hilux": {
+      "4x2-24-mt-dx-euro-vi": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 500000,
+        "listPrice": 33990000,
+        "bonusPrice": 33490000,
+        "ivaIncluded": false
+      },
+      "4x2-24-mt-dx-euro-vi-tss": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 35790000,
+        "bonusPrice": 35790000,
+        "ivaIncluded": false
+      },
+      "4x2-24-mt-sr-euro-vi": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 1400000,
+        "financingBonus": 300000,
+        "listPrice": 34790000,
+        "bonusPrice": 33090000,
+        "ivaIncluded": false
+      },
+      "4x4-24-mt-dx-euro-vi": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 500000,
+        "listPrice": 38690000,
+        "bonusPrice": 37190000,
+        "ivaIncluded": false
+      },
+      "4x4-24-mt-dx-euro-vi-tss": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 40490000,
+        "bonusPrice": 40490000,
+        "ivaIncluded": false
+      },
+      "4x4-24-mt-sr-euro-vi": {
+        "motor": "2.4L",
+        "consumptionMixed": "13,2 km/l",
+        "power": "148 HP",
+        "torque": "400 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 300000,
+        "listPrice": 41290000,
+        "bonusPrice": 39990000,
+        "ivaIncluded": false
+      },
+      "4x4-28-mt-sr-euro-vi": {
+        "motor": "2.8L",
+        "consumptionMixed": "12,9 km/l",
+        "power": "201 HP",
+        "torque": "420 Nm",
+        "brandBonus": 0,
+        "financingBonus": 500000,
+        "listPrice": 45290000,
+        "bonusPrice": 44790000,
+        "ivaIncluded": false
+      },
+      "4x4-28-at-srv-euro-vi": {
+        "motor": "2.8L",
+        "consumptionMixed": "12,0 km/l",
+        "power": "201 HP",
+        "torque": "500 Nm",
+        "brandBonus": 0,
+        "financingBonus": 800000,
+        "listPrice": 48590000,
+        "bonusPrice": 47790000,
+        "ivaIncluded": false
+      }
+    },
+    "hilux-gr-s": {
+      "4x4-28-at": {
+        "motor": "2.8L",
+        "consumptionMixed": "12,0 km/l",
+        "power": "221 HP",
+        "torque": "550 Nm",
+        "brandBonus": 0,
+        "financingBonus": 400000,
+        "listPrice": 52990000,
+        "bonusPrice": 52590000,
+        "ivaIncluded": false
+      }
+    },
+    "land-cruiser-prado": {
+      "vx-l-28": {
+        "motor": "2.8L",
+        "consumptionMixed": "11,4 km/l",
+        "power": "201 HP",
+        "torque": "500 Nm",
+        "brandBonus": 3000000,
+        "financingBonus": 500000,
+        "listPrice": 74990000,
+        "bonusPrice": 71490000,
+        "ivaIncluded": true
+      },
+      "wx-adventure-28": {
+        "motor": "2.8L",
+        "consumptionMixed": "11,4 km/l",
+        "power": "201 HP",
+        "torque": "500 Nm",
+        "brandBonus": 3500000,
+        "financingBonus": 500000,
+        "listPrice": 66990000,
+        "bonusPrice": 62990000,
+        "ivaIncluded": true
+      }
+    },
+    "raize": {
+      "i-mt": {
+        "motor": "1.2L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "87 HP",
+        "torque": "113 Nm",
+        "brandBonus": 1400000,
+        "financingBonus": 600000,
+        "listPrice": 13990000,
+        "bonusPrice": 11990000,
+        "ivaIncluded": true
+      },
+      "e-mt": {
+        "motor": "1.2L",
+        "consumptionMixed": "18,9 km/l",
+        "power": "87 HP",
+        "torque": "113 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 450000,
+        "listPrice": 15990000,
+        "bonusPrice": 14940000,
+        "ivaIncluded": true
+      },
+      "e-cvt": {
+        "motor": "1.2L",
+        "consumptionMixed": "17,9 km/l",
+        "power": "87 HP",
+        "torque": "113 Nm",
+        "brandBonus": 1200000,
+        "financingBonus": 250000,
+        "listPrice": 16990000,
+        "bonusPrice": 15540000,
+        "ivaIncluded": true
+      },
+      "g-cvt": {
+        "motor": "1.2L",
+        "consumptionMixed": "17,9 km/l",
+        "power": "87 HP",
+        "torque": "113 Nm",
+        "brandBonus": 300000,
+        "financingBonus": 500000,
+        "listPrice": 18490000,
+        "bonusPrice": 17690000,
+        "ivaIncluded": true
+      }
+    },
+    "rav4": {
+      "le-20-4x2-cvt": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "170 HP",
+        "torque": "203 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 28990000,
+        "bonusPrice": 27990000,
+        "ivaIncluded": true
+      },
+      "xle-20-4x2-cvt": {
+        "motor": "2.0L",
+        "consumptionMixed": "14,7 km/l",
+        "power": "170 HP",
+        "torque": "203 Nm",
+        "brandBonus": 0,
+        "financingBonus": 500000,
+        "listPrice": 32490000,
+        "bonusPrice": 31990000,
+        "ivaIncluded": true
+      },
+      "le-20-4x4-cvt": {
+        "motor": "2.0L",
+        "consumptionMixed": "13,8 km/l",
+        "power": "170 HP",
+        "torque": "203 Nm",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 29990000,
+        "bonusPrice": 28990000,
+        "ivaIncluded": true
+      }
+    },
+    "rav4-hibrido": {
+      "xle-hv-25-cvt": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "21,0 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 1700000,
+        "financingBonus": 250000,
+        "listPrice": 34690000,
+        "bonusPrice": 32740000,
+        "ivaIncluded": true
+      },
+      "xse-25-4x2-cvt-hv": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "21,0 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 1500000,
+        "financingBonus": 0,
+        "listPrice": 40390000,
+        "bonusPrice": 38890000,
+        "ivaIncluded": true
+      },
+      "ltd-25-4x4-cvt-hv": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "21,0 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 1000000,
+        "financingBonus": 0,
+        "listPrice": 41890000,
+        "bonusPrice": 40890000,
+        "ivaIncluded": true
+      },
+      "le-hev-25-cvt": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "18,5 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 1000000,
+        "listPrice": 33490000,
+        "bonusPrice": 32490000,
+        "ivaIncluded": true
+      },
+      "xle-hev-25-4x2-ctv": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "18,5 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 36990000,
+        "bonusPrice": 36990000,
+        "ivaIncluded": true
+      },
+      "xse-hev-25-4x4-ctv": {
+        "motor": "2.5L Híbrido",
+        "consumptionMixed": "16,4 km/l",
+        "power": "219 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 42990000,
+        "bonusPrice": 42990000,
+        "ivaIncluded": true
+      }
+    },
+    "yaris-cross-hibrido": {
+      "xi-15-hibrido-cvt": {
+        "motor": "1.5L Híbrido",
+        "consumptionMixed": "26,3 km/l",
+        "power": "110 HP",
+        "torque": "141 Nm",
+        "brandBonus": 2000000,
+        "financingBonus": 800000,
+        "listPrice": 24590000,
+        "bonusPrice": 21790000,
+        "ivaIncluded": true
+      },
+      "xg-15-hibrido-cvt": {
+        "motor": "1.5L Híbrido",
+        "consumptionMixed": "26,3 km/l",
+        "power": "110 HP",
+        "torque": "141 Nm",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 25490000,
+        "bonusPrice": 24890000,
+        "ivaIncluded": true
+      }
+    },
+    "yaris-gr": {
+      "16-mt": {
+        "motor": "1.6L",
+        "consumptionMixed": "11,7 km/l",
+        "power": "280 HP",
+        "torque": "390 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 54990000,
+        "bonusPrice": 54990000,
+        "ivaIncluded": true
+      },
+      "16-at": {
+        "motor": "1.6L",
+        "consumptionMixed": "10,9 km/l",
+        "power": "280 HP",
+        "torque": "390 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 56990000,
+        "bonusPrice": 56990000,
+        "ivaIncluded": true
+      }
+    },
+    "yaris-sedan": {
+      "i-mt": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,9 km/l",
+        "power": "105 HP",
+        "torque": "138 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 600000,
+        "listPrice": 14990000,
+        "bonusPrice": 13790000,
+        "ivaIncluded": true
+      },
+      "e-mt": {
+        "motor": "1.5L",
+        "consumptionMixed": "16,9 km/l",
+        "power": "105 HP",
+        "torque": "138 Nm",
+        "brandBonus": 400000,
+        "financingBonus": 200000,
+        "listPrice": 16490000,
+        "bonusPrice": 15890000,
+        "ivaIncluded": true
+      },
+      "e-cvt": {
+        "motor": "1.5L",
+        "consumptionMixed": "18,5 km/l",
+        "power": "105 HP",
+        "torque": "138 Nm",
+        "brandBonus": 0,
+        "financingBonus": 0,
+        "listPrice": 17490000,
+        "bonusPrice": 17490000,
+        "ivaIncluded": true
+      }
+    },
+    "yaris-sedan-hibrido": {
+      "hev-15-at-g": {
+        "motor": "1.5L Híbrido",
+        "consumptionMixed": "23,8 km/l",
+        "power": "101 HP",
+        "torque": "",
+        "brandBonus": 0,
+        "financingBonus": 600000,
+        "listPrice": 21990000,
+        "bonusPrice": 21390000,
+        "ivaIncluded": true
+      }
+    }
+  },
+  "volkswagen": {
+    "amarok": {
+      "30-v6-at-comfortline": {
+        "motor": "3.0L Turbo Diésel",
+        "consumptionMixed": "12,0 km/l",
+        "power": "258 HP",
+        "torque": "580 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 3500000,
+        "listPrice": 44490000,
+        "bonusPrice": 39990000,
+        "ivaIncluded": false
+      },
+      "30-v6-at-highline": {
+        "motor": "3.0L Turbo Diésel",
+        "consumptionMixed": "12,0 km/l",
+        "power": "258 HP",
+        "torque": "580 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1500000,
+        "listPrice": 47490000,
+        "bonusPrice": 44990000,
+        "ivaIncluded": false
+      },
+      "30-v6-at-extreme": {
+        "motor": "3.0L Turbo Diésel",
+        "consumptionMixed": "12,0 km/l",
+        "power": "258 HP",
+        "torque": "580 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1500000,
+        "listPrice": 49990000,
+        "bonusPrice": 47490000,
+        "ivaIncluded": false
+      }
+    },
+    "atlas": {
+      "20-tsi-at-comfortline-4motion": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "11,9 km/l",
+        "power": "273 HP",
+        "torque": "370 Nm",
+        "brandBonus": 1750000,
+        "financingBonus": 3250000,
+        "listPrice": 51990000,
+        "bonusPrice": 46990000,
+        "ivaIncluded": true
+      },
+      "20-tsi-at-limited-4motion": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "11,9 km/l",
+        "power": "273 HP",
+        "torque": "370 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1750000,
+        "listPrice": 55390000,
+        "bonusPrice": 53140000,
+        "ivaIncluded": true
+      }
+    },
+    "caravelle": {
+      "20-tdi-at---pasajeros-71": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "15,7 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1190000,
+        "listPrice": 35990000,
+        "bonusPrice": 34300000,
+        "ivaIncluded": false
+      }
+    },
+    "id4": {
+      "pro-82kwh": {
+        "motor": "Eléctrico",
+        "consumptionMixed": "",
+        "power": "286 HP",
+        "torque": "545 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1960000,
+        "listPrice": 53950000,
+        "bonusPrice": 50990000,
+        "ivaIncluded": true
+      }
+    },
+    "jetta": {
+      "14-tsi-at-comfortline-sky-eu6b": {
+        "motor": "1.4L Turbo",
+        "consumptionMixed": "22,2 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1300000,
+        "financingBonus": 2050000,
+        "listPrice": 25990000,
+        "bonusPrice": 22640000,
+        "ivaIncluded": true
+      },
+      "20-tsi-at-gli-eu6b": {
+        "motor": "2.0L Turbo",
+        "consumptionMixed": "17,0 km/l",
+        "power": "230 HP",
+        "torque": "350 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1500000,
+        "listPrice": 30990000,
+        "bonusPrice": 28990000,
+        "ivaIncluded": true
+      }
+    },
+    "nivus": {
+      "10-tsi-mt-comfortline-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,8 km/l",
+        "power": "101 HP",
+        "torque": "170 Nm",
+        "brandBonus": 1900000,
+        "financingBonus": 1600000,
+        "listPrice": 18890000,
+        "bonusPrice": 15390000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-comfortline-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,7 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 1250000,
+        "financingBonus": 1400000,
+        "listPrice": 20390000,
+        "bonusPrice": 17740000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,7 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 1200000,
+        "financingBonus": 1600000,
+        "listPrice": 21790000,
+        "bonusPrice": 18990000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-outfit-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,7 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 800000,
+        "financingBonus": 1800000,
+        "listPrice": 22590000,
+        "bonusPrice": 19990000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-comfortline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,9 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 1400000,
+        "listPrice": 20390000,
+        "bonusPrice": 18390000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,9 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 1450000,
+        "listPrice": 21790000,
+        "bonusPrice": 19740000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-outfit": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,9 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 250000,
+        "financingBonus": 1200000,
+        "listPrice": 22590000,
+        "bonusPrice": 21140000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-tera": {
+      "16-mt-trend": {
+        "motor": "1.6L",
+        "consumptionMixed": "17,7 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1300000,
+        "listPrice": 16590000,
+        "bonusPrice": 14790000,
+        "ivaIncluded": true
+      },
+      "16-mt-comfort": {
+        "motor": "1.6L",
+        "consumptionMixed": "17,7 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1300000,
+        "listPrice": 17490000,
+        "bonusPrice": 15690000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-comfort": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,0 km/l",
+        "power": "109 HP",
+        "torque": "170 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1300000,
+        "listPrice": 18990000,
+        "bonusPrice": 17190000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-high": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,0 km/l",
+        "power": "109 HP",
+        "torque": "170 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1300000,
+        "listPrice": 20690000,
+        "bonusPrice": 18890000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-outfit": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,0 km/l",
+        "power": "109 HP",
+        "torque": "170 Nm",
+        "brandBonus": 300000,
+        "financingBonus": 1400000,
+        "listPrice": 21090000,
+        "bonusPrice": 19390000,
+        "ivaIncluded": true
+      }
+    },
+    "nuevo-tiguan": {
+      "14-tsi-at-comfortline-eu6b": {
+        "motor": "1.4L Turbo",
+        "consumptionMixed": "16,3 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 36490000,
+        "bonusPrice": 34490000,
+        "ivaIncluded": true
+      },
+      "14-tsi-at-r-line-eu6b": {
+        "motor": "1.4L Turbo",
+        "consumptionMixed": "16,3 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 1000000,
+        "financingBonus": 1000000,
+        "listPrice": 39490000,
+        "bonusPrice": 37490000,
+        "ivaIncluded": true
+      }
+    },
+    "polo": {
+      "16-mt-comfortline": {
+        "motor": "1.6L",
+        "consumptionMixed": "17,2 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 1300000,
+        "financingBonus": 1500000,
+        "listPrice": 16990000,
+        "bonusPrice": 14190000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-comfortline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "20,2 km/l",
+        "power": "101 HP",
+        "torque": "170 Nm",
+        "brandBonus": 900000,
+        "financingBonus": 1300000,
+        "listPrice": 17990000,
+        "bonusPrice": 15790000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "20,2 km/l",
+        "power": "101 HP",
+        "torque": "170 Nm",
+        "brandBonus": 250000,
+        "financingBonus": 1300000,
+        "listPrice": 18990000,
+        "bonusPrice": 17440000,
+        "ivaIncluded": true
+      }
+    },
+    "polo-track": {
+      "16-mt-track": {
+        "motor": "1.6L",
+        "consumptionMixed": "17,2 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 850000,
+        "financingBonus": 1350000,
+        "listPrice": 14490000,
+        "bonusPrice": 12290000,
+        "ivaIncluded": true
+      }
+    },
+    "saveiro": {
+      "16-mt-cabina-simple-lite-eu6b": {
+        "motor": "1.6L",
+        "consumptionMixed": "14,6 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 840000,
+        "financingBonus": 950000,
+        "listPrice": 12640000,
+        "bonusPrice": 10850000,
+        "ivaIncluded": false
+      },
+      "16-mt-cabina-doble---radio-9-eu6b": {
+        "motor": "1.6L",
+        "consumptionMixed": "14,6 km/l",
+        "power": "110 HP",
+        "torque": "155 Nm",
+        "brandBonus": 840000,
+        "financingBonus": 950000,
+        "listPrice": 15340000,
+        "bonusPrice": 13550000,
+        "ivaIncluded": false
+      }
+    },
+    "t-cross": {
+      "10-tsi-at-comfortline-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,2 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 1800000,
+        "financingBonus": 1650000,
+        "listPrice": 21490000,
+        "bonusPrice": 18040000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,2 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 1250000,
+        "financingBonus": 1550000,
+        "listPrice": 22490000,
+        "bonusPrice": 19690000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline-sport-eu6b": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "18,2 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 1550000,
+        "financingBonus": 1400000,
+        "listPrice": 23290000,
+        "bonusPrice": 20340000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-comfortline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,4 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 850000,
+        "financingBonus": 1650000,
+        "listPrice": 21490000,
+        "bonusPrice": 18990000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,4 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 600000,
+        "financingBonus": 1400000,
+        "listPrice": 22490000,
+        "bonusPrice": 20490000,
+        "ivaIncluded": true
+      },
+      "10-tsi-at-highline-sport-s": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,4 km/l",
+        "power": "116 HP",
+        "torque": "200 Nm",
+        "brandBonus": 200000,
+        "financingBonus": 1100000,
+        "listPrice": 23990000,
+        "bonusPrice": 22690000,
+        "ivaIncluded": true
+      }
+    },
+    "taos": {
+      "14-tsi-at-comfortline-eu6b": {
+        "motor": "1.4L Turbo",
+        "consumptionMixed": "17,0 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 450000,
+        "financingBonus": 1600000,
+        "listPrice": 25790000,
+        "bonusPrice": 23740000,
+        "ivaIncluded": true
+      },
+      "14-tsi-at-highline-eu6b": {
+        "motor": "1.4L Turbo",
+        "consumptionMixed": "17,0 km/l",
+        "power": "150 HP",
+        "torque": "250 Nm",
+        "brandBonus": 350000,
+        "financingBonus": 1400000,
+        "listPrice": 29190000,
+        "bonusPrice": 27440000,
+        "ivaIncluded": true
+      }
+    },
+    "transporter": {
+      "20-tdi-mt---carga-puerta-simple": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "14,3 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 1199600,
+        "financingBonus": 1490400,
+        "listPrice": 29990000,
+        "bonusPrice": 27300000,
+        "ivaIncluded": false
+      },
+      "20-tdi-mt---carga-puerta-doble": {
+        "motor": "2.0L Turbo Diésel",
+        "consumptionMixed": "14,3 km/l",
+        "power": "150 HP",
+        "torque": "360 Nm",
+        "brandBonus": 500000,
+        "financingBonus": 1190000,
+        "listPrice": 30990000,
+        "bonusPrice": 29300000,
+        "ivaIncluded": false
+      }
+    },
+    "virtus": {
+      "10-tsi-at-comfortline-plus": {
+        "motor": "1.0L Turbo",
+        "consumptionMixed": "19,7 km/l",
+        "power": "109 HP",
+        "torque": "170 Nm",
+        "brandBonus": 2650000,
+        "financingBonus": 0,
+        "listPrice": 19890000,
+        "bonusPrice": 17240000,
+        "ivaIncluded": true
+      }
+    }
+  }
+}
