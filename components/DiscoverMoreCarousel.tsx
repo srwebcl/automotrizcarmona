@@ -37,8 +37,9 @@ const ITEMS = [
     {
         id: 5,
         title: "Car Advisor",
-        link: "/advisor",
-        image: `${CDN_HOME}/car-advisor.webp`
+        link: "https://www.car-advisor.cl/empresa/carmona/CL-29019",
+        image: `${CDN_HOME}/car-advisor.webp`,
+        external: true
     }
 ];
 
