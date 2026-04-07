@@ -293,7 +293,16 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                         className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg transition-all duration-500"
                                     >
                                         <div className="absolute inset-0">
-                                            <div className="absolute inset-0 bg-gray-100" />
+                                            {item.image ? (
+                                                <Image
+                                                    src={item.image.startsWith('http') ? item.image : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${item.image.replace(/^\//, '')}`}
+                                                    alt={item.title}
+                                                    fill
+                                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                                />
+                                            ) : (
+                                                <div className="absolute inset-0 bg-gray-100" />
+                                            )}
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-90 transition-opacity" />
                                         </div>
                                         <div className="absolute bottom-0 left-0 w-full p-8 text-white z-10">
