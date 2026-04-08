@@ -108,8 +108,8 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 <div className={`${mobileAspectRatio} md:aspect-[16/9] lg:aspect-[1200/420] w-full`} ref={heroEmblaRef}>
                     <div className="flex h-full">
                         {allBanners.map((slide: any, index: number) => (
-                            <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-transparent'}`}>
-                                {slide.web && slide.mobile ? (
+                            <div key={index} className={`relative flex-[0_0_100%] min-w-0 h-full ${slide.bg || 'bg-white'}`}>
+                                {slide.web && slide.mobile && (
                                     <>
                                         <div className="hidden md:block absolute inset-0 w-full h-full">
                                             <Image
@@ -126,26 +126,12 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                                 src={slide.mobile}
                                                 alt={`${config.name} Banner Mobile ${index + 1}`}
                                                 fill
-                                                className={slide.hasMobileSpecific ? "object-cover object-center" : "object-contain object-center bg-gray-900"}
+                                                className={slide.hasMobileSpecific ? "object-cover object-center" : "object-contain object-center bg-white"}
                                                 draggable={false}
                                                 priority={index === 0}
                                             />
                                         </div>
                                     </>
-                                ) : (
-                                    <div className="flex items-center justify-center h-full bg-gray-900">
-                                        <h2 className="text-white text-4xl font-black uppercase tracking-tighter">{config.name}</h2>
-                                    </div>
-                                )}
-
-                                {slide.title && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/10">
-                                        <div className="px-12 py-6 rounded-2xl">
-                                            <h2 className="text-white drop-shadow-lg text-4xl md:text-6xl font-black uppercase tracking-tighter text-center">
-                                                {slide.title}
-                                            </h2>
-                                        </div>
-                                    </div>
                                 )}
                             </div>
                         ))}
