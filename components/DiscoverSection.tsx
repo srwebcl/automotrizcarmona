@@ -8,25 +8,25 @@ export const DISCOVER_ITEMS = [
         title: 'Autos Nuevos',
         subtitle: 'Stock disponible',
         link: '/nuevos',
-        image: '/images/banners/NUEVO-TIGUAN-2025-07-1350x499.png',
+        image: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/autos-nuevos/cupra/mas-info/cupra-usados.webp',
     },
     {
         title: 'Seminuevos',
         subtitle: 'Calidad certificada',
         link: 'https://seminuevos.automotrizcarmona.cl',
-        image: '/images/toyota/Pickup/hilux/galeria_2408.jpg',
+        image: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/usados-info.png',
     },
     {
         title: 'Repuestos',
         subtitle: 'Repuestos genuinos',
         link: '/repuestos',
-        image: '/images/quick_access_repuestos_1770350949447.png',
+        image: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/repuestos-info.png',
     },
     {
         title: 'Sucursales',
         subtitle: 'Encuéntranos aquí',
         link: '/sucursales',
-        image: '/images/quick_access_servicio_1770350934207.png',
+        image: 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/sucursales-info.png',
     },
 ];
 
@@ -48,6 +48,8 @@ export default function DiscoverSection() {
                         <Link
                             key={item.title}
                             href={item.link}
+                            target={item.link.startsWith('http') ? '_blank' : undefined}
+                            rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                             className="group relative block aspect-[4/5] overflow-hidden rounded-2xl shadow-lg"
                         >
                             <div className="absolute inset-0">
