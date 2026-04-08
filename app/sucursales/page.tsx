@@ -32,153 +32,149 @@ const BRAND_LOGOS: Record<string, string> = {
     "DyP Multimarca": ""
 };
 
-const brandsConfig = [
+const SUCURSALES: any[] = [
+    // --- TOYOTA ---
     {
-        names: ['Volkswagen', 'Audi', 'Seat', 'Cupra'],
-        cityVentas: 'La Serena, Coquimbo',
-        addressVentas: 'Balmaceda 3570',
-        cityST: 'La Serena, Coquimbo',
-        addressST: 'Balmaceda 3812',
-        cityRepuestos: 'La Serena, Coquimbo',
-        addressRepuestos: 'Balmaceda 3812',
-        cityDyP: 'La Serena, Coquimbo',
-        addressDyP: 'Ruta 5 Norte Km 470',
-        isPremium: true
+        id: 1, type: 'Sala de Ventas', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena',
+        city: 'La Serena', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'lhurtado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3681+La+Serena'
     },
     {
-        names: ['BMW', 'Mini', 'BMW Motorrad'],
-        cityVentas: 'La Serena, Coquimbo',
-        addressVentas: 'Av. Balmaceda 2885',
-        cityST: 'La Serena, Coquimbo',
-        addressST: 'Av. Balmaceda 2885',
-        cityRepuestos: 'La Serena, Coquimbo',
-        addressRepuestos: 'Av. Balmaceda 2885',
-        cityDyP: 'Coquimbo, Coquimbo',
-        addressDyP: 'Planella 1234',
-        isPremium: true
+        id: 2, type: 'Servicio Técnico', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 5647 7727', email: 'callcenter@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3681+La+Serena'
     },
     {
-        names: ['Toyota', 'Honda', 'MG', 'Maxus', 'Jetour', 'Geely', 'Dongfeng', 'Kaiyi', 'Karry', 'Soueast', 'Foton'],
-        cityVentas: 'Coquimbo, Coquimbo',
-        addressVentas: 'Ruta 5 Norte Km 465',
-        cityST: 'Coquimbo, Coquimbo',
-        addressST: 'Ruta 5 Norte Km 465',
-        cityRepuestos: 'Coquimbo, Coquimbo',
-        addressRepuestos: 'Ruta 5 Norte Km 465',
-        cityDyP: 'Coquimbo, Coquimbo',
-        addressDyP: 'Planella 1234',
-        isPremium: false
+        id: 3, type: 'Repuestos', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena',
+        city: 'La Serena', manager: 'Encargado de Repuestos', schedule: 'L-V: 8:30 a 18:30 | Sáb: 9:00 a 13:00',
+        phone: '+56 51 220 0250', email: 'cmatac@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3681+La+Serena'
+    },
+
+    // --- VOLKSWAGEN ---
+    {
+        id: 4, type: 'Sala de Ventas', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena',
+        city: 'La Serena', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3812+La+Serena'
     },
     {
-        names: ['VW Camiones', 'Foton Camiones', 'Iveco', 'MAN'],
-        cityVentas: 'Coquimbo, Coquimbo',
-        addressVentas: 'Barrio Industrial 456',
-        cityST: 'Coquimbo, Coquimbo',
-        addressST: 'Barrio Industrial 456',
-        cityRepuestos: 'Coquimbo, Coquimbo',
-        addressRepuestos: 'Barrio Industrial 456',
-        cityDyP: 'Coquimbo, Coquimbo',
-        addressDyP: 'Planella 1234',
-        isPremium: false
+        id: 5, type: 'Servicio Técnico', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 5659 9895', email: 'callcentervw@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3812+La+Serena'
+    },
+    {
+        id: 6, type: 'Repuestos', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena',
+        city: 'La Serena', manager: 'Encargado de Repuestos', schedule: 'L-V: 8:30 a 18:30 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 3750 8754', email: 'sorrego@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3812+La+Serena'
+    },
+
+    // --- AUDI, CUPRA, SEAT ---
+    {
+        id: 7, type: 'Sala de Ventas', brandName: 'Audi', address: 'Avenida Balmaceda 3570, La Serena',
+        city: 'La Serena', manager: 'Asesor Premium', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3570+La+Serena'
+    },
+    {
+        id: 8, type: 'Sala de Ventas', brandName: 'Cupra', address: 'Avenida Balmaceda 3570, La Serena',
+        city: 'La Serena', manager: 'Asesor Premium', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3570+La+Serena'
+    },
+    {
+        id: 9, type: 'Sala de Ventas', brandName: 'Seat', address: 'Avenida Balmaceda 3570, La Serena',
+        city: 'La Serena', manager: 'Asesor Premium', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3570+La+Serena'
+    },
+
+    // --- HONDA ---
+    {
+        id: 10, type: 'Sala de Ventas', brandName: 'Honda', address: 'Avenida Balmaceda 3812, La Serena',
+        city: 'La Serena', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3812+La+Serena'
+    },
+    {
+        id: 11, type: 'Servicio Técnico', brandName: 'Honda', address: 'Avenida Balmaceda 3720, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 7879 4740', email: 'cmiles@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3720+La+Serena'
+    },
+
+    // --- BMW & MINI ---
+    {
+        id: 12, type: 'Sala de Ventas', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena',
+        city: 'La Serena', manager: 'Asesor Premium', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'cgonzalezr@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+5508+La+Serena'
+    },
+    {
+        id: 13, type: 'Servicio Técnico', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 7879 4735', email: 'mcataldo@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+5508+La+Serena'
+    },
+    {
+        id: 14, type: 'Repuestos', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena',
+        city: 'La Serena', manager: 'Encargado de Repuestos', schedule: 'L-V: 8:30 a 18:30 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 4508 9776', email: 'dtrigo@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+5508+La+Serena'
+    },
+
+    // --- MAXUS, KARRY, JETOUR, SOUEAST ---
+    {
+        id: 15, type: 'Sala de Ventas', brandName: 'Maxus', address: 'Avenida Balmaceda 5508, La Serena',
+        city: 'La Serena', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'sromao@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+5508+La+Serena'
+    },
+    {
+        id: 16, type: 'Servicio Técnico', brandName: 'Maxus', address: 'Avenida Estadio 3610, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
+        phone: '+56 9 7592 1328', email: 'callcentermm@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Estadio+3610+La+Serena'
+    },
+
+    // --- MG ---
+    {
+        id: 17, type: 'Sala de Ventas', brandName: 'MG', address: 'Avenida Balmaceda 3519, La Serena',
+        city: 'La Serena', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'frojasd@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3519+La+Serena'
+    },
+
+    // --- CAMIONES (IVECO, MAN, VW, FOTON) ---
+    {
+        id: 18, type: 'Sala de Ventas', brandName: 'VW Camiones', address: 'Ruta 5 Norte KM 470, La Serena',
+        city: 'La Serena', manager: 'Asesor Camiones', schedule: 'L-V: 8:30 a 18:30',
+        phone: '+56 9 8474 9397', email: 'arodriguez@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Ruta+5+Norte+KM+470+La+Serena'
+    },
+    {
+        id: 19, type: 'Servicio Técnico', brandName: 'Iveco', address: 'Ruta 5 Norte KM 470, La Serena',
+        city: 'La Serena', manager: 'Jefe de Taller Camiones', schedule: 'L-V: 8:00 a 18:00',
+        phone: '+56 9 7879 4741', email: 'garantiascamiones@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Ruta+5+Norte+KM+470+La+Serena'
+    },
+
+    // --- USADOS ---
+    {
+        id: 20, type: 'Sala de Ventas', brandName: 'Autos Usados', branchName: 'Seminuevos', address: 'Avenida Balmaceda 3572, La Serena',
+        city: 'La Serena', manager: 'Asesor Seminuevos', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'mfarias@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3572+La+Serena'
+    },
+    {
+        id: 21, type: 'Sala de Ventas', brandName: 'Autos Usados', branchName: 'Seminuevos Premium', address: 'Avenida Balmaceda 3720, La Serena',
+        city: 'La Serena', manager: 'Asesor Premium', schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
+        phone: '+56 9 8474 9397', email: 'crivera@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Avenida+Balmaceda+3720+La+Serena'
+    },
+
+    // --- COPIAPÓ ---
+    {
+        id: 22, type: 'Sala de Ventas', brandName: 'Toyota', branchName: 'Copiapó Livianos', address: 'Copayapu 149, Copiapó',
+        city: 'Copiapó', manager: 'Asesor de Ventas', schedule: 'L-V: 8:30 a 19:00',
+        phone: '+56 9 8474 9397', email: 'dgordillo@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Copayapu+149+Copiapo'
+    },
+    {
+        id: 23, type: 'Servicio Técnico', brandName: 'Toyota', branchName: 'Copiapó Servicio', address: 'Av. Longitudinal Norte 4559, Copiapó',
+        city: 'Copiapó', manager: 'Jefe de Taller', schedule: 'L-V: 8:00 a 18:00',
+        phone: '+56 9 7879 4734', email: 'jpdiaz@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Av.+Longitudinal+Norte+4559+Copiapo'
+    },
+
+    // --- DYP ---
+    {
+        id: 24, type: 'Desabolladura y Pintura', brandName: 'DyP Multimarca', address: 'Ruta 5 Norte KM 470, La Serena',
+        city: 'La Serena', manager: 'Jefe DyP', schedule: 'L-V: 8:00 a 18:00',
+        phone: '+56 9 7879 4738', email: 'calldyp@carmonaycia.cl', mapLink: 'https://maps.google.com/?q=Ruta+5+Norte+KM+470+La+Serena'
     }
 ];
-
-let globalId = 1;
-const SUCURSALES: any[] = [];
-
-brandsConfig.forEach(group => {
-    group.names.forEach(b => {
-        // 1. Ventas
-        SUCURSALES.push({
-            id: globalId++,
-            type: 'Sala de Ventas',
-            brandName: b,
-            address: group.addressVentas,
-            city: group.cityVentas,
-            manager: group.isPremium ? 'Asesor Premium' : 'Asesor de Ventas',
-            schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
-            phone: '+56 9 8474 9397',
-            email: 'ventas@carmona.cl',
-            image: '',
-            mapLink: 'https://maps.google.com/?q=' + encodeURIComponent(group.addressVentas + ' ' + group.cityVentas)
-        });
-
-        // 2. Servicio Técnico
-        SUCURSALES.push({
-            id: globalId++,
-            type: 'Servicio Técnico',
-            brandName: b,
-            address: group.addressST,
-            city: group.cityST,
-            manager: 'Jefe de Taller',
-            schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
-            phone: '+56 9 8474 9397',
-            email: 'taller@carmona.cl',
-            image: '',
-            mapLink: 'https://maps.google.com/?q=' + encodeURIComponent(group.addressST + ' ' + group.cityST)
-        });
-
-        // 3. Repuestos
-        SUCURSALES.push({
-            id: globalId++,
-            type: 'Repuestos',
-            brandName: b,
-            address: group.addressRepuestos,
-            city: group.cityRepuestos,
-            manager: 'Encargado de Repuestos',
-            schedule: 'L-V: 8:30 a 18:30 | Sáb: 9:00 a 13:00',
-            phone: '+56 9 8474 9397',
-            email: 'repuestos@carmona.cl',
-            image: '',
-            mapLink: 'https://maps.google.com/?q=' + encodeURIComponent(group.addressRepuestos + ' ' + group.cityRepuestos)
-        });
-
-        // 4. DyP
-        SUCURSALES.push({
-            id: globalId++,
-            type: 'Desabolladura y Pintura',
-            brandName: b,
-            address: group.addressDyP,
-            city: group.cityDyP,
-            manager: 'Jefe DyP',
-            schedule: 'L-V: 8:00 a 18:00 | Sáb: 9:00 a 13:00',
-            phone: '+56 9 8474 9397',
-            email: 'dyp@carmona.cl',
-            image: '',
-            mapLink: 'https://maps.google.com/?q=' + encodeURIComponent(group.addressDyP + ' ' + group.cityDyP)
-        });
-    });
-});
-
-// Seminuevos
-SUCURSALES.push({
-    id: globalId++,
-    type: 'Sala de Ventas',
-    brandName: 'Autos Usados',
-    branchName: 'Seminuevos',
-    address: 'Ruta 5 Norte Km 465',
-    city: 'Coquimbo, Coquimbo',
-    manager: 'Asesor Seminuevos',
-    schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
-    phone: '+56 9 8474 9397',
-    email: 'usados@carmona.cl',
-    image: '',
-    mapLink: 'https://maps.google.com/?q=Automotriz+Carmona+Coquimbo'
-});
-SUCURSALES.push({
-    id: globalId++,
-    type: 'Sala de Ventas',
-    brandName: 'Autos Usados',
-    branchName: 'Seminuevos Premium',
-    address: 'Av. Balmaceda 2885',
-    city: 'La Serena, Coquimbo',
-    manager: 'Asesor Premium',
-    schedule: 'L-V: 8:30 a 19:00 | Sáb: 9:00 a 14:00',
-    phone: '+56 9 8474 9397',
-    email: 'premium@carmona.cl',
-    image: '',
-    mapLink: 'https://maps.google.com/?q=Automotriz+Carmona+Premium'
-});
 
 const BRANDS = [...new Set(SUCURSALES.map(s => s.brandName))].sort();
 const SERVICES = [...new Set(SUCURSALES.map(s => s.type))].sort();

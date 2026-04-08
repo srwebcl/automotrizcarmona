@@ -509,15 +509,20 @@ function CotizarContent() {
                                 </div>
                             </div>
 
+                            {/* ── INFO DINÁMICA ── */}
                             <div className="space-y-5 mb-6">
                                 <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
                                         <MapPin size={18} className="text-[#d2001c]" />
                                     </div>
                                     <div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Dirección</p>
-                                        <p className="text-sm font-semibold text-gray-900">Av. Balmaceda 1234, La Serena</p>
-                                        <p className="text-xs text-gray-500 mt-0.5">IV Región, Chile</p>
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Casa Matriz / Dirección</p>
+                                        <p className="text-sm font-semibold text-gray-900">
+                                            {form.marca === 'Toyota' ? 'Avenida Balmaceda 3681, La Serena' : 
+                                             ['Volkswagen', 'Audi', 'Seat', 'Cupra', 'Honda'].includes(form.marca) ? 'Avenida Balmaceda 3812, La Serena' :
+                                             ['BMW', 'Mini', 'BMW Motorrad', 'Maxus'].includes(form.marca) ? 'Avenida Balmaceda 5508, La Serena' :
+                                             'Ruta 5 Norte KM 465, Coquimbo'}
+                                        </p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
@@ -526,18 +531,18 @@ function CotizarContent() {
                                     </div>
                                     <div>
                                         <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Correo Repuestos</p>
-                                        <a href="mailto:repuestos@carmonaycia.cl"
+                                        <a href={`mailto:${form.marca === 'Toyota' ? 'cmatac@carmonaycia.cl' : 'sorrego@carmonaycia.cl'}`}
                                             className="text-sm font-semibold text-gray-900 hover:text-[#d2001c] transition-colors break-all">
-                                            repuestos@carmonaycia.cl
+                                            {form.marca === 'Toyota' ? 'cmatac@carmonaycia.cl' : 'sorrego@carmonaycia.cl'}
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="border-t border-gray-100 pt-6 space-y-3">
-                                <a href="tel:+56512200201" id="rep-phone-btn"
+                                <a href="tel:+56984749397" id="rep-phone-btn"
                                     className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
-                                    <Phone size={18} /> Llamar +56 51 220 0201
+                                    <Phone size={18} /> Llamar +56 9 8474 9397
                                 </a>
                             </div>
 

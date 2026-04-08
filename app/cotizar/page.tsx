@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getModelDetails, getTruckBrands, getTrucksByBrand } from '@/lib/api';
-import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon } from 'lucide-react';
+import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone } from 'lucide-react';
 
 const STEPS = [
     { id: 1, label: 'Tu vehículo', icon: Car },
@@ -461,6 +461,28 @@ function CotizarContent() {
                                             </div>
                                         </div>
                                     )}
+                                    {/* ── INFO DINÁMICA DE CONTACTO ── */}
+                                    <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
+                                        <div className="flex items-start gap-3">
+                                            <MapPin size={18} className="text-[#d2001c] mt-0.5 flex-shrink-0" />
+                                            <div>
+                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Donde encontrarnos</p>
+                                                <p className="text-sm font-semibold text-gray-900">
+                                                    {marca.toLowerCase() === 'toyota' ? 'Avenida Balmaceda 3681, La Serena' : 
+                                                     ['volkswagen', 'audi', 'seat', 'cupra', 'honda'].includes(marca.toLowerCase()) ? 'Avenida Balmaceda 3812, La Serena' :
+                                                     ['bmw', 'mini', 'bmw motorrad', 'maxus'].includes(marca.toLowerCase()) ? 'Avenida Balmaceda 5508, La Serena' :
+                                                     'Ruta 5 Norte KM 465, Coquimbo'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <Phone size={18} className="text-[#d2001c] flex-shrink-0" />
+                                            <div>
+                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Central de Ventas</p>
+                                                <p className="text-sm font-semibold text-gray-900">+56 9 8474 9397</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </>
                             ) : (
                                 <div className="py-12 flex flex-col items-center justify-center text-center">
