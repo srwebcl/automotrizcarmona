@@ -5,7 +5,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getModelDetails, getTruckBrands, getTrucksByBrand } from '@/lib/api';
-import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone } from 'lucide-react';
+import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone, Store } from 'lucide-react';
+
+const SUCURSALES = [
+    { id: 1, type: 'Sala de Ventas', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'lhurtado@carmonaycia.cl' },
+    { id: 2, type: 'Servicio Técnico', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 5647 7727', email: 'callcenter@carmonaycia.cl' },
+    { id: 3, type: 'Repuestos', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 51 220 0250', email: 'cmatac@carmonaycia.cl' },
+    { id: 4, type: 'Sala de Ventas', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
+    { id: 5, type: 'Servicio Técnico', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 5659 9895', email: 'callcentervw@carmonaycia.cl' },
+    { id: 6, type: 'Repuestos', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 3750 8754', email: 'sorrego@carmonaycia.cl' },
+    { id: 10, type: 'Sala de Ventas', brandName: 'Honda', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
+    { id: 11, type: 'Servicio Técnico', brandName: 'Honda', address: 'Avenida Balmaceda 3720, La Serena', city: 'La Serena', phone: '+56 9 7879 4740', email: 'cmiles@carmonaycia.cl' },
+    { id: 12, type: 'Sala de Ventas', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'cgonzalezr@carmonaycia.cl' },
+    { id: 13, type: 'Servicio Técnico', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 7879 4735', email: 'mcataldo@carmonaycia.cl' },
+    { id: 14, type: 'Repuestos', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 4508 9776', email: 'dtrigo@carmonaycia.cl' },
+    { id: 15, type: 'Sala de Ventas', brandName: 'Maxus', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'sromao@carmonaycia.cl' },
+    { id: 16, type: 'Servicio Técnico', brandName: 'Maxus', address: 'Avenida Estadio 3610, La Serena', city: 'La Serena', phone: '+56 9 7592 1328', email: 'callcentermm@carmonaycia.cl' },
+    { id: 18, type: 'Sala de Ventas', brandName: 'VW Camiones', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'arodriguez@carmonaycia.cl' },
+    { id: 24, type: 'Desabolladura y Pintura', brandName: 'DyP Multimarca', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 7879 4738', email: 'calldyp@carmonaycia.cl' }
+];
 
 const STEPS = [
     { id: 1, label: 'Tu vehículo', icon: Car },
@@ -463,25 +481,34 @@ function CotizarContent() {
                                     )}
                                     {/* ── INFO DINÁMICA DE CONTACTO ── */}
                                     <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
-                                        <div className="flex items-start gap-3">
-                                            <MapPin size={18} className="text-[#d2001c] mt-0.5 flex-shrink-0" />
-                                            <div>
-                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Donde encontrarnos</p>
-                                                <p className="text-sm font-semibold text-gray-900">
-                                                    {marca.toLowerCase() === 'toyota' ? 'Avenida Balmaceda 3681, La Serena' : 
-                                                     ['volkswagen', 'audi', 'seat', 'cupra', 'honda'].includes(marca.toLowerCase()) ? 'Avenida Balmaceda 3812, La Serena' :
-                                                     ['bmw', 'mini', 'bmw motorrad', 'maxus'].includes(marca.toLowerCase()) ? 'Avenida Balmaceda 5508, La Serena' :
-                                                     'Ruta 5 Norte KM 465, Coquimbo'}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Phone size={18} className="text-[#d2001c] flex-shrink-0" />
-                                            <div>
-                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Central de Ventas</p>
-                                                <p className="text-sm font-semibold text-gray-900">+56 9 8474 9397</p>
-                                            </div>
-                                        </div>
+                                        {(() => {
+                                            const salesBranch = SUCURSALES.find(s => 
+                                                s.brandName.toLowerCase() === marca.toLowerCase() && 
+                                                s.type === 'Sala de Ventas'
+                                            ) || SUCURSALES.find(s => s.id === 1); // Fallback to Toyota Sales
+
+                                            return (
+                                                <>
+                                                    <div className="flex items-start gap-3">
+                                                        <MapPin size={18} className="text-[#d2001c] mt-0.5 flex-shrink-0" />
+                                                        <div>
+                                                            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Donde encontrarnos</p>
+                                                            <p className="text-sm font-semibold text-gray-900">
+                                                                {salesBranch?.address || 'Avenida Balmaceda 3681, La Serena'}
+                                                            </p>
+                                                            <p className="text-[11px] text-gray-500">{salesBranch?.city || 'La Serena'}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-3">
+                                                        <Phone size={18} className="text-[#d2001c] flex-shrink-0" />
+                                                        <div>
+                                                            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Central de Ventas</p>
+                                                            <p className="text-sm font-semibold text-gray-900">{salesBranch?.phone || '+56 9 8474 9397'}</p>
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            );
+                                        })()}
                                     </div>
                                 </>
                             ) : (

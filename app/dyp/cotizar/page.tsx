@@ -6,8 +6,26 @@ import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
     CheckCircle, MapPin, Mail, Phone, MessageCircle,
-    ChevronDown, ArrowLeft, ArrowRight, User, Car, ClipboardList, Search,
+    ChevronDown, ArrowLeft, ArrowRight, User, Car, ClipboardList, Search, Store
 } from 'lucide-react';
+
+const SUCURSALES = [
+    { id: 1, type: 'Sala de Ventas', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'lhurtado@carmonaycia.cl' },
+    { id: 2, type: 'Servicio Técnico', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 5647 7727', email: 'callcenter@carmonaycia.cl' },
+    { id: 3, type: 'Repuestos', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 51 220 0250', email: 'cmatac@carmonaycia.cl' },
+    { id: 4, type: 'Sala de Ventas', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
+    { id: 5, type: 'Servicio Técnico', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 5659 9895', email: 'callcentervw@carmonaycia.cl' },
+    { id: 6, type: 'Repuestos', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 3750 8754', email: 'sorrego@carmonaycia.cl' },
+    { id: 10, type: 'Sala de Ventas', brandName: 'Honda', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
+    { id: 11, type: 'Servicio Técnico', brandName: 'Honda', address: 'Avenida Balmaceda 3720, La Serena', city: 'La Serena', phone: '+56 9 7879 4740', email: 'cmiles@carmonaycia.cl' },
+    { id: 12, type: 'Sala de Ventas', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'cgonzalezr@carmonaycia.cl' },
+    { id: 13, type: 'Servicio Técnico', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 7879 4735', email: 'mcataldo@carmonaycia.cl' },
+    { id: 14, type: 'Repuestos', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 4508 9776', email: 'dtrigo@carmonaycia.cl' },
+    { id: 15, type: 'Sala de Ventas', brandName: 'Maxus', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'sromao@carmonaycia.cl' },
+    { id: 16, type: 'Servicio Técnico', brandName: 'Maxus', address: 'Avenida Estadio 3610, La Serena', city: 'La Serena', phone: '+56 9 7592 1328', email: 'callcentermm@carmonaycia.cl' },
+    { id: 18, type: 'Sala de Ventas', brandName: 'VW Camiones', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'arodriguez@carmonaycia.cl' },
+    { id: 24, type: 'Desabolladura y Pintura', brandName: 'DyP Multimarca', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 7879 4738', email: 'calldyp@carmonaycia.cl' }
+];
 
 // ─── Brands ───────────────────────────────────────────────────────────────────
 const ALL_BRANDS = [
@@ -493,35 +511,42 @@ function CotizarDypContent() {
                             </div>
 
                             <div className="space-y-5 mb-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
-                                        <MapPin size={18} className="text-[#d2001c]" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Dirección</p>
-                                        <p className="text-sm font-semibold text-gray-900">Ruta 5 Norte KM 470, La Serena</p>
-                                        <p className="text-xs text-gray-500 mt-0.5">IV Región, Chile</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
-                                        <Mail size={18} className="text-[#d2001c]" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Correo DyP</p>
-                                        <a href="mailto:vgallay@carmonaycia.cl"
-                                            className="text-sm font-semibold text-gray-900 hover:text-[#d2001c] transition-colors break-all">
-                                            vgallay@carmonaycia.cl
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                {(() => {
+                                    const dypBranch = SUCURSALES.find(s => s.id === 24); // DyP is centralized at ID 24
 
-                            <div className="border-t border-gray-100 pt-6 space-y-3">
-                                <a href="tel:+56512200201" id="dyp-phone-btn"
-                                    className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
-                                    <Phone size={18} /> Llamar +56 51 220 0201
-                                </a>
+                                    return (
+                                        <>
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
+                                                    <MapPin size={18} className="text-[#d2001c]" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Casa Matriz / Dirección</p>
+                                                    <p className="text-sm font-semibold text-gray-900">{dypBranch?.address || 'Ruta 5 Norte KM 470, La Serena'}</p>
+                                                    <p className="text-xs text-gray-500 mt-0.5">{dypBranch?.city || 'La Serena'}, Chile</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
+                                                    <Mail size={18} className="text-[#d2001c]" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Correo DyP</p>
+                                                    <a href={`mailto:${dypBranch?.email || 'calldyp@carmonaycia.cl'}`}
+                                                        className="text-sm font-semibold text-gray-900 hover:text-[#d2001c] transition-colors break-all">
+                                                        {dypBranch?.email || 'calldyp@carmonaycia.cl'}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div className="border-t border-gray-100 pt-6 space-y-3">
+                                                <a href={`tel:${(dypBranch?.phone || '+56 9 7879 4738').replace(/\s+/g, '')}`} id="dyp-phone-btn"
+                                                    className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
+                                                    <Phone size={18} /> Llamar {dypBranch?.phone || '+56 9 7879 4738'}
+                                                </a>
+                                            </div>
+                                        </>
+                                    );
+                                })()}
                             </div>
 
                             <p className="text-xs text-gray-400 text-center mt-5 leading-relaxed">

@@ -1,657 +1,305 @@
-Directorio Corporativo - Carmona y Cía.
-
-A continuación se detalla la información de contacto y direcciones organizada por marca y departamento (Sala de Ventas, Servicio Técnico y Repuestos).
-
 🚗 TOYOTA
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3681, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3681
 Correo: lhurtado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 9 5647 7727
-
 Correo: callcenter@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 51 220 0250 / +56 51 220 0252
-
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
-
+Correo: cmatac@carmonaycia.cl
+ / jbolados@carmonaycia.cl
 🚗 VOLKSWAGEN
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3812, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3812
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 5659 9895
-
 Correo: callcentervw@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
 🚗 AUDI
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3570, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3570
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 5659 9895
-
 Correo: callcentervw@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
 🚗 CUPRA
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3570, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3570
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 5659 9895
-
 Correo: callcentervw@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
 🚗 SEAT
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3570, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3570
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 5659 9895
-
 Correo: callcentervw@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
 🚗 HONDA
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3812, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3812
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3720, La Serena
-
-Teléfono: +56 9 7879 4740
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3720
+Teléfono: +56 9 78794740
 Correo: cmiles@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
 🚗 BMW
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 5508, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 5508
 Correo: cgonzalezr@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 7879 4735
-
 Correo: mcataldo@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 4508 9776
-
 Correo: dtrigo@carmonaycia.cl
+🚗 BMW MOTORRAD
 
-🏍️ BMW MOTORRAD
+Ciudad: La Serena
 
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 5508
 Correo: cgonzalezr@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 7879 4735
-
 Correo: mcataldo@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 4508 9776
-
 Correo: dtrigo@carmonaycia.cl
-
 🚗 MINI
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 5508, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 5508
 Correo: cgonzalezr@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 7879 4735
-
 Correo: mcataldo@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 5508
 Teléfono: +56 9 4508 9776
-
 Correo: dtrigo@carmonaycia.cl
-
 🚗 MAXUS
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 5508, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Avenida Balmaceda 5508
 Correo: sromao@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Estadio 3610, La Serena
-
+Servicio Técnico
+Dirección: Avenida Estadio 3610
 Teléfono: +56 9 7592 1328
-
 Correo: callcentermm@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 51 220 0250 / +56 51 220 0252
-
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
-
+Correo: cmatac@carmonaycia.cl
+ / jbolados@carmonaycia.cl
+Copiapó
+Sala de Ventas
+Dirección: Copayapu 149
+Correo: dgordillo@carmonaycia.cl
+Servicio Técnico
+Dirección: Av. Longitudinal Norte 4559
+Teléfono: +56 9 7879 4734
+Correo: jpdiaz@carmonaycia.cl
+Repuestos
+Dirección: Av. Longitudinal Norte 4559
+Correo: agalan@carmonaycia.cl
 🚗 KARRY
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3665, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Avenida Balmaceda 3665
 Correo: sromao@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Estadio 3610, La Serena
-
+Servicio Técnico
+Dirección: Avenida Estadio 3610
 Teléfono: +56 9 7592 1328
-
 Correo: callcentermm@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 51 220 0250 / +56 51 220 0252
+Correo: cmatac@carmonaycia.cl
+ / jbolados@carmonaycia.cl
+Copiapó
 
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
+(Misma estructura que MAXUS)
 
 🚗 JETOUR
-
-🏢 Sala de Ventas
-
-Dirección: Los Arrecifes 496, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Los Arrecifes 496
 Correo: sromao@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Estadio 3610, La Serena
-
+Servicio Técnico
+Dirección: Avenida Estadio 3610
 Teléfono: +56 9 7592 1328
-
 Correo: callcentermm@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 51 220 0250 / +56 51 220 0252
+Correo: cmatac@carmonaycia.cl
+ / jbolados@carmonaycia.cl
+Copiapó
 
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
+(Misma estructura que MAXUS)
 
 🚗 SOUEAST
-
-🏢 Sala de Ventas
-
-Dirección: Los Arrecifes 496, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Los Arrecifes 496
 Correo: sromao@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Estadio 3610, La Serena
-
+Servicio Técnico
+Dirección: Avenida Estadio 3610
 Teléfono: +56 9 7592 1328
-
 Correo: callcentermm@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 Teléfono: +56 51 220 0250 / +56 51 220 0252
+Correo: cmatac@carmonaycia.cl
+ / jbolados@carmonaycia.cl
+Copiapó
 
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
+(Misma estructura que MAXUS)
 
 🚗 FOTON
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3570, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Avenida Balmaceda 3570
 Correo: iduenas@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3720, La Serena
-
-Teléfono: +56 9 7879 4740
-
+Servicio Técnico
+Dirección: Avenida Balmaceda 3720
+Teléfono: +56 9 78794740
 Correo: cmiles@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
+Repuestos
+Dirección: Avenida Balmaceda 3812
 Teléfono: +56 9 3750 8754
-
 Correo: sorrego@carmonaycia.cl
-
+Copiapó
+Sala de Ventas
+Dirección: Copayapu 149
+Servicio Técnico
+Dirección: Av. Longitudinal Norte 4559
+Teléfono: +56 9 7879 4734
+Repuestos
+Dirección: Av. Longitudinal Norte 4559
 🚗 DONGFENG
 
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3570, La Serena
-
-Teléfono: No especificado
-
-Correo: iduenas@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3720, La Serena
-
-Teléfono: +56 9 7879 4740
-
-Correo: cmiles@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
-Teléfono: +56 9 3750 8754
-
-Correo: sorrego@carmonaycia.cl
+(Misma estructura que FOTON)
 
 🚗 GEELY
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Avenida Balmaceda 3675, La Serena
-
-Teléfono: No especificado
-
+Sala de Ventas
+Dirección: Avenida Balmaceda 3675
 Correo: nmercado@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Avenida Estadio 3610, La Serena
-
+Servicio Técnico
+Dirección: Avenida Estadio 3610
 Teléfono: +56 9 7592 1328
-
-Correo: callcentermm@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3681, La Serena
-
-Teléfono: +56 51 220 0250 / +56 51 220 0252
-
-Correo: cmatac@carmonaycia.cl / jbolados@carmonaycia.cl
-
+Repuestos
+Dirección: Avenida Balmaceda 3681
 🚗 MG
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3519, La Serena
-
-Teléfono: No especificado
-
+La Serena
+Sala de Ventas
+Dirección: Avenida Balmaceda 3519
 Correo: frojasd@carmonaycia.cl
+Servicio Técnico
+Dirección: Avenida Balmaceda 3720
+Teléfono: +56 9 78794740
+Repuestos
+Dirección: Avenida Balmaceda 3812
+Copiapó
 
-🛠️ Servicio Técnico
-
-Dirección: Avenida Balmaceda 3720, La Serena
-
-Teléfono: +56 9 7879 4740
-
-Correo: cmiles@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Avenida Balmaceda 3812, La Serena
-
-Teléfono: +56 9 3750 8754
-
-Correo: sorrego@carmonaycia.cl
+(Misma estructura que MAXUS)
 
 🚛 IVECO
 
-🏢 Sala de Ventas
+Ciudad: La Serena
 
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: No especificado
-
-Correo: hrodriguez@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
+Sala / Servicio / Repuestos
+Dirección: Ruta 5 Norte KM 470
 Teléfono: +56 9 7879 4741
-
-Correo: garantiascamiones@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 51 220 0237
-
-Correo: rmatos@carmonaycia.cl / mverdejo@carmonaycia.cl
-
+Repuestos: +56 51 220 0237
 🚛 MAN
 
-🏢 Sala de Ventas
+(Misma estructura que IVECO)
 
-Dirección: Ruta 5 Norte KM 470, La Serena
+🚛 VOLKSWAGEN CAMIONES
 
-Teléfono: No especificado
-
-Correo: arodriguez@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 9 7879 4741
-
-Correo: garantiascamiones@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 51 220 0237
-
-Correo: rmatos@carmonaycia.cl / mverdejo@carmonaycia.cl
-
-🚛 VW CAMIONES
-
-🏢 Sala de Ventas
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: No especificado
-
-Correo: arodriguez@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 9 7879 4741
-
-Correo: garantiascamiones@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 51 220 0237
-
-Correo: rmatos@carmonaycia.cl / mverdejo@carmonaycia.cl
+(Misma estructura que IVECO)
 
 🚛 MAXUS CAMIONES
 
-🏢 Sala de Ventas
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: No especificado
-
-Correo: hrodriguez@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 9 7879 4741
-
-Correo: garantiascamiones@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 51 220 0237
-
-Correo: rmatos@carmonaycia.cl / mverdejo@carmonaycia.cl
+(Misma estructura que IVECO)
 
 🚛 FOTON CAMIONES
 
-🏢 Sala de Ventas
+(Misma estructura que IVECO)
 
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: No especificado
-
-Correo: hrodriguez@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 9 7879 4741
-
-Correo: garantiascamiones@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
-Teléfono: +56 51 220 0237
-
-Correo: rmatos@carmonaycia.cl / mverdejo@carmonaycia.cl
-
-🚙 USADOS
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3572, La Serena
-
-Teléfono: No especificado
-
+🚗 USADOS
+Dirección: Avenida Balmaceda 3572
 Correo: mfarias@carmonaycia.cl
-
-🚙 USADOS PREMIUM
-
-🏢 Sala de Ventas
-
-Dirección: Avenida Balmaceda 3720, La Serena
-
-Teléfono: No especificado
-
+🚗 USADOS PREMIUM
+Dirección: Avenida Balmaceda 3720
 Correo: crivera@carmonaycia.cl
-
 🔧 DESABOLLADURA Y PINTURA
-
-🛠️ Taller
-
-Dirección: Ruta 5 Norte KM 470, La Serena
-
+Dirección: Ruta 5 Norte KM 470
 Teléfono: +56 9 7879 4738
-
 Correo: calldyp@carmonaycia.cl
-
-📍 SUCURSAL COPIAPÓ - LIVIANOS
-
-🏢 Sala de Ventas
-
-Dirección: Copayapu 149, Copiapó
-
-Teléfono: No especificado
-
-Correo: dgordillo@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Av. Longitudinal Norte 4559, Copiapó
-
-Teléfono: +56 9 7879 4734
-
-Correo: jpdiaz@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Av. Longitudinal Norte 4559, Copiapó
-
-Teléfono: No especificado
-
-Correo: agalan@carmonaycia.cl
-
-📍 SUCURSAL COPIAPÓ - RUTA 5 CAMIONES
-
-🏢 Sala de Ventas
-
-Dirección: Av. Longitudinal Norte 4559, Copiapó
-
-Teléfono: No especificado
-
-Correo: ralbornoz@carmonaycia.cl
-
-🛠️ Servicio Técnico
-
-Dirección: Av. Longitudinal Norte 4559, Copiapó
-
+📍 COPIAPÓ CAMIONES
+Dirección: Av. Longitudinal Norte 4559
+Sala / Servicio / Repuestos
 Teléfono: +56 9 6597 0784
-
 Correo: recepcioncopiapo@carmonaycia.cl
-
-⚙️ Repuestos
-
-Dirección: Av. Longitudinal Norte 4559, Copiapó
-
-Teléfono: No especificado
-
-Correo: agalan@carmonaycia.cl
