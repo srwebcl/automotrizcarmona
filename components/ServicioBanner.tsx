@@ -20,12 +20,25 @@ const BANNERS = [
     // },
 ];
 
-export default function ServicioBanner() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: BANNERS.length > 1 });
+interface ServicioBannerProps {
+    banners?: any[];
+}
+
+export default function ServicioBanner({ banners }: ServicioBannerProps) {
+    const activeBanners = banners && banners.length > 0 
+        ? banners.map((b) => ({
+            web: b.image_desktop,
+            mobile: b.image_mobile || b.image_desktop,
+            alt: b.title,
+            link: b.link
+        }))
+        : BANNERS;
+
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: activeBanners.length > 1 });
     const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
     const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-    const showArrows = BANNERS.length > 1;
+    const showArrows = activeBanners.length > 1;
 
     return (
         /* margen igual arriba y a los lados — la compensación del navbar la maneja el main */
@@ -33,9 +46,41 @@ export default function ServicioBanner() {
             {/* Viewport del carrusel */}
             <div className="overflow-hidden rounded-xl shadow-sm" ref={emblaRef}>
                 <div className="flex">
-                    {BANNERS.map((banner, i) => (
+                    {activeBanners.map((banner, i) => (
                         <div key={i} className="flex-[0_0_100%] min-w-0">
-                            {/* Desktop — oculto en móvil */}
+                            {banner.link ? (
+                                <a href={banner.link} className="block w-full h-full relative cursor-pointer">
+                                    {/* Desktop — oculto en móvil */}
+                                    <div
+                                        className="hidden sm:block relative w-full"
+                                        style={{ aspectRatio: '1735/170' }}
+                                    >
+                                        <Image
+                                            src={banner.web}
+                                            alt={banner.alt}
+                                            fill
+                                            className="object-cover rounded-xl"
+                                            priority={i === 0}
+                                            sizes="100vw"
+                                        />
+                                    </div>
+                                    {/* Móvil — oculto en ≥sm */}
+                                    <div
+                                        className="block sm:hidden relative w-full"
+                                        style={{ aspectRatio: '767/301' }}
+                                    >
+                                        <Image
+                                            src={banner.mobile}
+                                            alt={banner.alt}
+                                            fill
+                                            className="object-cover rounded-xl"
+                                            priority={i === 0}
+                                            sizes="100vw"
+                                        />
+                                    </div>
+                                </a>
+                            ) : (
+                                <>
                             <div
                                 className="hidden sm:block relative w-full"
                                 style={{ aspectRatio: '1735/170' }}
@@ -62,7 +107,8 @@ export default function ServicioBanner() {
                                     priority={i === 0}
                                     sizes="100vw"
                                 />
-                            </div>
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>

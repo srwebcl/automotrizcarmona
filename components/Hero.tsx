@@ -94,7 +94,33 @@ const MARQUEE_ROW_1 = BRANDS_DATA.slice(0, Math.ceil(BRANDS_DATA.length / 2));
 const MARQUEE_ROW_2 = BRANDS_DATA.slice(Math.ceil(BRANDS_DATA.length / 2));
 
 
-export default function Hero() {
+interface HeroProps {
+    banners?: any[];
+}
+
+export default function Hero({ banners }: HeroProps) {
+    const defaultDesktopSlides = DESKTOP_SLIDES;
+    const defaultMobileSlides = MOBILE_SLIDES;
+
+    const desktopSlides = banners && banners.length > 0 
+        ? banners.map((b) => ({
+            id: b.id,
+            image: b.image_desktop,
+            title: b.title,
+            subtitle: b.subtitle,
+            link: b.link
+        }))
+        : defaultDesktopSlides;
+
+    const mobileSlides = banners && banners.length > 0
+        ? banners.map((b) => ({
+            id: b.id,
+            image: b.image_mobile || b.image_desktop,
+            title: b.title,
+            subtitle: b.subtitle,
+            link: b.link
+        }))
+        : defaultMobileSlides;
     // Separate Hooks for Desktop and Mobile to handle different counts
     const [desktopRef, desktopApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
     const [mobileRef, mobileApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
@@ -132,15 +158,27 @@ export default function Hero() {
             <div className="w-full mx-auto mb-2 md:hidden relative group">
                 <div className="overflow-hidden rounded-3xl" ref={mobileRef}>
                     <div className="flex">
-                        {MOBILE_SLIDES.map((slide) => (
+                        {mobileSlides.map((slide) => (
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-square">
-                                <Image
-                                    src={slide.image}
-                                    alt={slide.title}
-                                    fill
-                                    className="object-cover"
-                                    priority={slide.id === 1}
-                                />
+                                {slide.link ? (
+                                    <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
+                                        <Image
+                                            src={slide.image}
+                                            alt={slide.title}
+                                            fill
+                                            className="object-cover"
+                                            priority={slide.id === mobileSlides[0]?.id}
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Image
+                                        src={slide.image}
+                                        alt={slide.title}
+                                        fill
+                                        className="object-cover"
+                                        priority={slide.id === mobileSlides[0]?.id}
+                                    />
+                                )}
                             </div>
                         ))}
                     </div>
@@ -164,7 +202,7 @@ export default function Hero() {
 
                 {/* Dots */}
                 <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                    {MOBILE_SLIDES.map((_, index) => (
+                    {mobileSlides.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => mobileApi?.scrollTo(index)}
@@ -181,15 +219,27 @@ export default function Hero() {
             <div className="w-full mx-auto mb-2 hidden md:block relative group">
                 <div className="overflow-hidden rounded-3xl" ref={desktopRef}>
                     <div className="flex">
-                        {DESKTOP_SLIDES.map((slide) => (
+                        {desktopSlides.map((slide) => (
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
-                                <Image
-                                    src={slide.image}
-                                    alt={slide.title}
-                                    fill
-                                    className="object-cover"
-                                    priority={slide.id === 1}
-                                />
+                                {slide.link ? (
+                                    <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
+                                        <Image
+                                            src={slide.image}
+                                            alt={slide.title}
+                                            fill
+                                            className="object-cover"
+                                            priority={slide.id === desktopSlides[0]?.id}
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Image
+                                        src={slide.image}
+                                        alt={slide.title}
+                                        fill
+                                        className="object-cover"
+                                        priority={slide.id === desktopSlides[0]?.id}
+                                    />
+                                )}
                             </div>
                         ))}
                     </div>
@@ -213,7 +263,7 @@ export default function Hero() {
 
                 {/* Dots */}
                 <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
-                    {DESKTOP_SLIDES.map((_, index) => (
+                    {desktopSlides.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => desktopApi?.scrollTo(index)}

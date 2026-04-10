@@ -143,6 +143,21 @@ export async function getBrandBySlug(slug: string) {
     }
 }
 
+export async function getBanners() {
+    try {
+        const res = await fetch(`${API_URL}/banners`, {
+            cache: 'no-store',
+            headers: FETCH_OPTIONS.headers
+        });
+        if (!res.ok) return [];
+        const json = await res.json();
+        return Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : []);
+    } catch (e) {
+        console.error('Error fetching banners:', e);
+        return [];
+    }
+}
+
 export async function getModelsByBrand(brandSlug: string): Promise<Vehicle[]> {
     try {
         const res = await fetch(`${API_URL}/models/${brandSlug}`, { 

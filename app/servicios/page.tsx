@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ChevronRight, Wrench } from 'lucide-react';
 import ServicioBanner from '@/components/ServicioBanner';
 import DiscoverSection from '@/components/DiscoverSection';
+import { getBanners, formatImageUrl } from '@/lib/api';
 
 // ─── Autos & Motos ─────────────────────────────────────────────────────────────
 const AUTOS_BRANDS = [
@@ -60,12 +61,22 @@ function BrandCard({ name, src }: { name: string; src: string }) {
 }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
-export default function ServiciosPage() {
+export default async function ServiciosPage() {
+    const allBanners = await getBanners();
+    const serviceBanners = allBanners
+        .filter((b: any) => b.location === 'servicios' && b.active)
+        .sort((a: any, b: any) => a.order - b.order)
+        .map((b: any) => ({
+            ...b,
+            image_desktop: formatImageUrl(b.image_desktop),
+            image_mobile: formatImageUrl(b.image_mobile)
+        }));
+
     return (
         <main className="min-h-screen bg-white font-sans pt-[88px]">
 
             {/* ── 1. BANNER PROMOCIONAL ──────────────────────────────────────── */}
-            <ServicioBanner />
+            <ServicioBanner banners={serviceBanners.length > 0 ? serviceBanners : undefined} />
 
             {/* ── 2. TÍTULO + LOGOS ─────────────────────────────────────────── */}
             <section className="bg-white py-14 md:py-20">

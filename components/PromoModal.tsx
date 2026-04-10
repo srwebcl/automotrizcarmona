@@ -6,9 +6,10 @@ import { X, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 interface PromoModalProps {
     isOpen: boolean;
     onClose: () => void;
+    recipientEmail?: string;
 }
 
-export default function PromoModal({ isOpen, onClose }: PromoModalProps) {
+export default function PromoModal({ isOpen, onClose, recipientEmail }: PromoModalProps) {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [formData, setFormData] = useState({
         nombre: '',
@@ -33,7 +34,7 @@ export default function PromoModal({ isOpen, onClose }: PromoModalProps) {
                 body: JSON.stringify({
                     ...formData,
                     source: 'Banner Promocional Home',
-                    recipients: ['crivera@carmonaycia.cl', 'marketing@carmonaycia.cl']
+                    recipients: recipientEmail ? [recipientEmail] : ['crivera@carmonaycia.cl', 'marketing@carmonaycia.cl']
                 }),
             });
 

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Hero from '@/components/Hero';
-import { getFeaturedModels } from '@/lib/api';
+import { getFeaturedModels, getBanners, formatImageUrl } from '@/lib/api';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
 import HomeVehiclesCarousel from '@/components/HomeVehiclesCarousel';
@@ -13,11 +13,32 @@ import HomeClient from './HomeClient';
 export const revalidate = 60;
 
 export default async function Home() {
-  const featuredVehicles = await getFeaturedModels();
+  const [featuredVehicles, allBanners] = await Promise.all([
+    getFeaturedModels(),
+    getBanners()
+  ]);
+
+  const homeHeroBanners = allBanners
+    .filter((b: any) => b.location === 'home_hero' && b.active)
+    .sort((a: any, b: any) => a.order - b.order)
+    .map((b: any) => ({
+        ...b,
+        image_desktop: formatImageUrl(b.image_desktop),
+        image_mobile: formatImageUrl(b.image_mobile)
+    }));
+
+  const homePromoBanner = allBanners
+    .filter((b: any) => b.location === 'home_promotional' && b.active)
+    .sort((a: any, b: any) => a.order - b.order)[0] || null;
+
+  if (homePromoBanner) {
+      homePromoBanner.image_desktop = formatImageUrl(homePromoBanner.image_desktop);
+      homePromoBanner.image_mobile = formatImageUrl(homePromoBanner.image_mobile);
+  }
 
   return (
     <main className="min-h-screen bg-white">
-      <Hero />
+      <Hero banners={homeHeroBanners.length > 0 ? homeHeroBanners : undefined} />
 
       {/* Acceso Rápido */}
       <QuickAccessBar />
@@ -43,7 +64,7 @@ export default async function Home() {
             </p>
           </div>
 
-          <HomeClient featuredVehicles={featuredVehicles} />
+          <HomeClient featuredVehicles={featuredVehicles} promoBanner={homePromoBanner} />
         </div>
       </section>
 

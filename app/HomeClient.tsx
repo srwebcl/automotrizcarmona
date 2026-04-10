@@ -9,9 +9,10 @@ import PromoModal from '@/components/PromoModal';
 
 interface HomeClientProps {
     featuredVehicles: any[];
+    promoBanner?: any;
 }
 
-export default function HomeClient({ featuredVehicles }: HomeClientProps) {
+export default function HomeClient({ featuredVehicles, promoBanner }: HomeClientProps) {
     const [isPromoModalOpen, setIsPromoModalOpen] = useState(false);
 
     return (
@@ -25,8 +26,8 @@ export default function HomeClient({ featuredVehicles }: HomeClientProps) {
                         className="w-full group block rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 relative aspect-[2/3] lg:aspect-auto lg:h-full bg-white"
                     >
                         <Image
-                            src="https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/banner-destacados-web.webp"
-                            alt="Banner Promocional"
+                            src={promoBanner?.image_desktop || "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home/banner-destacados-web.webp"}
+                            alt={promoBanner?.title || "Banner Promocional"}
                             fill
                             className="object-cover transition-all duration-300 group-hover:scale-105"
                             priority
@@ -57,6 +58,7 @@ export default function HomeClient({ featuredVehicles }: HomeClientProps) {
             <PromoModal 
                 isOpen={isPromoModalOpen} 
                 onClose={() => setIsPromoModalOpen(false)} 
+                recipientEmail={promoBanner?.custom_data?.recipient_email}
             />
         </div>
     );

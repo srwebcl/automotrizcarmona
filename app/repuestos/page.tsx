@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ChevronRight, Package } from 'lucide-react';
 import RepuestosBanner from '@/components/RepuestosBanner';
 import DiscoverSection from '@/components/DiscoverSection';
+import { getBanners, formatImageUrl } from '@/lib/api';
 
 // ─── Autos & Motos ─────────────────────────────────────────────────────────────
 const AUTOS_BRANDS = [
@@ -62,12 +63,22 @@ function BrandCard({ name, src }: { name: string; src: string }) {
 }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
-export default function RepuestosPage() {
+export default async function RepuestosPage() {
+    const allBanners = await getBanners();
+    const repuestosBanners = allBanners
+        .filter((b: any) => b.location === 'repuestos' && b.active)
+        .sort((a: any, b: any) => a.order - b.order)
+        .map((b: any) => ({
+            ...b,
+            image_desktop: formatImageUrl(b.image_desktop),
+            image_mobile: formatImageUrl(b.image_mobile)
+        }));
+
     return (
         <main className="min-h-screen bg-white font-sans pt-[88px]">
 
             {/* ── 1. BANNER PROMOCIONAL ──────────────────────────────────────── */}
-            <RepuestosBanner />
+            <RepuestosBanner banners={repuestosBanners.length > 0 ? repuestosBanners : undefined} />
 
             {/* ── 2. TÍTULO + LOGOS ─────────────────────────────────────────── */}
             <section className="bg-white py-14 md:py-20">
