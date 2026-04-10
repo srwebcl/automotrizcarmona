@@ -116,9 +116,11 @@ export default function Hero({ banners }: HeroProps) {
             image: b.image_desktop,
             title: b.title,
             subtitle: b.subtitle,
-            link: b.link
+            link: b.link,
+            cta: b.custom_data?.cta,
+            show_text: b.custom_data?.show_text ?? false
         }))
-        : defaultDesktopSlides;
+        : defaultDesktopSlides.map(s => ({ ...s, show_text: true }));
 
     const mobileSlides = banners && banners.length > 0
         ? banners.map((b) => ({
@@ -126,9 +128,11 @@ export default function Hero({ banners }: HeroProps) {
             image: b.image_mobile || b.image_desktop,
             title: b.title,
             subtitle: b.subtitle,
-            link: b.link
+            link: b.link,
+            cta: b.custom_data?.cta,
+            show_text: b.custom_data?.show_text ?? false
         }))
-        : defaultMobileSlides;
+        : defaultMobileSlides.map(s => ({ ...s, show_text: true }));
     // Separate Hooks for Desktop and Mobile to handle different counts
     const [desktopRef, desktopApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
     const [mobileRef, mobileApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 5000, stopOnInteraction: false })]);
@@ -170,22 +174,34 @@ export default function Hero({ banners }: HeroProps) {
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-square">
                                 {slide.link ? (
                                     <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
-                                        <Image
-                                            src={slide.image}
-                                            alt={slide.title}
-                                            fill
-                                            className="object-cover"
-                                            priority={slide.id === mobileSlides[0]?.id}
-                                        />
+                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
+                                        {slide.show_text && (
+                                            <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10 pointer-events-none z-10 w-full h-full">
+                                                <h2 className="text-3xl font-bold text-white mb-2 max-w-lg leading-tight">{slide.title}</h2>
+                                                {slide.subtitle && <p className="text-lg text-white/90 mb-4 max-w-lg leading-snug">{slide.subtitle}</p>}
+                                                {slide.cta && (
+                                                    <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d2001c] text-white font-bold rounded-lg shadow-lg w-max pointer-events-auto">
+                                                        {slide.cta}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
                                     </Link>
                                 ) : (
-                                    <Image
-                                        src={slide.image}
-                                        alt={slide.title}
-                                        fill
-                                        className="object-cover"
-                                        priority={slide.id === mobileSlides[0]?.id}
-                                    />
+                                    <>
+                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
+                                        {slide.show_text && (
+                                            <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10 pointer-events-none z-10 w-full h-full">
+                                                <h2 className="text-3xl font-bold text-white mb-2 max-w-lg leading-tight">{slide.title}</h2>
+                                                {slide.subtitle && <p className="text-lg text-white/90 mb-4 max-w-lg leading-snug">{slide.subtitle}</p>}
+                                                {slide.cta && (
+                                                    <div className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d2001c] text-white font-bold rounded-lg shadow-lg w-max pointer-events-auto">
+                                                        {slide.cta}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         ))}
@@ -231,22 +247,34 @@ export default function Hero({ banners }: HeroProps) {
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
                                 {slide.link ? (
                                     <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
-                                        <Image
-                                            src={slide.image}
-                                            alt={slide.title}
-                                            fill
-                                            className="object-cover"
-                                            priority={slide.id === desktopSlides[0]?.id}
-                                        />
+                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
+                                        {slide.show_text && (
+                                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent flex flex-col justify-center px-8 md:px-16 pointer-events-none z-10 w-full h-full">
+                                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 max-w-2xl leading-tight">{slide.title}</h2>
+                                                {slide.subtitle && <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl leading-snug">{slide.subtitle}</p>}
+                                                {slide.cta && (
+                                                    <div className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#d2001c] text-white font-bold rounded-lg shadow-lg w-max pointer-events-auto transition-transform hover:scale-105 active:scale-95">
+                                                        {slide.cta} <ChevronRight size={18} />
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
                                     </Link>
                                 ) : (
-                                    <Image
-                                        src={slide.image}
-                                        alt={slide.title}
-                                        fill
-                                        className="object-cover"
-                                        priority={slide.id === desktopSlides[0]?.id}
-                                    />
+                                    <>
+                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
+                                        {slide.show_text && (
+                                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent flex flex-col justify-center px-8 md:px-16 pointer-events-none z-10 w-full h-full">
+                                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 max-w-2xl leading-tight">{slide.title}</h2>
+                                                {slide.subtitle && <p className="text-lg md:text-xl text-white/90 mb-6 max-w-xl leading-snug">{slide.subtitle}</p>}
+                                                {slide.cta && (
+                                                    <div className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#d2001c] text-white font-bold rounded-lg shadow-lg w-max pointer-events-auto transition-transform hover:scale-105 active:scale-95 cursor-pointer">
+                                                        {slide.cta} <ChevronRight size={18} />
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         ))}
