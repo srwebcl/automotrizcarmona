@@ -42,7 +42,6 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         };
 
         const r2BrandData = (R2_ASSETS as any)[brandId] || {};
-        const r2BrandBanners = r2BrandData.brandBanners || [];
         const r2ServiceImages = r2BrandData.serviceImages || {};
 
         // Merge R2 service images into config
@@ -58,10 +57,10 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
 
         // Confianza total en los datos de la API (Neon / Laravel)
         // Ya no realizamos cálculos extra en el servidor para evitar fallos de renderización
-        return <BrandPageClient brandId={brandId} models={apiModels} config={config} r2BrandBanners={r2BrandBanners} />;
+        return <BrandPageClient brandId={brandId} models={models} config={config} />;
     } catch (e) {
         console.error('Error in Server Component:', e);
         // Fallback robusto a datos estáticos en caso de fallo absoluto de red con el backend
-        return <BrandPageClient brandId={brandId} models={MODELS_REGISTRY[brandId] || []} config={staticConfig} r2BrandBanners={[]} />;
+        return <BrandPageClient brandId={brandId} models={MODELS_REGISTRY[brandId] || []} config={staticConfig} />;
     }
 }

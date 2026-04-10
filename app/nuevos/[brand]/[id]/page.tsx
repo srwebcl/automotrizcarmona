@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getModelDetails, getBrandBySlug } from '@/lib/api';
 import { MODELS_REGISTRY } from '@/lib/models';
-import CSV_FALLBACK from '@/lib/csvFallback.json';
+
 import { getBrandConfig } from '@/lib/brands';
 import ModelPageClient from './ModelPageClient';
 import R2_ASSETS from '@/lib/assetMap.json';
@@ -24,37 +24,6 @@ export default async function GenericModelPage({ params }: { params: Promise<{ b
         ]);
         
         let model = apiModel;
-        
-        // El Backend actual en la nube de Cloudways tiene un bug donde no exporta datos tecnicos ni bonos en la API.
-        // Mientras esto se arregla y se despliega el backend, tomamos la data estatica del CSV para RELLENAR los huecos.
-        const slugPattern = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-        
-        if (model && model.versions) {
-            const csvBrandData = (CSV_FALLBACK as any)[brandId] || {};
-            const csvModelData = csvBrandData[id.toLowerCase()] || {};
-
-            // Unimos las versiones devolviendo los campos faltantes
-            model.versions = model.versions.map((apiLink: any) => {
-                const safeVersionSlug = slugPattern(apiLink.name);
-                const static_v = csvModelData[safeVersionSlug];
-                
-                if (!static_v) return apiLink;
-                
-                return {
-                    ...apiLink,
-                    motor: apiLink.motor || static_v.motor,
-                    consumptionMixed: apiLink.consumptionMixed || static_v.consumptionMixed,
-                    power: apiLink.power || static_v.power,
-                    torque: apiLink.torque || static_v.torque,
-                    brandBonus: apiLink.brandBonus || static_v.brandBonus,
-                    financingBonus: apiLink.financingBonus || static_v.financingBonus,
-                    // Dejamos los precios de API, al menos que esten en 0
-                    listPrice: static_v.listPrice || apiLink.listPrice,
-                    bonusPrice: static_v.bonusPrice || apiLink.bonusPrice,
-                    ivaIncluded: static_v.ivaIncluded ?? apiLink.ivaIncluded,
-                }
-            });
-        }
 
         if (!model) {
             const fallback = (MODELS_REGISTRY[brandId] || []).find(m => m.id.toLowerCase() === id.toLowerCase());

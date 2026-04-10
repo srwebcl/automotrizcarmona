@@ -12,10 +12,9 @@ interface BrandPageClientProps {
     brandId: string;
     models: Vehicle[];
     config: any;
-    r2BrandBanners?: { web: string; mobile: string }[];
 }
 
-export default function BrandPageClient({ brandId, models, config, r2BrandBanners = [] }: BrandPageClientProps) {
+export default function BrandPageClient({ brandId, models, config }: BrandPageClientProps) {
     const isToyota = brandId.toLowerCase() === 'toyota';
     const catalogRef = React.useRef<HTMLDivElement>(null);
 
@@ -104,13 +103,7 @@ export default function BrandPageClient({ brandId, models, config, r2BrandBanner
         );
     };
 
-    const bannerSlides = r2BrandBanners.length > 0 
-        ? r2BrandBanners.map((slide, index) => ({
-            web: slide.web,
-            mobile: slide.mobile,
-            title: `${config.name} Banner ${index + 1}`
-        }))
-        : config.bannerSlides;
+    const bannerSlides = config.bannerSlides || [];
 
     return (
         <main className="min-h-screen bg-white font-sans">

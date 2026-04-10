@@ -63,18 +63,16 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
     const brandSlug = data.brand?.slug || defaultBrandSlug || 'desconocido';
     const id = data.slug;
 
-    const r2Data = (R2_ASSETS as any)[brandSlug]?.models?.[id] || null;
-
     return {
         id: id,
         brand: brandSlug,
         name: data.name,
-        category: data.category,
+        category: Array.isArray(data.category) ? data.category.join(', ') : (data.category || 'Desconocido'),
         price: data.base_price,
-        image: r2Data?.image || formatImageUrl(data.thumbnail_url),
-        desktopBanner: r2Data?.desktopBanner || data.desktop_banner_url || null,
-        mobileBanner: r2Data?.mobileBanner || data.mobile_banner_url || null,
-        gallery: r2Data?.gallery?.length ? r2Data.gallery : data.gallery || [],
+        image: formatImageUrl(data.thumbnail_url),
+        desktopBanner: formatImageUrl(data.desktop_banner_url),
+        mobileBanner: formatImageUrl(data.mobile_banner_url),
+        gallery: (data.gallery || []).map((imgUrls: string) => formatImageUrl(imgUrls)),
         vehicleType: data.vehicle_type,
         isHybrid: data.is_hybrid,
         isElectric: data.is_electric,
@@ -99,10 +97,10 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         }),
         slogan: data.slogan || '',
         videoUrl: data.video_url || '',
-        features: (data.features || []).map((f: any, i: number) => ({
+        features: (data.features || []).map((f: any) => ({
             title: f.title,
             desc: f.description,
-            image: r2Data?.features?.[i] || ''
+            image: formatImageUrl(f.image_url)
         }))
     };
 }
