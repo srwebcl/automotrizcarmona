@@ -81,32 +81,33 @@ export default function ServicioBanner({ banners }: ServicioBannerProps) {
                                 </a>
                             ) : (
                                 <>
-                            <div
-                                className="hidden sm:block relative w-full"
-                                style={{ aspectRatio: '1735/170' }}
-                            >
-                                <Image
-                                    src={banner.web}
-                                    alt={banner.alt}
-                                    fill
-                                    className="object-cover rounded-xl"
-                                    priority={i === 0}
-                                    sizes="100vw"
-                                />
-                            </div>
-                            {/* Móvil — oculto en ≥sm */}
-                            <div
-                                className="block sm:hidden relative w-full"
-                                style={{ aspectRatio: '767/301' }}
-                            >
-                                <Image
-                                    src={banner.mobile}
-                                    alt={banner.alt}
-                                    fill
-                                    className="object-cover rounded-xl"
-                                    priority={i === 0}
-                                    sizes="100vw"
-                                />
+                                    <div
+                                        className="hidden sm:block relative w-full"
+                                        style={{ aspectRatio: '1735/170' }}
+                                    >
+                                        <Image
+                                            src={banner.web}
+                                            alt={banner.alt}
+                                            fill
+                                            className="object-cover rounded-xl"
+                                            priority={i === 0}
+                                            sizes="100vw"
+                                        />
+                                    </div>
+                                    {/* Móvil — oculto en ≥sm */}
+                                    <div
+                                        className="block sm:hidden relative w-full"
+                                        style={{ aspectRatio: '767/301' }}
+                                    >
+                                        <Image
+                                            src={banner.mobile}
+                                            alt={banner.alt}
+                                            fill
+                                            className="object-cover rounded-xl"
+                                            priority={i === 0}
+                                            sizes="100vw"
+                                        />
+                                    </div>
                                 </>
                             )}
                         </div>
