@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getModelsByBrand, getBrandBySlug } from '@/lib/api';
+import { getModelsByBrand, getBrandBySlug, formatImageUrl } from '@/lib/api';
 import { getBrandConfig } from '@/lib/brands';
 import { MODELS_REGISTRY } from '@/lib/models';
 import BrandPageClient from './BrandPageClient';
@@ -35,8 +35,8 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             bannerSlides: (brandDetails?.hero_banners?.length > 0) 
                 ? brandDetails.hero_banners.map((b: any) => ({
                     title: b.title,
-                    web: b.desktop_image,
-                    mobile: b.mobile_image
+                    web: formatImageUrl(b.desktop_image),
+                    mobile: formatImageUrl(b.mobile_image || b.desktop_image)
                 }))
                 : staticConfig.bannerSlides
         };

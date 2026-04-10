@@ -34,10 +34,14 @@ if (!rawUrl.endsWith('/api/v1') && rawUrl.includes('api.automotrizcarmona.cl')) 
 export const API_URL = rawUrl;
 
 // Helpers para limpiar las URLs en caso de que vengan formateadas por el backend con su dominio
-function formatImageUrl(url: string | null | undefined): string {
+export function formatImageUrl(url: string | null | undefined): string {
     if (!url) return '';
     
-    // Verificamos si ya es una URL absoluta de Cloudflare R2 u otro origen
+    // Interceptamos y limpiamos las URLs si Laravel las está forzando con su dominio nativo de Cloudways
+    // ya que queremos enrutar todo por Cloudflare R2 Edge.
+    url = url.replace(/^https?:\/\/(api\.)?automotrizcarmona\.cl\/storage\//i, '');
+
+    // Verificamos si ya es una URL absoluta externa (después de limpiar)
     if (url.startsWith('http')) {
         return url;
     }
