@@ -51,24 +51,32 @@ const MOBILE_SLIDES = [
         id: 1,
         image: `${CDN_BASE}/banner-movil/banner-vw-movil.webp`,
         title: 'Volkswagen',
+        subtitle: undefined,
+        cta: undefined,
         link: undefined
     },
     {
         id: 2,
         image: `${CDN_BASE}/banner-movil/banner-souesat-movil.webp`,
         title: 'Soueast',
+        subtitle: undefined,
+        cta: undefined,
         link: undefined
     },
     {
         id: 3,
         image: `${CDN_BASE}/banner-movil/banner-geely-movil.webp`,
         title: 'Geely',
+        subtitle: undefined,
+        cta: undefined,
         link: undefined
     },
     {
         id: 4,
         image: `${CDN_BASE}/banner-movil/banner-audi-movil.webp`,
         title: 'Audi',
+        subtitle: undefined,
+        cta: undefined,
         link: undefined
     }
 ];
