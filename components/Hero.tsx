@@ -16,28 +16,32 @@ const DESKTOP_SLIDES = [
         image: `${CDN_BASE}/banner-web/banner-volkswagen.webp`,
         title: 'Volkswagen Innovación',
         subtitle: 'Descubre la tecnología alemana en cada detalle.',
-        cta: 'Ver Modelos'
+        cta: 'Ver Modelos',
+        link: undefined
     },
     {
         id: 2,
         image: `${CDN_BASE}/banner-web/banner-toyota.webp`,
         title: 'Toyota Hybrid System',
         subtitle: 'Liderando el camino hacia la movilidad sustentable.',
-        cta: 'Explorar Híbridos'
+        cta: 'Explorar Híbridos',
+        link: undefined
     },
     {
         id: 3,
         image: `${CDN_BASE}/banner-web/banner-mg.webp`,
         title: 'MG: Drive Evolution',
         subtitle: 'Diseño británico con tecnología de vanguardia.',
-        cta: 'Conocer MG'
+        cta: 'Conocer MG',
+        link: undefined
     },
     {
         id: 4,
         image: `${CDN_BASE}/banner-web/banner-geely.webp`,
         title: 'Geely: Nueva Generación',
         subtitle: 'Redefiniendo el estándar de confort y seguridad.',
-        cta: 'Descubrir Geely'
+        cta: 'Descubrir Geely',
+        link: undefined
     }
 ];
 
@@ -46,22 +50,26 @@ const MOBILE_SLIDES = [
     {
         id: 1,
         image: `${CDN_BASE}/banner-movil/banner-vw-movil.webp`,
-        title: 'Volkswagen'
+        title: 'Volkswagen',
+        link: undefined
     },
     {
         id: 2,
         image: `${CDN_BASE}/banner-movil/banner-souesat-movil.webp`,
-        title: 'Soueast'
+        title: 'Soueast',
+        link: undefined
     },
     {
         id: 3,
         image: `${CDN_BASE}/banner-movil/banner-geely-movil.webp`,
-        title: 'Geely'
+        title: 'Geely',
+        link: undefined
     },
     {
         id: 4,
         image: `${CDN_BASE}/banner-movil/banner-audi-movil.webp`,
-        title: 'Audi'
+        title: 'Audi',
+        link: undefined
     }
 ];
 
