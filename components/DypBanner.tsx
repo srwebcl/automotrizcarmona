@@ -10,6 +10,7 @@ const BANNERS = [
         web: '/images/banner-web-st.png',
         mobile: '/images/banner-movil-st.png',
         alt: 'Desabolladura y Pintura Carmona',
+        link: undefined,
     },
 ];
 

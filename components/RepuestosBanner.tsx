@@ -13,8 +13,9 @@ const BANNERS = [
         web: '/images/banner-web-st.png',
         mobile: '/images/banner-movil-st.png',
         alt: 'Repuestos Originales Carmona',
+        link: undefined,
     },
-    // { web: '/images/banner-rep-web-2.png', mobile: '/images/banner-rep-movil-2.png', alt: '...' },
+    // { web: '/images/banner-rep-web-2.png', mobile: '/images/banner-rep-movil-2.png', alt: '...', link: undefined },
 ];
 
 interface RepuestosBannerProps {

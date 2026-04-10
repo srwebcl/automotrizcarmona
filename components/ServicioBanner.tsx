@@ -11,12 +11,14 @@ const BANNERS = [
         web: '/images/banner-web-st.png',
         mobile: '/images/banner-movil-st.png',
         alt: 'Servicio Técnico Carmona',
+        link: undefined,
     },
     // Ejemplo segunda imagen:
     // {
     //   web:    '/images/banner-web-st-2.png',
     //   mobile: '/images/banner-movil-st-2.png',
     //   alt:    'Otro banner promocional',
+    //   link:   undefined,
     // },
 ];
 
