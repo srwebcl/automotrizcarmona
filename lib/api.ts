@@ -19,6 +19,7 @@ export interface Truck {
     slug: string;
     image_url: string | null;
     is_active: boolean;
+    category: string | null;
     brand?: TruckBrand;
 }
 
@@ -57,7 +58,8 @@ export function formatImageUrl(url: string | null | undefined): string {
 function mapTruck(truck: any): Truck {
     return {
         ...truck,
-        image_url: formatImageUrl(truck.image_url)
+        image_url: formatImageUrl(truck.image_url),
+        category: truck.category || null,
     };
 }
 

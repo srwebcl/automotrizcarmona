@@ -18,10 +18,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
 
     if (!config) return notFound();
 
-    // Truck specific categories
-    const TRUCK_CATEGORIES = ['Todos', 'Pesados', 'Medianos', 'Buses', 'Pick-up'];
-    const CATEGORIES = TRUCK_CATEGORIES;
-
+    // Truck specific categories — derived dynamically later from API data
     const [activeCategory, setActiveCategory] = useState('Todos');
     const [brand, setBrand] = useState<any>(null);
     const [trucks, setTrucks] = useState<Truck[]>([]);
@@ -72,6 +69,13 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
     const scrollNext = React.useCallback(() => {
         if (heroEmblaApi) heroEmblaApi.scrollNext();
     }, [heroEmblaApi]);
+
+    const availableCategories = React.useMemo(() => {
+        const cats = trucks
+            .map(t => (t as any).category)
+            .filter((c): c is string => !!c && c.trim() !== '');
+        return ['Todos', ...Array.from(new Set(cats))];
+    }, [trucks]);
 
     const filteredModels = activeCategory === 'Todos' 
         ? trucks 
@@ -166,12 +170,13 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 )}
             </section>
 
-            {/* Logo & SEO Title Section */}
-            <section className="pt-16 pb-8 bg-[#f8f9fa] overflow-hidden relative z-20">
+            {/* Logo & SEO Title + Category Filter Strip */}
+            <section className="pt-16 pb-0 bg-[#f8f9fa] overflow-hidden relative z-20">
                 <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
+                    {/* Logo: prefer API logo, fallback to static config */}
                     <div className="relative w-48 h-16 sm:w-56 sm:h-20 mb-8">
                         <Image
-                            src={config.logo}
+                            src={brand?.logo_url ? (brand.logo_url.startsWith('http') ? brand.logo_url : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${brand.logo_url.replace(/^\/+/, '')}`) : config.logo}
                             alt={`${config.name} Logo`}
                             fill
                             className="object-contain object-center"
@@ -185,11 +190,33 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                         {' '}en Automotriz Carmona
                     </h2>
                 </div>
+
+                {/* Category Filter Strip — only renders when there are categorized trucks */}
+                {availableCategories.length > 1 && (
+                    <div className="max-w-7xl mx-auto px-4 pt-10 pb-4">
+                        <div className="flex flex-wrap gap-2 justify-center">
+                            {availableCategories.map((cat) => (
+                                <button
+                                    key={cat}
+                                    onClick={() => setActiveCategory(cat)}
+                                    className={`px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-200 border-2 ${
+                                        activeCategory === cat
+                                            ? 'bg-gray-900 text-white border-gray-900 shadow-lg'
+                                            : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900'
+                                    }`}
+                                >
+                                    {cat}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </section>
 
             {/* Models Grid */}
-            <section className="pb-20 bg-[#f8f9fa]">
+            <section className="pt-10 pb-20 bg-[#f8f9fa]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
 
                     {isLoading ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
