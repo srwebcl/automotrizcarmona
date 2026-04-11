@@ -44,6 +44,7 @@ interface Branch {
     map_link: string | null;
     image_url: string | null;
     brands: { id: number; name: string; logo_url: string | null }[];
+    truck_brands: { id: number; name: string; logo_url: string | null }[];
 }
 
 function BranchIllustration({ type }: { type: string }) {
@@ -77,7 +78,10 @@ export default function SucursalesPage() {
 
     const allBrandNames = useMemo(() => {
         const set = new Set<string>();
-        branches.forEach(b => b.brands?.forEach(br => set.add(br.name)));
+        branches.forEach(b => {
+            b.brands?.forEach(br => set.add(br.name));
+            b.truck_brands?.forEach(br => set.add(br.name));
+        });
         return [...set].sort();
     }, [branches]);
 
@@ -86,7 +90,8 @@ export default function SucursalesPage() {
     }, [branches]);
 
     const filteredBranches = useMemo(() => branches.filter(b => {
-        if (selectedBrand && !b.brands?.some(br => br.name === selectedBrand)) return false;
+        const allBrands = [...(b.brands || []), ...(b.truck_brands || [])];
+        if (selectedBrand && !allBrands.some(br => br.name === selectedBrand)) return false;
         if (selectedService && b.type !== selectedService) return false;
         return true;
     }), [branches, selectedBrand, selectedService]);
