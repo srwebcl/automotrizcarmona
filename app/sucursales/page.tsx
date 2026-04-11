@@ -43,8 +43,7 @@ interface Branch {
     email: string | null;
     map_link: string | null;
     image_url: string | null;
-    brands: { id: number; name: string; logo_url: string | null }[];
-    truck_brands: { id: number; name: string; logo_url: string | null }[];
+    brands_list: string[];
 }
 
 function BranchIllustration({ type }: { type: string }) {
@@ -78,10 +77,7 @@ export default function SucursalesPage() {
 
     const allBrandNames = useMemo(() => {
         const set = new Set<string>();
-        branches.forEach(b => {
-            b.brands?.forEach(br => set.add(br.name));
-            b.truck_brands?.forEach(br => set.add(br.name));
-        });
+        branches.forEach(b => (b.brands_list || []).forEach(name => set.add(name)));
         return [...set].sort();
     }, [branches]);
 
@@ -90,8 +86,7 @@ export default function SucursalesPage() {
     }, [branches]);
 
     const filteredBranches = useMemo(() => branches.filter(b => {
-        const allBrands = [...(b.brands || []), ...(b.truck_brands || [])];
-        if (selectedBrand && !allBrands.some(br => br.name === selectedBrand)) return false;
+        if (selectedBrand && !(b.brands_list || []).includes(selectedBrand)) return false;
         if (selectedService && b.type !== selectedService) return false;
         return true;
     }), [branches, selectedBrand, selectedService]);
@@ -180,12 +175,9 @@ export default function SucursalesPage() {
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 {filteredBranches.map(sucursal => {
-                                    // Logo: prefer API brand logo, fallback to local map
-                                    const firstBrand = sucursal.brands?.[0];
-                                    const cdnBase = 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/';
-                                    const logoSrc = firstBrand?.logo_url
-                                        ? (firstBrand.logo_url.startsWith('http') ? firstBrand.logo_url : `${cdnBase}${firstBrand.logo_url.replace(/^\/+/, '')}`)
-                                        : (firstBrand ? BRAND_LOGOS[firstBrand.name] : null);
+                                    const brandNames = sucursal.brands_list || [];
+                                    const firstBrandName = brandNames[0] || null;
+                                    const logoSrc = firstBrandName ? (BRAND_LOGOS[firstBrandName] || null) : null;
 
                                     return (
                                         <div key={sucursal.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all flex flex-col h-full group">
@@ -208,7 +200,7 @@ export default function SucursalesPage() {
                                                     </h3>
                                                     {logoSrc && (
                                                         <div className="relative h-6 w-14 flex-shrink-0">
-                                                            <Image src={logoSrc} alt={firstBrand?.name || 'Marca'} fill className="object-contain object-right" />
+                                                            <Image src={logoSrc} alt={firstBrandName || 'Marca'} fill className="object-contain object-right" />
                                                         </div>
                                                     )}
                                                 </div>
@@ -256,11 +248,11 @@ export default function SucursalesPage() {
                                                         </div>
                                                     )}
                                                     {/* Marcas asociadas */}
-                                                    {sucursal.brands && sucursal.brands.length > 1 && (
+                                                    {brandNames.length > 1 && (
                                                         <div className="flex flex-wrap gap-1 pt-1">
-                                                            {sucursal.brands.map(br => (
-                                                                <span key={br.id} className="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full uppercase tracking-widest">
-                                                                    {br.name}
+                                                            {brandNames.map(name => (
+                                                                <span key={name} className="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full uppercase tracking-widest">
+                                                                    {name}
                                                                 </span>
                                                             ))}
                                                         </div>
