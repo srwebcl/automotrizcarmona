@@ -11,6 +11,24 @@ import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRi
 import useEmblaCarousel from 'embla-carousel-react';
 
 export default function ModelPageClient({ brand, id, initialModel, config }: { brand: string; id: string; initialModel: any; config: any }) {
+    const getEmbedUrl = (url: string) => {
+        if (!url) return '';
+        try {
+            let videoId = '';
+            if (url.includes('youtube.com/watch')) {
+                const urlObj = new URL(url);
+                videoId = urlObj.searchParams.get('v') || '';
+            } else if (url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            } else if (url.includes('youtube.com/embed/')) {
+                return url;
+            }
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+        } catch (e) {
+            return url;
+        }
+    };
+
     const [model, setModel] = useState<any>(initialModel);
     const [activeIdx, setActiveIdx] = useState(0);
     const [activeVersionIdx, setActiveVersionIdx] = useState(0);
@@ -711,7 +729,7 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
                     </div>
                     <div className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl">
                         <iframe
-                            src={model.videoUrl}
+                            src={getEmbedUrl(model.videoUrl)}
                             title={`${model.name} Video`}
                             className="absolute inset-0 w-full h-full"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
