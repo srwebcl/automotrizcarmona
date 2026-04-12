@@ -10,7 +10,7 @@ import { getBrandConfig } from '@/lib/brands';
 import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft, Activity, Gauge, Settings2, Route, Sparkles } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
-export default function ModelPageClient({ brand, id, initialModel, config }: { brand: string; id: string; initialModel: any; config: any }) {
+export default function ModelPageClient({ brand, id, initialModel, config, legalExcerpt }: { brand: string; id: string; initialModel: any; config: any; legalExcerpt?: string | null }) {
     const getEmbedUrl = (url: string) => {
         if (!url) return '';
         try {
@@ -842,7 +842,7 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
                     <div className="flex flex-col gap-6">
                         <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Ver Condiciones</span>
                         <p className="text-[12px] text-gray-500 leading-relaxed text-left font-medium">
-                            (*) Precios sugeridos. (**) Valores de consumo de combustible han sido obtenidos en mediciones de laboratorio según ciclo de ensayo de la Comunidad Europea, homologadas en el MTT. Más información: <a href="https://www.consumovehicular.cl" target="_blank" rel="noopener noreferrer" className="underline hover:text-red-600 transition-colors">www.consumovehicular.cl</a> (1) Para ver los términos y condiciones de los autos y sus versiones, diríjase a los términos y condiciones generales por modelos y versiones. (***) Precios sugeridos. Para ver las condiciones que aplican en los servicios de Pauta de Mantención Prepagada, diríjase a la sección de Pautas de Mantención dentro de los términos y condiciones.
+                            {legalExcerpt || `(*) Precios sugeridos. (**) Valores de consumo de combustible han sido obtenidos en mediciones de laboratorio según ciclo de ensayo de la Comunidad Europea, homologadas en el MTT. Más información: www.consumovehicular.cl. (1) Para ver los términos y condiciones de los autos y sus versiones, diríjase a los términos y condiciones generales por modelos y versiones. (***) Precios sugeridos. Para ver las condiciones que aplican en los servicios de Pauta de Mantención Prepagada, diríjase a la sección de Pautas de Mantención dentro de los términos y condiciones.`}
                         </p>
                         <Link href={`/legal#${brand}`} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.2em] text-red-600 hover:text-red-700 transition-colors">
                             Ver más <ChevronRight size={14} />

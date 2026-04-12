@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getModelDetails, getBrandBySlug } from '@/lib/api';
+import { getModelDetails, getBrandBySlug, getLegalDocuments } from '@/lib/api';
 import { MODELS_REGISTRY } from '@/lib/models';
 
 import { getBrandConfig } from '@/lib/brands';
@@ -18,10 +18,13 @@ export default async function GenericModelPage({ params }: { params: Promise<{ b
     }
 
     try {
-        const [brandDetails, apiModel] = await Promise.all([
+        const [brandDetails, apiModel, legalDocs] = await Promise.all([
             getBrandBySlug(brandId),
-            getModelDetails(brandId, id)
+            getModelDetails(brandId, id),
+            getLegalDocuments()
         ]);
+        
+        const legalExcerpt = legalDocs.find((doc: any) => doc.brand_slug === brandId)?.excerpt || null;
         
         let model = apiModel;
 
@@ -53,7 +56,7 @@ export default async function GenericModelPage({ params }: { params: Promise<{ b
             };
         }
 
-        return <ModelPageClient brand={brandId} id={id} initialModel={model} config={config} />;
+        return <ModelPageClient brand={brandId} id={id} initialModel={model} config={config} legalExcerpt={legalExcerpt} />;
     } catch (e) {
         console.error('Error fetching model details on server:', e);
         

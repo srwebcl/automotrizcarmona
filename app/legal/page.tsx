@@ -114,12 +114,7 @@ export default async function LegalPage() {
                                 <div className="p-6 md:p-8 space-y-10">
                                     {data.documents.map((doc) => (
                                         <div key={doc.id} className="group">
-                                            <h5 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-[#d2001c] transition-colors">{doc.title}</h5>
-                                            {doc.excerpt && (
-                                                <p className="text-sm font-medium text-gray-500 mb-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                                    {doc.excerpt}
-                                                </p>
-                                            )}
+                                            <h5 className="font-bold text-gray-900 text-lg mb-4 group-hover:text-[#d2001c] transition-colors">{doc.title}</h5>
                                             {/* Contenido HTML crudo formateado para tipografía Rich Editor de Filament */}
                                             <LegalContent content={doc.content} />
                                         </div>
