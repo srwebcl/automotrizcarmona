@@ -235,7 +235,10 @@ export default function ContactoPage() {
                                     <Send size={18} />
                                 </button>
                                 <p className="text-xs text-gray-400 text-center mt-4">
-                                    Tus datos están seguros y serán utilizados únicamente para contactarte en relación a tu solicitud.
+                                    Tus datos están seguros y serán utilizados conforme a nuestra{' '}
+                                    <Link href="/legal" target="_blank" className="underline hover:text-gray-900 transition-colors">
+                                        Política de Privacidad
+                                    </Link>.
                                 </p>
                             </form>
                         </div>

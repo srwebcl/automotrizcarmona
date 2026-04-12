@@ -340,3 +340,33 @@ export async function getElectromovilidadModels(): Promise<Vehicle[]> {
         return [];
     }
 }
+
+export interface LegalDocument {
+    id: number;
+    title: string;
+    excerpt: string;
+    content: string;
+    brand_name: string;
+    brand_slug: string;
+    logo_url: string | null;
+}
+
+export async function getLegalDocuments(): Promise<LegalDocument[]> {
+    try {
+        const res = await fetch(`${API_URL}/legal-documents`, {
+            cache: 'no-store',
+            headers: FETCH_OPTIONS.headers
+        });
+        if (!res.ok) return [];
+        const json = await res.json();
+        const docs = json.data || json || [];
+        // Map to format logo_url
+        return docs.map((d: any) => ({
+            ...d,
+            logo_url: formatImageUrl(d.logo_url)
+        }));
+    } catch (e) {
+        console.error('Error fetching legal documents:', e);
+        return [];
+    }
+}

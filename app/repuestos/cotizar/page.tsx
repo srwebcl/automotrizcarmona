@@ -460,7 +460,7 @@ function CotizarContent() {
                                         </div>
                                         <label htmlFor="rep-terms" className="text-sm text-gray-600 leading-tight cursor-pointer">
                                             Acepto recibir comunicaciones de Automotriz Carmona.{' '}
-                                            <a href="#" className="underline hover:text-gray-900">Política de privacidad.</a>
+                                            <Link href="/legal" target="_blank" className="underline hover:text-gray-900">Política de privacidad.</Link>
                                         </label>
                                     </div>
                                 </div>
