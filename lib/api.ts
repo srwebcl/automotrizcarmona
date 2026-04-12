@@ -23,6 +23,15 @@ export interface Truck {
     brand?: TruckBrand;
 }
 
+export interface News {
+    id: number;
+    title: string;
+    slug: string;
+    image: string | null;
+    content: string;
+    published_at: string | null;
+}
+
 // Forzar la URL correcta y limpiar cualquier error de concatenaci\u00f3n
 const DEFAULT_API = 'https://api.automotrizcarmona.cl/api/v1';
 let rawUrl = (process.env.NEXT_PUBLIC_API_URL || DEFAULT_API).trim().replace(/\/+$/, '');
@@ -245,6 +254,44 @@ export async function getTrucksByBrand(slug: string): Promise<{ brand: TruckBran
         };
     } catch (e) {
         console.error(`Error fetching trucks for brand ${slug}:`, e);
+        return null;
+    }
+}
+
+export async function getNews(): Promise<News[]> {
+    try {
+        const res = await fetch(`${API_URL}/news`, {
+            cache: 'no-store',
+            headers: FETCH_OPTIONS.headers
+        });
+        if (!res.ok) return [];
+        const json = await res.json();
+        const data = json.data || json || [];
+        
+        return (Array.isArray(data) ? data : []).map((n: any) => ({
+            ...n,
+            image: formatImageUrl(n.image)
+        }));
+    } catch (e) {
+        console.error('Error fetching news:', e);
+        return [];
+    }
+}
+
+export async function getNewsBySlug(slug: string): Promise<News | null> {
+    try {
+        const res = await fetch(`${API_URL}/news/${slug}`, FETCH_OPTIONS);
+        if (!res.ok) return null;
+        const json = await res.json();
+        const data = json.data || json;
+        if (!data) return null;
+        
+        return {
+            ...data,
+            image: formatImageUrl(data.image)
+        };
+    } catch (e) {
+        console.error(`Error fetching news ${slug}:`, e);
         return null;
     }
 }
