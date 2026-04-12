@@ -102,7 +102,7 @@ export default async function LegalPage() {
                         </h3>
 
                         {Object.entries(groupedDocs).map(([brandName, data]) => (
-                            <div key={brandName} className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+                            <div key={brandName} id={data.documents[0]?.brand_slug || brandName.toLowerCase()} className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm scroll-mt-[100px]">
                                 <div className="p-6 md:px-8 border-b border-gray-50 flex items-center gap-4 bg-[#f8f9fa]">
                                     {data.logo_url && (
                                         <div className="relative w-16 h-10 flex-shrink-0">
