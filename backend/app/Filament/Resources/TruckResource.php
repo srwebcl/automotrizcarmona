@@ -49,7 +49,25 @@ class TruckResource extends Resource
                     ->visibility('public')
                     ->image()
                     ->imageEditor()
+                    ->fetchFileInformation(false)
                     ->helperText('Sube la miniatura del camión directamente a Cloudflare R2.'),
+                Forms\Components\Select::make('category')
+                    ->label('Categoría')
+                    ->options([
+                        'Pesados'  => 'Pesados',
+                        'Medianos' => 'Medianos',
+                        'Buses'    => 'Buses',
+                        'Pick-up'  => 'Pick-up',
+                    ])
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nombre de la nueva categoría')
+                            ->required(),
+                    ])
+                    ->createOptionUsing(fn (array $data) => $data['name'])
+                    ->nullable()
+                    ->searchable()
+                    ->helperText('Selecciona una categoría existente o crea una nueva escribiéndola y presionando "Crear".'),
                 Forms\Components\Toggle::make('is_active')
                     ->label('¿Está activo?')
                     ->default(true)
@@ -61,16 +79,23 @@ class TruckResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('truck_brand_id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('brand.name')
+                    ->label('Marca')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
+                    ->label('Modelo')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('category')
+                    ->label('Categoría')
+                    ->badge()
+                    ->color('primary')
+                    ->default('Sin categoría'),
                 Tables\Columns\ImageColumn::make('image_url')
                     ->label('Imagen')
-                    ->disk('r2'),
+                    ->disk('r2')
+                    ->defaultImageUrl(url('/images/placeholder.png'))
+                    ->height(40),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -109,5 +134,11 @@ class TruckResource extends Resource
             'create' => Pages\CreateTruck::route('/create'),
             'edit' => Pages\EditTruck::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->with(['brand']);
     }
 }

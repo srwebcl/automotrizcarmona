@@ -86,4 +86,11 @@ export interface Vehicle {
     mobileBanner?: string;
     videoUrl?: string;
 }
-
+export interface LandingInfo {
+    slug: string;
+    title: string;
+    subtitle?: string;
+    desktop_banner_url?: string;
+    mobile_banner_url?: string;
+    is_active: boolean;
+}

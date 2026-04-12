@@ -33,7 +33,7 @@ class VehicleVersionResource extends Resource
 
     public static function getPluralModelLabel(): string
     {
-        return 'Versiones (Precios)';
+        return 'Lista de Precios';
     }
 
     public static function form(Form $form): Form
@@ -59,11 +59,11 @@ class VehicleVersionResource extends Resource
                         TextInput::make('transmission')->label('Transmisión'),
                         TextInput::make('traction')->label('Tracción'),
                         TextInput::make('fuel')->label('Combustible'),
-                        TextInput::make('motor')->label('Motor (CC) / Motorización'),
-                        TextInput::make('power')->label('Potencia (HP/kW)'),
-                        TextInput::make('torque')->label('Torque (Nm)'),
-                        TextInput::make('consumption_mixed')->label('Rendimiento Mixto (km/l)'),
-                        TextInput::make('electric_range')->label('Autonomía (km)'),
+                        TextInput::make('engine')->label('Motor (CC) / Motorización'),
+                        TextInput::make('power_hp')->label('Potencia (HP/kW)'),
+                        TextInput::make('torque_nm')->label('Torque (Nm)'),
+                        TextInput::make('mixed_performance')->label('Rendimiento Mixto (km/l)'),
+                        TextInput::make('autonomy_km')->label('Autonomía (km)'),
                         TextInput::make('airbags')->label('Airbags')->numeric(),
                         Forms\Components\Toggle::make('includes_iva')
                             ->label('Precio Incluye IVA')
@@ -77,19 +77,43 @@ class VehicleVersionResource extends Resource
                         TextInput::make('list_price')
                             ->label('Precio Lista ($)')
                             ->numeric()
-                            ->prefix('$'),
+                            ->prefix('$')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                                $list = (int) $get('list_price') ?: 0;
+                                $brand = (int) $get('brand_bonus') ?: 0;
+                                $fin = (int) $get('finance_bonus') ?: 0;
+                                $set('finance_price', max(0, $list - $brand - $fin));
+                            }),
                         TextInput::make('brand_bonus')
                             ->label('Bono Marca ($)')
                             ->numeric()
-                            ->prefix('$'),
+                            ->prefix('$')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                                $list = (int) $get('list_price') ?: 0;
+                                $brand = (int) $get('brand_bonus') ?: 0;
+                                $fin = (int) $get('finance_bonus') ?: 0;
+                                $set('finance_price', max(0, $list - $brand - $fin));
+                            }),
                         TextInput::make('finance_bonus')
                             ->label('Bono Financiamiento ($)')
                             ->numeric()
-                            ->prefix('$'),
+                            ->prefix('$')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                                $list = (int) $get('list_price') ?: 0;
+                                $brand = (int) $get('brand_bonus') ?: 0;
+                                $fin = (int) $get('finance_bonus') ?: 0;
+                                $set('finance_price', max(0, $list - $brand - $fin));
+                            }),
                         TextInput::make('finance_price')
                             ->label('Precio con Financiamiento ($)')
                             ->numeric()
-                            ->prefix('$'),
+                            ->prefix('$')
+                            ->disabled()
+                            ->dehydrated(false)
+                            ->helperText('Auto-calculado al guardar'),
                     ])->columns(4),
             ]);
     }
@@ -103,6 +127,12 @@ class VehicleVersionResource extends Resource
                 'vehicleModel.brand'
             ]))
             ->defaultPaginationPageOption(10)
+            ->headerActions([
+                Tables\Actions\CreateAction::make()->label('Nueva Versión'),
+                Tables\Actions\ExportAction::make()
+                    ->exporter(\App\Filament\Exports\VehicleVersionExporter::class)
+                    ->label('Exportar'),
+            ])
             ->columns([
                 TextColumn::make('vehicleModel.brand.name')
                     ->label('Marca')
@@ -123,66 +153,30 @@ class VehicleVersionResource extends Resource
                     ->wrap()
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('fuel')
-                    ->label('Combustible')
+
+                Tables\Columns\TextInputColumn::make('list_price')
+                    ->label('Precio Lista ($)')
+                    ->type('number')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'min-width: 130px; font-weight: 600;']),
+                Tables\Columns\TextInputColumn::make('brand_bonus')
+                    ->label('Bono Marca ($)')
+                    ->type('number')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'min-width: 120px;']),
+                Tables\Columns\TextInputColumn::make('finance_bonus')
+                    ->label('Bono Financ ($)')
+                    ->type('number')
+                    ->sortable()
+                    ->extraAttributes(['style' => 'min-width: 120px;']),
+                TextColumn::make('finance_price')
+                    ->label('Precio Final ($)')
+                    ->money('CLP', true)
+                    ->sortable()
                     ->badge()
                     ->color('success')
-                    ->sortable(),
-                Tables\Columns\TextInputColumn::make('list_price')
-                    ->label('Precio Lista')
-                    ->type('number')
-                    ->sortable()
-                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;', 'class' => 'font-bold text-primary-600']),
-                Tables\Columns\TextInputColumn::make('brand_bonus')
-                    ->label('Bono Marca')
-                    ->type('number')
-                    ->sortable()
-                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;']),
-                Tables\Columns\TextInputColumn::make('finance_bonus')
-                    ->label('Bono Financ.')
-                    ->type('number')
-                    ->sortable()
-                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;']),
-                Tables\Columns\TextInputColumn::make('finance_price')
-                    ->label('Precio Financ.')
-                    ->type('number')
-                    ->sortable()
-                    ->extraAttributes(['style' => 'text-align: right; min-width: 120px;', 'class' => 'font-bold text-green-600']),
-                TextColumn::make('motor')
-                    ->label('Motor')
-                    ->toggleable()
-                    ->sortable(),
-                TextColumn::make('power')
-                    ->label('Potencia')
-                    ->toggleable()
-                    ->sortable(),
-            ])
-            ->filters([
-                Tables\Filters\SelectFilter::make('category')
-                    ->label('CATEGORÍA')
-                    ->multiple()
-                    ->options([
-                        'SUV' => 'SUV',
-                        'Sedán' => 'Sedán',
-                        'Hatchback' => 'Hatchback',
-                        'Pickup' => 'Pickup',
-                        'Coupé' => 'Coupé',
-                        'Convertible' => 'Convertible',
-                        'Van' => 'Van',
-                        'Furgón' => 'Furgón',
-                        'Camión' => 'Camión',
-                        'Moto' => 'Moto',
-                    ])
-                    ->query(function (\Illuminate\Database\Eloquent\Builder $query, array $data): \Illuminate\Database\Eloquent\Builder {
-                        return $query->when($data['values'], function ($q) use ($data) {
-                            $q->whereHas('vehicleModel', function ($q) use ($data) {
-                                foreach ($data['values'] as $value) {
-                                    $q->whereJsonContains('category', $value);
-                                }
-                            });
-                        });
-                    })
-                    ->preload(),
+                    ->weight('bold'),
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

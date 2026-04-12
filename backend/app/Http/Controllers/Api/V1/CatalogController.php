@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\BannerResource;
 use App\Http\Resources\V1\BranchResource;
 use App\Http\Resources\V1\BrandResource;
+use App\Http\Resources\V1\LandingResource;
 use App\Http\Resources\V1\NewsResource;
 use App\Http\Resources\V1\VehicleModelResource;
 use App\Models\Banner;
 use App\Models\Branch;
 use App\Models\Brand;
+use App\Models\Landing;
 use App\Models\News;
 use App\Models\VehicleModel;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -30,7 +32,7 @@ class CatalogController extends Controller
      */
     public function branches(): AnonymousResourceCollection
     {
-        return BranchResource::collection(Branch::with('brands')->get());
+        return BranchResource::collection(Branch::all());
     }
 
     /**
@@ -39,6 +41,14 @@ class CatalogController extends Controller
     public function news(): AnonymousResourceCollection
     {
         return NewsResource::collection(News::orderByDesc('published_at')->get());
+    }
+
+    /**
+     * Get single news item by slug.
+     */
+    public function newsBySlug(string $slug): NewsResource
+    {
+        return new NewsResource(News::where('slug', $slug)->firstOrFail());
     }
 
     /**
@@ -104,5 +114,48 @@ class CatalogController extends Controller
             ->get();
 
         return VehicleModelResource::collection($models);
+    }
+
+    /**
+     * Get models for the "Promociones" landing (Models marked with is_promotion).
+     */
+    public function promotions(): AnonymousResourceCollection
+    {
+        $models = VehicleModel::where('is_active', true)
+            ->where('is_promotion', true)
+            ->with(['brand', 'promotionUnits'])
+            ->orderBy('name')
+            ->get();
+
+        return VehicleModelResource::collection($models);
+    }
+
+    /**
+     * Get models for "Electromovilidad" landing (Hybrid or Electric).
+     */
+    public function electromovilidad(): AnonymousResourceCollection
+    {
+        $models = VehicleModel::where('is_active', true)
+            ->where(function($query) {
+                $query->where('is_hybrid', true)
+                      ->orWhere('is_electric', true);
+            })
+            ->with(['brand', 'vehicleVersions'])
+            ->orderBy('name')
+            ->get();
+
+        return VehicleModelResource::collection($models);
+    }
+
+    /**
+     * Get landing hero configuration by slug.
+     */
+    public function landingInfo(string $slug): LandingResource
+    {
+        $landing = Landing::where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        return new LandingResource($landing);
     }
 }

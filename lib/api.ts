@@ -1,4 +1,4 @@
-import { Vehicle, VehicleVersion } from './models/types';
+import { Vehicle, VehicleVersion, LandingInfo } from './models/types';
 import R2_ASSETS from './assetMap.json';
 import CSV_FALLBACK from './csvFallback.json';
 
@@ -91,7 +91,14 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         vehicleType: data.vehicle_type,
         isHybrid: data.is_hybrid,
         isElectric: data.is_electric,
-        isNew: true, // Esto en producci\u00f3n lo sacamos seg\u00fan reglas de stock, asumimos true para el cat\u00e1logo "nuevos"
+        isPromotion: data.is_promotion,
+        promoUnits: (data.promotion_units || []).map((u: any) => ({
+            vin: u.vin,
+            versionName: u.version_name,
+            promoBonus: u.promo_bonus,
+            promoPrice: u.promo_price
+        })),
+        isNew: true, 
         versions: (data.versions || []).map((v: any) => {
             return {
                 name: v.name,
@@ -293,5 +300,43 @@ export async function getNewsBySlug(slug: string): Promise<News | null> {
     } catch (e) {
         console.error(`Error fetching news ${slug}:`, e);
         return null;
+    }
+}
+
+export async function getLandingInfo(slug: string): Promise<LandingInfo | null> {
+    try {
+        const res = await fetch(`${API_URL}/landings/${slug}`, FETCH_OPTIONS);
+        if (!res.ok) return null;
+        const json = await res.json();
+        return json.data || json || null;
+    } catch (e) {
+        console.error(`Error fetching landing ${slug}:`, e);
+        return null;
+    }
+}
+
+export async function getPromotionModels(): Promise<Vehicle[]> {
+    try {
+        const res = await fetch(`${API_URL}/promotions`, FETCH_OPTIONS);
+        if (!res.ok) return [];
+        const json = await res.json();
+        const data = json.data || json || [];
+        return data.map((d: any) => mapVehicleModel(d));
+    } catch (e) {
+        console.error('Error fetching promotions:', e);
+        return [];
+    }
+}
+
+export async function getElectromovilidadModels(): Promise<Vehicle[]> {
+    try {
+        const res = await fetch(`${API_URL}/electromovilidad`, FETCH_OPTIONS);
+        if (!res.ok) return [];
+        const json = await res.json();
+        const data = json.data || json || [];
+        return data.map((d: any) => mapVehicleModel(d));
+    } catch (e) {
+        console.error('Error fetching electromovilidad models:', e);
+        return [];
     }
 }

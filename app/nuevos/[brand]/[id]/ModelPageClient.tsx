@@ -260,10 +260,6 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
                                 <span>Tracción</span>
                                 <b>{v.traction || '-'}</b>
                             </div>
-                            <div className="flex justify-between items-center text-gray-600">
-                                <span>Rendimiento</span>
-                                <b>{v.consumptionMixed || v.electricRange || '-'}</b>
-                            </div>
                         </div>
                     )}
                 </div>
