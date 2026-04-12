@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,19 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $hasLocation = Schema::hasColumn('banners', 'location');
-        $hasCustomData = Schema::hasColumn('banners', 'custom_data');
-
-        if (!$hasLocation || !$hasCustomData) {
-            Schema::table('banners', function (Blueprint $table) use ($hasLocation, $hasCustomData) {
-                if (!$hasLocation) {
-                    $table->string('location')->default('home_hero')->after('title');
-                }
-                if (!$hasCustomData) {
-                    $table->json('custom_data')->nullable()->after('active');
-                }
-            });
-        }
+        // Usamos SQL nativo de Postgres para evitar problemas de transacciones abortadas al leer el esquema en medio de la migración
+        DB::statement("ALTER TABLE banners ADD COLUMN IF NOT EXISTS location VARCHAR(255) DEFAULT 'home_hero'");
+        DB::statement("ALTER TABLE banners ADD COLUMN IF NOT EXISTS custom_data JSONB NULL");
     }
 
     /**
