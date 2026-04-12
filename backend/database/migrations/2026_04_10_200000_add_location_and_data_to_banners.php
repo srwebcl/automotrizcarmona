@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('banners', function (Blueprint $table) {
-            if (!Schema::hasColumn('banners', 'location')) {
-                $table->string('location')->default('home_hero')->after('title');
-            }
-            if (!Schema::hasColumn('banners', 'custom_data')) {
-                $table->json('custom_data')->nullable()->after('active');
-            }
-        });
+        $hasLocation = Schema::hasColumn('banners', 'location');
+        $hasCustomData = Schema::hasColumn('banners', 'custom_data');
+
+        if (!$hasLocation || !$hasCustomData) {
+            Schema::table('banners', function (Blueprint $table) use ($hasLocation, $hasCustomData) {
+                if (!$hasLocation) {
+                    $table->string('location')->default('home_hero')->after('title');
+                }
+                if (!$hasCustomData) {
+                    $table->json('custom_data')->nullable()->after('active');
+                }
+            });
+        }
     }
 
     /**
