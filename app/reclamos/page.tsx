@@ -87,8 +87,40 @@ function ReclamosContent() {
         e.preventDefault();
         if (!step3Valid) return;
         setIsSubmitting(true);
-        // Simulando envio
-        setTimeout(() => { setIsSubmitting(false); setSuccess(true); }, 1500);
+        
+        try {
+            const response = await fetch('/api/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: 'reclamos',
+                    customer: {
+                        rut: form.rut,
+                        first_name: form.nombre,
+                        last_name: form.apellido,
+                        email: form.correo,
+                        phone: form.celular,
+                    },
+                    request_details: {
+                        service_type: form.departamento,
+                        message: `[${form.tipo}] Patente: ${form.patente || 'N/A'} | Doc: ${form.nroDocumento || 'N/A'} | Mensaje: ${form.mensaje}`
+                    }
+                }),
+            });
+
+            if (response.ok) {
+                setSuccess(true);
+            } else {
+                throw new Error('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert("Hubo un problema al enviar tu formulario. Por favor intentalo más tarde.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // ── SUCCESS ─────────────────────────────────────────────────────────────

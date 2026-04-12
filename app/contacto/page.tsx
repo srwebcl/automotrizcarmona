@@ -32,7 +32,7 @@ export default function ContactoPage() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    source: 'ventas',
+                    source: 'contacto',
                     customer: {
                         first_name: formData.nombre.split(' ')[0],
                         last_name: formData.nombre.split(' ').slice(1).join(' ') || '.',
