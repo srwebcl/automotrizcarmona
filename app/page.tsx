@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Hero from '@/components/Hero';
 import { getFeaturedModels, getBanners, formatImageUrl } from '@/lib/api';
+import { getLayoutBrands } from '@/lib/api/layoutBrands';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
 import HomeVehiclesCarousel from '@/components/HomeVehiclesCarousel';
@@ -13,9 +14,10 @@ import HomeClient from './HomeClient';
 export const revalidate = 60;
 
 export default async function Home() {
-  const [featuredVehicles, allBanners] = await Promise.all([
+  const [featuredVehicles, allBanners, layoutBrands] = await Promise.all([
     getFeaturedModels(),
-    getBanners()
+    getBanners(),
+    getLayoutBrands()
   ]);
 
   const homeHeroBanners = allBanners
@@ -38,7 +40,10 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Hero banners={homeHeroBanners.length > 0 ? homeHeroBanners : undefined} />
+      <Hero 
+        banners={homeHeroBanners.length > 0 ? homeHeroBanners : undefined} 
+        layoutBrands={layoutBrands}
+      />
 
       {/* Acceso Rápido */}
       <QuickAccessBar />

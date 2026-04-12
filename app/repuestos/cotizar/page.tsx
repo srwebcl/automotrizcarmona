@@ -28,29 +28,7 @@ const SUCURSALES = [
 ];
 
 // ─── Brands ───────────────────────────────────────────────────────────────────
-const ALL_BRANDS = [
-    { name: 'Toyota', src: '/images/logos/logo-toyota.webp' },
-    { name: 'Volkswagen', src: '/images/logos/logo-vw.webp' },
-    { name: 'Audi', src: '/images/logos/logo-audi.webp' },
-    { name: 'Seat', src: '/images/logos/logo-seat.webp' },
-    { name: 'Cupra', src: '/images/logos/logo-cupra.webp' },
-    { name: 'Honda', src: '/images/logos/logo-honda.webp' },
-    { name: 'BMW', src: '/images/logos/logo-bmw.webp' },
-    { name: 'BMW Motorrad', src: '/images/logos/logo-bmw-motorrad.webp' },
-    { name: 'Mini', src: '/images/logos/logo-mini.webp' },
-    { name: 'Maxus', src: '/images/logos/logo-maxus.webp' },
-    { name: 'Jetour', src: '/images/logos/logo-jetour.webp' },
-    { name: 'Kaiyi', src: '/images/logos/logo-kaiyi.webp' },
-    { name: 'Karry', src: '/images/logos/logo-karry.webp' },
-    { name: 'Geely', src: '/images/logos/logo-geely.webp' },
-    { name: 'MG', src: '/images/logos/logo-mg.webp' },
-    { name: 'Dongfeng', src: '/images/logos/logo-dongfeng.webp' },
-    { name: 'Foton', src: '/images/logos/logo-foton.webp' },
-    { name: 'VW Camiones', src: '/images/logos/logo-vw-camiones.webp' },
-    { name: 'Foton Camiones', src: '/images/logos/logo-foton-camiones.webp' },
-    { name: 'Iveco', src: '/images/logos/logo-iveco.webp' },
-    { name: 'MAN', src: '/images/logos/logo-man.webp' },
-];
+import { getLayoutBrands, LayoutBrandsData } from '@/lib/api/layoutBrands';
 
 // ─── Modelos por marca ────────────────────────────────────────────────────────
 const MODELS_BY_BRAND: Record<string, string[]> = {
@@ -169,6 +147,13 @@ function CotizarContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const preselected = searchParams.get('marca') || '';
+
+    const [layoutBrands, setLayoutBrands] = useState<LayoutBrandsData>({ cars: [], trucks: [] });
+    useEffect(() => {
+        getLayoutBrands().then(setLayoutBrands);
+    }, []);
+
+    const ALL_BRANDS = [...layoutBrands.cars, ...layoutBrands.trucks].filter(b => b.show_in_parts);
 
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -514,7 +499,7 @@ function CotizarContent() {
                             <div className="flex items-center gap-4 border-b border-gray-100 pb-6 mb-6">
                                 {brand ? (
                                     <div className="relative w-20 h-12 bg-[#f8f9fa] rounded-lg flex-shrink-0">
-                                        <Image src={brand.src} alt={brand.name} fill className="object-contain p-1" />
+                                        <Image src={brand.logo_url} alt={brand.name} fill className="object-contain p-1" />
                                     </div>
                                 ) : (
                                     <div className="w-20 h-12 bg-[#f8f9fa] rounded-lg flex-shrink-0 flex items-center justify-center text-gray-300 text-xs font-bold uppercase">Logo</div>

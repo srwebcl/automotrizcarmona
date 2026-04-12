@@ -20,18 +20,22 @@ export const metadata: Metadata = {
   description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
 };
 
-export default function RootLayout({
+import { getLayoutBrands } from "@/lib/api/layoutBrands";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const layoutBrands = await getLayoutBrands();
+
   return (
     <html lang="es" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-gray-900`}
         suppressHydrationWarning
       >
-        <Navbar />
+        <Navbar layoutBrands={layoutBrands} />
         {children}
         <SmartWhatsAppButton />
         <Footer />

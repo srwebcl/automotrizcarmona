@@ -5,31 +5,7 @@ import Image from 'next/image';
 import { MapPin, Phone, Mail, Clock, User, ChevronDown, Store, Navigation } from 'lucide-react';
 import { API_URL } from '@/lib/api';
 
-// Mapa de logos locales como fallback por nombre de marca
-const BRAND_LOGOS: Record<string, string> = {
-    "Toyota":       "/images/logos/logo-toyota.webp",
-    "Volkswagen":   "/images/logos/logo-vw.webp",
-    "Audi":         "/images/logos/logo-audi.webp",
-    "Seat":         "/images/logos/logo-seat.webp",
-    "Cupra":        "/images/logos/logo-cupra.webp",
-    "BMW":          "/images/logos/logo-bmw.webp",
-    "BMW Motorrad": "/images/logos/logo-bmw-motorrad.webp",
-    "Mini":         "/images/logos/logo-mini.webp",
-    "Honda":        "/images/logos/logo-honda.webp",
-    "MG":           "/images/logos/logo-mg.webp",
-    "Maxus":        "/images/logos/logo-maxus.webp",
-    "Jetour":       "/images/logos/logo-jetour.webp",
-    "Geely":        "/images/logos/logo-geely.webp",
-    "Dongfeng":     "/images/logos/logo-dongfeng.webp",
-    "Kaiyi":        "/images/logos/logo-kaiyi.webp",
-    "Karry":        "/images/logos/logo-karry.webp",
-    "Soueast":      "/images/logos/logos antiguos/SOUEAST_BLACK_Logo.png",
-    "Foton":        "/images/logos/logo-foton.webp",
-    "VW Camiones":  "/images/logos/logo-vw-camiones.webp",
-    "Foton Camiones": "/images/logos/logo-foton-camiones.webp",
-    "Iveco":        "/images/logos/logo-iveco.webp",
-    "MAN":          "/images/logos/logo-man.webp",
-};
+import { getLayoutBrands, LayoutBrandsData } from '@/lib/api/layoutBrands';
 
 interface Branch {
     id: number;
@@ -64,6 +40,19 @@ export default function SucursalesPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedBrand, setSelectedBrand] = useState('');
     const [selectedService, setSelectedService] = useState('');
+    const [layoutBrands, setLayoutBrands] = useState<LayoutBrandsData>({ cars: [], trucks: [] });
+
+    useEffect(() => {
+        getLayoutBrands().then(setLayoutBrands);
+    }, []);
+
+    const BRAND_LOGOS = useMemo(() => {
+        const bl: Record<string, string> = {};
+        [...layoutBrands.cars, ...layoutBrands.trucks].forEach(b => {
+             bl[b.name] = b.logo_url;
+        });
+        return bl;
+    }, [layoutBrands]);
 
     useEffect(() => {
         fetch(`${API_URL}/branches`)

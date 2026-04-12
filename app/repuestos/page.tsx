@@ -6,39 +6,12 @@ import RepuestosBanner from '@/components/RepuestosBanner';
 import DiscoverSection from '@/components/DiscoverSection';
 import { getBanners, formatImageUrl } from '@/lib/api';
 
-// ─── Autos & Motos ─────────────────────────────────────────────────────────────
-const AUTOS_BRANDS = [
-    { name: 'Toyota', src: '/images/logos/logo-toyota.webp' },
-    { name: 'Volkswagen', src: '/images/logos/logo-vw.webp' },
-    { name: 'Audi', src: '/images/logos/logo-audi.webp' },
-    { name: 'Seat', src: '/images/logos/logo-seat.webp' },
-    { name: 'Cupra', src: '/images/logos/logo-cupra.webp' },
-    { name: 'Honda', src: '/images/logos/logo-honda.webp' },
-    { name: 'BMW', src: '/images/logos/logo-bmw.webp' },
-    { name: 'BMW Motorrad', src: '/images/logos/logo-bmw-motorrad.webp' },
-    { name: 'Mini', src: '/images/logos/logo-mini.webp' },
-    { name: 'Maxus', src: '/images/logos/logo-maxus.webp' },
-    { name: 'Jetour', src: '/images/logos/logo-jetour.webp' },
-    { name: 'Kaiyi', src: '/images/logos/logo-kaiyi.webp' },
-    { name: 'Karry', src: '/images/logos/logo-karry.webp' },
-    { name: 'Geely', src: '/images/logos/logo-geely.webp' },
-    { name: 'MG', src: '/images/logos/logo-mg.webp' },
-    { name: 'Dongfeng', src: '/images/logos/logo-dongfeng.webp' },
-    { name: 'Foton', src: '/images/logos/logo-foton.webp' },
-];
-
-// ─── Camiones & Buses ──────────────────────────────────────────────────────────
-const TRUCKS_BRANDS = [
-    { name: 'VW Camiones', src: '/images/logos/logo-vw-camiones.webp' },
-    { name: 'Foton Camiones', src: '/images/logos/logo-foton-camiones.webp' },
-    { name: 'Iveco', src: '/images/logos/logo-iveco.webp' },
-    { name: 'MAN', src: '/images/logos/logo-man.webp' },
-];
+import { getLayoutBrands } from '@/lib/api/layoutBrands';
 
 
 
 // ─── Brand Card ────────────────────────────────────────────────────────────────
-function BrandCard({ name, src }: { name: string; src: string }) {
+function BrandCard({ name, logo_url }: { name: string; logo_url: string }) {
     const slug = name.toLowerCase().replace(/\s+/g, '-');
     return (
         <Link
@@ -48,7 +21,7 @@ function BrandCard({ name, src }: { name: string; src: string }) {
         >
             <div className="relative w-full h-16 flex items-center justify-center">
                 <Image
-                    src={src}
+                    src={logo_url}
                     alt={name}
                     fill
                     className="object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300 opacity-50 group-hover:opacity-100"
@@ -64,7 +37,10 @@ function BrandCard({ name, src }: { name: string; src: string }) {
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
 export default async function RepuestosPage() {
-    const allBanners = await getBanners();
+    const [allBanners, layoutBrands] = await Promise.all([
+        getBanners(),
+        getLayoutBrands()
+    ]);
     const repuestosBanners = allBanners
         .filter((b: any) => b.location === 'repuestos' && b.active)
         .sort((a: any, b: any) => a.order - b.order)
@@ -109,8 +85,8 @@ export default async function RepuestosPage() {
                         <div className="flex-1 h-px bg-gray-100" />
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 mb-12">
-                        {AUTOS_BRANDS.map((b) => (
-                            <BrandCard key={b.name} {...b} />
+                        {layoutBrands.cars.filter(b => b.show_in_parts).map((b) => (
+                            <BrandCard key={b.name} name={b.name} logo_url={b.logo_url} />
                         ))}
                     </div>
 
@@ -122,8 +98,8 @@ export default async function RepuestosPage() {
                         <div className="flex-1 h-px bg-gray-100" />
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                        {TRUCKS_BRANDS.map((b) => (
-                            <BrandCard key={b.name} {...b} />
+                        {layoutBrands.trucks.filter(b => b.show_in_parts).map((b) => (
+                            <BrandCard key={b.name} name={b.name} logo_url={b.logo_url} />
                         ))}
                     </div>
 

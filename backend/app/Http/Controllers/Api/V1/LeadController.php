@@ -29,17 +29,36 @@ class LeadController extends Controller
             'email' => $customerData['email'] ?? '',
             'phone' => $customerData['phone'] ?? '',
             'company' => $customerData['company'] ?? null,
-            'vehicle_id' => $validated['vehicle']['model_name'] ?? null,
-            'service_type' => $validated['request_details']['service_type'] ?? null,
-            'message' => $validated['request_details']['message'] ?? '',
+            'vehicle_id' => isset($validated['vehicle']['model_name']) ? $validated['vehicle']['model_name'] : null,
+            'service_type' => isset($validated['request_details']['service_type']) ? $validated['request_details']['service_type'] : null,
+            'message' => isset($validated['request_details']['message']) ? $validated['request_details']['message'] : '',
             'raw_request' => $validated, // Guardamos los datos validados como JSON
             'crm_synced' => false,
         ]);
 
-        // 2. Despachar Job para enviar al CRM (Background)
-        SendLeadToTecnomJob::dispatch($lead, $validated);
+        $directForms = ['contacto', 'reclamos', 'dyp'];
 
-        Log::info("Lead recibido y guardado correctamente: id={$lead->id}");
+        if (in_array(strtolower($lead->source), $directForms)) {
+            // Obtenemos correos desde la Base de Datos
+            $recipientConfig = \App\Models\FormRecipient::where('identifier', strtolower($lead->source))->first();
+            
+            if ($recipientConfig && !empty($recipientConfig->emails)) {
+                $emails = $recipientConfig->emails;
+                try {
+                    \Illuminate\Support\Facades\Mail::to($emails)->send(new \App\Mail\ContactFormMail($lead));
+                } catch (\Throwable $e) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'MAIL_ERROR: ' . $e->getMessage() . ' en ' . $e->getFile() . ':' . $e->getLine()
+                    ], 400); // 400 para q no devuelva 500
+                }
+            }
+        } else {
+            // 2. Despachar Job para enviar al CRM (Background)
+            SendLeadToTecnomJob::dispatch($lead, $validated);
+        }
+
+        Log::info("Lead recibido y procesado correctamente: id={$lead->id}");
 
         return response()->json([
             'status' => 'success',

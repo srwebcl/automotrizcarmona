@@ -5,32 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, MapPin, ChevronDown, Menu, X, User, Calendar, Wrench, Settings, Truck, Car, ShoppingBag, ArrowRight, Search, ChevronLeft, Sparkles, LayoutGrid, Leaf, Bus, Grip, UserCheck, MessageSquare, Tag } from 'lucide-react';
 
-const BRAND_LOGOS = [
-    { name: "Toyota", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-toyota.webp", isHybrid: true },
-    { name: "Volkswagen", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-vw.webp", isHybrid: false },
-    { name: "Audi", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-audi.webp", isHybrid: true },
-    { name: "Cupra", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-cupra.webp", isHybrid: true },
-    { name: "Honda", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-honda.webp", isHybrid: true },
-    { name: "BMW", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw.webp", isHybrid: true },
-    { name: "BMW Motorrad", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-bmw-motorrad.webp", isHybrid: false },
-    { name: "Mini", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mini.webp", isHybrid: true },
-    { name: "Maxus", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-maxus.webp", isHybrid: false },
-    { name: "Jetour", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-jetour.webp", isHybrid: false },
-    { name: "Soueast", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-soueast.webp", isHybrid: false },
-    { name: "Kaiyi", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-kaiyi.webp", isHybrid: false },
-    { name: "Karry", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-karry.webp", isHybrid: false },
-    { name: "Geely", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-geely.webp", isHybrid: true },
-    { name: "MG", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-mg.webp", isHybrid: true },
-    { name: "Dongfeng", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-dongfeng.webp", isHybrid: false },
-    { name: "Foton", src: "https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/logo-foton.webp", isHybrid: false },
-];
-
-const TRUCK_LOGOS = [
-    { name: "Iveco", src: "/images/logos/logo-iveco.webp" },
-    { name: "MAN", src: "/images/logos/logo-man.webp" },
-    { name: "VW Camiones", src: "/images/logos/logo-vw-camiones.webp" },
-    { name: "Foton", src: "/images/logos/logo-foton-camiones.webp" },
-];
+// Brands are now fetched dynamically from the API and passed as props
 
 type MenuCategory = 'nuevos' | 'camiones' | 'seminuevos' | 'postventa' | 'contacto';
 type IntentType = 'QUOTE' | 'SERVICE' | 'PARTS' | 'TRUCKS' | 'USED' | 'LOCATION' | 'BRAND_ONLY' | 'GENERAL' | 'NONE';
@@ -41,9 +16,15 @@ interface SearchIntent {
     isTruck?: boolean;
 }
 
-export default function Navbar() {
+import { LayoutBrandsData } from '@/lib/api/layoutBrands';
+
+export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsData }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+
+    // Fallback in case they aren't loaded yet
+    const carBrands = layoutBrands?.cars || [];
+    const truckBrands = layoutBrands?.trucks || [];
 
     // Unified Menu State
     const [isUnifiedMenuOpen, setIsUnifiedMenuOpen] = useState(false);
@@ -98,8 +79,8 @@ export default function Navbar() {
         const queryLower = searchQuery.toLowerCase();
 
         // 1. Check for specific truck brands first to avoid "Foton" double-match
-        const detectedTruckBrand = TRUCK_LOGOS.find(b => queryLower.includes(b.name.toLowerCase()));
-        const detectedCarBrand = BRAND_LOGOS.find(b => queryLower.includes(b.name.toLowerCase()));
+        const detectedTruckBrand = truckBrands.find(b => queryLower.includes(b.name.toLowerCase()));
+        const detectedCarBrand = carBrands.find(b => queryLower.includes(b.name.toLowerCase()));
         
         // Priority to truck if "camion" or "pesado" is in query
         const hasTruckKeyword = queryLower.match(/camion|bus|pesado|carga/);
@@ -237,7 +218,7 @@ export default function Navbar() {
                         <div className="flex-1 animate-in fade-in zoom-in-95 duration-300">
                             {activeCategory === 'nuevos' && (
                                 <div className="grid grid-cols-6 gap-6">
-                                    {BRAND_LOGOS.map((brand) => (
+                                    {carBrands.map((brand) => (
                                         <Link
                                             key={brand.name}
                                             href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -245,7 +226,7 @@ export default function Navbar() {
                                             className="group flex flex-col items-center justify-center p-4 rounded-xl border border-gray-100 bg-white hover:border-carmona-gold/30 hover:shadow-lg transition-all h-32"
                                         >
                                             <div className="relative w-full h-12 mb-3">
-                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100" />
+                                                <Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100" />
                                             </div>
                                             <span className="text-[10px] font-bold text-gray-300 group-hover:text-gray-900 uppercase tracking-wider transition-colors">{brand.name}</span>
                                         </Link>
@@ -255,7 +236,7 @@ export default function Navbar() {
 
                             {activeCategory === 'camiones' && (
                                 <div className="grid grid-cols-4 gap-8">
-                                    {TRUCK_LOGOS.map((brand) => (
+                                    {truckBrands.map((brand) => (
                                         <Link
                                             key={brand.name}
                                             href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -263,7 +244,7 @@ export default function Navbar() {
                                             className="group flex flex-col items-center justify-center p-8 rounded-2xl border border-gray-100 bg-white hover:border-carmona-gold hover:shadow-xl transition-all h-48"
                                         >
                                             <div className="relative w-full h-20 mb-4">
-                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
+                                                <Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
                                             </div>
                                             <span className="text-xs font-bold text-gray-400 group-hover:text-carmona-gold uppercase tracking-wider">{brand.name}</span>
                                         </Link>
@@ -428,7 +409,7 @@ export default function Navbar() {
                             
                             <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'nuevos' ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
-                                    {BRAND_LOGOS.map((brand) => (
+                                    {carBrands.map((brand) => (
                                         <Link 
                                             key={brand.name} 
                                             href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -436,7 +417,7 @@ export default function Navbar() {
                                             className="flex flex-col items-center justify-center p-5 rounded-[1.5rem] bg-gray-50 active:scale-95 transition-all gap-2"
                                         >
                                             <div className="relative w-full h-8">
-                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
+                                                <Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
                                             </div>
                                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none text-center">{brand.name}</span>
                                         </Link>
@@ -462,7 +443,7 @@ export default function Navbar() {
                             
                             <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'camiones' ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
-                                    {TRUCK_LOGOS.map((brand) => (
+                                    {truckBrands.map((brand) => (
                                         <Link 
                                             key={brand.name} 
                                             href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -470,7 +451,7 @@ export default function Navbar() {
                                             className="flex flex-col items-center justify-center p-5 rounded-[1.5rem] bg-gray-50 active:scale-95 transition-all gap-2"
                                         >
                                             <div className="relative w-full h-8">
-                                                <Image src={brand.src} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
+                                                <Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
                                             </div>
                                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none text-center">{brand.name}</span>
                                         </Link>
@@ -687,9 +668,9 @@ export default function Navbar() {
                                         </Link>
                                     ) : (
                                         <div className="grid grid-cols-2 gap-3">
-                                            {BRAND_LOGOS.slice(0, 8).map(brand => (
+                                            {carBrands.slice(0, 8).map(brand => (
                                                 <Link key={brand.name} href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} onClick={resetAssistant} className="p-4 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all flex flex-col items-center gap-2">
-                                                    <div className="relative w-full h-8"><Image src={brand.src} alt={brand.name} fill className="object-contain" /></div>
+                                                    <div className="relative w-full h-8"><Image src={brand.logo_url} alt={brand.name} fill className="object-contain" /></div>
                                                     <span className="text-xs font-bold text-gray-400">{brand.name}</span>
                                                 </Link>
                                             ))}
@@ -716,9 +697,9 @@ export default function Navbar() {
                                         </Link>
                                     ) : (
                                         <div className="grid grid-cols-2 gap-3">
-                                            {BRAND_LOGOS.map((brand) => (
+                                            {carBrands.map((brand) => (
                                                 <Link key={brand.name} href={`/servicios/agendar?marca=${encodeURIComponent(brand.name)}`} onClick={resetAssistant} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 transition-all group">
-                                                    <div className="relative w-8 h-8 flex-shrink-0"><Image src={brand.src} alt={brand.name} fill className="object-contain" /></div>
+                                                    <div className="relative w-8 h-8 flex-shrink-0"><Image src={brand.logo_url} alt={brand.name} fill className="object-contain" /></div>
                                                     <span className="text-sm font-bold text-gray-600 group-hover:text-blue-700">{brand.name}</span>
                                                 </Link>
                                             ))}
@@ -747,7 +728,7 @@ export default function Navbar() {
                                     {searchIntent.brand && (
                                         <div className="bg-white p-4 rounded-xl border border-carmona-gold/30 shadow-sm mb-4">
                                             <div className="flex items-center gap-4 mb-3">
-                                                <div className="relative w-16 h-10"><Image src={searchIntent.brand.src} alt={searchIntent.brand.name} fill className="object-contain" /></div>
+                                                <div className="relative w-16 h-10"><Image src={searchIntent.brand.logo_url} alt={searchIntent.brand.name} fill className="object-contain" /></div>
                                                 <div><h3 className="text-lg font-bold text-gray-900">{searchIntent.brand.name}</h3><p className="text-xs text-gray-500">Resultados encontrados</p></div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-2">
@@ -783,13 +764,13 @@ export default function Navbar() {
 
                                     <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest">Otras Opciones</h3>
                                     <div className="grid grid-cols-2 gap-3">
-                                        {[...BRAND_LOGOS, ...TRUCK_LOGOS].filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 10).map((brand, idx) => (
-                                            <Link key={`${brand.name}-${idx}`} href={`${TRUCK_LOGOS.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} onClick={resetAssistant} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all">
-                                                <div className="relative w-8 h-8 flex-shrink-0"><Image src={brand.src} alt={brand.name} fill className="object-contain" /></div>
+                                        {[...carBrands, ...truckBrands].filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 10).map((brand, idx) => (
+                                            <Link key={`${brand.name}-${idx}`} href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} onClick={resetAssistant} className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-md transition-all">
+                                                <div className="relative w-8 h-8 flex-shrink-0"><Image src={brand.logo_url} alt={brand.name} fill className="object-contain" /></div>
                                                 <span className="text-sm font-bold text-gray-700">{brand.name}</span>
                                             </Link>
                                         ))}
-                                        {[...BRAND_LOGOS, ...TRUCK_LOGOS].filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
+                                        {[...carBrands, ...truckBrands].filter(b => b.name.toLowerCase().includes(searchQuery.toLowerCase())).length === 0 && (
                                             <div className="col-span-2 text-center py-8">
                                                 <p className="text-gray-400">No encontramos resultados exactos...</p>
                                                 <button onClick={() => setSearchQuery('')} className="mt-2 text-carmona-gold font-bold text-sm">Ver todas las opciones</button>
@@ -847,9 +828,9 @@ export default function Navbar() {
                                     <h2 className="text-2xl font-extrabold text-gray-900">Autos Nuevos</h2>
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
-                                    {BRAND_LOGOS.map((brand) => (
+                                    {carBrands.map((brand) => (
                                         <Link key={brand.name} href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-gray-100 hover:border-carmona-gold hover:shadow-lg transition-all group" onClick={resetAssistant}>
-                                            <div className="relative w-full h-12 mb-2"><Image src={brand.src} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" /></div>
+                                            <div className="relative w-full h-12 mb-2"><Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" /></div>
                                             <span className="text-sm font-bold text-gray-400 group-hover:text-gray-900">{brand.name}</span>
                                         </Link>
                                     ))}
@@ -862,9 +843,9 @@ export default function Navbar() {
                                     <h2 className="text-2xl font-extrabold text-gray-900">Camiones y Buses</h2>
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
-                                    {TRUCK_LOGOS.map((brand) => (
+                                    {truckBrands.map((brand) => (
                                         <Link key={brand.name} href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`} className="flex flex-col items-center justify-center p-6 bg-white rounded-xl border border-gray-100 hover:border-blue-600 hover:shadow-lg transition-all group" onClick={resetAssistant}>
-                                            <div className="relative w-full h-12 mb-2"><Image src={brand.src} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" /></div>
+                                            <div className="relative w-full h-12 mb-2"><Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300" /></div>
                                             <span className="text-sm font-bold text-gray-400 group-hover:text-gray-900">{brand.name}</span>
                                         </Link>
                                     ))}

@@ -81,44 +81,24 @@ const MOBILE_SLIDES = [
     }
 ];
 
-// Logos with associated brand endpoints
-const BRANDS_DATA = [
-    { src: 'logo-toyota.webp', slug: 'toyota', alt: 'Toyota' },
-    { src: 'logo-vw.webp', slug: 'volkswagen', alt: 'Volkswagen' },
-    { src: 'logo-audi.webp', slug: 'audi', alt: 'Audi' },
-    { src: 'logo-cupra.webp', slug: 'cupra', alt: 'Cupra' },
-    { src: 'logo-honda.webp', slug: 'honda', alt: 'Honda' },
-    { src: 'logo-bmw.webp', slug: 'bmw', alt: 'BMW' },
-    { src: 'logo-bmw-motorrad.webp', slug: 'bmw-motorrad', alt: 'BMW Motorrad' },
-    { src: 'logo-mini.webp', slug: 'mini', alt: 'MINI' },
-    { src: 'logo-maxus.webp', slug: 'maxus', alt: 'Maxus' },
-    { src: 'logo-jetour.webp', slug: 'jetour', alt: 'Jetour' },
-    { src: 'logo-soueast.webp', slug: 'soueast', alt: 'Soueast' },
-    { src: 'logo-kaiyi.webp', slug: 'kaiyi', alt: 'Kaiyi' },
-    { src: 'logo-karry.webp', slug: 'karry', alt: 'Karry' },
-    { src: 'logo-mg.webp', slug: 'mg', alt: 'MG' },
-    { src: 'logo-geely.webp', slug: 'geely', alt: 'Geely' },
-    { src: 'logo-dongfeng.webp', slug: 'dongfeng', alt: 'Dongfeng' },
-    { src: 'logo-foton.webp', slug: 'foton', alt: 'Foton' },
-    { src: 'logo-iveco.webp', slug: 'iveco', alt: 'Iveco' },
-    { src: 'logo-man.webp', slug: 'man', alt: 'MAN' },
-    { src: 'logo-vw-camiones.webp', slug: 'volkswagen', alt: 'VW Camiones' },
-    { src: 'logo-foton-camiones.webp', slug: 'foton', alt: 'Foton Camiones' }
-];
-
-const MARQUEE_ROW_1 = BRANDS_DATA.slice(0, Math.ceil(BRANDS_DATA.length / 2));
-const MARQUEE_ROW_2 = BRANDS_DATA.slice(Math.ceil(BRANDS_DATA.length / 2));
-
+import { LayoutBrandsData } from '@/lib/api/layoutBrands';
 
 interface HeroProps {
     banners?: any[];
+    layoutBrands?: LayoutBrandsData;
 }
 
-export default function Hero({ banners }: HeroProps) {
+export default function Hero({ banners, layoutBrands }: HeroProps) {
     const defaultDesktopSlides = DESKTOP_SLIDES;
     const defaultMobileSlides = MOBILE_SLIDES;
 
-    const desktopSlides = banners && banners.length > 0 
+    const carBrands = layoutBrands?.cars || [];
+    const truckBrands = layoutBrands?.trucks || [];
+    const allBrands = [...carBrands, ...truckBrands];
+    const marqueeRow1 = allBrands.slice(0, Math.ceil(allBrands.length / 2));
+    const marqueeRow2 = allBrands.slice(Math.ceil(allBrands.length / 2));
+
+    const desktopSlides = banners && banners.length > 0
         ? banners.map((b) => ({
             id: b.id,
             image: b.image_desktop,
@@ -329,15 +309,15 @@ export default function Hero({ banners }: HeroProps) {
                 {/* ROW 1 */}
                 <div className="flex flex-nowrap overflow-hidden group">
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0">
-                        {MARQUEE_ROW_1.map((brand, idx) => (
+                        {marqueeRow1.map((brand, idx) => (
                             <li key={`1-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
-                                    brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
+                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/${brand.src}`}
-                                        alt={brand.alt}
+                                        src={brand.logo_url}
+                                        alt={brand.name}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </Link>
@@ -345,15 +325,15 @@ export default function Hero({ banners }: HeroProps) {
                         ))}
                     </ul>
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0" aria-hidden="true">
-                        {MARQUEE_ROW_1.map((brand, idx) => (
+                        {marqueeRow1.map((brand, idx) => (
                             <li key={`2-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
-                                    brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
+                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/logos/${brand.src}`}
-                                        alt={brand.alt}
+                                        src={brand.logo_url}
+                                        alt={brand.name}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </Link>
@@ -365,15 +345,15 @@ export default function Hero({ banners }: HeroProps) {
                 {/* ROW 2 - Reverse scrolling visually using the keyframes */}
                 <div className="flex flex-nowrap overflow-hidden group">
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll-reverse group-hover:[animation-play-state:paused] w-max flex-shrink-0">
-                        {MARQUEE_ROW_2.map((brand, idx) => (
+                        {marqueeRow2.map((brand, idx) => (
                             <li key={`3-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
-                                    brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
+                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`/images/logos/${brand.src}`}
-                                        alt={brand.alt}
+                                        src={brand.logo_url}
+                                        alt={brand.name}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </Link>
@@ -381,15 +361,15 @@ export default function Hero({ banners }: HeroProps) {
                         ))}
                     </ul>
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll-reverse group-hover:[animation-play-state:paused] w-max flex-shrink-0" aria-hidden="true">
-                        {MARQUEE_ROW_2.map((brand, idx) => (
+                        {marqueeRow2.map((brand, idx) => (
                             <li key={`4-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`/nuevos/${brand.slug}`} className={`relative flex items-center justify-center ${brand.src.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
-                                    brand.src.toLowerCase().includes('iveco') || brand.src.toLowerCase().includes('man') ? 'h-10 md:h-16' :
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
+                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
                                         'h-14 md:h-20'
                                     }`}>
                                     <img
-                                        src={`/images/logos/${brand.src}`}
-                                        alt={brand.alt}
+                                        src={brand.logo_url}
+                                        alt={brand.name}
                                         className="h-full w-auto object-contain transition-all duration-300"
                                     />
                                 </Link>
