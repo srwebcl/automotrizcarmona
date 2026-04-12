@@ -23,7 +23,7 @@ export default function ModelPageClient({ brand, id, initialModel, config }: { b
             } else if (url.includes('youtube.com/embed/')) {
                 return url;
             }
-            return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+            return videoId ? `https://www.youtube.com/embed/${videoId}?controls=0&modestbranding=1&rel=0` : url;
         } catch (e) {
             return url;
         }
