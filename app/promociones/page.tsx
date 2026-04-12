@@ -9,7 +9,7 @@ const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
 };
 
-export const revalidate = 60; // ISR 1 min
+export const revalidate = 60; // ISR 1 min for fast refresh
 
 export default async function PromocionesPage() {
     const [promotionModels, landingInfo] = await Promise.all([
