@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Tag, ArrowRight, Info, Filter, Flame } from 'lucide-react';
+import { ArrowRight, Info, Filter, Flame } from 'lucide-react';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
 import DiscoverSection from '@/components/DiscoverSection';
 
@@ -38,29 +38,36 @@ export default async function PromocionesPage() {
 
     return (
         <main className="min-h-screen bg-gray-50 pt-20 font-sans selection:bg-[#d2001c] selection:text-white">
-            {/* HERO SECTION */}
-            <section className="relative w-full h-[400px] md:h-[500px] bg-black overflow-hidden flex items-center pt-10">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10" />
-                    <Image 
-                        src={heroImage} 
-                        alt={heroTitle} 
-                        fill 
-                        className="object-cover opacity-60 grayscale"
-                        priority
-                    />
-                </div>
-                
-                <div className="max-w-7xl mx-auto px-6 relative z-20 w-full text-white">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#d2001c] rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-                        <Tag size={12} fill="white" /> Oportunidades por VIN
+            {/* HERO SECTION - HOME BANNER STYLE */}
+            <section className="relative bg-gray-50 pt-10 md:pt-14 pb-0 px-4 md:px-8">
+                {/* Mobile Size */}
+                <div className="w-full mx-auto mb-2 md:hidden relative group">
+                    <div className="overflow-hidden rounded-3xl">
+                        <div className="relative w-full aspect-square md:aspect-[16/6]">
+                            <Image 
+                                src={landingInfo?.mobile_banner_url || heroImage} 
+                                alt={heroTitle} 
+                                fill 
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 leading-none whitespace-pre-line">
-                        {heroTitle}
-                    </h1>
-                    <p className="text-lg text-gray-300 max-w-xl font-light">
-                        {heroSubtitle}
-                    </p>
+                </div>
+
+                {/* Desktop Size */}
+                <div className="w-full mx-auto mb-2 hidden md:block relative group">
+                    <div className="overflow-hidden rounded-3xl">
+                        <div className="relative w-full aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
+                            <Image 
+                                src={heroImage} 
+                                alt={heroTitle} 
+                                fill 
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
 
