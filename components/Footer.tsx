@@ -104,7 +104,6 @@ export default function Footer() {
                     <div className="flex flex-wrap gap-4 md:gap-8 justify-center text-xs font-medium">
                         <a href="https://compliance.automotrizcarmona.cl/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-carmona-gold"></span> Compliance y Denuncias</a>
                         <Link href="/legal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Términos y Condiciones</Link>
-                        <Link href="/legal/privacidad" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Privacidad</Link>
                     </div>
                 </div>
             </div>
