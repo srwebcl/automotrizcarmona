@@ -8,24 +8,9 @@ import {
     CheckCircle, MapPin, Mail, Phone, MessageCircle,
     ChevronDown, ArrowLeft, ArrowRight, User, Car, ClipboardList, Search, Store
 } from 'lucide-react';
+import { API_URL } from '@/lib/api';
 
-const SUCURSALES = [
-    { id: 1, type: 'Sala de Ventas', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'lhurtado@carmonaycia.cl' },
-    { id: 2, type: 'Servicio Técnico', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 5647 7727', email: 'callcenter@carmonaycia.cl' },
-    { id: 3, type: 'Repuestos', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 51 220 0250', email: 'cmatac@carmonaycia.cl' },
-    { id: 4, type: 'Sala de Ventas', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
-    { id: 5, type: 'Servicio Técnico', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 5659 9895', email: 'callcentervw@carmonaycia.cl' },
-    { id: 6, type: 'Repuestos', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 3750 8754', email: 'sorrego@carmonaycia.cl' },
-    { id: 10, type: 'Sala de Ventas', brandName: 'Honda', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
-    { id: 11, type: 'Servicio Técnico', brandName: 'Honda', address: 'Avenida Balmaceda 3720, La Serena', city: 'La Serena', phone: '+56 9 7879 4740', email: 'cmiles@carmonaycia.cl' },
-    { id: 12, type: 'Sala de Ventas', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'cgonzalezr@carmonaycia.cl' },
-    { id: 13, type: 'Servicio Técnico', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 7879 4735', email: 'mcataldo@carmonaycia.cl' },
-    { id: 14, type: 'Repuestos', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 4508 9776', email: 'dtrigo@carmonaycia.cl' },
-    { id: 15, type: 'Sala de Ventas', brandName: 'Maxus', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'sromao@carmonaycia.cl' },
-    { id: 16, type: 'Servicio Técnico', brandName: 'Maxus', address: 'Avenida Estadio 3610, La Serena', city: 'La Serena', phone: '+56 9 7592 1328', email: 'callcentermm@carmonaycia.cl' },
-    { id: 18, type: 'Sala de Ventas', brandName: 'VW Camiones', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'arodriguez@carmonaycia.cl' },
-    { id: 24, type: 'Desabolladura y Pintura', brandName: 'DyP Multimarca', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 7879 4738', email: 'calldyp@carmonaycia.cl' }
-];
+
 
 // ─── Brands ───────────────────────────────────────────────────────────────────
 import { getLayoutBrands, LayoutBrandsData } from '@/lib/api/layoutBrands';
@@ -180,8 +165,38 @@ function CotizarDypContent() {
 
         // Paso 3 (Solicitud)
         solicitud: '',
+        ciudad: '',
         acceptPolicy: false,
     });
+
+    const [branches, setBranches] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetch(`${API_URL}/branches`)
+            .then(r => r.json())
+            .then(json => setBranches(json.data || json))
+            .catch(console.error);
+    }, []);
+
+    const brandBranches = React.useMemo(() => {
+        if (!form.marca) return branches.filter(b => b.type === 'Desabolladura y Pintura');
+        return branches.filter(b => 
+            (b.type === 'Desabolladura y Pintura')
+        );
+    }, [branches, form.marca]);
+
+    const availableCities = React.useMemo(() => {
+        return [...new Set(brandBranches.map(b => b.city))].sort();
+    }, [brandBranches]);
+
+    // Set default city if exactly 1 is available, or clear if current city is invalid
+    useEffect(() => {
+        if (availableCities.length === 1) {
+            setForm(p => ({ ...p, ciudad: availableCities[0] }));
+        } else if (availableCities.length > 0 && !availableCities.includes(form.ciudad)) {
+            setForm(p => ({ ...p, ciudad: availableCities[0] }));
+        }
+    }, [availableCities, form.ciudad]);
 
     useEffect(() => {
         if (preselected) setForm(p => ({ ...p, marca: preselected }));
@@ -227,6 +242,7 @@ function CotizarDypContent() {
                         last_name: form.apellido,
                         email: form.correo,
                         phone: form.telefono,
+                        city: form.ciudad,
                     },
                     vehicle: {
                         brand_name: form.marca,
@@ -419,6 +435,28 @@ function CotizarDypContent() {
                                             className={`${inputCls} uppercase tracking-widest border-2 border-red-100 hover:border-red-200 focus:border-[#d2001c]`}
                                             maxLength={17} required />
                                     </div>
+
+                                    {/* Ciudad */}
+                                    {availableCities.length > 1 && (
+                                        <div>
+                                            <label className={labelCls}>Ciudad de Atención *</label>
+                                            <div className="relative">
+                                                <select
+                                                    name="ciudad"
+                                                    value={form.ciudad}
+                                                    onChange={handleChange}
+                                                    className={`${inputCls} appearance-none cursor-pointer pr-10`}
+                                                    required
+                                                >
+                                                    <option value="">Selecciona la ciudad...</option>
+                                                    {availableCities.map(c => (
+                                                        <option key={`${c}`} value={c as string}>{c as string}</option>
+                                                    ))}
+                                                </select>
+                                                <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             )}
 
@@ -497,7 +535,10 @@ function CotizarDypContent() {
 
                             <div className="space-y-5 mb-6">
                                 {(() => {
-                                    const dypBranch = SUCURSALES.find(s => s.id === 24); // DyP is centralized at ID 24
+                                    const dypBranch = brandBranches.find(b => b.city === form.ciudad && b.type === 'Desabolladura y Pintura')
+                                                      || brandBranches.find(b => b.city === form.ciudad) 
+                                                      || brandBranches[0] 
+                                                      || { address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', email: 'calldyp@carmonaycia.cl', phone: '+56 9 7879 4738' }; // Fallback
 
                                     return (
                                         <>

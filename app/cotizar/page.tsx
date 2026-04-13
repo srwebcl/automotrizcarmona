@@ -4,26 +4,10 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { getModelDetails, getTruckBrands, getTrucksByBrand } from '@/lib/api';
-import { CheckCircle, Info, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone, Store } from 'lucide-react';
+import { getModelDetails, getTruckBrands, getTrucksByBrand, API_URL } from '@/lib/api';
+import { CheckCircle, Info, ChevronDown, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone, Store } from 'lucide-react';
 
-const SUCURSALES = [
-    { id: 1, type: 'Sala de Ventas', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'lhurtado@carmonaycia.cl' },
-    { id: 2, type: 'Servicio Técnico', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 9 5647 7727', email: 'callcenter@carmonaycia.cl' },
-    { id: 3, type: 'Repuestos', brandName: 'Toyota', address: 'Avenida Balmaceda 3681, La Serena', city: 'La Serena', phone: '+56 51 220 0250', email: 'cmatac@carmonaycia.cl' },
-    { id: 4, type: 'Sala de Ventas', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
-    { id: 5, type: 'Servicio Técnico', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 5659 9895', email: 'callcentervw@carmonaycia.cl' },
-    { id: 6, type: 'Repuestos', brandName: 'Volkswagen', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 3750 8754', email: 'sorrego@carmonaycia.cl' },
-    { id: 10, type: 'Sala de Ventas', brandName: 'Honda', address: 'Avenida Balmaceda 3812, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'nmercado@carmonaycia.cl' },
-    { id: 11, type: 'Servicio Técnico', brandName: 'Honda', address: 'Avenida Balmaceda 3720, La Serena', city: 'La Serena', phone: '+56 9 7879 4740', email: 'cmiles@carmonaycia.cl' },
-    { id: 12, type: 'Sala de Ventas', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'cgonzalezr@carmonaycia.cl' },
-    { id: 13, type: 'Servicio Técnico', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 7879 4735', email: 'mcataldo@carmonaycia.cl' },
-    { id: 14, type: 'Repuestos', brandName: 'BMW', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 4508 9776', email: 'dtrigo@carmonaycia.cl' },
-    { id: 15, type: 'Sala de Ventas', brandName: 'Maxus', address: 'Avenida Balmaceda 5508, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'sromao@carmonaycia.cl' },
-    { id: 16, type: 'Servicio Técnico', brandName: 'Maxus', address: 'Avenida Estadio 3610, La Serena', city: 'La Serena', phone: '+56 9 7592 1328', email: 'callcentermm@carmonaycia.cl' },
-    { id: 18, type: 'Sala de Ventas', brandName: 'VW Camiones', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 8474 9397', email: 'arodriguez@carmonaycia.cl' },
-    { id: 24, type: 'Desabolladura y Pintura', brandName: 'DyP Multimarca', address: 'Ruta 5 Norte KM 470, La Serena', city: 'La Serena', phone: '+56 9 7879 4738', email: 'calldyp@carmonaycia.cl' }
-];
+
 
 const STEPS = [
     { id: 1, label: 'Tu vehículo', icon: Car },
@@ -59,8 +43,38 @@ function CotizarContent() {
         correo: '',
         empresa: '',
         celular: '+56 9 ',
+        ciudad: '',
         acceptPolicy: false
     });
+
+    const [branches, setBranches] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetch(`${API_URL}/branches`)
+            .then(r => r.json())
+            .then(json => setBranches(json.data || json))
+            .catch(console.error);
+    }, []);
+
+    const brandBranches = React.useMemo(() => {
+        return branches.filter(b => 
+            (b.brands_list || []).some((br: string) => br.toLowerCase() === marca.toLowerCase()) && 
+            b.type === 'Sala de Ventas'
+        );
+    }, [branches, marca]);
+
+    const availableCities = React.useMemo(() => {
+        return [...new Set(brandBranches.map(b => b.city))].sort();
+    }, [brandBranches]);
+
+    // Set default city if exactly 1 is available, or clear if current city is invalid
+    useEffect(() => {
+        if (availableCities.length === 1) {
+            setFormData(p => ({ ...p, ciudad: availableCities[0] }));
+        } else if (availableCities.length > 0 && !availableCities.includes(formData.ciudad)) {
+            setFormData(p => ({ ...p, ciudad: availableCities[0] }));
+        }
+    }, [availableCities, formData.ciudad]);
 
     useEffect(() => {
         const loadModelData = async () => {
@@ -152,6 +166,7 @@ function CotizarContent() {
                         email: formData.correo,
                         phone: formData.celular,
                         company: formData.empresa,
+                        city: formData.ciudad,
                     },
                     vehicle: {
                         brand_name: marca,
@@ -365,6 +380,28 @@ function CotizarContent() {
                                 </div>
                             </div>
 
+                            {/* Ciudad */}
+                            {availableCities.length > 1 && (
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ciudad de Atención *</label>
+                                    <div className="relative">
+                                        <select
+                                            name="ciudad"
+                                            value={formData.ciudad}
+                                            onChange={handleChange}
+                                            className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all appearance-none cursor-pointer"
+                                            required
+                                        >
+                                            <option value="">Selecciona la ciudad...</option>
+                                            {availableCities.map(c => (
+                                                <option key={`${c}`} value={c as string}>{c as string}</option>
+                                            ))}
+                                        </select>
+                                        <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Checkbox */}
                             <div className="flex items-start gap-3 mt-4 pt-4 border-t border-gray-100">
                                 <div className="flex items-center h-6">
@@ -482,10 +519,9 @@ function CotizarContent() {
                                     {/* ── INFO DINÁMICA DE CONTACTO ── */}
                                     <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
                                         {(() => {
-                                            const salesBranch = SUCURSALES.find(s => 
-                                                s.brandName.toLowerCase() === marca.toLowerCase() && 
-                                                s.type === 'Sala de Ventas'
-                                            ) || SUCURSALES.find(s => s.id === 1); // Fallback to Toyota Sales
+                                            const salesBranch = brandBranches.find(b => b.city === formData.ciudad) 
+                                                                || brandBranches[0] 
+                                                                || { address: 'Avenida Balmaceda 3681', city: 'La Serena', phone: '+56 9 8474 9397' }; // Fallback
 
                                             return (
                                                 <>
@@ -494,16 +530,16 @@ function CotizarContent() {
                                                         <div>
                                                             <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Donde encontrarnos</p>
                                                             <p className="text-sm font-semibold text-gray-900">
-                                                                {salesBranch?.address || 'Avenida Balmaceda 3681, La Serena'}
+                                                                {salesBranch.address}
                                                             </p>
-                                                            <p className="text-[11px] text-gray-500">{salesBranch?.city || 'La Serena'}</p>
+                                                            <p className="text-[11px] text-gray-500">{salesBranch.city}</p>
                                                         </div>
                                                     </div>
                                                     <div className="flex items-center gap-3">
                                                         <Phone size={18} className="text-[#d2001c] flex-shrink-0" />
                                                         <div>
                                                             <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Central de Ventas</p>
-                                                            <p className="text-sm font-semibold text-gray-900">{salesBranch?.phone || '+56 9 8474 9397'}</p>
+                                                            <p className="text-sm font-semibold text-gray-900">{salesBranch.phone || '+56 9 8474 9397'}</p>
                                                         </div>
                                                     </div>
                                                 </>
