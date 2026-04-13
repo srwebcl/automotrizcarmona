@@ -23,7 +23,7 @@ async function run() {
         FROM vehicle_models vm
         JOIN brands b ON vm.brand_id = b.id
         WHERE vv.vehicle_model_id = vm.id
-        AND b.slug IN ('dongfeng', 'foton')
+        AND b.slug IN ('dongfeng', 'foton-camiones')
         AND vv.list_price IS NOT NULL AND vv.list_price > 0
         AND vv.finance_price IS NOT NULL AND vv.finance_price > 0
         AND (vv.finance_bonus IS NULL OR vv.finance_bonus = 0)
@@ -76,7 +76,7 @@ async function run() {
         FROM vehicle_versions vv
         JOIN vehicle_models vm ON vv.vehicle_model_id = vm.id
         JOIN brands b ON vm.brand_id = b.id
-        WHERE b.slug IN ('dongfeng', 'foton', 'geely')
+        WHERE b.slug IN ('dongfeng', 'foton-camiones', 'geely')
         GROUP BY b.slug ORDER BY b.slug
     `);
 

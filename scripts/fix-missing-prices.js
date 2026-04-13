@@ -21,7 +21,7 @@ async function run() {
     console.log('✅ Conectado a Neon DB\n');
 
     // Obtener todos los modelos de las marcas problemáticas con sus versiones
-    const target_brands = ['foton', 'dongfeng', 'geely'];
+    const target_brands = ['foton-camiones', 'dongfeng', 'geely'];
 
     const models = await client.query(`
         SELECT vm.id as model_id, vm.name as model_name, vm.slug as model_slug,
