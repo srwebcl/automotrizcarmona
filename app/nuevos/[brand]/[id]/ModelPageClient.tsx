@@ -332,16 +332,16 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                         </div>
                     </section>
                 ) : (
-                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton'].includes(brand) ? 'h-[60vh] md:h-[calc(100vh-76px)]' : ''}`}>
+                    <section className={`relative w-full bg-black border-b border-gray-100 overflow-hidden ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton', 'jetour', 'mini', 'soueast'].includes(brand) ? 'h-[60vh] md:h-[calc(100vh-76px)]' : ''}`}>
                         <picture className="w-full h-full block">
                             <source media="(min-width: 768px)" srcSet={model.desktopBanner} />
                             <img 
                                 src={model.mobileBanner || model.desktopBanner} 
                                 alt={`Banner ${model.name}`} 
-                                className={`w-full ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton'].includes(brand) ? 'h-full' : 'h-auto md:h-auto'} object-cover opacity-80`} 
+                                className={`w-full ${['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton', 'jetour', 'mini', 'soueast'].includes(brand) ? 'h-full' : 'h-auto md:h-auto'} object-cover opacity-80`} 
                             />
                         </picture>
-                        {['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton'].includes(brand) && (
+                        {['cupra', 'kaiyi', 'volkswagen', 'bmw', 'audi', 'seat', 'dongfeng', 'foton', 'jetour', 'mini', 'soueast'].includes(brand) && (
                             <>
                                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/40 md:via-black/30 to-black/20 md:to-transparent pointer-events-none" />
                                 <div className="absolute inset-0 flex flex-col items-center justify-center md:items-start md:justify-center px-6 md:px-20 z-10 pointer-events-none mt-12 md:mt-0">
