@@ -38,6 +38,7 @@ export default function SucursalesPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedBrand, setSelectedBrand] = useState('');
     const [selectedService, setSelectedService] = useState('');
+    const [selectedCity, setSelectedCity] = useState('');
 
     useEffect(() => {
         fetch(`${API_URL}/branches`)
@@ -59,11 +60,16 @@ export default function SucursalesPage() {
         return [...new Set(branches.map(b => b.type))].sort();
     }, [branches]);
 
+    const allCities = useMemo(() => {
+        return [...new Set(branches.map(b => b.city).filter(Boolean))].sort();
+    }, [branches]);
+
     const filteredBranches = useMemo(() => branches.filter(b => {
         if (selectedBrand && !(b.brands_list || []).includes(selectedBrand)) return false;
         if (selectedService && b.type !== selectedService) return false;
+        if (selectedCity && b.city !== selectedCity) return false;
         return true;
-    }), [branches, selectedBrand, selectedService]);
+    }), [branches, selectedBrand, selectedService, selectedCity]);
 
     const LoadingSkeleton = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -120,6 +126,24 @@ export default function SucursalesPage() {
                                     <option value="">Todas</option>
                                     {allTypes.map(s => (
                                         <option key={s} value={s}>{s}</option>
+                                    ))}
+                                </select>
+                                <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none group-hover:text-[#d2001c]" />
+                            </div>
+
+                            {/* Filtro Ciudad */}
+                            <div className="relative border border-gray-300 rounded-xl bg-white group hover:border-[#d2001c] transition-colors focus-within:border-[#d2001c] focus-within:ring-1 focus-within:ring-[#d2001c] shadow-sm">
+                                <label className="absolute -top-[9px] left-3 bg-white px-1 text-[10px] font-bold text-gray-500 transition-colors group-hover:text-[#d2001c]">
+                                    Ciudad
+                                </label>
+                                <select
+                                    value={selectedCity}
+                                    onChange={e => setSelectedCity(e.target.value)}
+                                    className="w-full text-gray-900 bg-transparent px-4 py-3 outline-none cursor-pointer appearance-none text-sm"
+                                >
+                                    <option value="">Todas</option>
+                                    {allCities.map(c => (
+                                        <option key={c} value={c}>{c}</option>
                                     ))}
                                 </select>
                                 <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none group-hover:text-[#d2001c]" />
