@@ -214,7 +214,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
             </section>
 
             {/* Models Grid */}
-            <section className="pt-10 pb-20 bg-[#f8f9fa]">
+            <section className="pt-10 pb-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
 
@@ -231,7 +231,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                                     <div className="relative rounded-[2rem] pt-10 px-8 pb-32 transition-colors bg-[#f8f8f8] mb-8 group-hover:bg-[#f1f1f1]">
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest text-center">{config.name}</p>
-                                            <h3 className="text-2xl md:text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase text-center line-clamp-2 min-h-[70px]">
+                                            <h3 className="text-xl md:text-2xl font-extrabold text-[#1a1a1a] tracking-tight uppercase text-center line-clamp-2 min-h-[60px]">
                                                 {truck.name}
                                             </h3>
                                         </div>
