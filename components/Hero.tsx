@@ -311,10 +311,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0">
                         {marqueeRow1.map((brand, idx) => (
                             <li key={`1-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
-                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
-                                        'h-14 md:h-20'
-                                    }`}>
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
                                     <img
                                         src={brand.logo_url}
                                         alt={brand.name}
@@ -327,10 +324,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll group-hover:[animation-play-state:paused] w-max flex-shrink-0" aria-hidden="true">
                         {marqueeRow1.map((brand, idx) => (
                             <li key={`2-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-5 md:h-8' :
-                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
-                                        'h-14 md:h-20'
-                                    }`}>
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
                                     <img
                                         src={brand.logo_url}
                                         alt={brand.name}
@@ -347,10 +341,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll-reverse group-hover:[animation-play-state:paused] w-max flex-shrink-0">
                         {marqueeRow2.map((brand, idx) => (
                             <li key={`3-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
-                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
-                                        'h-14 md:h-20'
-                                    }`}>
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
                                     <img
                                         src={brand.logo_url}
                                         alt={brand.name}
@@ -363,10 +354,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                     <ul className="flex items-center justify-start md:[&_li]:mx-14 animate-infinite-scroll-reverse group-hover:[animation-play-state:paused] w-max flex-shrink-0" aria-hidden="true">
                         {marqueeRow2.map((brand, idx) => (
                             <li key={`4-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
-                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('soueast') ? 'h-3 md:h-4' :
-                                    brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' :
-                                        'h-14 md:h-20'
-                                    }`}>
+                                <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
                                     <img
                                         src={brand.logo_url}
                                         alt={brand.name}
