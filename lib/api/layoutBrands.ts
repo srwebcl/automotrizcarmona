@@ -1,3 +1,5 @@
+import { formatImageUrl } from '@/lib/api';
+
 export interface BrandLight {
     name: string;
     slug: string;
@@ -28,9 +30,10 @@ export async function getLayoutBrands(): Promise<LayoutBrandsData> {
         }
 
         const data = await res.json();
+        
         return {
-            cars: data.cars || [],
-            trucks: data.trucks || []
+            cars: (data.cars || []).map((b: any) => ({ ...b, logo_url: formatImageUrl(b.logo_url) })),
+            trucks: (data.trucks || []).map((b: any) => ({ ...b, logo_url: formatImageUrl(b.logo_url) }))
         };
     } catch (error) {
         console.error('Error fetching layout brands:', error);
