@@ -104,7 +104,7 @@ export default function PromocionesClient({ allPromoUnits }: { allPromoUnits: an
                                         </div>
 
                                         <Link 
-                                            href={`/contacto?modelo=${encodeURIComponent(unit.modelName)}&vin=${unit.vin}&version=${encodeURIComponent(unit.versionName || '')}`}
+                                            href={`/cotizar?marca=${encodeURIComponent(unit.brand)}&modelo=${encodeURIComponent(unit.modelId || unit.modelName)}&version=${encodeURIComponent(unit.versionName || '')}`}
                                             className="w-full flex items-center justify-center gap-2 py-3.5 bg-black text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-colors shadow-md group/btn"
                                         >
                                             Quiero Cotizar <ArrowRight size={16} className="group-hover/btn:translate-x-1.5 transition-transform" />
