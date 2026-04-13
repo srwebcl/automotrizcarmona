@@ -18,7 +18,7 @@ export async function getLayoutBrands(): Promise<LayoutBrandsData> {
     try {
         const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.automotrizcarmona.cl';
         const res = await fetch(`${backendUrl}/api/v1/layout/brands`, {
-            next: { revalidate: 3600 }, // Cache for 1 hour
+            next: { revalidate: 60 }, // Cache for 1 minute to reflect changes faster
             headers: {
                 'Accept': 'application/json',
             }
