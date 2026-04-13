@@ -130,10 +130,10 @@ export default function ContactoPage() {
                             </div>
 
                             <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100 mt-auto">
-                                <h4 className="font-bold text-gray-900 mb-2">Horario de Atención Central</h4>
+                                <h4 className="font-bold text-gray-900 mb-2">Horario de Atención Casa Matriz</h4>
                                 <ul className="text-sm text-gray-600 space-y-1">
-                                    <li className="flex justify-between"><span>Lunes a Viernes</span><span className="font-medium text-gray-900">8:30 a 19:00 hrs</span></li>
-                                    <li className="flex justify-between"><span>Sábados</span><span className="font-medium text-gray-900">9:00 a 14:00 hrs</span></li>
+                                    <li className="flex justify-between"><span>Lunes a Viernes</span><span className="font-medium text-gray-900">9:00 a 19:15 hrs</span></li>
+                                    <li className="flex justify-between"><span>Sábados</span><span className="font-medium text-gray-900">10:00 a 13:45 hrs</span></li>
                                     <li className="flex justify-between"><span>Domingos</span><span className="font-medium text-gray-900">Cerrado</span></li>
                                 </ul>
                             </div>
