@@ -4,14 +4,15 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { X, Car, Settings, Wrench } from 'lucide-react';
 
-const NUMBER = "56984749397"; // Número único especificado en requerimientos anteriores
+const NUMBER = "56956599896"; // Actualizado por requerimiento del usuario
 
 export default function SmartWhatsAppButton() {
     const pathname = usePathname();
     const [showMenu, setShowMenu] = useState(false);
     const [config, setConfig] = useState({
         text: "¡Hola! ¿Necesitas ayuda?",
-        message: "Hola, estoy en el sitio web de Automotriz Carmona y me gustaría recibir asesoría."
+        message: "Hola, estoy en el sitio web de Automotriz Carmona y me gustaría recibir asesoría.",
+        source: "Ventas"
     });
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +20,8 @@ export default function SmartWhatsAppButton() {
     useEffect(() => {
         let newConfig = {
             text: "¡Hola! ¿En qué te ayudamos hoy?",
-            message: "Hola, vengo de la web de Automotriz Carmona y me gustaría recibir atención."
+            message: "Hola, vengo de la web de Automotriz Carmona y me gustaría recibir atención.",
+            source: "Ventas"
         };
 
         if (pathname.startsWith('/nuevos') || pathname.startsWith('/camiones')) {
@@ -30,39 +32,46 @@ export default function SmartWhatsAppButton() {
                 const model = parts[2].replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
                 newConfig = {
                     text: `¿Te interesa este ${brand}?`,
-                    message: `Hola, estoy viendo un ${brand} ${model} cero kilómetro en la web y me gustaría cotizarlo.`
+                    message: `Hola, estoy viendo un ${brand} ${model} cero kilómetro en la web y me gustaría cotizarlo.`,
+                    source: "Ventas"
                 };
             } else if (parts.length === 2 && pathname.startsWith('/nuevos')) {
                 const brand = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
                 newConfig = {
                     text: `¿Buscas un ${brand}?`,
-                    message: `Hola, estoy viendo los modelos de ${brand} en la web y me gustaría más información.`
+                    message: `Hola, estoy viendo los modelos de ${brand} en la web y me gustaría más información.`,
+                    source: "Ventas"
                 };
             } else {
                 newConfig = {
                     text: "¿Buscas tu próximo 0km?",
-                    message: "Hola, me interesa conocer más sobre los vehículos nuevos en stock."
+                    message: "Hola, me interesa conocer más sobre los vehículos nuevos en stock.",
+                    source: "Ventas"
                 };
             }
         } else if (pathname.startsWith('/repuestos')) {
             newConfig = {
                 text: "¿Necesitas repuestos originales?",
-                message: "Hola, necesito cotizar repuestos/accesorios para mi vehículo a través de la web."
+                message: "Hola, necesito cotizar repuestos/accesorios para mi vehículo a través de la web.",
+                source: "Repuestos"
             };
         } else if (pathname.startsWith('/servicios')) {
             newConfig = {
                 text: "¿Buscas agendar mantención?",
-                message: "Hola, me gustaría agendar una hora en el Servicio Técnico."
+                message: "Hola, me gustaría agendar una hora en el Servicio Técnico.",
+                source: "Servicio_Tecnico"
             };
         } else if (pathname.startsWith('/dyp')) {
             newConfig = {
                 text: "¿Tu auto necesita una reparación?",
-                message: "Hola, necesito cotizar un trabajo de Desabolladura y Pintura."
+                message: "Hola, necesito cotizar un trabajo de Desabolladura y Pintura.",
+                source: "Servicio_Tecnico"
             };
         } else if (pathname.startsWith('/seminuevos')) {
             newConfig = {
                 text: "¿Buscas un auto usado?",
-                message: "Hola, estoy interesado en conocer el stock de autos seminuevos."
+                message: "Hola, estoy interesado en conocer el stock de autos seminuevos.",
+                source: "Ventas"
             };
         }
 
@@ -89,11 +98,12 @@ export default function SmartWhatsAppButton() {
         setIsMounted(true);
     }, []);
 
-    const buildLink = (baseMessage: string) => {
+    const buildLink = (baseMessage: string, sourceParam?: string) => {
         const currentUrl = isMounted ? window.location.href : `https://automotrizcarmona.cl${pathname}`;
+        const finalSource = sourceParam || config.source;
 
         // Adjunta los UTM para el CRM
-        const finalMessage = `${baseMessage}\n\nEnlace: ${currentUrl}?utm_source=boton_web&utm_medium=wsp_web`;
+        const finalMessage = `${baseMessage}\n\nEnlace: ${currentUrl}?utm_source=${encodeURIComponent(finalSource)}&utm_medium=wsp_web`;
         return `https://wa.me/${NUMBER}?text=${encodeURIComponent(finalMessage)}`;
     };
 
@@ -148,7 +158,7 @@ export default function SmartWhatsAppButton() {
                 </div>
                 <div className="flex flex-col gap-1">
                     <a
-                        href={buildLink("Hola, estoy en la web y me gustaría hablar con el área de Ventas (Nuevos o Seminuevos).")}
+                        href={buildLink("Hola, estoy en la web y me gustaría hablar con el área de Ventas (Nuevos o Seminuevos).", "Ventas")}
                         target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
                         onClick={() => setShowMenu(false)}
@@ -159,7 +169,7 @@ export default function SmartWhatsAppButton() {
                         <span className="text-sm font-bold text-gray-700">Ventas</span>
                     </a>
                     <a
-                        href={buildLink("Hola, estoy en la web y necesito cotizar Repuestos u Accesorios.")}
+                        href={buildLink("Hola, estoy en la web y necesito cotizar Repuestos u Accesorios.", "Repuestos")}
                         target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
                         onClick={() => setShowMenu(false)}
@@ -170,7 +180,7 @@ export default function SmartWhatsAppButton() {
                         <span className="text-sm font-bold text-gray-700">Repuestos</span>
                     </a>
                     <a
-                        href={buildLink("Hola, estoy en la web y necesito información sobre el Servicio Técnico.")}
+                        href={buildLink("Hola, estoy en la web y necesito información sobre el Servicio Técnico.", "Servicio_Tecnico")}
                         target="_blank" rel="noopener noreferrer"
                         className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
                         onClick={() => setShowMenu(false)}
