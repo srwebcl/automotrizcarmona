@@ -301,6 +301,28 @@ function CotizarContent() {
 
                         <form onSubmit={handleSubmit} className="space-y-6">
 
+                            {/* Ciudad */}
+                            {availableCities.length > 1 && (
+                                <div>
+                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ciudad de Atención *</label>
+                                    <div className="relative">
+                                        <select
+                                            name="ciudad"
+                                            value={formData.ciudad}
+                                            onChange={handleChange}
+                                            className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all appearance-none cursor-pointer"
+                                            required
+                                        >
+                                            <option value="">Selecciona la ciudad...</option>
+                                            {availableCities.map(c => (
+                                                <option key={`${c}`} value={c as string}>{c as string}</option>
+                                            ))}
+                                        </select>
+                                        <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                    </div>
+                                </div>
+                            )}
+
                             {/* RUT Field */}
                             <div>
                                 <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">RUT *</label>
@@ -381,27 +403,7 @@ function CotizarContent() {
                                 </div>
                             </div>
 
-                            {/* Ciudad */}
-                            {availableCities.length > 1 && (
-                                <div>
-                                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ciudad de Atención *</label>
-                                    <div className="relative">
-                                        <select
-                                            name="ciudad"
-                                            value={formData.ciudad}
-                                            onChange={handleChange}
-                                            className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all appearance-none cursor-pointer"
-                                            required
-                                        >
-                                            <option value="">Selecciona la ciudad...</option>
-                                            {availableCities.map(c => (
-                                                <option key={`${c}`} value={c as string}>{c as string}</option>
-                                            ))}
-                                        </select>
-                                        <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-                                    </div>
-                                </div>
-                            )}
+
 
                             {/* Checkbox */}
                             <div className="flex items-start gap-3 mt-4 pt-4 border-t border-gray-100">

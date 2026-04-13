@@ -318,6 +318,28 @@ function AgendarContent() {
                                 <div className="space-y-5 animate-fadeIn">
                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Paso 1 — Tus datos personales</p>
 
+                                    {/* Ciudad */}
+                                    {availableCities.length > 1 && (
+                                        <div>
+                                            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ciudad de Atención *</label>
+                                            <div className="relative">
+                                                <select
+                                                    name="ciudad"
+                                                    value={form.ciudad}
+                                                    onChange={handleChange}
+                                                    className={`${inputCls} appearance-none cursor-pointer pr-10`}
+                                                    required
+                                                >
+                                                    <option value="">Selecciona la ciudad...</option>
+                                                    {availableCities.map(c => (
+                                                        <option key={`${c}`} value={c as string}>{c as string}</option>
+                                                    ))}
+                                                </select>
+                                                <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div>
                                         <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">RUT *</label>
                                         <input id="agendar-rut" type="text" name="rut" value={form.rut} onChange={handleChange}
@@ -384,27 +406,6 @@ function AgendarContent() {
                                             className={`${inputCls} resize-none`} />
                                     </div>
 
-                                    {/* Ciudad */}
-                                    {availableCities.length > 1 && (
-                                        <div>
-                                            <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Ciudad de Atención *</label>
-                                            <div className="relative">
-                                                <select
-                                                    name="ciudad"
-                                                    value={form.ciudad}
-                                                    onChange={handleChange}
-                                                    className={`${inputCls} appearance-none cursor-pointer pr-10`}
-                                                    required
-                                                >
-                                                    <option value="">Selecciona la ciudad...</option>
-                                                    {availableCities.map(c => (
-                                                        <option key={`${c}`} value={c as string}>{c as string}</option>
-                                                    ))}
-                                                </select>
-                                                <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             )}
 
