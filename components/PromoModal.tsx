@@ -28,14 +28,37 @@ export default function PromoModal({ isOpen, onClose, recipientEmail }: PromoMod
         setStatus('loading');
 
         try {
+            const [firstName, ...lastNameParts] = formData.nombre.trim().split(' ');
+            const lastName = lastNameParts.length > 0 ? lastNameParts.join(' ') : 'Sin apellido';
+
+            const payload = {
+                source: 'ventas',
+                customer: {
+                    rut: formData.rut || null,
+                    first_name: firstName || 'Sin nombre',
+                    last_name: lastName,
+                    email: formData.correo,
+                    phone: formData.telefono
+                },
+                vehicle: {
+                    brand_name: formData.marca,
+                    model_name: formData.modelo,
+                    year: formData.anio
+                },
+                request_details: {
+                    message: 'Solicitud desde Banner Promocional Home.'
+                }
+            };
+
+            // Para que Next.js API route y, si es necesario, Laravel logreen los recipients adicionales 
+            if (recipientEmail) {
+                (payload as any).recipients = [recipientEmail];
+            }
+
             const response = await fetch('/api/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...formData,
-                    source: 'Banner Promocional Home',
-                    recipients: recipientEmail ? [recipientEmail] : ['crivera@carmonaycia.cl', 'marketing@carmonaycia.cl']
-                }),
+                body: JSON.stringify(payload),
             });
 
             if (response.ok) {
