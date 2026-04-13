@@ -192,8 +192,8 @@ function CotizarContent() {
     useEffect(() => {
         if (availableCities.length === 1) {
             setForm(p => ({ ...p, ciudad: availableCities[0] }));
-        } else if (availableCities.length > 0 && !availableCities.includes(form.ciudad)) {
-            setForm(p => ({ ...p, ciudad: availableCities[0] }));
+        } else if (availableCities.length > 1 && !availableCities.includes(form.ciudad)) {
+            setForm(p => ({ ...p, ciudad: '' }));
         }
     }, [availableCities, form.ciudad]);
 
