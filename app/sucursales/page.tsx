@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { MapPin, Phone, Mail, Clock, User, ChevronDown, Store, Navigation } from 'lucide-react';
 import { API_URL } from '@/lib/api';
 
-import { getLayoutBrands, LayoutBrandsData } from '@/lib/api/layoutBrands';
-
 interface Branch {
     id: number;
     name: string;
@@ -40,19 +38,6 @@ export default function SucursalesPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedBrand, setSelectedBrand] = useState('');
     const [selectedService, setSelectedService] = useState('');
-    const [layoutBrands, setLayoutBrands] = useState<LayoutBrandsData>({ cars: [], trucks: [] });
-
-    useEffect(() => {
-        getLayoutBrands().then(setLayoutBrands);
-    }, []);
-
-    const BRAND_LOGOS = useMemo(() => {
-        const bl: Record<string, string> = {};
-        [...layoutBrands.cars, ...layoutBrands.trucks].forEach(b => {
-             bl[b.name] = b.logo_url;
-        });
-        return bl;
-    }, [layoutBrands]);
 
     useEffect(() => {
         fetch(`${API_URL}/branches`)
@@ -165,8 +150,6 @@ export default function SucursalesPage() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                                 {filteredBranches.map(sucursal => {
                                     const brandNames = sucursal.brands_list || [];
-                                    const firstBrandName = brandNames[0] || null;
-                                    const logoSrc = firstBrandName ? (BRAND_LOGOS[firstBrandName] || null) : null;
 
                                     return (
                                         <div key={sucursal.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-all flex flex-col h-full group">
@@ -182,16 +165,11 @@ export default function SucursalesPage() {
 
                                             <div className="p-5 flex-1 flex flex-col relative w-full">
 
-                                                {/* TIPO & LOGO */}
+                                                {/* TIPO */}
                                                 <div className="flex items-center justify-between mb-4 mt-1 w-full">
                                                     <h3 className="text-[#d2001c] font-black uppercase tracking-widest text-[11px] bg-red-50 px-2 py-1 rounded inline-block">
                                                         {sucursal.type}
                                                     </h3>
-                                                    {logoSrc && (
-                                                        <div className="relative h-6 w-14 flex-shrink-0">
-                                                            <Image src={logoSrc} alt={firstBrandName || 'Marca'} fill className="object-contain object-right" />
-                                                        </div>
-                                                    )}
                                                 </div>
 
                                                 {/* NOMBRE Y DIRECCIÓN */}
