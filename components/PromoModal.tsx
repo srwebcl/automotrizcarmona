@@ -32,7 +32,7 @@ export default function PromoModal({ isOpen, onClose, recipientEmail }: PromoMod
             const lastName = lastNameParts.length > 0 ? lastNameParts.join(' ') : 'Sin apellido';
 
             const payload = {
-                source: 'ventas',
+                source: 'promociones',
                 customer: {
                     rut: formData.rut || null,
                     first_name: firstName || 'Sin nombre',
