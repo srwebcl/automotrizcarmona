@@ -225,47 +225,37 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                             ))}
                         </div>
                     ) : filteredModels.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 pt-8">
                             {filteredModels.map((truck) => (
-                                <div key={truck.id} className="group bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col">
-                                    <div className="relative aspect-[16/10] mb-8 overflow-hidden rounded-2xl bg-gray-50">
-                                        {truck.image_url ? (
-                                            <Image
-                                                src={truck.image_url}
-                                                alt={truck.name}
-                                                fill
-                                                className="object-contain p-4 group-hover:scale-110 transition-transform duration-700"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center text-gray-200">
-                                                <TruckIcon size={64} />
-                                            </div>
-                                        )}
-                                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <p className="text-[10px] font-black uppercase text-gray-900 tracking-widest">Nueva Unidad</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex-1 flex flex-col justify-between">
-                                        <div className="mb-6">
-                                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{config.name}</p>
-                                            <h3 className="text-2xl font-black text-gray-900 uppercase tracking-tighter mb-2 group-hover:text-gray-900 transition-colors">
+                                <Link key={truck.id} href={`/cotizar?marca=${brandId}&modelo=${truck.slug}`} className="group block">
+                                    <div className="relative rounded-[2rem] pt-10 px-8 pb-32 transition-colors bg-[#f8f8f8] mb-8 group-hover:bg-[#f1f1f1]">
+                                        <div className="relative z-10">
+                                            <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest text-center">{config.name}</p>
+                                            <h3 className="text-2xl md:text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase text-center line-clamp-2 min-h-[70px]">
                                                 {truck.name}
                                             </h3>
-                                            <div className="flex items-center gap-2 text-blue-600 bg-blue-50 w-fit px-3 py-1 rounded-lg">
-                                                <Info size={14} />
-                                                <span className="text-xs font-bold uppercase tracking-wider">Precio a consultar</span>
-                                            </div>
                                         </div>
-
-                                        <button
-                                            onClick={() => quoteTruck(truck)}
-                                            className="w-full py-4 bg-gray-900 text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-black transition-all transform active:scale-95 shadow-xl hover:shadow-gray-900/20"
-                                        >
+                                        <div className="absolute bottom-[-3rem] left-1/2 transform -translate-x-1/2 w-[110%] max-w-[320px] h-[220px]">
+                                            {truck.image_url ? (
+                                                <Image
+                                                    src={truck.image_url}
+                                                    alt={truck.name}
+                                                    fill
+                                                    className="object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-700"
+                                                />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center text-gray-200">
+                                                    <TruckIcon size={64} />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="mt-16 text-center px-4 md:px-8">
+                                        <button className="w-full py-4 md:py-4 bg-[#1a1a1a] text-white rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-black transition-all transform active:scale-95 shadow-md group-hover:shadow-lg">
                                             Cotizar ahora
                                         </button>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     ) : (
