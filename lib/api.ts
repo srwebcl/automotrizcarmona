@@ -92,6 +92,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         isHybrid: data.is_hybrid,
         isElectric: data.is_electric,
         isPromotion: data.is_promotion,
+        ivaIncluded: data.includes_iva === undefined ? true : Boolean(data.includes_iva),
         promoUnits: (data.promotion_units || []).map((u: any) => ({
             vin: u.vin,
             versionName: u.version_name,
