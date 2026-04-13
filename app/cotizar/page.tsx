@@ -133,7 +133,8 @@ function CotizarContent() {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-        const { name, value, type, checked } = e.target;
+        const target = e.target as HTMLInputElement;
+        const { name, value, type, checked } = target;
         if (name === 'celular') {
             // Force start with +56 9
             if (!value.startsWith('+56 9 ')) {
