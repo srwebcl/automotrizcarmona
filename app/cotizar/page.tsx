@@ -132,7 +132,7 @@ function CotizarContent() {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value, type, checked } = e.target;
         if (name === 'celular') {
             // Force start with +56 9
