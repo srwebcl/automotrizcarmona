@@ -631,7 +631,7 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
             </section>
             
             {/* Features Section - Dark Mode focal version */}
-            {highlightFeatures && highlightFeatures.length > 0 && (
+            {parsedFeatures && parsedFeatures.length > 0 && (
             <section className="bg-[#0f0f0f] py-32 overflow-hidden border-t border-white/5">
                 <div className="max-w-[1600px] mx-auto">
                     {/* Header - Unified Design Style */}
