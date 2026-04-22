@@ -24,46 +24,17 @@ export default function LiquidacionClient({
     layoutBrands: { cars: any[], trucks: any[] },
     targetVin?: string
 }) {
-    const [activeBrand, setActiveBrand] = useState('Todas');
-    const gridRef = React.useRef<HTMLDivElement>(null);
-
-    React.useEffect(() => {
-        if (!targetVin) return;
-
-        const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
-        if (!targetUnit) return; // Si no existe el VIN, no hace nada
-
-        const targetBrand = targetUnit.brand.toLowerCase();
-
-        // 1. Cambiamos la marca si es necesario
-        if (activeBrand.toLowerCase() !== targetBrand) {
-            setActiveBrand(targetBrand);
-            return; // Esperamos al siguiente render con la marca correcta filtrada
+    // Calculamos la marca inicial de forma síncrona antes del primer render
+    const initialBrand = useMemo(() => {
+        if (targetVin) {
+            const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
+            if (targetUnit) return targetUnit.brand.toLowerCase();
         }
+        return 'Todas';
+    }, [targetVin, allPromoUnits]);
 
-        // 2. Lógica Agresiva de Scroll: Vencer a la restauración de scroll de Next.js
-        const scrollToElement = () => {
-            const el = document.getElementById(`unit-${targetVin}`);
-            if (el) {
-                // Usamos un offset para no quedar debajo del navbar
-                const yOffset = -100;
-                const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        };
-
-        // Múltiples reintentos garantizan que si Next.js o la carga de imágenes 
-        // reinician la vista hacia arriba, nosotros la volvemos a bajar.
-        const t1 = setTimeout(scrollToElement, 100);   // Inmediato tras render
-        const t2 = setTimeout(scrollToElement, 600);   // Post-hidratación
-        const t3 = setTimeout(scrollToElement, 1200);  // Seguridad final
-
-        return () => {
-            clearTimeout(t1);
-            clearTimeout(t2);
-            clearTimeout(t3);
-        };
-    }, [targetVin, activeBrand, allPromoUnits]);
+    const [activeBrand, setActiveBrand] = useState(initialBrand);
+    const gridRef = React.useRef<HTMLDivElement>(null);
 
     const brandsInPromo = useMemo(() => {
         const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
@@ -157,7 +128,7 @@ export default function LiquidacionClient({
                             <div 
                                 key={`${unit.vin}-${idx}`} 
                                 id={`unit-${unit.vin}`}
-                                className={`group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent transition-all duration-1000 ${targetVin === unit.vin ? 'ring-4 ring-[#d2001c] ring-offset-4 ring-offset-gray-50 scale-[1.02]' : ''}`}
+                                className={`group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent transition-all duration-1000 ${targetVin === unit.vin ? 'order-first ring-4 ring-[#d2001c] ring-offset-4 ring-offset-gray-50' : ''}`}
                             >
                                 
                                 {/* Status Banner (Diagonal) */}
