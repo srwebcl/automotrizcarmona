@@ -29,23 +29,35 @@ export default function LiquidacionClient({
 
     React.useEffect(() => {
         if (targetVin) {
-            // Find the brand of the target VIN to automatically select it
+            // Encuentra la marca del VIN objetivo y la selecciona automáticamente
             const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
             if (targetUnit && targetUnit.brand.toLowerCase() !== activeBrand.toLowerCase()) {
                 setActiveBrand(targetUnit.brand.toLowerCase());
             }
+        }
+    }, [targetVin, allPromoUnits]);
 
-            // Scroll to the card after a short delay to allow for rendering/filtering
-            setTimeout(() => {
+    React.useEffect(() => {
+        if (targetVin) {
+            // Intenta hacer el scroll durante 2 segundos asegurando que el DOM y filtros se hayan actualizado
+            let attempts = 0;
+            const scrollInterval = setInterval(() => {
                 const element = document.getElementById(`unit-${targetVin}`);
                 if (element) {
                     const yOffset = -150; 
-                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
                     window.scrollTo({ top: y, behavior: 'smooth' });
+                    clearInterval(scrollInterval);
                 }
-            }, 300);
+                attempts++;
+                if (attempts >= 10) {
+                    clearInterval(scrollInterval); // Se detiene después de 2 segundos (10 intentos de 200ms)
+                }
+            }, 200);
+
+            return () => clearInterval(scrollInterval);
         }
-    }, [targetVin, allPromoUnits]);
+    }, [targetVin, activeBrand]);
 
     const brandsInPromo = useMemo(() => {
         const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
