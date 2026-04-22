@@ -92,11 +92,12 @@ export default function LiquidacionClient({
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-3">
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 uppercase">
-                            {title} 🔥
+                            {title}
                         </span>
+                        <span className="ml-2 inline-block animate-bounce">🔥</span>
                     </h1>
                     {subtitle && (
-                        <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed px-4">
+                        <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed px-4 italic">
                             {subtitle}
                         </p>
                     )}
@@ -109,13 +110,13 @@ export default function LiquidacionClient({
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
                         {filteredUnits.map((unit, idx) => (
                             <div key={`${unit.vin}-${idx}`} className="group flex flex-col">
-                                {/* Main Card Body - Compact Version */}
-                                <div className="relative rounded-[2rem] bg-[#f8f8f8] pt-8 px-8 pb-24 transition-all duration-500 group-hover:shadow-xl group-hover:bg-white border border-transparent group-hover:border-gray-100 overflow-visible">
-                                    {/* Liquid Tag & Share */}
-                                    <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center">
-                                        <div className="bg-[#d2001c] text-white px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md shadow-[#d2001c]/20">
+                                {/* Main Card Body - Striking Design */}
+                                <div className="relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] border-2 border-gray-50 group-hover:border-[#d2001c]/20 overflow-visible shadow-sm">
+                                    {/* Top Controls: Liquidation Tag & Share */}
+                                    <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
+                                        <div className="bg-[#d2001c] text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/20">
                                             <Flame size={12} fill="currentColor" />
-                                            <span className="text-[9px] font-black uppercase tracking-widest">Oferta</span>
+                                            <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
                                         </div>
                                         <ShareButton 
                                             title={`Liquidación ${unit.brand} ${unit.modelName}`}
@@ -124,14 +125,14 @@ export default function LiquidacionClient({
                                     </div>
 
                                     {/* Info Header */}
-                                    <div className="relative z-10 mt-4">
-                                        <p className="text-gray-400 text-[9px] font-black mb-1 uppercase tracking-[0.2em]">{unit.brand}</p>
-                                        <h3 className="text-2xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1">{unit.modelName}</h3>
-                                        <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider line-clamp-1 opacity-60 mb-3">{unit.versionName}</p>
+                                    <div className="relative z-10 mt-2">
+                                        <p className="text-[#d2001c] text-[10px] font-black mb-1 uppercase tracking-[0.2em]">{unit.brand}</p>
+                                        <h3 className="text-2xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 group-hover:text-[#d2001c] transition-colors">{unit.modelName}</h3>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-4">{unit.versionName}</p>
                                         
-                                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-white rounded-md border border-gray-100">
-                                            <span className="text-[8px] font-black text-gray-300 uppercase tracking-widest">VIN:</span>
-                                            <span className="text-[9px] font-bold text-gray-700">{unit.vin}</span>
+                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">
+                                            <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Unidad VIN:</span>
+                                            <span className="text-[10px] font-bold text-gray-900 tracking-tighter">{unit.vin}</span>
                                         </div>
                                     </div>
 
@@ -141,33 +142,38 @@ export default function LiquidacionClient({
                                             src={unit.image}
                                             alt={unit.modelName}
                                             fill
-                                            className="object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500 ease-out"
+                                            className="object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
                                         />
+                                    </div>
+                                    
+                                    {/* Subtle Background Badge */}
+                                    <div className="absolute bottom-10 right-10 text-[6rem] font-black text-gray-50 select-none -z-0 pointer-events-none group-hover:text-red-50 transition-colors uppercase italic">
+                                        {unit.brand.substring(0, 3)}
                                     </div>
                                 </div>
 
-                                {/* Price Info - Improved Hierarchy */}
-                                <div className="mt-14 px-2 text-center">
+                                {/* Price Info - Striking & Compact */}
+                                <div className="mt-14 px-4 text-center">
                                     <div className="flex flex-col items-center">
-                                        <div className="flex items-center gap-4 mb-2">
-                                            <span className="text-sm font-bold text-gray-300 line-through decoration-gray-400/50">
+                                        <div className="flex items-center gap-4 mb-3">
+                                            <span className="text-sm font-bold text-gray-300 line-through decoration-[#d2001c]/30">
                                                 {formatPrice(unit.listPrice || (unit.promoPrice + unit.promoBonus))}
                                             </span>
-                                            <span className="text-xs font-black text-[#d2001c] bg-[#d2001c]/10 px-3 py-1 rounded-lg">
-                                                Bono: -{formatPrice(unit.promoBonus)}
-                                            </span>
+                                            <div className="bg-[#d2001c] text-white px-3 py-1 rounded-md text-[10px] font-black animate-pulse">
+                                                AHORRA {formatPrice(unit.promoBonus)}
+                                            </div>
                                         </div>
                                         
-                                        <div className="mb-6">
-                                            <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Precio Liquidación</p>
+                                        <div className="mb-6 bg-gray-50 w-full py-4 rounded-2xl border border-gray-100 group-hover:bg-[#d2001c]/5 group-hover:border-[#d2001c]/10 transition-colors">
+                                            <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Precio Final de Liquidación</p>
                                             <p className="text-5xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
                                         </div>
 
                                         <Link 
                                             href={`/cotizar?marca=${encodeURIComponent(unit.brand)}&modelo=${encodeURIComponent(unit.modelId || unit.modelName)}&version=${encodeURIComponent(unit.versionName || '')}&vin=${encodeURIComponent(unit.vin)}`}
-                                            className="w-full inline-flex items-center justify-center gap-3 py-4 bg-gray-900 text-white rounded-2xl text-xs font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-100 group/btn"
+                                            className="w-full inline-flex items-center justify-center gap-3 py-3.5 bg-black text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-all shadow-xl hover:shadow-[#d2001c]/30 hover:scale-[1.02] active:scale-100 group/btn"
                                         >
-                                            Quiero esta Unidad <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform" />
+                                            Lo quiero ahora <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                                         </Link>
                                     </div>
                                 </div>
