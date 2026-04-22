@@ -5,7 +5,7 @@ import { getLayoutBrands } from '@/lib/api/layoutBrands';
 import DiscoverSection from '@/components/DiscoverSection';
 import LiquidacionClient from './LiquidacionClient';
 
-export const revalidate = 60; // ISR 1 min for fast refresh
+export const revalidate = 5; // ISR 5 seg para reflejar ventas rápidamente
 
 export default async function LiquidacionPage() {
     const [promotionModels, landingInfo, layoutBrands] = await Promise.all([
