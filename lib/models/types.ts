@@ -37,6 +37,8 @@ export interface VehicleVersion {
 export interface PromotionUnit {
     vin: string;
     versionName: string;
+    /** Precio original de lista */
+    listPrice?: number;
     /** Descuento adicional sobre el precio con bonos estándar */
     promoBonus: number;
     /** Precio final de venta para esta unidad específica */
