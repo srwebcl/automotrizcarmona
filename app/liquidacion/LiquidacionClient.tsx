@@ -9,7 +9,15 @@ const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
 };
 
-export default function LiquidacionClient({ allPromoUnits }: { allPromoUnits: any[] }) {
+export default function LiquidacionClient({ 
+    allPromoUnits, 
+    title, 
+    subtitle 
+}: { 
+    allPromoUnits: any[], 
+    title: string, 
+    subtitle?: string 
+}) {
     const [activeBrand, setActiveBrand] = useState('Todas');
 
     const brandNames = ['Todas', ...Array.from(new Set(allPromoUnits.map(u => u.brand))).sort()];
@@ -41,8 +49,24 @@ export default function LiquidacionClient({ allPromoUnits }: { allPromoUnits: an
                 </div>
             </section>
 
+            {/* HEADER INFO SECTION */}
+            <section className="pt-16 pb-4 bg-white overflow-hidden">
+                <div className="max-w-7xl mx-auto px-4 text-center">
+                    <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium text-gray-900 tracking-tight mb-6">
+                        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 uppercase">
+                            {title}
+                        </span>
+                    </h1>
+                    {subtitle && (
+                        <p className="text-lg md:text-xl text-gray-500 font-light max-w-3xl mx-auto leading-relaxed">
+                            {subtitle}
+                        </p>
+                    )}
+                </div>
+            </section>
+
             {/* UNITS GRID */}
-            <section className="max-w-[1920px] mx-auto px-4 md:px-6 py-16 bg-white">
+            <section className="max-w-[1920px] mx-auto px-4 md:px-6 py-12 bg-white">
                 {filteredUnits.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 gap-y-10">
                         {filteredUnits.map((unit, idx) => (

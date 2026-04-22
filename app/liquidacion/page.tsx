@@ -69,7 +69,11 @@ export default async function LiquidacionPage() {
             */}
 
             {/* CATALOG CONTENT */}
-            <LiquidacionClient allPromoUnits={allPromoUnits} />
+            <LiquidacionClient 
+                allPromoUnits={allPromoUnits} 
+                title={heroTitle}
+                subtitle={heroSubtitle}
+            />
             
             <DiscoverSection />
         </main>
