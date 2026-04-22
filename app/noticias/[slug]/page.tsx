@@ -109,8 +109,8 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
                             <p className="text-gray-500">Compártela con tus amigos o síguenos en redes sociales para más novedades.</p>
                         </div>
                         <div className="flex gap-4">
-                             <Link href="/catalogo" className="px-8 py-4 bg-gray-900 text-white font-bold rounded-xl text-sm tracking-widest uppercase hover:bg-black transition-all">
-                                Ver Catálogo
+                             <Link href="/" className="px-8 py-4 bg-gray-900 text-white font-bold rounded-xl text-sm tracking-widest uppercase hover:bg-black transition-all">
+                                Volver al inicio
                              </Link>
                         </div>
                     </div>
