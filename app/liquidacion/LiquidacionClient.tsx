@@ -12,37 +12,60 @@ const formatPrice = (price: number) => {
 export default function LiquidacionClient({ 
     allPromoUnits, 
     title, 
-    subtitle 
+    subtitle,
+    layoutBrands
 }: { 
     allPromoUnits: any[], 
     title: string, 
-    subtitle?: string 
+    subtitle?: string,
+    layoutBrands: { cars: any[], trucks: any[] }
 }) {
     const [activeBrand, setActiveBrand] = useState('Todas');
 
-    const brandNames = ['Todas', ...Array.from(new Set(allPromoUnits.map(u => u.brand))).sort()];
+    const brandsInPromo = useMemo(() => {
+        const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
+        const allBrands = [...layoutBrands.cars, ...layoutBrands.trucks];
+        return allBrands.filter(b => uniqueBrandSlugs.includes(b.slug.toLowerCase()));
+    }, [allPromoUnits, layoutBrands]);
 
     const filteredUnits = useMemo(() => {
         if (activeBrand === 'Todas') return allPromoUnits;
-        return allPromoUnits.filter(u => u.brand === activeBrand);
+        return allPromoUnits.filter(u => u.brand.toLowerCase() === activeBrand.toLowerCase());
     }, [activeBrand, allPromoUnits]);
 
     return (
         <>
-            {/* FILTER BAR - Floating Pills por Marca */}
+            {/* FILTER BAR - Logos por Marca */}
             <section className="sticky top-[68px] z-40 bg-white shadow-md border-b border-gray-100">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <div className="flex items-center gap-4 overflow-x-auto scrollbar-hide justify-center md:justify-start">
-                        {brandNames.map((brandInfo: string) => (
+                    <div className="flex items-center gap-8 overflow-x-auto scrollbar-hide justify-center md:justify-start">
+                        <button
+                            onClick={() => setActiveBrand('Todas')}
+                            className={`whitespace-nowrap text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full transition-all border ${activeBrand === 'Todas'
+                                ? 'bg-black text-white border-black shadow-lg'
+                                : 'bg-gray-50 text-gray-400 border-gray-200 hover:border-gray-900 hover:text-gray-900'
+                                }`}
+                        >
+                            Todas las Marcas
+                        </button>
+                        
+                        <div className="h-8 w-px bg-gray-200 hidden md:block" />
+
+                        {brandsInPromo.map((brand: any) => (
                             <button
-                                key={brandInfo}
-                                onClick={() => setActiveBrand(brandInfo)}
-                                className={`whitespace-nowrap text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full transition-all border ${activeBrand === brandInfo
-                                    ? 'bg-[#d2001c] text-white border-[#d2001c] shadow-lg shadow-[#d2001c]/30'
-                                    : 'bg-white text-gray-500 border-gray-200 hover:border-[#d2001c]/50 hover:text-[#d2001c]'
+                                key={brand.slug}
+                                onClick={() => setActiveBrand(brand.slug)}
+                                className={`relative flex-shrink-0 w-24 h-12 transition-all p-2 rounded-xl border-2 ${activeBrand.toLowerCase() === brand.slug.toLowerCase()
+                                    ? 'border-black bg-gray-50 scale-110 shadow-sm'
+                                    : 'border-transparent opacity-40 hover:opacity-100 grayscale hover:grayscale-0'
                                     }`}
                             >
-                                {brandInfo}
+                                <Image 
+                                    src={brand.logo_url} 
+                                    alt={brand.name} 
+                                    fill 
+                                    className="object-contain p-1"
+                                />
                             </button>
                         ))}
                     </div>
@@ -50,7 +73,7 @@ export default function LiquidacionClient({
             </section>
 
             {/* HEADER INFO SECTION */}
-            <section className="pt-16 pb-4 bg-white overflow-hidden">
+            <section className="pt-20 pb-4 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h1 className="text-3xl sm:text-4xl md:text-6xl font-medium text-gray-900 tracking-tight mb-6">
                         <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700 uppercase">
@@ -58,7 +81,7 @@ export default function LiquidacionClient({
                         </span>
                     </h1>
                     {subtitle && (
-                        <p className="text-lg md:text-xl text-gray-500 font-light max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-500 font-light max-w-3xl mx-auto leading-relaxed px-4">
                             {subtitle}
                         </p>
                     )}
@@ -66,72 +89,65 @@ export default function LiquidacionClient({
             </section>
 
             {/* UNITS GRID */}
-            <section className="max-w-[1920px] mx-auto px-4 md:px-6 py-12 bg-white">
+            <section className="max-w-[1920px] mx-auto px-4 md:px-8 py-20 bg-white">
                 {filteredUnits.length > 0 ? (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 gap-y-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-32">
                         {filteredUnits.map((unit, idx) => (
-                            <div 
-                                key={`${unit.vin}-${idx}`}
-                                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:border-gray-200 transition-all duration-300 flex flex-col h-full"
-                            >
-                                <div className="relative h-48 w-full bg-[#f8f9fa] flex items-center justify-center p-6">
-                                    <div className="absolute top-4 left-4 z-10">
-                                        <div className="bg-orange-100 text-orange-600 p-2 rounded-full animate-pulse shadow-sm">
-                                            <Flame size={16} fill="currentColor" />
+                            <div key={`${unit.vin}-${idx}`} className="group flex flex-col">
+                                {/* Main Card Body - Brand Page Style */}
+                                <div className="relative rounded-[2.5rem] bg-[#f8f8f8] pt-10 px-8 pb-32 transition-all duration-500 group-hover:shadow-2xl group-hover:bg-white border border-transparent group-hover:border-gray-100">
+                                    {/* Liquid Tag */}
+                                    <div className="absolute top-8 right-8 z-20">
+                                        <div className="bg-[#d2001c] text-white px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/30">
+                                            <Flame size={14} fill="currentColor" />
+                                            <span className="text-[10px] font-black uppercase tracking-widest">Liquidación</span>
                                         </div>
                                     </div>
-                                    <Image 
-                                        src={unit.image} 
-                                        alt={unit.modelName} 
-                                        fill 
-                                        className="object-contain p-6 group-hover:scale-110 transition-transform duration-500"
-                                    />
+
+                                    {/* Info Header */}
+                                    <div className="relative z-10">
+                                        <p className="text-gray-400 text-[10px] font-black mb-2 uppercase tracking-[0.2em]">{unit.brand}</p>
+                                        <h3 className="text-3xl font-black text-[#1a1a1a] tracking-tight uppercase leading-none mb-2">{unit.modelName}</h3>
+                                        <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wider line-clamp-1 opacity-70 mb-4">{unit.versionName}</p>
+                                        
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-lg border border-gray-100 shadow-sm">
+                                            <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">VIN:</span>
+                                            <span className="text-[10px] font-bold text-gray-900">{unit.vin}</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Overlapping Image */}
+                                    <div className="absolute bottom-[-5rem] left-1/2 transform -translate-x-1/2 w-[115%] max-w-[420px] aspect-[16/10] z-20">
+                                        <Image
+                                            src={unit.image}
+                                            alt={unit.modelName}
+                                            fill
+                                            className="object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 ease-out"
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="p-6 flex-1 flex flex-col">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-gray-400 capitalize">{unit.brand}</span>
-                                        <div className="h-1 w-1 rounded-full bg-gray-200" />
-                                        <span className="text-[10px] font-black uppercase tracking-[0.15em] text-[#d2001c]">{unit.category}</span>
-                                    </div>
-                                    
-                                    <h3 className="text-2xl font-black uppercase tracking-tight text-gray-900 leading-tight mb-1">{unit.modelName}</h3>
-                                    <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 line-clamp-1" title={unit.versionName}>{unit.versionName}</p>
-                                    <p className="text-[10px] font-medium text-gray-400 uppercase tracking-widest mb-6">
-                                        VIN: <span className="text-gray-900 font-bold">{unit.vin}</span>
-                                    </p>
-
-                                    <div className="mt-auto">
-                                        <div className="flex flex-col pb-5 mb-5 border-b border-gray-100">
-                                            <div className="flex justify-between items-center mb-4">
-                                                <div>
-                                                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] leading-none mb-1">
-                                                        Precio Especial
-                                                    </p>
-                                                    <span className="text-3xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</span>
-                                                </div>
-                                                <div className="text-right">
-                                                    <p className="text-[9px] font-black text-[#d2001c] uppercase tracking-[0.1em] mb-1 leading-none">
-                                                        Bono
-                                                    </p>
-                                                    <span className="text-sm font-bold text-[#d2001c] bg-[#d2001c]/10 px-2 py-1 rounded-md">{formatPrice(unit.promoBonus)}</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <span className="text-xs font-bold text-gray-300 line-through decoration-gray-400 mb-2">
-                                                Normal: {formatPrice(unit.listPrice || (unit.promoPrice + unit.promoBonus))}
-                                            </span>
-                                            
-                                            <p className="text-[9px] text-gray-400 flex items-center gap-1.5 font-medium italic mt-1">
-                                                <Info size={10} className="text-gray-300" /> Válido para esta unidad física.
-                                            </p>
+                                {/* Price Info - Below Card */}
+                                <div className="mt-24 px-4 text-center">
+                                    <div className="flex flex-col items-center">
+                                        <span className="text-[11px] font-black text-[#d2001c] uppercase tracking-[0.25em] mb-2 bg-[#d2001c]/5 px-4 py-1 rounded-full">
+                                            Bono: {formatPrice(unit.promoBonus)}
+                                        </span>
+                                        
+                                        <div className="mb-1">
+                                            <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-1">Precio Liquidación</p>
+                                            <p className="text-4xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
                                         </div>
+
+                                        <p className="text-xs font-bold text-gray-300 line-through decoration-gray-400/50 mt-3">
+                                            Normal: {formatPrice(unit.listPrice || (unit.promoPrice + unit.promoBonus))}
+                                        </p>
 
                                         <Link 
                                             href={`/cotizar?marca=${encodeURIComponent(unit.brand)}&modelo=${encodeURIComponent(unit.modelId || unit.modelName)}&version=${encodeURIComponent(unit.versionName || '')}&vin=${encodeURIComponent(unit.vin)}`}
-                                            className="w-full flex items-center justify-center gap-2 py-3.5 bg-black text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-colors shadow-md group/btn"
+                                            className="mt-8 w-full inline-flex items-center justify-center gap-3 py-4 bg-gray-900 text-white rounded-2xl text-xs font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-100 group/btn"
                                         >
-                                            Quiero Cotizar <ArrowRight size={16} className="group-hover/btn:translate-x-1.5 transition-transform" />
+                                            Cotizar Unidad <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform" />
                                         </Link>
                                     </div>
                                 </div>
@@ -139,9 +155,15 @@ export default function LiquidacionClient({
                         ))}
                     </div>
                 ) : (
-                    <div className="py-24 text-center">
-                        <h3 className="text-2xl font-black uppercase tracking-tight text-gray-900">No hay liquidaciones publicadas</h3>
-                        <p className="text-gray-500 mt-2">Pronto tendremos nuevas unidades disponibles.</p>
+                    <div className="py-32 text-center bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">
+                        <h3 className="text-2xl font-black uppercase tracking-tight text-gray-400">No hay unidades para esta marca</h3>
+                        <p className="text-gray-500 mt-2 font-medium">Explora otras marcas para ver oportunidades disponibles.</p>
+                        <button 
+                            onClick={() => setActiveBrand('Todas')}
+                            className="mt-6 text-sm font-black uppercase tracking-widest text-[#d2001c] hover:underline"
+                        >
+                            Ver todo el stock
+                        </button>
                     </div>
                 )}
             </section>

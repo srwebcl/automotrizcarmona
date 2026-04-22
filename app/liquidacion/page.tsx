@@ -1,15 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
+import { getLayoutBrands } from '@/lib/api/layoutBrands';
 import DiscoverSection from '@/components/DiscoverSection';
 import LiquidacionClient from './LiquidacionClient';
 
 export const revalidate = 60; // ISR 1 min for fast refresh
 
 export default async function LiquidacionPage() {
-    const [promotionModels, landingInfo] = await Promise.all([
+    const [promotionModels, landingInfo, layoutBrands] = await Promise.all([
         getPromotionModels(),
-        getLandingInfo('liquidacion')
+        getLandingInfo('liquidacion'),
+        getLayoutBrands()
     ]);
 
     const allPromoUnits = promotionModels.flatMap(model => 
@@ -73,6 +75,7 @@ export default async function LiquidacionPage() {
                 allPromoUnits={allPromoUnits} 
                 title={heroTitle}
                 subtitle={heroSubtitle}
+                layoutBrands={layoutBrands}
             />
             
             <DiscoverSection />
