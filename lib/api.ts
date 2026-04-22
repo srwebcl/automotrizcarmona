@@ -98,7 +98,8 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
             versionName: u.version_name,
             listPrice: u.list_price,
             promoBonus: u.promo_bonus,
-            promoPrice: u.promo_price
+            promoPrice: u.promo_price,
+            status: u.status
         })),
         isNew: true, 
         versions: (data.versions || []).map((v: any) => {

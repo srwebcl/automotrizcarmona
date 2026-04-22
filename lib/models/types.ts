@@ -43,6 +43,8 @@ export interface PromotionUnit {
     promoBonus: number;
     /** Precio final de venta para esta unidad específica */
     promoPrice: number;
+    /** Estado de la unidad: disponible, reservado, vendido */
+    status?: string;
     color?: string;
     year?: number;
     /** Comentario adicional (ej: "Unidad Test Drive", "Única unidad") */

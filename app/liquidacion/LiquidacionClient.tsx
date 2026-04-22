@@ -108,12 +108,25 @@ export default function LiquidacionClient({
             <section ref={gridRef} className="max-w-[1920px] mx-auto px-4 md:px-8 py-12 bg-white">
                 {filteredUnits.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
-                        {filteredUnits.map((unit, idx) => (
-                            <div key={`${unit.vin}-${idx}`} className="group flex flex-col">
+                        {filteredUnits.map((unit, idx) => {
+                            const isSold = unit.status === 'vendido';
+                            const isReserved = unit.status === 'reservado';
+                            const isAvailable = !isSold && !isReserved;
+
+                            return (
+                            <div key={`${unit.vin}-${idx}`} className="group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent">
+                                
+                                {/* Status Banner (Diagonal) */}
+                                {(isSold || isReserved) && (
+                                    <div className="absolute top-8 -right-8 z-50 transform rotate-45 w-40 text-center py-1.5 shadow-lg bg-gray-900 text-white font-black text-[10px] uppercase tracking-[0.3em]">
+                                        {isSold ? 'VENDIDO' : 'RESERVADO'}
+                                    </div>
+                                )}
+
                                 {/* Main Card Body - Striking Design */}
-                                <div className="relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] border-2 border-gray-50 group-hover:border-[#d2001c]/20 overflow-visible shadow-sm">
+                                <div className={`relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 border-2 border-gray-50 overflow-visible shadow-sm ${isAvailable ? 'group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] group-hover:border-[#d2001c]/20' : 'opacity-75 grayscale-[0.5]'}`}>
                                     {/* Top Controls: Liquidation Tag & Share */}
-                                    <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
+                                    <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center pr-8">
                                         <div className="bg-[#d2001c] text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/20">
                                             <Flame size={12} fill="currentColor" />
                                             <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
@@ -127,7 +140,7 @@ export default function LiquidacionClient({
                                     {/* Info Header */}
                                     <div className="relative z-10 mt-2">
                                         <p className="text-[#d2001c] text-[10px] font-black mb-1 uppercase tracking-[0.2em]">{unit.brand}</p>
-                                        <h3 className="text-2xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 group-hover:text-[#d2001c] transition-colors">{unit.modelName}</h3>
+                                        <h3 className={`text-2xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-4">{unit.versionName}</p>
                                         
                                         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">
@@ -142,18 +155,18 @@ export default function LiquidacionClient({
                                             src={unit.image}
                                             alt={unit.modelName}
                                             fill
-                                            className="object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
+                                            className={`object-contain drop-shadow-2xl transition-transform duration-700 ease-out ${isAvailable ? 'group-hover:scale-105' : ''}`}
                                         />
                                     </div>
                                     
                                     {/* Subtle Background Badge */}
-                                    <div className="absolute bottom-10 right-10 text-[6rem] font-black text-gray-50 select-none -z-0 pointer-events-none group-hover:text-red-50 transition-colors uppercase italic">
+                                    <div className={`absolute bottom-10 right-10 text-[6rem] font-black text-gray-50 select-none -z-0 pointer-events-none transition-colors uppercase italic ${isAvailable ? 'group-hover:text-red-50' : ''}`}>
                                         {unit.brand.substring(0, 3)}
                                     </div>
                                 </div>
 
                                 {/* Price Info - Striking & Compact */}
-                                <div className="mt-14 px-4 text-center">
+                                <div className="mt-14 px-4 text-center pb-2">
                                     <div className="flex flex-col items-center">
                                         <div className="flex items-center gap-4 mb-3">
                                             <span className="text-sm font-bold text-gray-300 line-through decoration-[#d2001c]/30">
@@ -164,21 +177,28 @@ export default function LiquidacionClient({
                                             </div>
                                         </div>
                                         
-                                        <div className="mb-6 bg-gray-50 w-full py-4 rounded-2xl border border-gray-100 group-hover:bg-[#d2001c]/5 group-hover:border-[#d2001c]/10 transition-colors">
+                                        <div className={`mb-6 bg-gray-50 w-full py-4 rounded-2xl border border-gray-100 transition-colors ${isAvailable ? 'group-hover:bg-[#d2001c]/5 group-hover:border-[#d2001c]/10' : ''}`}>
                                             <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Precio Final de Liquidación</p>
                                             <p className="text-5xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
                                         </div>
 
-                                        <Link 
-                                            href={`/cotizar?marca=${encodeURIComponent(unit.brand)}&modelo=${encodeURIComponent(unit.modelId || unit.modelName)}&version=${encodeURIComponent(unit.versionName || '')}&vin=${encodeURIComponent(unit.vin)}`}
-                                            className="w-full inline-flex items-center justify-center gap-3 py-3.5 bg-black text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-all shadow-xl hover:shadow-[#d2001c]/30 hover:scale-[1.02] active:scale-100 group/btn"
-                                        >
-                                            Lo quiero ahora <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
-                                        </Link>
+                                        {isAvailable ? (
+                                            <Link 
+                                                href={`/cotizar?marca=${encodeURIComponent(unit.brand)}&modelo=${encodeURIComponent(unit.modelId || unit.modelName)}&version=${encodeURIComponent(unit.versionName || '')}&vin=${encodeURIComponent(unit.vin)}`}
+                                                className="w-full inline-flex items-center justify-center gap-3 py-3.5 bg-black text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#d2001c] transition-all shadow-xl hover:shadow-[#d2001c]/30 hover:scale-[1.02] active:scale-100 group/btn"
+                                            >
+                                                Lo quiero ahora <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
+                                            </Link>
+                                        ) : (
+                                            <div className="w-full inline-flex items-center justify-center gap-3 py-3.5 bg-gray-200 text-gray-400 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] cursor-not-allowed">
+                                                {isSold ? 'Unidad Vendida' : 'Unidad Reservada'}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 ) : (
                     <div className="py-32 text-center bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">
