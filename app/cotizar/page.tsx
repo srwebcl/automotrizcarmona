@@ -147,7 +147,7 @@ function CotizarContent() {
             }
         };
         loadModelData();
-    }, [marca, modeloId, versionQuery]);
+    }, [marca, modeloId, versionQuery, vinQuery]);
 
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
