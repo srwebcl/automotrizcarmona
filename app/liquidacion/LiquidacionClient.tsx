@@ -187,5 +187,6 @@ export default function LiquidacionClient({
                     </div>
                 )}
             </section>
+        </>
     );
 }
