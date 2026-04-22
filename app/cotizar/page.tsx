@@ -21,6 +21,7 @@ function CotizarContent() {
     const marca = searchParams.get('marca') || 'toyota';
     const modeloId = searchParams.get('modelo');
     const versionQuery = searchParams.get('version');
+    const vinQuery = searchParams.get('vin');
 
     const [model, setModel] = useState<any>(null);
     const [version, setVersion] = useState<any>(null);
@@ -94,7 +95,27 @@ function CotizarContent() {
                         }
                     ];
                     const foundVersion = availableVers.find((v: any) => v.name === versionQuery);
-                    setVersion(foundVersion || availableVers[0]);
+                    
+                    // Si viene un VIN, buscamos si es una unidad en promoción
+                    if (vinQuery && apiModel.promoUnits) {
+                        const promoUnit = apiModel.promoUnits.find((u: any) => u.vin === vinQuery);
+                        if (promoUnit) {
+                            setVersion({
+                                name: promoUnit.versionName || foundVersion?.name || apiModel.name,
+                                transmission: foundVersion?.transmission || '-',
+                                fuel: foundVersion?.fuel || '-',
+                                listPrice: promoUnit.promoPrice + promoUnit.promoBonus,
+                                bonusPrice: promoUnit.promoPrice,
+                                vin: promoUnit.vin,
+                                isPromotion: true
+                            });
+                        } else {
+                            setVersion(foundVersion || availableVers[0]);
+                        }
+                    } else {
+                        setVersion(foundVersion || availableVers[0]);
+                    }
+
                     setAvailableVersions(availableVers);
                 } else {
                     // Si no es un auto, buscamos en camiones
@@ -173,11 +194,12 @@ function CotizarContent() {
                         brand_name: marca,
                         model_name: model?.name,
                         version_name: version?.name,
+                        vin: version?.vin || null,
                         year: new Date().getFullYear().toString(),
                         is_truck: !!model?.isTruck
                     },
                     request_details: {
-                        message: `Cotización solicitada para ${marca} ${model?.name}${!model?.isTruck ? ` - Versión: ${version?.name}` : ''}. Empresa: ${formData.empresa || 'N/A'}`
+                        message: `Cotización solicitada para ${marca} ${model?.name}${version?.vin ? ` (UNIDAD PROMO VIN: ${version.vin})` : ''}${!model?.isTruck ? ` - Versión: ${version?.name}` : ''}. Empresa: ${formData.empresa || 'N/A'}`
                     }
                 }),
             });
@@ -482,6 +504,11 @@ function CotizarContent() {
                                             ) : (
                                                 <p className="text-sm text-gray-500 uppercase font-medium mt-0.5">
                                                     {model.isTruck ? 'Modelo Camión' : version.name.replace(new RegExp(`^${model.name}\\s*`, 'i'), '')}
+                                                </p>
+                                            )}
+                                            {version?.vin && (
+                                                <p className="text-[10px] font-black text-[#d2001c] uppercase tracking-widest mt-1">
+                                                    VIN: {version.vin}
                                                 </p>
                                             )}
                                         </div>
