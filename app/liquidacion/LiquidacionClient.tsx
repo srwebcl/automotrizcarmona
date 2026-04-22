@@ -36,6 +36,28 @@ export default function LiquidacionClient({
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
 
+    // Auto-Scroll infalible: Bajamos la pantalla hasta la cuadrícula
+    React.useEffect(() => {
+        if (!targetVin) return;
+
+        const scrollToGrid = () => {
+            if (gridRef.current) {
+                const yOffset = -120; // Dejar espacio para el menú superior
+                const y = gridRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        };
+
+        // Forzamos el deslizamiento hacia abajo en dos tiempos precisos para evitar el bloqueo del navegador
+        const t1 = setTimeout(scrollToGrid, 500);
+        const t2 = setTimeout(scrollToGrid, 1200);
+
+        return () => {
+            clearTimeout(t1);
+            clearTimeout(t2);
+        };
+    }, [targetVin]);
+
     const brandsInPromo = useMemo(() => {
         const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
         const allBrands = [...layoutBrands.cars, ...layoutBrands.trucks];
