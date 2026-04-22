@@ -117,14 +117,19 @@ export default function LiquidacionClient({
                             <div key={`${unit.vin}-${idx}`} className="group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent">
                                 
                                 {/* Status Banner (Diagonal) */}
-                                {(isSold || isReserved) && (
-                                    <div className="absolute top-8 -right-8 z-50 transform rotate-45 w-40 text-center py-1.5 shadow-lg bg-gray-900 text-white font-black text-[10px] uppercase tracking-[0.3em]">
-                                        {isSold ? 'VENDIDO' : 'RESERVADO'}
+                                {isSold && (
+                                    <div className="absolute top-10 -right-10 z-50 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-red-600 to-red-800 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-red-400/30">
+                                        Vendido 🤝
+                                    </div>
+                                )}
+                                {isReserved && (
+                                    <div className="absolute top-10 -right-10 z-50 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-amber-400 to-amber-600 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-amber-300/30">
+                                        Reservado ⏳
                                     </div>
                                 )}
 
                                 {/* Main Card Body - Striking Design */}
-                                <div className={`relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 border-2 border-gray-50 overflow-visible shadow-sm ${isAvailable ? 'group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] group-hover:border-[#d2001c]/20' : 'opacity-75 grayscale-[0.5]'}`}>
+                                <div className={`relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 border-2 border-gray-50 overflow-visible shadow-sm ${isAvailable ? 'group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] group-hover:border-[#d2001c]/20' : 'opacity-80 grayscale-[0.3]'}`}>
                                     {/* Top Controls: Liquidation Tag & Share */}
                                     <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center pr-8">
                                         <div className="bg-[#d2001c] text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/20">
@@ -190,8 +195,8 @@ export default function LiquidacionClient({
                                                 Lo quiero ahora <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                                             </Link>
                                         ) : (
-                                            <div className="w-full inline-flex items-center justify-center gap-3 py-3.5 bg-gray-200 text-gray-400 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] cursor-not-allowed">
-                                                {isSold ? 'Unidad Vendida' : 'Unidad Reservada'}
+                                            <div className={`w-full inline-flex items-center justify-center gap-3 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] cursor-not-allowed border ${isSold ? 'bg-red-50 text-red-400 border-red-100' : 'bg-amber-50 text-amber-500 border-amber-100'}`}>
+                                                {isSold ? '🤝 Ya tiene dueño' : '⏳ Esperando Confirmación'}
                                             </div>
                                         )}
                                     </div>
