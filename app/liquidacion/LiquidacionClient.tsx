@@ -44,16 +44,18 @@ export default function LiquidacionClient({
             const scrollInterval = setInterval(() => {
                 const element = document.getElementById(`unit-${targetVin}`);
                 if (element) {
-                    const yOffset = -150; 
-                    const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
+                    // Usamos scrollIntoView que es más nativo y confiable
+                    // y un pequeño timeout extra para ganarle a Next.js
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
                     clearInterval(scrollInterval);
                 }
                 attempts++;
-                if (attempts >= 10) {
-                    clearInterval(scrollInterval); // Se detiene después de 2 segundos (10 intentos de 200ms)
+                if (attempts >= 20) {
+                    clearInterval(scrollInterval);
                 }
-            }, 200);
+            }, 150);
 
             return () => clearInterval(scrollInterval);
         }
