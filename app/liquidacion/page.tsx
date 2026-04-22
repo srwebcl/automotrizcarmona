@@ -17,7 +17,8 @@ export async function generateMetadata(
     { searchParams }: Props,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const vin = searchParams?.vin as string;
+    const params = await searchParams;
+    const vin = params?.vin as string;
     
     const landingInfo = await getLandingInfo('liquidacion').catch(() => null);
     const defaultTitle = landingInfo?.title || 'Gran Liquidación Automotriz Carmona';
@@ -98,7 +99,8 @@ export async function generateMetadata(
 }
 
 export default async function LiquidacionPage({ searchParams }: Props) {
-    const targetVin = searchParams?.vin as string;
+    const params = await searchParams;
+    const targetVin = params?.vin as string;
 
     const [promotionModels, landingInfo, layoutBrands] = await Promise.all([
         getPromotionModels(),
