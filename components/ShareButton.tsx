@@ -14,7 +14,7 @@ export default function ShareButton({ url, title, className = "" }: ShareButtonP
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Evitar errors de hidratación usando un default vacío hasta que el cliente monte
-    const [currentUrl, setCurrentUrl] = useState('');
+    const [currentUrl, setCurrentUrl] = useState(url || '');
 
     useEffect(() => {
         if (typeof window !== 'undefined') {

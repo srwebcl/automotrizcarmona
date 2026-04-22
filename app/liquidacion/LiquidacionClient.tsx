@@ -157,14 +157,14 @@ export default function LiquidacionClient({
                                 {/* Main Card Body - Striking Design */}
                                 <div className={`relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 border-2 border-gray-50 overflow-visible shadow-sm ${isAvailable ? 'group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] group-hover:border-[#d2001c]/20' : 'opacity-80 grayscale-[0.3]'}`}>
                                     {/* Top Controls: Liquidation Tag & Share */}
-                                    <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center pr-8">
+                                    <div className="absolute top-6 left-6 right-6 z-30 flex justify-between items-center">
                                         <div className="bg-[#d2001c] text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/20">
                                             <Flame size={12} fill="currentColor" />
                                             <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
                                         </div>
                                         <ShareButton 
                                             title={`Liquidación ${unit.brand} ${unit.modelName}`}
-                                            url={`https://automotrizcarmona.cl/liquidacion?vin=${unit.vin}`}
+                                            url={typeof window !== 'undefined' ? `${window.location.origin}/liquidacion?vin=${unit.vin}` : `https://automotrizcarmona.cl/liquidacion?vin=${unit.vin}`}
                                         />
                                     </div>
 
