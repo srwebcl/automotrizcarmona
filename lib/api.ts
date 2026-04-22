@@ -96,6 +96,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         promoUnits: (data.promotion_units || []).map((u: any) => ({
             vin: u.vin,
             versionName: u.version_name,
+            listPrice: u.list_price,
             promoBonus: u.promo_bonus,
             promoPrice: u.promo_price
         })),

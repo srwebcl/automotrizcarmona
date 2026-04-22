@@ -95,7 +95,7 @@ export default function PromocionesClient({ allPromoUnits }: { allPromoUnits: an
                                             </div>
                                             
                                             <span className="text-xs font-bold text-gray-300 line-through decoration-gray-400 mb-2">
-                                                Normal: {formatPrice(unit.promoPrice + unit.promoBonus)}
+                                                Normal: {formatPrice(unit.listPrice || (unit.promoPrice + unit.promoBonus))}
                                             </span>
                                             
                                             <p className="text-[9px] text-gray-400 flex items-center gap-1.5 font-medium italic mt-1">

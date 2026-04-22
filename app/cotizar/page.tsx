@@ -104,7 +104,7 @@ function CotizarContent() {
                                 name: promoUnit.versionName || foundVersion?.name || apiModel.name,
                                 transmission: foundVersion?.transmission || '-',
                                 fuel: foundVersion?.fuel || '-',
-                                listPrice: promoUnit.promoPrice + promoUnit.promoBonus,
+                                listPrice: promoUnit.listPrice || (promoUnit.promoPrice + promoUnit.promoBonus),
                                 bonusPrice: promoUnit.promoPrice,
                                 vin: promoUnit.vin,
                                 isPromotion: true
