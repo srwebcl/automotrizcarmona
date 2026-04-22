@@ -31,38 +31,38 @@ export default function LiquidacionClient({
         if (!targetVin) return;
 
         const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
-        const targetBrand = targetUnit ? targetUnit.brand.toLowerCase() : 'todas';
+        if (!targetUnit) return; // Si no existe el VIN, no hace nada
+
+        const targetBrand = targetUnit.brand.toLowerCase();
 
         // 1. Cambiamos la marca si es necesario
         if (activeBrand.toLowerCase() !== targetBrand) {
             setActiveBrand(targetBrand);
-            return; // Salimos y esperamos a que el estado se actualice (re-render)
+            return; // Esperamos al siguiente render con la marca correcta filtrada
         }
 
-        // 2. Si llegamos aquí, la marca correcta ya está activa.
-        // Hacemos el scroll con un pequeño retraso para permitir el repintado (re-flow) del DOM
-        let scrollAttempts = 0;
-        const intervalId = setInterval(() => {
+        // 2. Lógica Agresiva de Scroll: Vencer a la restauración de scroll de Next.js
+        const scrollToElement = () => {
             const el = document.getElementById(`unit-${targetVin}`);
             if (el) {
-                // Usamos getBoundingClientRect que es 100% exacto en vez de scrollIntoView
-                const headerOffset = 100;
-                const elementPosition = el.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                clearInterval(intervalId);
+                // Usamos un offset para no quedar debajo del navbar
+                const yOffset = -100;
+                const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
-            
-            scrollAttempts++;
-            if (scrollAttempts > 15) clearInterval(intervalId); // Seguridad (3 segs max)
-        }, 200);
+        };
 
-        return () => clearInterval(intervalId);
+        // Múltiples reintentos garantizan que si Next.js o la carga de imágenes 
+        // reinician la vista hacia arriba, nosotros la volvemos a bajar.
+        const t1 = setTimeout(scrollToElement, 100);   // Inmediato tras render
+        const t2 = setTimeout(scrollToElement, 600);   // Post-hidratación
+        const t3 = setTimeout(scrollToElement, 1200);  // Seguridad final
+
+        return () => {
+            clearTimeout(t1);
+            clearTimeout(t2);
+            clearTimeout(t3);
+        };
     }, [targetVin, activeBrand, allPromoUnits]);
 
     const brandsInPromo = useMemo(() => {
