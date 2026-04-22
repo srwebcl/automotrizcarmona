@@ -307,7 +307,9 @@ export async function getNewsBySlug(slug: string): Promise<News | null> {
 
 export async function getLandingInfo(slug: string): Promise<LandingInfo | null> {
     try {
-        const res = await fetch(`${API_URL}/landings/${slug}`, FETCH_OPTIONS);
+        const url = `${API_URL}/landings/${slug}`;
+        console.log('Fetching landing info from:', url);
+        const res = await fetch(url, FETCH_OPTIONS);
         if (!res.ok) return null;
         const json = await res.json();
         return json.data || json || null;
