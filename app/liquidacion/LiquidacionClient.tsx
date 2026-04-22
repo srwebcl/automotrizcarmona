@@ -28,38 +28,42 @@ export default function LiquidacionClient({
     const gridRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        if (targetVin) {
-            // Encuentra la marca del VIN objetivo y la selecciona automáticamente
-            const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
-            if (targetUnit && targetUnit.brand.toLowerCase() !== activeBrand.toLowerCase()) {
-                setActiveBrand(targetUnit.brand.toLowerCase());
+        if (!targetVin) return;
+
+        const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
+        const targetBrand = targetUnit ? targetUnit.brand.toLowerCase() : 'todas';
+
+        // 1. Cambiamos la marca si es necesario
+        if (activeBrand.toLowerCase() !== targetBrand) {
+            setActiveBrand(targetBrand);
+            return; // Salimos y esperamos a que el estado se actualice (re-render)
+        }
+
+        // 2. Si llegamos aquí, la marca correcta ya está activa.
+        // Hacemos el scroll con un pequeño retraso para permitir el repintado (re-flow) del DOM
+        let scrollAttempts = 0;
+        const intervalId = setInterval(() => {
+            const el = document.getElementById(`unit-${targetVin}`);
+            if (el) {
+                // Usamos getBoundingClientRect que es 100% exacto en vez de scrollIntoView
+                const headerOffset = 100;
+                const elementPosition = el.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                clearInterval(intervalId);
             }
-        }
-    }, [targetVin, allPromoUnits]);
+            
+            scrollAttempts++;
+            if (scrollAttempts > 15) clearInterval(intervalId); // Seguridad (3 segs max)
+        }, 200);
 
-    React.useEffect(() => {
-        if (targetVin) {
-            // Intenta hacer el scroll durante 2 segundos asegurando que el DOM y filtros se hayan actualizado
-            let attempts = 0;
-            const scrollInterval = setInterval(() => {
-                const element = document.getElementById(`unit-${targetVin}`);
-                if (element) {
-                    // Usamos scrollIntoView que es más nativo y confiable
-                    // y un pequeño timeout extra para ganarle a Next.js
-                    setTimeout(() => {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 300);
-                    clearInterval(scrollInterval);
-                }
-                attempts++;
-                if (attempts >= 20) {
-                    clearInterval(scrollInterval);
-                }
-            }, 150);
-
-            return () => clearInterval(scrollInterval);
-        }
-    }, [targetVin, activeBrand]);
+        return () => clearInterval(intervalId);
+    }, [targetVin, activeBrand, allPromoUnits]);
 
     const brandsInPromo = useMemo(() => {
         const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
