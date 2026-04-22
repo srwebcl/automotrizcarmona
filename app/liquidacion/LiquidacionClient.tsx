@@ -15,15 +15,37 @@ export default function LiquidacionClient({
     allPromoUnits, 
     title, 
     subtitle,
-    layoutBrands
+    layoutBrands,
+    targetVin
 }: { 
     allPromoUnits: any[], 
     title: string, 
     subtitle?: string,
-    layoutBrands: { cars: any[], trucks: any[] }
+    layoutBrands: { cars: any[], trucks: any[] },
+    targetVin?: string
 }) {
     const [activeBrand, setActiveBrand] = useState('Todas');
     const gridRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        if (targetVin) {
+            // Find the brand of the target VIN to automatically select it
+            const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
+            if (targetUnit && targetUnit.brand.toLowerCase() !== activeBrand.toLowerCase()) {
+                setActiveBrand(targetUnit.brand.toLowerCase());
+            }
+
+            // Scroll to the card after a short delay to allow for rendering/filtering
+            setTimeout(() => {
+                const element = document.getElementById(`unit-${targetVin}`);
+                if (element) {
+                    const yOffset = -150; 
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 300);
+        }
+    }, [targetVin, allPromoUnits]);
 
     const brandsInPromo = useMemo(() => {
         const uniqueBrandSlugs = Array.from(new Set(allPromoUnits.map(u => u.brand.toLowerCase())));
@@ -114,7 +136,11 @@ export default function LiquidacionClient({
                             const isAvailable = !isSold && !isReserved;
 
                             return (
-                            <div key={`${unit.vin}-${idx}`} className="group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent">
+                            <div 
+                                key={`${unit.vin}-${idx}`} 
+                                id={`unit-${unit.vin}`}
+                                className={`group flex flex-col relative overflow-hidden rounded-[2.5rem] bg-transparent transition-all duration-1000 ${targetVin === unit.vin ? 'ring-4 ring-[#d2001c] ring-offset-4 ring-offset-gray-50 scale-[1.02]' : ''}`}
+                            >
                                 
                                 {/* Status Banner (Diagonal) */}
                                 {isSold && (

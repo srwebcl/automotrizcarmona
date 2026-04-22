@@ -5,9 +5,101 @@ import { getLayoutBrands } from '@/lib/api/layoutBrands';
 import DiscoverSection from '@/components/DiscoverSection';
 import LiquidacionClient from './LiquidacionClient';
 
+import type { Metadata, ResolvingMetadata } from 'next';
+
 export const revalidate = 5; // ISR 5 seg para reflejar ventas rápidamente
 
-export default async function LiquidacionPage() {
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined }
+};
+
+export async function generateMetadata(
+    { searchParams }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const vin = searchParams?.vin as string;
+    
+    const landingInfo = await getLandingInfo('liquidacion').catch(() => null);
+    const defaultTitle = landingInfo?.title || 'Gran Liquidación Automotriz Carmona';
+    const defaultDesc = landingInfo?.subtitle || 'Oportunidades únicas con entrega inmediata y bonos exclusivos.';
+    const defaultImage = landingInfo?.desktop_banner_url || '/images/default-share.jpg';
+    
+    if (!vin) {
+        return {
+            title: defaultTitle,
+            description: defaultDesc,
+            openGraph: {
+                title: defaultTitle,
+                description: defaultDesc,
+                images: [{ url: defaultImage }],
+            }
+        };
+    }
+
+    try {
+        const promotionModels = await getPromotionModels();
+        const allPromoUnits = promotionModels.flatMap(model => 
+            (model.promoUnits || []).map(unit => ({
+                ...unit,
+                modelId: model.id,
+                brand: model.brand,
+                image: model.image,
+                modelName: model.name
+            }))
+        );
+
+        const unit = allPromoUnits.find(u => u.vin === vin);
+
+        if (unit) {
+            const formatPrice = (price: number) => {
+                return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
+            };
+            const priceFormatted = formatPrice(unit.promoPrice);
+            
+            let title = `OFERTA: ${unit.brand} ${unit.modelName} a ${priceFormatted}`;
+            if (unit.status === 'vendido') {
+                title = `¡VENDIDO! ${unit.brand} ${unit.modelName}`;
+            } else if (unit.status === 'reservado') {
+                title = `RESERVADO: ${unit.brand} ${unit.modelName}`;
+            }
+
+            const desc = `Unidad VIN: ${unit.vin}. Bono de descuento aplicado: ${formatPrice(unit.promoBonus)}.`;
+
+            return {
+                title: title,
+                description: desc,
+                openGraph: {
+                    title: title,
+                    description: desc,
+                    images: [
+                        {
+                            url: unit.image || defaultImage,
+                            width: 1200,
+                            height: 630,
+                            alt: `${unit.brand} ${unit.modelName}`,
+                        },
+                    ],
+                },
+            };
+        }
+    } catch (e) {
+        console.error(e);
+    }
+
+    return {
+        title: defaultTitle,
+        description: defaultDesc,
+        openGraph: {
+            title: defaultTitle,
+            description: defaultDesc,
+            images: [{ url: defaultImage }],
+        }
+    };
+}
+
+export default async function LiquidacionPage({ searchParams }: Props) {
+    const targetVin = searchParams?.vin as string;
+
     const [promotionModels, landingInfo, layoutBrands] = await Promise.all([
         getPromotionModels(),
         getLandingInfo('liquidacion'),
@@ -65,17 +157,13 @@ export default async function LiquidacionPage() {
                 </div>
             </section>
 
-            {/* MARCAS BAR (Simplified for Server Rendering, or could be a client component for filters) */}
-            {/* Note: In a real app, I'd move the filtering logic to a client component below. 
-                For this task, I'll keep the UI but the logic needs a client component wrapper.
-            */}
-
             {/* CATALOG CONTENT */}
             <LiquidacionClient 
                 allPromoUnits={allPromoUnits} 
                 title={heroTitle}
                 subtitle={heroSubtitle}
                 layoutBrands={layoutBrands}
+                targetVin={targetVin}
             />
             
             <DiscoverSection />
