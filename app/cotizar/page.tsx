@@ -525,13 +525,13 @@ function CotizarContent() {
                                             </div>
                                             <div className="flex justify-between items-center group mb-2">
                                                 <span className="text-gray-500 font-medium flex items-center gap-1.5">
-                                                    Bono Financiamiento <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
+                                                    {version.isPromotion ? 'Bono Liquidación' : 'Bono Financiamiento'} <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
                                                 </span>
                                                 <span className="font-bold text-gray-600 text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
                                             </div>
                                             <div className="flex justify-between items-center group mt-4">
                                                 <span className="text-gray-900 font-bold flex items-center gap-1.5">
-                                                    Precio con Financiamiento
+                                                    {version.isPromotion ? 'Precio Liquidación' : 'Precio con Financiamiento'}
                                                 </span>
                                                 <span className="font-black text-gray-900 text-xl">{formatPrice(version.bonusPrice)}</span>
                                             </div>
