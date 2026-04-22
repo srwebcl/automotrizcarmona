@@ -9,7 +9,7 @@ const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
 };
 
-export default function PromocionesClient({ allPromoUnits }: { allPromoUnits: any[] }) {
+export default function LiquidacionClient({ allPromoUnits }: { allPromoUnits: any[] }) {
     const [activeBrand, setActiveBrand] = useState('Todas');
 
     const brandNames = ['Todas', ...Array.from(new Set(allPromoUnits.map(u => u.brand))).sort()];

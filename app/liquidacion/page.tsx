@@ -2,14 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
 import DiscoverSection from '@/components/DiscoverSection';
-import PromocionesClient from './PromocionesClient';
+import LiquidacionClient from './LiquidacionClient';
 
 export const revalidate = 60; // ISR 1 min for fast refresh
 
-export default async function PromocionesPage() {
+export default async function LiquidacionPage() {
     const [promotionModels, landingInfo] = await Promise.all([
         getPromotionModels(),
-        getLandingInfo('promociones')
+        getLandingInfo('liquidacion')
     ]);
 
     const allPromoUnits = promotionModels.flatMap(model => 
@@ -24,7 +24,7 @@ export default async function PromocionesPage() {
     );
 
     // Hero Fallbacks
-    const heroTitle = landingInfo?.title || 'Liquidación de Stock';
+    const heroTitle = landingInfo?.title || 'Gran Liquidación';
     const heroSubtitle = landingInfo?.subtitle || 'Unidades físicas con bonos especiales directos por número de chasis (VIN).';
     const heroImage = landingInfo?.desktop_banner_url || '/images/cupra/Formentor/banner/banner.webp';
 
@@ -69,7 +69,7 @@ export default async function PromocionesPage() {
             */}
 
             {/* CATALOG CONTENT */}
-            <PromocionesClient allPromoUnits={allPromoUnits} />
+            <LiquidacionClient allPromoUnits={allPromoUnits} />
             
             <DiscoverSection />
         </main>
