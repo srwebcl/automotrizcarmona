@@ -332,8 +332,3 @@ export default function SmartWhatsAppButton() {
         </Suspense>
     );
 }
-></span>
-            </a>
-        </div>
-    );
-}
