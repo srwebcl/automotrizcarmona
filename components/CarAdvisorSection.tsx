@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { Star, ThumbsUp, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ThumbsUp } from 'lucide-react';
 
-// ——— Types ———————————————————————————————————————————
+// ——— Types ————————————————————————————————————————————
 export interface CarAdvisorRating {
     userName: string;
     title: string;
@@ -25,15 +25,20 @@ export interface CarAdvisorData {
 }
 
 // ——— Helpers ——————————————————————————————————————————
-function StarRow({ rating, size = 16 }: { rating: number; size?: number }) {
+function StarRow({ rating, size = 20 }: { rating: number; size?: number }) {
     return (
         <div className="flex items-center gap-0.5">
             {[1, 2, 3, 4, 5].map((s) => (
-                <Star
+                <svg
                     key={s}
-                    size={size}
-                    className={s <= rating ? 'text-[#00b3c6] fill-[#00b3c6]' : 'text-gray-200 fill-gray-200'}
-                />
+                    width={size}
+                    height={size}
+                    viewBox="0 0 24 24"
+                    fill={s <= rating ? '#e8401c' : '#e5e7eb'}
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
             ))}
         </div>
     );
@@ -42,7 +47,7 @@ function StarRow({ rating, size = 16 }: { rating: number; size?: number }) {
 function formatDate(timestamp: number | null): string {
     if (!timestamp) return '';
     const d = new Date(timestamp * 1000);
-    return d.toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric' });
+    return d.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
 function reasonLabel(reason: string[]): string {
@@ -59,92 +64,113 @@ function reasonLabel(reason: string[]): string {
 // ——— Main Component ————————————————————————————————————
 interface CarAdvisorSectionProps {
     data: CarAdvisorData;
-    /** Optional brand name to filter reviews */
     brandFilter?: string;
-    /** Title shown above the carousel */
-    title?: string;
 }
 
-export default function CarAdvisorSection({
-    data,
-    brandFilter,
-    title = 'Lo que dicen nuestros clientes',
-}: CarAdvisorSectionProps) {
+export default function CarAdvisorSection({ data, brandFilter }: CarAdvisorSectionProps) {
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: false,
         align: 'start',
         containScroll: 'trimSnaps',
-        slidesToScroll: 1,
     });
 
-    const scrollPrev = () => emblaApi?.scrollPrev();
-    const scrollNext = () => emblaApi?.scrollNext();
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(true);
 
-    // Optional brand filter
+    const onSelect = useCallback(() => {
+        if (!emblaApi) return;
+        setSelectedIndex(emblaApi.selectedScrollSnap());
+        setCanScrollPrev(emblaApi.canScrollPrev());
+        setCanScrollNext(emblaApi.canScrollNext());
+    }, [emblaApi]);
+
+    useEffect(() => {
+        if (!emblaApi) return;
+        setScrollSnaps(emblaApi.scrollSnapList());
+        emblaApi.on('select', onSelect);
+        onSelect();
+        return () => { emblaApi.off('select', onSelect); };
+    }, [emblaApi, onSelect]);
+
     const ratings = brandFilter
-        ? data.ratings.filter(r =>
-            !r.brand || r.brand.toLowerCase().includes(brandFilter.toLowerCase())
-          )
+        ? data.ratings.filter(r => !r.brand || r.brand.toLowerCase().includes(brandFilter.toLowerCase()))
         : data.ratings;
-
-    // Use all if filter yields nothing
     const displayRatings = ratings.length > 0 ? ratings : data.ratings;
 
     return (
-        <section className="py-16 bg-gray-50">
-            <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 bg-white border-t border-gray-100">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
-                {/* Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-                    <div>
-                        <p className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2">
-                            Verificado por Car Advisor
-                        </p>
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-                            {title}
-                        </h2>
+                {/* ── Logo Car Advisor ── */}
+                <div className="flex flex-col items-center mb-8">
+                    <div className="text-center mb-1">
+                        <span className="text-4xl font-black tracking-tight">
+                            <span className="text-[#e8401c]">car.</span>
+                            <span className="text-gray-900">advisor</span>
+                        </span>
                     </div>
+                    <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase mb-6">
+                        El portal de evaluaciones para concesionarios
+                    </p>
 
-                    {/* Summary Badges */}
-                    <div className="flex flex-wrap items-center gap-4 shrink-0">
-                        {/* Overall Rating */}
-                        <div className="flex flex-col items-center bg-white border border-gray-100 shadow-sm rounded-2xl px-6 py-4 min-w-[120px]">
-                            <span className="text-4xl font-black text-gray-900 leading-none">{data.overallRating}</span>
-                            <StarRow rating={Math.round(data.overallRating)} size={14} />
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">
-                                {data.totalRatings} reseñas
+                    {/* ── Stats row ── */}
+                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+                        {/* Stars + rating */}
+                        <div className="flex items-center gap-3">
+                            <StarRow rating={Math.round(data.overallRating)} size={28} />
+                            <span className="text-3xl font-black text-gray-900">{data.overallRating}</span>
+                        </div>
+
+                        <div className="hidden sm:block w-px h-10 bg-gray-200" />
+
+                        {/* Recommendation */}
+                        <div className="flex items-center gap-2">
+                            <ThumbsUp size={22} className="text-[#e8401c]" />
+                            <span className="text-xl font-black text-gray-900">
+                                {data.recommendPercentage}%
                             </span>
+                            <span className="text-sm text-gray-500 font-medium">de recomendación</span>
                         </div>
 
-                        {/* Recommendation % */}
-                        <div className="flex flex-col items-center bg-white border border-gray-100 shadow-sm rounded-2xl px-6 py-4 min-w-[120px]">
-                            <span className="text-4xl font-black text-[#00b3c6] leading-none">{data.recommendPercentage}%</span>
-                            <div className="flex items-center gap-1 mt-1">
-                                <ThumbsUp size={12} className="text-[#00b3c6]" />
-                                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Recomienda</span>
-                            </div>
-                        </div>
+                        <div className="hidden sm:block w-px h-10 bg-gray-200" />
 
-                        {/* Link to Car Advisor */}
+                        {/* Total reviews link */}
                         <a
                             href={data.dealerPage}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-5 py-3 bg-[#00b3c6] text-white rounded-xl font-bold text-sm hover:bg-[#009aac] transition-colors shadow-sm shadow-[#00b3c6]/30"
+                            className="text-[#e8401c] font-bold text-sm hover:underline"
                         >
-                            Ver todas <ExternalLink size={14} />
+                            {data.totalRatings} Evaluaciones →
                         </a>
                     </div>
                 </div>
 
-                {/* Carousel */}
+                {/* ── Section title ── */}
+                <p className="text-center text-[11px] font-black tracking-[0.25em] text-gray-400 uppercase mb-8">
+                    Evaluaciones de clientes
+                </p>
+
+                {/* ── Carousel ── */}
                 <div className="relative">
+                    {/* Prev arrow */}
+                    <button
+                        onClick={() => emblaApi?.scrollPrev()}
+                        disabled={!canScrollPrev}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 z-10 w-9 h-9 rounded-full bg-white border border-gray-200 shadow flex items-center justify-center disabled:opacity-20 hover:border-[#e8401c] hover:text-[#e8401c] transition-colors"
+                        aria-label="Anterior"
+                    >
+                        <ChevronLeft size={18} />
+                    </button>
+
                     <div className="overflow-hidden" ref={emblaRef}>
-                        <div className="flex -ml-4 touch-pan-y">
+                        <div className="flex -ml-3 touch-pan-y">
                             {displayRatings.map((review, idx) => (
                                 <div
                                     key={idx}
-                                    className="flex-[0_0_85%] sm:flex-[0_0_50%] lg:flex-[0_0_33%] xl:flex-[0_0_25%] pl-4 min-w-0"
+                                    className="flex-[0_0_90%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] pl-3 min-w-0"
                                 >
                                     <ReviewCard review={review} />
                                 </div>
@@ -152,39 +178,37 @@ export default function CarAdvisorSection({
                         </div>
                     </div>
 
-                    {/* Navigation buttons */}
-                    <div className="flex items-center gap-3 mt-8 justify-end">
-                        <button
-                            onClick={scrollPrev}
-                            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:border-[#00b3c6] hover:text-[#00b3c6] transition-colors"
-                            aria-label="Anterior"
-                        >
-                            <ChevronLeft size={18} />
-                        </button>
-                        <button
-                            onClick={scrollNext}
-                            className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:border-[#00b3c6] hover:text-[#00b3c6] transition-colors"
-                            aria-label="Siguiente"
-                        >
-                            <ChevronRight size={18} />
-                        </button>
-                    </div>
+                    {/* Next arrow */}
+                    <button
+                        onClick={() => emblaApi?.scrollNext()}
+                        disabled={!canScrollNext}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-10 w-9 h-9 rounded-full bg-white border border-gray-200 shadow flex items-center justify-center disabled:opacity-20 hover:border-[#e8401c] hover:text-[#e8401c] transition-colors"
+                        aria-label="Siguiente"
+                    >
+                        <ChevronRight size={18} />
+                    </button>
                 </div>
 
-                {/* Footer attribution */}
-                <div className="flex items-center gap-2 mt-6 justify-center">
-                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
-                        Reseñas verificadas por
-                    </span>
-                    <a
-                        href="https://www.caradvisor.at"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[11px] font-black text-[#00b3c6] uppercase tracking-widest hover:underline"
-                    >
-                        Car Advisor · Grupo Porsche
-                    </a>
+                {/* ── Dot indicators ── */}
+                <div className="flex justify-center gap-2 mt-6">
+                    {scrollSnaps.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => emblaApi?.scrollTo(idx)}
+                            className={`h-2 rounded-full transition-all ${
+                                idx === selectedIndex
+                                    ? 'w-6 bg-[#e8401c]'
+                                    : 'w-2 bg-gray-300 hover:bg-gray-400'
+                            }`}
+                            aria-label={`Ir a reseña ${idx + 1}`}
+                        />
+                    ))}
                 </div>
+
+                {/* ── Footer attribution ── */}
+                <p className="text-center text-[10px] text-gray-300 font-medium mt-6 tracking-widest uppercase">
+                    Verificado por Car Advisor · Grupo Porsche
+                </p>
             </div>
         </section>
     );
@@ -193,57 +217,52 @@ export default function CarAdvisorSection({
 // ——— Review Card ——————————————————————————————————————
 function ReviewCard({ review }: { review: CarAdvisorRating }) {
     const [expanded, setExpanded] = useState(false);
-    const isLong = review.text.length > 200;
-    const displayText = expanded || !isLong ? review.text : review.text.slice(0, 200) + '…';
+    const isLong = review.text.length > 160;
+    const displayText = expanded || !isLong ? review.text : review.text.slice(0, 160) + '…';
     const label = reasonLabel(review.reason);
 
     return (
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-4 h-full hover:shadow-md transition-shadow duration-300">
+        <div className="bg-white border border-gray-200 rounded-sm p-5 flex flex-col gap-3 h-full hover:border-gray-300 transition-colors min-h-[200px]">
 
-            {/* Top: stars + rating badge */}
-            <div className="flex items-center justify-between">
-                <StarRow rating={review.rating} size={16} />
+            {/* Date + service type */}
+            <div className="flex items-start justify-between gap-2">
+                {review.date && (
+                    <span className="text-xs text-gray-400">{formatDate(review.date)}</span>
+                )}
                 {label && (
-                    <span className="text-[10px] font-bold uppercase tracking-widest bg-gray-100 text-gray-500 px-2 py-1 rounded-full">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 text-right">
                         {label}
                     </span>
                 )}
             </div>
 
+            {/* Name */}
+            <p className="text-sm font-extrabold text-gray-900">{review.userName}</p>
+
             {/* Title */}
             {review.title && (
-                <h3 className="font-bold text-gray-900 text-sm leading-snug line-clamp-2">
-                    {review.title}
-                </h3>
+                <p className="text-sm font-bold text-gray-800 leading-snug">{review.title}</p>
             )}
 
-            {/* Text */}
-            <p className="text-gray-500 text-sm leading-relaxed flex-1">
-                {displayText}
-                {isLong && (
-                    <button
-                        onClick={() => setExpanded(!expanded)}
-                        className="ml-1 text-[#00b3c6] font-bold text-xs hover:underline"
-                    >
-                        {expanded ? 'Ver menos' : 'Ver más'}
-                    </button>
-                )}
-            </p>
-
-            {/* Bottom: user + date + recommended */}
-            <div className="flex items-end justify-between pt-3 border-t border-gray-50">
-                <div>
-                    <p className="text-xs font-black text-gray-800">{review.userName}</p>
-                    {review.date && (
-                        <p className="text-[10px] text-gray-400">{formatDate(review.date)}</p>
+            {/* Review text */}
+            {review.text && (
+                <p className="text-xs text-gray-500 leading-relaxed flex-1">
+                    {displayText}
+                    {isLong && (
+                        <button
+                            onClick={() => setExpanded(!expanded)}
+                            className="ml-1 text-[#e8401c] font-bold hover:underline"
+                        >
+                            {expanded ? 'menos' : 'más'}
+                        </button>
                     )}
-                </div>
-                {review.recommended && (
-                    <div className="flex items-center gap-1 text-[#00b3c6]">
-                        <ThumbsUp size={12} />
-                        <span className="text-[10px] font-bold">Lo recomienda</span>
-                    </div>
-                )}
+                </p>
+            )}
+
+            {/* Stars + rating number */}
+            <div className="flex items-center gap-2 pt-2 mt-auto">
+                <StarRow rating={review.rating} size={16} />
+                <span className="text-sm font-black text-gray-700">{review.rating}</span>
             </div>
         </div>
     );

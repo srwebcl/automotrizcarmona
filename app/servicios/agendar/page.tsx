@@ -8,7 +8,8 @@ import {
     CheckCircle, MapPin, Mail, Phone,
     ChevronDown, Clock, ArrowLeft, ArrowRight, User, Car, CalendarDays, Store, MessageCircle
 } from 'lucide-react';
-import { API_URL } from '@/lib/api';
+import { API_URL, isPorscheBrand } from '@/lib/api';
+import CarAdvisorSectionClient from '@/components/CarAdvisorSectionClient';
 
 
 
@@ -254,6 +255,7 @@ function AgendarContent() {
 
     // ── FORM ────────────────────────────────────────────────────────────────
     return (
+        <>
         <main className="min-h-screen pt-[88px] pb-16 bg-[#f4f6f8] font-sans selection:bg-[#d2001c] selection:text-white">
 
             {/* ── TOPBAR: Volver + Pasos ── sticky, sigue la altura del navbar ── */}
@@ -592,6 +594,12 @@ function AgendarContent() {
                 </div>
             </div>
         </main>
+
+        {/* Car Advisor: solo para marcas del Grupo Porsche */}
+        {form.marca && isPorscheBrand(form.marca) && (
+            <CarAdvisorSectionClient brandFilter={form.marca} />
+        )}
+    </>
     );
 }
 

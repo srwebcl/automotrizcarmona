@@ -14,7 +14,6 @@ export default async function ContactoPage() {
             {carAdvisorData && (
                 <CarAdvisorSection
                     data={carAdvisorData}
-                    title="Lo que dicen nuestros clientes"
                 />
             )}
         </>

@@ -74,7 +74,6 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
                     <CarAdvisorSection
                         data={carAdvisorData}
                         brandFilter={brandId}
-                        title={`Lo que dicen los clientes ${staticConfig.name}`}
                     />
                 )}
             </>
