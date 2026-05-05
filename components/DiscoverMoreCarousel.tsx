@@ -5,10 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowRight } from 'lucide-react';
+import type { DiscoverItem } from '@/lib/api';
 
 const CDN_HOME = 'https://pub-5f17f36d654d46e6a6a748a95586b21f.r2.dev/home';
 
-const ITEMS = [
+const FALLBACK_ITEMS: DiscoverItem[] = [
     {
         id: 1,
         title: "Compliance",
@@ -43,31 +44,26 @@ const ITEMS = [
     }
 ];
 
-interface DiscoverItem {
-    id: number | string;
-    title: string;
-    subtitle?: string;
-    link: string;
-    image: string;
-    external?: boolean;
-}
-
 interface DiscoverMoreCarouselProps {
     titlePrefix?: string;
     titleHighlight?: string;
+    /** Items from API. If empty, falls back to FALLBACK_ITEMS. */
     items?: DiscoverItem[];
 }
 
 export default function DiscoverMoreCarousel({
     titlePrefix = "Más sobre",
     titleHighlight = "Carmona y Cia",
-    items = ITEMS
+    items
 }: DiscoverMoreCarouselProps) {
     const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
         containScroll: 'trimSnaps'
     });
+
+    // Use API items if provided and non-empty, otherwise fall back to hardcoded
+    const displayItems = (items && items.length > 0) ? items : FALLBACK_ITEMS;
 
     return (
         <section className="py-20 bg-white">
@@ -81,7 +77,7 @@ export default function DiscoverMoreCarousel({
 
                 <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex -ml-4 touch-pan-y">
-                        {items.map((item) => (
+                        {displayItems.map((item) => (
                             <div key={item.id} className="flex-[0_0_85%] md:flex-[0_0_40%] lg:flex-[0_0_25%] pl-4 min-w-0">
                                 <Link
                                     href={item.link}
@@ -105,7 +101,9 @@ export default function DiscoverMoreCarousel({
                                         <h3 className="text-2xl font-bold mb-2 group-hover:text-[#d2001c] transition-colors block">
                                             {item.title}
                                         </h3>
-
+                                        {item.subtitle && (
+                                            <p className="text-sm text-white/70 mb-2">{item.subtitle}</p>
+                                        )}
                                         <div className="flex items-center gap-2 text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100">
                                             <span className="uppercase tracking-wider">Ver más</span>
                                             <ArrowRight size={16} />

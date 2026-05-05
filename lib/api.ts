@@ -375,3 +375,32 @@ export async function getLegalDocuments(): Promise<LegalDocument[]> {
         return [];
     }
 }
+
+export interface DiscoverItem {
+    id: number | string;
+    title: string;
+    subtitle?: string;
+    image: string;
+    link: string;
+    external?: boolean;
+    order?: number;
+}
+
+export async function getDiscoverItems(): Promise<DiscoverItem[]> {
+    try {
+        const res = await fetch(`${API_URL}/home/discover`, {
+            next: { revalidate: 60 },
+            headers: FETCH_OPTIONS.headers
+        });
+        if (!res.ok) return [];
+        const json = await res.json();
+        const items: any[] = Array.isArray(json) ? json : (json.data || []);
+        return items.map((item: any) => ({
+            ...item,
+            image: formatImageUrl(item.image),
+        }));
+    } catch (e) {
+        console.error('Error fetching discover items:', e);
+        return [];
+    }
+}

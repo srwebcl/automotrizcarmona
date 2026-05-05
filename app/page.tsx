@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Hero from '@/components/Hero';
-import { getFeaturedModels, getBanners, formatImageUrl } from '@/lib/api';
+import { getFeaturedModels, getBanners, formatImageUrl, getDiscoverItems } from '@/lib/api';
 import { getLayoutBrands } from '@/lib/api/layoutBrands';
 import QuickAccessBar from '@/components/QuickAccessBar';
 import DiscoverMoreCarousel from '@/components/DiscoverMoreCarousel';
@@ -14,10 +14,11 @@ import HomeClient from './HomeClient';
 export const revalidate = 60;
 
 export default async function Home() {
-  const [featuredVehicles, allBanners, layoutBrands] = await Promise.all([
+  const [featuredVehicles, allBanners, layoutBrands, discoverItems] = await Promise.all([
     getFeaturedModels(),
     getBanners(),
-    getLayoutBrands()
+    getLayoutBrands(),
+    getDiscoverItems(),
   ]);
 
   const homeHeroBanners = allBanners
@@ -74,7 +75,7 @@ export default async function Home() {
       </section>
 
       {/* Discover More Carousel Section */}
-      <DiscoverMoreCarousel />
+      <DiscoverMoreCarousel items={discoverItems} />
     </main>
   );
 }
