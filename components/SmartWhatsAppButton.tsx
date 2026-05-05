@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { X, Car, Settings, Wrench } from 'lucide-react';
+import { X, Car, Settings, Wrench, ChevronLeft } from 'lucide-react';
 import { API_URL } from '@/lib/api';
+import Image from 'next/image';
+import { getLayoutBrands, BrandLight } from '@/lib/api/layoutBrands';
 
 const NUMBER = "56956599896"; // Actualizado por requerimiento del usuario (Tecnom por defecto)
 
@@ -20,7 +22,9 @@ function SmartWhatsAppButtonContent() {
 
     // State para sucursales dinámicas de servicio técnico
     const [branches, setBranches] = useState<any[]>([]);
+    const [allBrands, setAllBrands] = useState<BrandLight[]>([]);
     const [dynamicNumber, setDynamicNumber] = useState<string>(NUMBER);
+    const [menuView, setMenuView] = useState<'main' | 'service_brands'>('main');
 
     // Dynamic config based on path
     useEffect(() => {
@@ -33,7 +37,6 @@ function SmartWhatsAppButtonContent() {
         if (pathname.startsWith('/nuevos') || pathname.startsWith('/camiones')) {
             const parts = pathname.split('/').filter(Boolean);
             if (parts.length >= 3) {
-                // E.g. /nuevos/toyota/yaris -> parts = ['nuevos', 'toyota', 'yaris']
                 const brand = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
                 const model = parts[2].replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
                 newConfig = {
@@ -82,23 +85,19 @@ function SmartWhatsAppButtonContent() {
         }
 
         setConfig(newConfig);
-
-        // Reset interactions
         setShowMenu(false);
     }, [pathname]);
 
-    // Fetch branches if in services
+    // Fetch branches and brands globally to power the menu
     useEffect(() => {
-        if (pathname.startsWith('/servicios') || pathname.startsWith('/dyp')) {
-            fetch(`${API_URL}/branches`)
-                .then(r => r.json())
-                .then(json => {
-                    const data = json.data || json;
-                    setBranches(data);
-                })
-                .catch(console.error);
-        }
-    }, [pathname]);
+        Promise.all([
+            fetch(`${API_URL}/branches`).then(r => r.json()),
+            getLayoutBrands()
+        ]).then(([branchesRes, brandsData]) => {
+            setBranches(branchesRes.data || branchesRes);
+            setAllBrands([...brandsData.cars, ...brandsData.trucks]);
+        }).catch(console.error);
+    }, []);
 
     // Calculate dynamic number if a brand is selected in services
     useEffect(() => {
@@ -119,25 +118,28 @@ function SmartWhatsAppButtonContent() {
         setDynamicNumber(newNumber);
     }, [pathname, searchParams, branches]);
 
-    // Extract unique service brands with their specific whatsapp number
+    // Extract unique service brands with their specific whatsapp number and logo
     const serviceBrandsData = useMemo(() => {
-        const brandsMap = new Map<string, string>();
+        const brandsMap = new Map<string, { phone: string, logo_url: string }>();
         branches.forEach((b: any) => {
             if (b.type === 'Servicio Técnico' || b.type === 'Desabolladura y Pintura') {
                 if (b.brands_list && b.whatsapp) {
                     b.brands_list.forEach((br: string) => {
-                        // Keep the first branch's whatsapp for a brand
                         if (!brandsMap.has(br)) {
-                            brandsMap.set(br, b.whatsapp.replace(/\D/g, ''));
+                            const brandObj = allBrands.find(a => a.name.toLowerCase() === br.toLowerCase());
+                            brandsMap.set(br, { 
+                                phone: b.whatsapp.replace(/\D/g, ''),
+                                logo_url: brandObj?.logo_url || ''
+                            });
                         }
                     });
                 }
             }
         });
         return Array.from(brandsMap.entries())
-            .map(([name, phone]) => ({ name, phone }))
+            .map(([name, data]) => ({ name, phone: data.phone, logo_url: data.logo_url }))
             .sort((a, b) => a.name.localeCompare(b.name));
-    }, [branches]);
+    }, [branches, allBrands]);
 
     // Close menu when clicking outside
     useEffect(() => {
@@ -150,7 +152,13 @@ function SmartWhatsAppButtonContent() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // Constructor de link con UTM params rescatados del sitio seminuevos
+    // Reset view when menu closes
+    useEffect(() => {
+        if (!showMenu) {
+            setTimeout(() => setMenuView('main'), 300);
+        }
+    }, [showMenu]);
+
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
@@ -172,6 +180,7 @@ function SmartWhatsAppButtonContent() {
     const handleMainClick = (e: React.MouseEvent) => {
         if (isHome || isServiceMenu) {
             e.preventDefault();
+            setMenuView(isServiceMenu ? 'service_brands' : 'main');
             setShowMenu(!showMenu);
         }
     };
@@ -181,7 +190,7 @@ function SmartWhatsAppButtonContent() {
     return (
         <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3 group" ref={menuRef}>
 
-            {/* Context Bubble (Solo en Hover y si el menú no está abierto) */}
+            {/* Context Bubble */}
             <div
                 className={`
                     relative max-w-[280px] w-max bg-white text-gray-800 p-4 rounded-3xl rounded-br-md shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-gray-100
@@ -209,21 +218,17 @@ function SmartWhatsAppButtonContent() {
             <div
                 className={`
                     absolute bottom-[72px] right-0 bg-white shadow-2xl rounded-2xl border border-gray-100 p-2 w-64
-                    transform transition-all duration-300 origin-bottom-right
+                    transform transition-all duration-300 origin-bottom-right overflow-hidden
                     ${showMenu ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
                 `}
             >
-                <div className="p-3 border-b border-gray-50 mb-2">
-                    <p className="text-sm font-bold text-gray-900">
-                        {isServiceMenu ? "¿Para qué marca necesitas servicio?" : "¿Con qué área deseas hablar?"}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">
-                        {isServiceMenu ? "Selecciona la marca de tu vehículo para derivarte." : "Selecciona una opción para derivarte."}
-                    </p>
-                </div>
-                <div className="flex flex-col gap-1 max-h-[250px] overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#e5e7eb transparent' }}>
-                    {isHome && (
-                        <>
+                {menuView === 'main' ? (
+                    <>
+                        <div className="p-3 border-b border-gray-50 mb-2">
+                            <p className="text-sm font-bold text-gray-900">¿Con qué área deseas hablar?</p>
+                            <p className="text-xs text-gray-500 mt-1">Selecciona una opción para derivarte.</p>
+                        </div>
+                        <div className="flex flex-col gap-1 max-h-[250px] overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#e5e7eb transparent' }}>
                             <a
                                 href={buildLink("Hola, estoy en la web y me gustaría hablar con el área de Ventas (Nuevos o Seminuevos).", "Ventas")}
                                 target="_blank" rel="noopener noreferrer"
@@ -246,47 +251,63 @@ function SmartWhatsAppButtonContent() {
                                 </div>
                                 <span className="text-sm font-bold text-gray-700">Repuestos</span>
                             </a>
-                            <a
-                                href={buildLink("Hola, estoy en la web y necesito información sobre el Servicio Técnico.", "Servicio_Tecnico")}
-                                target="_blank" rel="noopener noreferrer"
+                            <button
+                                type="button"
                                 className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
-                                onClick={() => setShowMenu(false)}
+                                onClick={() => setMenuView('service_brands')}
                             >
                                 <div className="p-2 bg-purple-50 text-purple-600 rounded-lg shrink-0">
                                     <Wrench size={18} />
                                 </div>
                                 <span className="text-sm font-bold text-gray-700">Servicio Técnico</span>
-                            </a>
-                        </>
-                    )}
-
-                    {isServiceMenu && serviceBrandsData.map(brand => (
-                        <a
-                            key={brand.name}
-                            href={buildLink(`Hola, necesito agendar o consultar sobre el Servicio Técnico para mi ${brand.name}.`, "Servicio_Tecnico", brand.phone)}
-                            target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
-                            onClick={() => setShowMenu(false)}
-                        >
-                            <div className="p-2 bg-purple-50 text-purple-600 rounded-lg shrink-0">
-                                <Wrench size={18} />
+                            </button>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="p-3 border-b border-gray-50 mb-2 flex items-center gap-2">
+                            {!isServiceMenu && (
+                                <button onClick={() => setMenuView('main')} className="text-gray-400 hover:text-gray-900 transition-colors p-1 -ml-2">
+                                    <ChevronLeft size={18} />
+                                </button>
+                            )}
+                            <div>
+                                <p className="text-sm font-bold text-gray-900">Selecciona tu marca</p>
+                                <p className="text-[11px] text-gray-500 mt-0.5">Te derivaremos al anfitrión.</p>
                             </div>
-                            <span className="text-sm font-bold text-gray-700">{brand.name}</span>
-                        </a>
-                    ))}
-                    
-                    {isServiceMenu && branches.length > 0 && serviceBrandsData.length === 0 && (
-                        <div className="p-3 text-sm text-gray-500 text-center">
-                            No hay sucursales configuradas.
                         </div>
-                    )}
-                    
-                    {isServiceMenu && branches.length === 0 && (
-                        <div className="p-3 text-sm text-gray-500 text-center animate-pulse">
-                            Cargando sucursales...
+                        <div className="flex flex-col gap-1 max-h-[250px] overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#e5e7eb transparent' }}>
+                            {serviceBrandsData.map(brand => (
+                                <a
+                                    key={brand.name}
+                                    href={buildLink(`Hola, necesito agendar o consultar sobre el Servicio Técnico para mi ${brand.name}.`, "Servicio_Tecnico", brand.phone)}
+                                    target="_blank" rel="noopener noreferrer"
+                                    className="flex items-center gap-3 w-full p-2 hover:bg-gray-50 rounded-xl transition-colors text-left"
+                                    onClick={() => setShowMenu(false)}
+                                >
+                                    <div className="w-10 h-8 bg-white rounded-lg shrink-0 flex items-center justify-center relative overflow-hidden p-1 border border-gray-100 shadow-sm">
+                                        {brand.logo_url ? (
+                                            <Image src={brand.logo_url} alt={brand.name} fill className="object-contain p-1" sizes="40px" />
+                                        ) : (
+                                            <Wrench size={14} className="text-gray-400" />
+                                        )}
+                                    </div>
+                                    <span className="text-sm font-bold text-gray-700">{brand.name}</span>
+                                </a>
+                            ))}
+                            {branches.length > 0 && serviceBrandsData.length === 0 && (
+                                <div className="p-3 text-sm text-gray-500 text-center">
+                                    No hay sucursales configuradas.
+                                </div>
+                            )}
+                            {branches.length === 0 && (
+                                <div className="p-3 text-sm text-gray-500 text-center animate-pulse">
+                                    Cargando marcas...
+                                </div>
+                            )}
                         </div>
-                    )}
-                </div>
+                    </>
+                )}
             </div>
 
             {/* Main Button */}
@@ -332,3 +353,4 @@ export default function SmartWhatsAppButton() {
         </Suspense>
     );
 }
+
