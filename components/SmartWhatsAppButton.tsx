@@ -1,13 +1,15 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { X, Car, Settings, Wrench } from 'lucide-react';
+import { API_URL } from '@/lib/api';
 
-const NUMBER = "56956599896"; // Actualizado por requerimiento del usuario
+const NUMBER = "56956599896"; // Actualizado por requerimiento del usuario (Tecnom por defecto)
 
-export default function SmartWhatsAppButton() {
+function SmartWhatsAppButtonContent() {
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const [showMenu, setShowMenu] = useState(false);
     const [config, setConfig] = useState({
         text: "¡Hola! ¿Necesitas ayuda?",
@@ -15,6 +17,10 @@ export default function SmartWhatsAppButton() {
         source: "Ventas"
     });
     const menuRef = useRef<HTMLDivElement>(null);
+
+    // State para sucursales dinámicas de servicio técnico
+    const [branches, setBranches] = useState<any[]>([]);
+    const [dynamicNumber, setDynamicNumber] = useState<string>(NUMBER);
 
     // Dynamic config based on path
     useEffect(() => {
@@ -81,6 +87,58 @@ export default function SmartWhatsAppButton() {
         setShowMenu(false);
     }, [pathname]);
 
+    // Fetch branches if in services
+    useEffect(() => {
+        if (pathname.startsWith('/servicios') || pathname.startsWith('/dyp')) {
+            fetch(`${API_URL}/branches`)
+                .then(r => r.json())
+                .then(json => {
+                    const data = json.data || json;
+                    setBranches(data);
+                })
+                .catch(console.error);
+        }
+    }, [pathname]);
+
+    // Calculate dynamic number if a brand is selected in services
+    useEffect(() => {
+        let newNumber = NUMBER; // default Tecnom number
+        if ((pathname.startsWith('/servicios') || pathname.startsWith('/dyp')) && branches.length > 0) {
+            const currentMarca = searchParams.get('marca');
+            if (currentMarca) {
+                const targetBranch = branches.find((b: any) => 
+                    (b.type === 'Servicio Técnico' || b.type === 'Desabolladura y Pintura') &&
+                    (b.brands_list || []).some((br: string) => br.toLowerCase() === currentMarca.toLowerCase()) &&
+                    b.whatsapp
+                );
+                if (targetBranch) {
+                    newNumber = targetBranch.whatsapp.replace(/\D/g, '');
+                }
+            }
+        }
+        setDynamicNumber(newNumber);
+    }, [pathname, searchParams, branches]);
+
+    // Extract unique service brands with their specific whatsapp number
+    const serviceBrandsData = useMemo(() => {
+        const brandsMap = new Map<string, string>();
+        branches.forEach((b: any) => {
+            if (b.type === 'Servicio Técnico' || b.type === 'Desabolladura y Pintura') {
+                if (b.brands_list && b.whatsapp) {
+                    b.brands_list.forEach((br: string) => {
+                        // Keep the first branch's whatsapp for a brand
+                        if (!brandsMap.has(br)) {
+                            brandsMap.set(br, b.whatsapp.replace(/\D/g, ''));
+                        }
+                    });
+                }
+            }
+        });
+        return Array.from(brandsMap.entries())
+            .map(([name, phone]) => ({ name, phone }))
+            .sort((a, b) => a.name.localeCompare(b.name));
+    }, [branches]);
+
     // Close menu when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -98,24 +156,27 @@ export default function SmartWhatsAppButton() {
         setIsMounted(true);
     }, []);
 
-    const buildLink = (baseMessage: string, sourceParam?: string) => {
+    const buildLink = (baseMessage: string, sourceParam?: string, targetNumber?: string) => {
         const currentUrl = isMounted ? window.location.href : `https://automotrizcarmona.cl${pathname}`;
         const finalSource = sourceParam || config.source;
+        const num = targetNumber || dynamicNumber;
 
         // Adjunta los UTM para el CRM
         const finalMessage = `${baseMessage}\n\nEnlace: ${currentUrl}?utm_source=${encodeURIComponent(finalSource)}&utm_medium=wsp_web`;
-        return `https://wa.me/${NUMBER}?text=${encodeURIComponent(finalMessage)}`;
+        return `https://wa.me/${num}?text=${encodeURIComponent(finalMessage)}`;
     };
 
+    const isHome = pathname === '/';
+    const isServiceMenu = pathname.startsWith('/servicios') && !searchParams.get('marca');
+
     const handleMainClick = (e: React.MouseEvent) => {
-        if (pathname === '/') {
+        if (isHome || isServiceMenu) {
             e.preventDefault();
             setShowMenu(!showMenu);
         }
     };
 
-    const isHome = pathname === '/';
-    const mainHref = isHome ? "#" : buildLink(config.message);
+    const mainHref = (isHome || isServiceMenu) ? "#" : buildLink(config.message);
 
     return (
         <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3 group" ref={menuRef}>
@@ -144,7 +205,7 @@ export default function SmartWhatsAppButton() {
                 </div>
             </div>
 
-            {/* Menú Expandido (Solo en Home o cuando defines `showMenu`) */}
+            {/* Menú Expandido */}
             <div
                 className={`
                     absolute bottom-[72px] right-0 bg-white shadow-2xl rounded-2xl border border-gray-100 p-2 w-64
@@ -153,51 +214,86 @@ export default function SmartWhatsAppButton() {
                 `}
             >
                 <div className="p-3 border-b border-gray-50 mb-2">
-                    <p className="text-sm font-bold text-gray-900">¿Con qué área deseas hablar?</p>
-                    <p className="text-xs text-gray-500 mt-1">Selecciona una opción para derivarte.</p>
+                    <p className="text-sm font-bold text-gray-900">
+                        {isServiceMenu ? "¿Para qué marca necesitas servicio?" : "¿Con qué área deseas hablar?"}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                        {isServiceMenu ? "Selecciona la marca de tu vehículo para derivarte." : "Selecciona una opción para derivarte."}
+                    </p>
                 </div>
-                <div className="flex flex-col gap-1">
-                    <a
-                        href={buildLink("Hola, estoy en la web y me gustaría hablar con el área de Ventas (Nuevos o Seminuevos).", "Ventas")}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
-                        onClick={() => setShowMenu(false)}
-                    >
-                        <div className="p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0">
-                            <Car size={18} />
+                <div className="flex flex-col gap-1 max-h-[250px] overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#e5e7eb transparent' }}>
+                    {isHome && (
+                        <>
+                            <a
+                                href={buildLink("Hola, estoy en la web y me gustaría hablar con el área de Ventas (Nuevos o Seminuevos).", "Ventas")}
+                                target="_blank" rel="noopener noreferrer"
+                                className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
+                                onClick={() => setShowMenu(false)}
+                            >
+                                <div className="p-2 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                                    <Car size={18} />
+                                </div>
+                                <span className="text-sm font-bold text-gray-700">Ventas</span>
+                            </a>
+                            <a
+                                href={buildLink("Hola, estoy en la web y necesito cotizar Repuestos u Accesorios.", "Repuestos")}
+                                target="_blank" rel="noopener noreferrer"
+                                className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
+                                onClick={() => setShowMenu(false)}
+                            >
+                                <div className="p-2 bg-green-50 text-green-600 rounded-lg shrink-0">
+                                    <Settings size={18} />
+                                </div>
+                                <span className="text-sm font-bold text-gray-700">Repuestos</span>
+                            </a>
+                            <a
+                                href={buildLink("Hola, estoy en la web y necesito información sobre el Servicio Técnico.", "Servicio_Tecnico")}
+                                target="_blank" rel="noopener noreferrer"
+                                className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
+                                onClick={() => setShowMenu(false)}
+                            >
+                                <div className="p-2 bg-purple-50 text-purple-600 rounded-lg shrink-0">
+                                    <Wrench size={18} />
+                                </div>
+                                <span className="text-sm font-bold text-gray-700">Servicio Técnico</span>
+                            </a>
+                        </>
+                    )}
+
+                    {isServiceMenu && serviceBrandsData.map(brand => (
+                        <a
+                            key={brand.name}
+                            href={buildLink(`Hola, necesito agendar o consultar sobre el Servicio Técnico para mi ${brand.name}.`, "Servicio_Tecnico", brand.phone)}
+                            target="_blank" rel="noopener noreferrer"
+                            className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
+                            onClick={() => setShowMenu(false)}
+                        >
+                            <div className="p-2 bg-purple-50 text-purple-600 rounded-lg shrink-0">
+                                <Wrench size={18} />
+                            </div>
+                            <span className="text-sm font-bold text-gray-700">{brand.name}</span>
+                        </a>
+                    ))}
+                    
+                    {isServiceMenu && branches.length > 0 && serviceBrandsData.length === 0 && (
+                        <div className="p-3 text-sm text-gray-500 text-center">
+                            No hay sucursales configuradas.
                         </div>
-                        <span className="text-sm font-bold text-gray-700">Ventas</span>
-                    </a>
-                    <a
-                        href={buildLink("Hola, estoy en la web y necesito cotizar Repuestos u Accesorios.", "Repuestos")}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
-                        onClick={() => setShowMenu(false)}
-                    >
-                        <div className="p-2 bg-green-50 text-green-600 rounded-lg shrink-0">
-                            <Settings size={18} />
+                    )}
+                    
+                    {isServiceMenu && branches.length === 0 && (
+                        <div className="p-3 text-sm text-gray-500 text-center animate-pulse">
+                            Cargando sucursales...
                         </div>
-                        <span className="text-sm font-bold text-gray-700">Repuestos</span>
-                    </a>
-                    <a
-                        href={buildLink("Hola, estoy en la web y necesito información sobre el Servicio Técnico.", "Servicio_Tecnico")}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 w-full p-3 hover:bg-gray-50 rounded-xl transition-colors text-left"
-                        onClick={() => setShowMenu(false)}
-                    >
-                        <div className="p-2 bg-purple-50 text-purple-600 rounded-lg shrink-0">
-                            <Wrench size={18} />
-                        </div>
-                        <span className="text-sm font-bold text-gray-700">Servicio Técnico</span>
-                    </a>
+                    )}
                 </div>
             </div>
 
             {/* Main Button */}
             <a
                 href={mainHref}
-                target={isHome ? undefined : "_blank"}
-                rel={isHome ? undefined : "noopener noreferrer"}
+                target={(isHome || isServiceMenu) ? undefined : "_blank"}
+                rel={(isHome || isServiceMenu) ? undefined : "noopener noreferrer"}
                 onClick={handleMainClick}
                 className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all duration-300 z-10"
                 aria-label="Contactar por WhatsApp"
@@ -208,6 +304,35 @@ export default function SmartWhatsAppButton() {
 
                 {/* Ping Animation Wrapper */}
                 <span className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping duration-[2000ms] -z-10"></span>
+            </a>
+            
+            <style dangerouslySetInnerHTML={{__html: `
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background: #e5e7eb;
+                    border-radius: 4px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: #d1d5db;
+                }
+            `}} />
+        </div>
+    );
+}
+
+export default function SmartWhatsAppButton() {
+    return (
+        <Suspense fallback={null}>
+            <SmartWhatsAppButtonContent />
+        </Suspense>
+    );
+}
+></span>
             </a>
         </div>
     );
