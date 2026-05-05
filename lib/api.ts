@@ -404,3 +404,50 @@ export async function getDiscoverItems(): Promise<DiscoverItem[]> {
         return [];
     }
 }
+
+// ——— Car Advisor (Reseñas Grupo Porsche) ————————————————
+
+export interface CarAdvisorRating {
+    userName: string;
+    title: string;
+    text: string;
+    rating: number;
+    recommended: boolean;
+    date: number | null;
+    reason: string[];
+    brand: string | null;
+}
+
+export interface CarAdvisorData {
+    overallRating: number;
+    recommendPercentage: number;
+    totalRatings: number;
+    dealerPage: string;
+    ratings: CarAdvisorRating[];
+}
+
+/**
+ * Fetches Car Advisor reviews from our secure backend proxy.
+ * Revalidates every 24h (matching the backend cache TTL).
+ */
+export async function getCarAdvisorData(): Promise<CarAdvisorData | null> {
+    try {
+        const backendUrl = (process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.automotrizcarmona.cl').replace(/\/+$/, '');
+        const res = await fetch(`${backendUrl}/api/v1/caradvisor`, {
+            next: { revalidate: 86400 },
+            headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) return null;
+        return await res.json();
+    } catch (e) {
+        console.error('Error fetching Car Advisor data:', e);
+        return null;
+    }
+}
+
+/** Marcas del Grupo Porsche que muestran el bloque de reseñas */
+export const PORSCHE_BRANDS = ['audi', 'volkswagen', 'vw', 'cupra', 'seat'];
+
+export function isPorscheBrand(brand: string): boolean {
+    return PORSCHE_BRANDS.includes(brand.toLowerCase());
+}

@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
-import { getModelsByBrand, getBrandBySlug, formatImageUrl } from '@/lib/api';
+import { getModelsByBrand, getBrandBySlug, formatImageUrl, getCarAdvisorData, isPorscheBrand } from '@/lib/api';
 import { getBrandConfig } from '@/lib/brands';
 import { MODELS_REGISTRY } from '@/lib/models';
 import BrandPageClient from './BrandPageClient';
+import CarAdvisorSection from '@/components/CarAdvisorSection';
 import R2_ASSETS from '@/lib/assetMap.json';
 
 export const revalidate = 0; // Desactivar ISR temporalmente para diagnóstico
@@ -16,15 +17,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         notFound();
     }
 
+    const showReviews = isPorscheBrand(brandId);
+
     try {
-        const [brandDetails, apiModels] = await Promise.all([
+        const [brandDetails, apiModels, carAdvisorData] = await Promise.all([
             getBrandBySlug(brandId),
-            getModelsByBrand(brandId)
+            getModelsByBrand(brandId),
+            showReviews ? getCarAdvisorData() : Promise.resolve(null),
         ]);
 
         const models = apiModels && apiModels.length > 0 ? apiModels : (MODELS_REGISTRY[brandId] || []);
         
-        // Unir config din\u00e1mica y est\u00e1tica - Solo sobreescribimos si el backend trae algo v\u00e1lido
+        // Unir config dinámica y estática - Solo sobreescribimos si el backend trae algo válido
         const config = {
             ...staticConfig,
             name: brandDetails?.name || staticConfig.name,
@@ -39,7 +43,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
                     mobile: formatImageUrl(b.mobile_image || b.desktop_image)
                 }))
                 : staticConfig.bannerSlides,
-            // Im\u00e1genes din\u00e1micas de Descubre M\u00e1s desde el Backend
+            // Imágenes dinámicas de Descubre Más desde el Backend
             serviceImages: {
                 ...staticConfig.serviceImages,
                 ...(brandDetails?.discover_servicio_image ? { servicio: formatImageUrl(brandDetails.discover_servicio_image) } : {}),
@@ -63,9 +67,18 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             };
         }
 
-        // Confianza total en los datos de la API (Neon / Laravel)
-        // Ya no realizamos cálculos extra en el servidor para evitar fallos de renderización
-        return <BrandPageClient brandId={brandId} models={models} config={config} />;
+        return (
+            <>
+                <BrandPageClient brandId={brandId} models={models} config={config} />
+                {showReviews && carAdvisorData && (
+                    <CarAdvisorSection
+                        data={carAdvisorData}
+                        brandFilter={brandId}
+                        title={`Lo que dicen los clientes ${staticConfig.name}`}
+                    />
+                )}
+            </>
+        );
     } catch (e) {
         console.error('Error in Server Component:', e);
         // Fallback robusto a datos estáticos en caso de fallo absoluto de red con el backend
