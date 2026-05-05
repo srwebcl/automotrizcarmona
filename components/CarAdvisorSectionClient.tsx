@@ -7,9 +7,11 @@ const API_BASE = (process.env.NEXT_PUBLIC_BACKEND_URL || 'https://api.automotriz
 
 interface Props {
     brandFilter?: string;
+    /** Filter by reason type: 'servicio' | 'ventas' | 'repuestos' */
+    reasonFilter?: string;
 }
 
-export default function CarAdvisorSectionClient({ brandFilter }: Props) {
+export default function CarAdvisorSectionClient({ brandFilter, reasonFilter }: Props) {
     const [data, setData] = useState<CarAdvisorData | null>(null);
 
     useEffect(() => {
@@ -19,7 +21,7 @@ export default function CarAdvisorSectionClient({ brandFilter }: Props) {
             .catch(() => {});
     }, []);
 
-    if (!data) return null; // silently hide if unavailable
+    if (!data) return null;
 
-    return <CarAdvisorSection data={data} brandFilter={brandFilter} />;
+    return <CarAdvisorSection data={data} brandFilter={brandFilter} reasonFilter={reasonFilter} />;
 }

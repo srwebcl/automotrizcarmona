@@ -64,10 +64,13 @@ function reasonLabel(reason: string[]): string {
 // ——— Main Component ————————————————————————————————————
 interface CarAdvisorSectionProps {
     data: CarAdvisorData;
+    /** Filter by brand name (partial match) */
     brandFilter?: string;
+    /** Filter by reason type: 'servicio' | 'ventas' | 'repuestos' */
+    reasonFilter?: string;
 }
 
-export default function CarAdvisorSection({ data, brandFilter }: CarAdvisorSectionProps) {
+export default function CarAdvisorSection({ data, brandFilter, reasonFilter }: CarAdvisorSectionProps) {
     const [emblaRef, emblaApi] = useEmblaCarousel({
         loop: false,
         align: 'start',
@@ -94,9 +97,20 @@ export default function CarAdvisorSection({ data, brandFilter }: CarAdvisorSecti
         return () => { emblaApi.off('select', onSelect); };
     }, [emblaApi, onSelect]);
 
-    const ratings = brandFilter
+    // Filter by brand
+    let ratings = brandFilter
         ? data.ratings.filter(r => !r.brand || r.brand.toLowerCase().includes(brandFilter.toLowerCase()))
         : data.ratings;
+
+    // Filter by reason type (servicio, ventas, etc.)
+    if (reasonFilter) {
+        const filtered = ratings.filter(r =>
+            r.reason && r.reason.some(reason => reason.toLowerCase() === reasonFilter.toLowerCase())
+        );
+        // Only apply if we have results; otherwise show all (fallback)
+        if (filtered.length > 0) ratings = filtered;
+    }
+
     const displayRatings = ratings.length > 0 ? ratings : data.ratings;
 
     return (

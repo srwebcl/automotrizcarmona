@@ -595,9 +595,9 @@ function AgendarContent() {
             </div>
         </main>
 
-        {/* Car Advisor: solo para marcas del Grupo Porsche */}
+        {/* Car Advisor: solo para marcas del Grupo Porsche — filtra por 'servicio' */}
         {form.marca && isPorscheBrand(form.marca) && (
-            <CarAdvisorSectionClient brandFilter={form.marca} />
+            <CarAdvisorSectionClient brandFilter={form.marca} reasonFilter="servicio" />
         )}
     </>
     );
