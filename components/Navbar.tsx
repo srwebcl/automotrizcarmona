@@ -121,6 +121,18 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                         </Link>
 
                         <div className="hidden lg:flex items-center space-x-4">
+                            {/* Direct Landings (Desktop) */}
+                            <div className="hidden lg:flex items-center gap-3 mr-4">
+                                <Link href="/liquidacion" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-600/20 to-orange-500/20 border border-red-500/30 hover:border-red-500/60 transition-all hover:scale-105 group shadow-[0_0_15px_rgba(220,38,38,0.15)]">
+                                    <span className="text-base group-hover:animate-bounce">🔥</span>
+                                    <span className="text-[11px] font-extrabold tracking-widest uppercase text-white group-hover:text-red-300 transition-colors">Liquidación</span>
+                                </Link>
+                                <Link href="/electromovilidad" className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 hover:border-green-400/60 transition-all hover:scale-105 group shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                                    <span className="text-base group-hover:animate-pulse">⚡</span>
+                                    <span className="text-[11px] font-extrabold tracking-widest uppercase text-white group-hover:text-green-300 transition-colors">Electromovilidad</span>
+                                </Link>
+                            </div>
+
                             <button
                                 onClick={toggleUnifiedMenu}
                                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors group ${isUnifiedMenuOpen ? 'bg-white/10 text-carmona-gold' : 'hover:bg-white/5 text-white'}`}
@@ -392,6 +404,18 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                 <div className="lg:hidden w-full h-[calc(100vh-70px)] bg-white overflow-y-auto pb-24">
                     <div className="flex flex-col">
                         
+                        {/* Direct Landings (Mobile) */}
+                        <div className="grid grid-cols-2 gap-3 p-5 border-b border-gray-100 bg-gray-50/50">
+                            <Link href="/liquidacion" onClick={closeUnifiedMenu} className="flex flex-col items-center justify-center p-4 rounded-[1.5rem] bg-gradient-to-br from-red-50 to-orange-50 border border-red-100 active:scale-95 transition-all shadow-sm">
+                                <span className="text-2xl mb-1 animate-pulse">🔥</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-red-600 text-center">Liquidación</span>
+                            </Link>
+                            <Link href="/electromovilidad" onClick={closeUnifiedMenu} className="flex flex-col items-center justify-center p-4 rounded-[1.5rem] bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 active:scale-95 transition-all shadow-sm">
+                                <span className="text-2xl mb-1 animate-pulse">⚡</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-green-600 text-center">Electromovilidad</span>
+                            </Link>
+                        </div>
+
                         {/* 1. AUTOS NUEVOS */}
                         <div className="border-b border-gray-100">
                             <button 
