@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
     CheckCircle, MapPin, Mail, Phone,
-    ChevronDown, Clock, ArrowLeft, ArrowRight, User, Car, CalendarDays, Store
+    ChevronDown, Clock, ArrowLeft, ArrowRight, User, Car, CalendarDays, Store, MessageCircle
 } from 'lucide-react';
 import { API_URL } from '@/lib/api';
 
@@ -522,6 +522,36 @@ function AgendarContent() {
                                                     <p className="text-xs text-gray-500 mt-0.5">{stBranch?.city || 'La Serena'}, Chile</p>
                                                 </div>
                                             </div>
+                                            
+                                            {/* Horarios (Ley 40 hrs) */}
+                                            {stBranch?.schedules && stBranch.schedules.length > 0 ? (
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
+                                                        <Clock size={18} className="text-[#d2001c]" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Horario de Atención</p>
+                                                        <div className="space-y-1">
+                                                            {stBranch.schedules.map((sch: any, i: number) => (
+                                                                <p key={i} className="text-sm text-gray-900">
+                                                                    <span className="font-semibold">{sch.days}:</span> {sch.hours}
+                                                                </p>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : stBranch?.schedule ? (
+                                                <div className="flex items-start gap-4">
+                                                    <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
+                                                        <Clock size={18} className="text-[#d2001c]" />
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Horario de Atención</p>
+                                                        <p className="text-sm font-semibold text-gray-900">{stBranch.schedule}</p>
+                                                    </div>
+                                                </div>
+                                            ) : null}
+
                                             <div className="flex items-start gap-4">
                                                 <div className="w-10 h-10 rounded-xl bg-[#f8f9fa] flex items-center justify-center flex-shrink-0">
                                                     <Mail size={18} className="text-[#d2001c]" />
@@ -534,11 +564,19 @@ function AgendarContent() {
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div className="border-t border-gray-100 pt-6">
+
+                                            <div className="border-t border-gray-100 pt-6 space-y-3">
                                                 <a href={`tel:${(stBranch?.phone || '+56 9 5647 7727').replace(/\s+/g, '')}`} id="agendar-phone-btn"
                                                     className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#f8f9fa] hover:bg-gray-100 text-gray-900 border-2 border-gray-100 hover:border-gray-200 transition-colors">
                                                     <Phone size={18} /> Llamar {stBranch?.phone || '+56 9 5647 7727'}
                                                 </a>
+                                                
+                                                {stBranch?.whatsapp && (
+                                                    <a href={`https://wa.me/${stBranch.whatsapp.replace(/\D/g, '')}?text=Hola,%20me%20gustar%C3%ADa%20agendar%20una%20hora%20de%20servicio%20t%C3%A9cnico.`} target="_blank" rel="noopener noreferrer"
+                                                        className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-widest bg-[#25D366] hover:bg-[#20bd5a] text-white transition-colors shadow-md shadow-[#25D366]/20">
+                                                        <MessageCircle size={18} /> Agenda por WhatsApp
+                                                    </a>
+                                                )}
                                             </div>
                                         </>
                                     );
