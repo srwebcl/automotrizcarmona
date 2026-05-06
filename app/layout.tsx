@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmartWhatsAppButton from "@/components/SmartWhatsAppButton";
+import MarketingScripts from "@/components/MarketingScripts";
+import { getLayoutBrands } from "@/lib/api/layoutBrands";
+import { getMarketingScripts } from "@/lib/api/marketingScripts";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,25 +23,36 @@ export const metadata: Metadata = {
   description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
 };
 
-import { getLayoutBrands } from "@/lib/api/layoutBrands";
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const layoutBrands = await getLayoutBrands();
+  const [layoutBrands, marketingScripts] = await Promise.all([
+    getLayoutBrands(),
+    getMarketingScripts(),
+  ]);
 
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        {/* Scripts de marketing inyectados en <head> (GTM, GA4, Ads, Meta Pixel, etc.) */}
+        <MarketingScripts scripts={marketingScripts} placement="head" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-gray-900`}
         suppressHydrationWarning
       >
+        {/* Scripts de inicio de <body> (ej. GTM noscript fallback o custom body_start) */}
+        <MarketingScripts scripts={marketingScripts} placement="body_start" />
+
         <Navbar layoutBrands={layoutBrands} />
         {children}
         <SmartWhatsAppButton />
         <Footer />
+
+        {/* Scripts de cierre de <body> (Hotjar, Clarity, custom body_end) */}
+        <MarketingScripts scripts={marketingScripts} placement="body_end" />
       </body>
     </html>
   );
