@@ -120,22 +120,7 @@ export default function LiquidacionClient({
                 </div>
             </section>
 
-            {/* HEADER INFO SECTION */}
-            <section className="pt-12 pb-2 bg-white overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-3">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-gray-600 to-gray-900 uppercase">
-                            {title}
-                        </span>
-                        <span className="ml-2 inline-block animate-bounce">🔥</span>
-                    </h1>
-                    {subtitle && (
-                        <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto leading-relaxed px-4 italic">
-                            {subtitle}
-                        </p>
-                    )}
-                </div>
-            </section>
+            {/* HEADER INFO SECTION REMOVED */}
 
             {/* UNITS GRID */}
             <section ref={gridRef} className="max-w-[1920px] mx-auto px-4 md:px-8 py-12 bg-white">

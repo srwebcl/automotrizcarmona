@@ -280,10 +280,10 @@ function CotizarContent() {
             {/* ── TOPBAR ── */}
             <div className={`sticky z-40 bg-white border-b border-gray-100 shadow-sm transition-all duration-300 ${isScrolled ? 'top-[72px]' : 'top-[88px]'}`}>
                 <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-                    <Link href={model?.isTruck ? `/camiones/${marca.toLowerCase()}` : `/nuevos/${marca.toLowerCase()}/${modeloId}`}
+                    <Link href={vinQuery ? `/liquidacion?vin=${vinQuery}` : (model?.isTruck ? `/camiones/${marca.toLowerCase()}` : `/nuevos/${marca.toLowerCase()}/${modeloId}`)}
                         className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors whitespace-nowrap flex-shrink-0">
                         <ArrowLeft size={15} />
-                        <span className="hidden sm:inline">{model?.isTruck ? `Volver a ${marca.charAt(0).toUpperCase() + marca.slice(1)}` : 'Volver a Versiones'}</span>
+                        <span className="hidden sm:inline">{vinQuery ? 'Volver a Liquidación' : (model?.isTruck ? `Volver a ${marca.charAt(0).toUpperCase() + marca.slice(1)}` : 'Volver a Versiones')}</span>
                         <span className="sm:hidden">Volver</span>
                     </Link>
 
