@@ -26,28 +26,45 @@ export default async function ElectromovilidadPage() {
     return (
         <main className="min-h-screen bg-white pt-20 font-sans selection:bg-green-600 selection:text-white">
             {/* HERO SECTION */}
-            <section className="relative w-full h-[450px] md:h-[600px] bg-black overflow-hidden flex items-center pt-10">
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
+            <section className="relative w-full bg-black overflow-hidden flex items-center pt-20 md:pt-14">
+                <div className="relative w-full">
+                    {/* Desktop / Fallback Image */}
                     <Image 
                         src={heroImage} 
                         alt={heroTitle} 
-                        fill 
-                        className="object-cover opacity-70"
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        className={`w-full h-auto opacity-70 ${landingInfo?.mobile_banner_url ? 'hidden md:block' : 'block'}`}
                         priority
                     />
-                </div>
-                
-                <div className="max-w-7xl mx-auto px-6 relative z-20 w-full text-white">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-600 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
-                        <Leaf size={12} fill="white" /> Eco-Conducción
+                    {/* Mobile Image (if available) */}
+                    {landingInfo?.mobile_banner_url && (
+                        <Image 
+                            src={landingInfo.mobile_banner_url} 
+                            alt={heroTitle} 
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className="w-full h-auto opacity-70 block md:hidden"
+                            priority
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
+                    
+                    <div className="absolute inset-0 flex flex-col justify-center max-w-7xl mx-auto px-6 z-20 w-full text-white">
+                        <div className="w-full">
+                            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 bg-green-600 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-widest mb-2 sm:mb-4 md:mb-6">
+                                <Leaf size={12} fill="white" className="w-3 h-3 sm:w-4 sm:h-4" /> Eco-Conducción
+                            </div>
+                            <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter mb-1 sm:mb-2 md:mb-4 leading-tight max-w-2xl whitespace-pre-line">
+                                {heroTitle}
+                            </h1>
+                            <p className="text-xs sm:text-sm md:text-lg text-gray-200 max-w-xl font-light line-clamp-2 sm:line-clamp-none">
+                                {heroSubtitle}
+                            </p>
+                        </div>
                     </div>
-                    <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 leading-none max-w-2xl whitespace-pre-line">
-                        {heroTitle}
-                    </h1>
-                    <p className="text-lg text-gray-200 max-w-xl font-light">
-                        {heroSubtitle}
-                    </p>
                 </div>
             </section>
 

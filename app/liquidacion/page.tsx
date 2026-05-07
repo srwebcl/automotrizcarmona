@@ -127,34 +127,34 @@ export default async function LiquidacionPage({ searchParams }: Props) {
     return (
         <main className="min-h-screen bg-gray-50 pt-20 font-sans selection:bg-[#d2001c] selection:text-white">
             {/* HERO SECTION - HOME BANNER STYLE */}
-            <section className="relative bg-gray-50 pt-10 md:pt-14 pb-0 px-4 md:px-8">
+            <section className="relative bg-gray-50 pt-10 md:pt-14 pb-0 px-0 md:px-8">
                 {/* Mobile Size */}
                 <div className="w-full mx-auto mb-2 md:hidden relative group">
-                    <div className="overflow-hidden rounded-3xl">
-                        <div className="relative w-full aspect-square md:aspect-[16/6]">
-                            <Image 
-                                src={landingInfo?.mobile_banner_url || heroImage} 
-                                alt={heroTitle} 
-                                fill 
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
+                    <div className="overflow-hidden md:rounded-3xl w-full">
+                        <Image 
+                            src={landingInfo?.mobile_banner_url || heroImage} 
+                            alt={heroTitle} 
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className="w-full h-auto"
+                            priority
+                        />
                     </div>
                 </div>
 
                 {/* Desktop Size */}
                 <div className="w-full mx-auto mb-2 hidden md:block relative group">
-                    <div className="overflow-hidden rounded-3xl">
-                        <div className="relative w-full aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
-                            <Image 
-                                src={heroImage} 
-                                alt={heroTitle} 
-                                fill 
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
+                    <div className="overflow-hidden rounded-3xl w-full">
+                        <Image 
+                            src={heroImage} 
+                            alt={heroTitle} 
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className="w-full h-auto"
+                            priority
+                        />
                     </div>
                 </div>
             </section>
