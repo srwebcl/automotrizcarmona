@@ -118,7 +118,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
     });
 
     // Ignoramos las unidades en promoción, el precio "Desde" del modelo se basa solo en su catálogo regular de versiones.
-    const validPrices = parsedVersions.map((v: any) => v.bonusPrice).filter(p => p > 0);
+    const validPrices = parsedVersions.map((v: any) => v.bonusPrice).filter((p: number) => p > 0);
     const computedPrice = validPrices.length > 0 ? Math.min(...validPrices) : Number(data.base_price || 0);
 
     return {
