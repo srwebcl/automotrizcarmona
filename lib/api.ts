@@ -117,7 +117,8 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
                 listPrice: Number(v.list_price) || 0,
                 brandBonus: Number(v.brand_bonus) || 0,
                 financingBonus: Number(v.finance_bonus || v.financing_bonus) || 0,
-                bonusPrice: Number(v.final_price || v.finance_price) || 0
+                bonusPrice: Number(v.final_price || v.finance_price) || 0,
+                image: formatImageUrl(v.thumbnail)
             };
         }),
         slogan: data.slogan || '',
