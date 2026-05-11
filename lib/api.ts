@@ -78,12 +78,55 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
     const brandSlug = data.brand?.slug || defaultBrandSlug || 'desconocido';
     const id = data.slug;
 
+    const parsedPromoUnits = (data.promotion_units || []).map((u: any) => ({
+        vin: u.vin,
+        versionName: u.version_name,
+        listPrice: Number(u.list_price) || 0,
+        promoBonus: Number(u.promo_bonus) || 0,
+        promoPrice: Number(u.promo_price) || 0,
+        status: u.status
+    }));
+
+    const parsedVersions = (data.versions || []).map((v: any) => {
+        const listPrice = Number(v.list_price) || 0;
+        const brandBonus = Number(v.brand_bonus) || 0;
+        const financingBonus = Number(v.finance_bonus || v.financing_bonus) || 0;
+        let bonusPrice = Number(v.final_price || v.finance_price) || 0;
+        
+        // Si el backend envió 0 en el final_price, lo calculamos al vuelo restando los bonos.
+        if (bonusPrice === 0 && listPrice > 0) {
+            bonusPrice = Math.max(0, listPrice - brandBonus - financingBonus);
+        }
+
+        return {
+            name: v.name,
+            motor: v.motor || v.engine || '-',
+            fuel: v.fuel || '-',
+            transmission: v.transmission || '-',
+            consumptionMixed: v.consumption_mixed || v.mixed_performance || '-',
+            electricRange: v.electric_range || '-',
+            power: v.power || v.power_hp || '-',
+            torque: v.torque || v.torque_nm || '-',
+            airbags: Number(v.airbags) || 0,
+            ivaIncluded: data.includes_iva !== undefined ? Boolean(data.includes_iva) : Boolean(v.includes_iva || v.iva_included),
+            listPrice,
+            brandBonus,
+            financingBonus,
+            bonusPrice,
+            image: formatImageUrl(v.thumbnail)
+        };
+    });
+
+    // Ignoramos las unidades en promoción, el precio "Desde" del modelo se basa solo en su catálogo regular de versiones.
+    const validPrices = parsedVersions.map((v: any) => v.bonusPrice).filter(p => p > 0);
+    const computedPrice = validPrices.length > 0 ? Math.min(...validPrices) : Number(data.base_price || 0);
+
     return {
         id: id,
         brand: brandSlug,
         name: data.name,
         category: Array.isArray(data.category) ? data.category.join(', ') : (data.category || 'Desconocido'),
-        price: data.base_price,
+        price: computedPrice,
         image: formatImageUrl(data.thumbnail_url),
         desktopBanner: formatImageUrl(data.desktop_banner_url),
         mobileBanner: formatImageUrl(data.mobile_banner_url),
@@ -93,34 +136,9 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         isElectric: data.is_electric,
         isPromotion: data.is_promotion,
         ivaIncluded: data.includes_iva === undefined ? true : Boolean(data.includes_iva),
-        promoUnits: (data.promotion_units || []).map((u: any) => ({
-            vin: u.vin,
-            versionName: u.version_name,
-            listPrice: u.list_price,
-            promoBonus: u.promo_bonus,
-            promoPrice: u.promo_price,
-            status: u.status
-        })),
+        promoUnits: parsedPromoUnits,
         isNew: true, 
-        versions: (data.versions || []).map((v: any) => {
-            return {
-                name: v.name,
-                motor: v.motor || v.engine || '-',
-                fuel: v.fuel || '-',
-                transmission: v.transmission || '-',
-                consumptionMixed: v.consumption_mixed || v.mixed_performance || '-',
-                electricRange: v.electric_range || '-',
-                power: v.power || v.power_hp || '-',
-                torque: v.torque || v.torque_nm || '-',
-                airbags: Number(v.airbags) || 0,
-                ivaIncluded: data.includes_iva !== undefined ? Boolean(data.includes_iva) : Boolean(v.includes_iva || v.iva_included),
-                listPrice: Number(v.list_price) || 0,
-                brandBonus: Number(v.brand_bonus) || 0,
-                financingBonus: Number(v.finance_bonus || v.financing_bonus) || 0,
-                bonusPrice: Number(v.final_price || v.finance_price) || 0,
-                image: formatImageUrl(v.thumbnail)
-            };
-        }),
+        versions: parsedVersions,
         slogan: data.slogan || '',
         videoUrl: data.video_url || '',
         features: (data.features || []).map((f: any) => ({
