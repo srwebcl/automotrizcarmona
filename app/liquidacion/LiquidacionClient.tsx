@@ -207,6 +207,7 @@ export default function LiquidacionClient({
                                         <div className={`mb-6 bg-gray-50 w-full py-4 rounded-2xl border border-gray-100 transition-colors ${isAvailable ? 'group-hover:bg-[#d2001c]/5 group-hover:border-[#d2001c]/10' : ''}`}>
                                             <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Precio Final de Liquidación</p>
                                             <p className="text-5xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
+                                            <p className="text-[10px] text-gray-500 mt-2">*Precio con financiamiento</p>
                                         </div>
 
                                         {isAvailable ? (
