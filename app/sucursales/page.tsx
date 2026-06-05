@@ -13,6 +13,7 @@ interface Branch {
     city: string;
     manager_name: string | null;
     schedule: string | null;
+    schedules?: {days: string, hours: string}[];
     phone: string | null;
     email: string | null;
     map_link: string | null;
@@ -216,12 +217,24 @@ export default function SucursalesPage() {
                                                             <span><span className="font-medium mr-1">Jefe a cargo:</span>{sucursal.manager_name}</span>
                                                         </div>
                                                     )}
-                                                    {sucursal.schedule && (
+                                                    {sucursal.schedules && sucursal.schedules.length > 0 ? (
+                                                        <div className="flex items-start gap-2 text-[13px] text-gray-600">
+                                                            <Clock size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                                                            <div className="flex flex-col gap-1">
+                                                                {sucursal.schedules.map((sch, idx) => (
+                                                                    <span key={idx}>
+                                                                        <span className="font-medium mr-1">{sch.days}:</span>
+                                                                        {sch.hours}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ) : sucursal.schedule ? (
                                                         <div className="flex items-center gap-2 text-[13px] text-gray-600">
                                                             <Clock size={14} className="text-gray-400 flex-shrink-0" />
                                                             <span>{sucursal.schedule}</span>
                                                         </div>
-                                                    )}
+                                                    ) : null}
                                                     {sucursal.phone && (
                                                         <div className="flex items-center gap-2 text-[13px] text-gray-600">
                                                             <Phone size={14} className="text-gray-400 flex-shrink-0" />
