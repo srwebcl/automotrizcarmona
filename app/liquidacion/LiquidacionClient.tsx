@@ -140,12 +140,12 @@ export default function LiquidacionClient({
                                 
                                 {/* Status Banner (Diagonal) */}
                                 {isSold && (
-                                    <div className="absolute top-10 -right-10 z-50 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-red-600 to-red-800 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-red-400/30">
+                                    <div className="absolute top-10 -right-10 z-30 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-red-600 to-red-800 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-red-400/30">
                                         Vendido 🤝
                                     </div>
                                 )}
                                 {isReserved && (
-                                    <div className="absolute top-10 -right-10 z-50 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-amber-400 to-amber-600 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-amber-300/30">
+                                    <div className="absolute top-10 -right-10 z-30 transform rotate-45 w-48 text-center py-2 shadow-2xl bg-gradient-to-r from-amber-400 to-amber-600 text-white font-black text-[11px] uppercase tracking-[0.2em] border-y border-amber-300/30">
                                         Reservado ⏳
                                     </div>
                                 )}
