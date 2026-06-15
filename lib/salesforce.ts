@@ -56,7 +56,7 @@ export async function sendQuoteToSalesforce(payload: any) {
             products: [
                 {
                     version: payload.vehicle?.sap_material_code || "UNKNOWN",
-                    price: 0, // Ajustar a precio real si es requerido
+                    price: payload.vehicle?.price || 20000000, 
                     typeMaterial: "vehicle"
                 }
             ]

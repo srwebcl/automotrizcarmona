@@ -196,6 +196,7 @@ function CotizarContent() {
                         model_name: model?.name,
                         version_name: version?.name,
                         sap_material_code: version?.sapMaterialCode || null,
+                        price: version?.bonusPrice || version?.listPrice || model?.price || 0,
                         vin: version?.vin || null,
                         year: new Date().getFullYear().toString(),
                         is_truck: !!model?.isTruck
