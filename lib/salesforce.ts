@@ -14,12 +14,11 @@ export async function sendQuoteToSalesforce(payload: any) {
         const tokenResponse = await fetch(tokenUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                client_id: clientId,
-                client_secret: clientSecret
-            })
+                'client_id': clientId,
+                'client_secret': clientSecret,
+                'grant_type': 'CLIENT_CREDENTIALS',
+                'scope': 'WEB_DEALER'
+            }
         });
 
         if (!tokenResponse.ok) {
