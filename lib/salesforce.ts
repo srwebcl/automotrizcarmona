@@ -67,6 +67,8 @@ export async function sendQuoteToSalesforce(payload: any) {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'client_id': clientId,
+                'client_secret': clientSecret,
                 'Authorization': `Bearer ${accessToken}`
             },
             body: JSON.stringify(quotePayload)
