@@ -8,6 +8,7 @@ export type VehicleType = 'liviano' | 'moto' | 'camion-bus';
 
 export interface VehicleVersion {
     name: string;
+    sapMaterialCode?: string;
     motor?: string;
     /** Tipo de combustible: Gasolina | Diésel | Gas | Híbrido | Eléctrico */
     fuel?: string;

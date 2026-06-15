@@ -102,6 +102,7 @@ function CotizarContent() {
                         if (promoUnit) {
                             setVersion({
                                 name: promoUnit.versionName || foundVersion?.name || apiModel.name,
+                                sapMaterialCode: foundVersion?.sapMaterialCode,
                                 transmission: foundVersion?.transmission || '-',
                                 fuel: foundVersion?.fuel || '-',
                                 listPrice: promoUnit.listPrice || (promoUnit.promoPrice + promoUnit.promoBonus),
@@ -194,6 +195,7 @@ function CotizarContent() {
                         brand_name: marca,
                         model_name: model?.name,
                         version_name: version?.name,
+                        sap_material_code: version?.sapMaterialCode || null,
                         vin: version?.vin || null,
                         year: new Date().getFullYear().toString(),
                         is_truck: !!model?.isTruck

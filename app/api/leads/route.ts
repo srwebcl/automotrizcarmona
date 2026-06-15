@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { API_URL } from '@/lib/api';
+import { sendQuoteToSalesforce } from '@/lib/salesforce';
 
 /**
  * Next.js API Route para actuar como Backend For Frontend (BFF).
@@ -11,6 +12,16 @@ import { API_URL } from '@/lib/api';
 export async function POST(request: Request) {
     try {
         const payload = await request.json();
+
+        // INTEGRACION TOYOTA SALESFORCE (OPCION A)
+        if (payload.vehicle?.brand_name?.toLowerCase() === 'toyota' && payload.vehicle?.sap_material_code) {
+            console.log("Detectado Toyota con SAP Material Code. Iniciando envío paralelo a Salesforce...");
+            // Enviamos de forma asíncrona sin bloquear el flujo principal a Tecnom
+            sendQuoteToSalesforce(payload).catch(e => {
+                console.error("Error en sendQuoteToSalesforce (no bloqueante):", e);
+            });
+        }
+
 
         const response = await fetch(`${API_URL}/leads`, {
             method: 'POST',

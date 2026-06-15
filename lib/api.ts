@@ -100,6 +100,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
 
         return {
             name: v.name,
+            sapMaterialCode: v.sap_material_code || undefined,
             motor: v.motor || v.engine || '-',
             fuel: v.fuel || '-',
             transmission: v.transmission || '-',

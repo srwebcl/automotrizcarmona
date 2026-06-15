@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "d2cc5a89-2b78-466c-b3ad-17ef773388cd",
+    "name": "Carmona Lead and Quote Dealer UAT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23356376"
+  },
+  "item": [
+    {
+      "name": "Token Copy UAT",
+      "protocolProfileBehavior": {
+        "followRedirects": false,
+        "followOriginalHttpMethod": false,
+        "followAuthorizationHeader": false
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "client_id",
+            "value": "05ef5f05786a494ba85cdb4e901c2b07"
+          },
+          {
+            "key": "client_secret",
+            "value": "fcBBbE8C8E8a4A1d97676a0f0563d5A1"
+          },
+          {
+            "key": "grant_type",
+            "value": "CLIENT_CREDENTIALS"
+          },
+          {
+            "key": "scope",
+            "value": "WEB_DEALER"
+          },
+          {
+            "key": "scope",
+            "value": "",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "https://oauth-provider-api-qas-eh5zuw.na8zri.usa-e1.cloudhub.io/api/v1/token",
+          "protocol": "https",
+          "host": [
+            "oauth-provider-api-qas-eh5zuw",
+            "na8zri",
+            "usa-e1",
+            "cloudhub",
+            "io"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Quote - Dealer UAT",
+      "protocolProfileBehavior": {
+        "followRedirects": false,
+        "followOriginalHttpMethod": false,
+        "followAuthorizationHeader": false
+      },
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "client_id",
+            "value": "05ef5f05786a494ba85cdb4e901c2b07"
+          },
+          {
+            "key": "client_secret",
+            "value": "fcBBbE8C8E8a4A1d97676a0f0563d5A1"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer _QRq5o3qKJelIlJEykHzYbnWCn_pWn-IS4vJHtGxEwGgmn7KY2FilgZo8oNWXlmspAud2eYHx6W_Lt7c5df9Dg"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n   \"client\":{\n      \"fullName\":\"Juan Perez Sepulveda\",\n      \"email\":\"patriciosaldia@gmail.com\",\n      \"rut\":\"16010906-8\",\n      \"phone\":\"+56979820777\",\n      \"originAccount\":\"Web concesionario\"\n   },\n   \"opportunity\":{\n      \"source\":\"Web concesionario\"\n   },\n   \"quote\":{\n      \"name\":\"Cotizacion WEB INALMOTORS\",\n      \"paymentType\":\"Otros Creditos\",\n      \"description\":\"Cotizacion generada en sitio web Carmona\"\n   },\n   \"products\":[\n      {\n         \"version\":\"15MTGSLIY\",\n         \"price\":20000000,\n         \"typeMaterial\":\"vehicle\"\n      }\n   ]\n}"
+        },
+        "url": {
+          "raw": "https://dealer-exp-api-qas-eh5zuw.na8zri.usa-e1.cloudhub.io/api/dealers/100014/quote",
+          "protocol": "https",
+          "host": [
+            "dealer-exp-api-qas-eh5zuw",
+            "na8zri",
+            "usa-e1",
+            "cloudhub",
+            "io"
+          ],
+          "path": [
+            "api",
+            "dealers",
+            "100014",
+            "quote"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Leads Dealer UAT",
+      "protocolProfileBehavior": {
+        "followRedirects": false,
+        "followOriginalHttpMethod": false,
+        "followAuthorizationHeader": false
+      },
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "client_id",
+            "value": "05ef5f05786a494ba85cdb4e901c2b07"
+          },
+          {
+            "key": "client_secret",
+            "value": "fcBBbE8C8E8a4A1d97676a0f0563d5A1"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "disabled": true
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer _QRq5o3qKJelIlJEykHzYbnWCn_pWn-IS4vJHtGxEwGgmn7KY2FilgZo8oNWXlmspAud2eYHx6W_Lt7c5df9Dg"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"rut\": \"9099686-K\",\n    \"firstName\": \"JC 3\",\n    \"lastName\": \"Johan\",\n    \"gender\": \"-\",\n    \"notContactMe\": false,\n    \"vehicle\": \"Vehículo de interés: 4Runner\",\n    \"email\": \"h.andrade@gmail.com\",\n    \"phone\": \"+56 (9)8888 1111\",\n    \"source\": \"Web Dealer\",\n    \"ownerInformation\": {\n      \"rut\": \"\",\n      \"nameSalesman\": \"\"\n    }\n}\n"
+        },
+        "url": {
+          "raw": "https://dealer-exp-api-qas-eh5zuw.na8zri.usa-e1.cloudhub.io/api/dealers/100014/lead",
+          "protocol": "https",
+          "host": [
+            "dealer-exp-api-qas-eh5zuw",
+            "na8zri",
+            "usa-e1",
+            "cloudhub",
+            "io"
+          ],
+          "path": [
+            "api",
+            "dealers",
+            "100014",
+            "lead"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
