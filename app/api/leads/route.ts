@@ -15,11 +15,12 @@ export async function POST(request: Request) {
 
         // INTEGRACION TOYOTA SALESFORCE (OPCION A)
         if (payload.vehicle?.brand_name?.toLowerCase() === 'toyota' && payload.vehicle?.sap_material_code) {
-            console.log("Detectado Toyota con SAP Material Code. Iniciando envío paralelo a Salesforce...");
-            // Enviamos de forma asíncrona sin bloquear el flujo principal a Tecnom
-            sendQuoteToSalesforce(payload).catch(e => {
-                console.error("Error en sendQuoteToSalesforce (no bloqueante):", e);
-            });
+            console.log("Detectado Toyota con SAP Material Code. Enviando a Salesforce...");
+            try {
+                await sendQuoteToSalesforce(payload);
+            } catch (e) {
+                console.error("Error en sendQuoteToSalesforce:", e);
+            }
         }
 
 
