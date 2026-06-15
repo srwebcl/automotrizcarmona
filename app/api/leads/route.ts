@@ -12,6 +12,8 @@ import { sendQuoteToSalesforce } from '@/lib/salesforce';
 export async function POST(request: Request) {
     try {
         const payload = await request.json();
+        
+        console.log("DEBUG PAYLOAD VEHICLE:", JSON.stringify(payload.vehicle));
 
         // INTEGRACION TOYOTA SALESFORCE (OPCION A)
         if (payload.vehicle?.brand_name?.toLowerCase() === 'toyota' && payload.vehicle?.sap_material_code) {
