@@ -162,7 +162,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-square">
                                 {slide.link ? (
                                     <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
-                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
+                                        <Image src={slide.image} alt={slide.title} fill sizes="100vw" className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
                                         {slide.show_text && (
                                             <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10 pointer-events-none z-10 w-full h-full">
                                                 <h2 className="text-3xl font-bold text-white mb-2 max-w-lg leading-tight">{slide.title}</h2>
@@ -177,7 +177,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                                     </Link>
                                 ) : (
                                     <>
-                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
+                                        <Image src={slide.image} alt={slide.title} fill sizes="100vw" className="object-cover" priority={slide.id === mobileSlides[0]?.id} />
                                         {slide.show_text && (
                                             <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10 pointer-events-none z-10 w-full h-full">
                                                 <h2 className="text-3xl font-bold text-white mb-2 max-w-lg leading-tight">{slide.title}</h2>
@@ -235,7 +235,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                             <div key={slide.id} className="relative flex-[0_0_100%] min-w-0 aspect-[16/6] md:aspect-[18/7] lg:aspect-[21/8]">
                                 {slide.link ? (
                                     <Link href={slide.link} className="block w-full h-full cursor-pointer relative">
-                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
+                                        <Image src={slide.image} alt={slide.title} fill sizes="100vw" className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
                                         {slide.show_text && (
                                             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent flex flex-col justify-center px-8 md:px-16 pointer-events-none z-10 w-full h-full">
                                                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 max-w-2xl leading-tight">{slide.title}</h2>
@@ -250,7 +250,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                                     </Link>
                                 ) : (
                                     <>
-                                        <Image src={slide.image} alt={slide.title} fill className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
+                                        <Image src={slide.image} alt={slide.title} fill sizes="100vw" className="object-cover" priority={slide.id === desktopSlides[0]?.id} />
                                         {slide.show_text && (
                                             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent flex flex-col justify-center px-8 md:px-16 pointer-events-none z-10 w-full h-full">
                                                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 max-w-2xl leading-tight">{slide.title}</h2>
@@ -312,10 +312,13 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                         {marqueeRow1.map((brand, idx) => (
                             <li key={`1-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
                                 <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
-                                    <img
+                                    <Image
                                         src={brand.logo_url}
                                         alt={brand.name}
+                                        width={160}
+                                        height={80}
                                         className="h-full w-auto object-contain transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </Link>
                             </li>
@@ -325,10 +328,13 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                         {marqueeRow1.map((brand, idx) => (
                             <li key={`2-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
                                 <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
-                                    <img
+                                    <Image
                                         src={brand.logo_url}
                                         alt={brand.name}
+                                        width={160}
+                                        height={80}
                                         className="h-full w-auto object-contain transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </Link>
                             </li>
@@ -342,10 +348,13 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                         {marqueeRow2.map((brand, idx) => (
                             <li key={`3-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
                                 <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
-                                    <img
+                                    <Image
                                         src={brand.logo_url}
                                         alt={brand.name}
+                                        width={160}
+                                        height={80}
                                         className="h-full w-auto object-contain transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </Link>
                             </li>
@@ -355,10 +364,13 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
                         {marqueeRow2.map((brand, idx) => (
                             <li key={`4-${idx}`} className="w-[30vw] md:w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 cursor-pointer opacity-80 hover:opacity-100 hover:scale-110 px-3">
                                 <Link href={`${truckBrands.some(t => t.name === brand.name) ? '/camiones' : '/nuevos'}/${brand.slug}`} className={`relative flex items-center justify-center ${brand.logo_url.toLowerCase().includes('iveco') || brand.logo_url.toLowerCase().includes('man') ? 'h-10 md:h-16' : 'h-14 md:h-20'}`}>
-                                    <img
+                                    <Image
                                         src={brand.logo_url}
                                         alt={brand.name}
+                                        width={160}
+                                        height={80}
                                         className="h-full w-auto object-contain transition-all duration-300"
+                                        loading="lazy"
                                     />
                                 </Link>
                             </li>
