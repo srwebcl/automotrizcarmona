@@ -21,6 +21,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Automotriz Carmona | Líderes en Venta de Autos Nuevos & Seminuevos",
   description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
+  openGraph: {
+    title: "Automotriz Carmona | Líderes en Venta de Autos",
+    description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
+    url: 'https://automotrizcarmona.cl',
+    siteName: 'Automotriz Carmona',
+    locale: 'es_CL',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Automotriz Carmona",
+    description: "Compra, vende o financia tu próximo auto con el respaldo de 30 años de trayectoria.",
+  }
 };
 
 export default async function RootLayout({

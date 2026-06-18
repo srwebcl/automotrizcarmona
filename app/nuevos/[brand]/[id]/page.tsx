@@ -5,7 +5,44 @@ import { getBrandConfig } from '@/lib/brands';
 import ModelPageClient from './ModelPageClient';
 import R2_ASSETS from '@/lib/assetMap.json';
 
-export const revalidate = 0; // Desactivar ISR temporalmente para diagn\u00f3stico
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ brand: string; id: string }> }): Promise<Metadata> {
+    const { brand, id } = await params;
+    const brandId = brand.toLowerCase();
+    
+    try {
+        const model = await getModelDetails(brandId, id);
+        if (!model) return {};
+
+        const title = `${model.name} Nuevo | Automotriz Carmona`;
+        const description = model.slogan || `Descubre el nuevo ${model.name}. Cotiza online, conoce sus versiones y solicita tu prueba de manejo en Automotriz Carmona.`;
+        const ogImage = formatImageUrl(model.thumbnail_url);
+
+        return {
+            title,
+            description,
+            openGraph: {
+                title,
+                description,
+                images: ogImage ? [{ url: ogImage }] : [],
+                type: 'website',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title,
+                description,
+                images: ogImage ? [ogImage] : [],
+            }
+        };
+    } catch (e) {
+        return {
+            title: `Auto Nuevo | Automotriz Carmona`,
+        };
+    }
+}
+
+export const revalidate = 0; // Desactivar ISR temporalmente para diagnóstico
 
 export default async function GenericModelPage({ params }: { params: Promise<{ brand: string; id: string }> }) {
     const { brand, id } = await params;

@@ -6,6 +6,44 @@ import BrandPageClient from './BrandPageClient';
 import CarAdvisorSection from '@/components/CarAdvisorSection';
 import R2_ASSETS from '@/lib/assetMap.json';
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ brand: string }> }): Promise<Metadata> {
+    const { brand } = await params;
+    const brandId = brand.toLowerCase();
+    
+    try {
+        const brandDetails = await getBrandBySlug(brandId);
+        const staticConfig = getBrandConfig(brandId);
+        
+        const name = brandDetails?.name || staticConfig?.name || brand;
+        const title = brandDetails?.seo_title || `Autos Nuevos ${name} | Automotriz Carmona`;
+        const description = `Descubre todos los modelos nuevos de ${name} en Automotriz Carmona. Cotiza online y encuentra el auto perfecto para ti.`;
+        const ogImage = brandDetails?.logo_url ? formatImageUrl(brandDetails.logo_url) : undefined;
+
+        return {
+            title,
+            description,
+            openGraph: {
+                title,
+                description,
+                images: ogImage ? [{ url: ogImage }] : [],
+                type: 'website',
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title,
+                description,
+                images: ogImage ? [ogImage] : [],
+            }
+        };
+    } catch (e) {
+        return {
+            title: `Autos Nuevos ${brand} | Automotriz Carmona`,
+        };
+    }
+}
+
 export const revalidate = 0; // Desactivar ISR temporalmente para diagnóstico
 
 export default async function BrandPage({ params }: { params: Promise<{ brand: string }> }) {
