@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
 
         const title = `${model.name} Nuevo | Automotriz Carmona`;
         const description = model.slogan || `Descubre el nuevo ${model.name}. Cotiza online, conoce sus versiones y solicita tu prueba de manejo en Automotriz Carmona.`;
-        const ogImage = formatImageUrl(model.thumbnail_url);
+        const ogImage = formatImageUrl(model.image);
 
         return {
             title,
