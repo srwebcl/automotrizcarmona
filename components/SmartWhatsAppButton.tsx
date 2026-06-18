@@ -13,6 +13,7 @@ function SmartWhatsAppButtonContent() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [showMenu, setShowMenu] = useState(false);
+    const [isBubbleDismissed, setIsBubbleDismissed] = useState(false);
     const [config, setConfig] = useState({
         text: "¡Hola! ¿Necesitas ayuda?",
         message: "Hola, estoy en el sitio web de Automotriz Carmona y me gustaría recibir asesoría.",
@@ -195,9 +196,16 @@ function SmartWhatsAppButtonContent() {
                 className={`
                     relative max-w-[280px] w-max bg-white text-gray-800 p-4 rounded-3xl rounded-br-md shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-gray-100
                     transform transition-all duration-300 ease-out origin-bottom
-                    ${showMenu ? 'hidden' : 'opacity-0 scale-75 translate-y-8 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto'}
+                    ${(showMenu || isBubbleDismissed) ? 'hidden' : 'opacity-0 scale-75 translate-y-8 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto'}
                 `}
             >
+                <button 
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsBubbleDismissed(true); }}
+                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors bg-gray-50 hover:bg-gray-100 rounded-full p-1"
+                    aria-label="Cerrar mensaje"
+                >
+                    <X size={12} />
+                </button>
                 <div className="flex items-start gap-3 pr-4">
                     <div className="relative shrink-0">
                         <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-lg">

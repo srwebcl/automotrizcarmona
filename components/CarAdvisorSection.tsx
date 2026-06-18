@@ -3,6 +3,7 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, ThumbsUp } from 'lucide-react';
+import Image from 'next/image';
 
 // ——— Types ————————————————————————————————————————————
 export interface CarAdvisorRating {
@@ -119,12 +120,9 @@ export default function CarAdvisorSection({ data, brandFilter, reasonFilter }: C
 
                 {/* ── Logo Car Advisor ── */}
                 <div className="flex flex-col items-center mb-8">
-                    <div className="text-center mb-1">
-                        <span className="text-4xl font-black tracking-tight">
-                            <span className="text-[#e8401c]">car.</span>
-                            <span className="text-gray-900">advisor</span>
-                        </span>
-                    </div>
+                    <a href="https://www.caradvisor.at/betrieb/carmona/CL-29019" target="_blank" rel="noopener noreferrer" className="block text-center mb-4 transition-transform hover:scale-105">
+                        <Image src="/logo-car-advisor.png" alt="Car Advisor" width={200} height={50} className="mx-auto" />
+                    </a>
                     <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase mb-6">
                         El portal de evaluaciones para concesionarios
                     </p>
