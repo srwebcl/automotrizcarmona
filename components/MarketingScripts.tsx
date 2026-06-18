@@ -85,7 +85,7 @@ gtag('config', '${script.value}');`}
                     // ── Meta Pixel (Facebook/Instagram) ────────────────────────────
                     case 'meta_pixel':
                         return (
-                            <Script key={key} id={key} strategy="afterInteractive">
+                            <Script key={key} id={key} strategy="lazyOnload">
                                 {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -134,7 +134,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
                             .replace(/<\/script>$/i, '')
                             .trim();
                         return (
-                            <Script key={key} id={key} strategy="afterInteractive">
+                            <Script key={key} id={key} strategy="lazyOnload">
                                 {rawCode}
                             </Script>
                         );
