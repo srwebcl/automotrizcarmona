@@ -25,13 +25,13 @@ export default function Footer() {
                             Somos el concesionario automotriz más grande de la tercera y cuarta región. Representantes oficiales de las principales marcas del mercado.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <a href="https://www.instagram.com/automotrizcarmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://www.instagram.com/carmonaycia.cl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Instagram size={18} />
                             </a>
-                            <a href="https://www.facebook.com/automotrizcarmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://web.facebook.com/profile.php?id=61555852684093" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Facebook size={18} />
                             </a>
-                            <a href="https://www.linkedin.com/company/automotriz-carmona" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://www.linkedin.com/company/carmonaycia" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Linkedin size={18} />
                             </a>
                         </div>
