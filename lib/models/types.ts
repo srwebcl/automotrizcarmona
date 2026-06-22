@@ -50,6 +50,8 @@ export interface PromotionUnit {
     year?: number;
     /** Comentario adicional (ej: "Unidad Test Drive", "Única unidad") */
     note?: string;
+    /** Orden manual de la unidad (Drag & Drop) */
+    order?: number;
 }
 
 export interface Vehicle {
