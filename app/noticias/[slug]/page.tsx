@@ -8,6 +8,35 @@ import DiscoverSection from '@/components/DiscoverSection';
 
 export const revalidate = 60;
 
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const news = await getNewsBySlug(slug);
+
+    if (!news) return {};
+
+    const title = `${news.title} | Automotriz Carmona Noticias`;
+    const description = `Lee sobre "${news.title}" en el blog de Automotriz Carmona. Novedades, lanzamientos y consejos del mundo automotriz.`;
+
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            images: news.image ? [{ url: news.image }] : [],
+            type: 'article',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: news.image ? [news.image] : [],
+        }
+    };
+}
+
 function formatDate(dateStr: string | null) {
     if (!dateStr) return '';
     try {

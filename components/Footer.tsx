@@ -99,9 +99,14 @@ export default function Footer() {
 
             {/* Legal Strip */}
             <div className="bg-black py-6 border-t border-white/5">
-                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 test-xs text-gray-500">
-                    <p className="text-xs">&copy; {new Date().getFullYear()} Automotriz Carmona. Todos los derechos reservados.</p>
-                    <div className="flex flex-wrap gap-4 md:gap-8 justify-center text-xs font-medium">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 test-xs text-gray-500">
+                    <p className="text-xs order-3 md:order-1 text-center md:text-left">&copy; {new Date().getFullYear()} Automotriz Carmona. Todos los derechos reservados.</p>
+                    
+                    <a href="https://www.webpay.cl/company/33128" target="_blank" rel="noopener noreferrer" className="order-1 md:order-2 hover:opacity-80 transition-opacity" aria-label="Verificado por Webpay">
+                        <Image src="/images/logo-webpay-pago-seguro.svg" alt="Webpay Pago Seguro Automotriz Carmona" width={120} height={35} className="h-7 w-auto object-contain" />
+                    </a>
+
+                    <div className="flex flex-wrap gap-4 md:gap-8 justify-center text-xs font-medium order-2 md:order-3">
                         <a href="https://compliance.automotrizcarmona.cl/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-carmona-gold"></span> Compliance y Denuncias</a>
                         <Link href="/legal" className="hover:text-white transition-colors flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-gray-700"></span> Términos y Condiciones</Link>
                     </div>

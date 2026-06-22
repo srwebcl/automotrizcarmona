@@ -51,6 +51,32 @@ export default async function RootLayout({
       <head>
         {/* Scripts de marketing inyectados en <head> (GTM, GA4, Ads, Meta Pixel, etc.) */}
         <MarketingScripts scripts={marketingScripts} placement="head" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AutoDealer",
+              "name": "Automotriz Carmona",
+              "image": "https://www.automotrizcarmona.cl/images/logo-carmona.avif",
+              "@id": "https://www.automotrizcarmona.cl",
+              "url": "https://www.automotrizcarmona.cl",
+              "telephone": "+56 51 220 0200",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Balmaceda 3681",
+                "addressLocality": "La Serena",
+                "addressRegion": "Coquimbo",
+                "addressCountry": "CL"
+              },
+              "sameAs": [
+                "https://www.instagram.com/carmonaycia.cl",
+                "https://web.facebook.com/profile.php?id=61555852684093",
+                "https://www.linkedin.com/company/carmonaycia"
+              ]
+            })
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-white text-gray-900`}

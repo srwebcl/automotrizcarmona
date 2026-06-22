@@ -15,8 +15,9 @@ export async function generateMetadata({ params }: { params: Promise<{ brand: st
         const model = await getModelDetails(brandId, id);
         if (!model) return {};
 
-        const title = `${model.name} Nuevo | Automotriz Carmona`;
-        const description = model.slogan || `Descubre el nuevo ${model.name}. Cotiza online, conoce sus versiones y solicita tu prueba de manejo en Automotriz Carmona.`;
+        const displayBrand = brand.charAt(0).toUpperCase() + brand.slice(1);
+        const title = `Comprar ${displayBrand} ${model.name} 0km en Automotriz Carmona La Serena`;
+        const description = model.slogan || `Descubre el nuevo ${displayBrand} ${model.name}. Cotiza online y conoce todas sus versiones Automotriz Carmona La Serena.`;
         const ogImage = formatImageUrl(model.image);
 
         return {

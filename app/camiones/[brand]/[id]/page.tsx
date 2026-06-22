@@ -1,17 +1,37 @@
-'use client';
+import { Metadata } from 'next';
 
-import React, { use, useState } from 'react';
-import Image from 'next/image';
+export async function generateMetadata({ params }: { params: Promise<{ brand: string; id: string }> }): Promise<Metadata> {
+    const { brand, id } = await params;
+    const displayBrand = brand.charAt(0).toUpperCase() + brand.slice(1);
+    const displayModel = id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    const title = `Comprar Camión ${displayBrand} ${displayModel} 0km en Automotriz Carmona La Serena`;
+    const description = `Descubre el nuevo camión ${displayBrand} ${displayModel}. Cotiza online y conoce todas sus versiones Automotriz Carmona La Serena.`;
+
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+        }
+    };
+}
+
+import React from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
 import ShareButton from '@/components/ShareButton';
 import { getBrandConfig } from '@/lib/brands';
-import { ChevronRight, FileText, Calendar, Info, Car, Shield, Wifi, Zap, ArrowRight, Download, Fuel, Cog, Droplets, MapPin, Search, ChevronLeft, Truck } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronRight, Truck } from 'lucide-react';
 
-export default function TruckModelPage({ params }: { params: Promise<{ brand: string; id: string }> }) {
-    const resolvedParams = use(params);
-    const { brand, id } = resolvedParams;
+export default async function TruckModelPage({ params }: { params: Promise<{ brand: string; id: string }> }) {
+    const { brand, id } = await params;
     const config = getBrandConfig(brand);
 
     // For now, trucks don't have real models data yet. 
