@@ -84,7 +84,8 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         listPrice: Number(u.list_price) || 0,
         promoBonus: Number(u.promo_bonus) || 0,
         promoPrice: Number(u.promo_price) || 0,
-        status: u.status
+        status: u.status,
+        order: Number(u.order) || 0
     }));
 
     const parsedVersions = (data.versions || []).map((v: any) => {

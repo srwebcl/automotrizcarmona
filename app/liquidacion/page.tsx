@@ -47,7 +47,7 @@ export async function generateMetadata(
                 image: model.image,
                 modelName: model.name
             }))
-        );
+        ).sort((a, b) => (a.order || 0) - (b.order || 0));
 
         const unit = allPromoUnits.find(u => u.vin === vin);
 
@@ -117,7 +117,7 @@ export default async function LiquidacionPage({ searchParams }: Props) {
             image: model.image,
             modelName: model.name
         }))
-    );
+    ).sort((a, b) => (a.order || 0) - (b.order || 0));
 
     // Hero Fallbacks
     const heroTitle = landingInfo?.title || 'Gran Liquidación';
