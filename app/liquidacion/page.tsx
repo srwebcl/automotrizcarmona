@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
 import { getLayoutBrands } from '@/lib/api/layoutBrands';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Info } from 'lucide-react';
 import Link from 'next/link';
 import DiscoverSection from '@/components/DiscoverSection';
 import LiquidacionClient from './LiquidacionClient';
@@ -175,16 +175,32 @@ export default async function LiquidacionPage({ searchParams }: Props) {
             
             {/* Legal Section */}
             {legalExcerpt && (
-                <section className="py-8 bg-gray-50 border-t border-gray-100">
+                <section className="py-12 bg-white">
                     <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex flex-col gap-2 items-start">
-                            <div 
-                                className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
-                                dangerouslySetInnerHTML={{ __html: legalExcerpt }}
-                            />
-                            <Link href={`/legal#liquidacion`} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.2em] text-red-600 hover:text-red-700 transition-colors mt-2">
-                                VER MÁS <ArrowRight size={14} strokeWidth={3} />
-                            </Link>
+                        <div className="max-w-5xl mx-auto">
+                            <div className="relative overflow-hidden rounded-2xl bg-gray-50/80 border border-gray-100 p-6 sm:p-8 transition-all duration-500 hover:shadow-xl hover:shadow-gray-200/40 hover:border-gray-200 group">
+                                <div className="absolute top-0 left-0 w-1.5 bg-gradient-to-b from-gray-300 to-transparent h-full opacity-50 group-hover:opacity-100 transition-opacity" />
+                                
+                                <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center">
+                                    <div className="flex-shrink-0 p-3.5 bg-white rounded-2xl shadow-sm border border-gray-100/80">
+                                        <Info size={24} strokeWidth={1.5} className="text-gray-400 group-hover:text-gray-700 transition-colors duration-500" />
+                                    </div>
+                                    
+                                    <div className="flex-1 min-w-0 w-full">
+                                        <h4 className="text-xs font-black text-gray-900 mb-2 tracking-[0.15em] uppercase">Información Legal y Condiciones</h4>
+                                        <div 
+                                            className="text-[11px] sm:text-xs leading-relaxed text-gray-500 prose prose-sm max-w-none prose-p:mb-2 last:prose-p:mb-0 line-clamp-3 sm:line-clamp-2 transition-all"
+                                            dangerouslySetInnerHTML={{ __html: legalExcerpt }}
+                                        />
+                                    </div>
+                                    
+                                    <div className="flex-shrink-0 w-full md:w-auto mt-2 md:mt-0">
+                                        <Link href={`/legal#liquidacion`} className="inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-3.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-gray-600 bg-white border border-gray-200 rounded-full hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 shadow-sm hover:shadow-md whitespace-nowrap">
+                                            Leer Completo <ArrowRight size={14} strokeWidth={2.5} />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
