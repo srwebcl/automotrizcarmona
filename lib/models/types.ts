@@ -100,4 +100,5 @@ export interface LandingInfo {
     desktop_banner_url?: string;
     mobile_banner_url?: string;
     is_active: boolean;
+    legal_documents?: { excerpt: string }[];
 }
