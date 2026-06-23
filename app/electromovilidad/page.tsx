@@ -22,6 +22,9 @@ export default async function ElectromovilidadPage() {
     const heroTitle = landingInfo?.title || 'Movilidad Sostenible';
     const heroSubtitle = landingInfo?.subtitle || 'Descubre nuestra gama de vehículos híbridos y eléctricos. El futuro de la conducción hoy en Automotriz Carmona.';
     const heroImage = landingInfo?.desktop_banner_url || '/images/volkswagen/SUV/id4/galeria_2348.jpg';
+    
+    // Legal Excerpt
+    const legalExcerpt = landingInfo?.legal_documents?.[0]?.excerpt || null;
 
     return (
         <main className="min-h-screen bg-white pt-20 font-sans selection:bg-green-600 selection:text-white">
@@ -70,6 +73,23 @@ export default async function ElectromovilidadPage() {
 
             <ElectromovilidadClient ecoModels={ecoModels} />
             
+            {/* Legal Section */}
+            {legalExcerpt && (
+                <section className="py-8 bg-gray-50 border-t border-gray-100">
+                    <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col gap-2 items-start">
+                            <div 
+                                className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
+                                dangerouslySetInnerHTML={{ __html: legalExcerpt }}
+                            />
+                            <Link href={`/legal#electromovilidad`} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.2em] text-red-600 hover:text-red-700 transition-colors mt-2">
+                                VER MÁS <ArrowRight size={14} strokeWidth={3} />
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            )}
+
             <DiscoverSection />
         </main>
     );

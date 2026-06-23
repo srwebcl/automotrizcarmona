@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import ShareButton from '@/components/ShareButton';
 import { Vehicle } from '@/lib/models/types';
 
@@ -293,13 +293,18 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
             </section>
 
             {/* Legal Section */}
-            {config.legalText && (
+            {(config.legalExcerpt || config.legalText) && (
                 <section className="py-8 bg-gray-50 border-t border-gray-100">
                     <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
-                        <div 
-                            className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
-                            dangerouslySetInnerHTML={{ __html: config.legalText }}
-                        />
+                        <div className="flex flex-col gap-2 items-start">
+                            <div 
+                                className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
+                                dangerouslySetInnerHTML={{ __html: config.legalExcerpt || config.legalText }}
+                            />
+                            <Link href={`/legal#${brandId}`} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.2em] text-red-600 hover:text-red-700 transition-colors mt-2">
+                                VER MÁS <ArrowRight size={14} strokeWidth={3} />
+                            </Link>
+                        </div>
                     </div>
                 </section>
             )}

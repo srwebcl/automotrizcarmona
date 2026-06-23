@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
 import { getLayoutBrands } from '@/lib/api/layoutBrands';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import DiscoverSection from '@/components/DiscoverSection';
 import LiquidacionClient from './LiquidacionClient';
 
@@ -123,6 +125,9 @@ export default async function LiquidacionPage({ searchParams }: Props) {
     const heroTitle = landingInfo?.title || 'Gran Liquidación';
     const heroSubtitle = landingInfo?.subtitle || 'Unidades físicas con bonos especiales directos por número de chasis (VIN).';
     const heroImage = landingInfo?.desktop_banner_url || '/images/cupra/Formentor/banner/banner.webp';
+    
+    // Legal Excerpt
+    const legalExcerpt = landingInfo?.legal_documents?.[0]?.excerpt || null;
 
     return (
         <main className="min-h-screen bg-gray-50 pt-20 font-sans selection:bg-[#d2001c] selection:text-white">
@@ -168,6 +173,23 @@ export default async function LiquidacionPage({ searchParams }: Props) {
                 targetVin={targetVin}
             />
             
+            {/* Legal Section */}
+            {legalExcerpt && (
+                <section className="py-8 bg-gray-50 border-t border-gray-100">
+                    <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col gap-2 items-start">
+                            <div 
+                                className="text-[10px] leading-relaxed text-gray-400 prose prose-sm max-w-none prose-p:my-1"
+                                dangerouslySetInnerHTML={{ __html: legalExcerpt }}
+                            />
+                            <Link href={`/legal#liquidacion`} className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.2em] text-red-600 hover:text-red-700 transition-colors mt-2">
+                                VER MÁS <ArrowRight size={14} strokeWidth={3} />
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            )}
+
             <DiscoverSection />
         </main>
     );

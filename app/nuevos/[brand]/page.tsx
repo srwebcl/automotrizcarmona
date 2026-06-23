@@ -74,6 +74,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             brandColorCss: brandDetails?.brand_color_css ? `text-[${brandDetails.brand_color_css}]` : staticConfig.brandColorCss,
             seoTitle: brandDetails?.seo_title || `${staticConfig.name} | Automotriz Carmona`,
             legalText: brandDetails?.legal_text,
+            legalExcerpt: brandDetails?.legal_documents?.[0]?.excerpt || null,
             bannerSlides: (brandDetails?.hero_banners?.length > 0) 
                 ? brandDetails.hero_banners.map((b: any) => ({
                     title: b.title,
