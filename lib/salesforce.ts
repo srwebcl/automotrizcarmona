@@ -11,14 +11,18 @@ export async function sendQuoteToSalesforce(payload: any) {
 
     try {
         // 1. Obtener Token
+        const tokenParams = new URLSearchParams();
+        tokenParams.append('client_id', clientId);
+        tokenParams.append('client_secret', clientSecret);
+        tokenParams.append('grant_type', 'client_credentials');
+        tokenParams.append('scope', 'WEB_DEALER');
+
         const tokenResponse = await fetch(tokenUrl, {
             method: 'POST',
             headers: {
-                'client_id': clientId,
-                'client_secret': clientSecret,
-                'grant_type': 'CLIENT_CREDENTIALS',
-                'scope': 'WEB_DEALER'
-            }
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: tokenParams.toString()
         });
 
         if (!tokenResponse.ok) {
