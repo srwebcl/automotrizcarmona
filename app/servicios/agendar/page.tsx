@@ -141,7 +141,7 @@ function AgendarContent() {
         if (availableCities.length === 1) {
             setForm(p => ({ ...p, ciudad: availableCities[0] }));
         } else if (availableCities.length > 1 && !availableCities.includes(form.ciudad)) {
-            setForm(p => ({ ...p, ciudad: '' }));
+            setForm(p => ({ ...p, ciudad: availableCities.includes('La Serena') ? 'La Serena' : '' }));
         }
     }, [availableCities, form.ciudad]);
 
