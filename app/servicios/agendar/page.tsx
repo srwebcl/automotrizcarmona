@@ -161,7 +161,8 @@ function AgendarContent() {
     };
 
     // ── Step validation ──────────────────────────────────────────────────────
-    const step1Valid = form.rut && form.nombre && form.apellido && form.correo && form.celular.length > 6;
+    const isCityValid = availableCities.length === 0 || form.ciudad !== '';
+    const step1Valid = form.rut && form.nombre && form.apellido && form.correo && form.celular.length > 6 && isCityValid;
     const step2Valid = form.marca && form.tipoServicio;
     const step3Valid = form.fechaTentativa && form.bloqueHorario && form.acceptPolicy;
 
