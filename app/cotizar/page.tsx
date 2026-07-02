@@ -493,13 +493,13 @@ function CotizarContent() {
                     {/* RIGHT COLUMN: Resumen del Vehículo */}
                     <div className="lg:col-span-5 relative">
                         {/* Sticky container limits the scrolling bounding rect */}
-                        <div className="sticky top-28 bg-white p-6 sm:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
+                        <div className="sticky top-28 bg-white p-4 sm:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
 
                             {/* Head Vehicle Info */}
                             {model && version ? (
                                 <>
-                                    <div className="flex items-center gap-4 border-b border-gray-100 pb-6 mb-6">
-                                        <div className="relative w-24 h-14 bg-[#f8f9fa] rounded-lg">
+                                    <div className="flex items-center gap-3 sm:gap-4 border-b border-gray-100 pb-4 sm:pb-6 mb-4 sm:mb-6">
+                                        <div className="relative w-20 sm:w-24 h-12 sm:h-14 bg-[#f8f9fa] rounded-lg">
                                             {model.image ? (
                                                 <Image
                                                     src={model.image}
@@ -514,13 +514,13 @@ function CotizarContent() {
                                             )}
                                         </div>
                                         <div className="flex-1 min-w-0 pr-2">
-                                            <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-lg leading-tight mb-1">
+                                            <h3 className="font-extrabold text-gray-900 uppercase tracking-tight text-base sm:text-lg leading-tight mb-1">
                                                 {marca} {model.name}
                                             </h3>
                                             {(availableVersions.length > 1 && !model.isTruck) ? (
                                                 <div className="relative w-full mt-1.5">
                                                     <select 
-                                                        className="w-full text-[13px] font-bold text-gray-700 bg-[#f8f9fa] border-2 border-transparent hover:border-gray-200 focus:border-[#d2001c] focus:bg-white rounded-lg pl-3 pr-8 py-2 outline-none appearance-none cursor-pointer transition-colors truncate shadow-sm"
+                                                        className="w-full text-[12px] sm:text-[13px] font-bold text-gray-700 bg-[#f8f9fa] border-2 border-transparent hover:border-gray-200 focus:border-[#d2001c] focus:bg-white rounded-lg pl-3 pr-8 py-1.5 sm:py-2 outline-none appearance-none cursor-pointer transition-colors truncate shadow-sm"
                                                         value={version.name}
                                                         onChange={(e) => {
                                                             const newVersion = e.target.value;
@@ -550,24 +550,24 @@ function CotizarContent() {
 
                                     {/* Pricing List */}
                                     {!model.isTruck ? (
-                                        <div className="space-y-4">
-                                            <div className="flex justify-between items-center group pt-4 pb-2 border-b border-gray-50">
-                                                <span className="text-gray-400 font-medium">
+                                        <div className="space-y-2 sm:space-y-4">
+                                            <div className="flex justify-between items-center group pt-2 sm:pt-4 pb-1 sm:pb-2 border-b border-gray-50">
+                                                <span className="text-gray-400 font-medium text-xs sm:text-sm">
                                                     Precio de Lista
                                                 </span>
-                                                <span className="font-bold text-gray-400 line-through text-base">{formatPrice(version.listPrice)}</span>
+                                                <span className="font-bold text-gray-400 line-through text-sm sm:text-base">{formatPrice(version.listPrice)}</span>
                                             </div>
-                                            <div className="flex justify-between items-center group mb-2">
-                                                <span className="text-gray-500 font-medium flex items-center gap-1.5">
+                                            <div className="flex justify-between items-center group mb-1 sm:mb-2">
+                                                <span className="text-gray-500 font-medium flex items-center gap-1.5 text-xs sm:text-sm">
                                                     {version.isPromotion ? 'Bono Liquidación' : 'Bono Financiamiento'} <Info size={14} className="text-gray-300 group-hover:text-gray-500 transition-colors" />
                                                 </span>
-                                                <span className="font-bold text-gray-600 text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
+                                                <span className="font-bold text-gray-600 text-sm sm:text-base">{formatPrice((version.listPrice - (version.bonusPrice || version.listPrice)) || version.bonus)}</span>
                                             </div>
-                                            <div className="flex justify-between items-center group mt-4">
-                                                <span className="text-gray-900 font-bold flex items-center gap-1.5">
+                                            <div className="flex justify-between items-center group mt-2 sm:mt-4">
+                                                <span className="text-gray-900 font-bold flex items-center gap-1.5 text-sm sm:text-base">
                                                     {version.isPromotion ? 'Precio Liquidación' : 'Precio con Financiamiento'}
                                                 </span>
-                                                <span className="font-black text-gray-900 text-xl">{formatPrice(version.bonusPrice)}</span>
+                                                <span className="font-black text-gray-900 text-lg sm:text-xl">{formatPrice(version.bonusPrice)}</span>
                                             </div>
                                         </div>
                                     ) : (
