@@ -304,7 +304,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{config.name}</p>
                                             <div className="flex items-start gap-2 min-h-[80px]">
-                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase line-clamp-2">{model.name}</h3>
+                                                <h3 className="text-2xl md:text-[1.75rem] font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
                                                 {model.isElectric && (
                                                     <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
