@@ -295,28 +295,31 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                 return (
                                 <Link key={model.id} href={`/nuevos/${brandId}/${model.id}`} className="group block">
                                     <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
-                                        <div className="absolute top-6 right-6 z-20">
+                                        <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
+                                            {model.isElectric && (
+                                                <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
+                                                    <span className="text-[9px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
+                                                </div>
+                                            )}
+                                            {model.isHybrid && !model.isElectric && (
+                                                <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
+                                                    <span className="text-[9px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
+                                                </div>
+                                            )}
                                             <ShareButton
                                                 title={`Conoce el ${model.name} en Automotriz Carmona`}
                                                 url={`https://automotrizcarmona.cl/nuevos/${brandId}/${model.id}`}
                                             />
                                         </div>
                                         <div className="relative z-10">
-                                            <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{config.name}</p>
+                                            <div className="flex items-center justify-between mb-1.5">
+                                                <p className="text-gray-400 text-xs font-black uppercase tracking-widest">{config.name}</p>
+                                                {/* Mobile badges (visible solo en móviles si hay poco espacio, aunque con gap-2 arriba igual caben, los dejo arriba y oculto en móviles muy pequeños si prefieres, o los muevo aquí. Dejémoslo solo arriba para mantener limpieza) */}
+                                            </div>
                                             <div className="flex items-start gap-2 min-h-[80px]">
                                                 <h3 className="text-2xl md:text-[1.75rem] font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
-                                                {model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
-                                                        <span className="text-[10px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
-                                                    </div>
-                                                )}
-                                                {model.isHybrid && !model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
-                                                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
-                                                        <span className="text-[10px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
-                                                    </div>
-                                                )}
                                             </div>
                                         </div>
                                         <div className="absolute bottom-[-4.5rem] left-1/2 transform -translate-x-1/2 w-[115%] max-w-[380px] h-[220px]">
