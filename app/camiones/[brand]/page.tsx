@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, Info, Truck as TruckIcon } from 'lucide-react';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound, useRouter, useSearchParams } from 'next/navigation';
 
 import { getBrandConfig } from '@/lib/brands';
 import { getTrucksByBrand, Truck } from '@/lib/api';
@@ -18,8 +18,11 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
 
     if (!config) return notFound();
 
+    const searchParams = useSearchParams();
+    const categoryParam = searchParams.get('categoria');
+
     // Truck specific categories — derived dynamically later from API data
-    const [activeCategory, setActiveCategory] = useState('Todos');
+    const [activeCategory, setActiveCategory] = useState(categoryParam || 'Todos');
     const [brand, setBrand] = useState<any>(null);
     const [trucks, setTrucks] = useState<Truck[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -80,6 +83,17 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
     const filteredModels = activeCategory === 'Todos' 
         ? trucks 
         : trucks.filter(t => (t as any).category === activeCategory);
+
+    const handleCategoryChange = (cat: string) => {
+        setActiveCategory(cat);
+        const params = new URLSearchParams(searchParams.toString());
+        if (cat === 'Todos') {
+            params.delete('categoria');
+        } else {
+            params.set('categoria', cat);
+        }
+        router.replace(`${window.location.pathname}?${params.toString()}`, { scroll: false });
+    };
 
     const quoteTruck = (truck: Truck) => {
         router.push(`/cotizar?marca=${brandId}&modelo=${truck.slug}`);
@@ -198,7 +212,7 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                             {availableCategories.map((cat) => (
                                 <button
                                     key={cat}
-                                    onClick={() => setActiveCategory(cat)}
+                                    onClick={() => handleCategoryChange(cat)}
                                     className={`px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-200 border-2 ${
                                         activeCategory === cat
                                             ? 'bg-gray-900 text-white border-gray-900 shadow-lg'

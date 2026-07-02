@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Info, Flame } from 'lucide-react';
@@ -24,14 +25,21 @@ export default function LiquidacionClient({
     layoutBrands: { cars: any[], trucks: any[] },
     targetVin?: string
 }) {
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
     // Calculamos la marca inicial de forma síncrona antes del primer render
     const initialBrand = useMemo(() => {
+        const marcaParam = searchParams.get('marca');
+        if (marcaParam) return marcaParam.toLowerCase();
+
         if (targetVin) {
             const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
             if (targetUnit) return targetUnit.brand.toLowerCase();
         }
         return 'Todas';
-    }, [targetVin, allPromoUnits]);
+    }, [targetVin, allPromoUnits, searchParams]);
 
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
@@ -71,6 +79,15 @@ export default function LiquidacionClient({
 
     const handleBrandChange = (brandSlug: string) => {
         setActiveBrand(brandSlug);
+
+        const params = new URLSearchParams(searchParams.toString());
+        if (brandSlug === 'Todas') {
+            params.delete('marca');
+        } else {
+            params.set('marca', brandSlug.toLowerCase());
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+
         // Pequeño delay para dejar que el filtrado ocurra antes de scrollear
         setTimeout(() => {
             if (gridRef.current) {

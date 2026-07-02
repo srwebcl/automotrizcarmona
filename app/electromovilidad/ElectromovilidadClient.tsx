@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Leaf } from 'lucide-react';
@@ -11,7 +12,23 @@ const formatPrice = (price: number) => {
 };
 
 export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[] }) {
-    const [activeBrand, setActiveBrand] = useState('Todas');
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    const marcaParam = searchParams.get('marca');
+    const [activeBrand, setActiveBrand] = useState(marcaParam || 'Todas');
+
+    const handleBrandChange = (brand: string) => {
+        setActiveBrand(brand);
+        const params = new URLSearchParams(searchParams.toString());
+        if (brand === 'Todas') {
+            params.delete('marca');
+        } else {
+            params.set('marca', brand);
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    };
 
     const brandNames = ['Todas', ...Array.from(new Set(ecoModels.map(m => m.brand))).sort()];
 
@@ -29,7 +46,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                         {brandNames.map((brandInfo: string) => (
                             <button
                                 key={brandInfo}
-                                onClick={() => setActiveBrand(brandInfo)}
+                                onClick={() => handleBrandChange(brandInfo)}
                                 className={`whitespace-nowrap text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full transition-all border ${activeBrand === brandInfo
                                     ? 'bg-green-600 text-white border-green-600 shadow-lg shadow-green-600/30'
                                     : 'bg-white text-gray-500 border-gray-200 hover:border-green-600/50 hover:text-green-600'

@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -39,7 +40,16 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
 
     const CATEGORIES = dynamicCategories;
 
-    const [activeCategory, setActiveCategory] = useState('Todos');
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+
+    // Init activeCategory from URL if available
+    const categoryParam = searchParams.get('categoria');
+    const isValidCategory = categoryParam && CATEGORIES.map(c => c.toLowerCase()).includes(categoryParam.toLowerCase());
+    const initialCategory = isValidCategory ? CATEGORIES.find(c => c.toLowerCase() === categoryParam.toLowerCase()) : 'Todos';
+
+    const [activeCategory, setActiveCategory] = useState(initialCategory as string);
     const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
@@ -65,6 +75,16 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
 
     const handleCategoryChange = (cat: string) => {
         setActiveCategory(cat);
+        
+        // Update URL cleanly
+        const params = new URLSearchParams(searchParams.toString());
+        if (cat === 'Todos') {
+            params.delete('categoria');
+        } else {
+            params.set('categoria', cat);
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+
         if (catalogRef.current) {
             const yOffset = -150;
             const y = catalogRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
