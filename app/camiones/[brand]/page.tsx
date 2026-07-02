@@ -10,12 +10,26 @@ import { notFound, useRouter, useSearchParams } from 'next/navigation';
 import { getBrandConfig } from '@/lib/brands';
 import { getTrucksByBrand, Truck } from '@/lib/api';
 
+const slugify = (text: string) => {
+    return text.toString().toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
 function TruckBrandContent({ brandId, config }: { brandId: string, config: any }) {
     const router = useRouter();
     const searchParams = useSearchParams();
     const categoryParam = searchParams.get('categoria');
 
-    // Truck specific categories — derived dynamically later from API data
+    // Find initial category safely based on slug
+    // availableCategories are computed later, so we just use the original param or matching logic later.
+    // Wait, activeCategory is a string. If the user passes 'hibrido' we want the state to be 'Híbrido' 
+    // but the list of categories is async! So we have to match it later or store it as is and fix it later.
     const [activeCategory, setActiveCategory] = useState(categoryParam || 'Todos');
     const [brand, setBrand] = useState<any>(null);
     const [trucks, setTrucks] = useState<Truck[]>([]);
@@ -91,7 +105,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
 
     const filteredModels = activeCategory === 'Todos' 
         ? trucks 
-        : trucks.filter(t => (t as any).category === activeCategory);
+        : trucks.filter(t => (t as any).category === activeCategory || slugify((t as any).category) === slugify(activeCategory));
 
     const handleCategoryChange = (cat: string) => {
         setActiveCategory(cat);
@@ -99,7 +113,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
         if (cat === 'Todos') {
             params.delete('categoria');
         } else {
-            params.set('categoria', cat);
+            params.set('categoria', slugify(cat));
         }
         window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
     };
@@ -223,7 +237,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
                                     key={cat}
                                     onClick={() => handleCategoryChange(cat)}
                                     className={`px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-all duration-200 border-2 ${
-                                        activeCategory === cat
+                                        slugify(activeCategory) === slugify(cat)
                                             ? 'bg-gray-900 text-white border-gray-900 shadow-lg'
                                             : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400 hover:text-gray-900'
                                     }`}

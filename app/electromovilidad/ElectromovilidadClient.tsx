@@ -11,13 +11,33 @@ const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
 };
 
+const slugify = (text: string) => {
+    return text.toString().toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
 export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[] }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const brandNames = ['Todas', ...Array.from(new Set(ecoModels.map(m => m.brand))).sort()];
 
     const marcaParam = searchParams.get('marca');
-    const [activeBrand, setActiveBrand] = useState(marcaParam || 'Todas');
+    
+    // Find matched brand
+    const initialBrand = useMemo(() => {
+        if (!marcaParam) return 'Todas';
+        const matched = brandNames.find(b => slugify(b) === slugify(marcaParam));
+        return matched || marcaParam;
+    }, [marcaParam, brandNames]);
+
+    const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
@@ -39,12 +59,10 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
         if (brand === 'Todas') {
             params.delete('marca');
         } else {
-            params.set('marca', brand);
+            params.set('marca', slugify(brand));
         }
         window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
     };
-
-    const brandNames = ['Todas', ...Array.from(new Set(ecoModels.map(m => m.brand))).sort()];
 
     const filteredModels = useMemo(() => {
         if (activeBrand === 'Todas') return ecoModels;

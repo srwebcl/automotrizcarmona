@@ -12,6 +12,17 @@ const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(price);
 };
 
+const slugify = (text: string) => {
+    return text.toString().toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
 export default function LiquidacionClient({ 
     allPromoUnits, 
     title, 
@@ -32,14 +43,20 @@ export default function LiquidacionClient({
     // Calculamos la marca inicial de forma síncrona antes del primer render
     const initialBrand = useMemo(() => {
         const marcaParam = searchParams.get('marca');
-        if (marcaParam) return marcaParam.toLowerCase();
+        if (marcaParam) {
+            // Buscamos la marca real que coincida con el slug de la URL
+            const allBrands = [...layoutBrands.cars, ...layoutBrands.trucks];
+            const matchedBrand = allBrands.find(b => slugify(b.slug) === slugify(marcaParam));
+            if (matchedBrand) return matchedBrand.slug;
+            return marcaParam;
+        }
 
         if (targetVin) {
             const targetUnit = allPromoUnits.find(u => u.vin === targetVin);
             if (targetUnit) return targetUnit.brand.toLowerCase();
         }
         return 'Todas';
-    }, [targetVin, allPromoUnits, searchParams]);
+    }, [targetVin, allPromoUnits, searchParams, layoutBrands]);
 
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
@@ -85,7 +102,7 @@ export default function LiquidacionClient({
         if (brandSlug === 'Todas') {
             params.delete('marca');
         } else {
-            params.set('marca', brandSlug.toLowerCase());
+            params.set('marca', slugify(brandSlug));
         }
         window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
 

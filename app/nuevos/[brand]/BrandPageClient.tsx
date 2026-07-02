@@ -9,6 +9,17 @@ import { ChevronLeft, ChevronRight, ArrowRight, Info } from 'lucide-react';
 import ShareButton from '@/components/ShareButton';
 import { Vehicle } from '@/lib/models/types';
 
+const slugify = (text: string) => {
+    return text.toString().toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
 interface BrandPageClientProps {
     brandId: string;
     models: Vehicle[];
@@ -46,8 +57,8 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
 
     // Init activeCategory from URL if available
     const categoryParam = searchParams.get('categoria');
-    const isValidCategory = categoryParam && CATEGORIES.map(c => c.toLowerCase()).includes(categoryParam.toLowerCase());
-    const initialCategory = isValidCategory ? CATEGORIES.find(c => c.toLowerCase() === categoryParam.toLowerCase()) : 'Todos';
+    const isValidCategory = categoryParam && CATEGORIES.some(c => slugify(c) === slugify(categoryParam));
+    const initialCategory = isValidCategory ? CATEGORIES.find(c => slugify(c) === slugify(categoryParam)) : 'Todos';
 
     const [activeCategory, setActiveCategory] = useState(initialCategory as string);
     const [emblaRef] = useEmblaCarousel({
@@ -96,7 +107,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
         if (cat === 'Todos') {
             params.delete('categoria');
         } else {
-            params.set('categoria', cat);
+            params.set('categoria', slugify(cat));
         }
         window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
 
