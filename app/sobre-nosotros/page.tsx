@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { ShieldCheck, Target, Heart, CheckCircle2 } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Sobre Nosotros - Automotriz Carmona',
@@ -10,85 +10,64 @@ export const metadata: Metadata = {
 
 export default function SobreNosotrosPage() {
     return (
-        <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[88px]">
             {/* HEADER SECCIÓN */}
             <section className="bg-white py-14 md:py-20 border-b border-gray-100">
                 <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
                     <div className="text-center max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest text-gray-500 uppercase">
-                            <ShieldCheck size={16} />
-                            <span>Líderes en el Norte de Chile</span>
+                            <span>Desde 1993</span>
                         </div>
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight mb-6">
                             Nuestra{' '}
-                            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#d2001c] via-[#e63946] to-[#d2001c]">
+                            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700">
                                 Historia
                             </span>
                         </h1>
                         <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-                            Construyendo relaciones de confianza a través de soluciones de movilidad de calidad desde hace más de tres décadas.
+                            Somos el concesionario automotriz más grande de la Tercera y Cuarta Región
                         </p>
                     </div>
                 </div>
             </section>
 
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-16">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 md:py-24">
                 
                 {/* Historia Grid */}
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-20">
-                    {/* Left Column: Big Year */}
-                    <div className="lg:col-span-5 relative">
-                        <div className="sticky top-32 bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden">
-                            {/* Watermark */}
-                            <div className="absolute -right-8 -top-8 text-[12rem] font-black text-gray-50 leading-none select-none pointer-events-none">
-                                93
-                            </div>
-                            <div className="relative z-10">
-                                <p className="text-[#d2001c] font-black tracking-[0.2em] uppercase text-sm mb-4">El Inicio</p>
-                                <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] tracking-tight leading-none mb-6">
-                                    Agosto <br />1993
-                                </h2>
-                                <p className="text-gray-600 leading-relaxed font-medium">
-                                    Nacimos en La Serena, impulsados por la visión emprendedora de los hermanos Luis y Rodrigo Carmona Amenábar.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Right Column: Text Content */}
-                    <div className="lg:col-span-7 space-y-8">
-                        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
-                            <h3 className="text-2xl font-black text-[#1a1a1a] uppercase tracking-tight mb-6">Crecimiento Sostenido</h3>
-                            <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                                Desde nuestros inicios, nos enfocamos en entregar soluciones de movilidad de calidad, construyendo relaciones de confianza con nuestros clientes y desarrollando un servicio cercano, profesional y orientado a largo plazo.
-                            </p>
-                            <p className="text-gray-600 leading-relaxed text-lg">
-                                A lo largo de más de tres décadas de trayectoria, Automotriz Carmona ha experimentado un crecimiento sostenido, ampliando su presencia, incorporando nuevas marcas y fortaleciendo sus áreas de venta, postventa y servicios especializados. Gracias a nuestro compromiso con la excelencia, la innovación y la satisfacción de nuestros clientes, nos hemos consolidado como un referente de la industria automotriz.
-                            </p>
+                <div className="bg-[#0a0a0a] rounded-[2rem] p-8 md:p-16 mb-24 shadow-xl">
+                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
+                        {/* Left Column: Big Year */}
+                        <div className="lg:col-span-4 relative border-l border-gray-800 pl-6 h-max">
+                            <p className="text-gray-500 font-bold tracking-[0.2em] uppercase text-xs mb-2">Fundación</p>
+                            <h2 className="text-5xl md:text-6xl font-extrabold text-white tracking-tighter leading-none mb-6">
+                                1993
+                            </h2>
                         </div>
                         
-                        <div className="bg-[#1a1a1a] text-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.1)] relative overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#d2001c] rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
-                            <div className="relative z-10">
-                                <h3 className="text-2xl font-black uppercase tracking-tight mb-4">La Actualidad</h3>
-                                <p className="text-gray-300 leading-relaxed text-lg">
-                                    Hoy, Automotriz Carmona es el <strong className="text-white">concesionario automotriz más grande de la Tercera y Cuarta Región</strong>, liderando el mercado regional con una amplia oferta de vehículos, soluciones de financiamiento, servicio técnico especializado y una sólida red de atención.
+                        {/* Right Column: Text Content */}
+                        <div className="lg:col-span-8 space-y-8">
+                            <div className="prose prose-lg text-gray-400 font-light max-w-none">
+                                <p>
+                                    Automotriz Carmona nació en agosto de 1993 en la ciudad de La Serena, impulsada por la visión emprendedora de los hermanos Luis y Rodrigo Carmona Amenábar. Desde sus inicios, la empresa se enfocó en entregar soluciones de movilidad de calidad, construyendo relaciones de confianza con sus clientes y desarrollando un servicio cercano, profesional y orientado a largo plazo.
+                                </p>
+                                <p>
+                                    A lo largo de más de tres décadas de trayectoria, Automotriz Carmona ha experimentado un crecimiento sostenido, ampliando su presencia, incorporando nuevas marcas y fortaleciendo sus áreas de venta, postventa y servicios especializados. Gracias a su compromiso con la excelencia, la innovación y la satisfacción de sus clientes, se ha consolidado como un referente de la industria automotriz en el norte de Chile.
+                                </p>
+                                <p className="text-gray-300 font-medium">
+                                    Actualmente, Automotriz Carmona es el concesionario automotriz más grande de la Tercera y Cuarta Región, liderando el mercado regional con una amplia oferta de vehículos, soluciones de financiamiento, servicio técnico especializado y una sólida red de atención orientada a brindar la mejor experiencia a sus clientes.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Misión y Visión (Bento Box style) */}
-                <div className="grid md:grid-cols-2 gap-6 mb-20">
+                {/* Misión y Visión (Corporate List) */}
+                <div className="grid md:grid-cols-2 gap-16 mb-24">
                     {/* Mision */}
-                    <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col h-full hover:shadow-lg transition-shadow duration-500">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100/50 flex items-center justify-center mb-8 border border-blue-100/50 shadow-sm text-blue-600">
-                            <Target size={28} strokeWidth={2.5} />
-                        </div>
-                        <h2 className="text-3xl font-black text-[#1a1a1a] uppercase tracking-tight mb-6">Misión</h2>
-                        <div className="space-y-4 text-gray-600 leading-relaxed flex-grow">
-                            <p className="font-medium text-[#1a1a1a]">
+                    <div className="border-t border-gray-900 pt-8">
+                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Misión</h2>
+                        <div className="space-y-4 text-gray-500 font-light leading-relaxed">
+                            <p className="text-gray-800 font-normal">
                                 Carmona y Cia es una empresa automotriz dedicada a la distribución y venta de vehículos y camiones, nuevos y usados, agregando valor a nuestra cadena a través del servicio de post venta en la III y IV región del país.
                             </p>
                             <p>
@@ -98,31 +77,25 @@ export default function SobreNosotrosPage() {
                     </div>
 
                     {/* Vision */}
-                    <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex flex-col h-full hover:shadow-lg transition-shadow duration-500">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/50 flex items-center justify-center mb-8 border border-amber-100/50 shadow-sm text-amber-600">
-                            <ShieldCheck size={28} strokeWidth={2.5} />
-                        </div>
-                        <h2 className="text-3xl font-black text-[#1a1a1a] uppercase tracking-tight mb-6">Visión</h2>
-                        <div className="text-gray-600 leading-relaxed text-lg flex-grow">
+                    <div className="border-t border-gray-900 pt-8">
+                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Visión</h2>
+                        <div className="text-gray-500 font-light leading-relaxed">
                             <p>
-                                Ser el mejor concesionario de la región, reconocidos por la excelencia en el compromiso de satisfacción de nuestros clientes con <strong className="text-[#1a1a1a]">Excelencia 7</strong> en calidad.
+                                Ser el mejor concesionario de la región reconocidos por la excelencia en el compromiso de satisfacción de nuestros clientes con Excelencia 7 en calidad al año 2020.
                             </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Valores */}
-                <div className="mb-24">
-                    <div className="text-center mb-12">
-                        <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-rose-50 to-rose-100/50 flex items-center justify-center mb-6 border border-rose-100/50 shadow-sm text-rose-600">
-                            <Heart size={32} strokeWidth={2.5} />
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-black text-[#1a1a1a] uppercase tracking-tight">
-                            Nuestros Valores
+                <div className="bg-gray-50 rounded-[2rem] p-8 md:p-16 border border-gray-100">
+                    <div className="mb-12">
+                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight">
+                            Valores
                         </h2>
                     </div>
                     
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-6 gap-x-8">
                         {[
                             'Transparencia',
                             'Respeto',
@@ -136,17 +109,17 @@ export default function SobreNosotrosPage() {
                             'Cooperación',
                             'Pasión en lo que hacemos',
                         ].map((valor, idx) => (
-                            <div 
+                            <li 
                                 key={idx} 
-                                className="group bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.02)] border border-gray-100 hover:border-gray-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-all duration-300 flex items-start gap-3"
+                                className="flex items-center gap-3 border-b border-gray-200 pb-3"
                             >
-                                <CheckCircle2 className="text-[#d2001c] w-5 h-5 flex-shrink-0 mt-0.5 opacity-70 group-hover:opacity-100 transition-opacity" />
-                                <span className="font-bold text-[#1a1a1a] group-hover:text-[#d2001c] transition-colors">
+                                <Check size={16} strokeWidth={3} className="text-[#d4af37]" />
+                                <span className="font-semibold text-gray-700 uppercase text-xs tracking-wider">
                                     {valor}
                                 </span>
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 </div>
 
             </div>
