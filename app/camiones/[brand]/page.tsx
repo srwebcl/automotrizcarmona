@@ -266,7 +266,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
                             {filteredModels.map((truck) => (
                                 <Link key={truck.id} href={`/cotizar?marca=${brandId}&modelo=${truck.slug}`} className="group block">
                                     <div className="relative rounded-[2rem] pt-10 px-8 pb-32 transition-colors bg-[#f8f8f8] mb-8 group-hover:bg-[#f1f1f1]">
-                                        <div className="relative z-10">
+                                        <div className="relative z-10 mt-2">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest text-center">{config.name}</p>
                                             <h3 className="text-xl font-extrabold text-[#1a1a1a] tracking-tight uppercase text-center line-clamp-2 min-h-[60px]">
                                                 {truck.name}

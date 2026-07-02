@@ -111,14 +111,14 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                                     <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
                                         <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
                                             {model.isElectric && (
-                                                <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
-                                                    <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
+                                                <div className="flex items-center gap-1 border border-emerald-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <span className="text-[10px]">⚡</span>
                                                     <span className="text-[9px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
                                                 </div>
                                             )}
                                             {model.isHybrid && !model.isElectric && (
-                                                <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
-                                                    <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
+                                                <div className="flex items-center gap-1 border border-blue-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <span className="text-[10px]">🌱</span>
                                                     <span className="text-[9px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
                                                 </div>
                                             )}
@@ -127,7 +127,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                                                 url={`https://automotrizcarmona.cl/nuevos/${model.brand}/${model.id}`}
                                             />
                                         </div>
-                                        <div className="relative z-10">
+                                        <div className="relative z-10 mt-2">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{model.brand}</p>
                                             <div className="flex items-start gap-2 flex-wrap min-h-[80px]">
                                                 <h3 className="text-xl font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
