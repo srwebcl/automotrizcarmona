@@ -31,22 +31,22 @@ export default function SobreNosotrosPage() {
                 </div>
             </section>
 
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-16 md:py-24">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 md:py-24">
                 
                 {/* Historia Grid */}
-                <div className="bg-[#0a0a0a] rounded-[2rem] p-8 md:p-16 mb-24 shadow-xl">
+                <div className="bg-[#0a0a0a] rounded-[2rem] p-8 md:p-16 mb-16 md:mb-24 shadow-xl">
                     <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
                         {/* Left Column: Big Year */}
                         <div className="lg:col-span-4 relative border-l border-gray-800 pl-6 h-max">
                             <p className="text-gray-500 font-bold tracking-[0.2em] uppercase text-xs mb-2">Fundación</p>
-                            <h2 className="text-5xl md:text-6xl font-extrabold text-white tracking-tighter leading-none mb-6">
+                            <h2 className="text-5xl md:text-6xl font-extrabold text-white tracking-tighter leading-none mb-6 md:mb-0">
                                 1993
                             </h2>
                         </div>
                         
                         {/* Right Column: Text Content */}
-                        <div className="lg:col-span-8 space-y-8">
-                            <div className="prose prose-lg text-gray-400 font-light max-w-none">
+                        <div className="lg:col-span-8 space-y-6 md:space-y-8">
+                            <div className="prose prose-lg text-gray-400 font-light max-w-none text-justify">
                                 <p>
                                     Automotriz Carmona nació en agosto de 1993 en la ciudad de La Serena, impulsada por la visión emprendedora de los hermanos Luis y Rodrigo Carmona Amenábar. Desde sus inicios, la empresa se enfocó en entregar soluciones de movilidad de calidad, construyendo relaciones de confianza con sus clientes y desarrollando un servicio cercano, profesional y orientado a largo plazo.
                                 </p>
@@ -60,13 +60,14 @@ export default function SobreNosotrosPage() {
                         </div>
                     </div>
                 </div>
+                <hr className="border-gray-100 mb-16 md:mb-24" />
 
                 {/* Misión y Visión (Corporate List) */}
-                <div className="grid md:grid-cols-2 gap-16 mb-24">
+                <div className="grid md:grid-cols-2 gap-12 md:gap-16 mb-16 md:mb-24">
                     {/* Mision */}
-                    <div className="border-t border-gray-900 pt-8">
-                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Misión</h2>
-                        <div className="space-y-4 text-gray-500 font-light leading-relaxed">
+                    <div className="border-t border-gray-900 pt-6 md:pt-8">
+                        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-4 md:mb-6">Misión</h2>
+                        <div className="space-y-4 text-gray-500 font-light leading-relaxed text-justify">
                             <p className="text-gray-800 font-normal">
                                 Carmona y Cia es una empresa automotriz dedicada a la distribución y venta de vehículos y camiones, nuevos y usados, agregando valor a nuestra cadena a través del servicio de post venta en la III y IV región del país.
                             </p>
@@ -77,9 +78,9 @@ export default function SobreNosotrosPage() {
                     </div>
 
                     {/* Vision */}
-                    <div className="border-t border-gray-900 pt-8">
-                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-6">Visión</h2>
-                        <div className="text-gray-500 font-light leading-relaxed">
+                    <div className="border-t border-gray-900 pt-6 md:pt-8">
+                        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-4 md:mb-6">Visión</h2>
+                        <div className="text-gray-500 font-light leading-relaxed text-justify">
                             <p>
                                 Ser el mejor concesionario de la región reconocidos por la excelencia en el compromiso de satisfacción de nuestros clientes con Excelencia 7 en calidad al año 2020.
                             </p>
@@ -88,9 +89,9 @@ export default function SobreNosotrosPage() {
                 </div>
 
                 {/* Valores */}
-                <div className="bg-gray-50 rounded-[2rem] p-8 md:p-16 border border-gray-100">
-                    <div className="mb-12">
-                        <h2 className="text-3xl font-extrabold text-gray-900 uppercase tracking-tight">
+                <div className="bg-gray-50 rounded-[2rem] p-6 md:p-16 border border-gray-100 mb-10 md:mb-0">
+                    <div className="mb-8 md:mb-12">
+                        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 uppercase tracking-tight">
                             Valores
                         </h2>
                     </div>
