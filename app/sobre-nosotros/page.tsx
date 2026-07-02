@@ -31,11 +31,11 @@ export default function SobreNosotrosPage() {
                 </div>
             </section>
 
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 md:py-24">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-10 md:py-16">
                 
                 {/* Historia Grid */}
-                <div className="bg-[#0a0a0a] rounded-[2rem] p-8 md:p-16 mb-16 md:mb-24 shadow-xl">
-                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
+                <div className="bg-[#0a0a0a] rounded-[2rem] p-8 md:p-12 mb-16 shadow-xl">
+                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
                         {/* Left Column: Big Year */}
                         <div className="lg:col-span-4 relative border-l border-gray-800 pl-6 h-max">
                             <p className="text-gray-500 font-bold tracking-[0.2em] uppercase text-xs mb-2">Fundación</p>
@@ -45,7 +45,7 @@ export default function SobreNosotrosPage() {
                         </div>
                         
                         {/* Right Column: Text Content */}
-                        <div className="lg:col-span-8 space-y-6 md:space-y-8">
+                        <div className="lg:col-span-8 space-y-6">
                             <div className="prose prose-lg text-gray-400 font-light max-w-none text-justify">
                                 <p>
                                     Automotriz Carmona nació en agosto de 1993 en la ciudad de La Serena, impulsada por la visión emprendedora de los hermanos Luis y Rodrigo Carmona Amenábar. Desde sus inicios, la empresa se enfocó en entregar soluciones de movilidad de calidad, construyendo relaciones de confianza con sus clientes y desarrollando un servicio cercano, profesional y orientado a largo plazo.
@@ -60,10 +60,10 @@ export default function SobreNosotrosPage() {
                         </div>
                     </div>
                 </div>
-                <hr className="border-gray-100 mb-16 md:mb-24" />
+                <hr className="border-gray-100 mb-12 md:mb-16" />
 
                 {/* Misión y Visión (Corporate List) */}
-                <div className="grid md:grid-cols-2 gap-12 md:gap-16 mb-16 md:mb-24">
+                <div className="grid md:grid-cols-2 gap-12 mb-16">
                     {/* Mision */}
                     <div className="border-t border-gray-900 pt-6 md:pt-8">
                         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 uppercase tracking-tight mb-4 md:mb-6">Misión</h2>
@@ -89,7 +89,7 @@ export default function SobreNosotrosPage() {
                 </div>
 
                 {/* Valores */}
-                <div className="bg-gray-50 rounded-[2rem] p-6 md:p-16 border border-gray-100 mb-10 md:mb-0">
+                <div className="bg-gray-50 rounded-[2rem] p-6 md:p-12 border border-gray-100 mb-10 md:mb-0">
                     <div className="mb-8 md:mb-12">
                         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 uppercase tracking-tight">
                             Valores
