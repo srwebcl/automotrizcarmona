@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, use, useEffect } from 'react';
+import React, { useState, use, useEffect, Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -10,14 +10,8 @@ import { notFound, useRouter, useSearchParams } from 'next/navigation';
 import { getBrandConfig } from '@/lib/brands';
 import { getTrucksByBrand, Truck } from '@/lib/api';
 
-export default function TruckBrandPage({ params }: { params: Promise<{ brand: string }> }) {
-    const resolvedParams = use(params);
-    const brandId = resolvedParams.brand;
-    const config = getBrandConfig(brandId);
+function TruckBrandContent({ brandId, config }: { brandId: string, config: any }) {
     const router = useRouter();
-
-    if (!config) return notFound();
-
     const searchParams = useSearchParams();
     const categoryParam = searchParams.get('categoria');
 
@@ -340,5 +334,19 @@ export default function TruckBrandPage({ params }: { params: Promise<{ brand: st
                 </div>
             </section>
         </main>
+    );
+}
+
+export default function TruckBrandPage({ params }: { params: Promise<{ brand: string }> }) {
+    const resolvedParams = use(params);
+    const brandId = resolvedParams.brand;
+    const config = getBrandConfig(brandId);
+
+    if (!config) return notFound();
+
+    return (
+        <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
+            <TruckBrandContent brandId={brandId} config={config} />
+        </Suspense>
     );
 }

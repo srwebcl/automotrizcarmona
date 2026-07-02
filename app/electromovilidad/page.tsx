@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Leaf, ArrowRight, Info } from 'lucide-react';
@@ -71,7 +71,9 @@ export default async function ElectromovilidadPage() {
                 </div>
             </section>
 
-            <ElectromovilidadClient ecoModels={ecoModels} />
+            <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
+                <ElectromovilidadClient ecoModels={ecoModels} />
+            </Suspense>
             
             {/* Legal Section */}
             {legalExcerpt && (

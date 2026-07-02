@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { getModelsByBrand, getBrandBySlug, formatImageUrl, getCarAdvisorData, isPorscheBrand } from '@/lib/api';
 import { getBrandConfig } from '@/lib/brands';
@@ -108,7 +109,9 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
 
         return (
             <>
-                <BrandPageClient brandId={brandId} models={models} config={config} />
+                <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
+                    <BrandPageClient brandId={brandId} models={models} config={config} />
+                </Suspense>
                 {showReviews && carAdvisorData && (
                     <CarAdvisorSection
                         data={carAdvisorData}
@@ -121,6 +124,10 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
     } catch (e) {
         console.error('Error in Server Component:', e);
         // Fallback robusto a datos estáticos en caso de fallo absoluto de red con el backend
-        return <BrandPageClient brandId={brandId} models={MODELS_REGISTRY[brandId] || []} config={staticConfig} />;
+        return (
+            <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
+                <BrandPageClient brandId={brandId} models={MODELS_REGISTRY[brandId] || []} config={staticConfig} />
+            </Suspense>
+        );
     }
 }

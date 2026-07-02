@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import { getPromotionModels, getLandingInfo } from '@/lib/api';
 import { getLayoutBrands } from '@/lib/api/layoutBrands';
@@ -165,13 +165,15 @@ export default async function LiquidacionPage({ searchParams }: Props) {
             </section>
 
             {/* CATALOG CONTENT */}
-            <LiquidacionClient 
-                allPromoUnits={allPromoUnits} 
-                title={heroTitle}
-                subtitle={heroSubtitle}
-                layoutBrands={layoutBrands}
-                targetVin={targetVin}
-            />
+            <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
+                <LiquidacionClient 
+                    allPromoUnits={allPromoUnits} 
+                    title={heroTitle}
+                    subtitle={heroSubtitle}
+                    layoutBrands={layoutBrands}
+                    targetVin={targetVin}
+                />
+            </Suspense>
             
             {/* Legal Section */}
             {legalExcerpt && (
