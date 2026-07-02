@@ -212,7 +212,7 @@ export default function LiquidacionClient({
                                     {/* Info Header */}
                                     <div className="relative z-10 mt-2">
                                         <p className="text-[#d2001c] text-[10px] font-black mb-1 uppercase tracking-[0.2em]">{unit.brand}</p>
-                                        <h3 className={`text-xl md:text-2xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
+                                        <h3 className={`text-xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-4">{unit.versionName}</p>
                                         
                                         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">

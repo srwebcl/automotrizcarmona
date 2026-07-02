@@ -319,7 +319,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                                 {/* Mobile badges (visible solo en móviles si hay poco espacio, aunque con gap-2 arriba igual caben, los dejo arriba y oculto en móviles muy pequeños si prefieres, o los muevo aquí. Dejémoslo solo arriba para mantener limpieza) */}
                                             </div>
                                             <div className="flex items-start gap-2 min-h-[80px]">
-                                                <h3 className="text-2xl md:text-[1.75rem] font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
+                                                <h3 className="text-xl font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
                                             </div>
                                         </div>
                                         <div className="absolute bottom-[-4.5rem] left-1/2 transform -translate-x-1/2 w-[115%] max-w-[380px] h-[220px]">

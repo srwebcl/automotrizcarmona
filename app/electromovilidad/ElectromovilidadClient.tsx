@@ -130,7 +130,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{model.brand}</p>
                                             <div className="flex items-start gap-2 flex-wrap min-h-[80px]">
-                                                <h3 className="text-2xl md:text-[1.75rem] font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
+                                                <h3 className="text-xl font-extrabold text-[#1a1a1a] tracking-tight uppercase leading-tight line-clamp-2">{model.name}</h3>
                                             </div>
                                         </div>
                                         <div className="absolute bottom-[-4.5rem] left-1/2 transform -translate-x-1/2 w-[115%] max-w-[380px] h-[220px]">
