@@ -69,7 +69,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
     const [heroEmblaRef, heroEmblaApi] = useEmblaCarousel({ loop: true });
     const [selectedIndex, setSelectedIndex] = useState(0);
 
-    // Auto-scroll inicial si venimos de un enlace con filtro
+    // Auto-scroll inicial si venimos de un enlace con filtro y scroll horizontal de botones
     useEffect(() => {
         if (categoryParam) {
             const t = setTimeout(() => {
@@ -82,6 +82,14 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
             return () => clearTimeout(t);
         }
     }, [categoryParam]);
+
+    // Scroll horizontal para mantener visible el botón activo en móviles
+    useEffect(() => {
+        const btn = document.getElementById(`filter-btn-${slugify(activeCategory)}`);
+        if (btn) {
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    }, [activeCategory]);
 
     const scrollPrev = React.useCallback(() => {
         if (heroEmblaApi) heroEmblaApi.scrollPrev();
@@ -249,8 +257,9 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat}
+                                    id={`filter-btn-${slugify(cat)}`}
                                     onClick={() => handleCategoryChange(cat)}
-                                    className={`whitespace-nowrap text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all ${activeCategory === cat
+                                    className={`whitespace-nowrap text-sm font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all ${slugify(activeCategory) === slugify(cat)
                                         ? 'bg-gray-900 text-white shadow-lg'
                                         : 'bg-transparent text-gray-400 hover:text-gray-900'
                                         }`}
@@ -294,16 +303,16 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                         </div>
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{config.name}</p>
-                                            <div className="flex items-center gap-2">
-                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase">{model.name}</h3>
+                                            <div className="flex items-start gap-2 min-h-[80px]">
+                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase line-clamp-2">{model.name}</h3>
                                                 {model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
                                                         <span className="text-[10px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
                                                     </div>
                                                 )}
                                                 {model.isHybrid && !model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
                                                         <span className="text-[10px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
                                                     </div>

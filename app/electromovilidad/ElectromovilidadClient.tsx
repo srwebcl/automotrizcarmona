@@ -40,6 +40,14 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
 
+    // Scroll horizontal para mantener visible el botón activo en móviles
+    React.useEffect(() => {
+        const btn = document.getElementById(`filter-btn-${slugify(activeBrand)}`);
+        if (btn) {
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    }, [activeBrand]);
+
     React.useEffect(() => {
         if (marcaParam) {
             const t = setTimeout(() => {
@@ -78,6 +86,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                         {brandNames.map((brandInfo: string) => (
                             <button
                                 key={brandInfo}
+                                id={`filter-btn-${slugify(brandInfo)}`}
                                 onClick={() => handleBrandChange(brandInfo)}
                                 className={`whitespace-nowrap text-xs font-black uppercase tracking-widest px-6 py-2.5 rounded-full transition-all border ${activeBrand === brandInfo
                                     ? 'bg-green-600 text-white border-green-600 shadow-lg shadow-green-600/30'
@@ -108,16 +117,16 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                                         </div>
                                         <div className="relative z-10">
                                             <p className="text-gray-400 text-xs font-black mb-1.5 uppercase tracking-widest">{model.brand}</p>
-                                            <div className="flex items-center gap-2 flex-wrap">
-                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase">{model.name}</h3>
+                                            <div className="flex items-start gap-2 flex-wrap min-h-[80px]">
+                                                <h3 className="text-3xl font-extrabold text-[#1a1a1a] tracking-tight uppercase line-clamp-2">{model.name}</h3>
                                                 {model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                    <div className="flex items-center gap-1.5 border border-emerald-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-400 shadow-sm" />
                                                         <span className="text-[10px] font-black text-emerald-800 tracking-wider uppercase">Eléctrico</span>
                                                     </div>
                                                 )}
                                                 {model.isHybrid && !model.isElectric && (
-                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm">
+                                                    <div className="flex items-center gap-1.5 border border-blue-200 rounded-full px-2.5 py-0.5 bg-white/80 backdrop-blur-sm mt-1">
                                                         <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 shadow-sm" />
                                                         <span className="text-[10px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
                                                     </div>

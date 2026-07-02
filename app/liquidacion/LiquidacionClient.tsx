@@ -61,6 +61,14 @@ export default function LiquidacionClient({
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
 
+    // Scroll horizontal para mantener visible el botón activo en móviles
+    React.useEffect(() => {
+        const btn = document.getElementById(`filter-btn-${slugify(activeBrand)}`);
+        if (btn) {
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+    }, [activeBrand]);
+
     // Auto-Scroll infalible: Bajamos la pantalla hasta la cuadrícula
     React.useEffect(() => {
         const marcaParam = searchParams.get('marca');
@@ -123,6 +131,7 @@ export default function LiquidacionClient({
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
                     <div className="flex items-center gap-6 overflow-x-auto scrollbar-hide justify-center md:justify-start">
                         <button
+                            id="filter-btn-todas"
                             onClick={() => handleBrandChange('Todas')}
                             className={`whitespace-nowrap text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-full transition-all ${activeBrand === 'Todas'
                                 ? 'bg-black text-white shadow-lg'
@@ -137,6 +146,7 @@ export default function LiquidacionClient({
                         {brandsInPromo.map((brand: any) => (
                             <button
                                 key={brand.slug}
+                                id={`filter-btn-${slugify(brand.slug)}`}
                                 onClick={() => handleBrandChange(brand.slug)}
                                 className={`relative flex-shrink-0 w-20 h-10 transition-all duration-300 ${activeBrand.toLowerCase() === brand.slug.toLowerCase()
                                     ? 'grayscale opacity-30 scale-90'
