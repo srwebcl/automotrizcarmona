@@ -10,34 +10,29 @@ export const metadata: Metadata = {
 
 export default function SobreNosotrosPage() {
     return (
-        <main className="min-h-screen bg-[#f4f6f8] overflow-hidden">
-            {/* Hero Section */}
-            <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center bg-[#0a0a0a]">
-                {/* Background Graphics */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
-                </div>
-                
-                <div className="relative z-10 max-w-[1200px] w-full mx-auto px-4 sm:px-6 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
-                        <span className="w-2 h-2 rounded-full bg-[#d2001c] animate-pulse" />
-                        <span className="text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">Líderes en el Norte de Chile</span>
+        <main className="min-h-screen bg-[#f4f6f8] font-sans pt-[88px]">
+            {/* HEADER SECCIÓN */}
+            <section className="bg-white py-14 md:py-20 border-b border-gray-100">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 mb-4 text-sm font-bold tracking-widest text-gray-500 uppercase">
+                            <ShieldCheck size={16} />
+                            <span>Líderes en el Norte de Chile</span>
+                        </div>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 tracking-tight mb-6">
+                            Nuestra{' '}
+                            <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#d2001c] via-[#e63946] to-[#d2001c]">
+                                Historia
+                            </span>
+                        </h1>
+                        <p className="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+                            Construyendo relaciones de confianza a través de soluciones de movilidad de calidad desde hace más de tres décadas.
+                        </p>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-6 leading-none">
-                        Nuestra <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">Historia</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed">
-                        Construyendo relaciones de confianza a través de soluciones de movilidad de calidad desde hace más de tres décadas.
-                    </p>
                 </div>
-                
-                {/* Decorative bottom fade */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#f4f6f8] to-transparent z-20" />
             </section>
 
-            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-30 -mt-12">
+            <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-16">
                 
                 {/* Historia Grid */}
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-20">
