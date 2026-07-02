@@ -18,6 +18,20 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
 
     const marcaParam = searchParams.get('marca');
     const [activeBrand, setActiveBrand] = useState(marcaParam || 'Todas');
+    const gridRef = React.useRef<HTMLDivElement>(null);
+
+    React.useEffect(() => {
+        if (marcaParam) {
+            const t = setTimeout(() => {
+                if (gridRef.current) {
+                    const yOffset = -50;
+                    const y = gridRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 600);
+            return () => clearTimeout(t);
+        }
+    }, [marcaParam]);
 
     const handleBrandChange = (brand: string) => {
         setActiveBrand(brand);
@@ -60,7 +74,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
             </section>
 
             {/* CATALOG CONTENT */}
-            <section className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-24 bg-white">
+            <section ref={gridRef} className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-24 bg-white">
                 {filteredModels.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">
                         {filteredModels.map((model) => {

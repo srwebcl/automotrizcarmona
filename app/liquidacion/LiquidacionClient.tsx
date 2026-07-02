@@ -46,7 +46,8 @@ export default function LiquidacionClient({
 
     // Auto-Scroll infalible: Bajamos la pantalla hasta la cuadrícula
     React.useEffect(() => {
-        if (!targetVin) return;
+        const marcaParam = searchParams.get('marca');
+        if (!targetVin && !marcaParam) return;
 
         const scrollToGrid = () => {
             if (gridRef.current) {

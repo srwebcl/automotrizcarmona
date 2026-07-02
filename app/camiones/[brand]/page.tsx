@@ -20,6 +20,21 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
     const [brand, setBrand] = useState<any>(null);
     const [trucks, setTrucks] = useState<Truck[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const catalogRef = React.useRef<HTMLDivElement>(null);
+
+    // Auto-scroll inicial si venimos de un enlace con filtro
+    useEffect(() => {
+        if (categoryParam) {
+            const t = setTimeout(() => {
+                if (catalogRef.current) {
+                    const yOffset = -50;
+                    const y = catalogRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 600);
+            return () => clearTimeout(t);
+        }
+    }, [categoryParam]);
 
     const [emblaRef] = useEmblaCarousel({
         loop: false,
@@ -179,7 +194,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
             </section>
 
             {/* Logo & SEO Title + Category Filter Strip */}
-            <section className="pt-16 pb-0 bg-[#f8f9fa] overflow-hidden relative z-20">
+            <section ref={catalogRef} className="pt-16 pb-0 bg-[#f8f9fa] overflow-hidden relative z-20">
                 <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
                     {/* Logo: prefer API logo, fallback to static config */}
                     <div className="relative w-48 h-16 sm:w-56 sm:h-20 mb-8">

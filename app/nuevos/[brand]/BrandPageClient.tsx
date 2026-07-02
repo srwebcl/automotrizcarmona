@@ -56,6 +56,21 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
         containScroll: 'trimSnaps'
     });
     const [heroEmblaRef, heroEmblaApi] = useEmblaCarousel({ loop: true });
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    // Auto-scroll inicial si venimos de un enlace con filtro
+    useEffect(() => {
+        if (categoryParam) {
+            const t = setTimeout(() => {
+                if (catalogRef.current) {
+                    const yOffset = -150;
+                    const y = catalogRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }, 600);
+            return () => clearTimeout(t);
+        }
+    }, [categoryParam]);
 
     const scrollPrev = React.useCallback(() => {
         if (heroEmblaApi) heroEmblaApi.scrollPrev();
