@@ -27,7 +27,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
         } else {
             params.set('marca', brand);
         }
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
     };
 
     const brandNames = ['Todas', ...Array.from(new Set(ecoModels.map(m => m.brand))).sort()];

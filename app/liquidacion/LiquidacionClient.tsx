@@ -86,7 +86,7 @@ export default function LiquidacionClient({
         } else {
             params.set('marca', brandSlug.toLowerCase());
         }
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
 
         // Pequeño delay para dejar que el filtrado ocurra antes de scrollear
         setTimeout(() => {

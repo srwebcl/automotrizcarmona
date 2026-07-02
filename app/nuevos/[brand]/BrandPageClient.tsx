@@ -76,14 +76,14 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
     const handleCategoryChange = (cat: string) => {
         setActiveCategory(cat);
         
-        // Update URL cleanly
+        // Update URL instantly without Next.js server transition delay
         const params = new URLSearchParams(searchParams.toString());
         if (cat === 'Todos') {
             params.delete('categoria');
         } else {
             params.set('categoria', cat);
         }
-        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+        window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
 
         if (catalogRef.current) {
             const yOffset = -150;
@@ -238,7 +238,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
             </section>
 
             {/* SEO Section */}
-            <section className="pt-6 pb-4 bg-white overflow-hidden">
+            <section ref={catalogRef} className="pt-6 pb-4 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 text-center">
                     <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-900 tracking-tight mb-4">
                         Cotiza tu próximo{' '}
@@ -251,7 +251,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
             </section>
 
             {/* Models Grid */}
-            <section ref={catalogRef} className="pb-24 pt-0 bg-white">
+            <section className="pb-24 pt-0 bg-white">
                 <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
                     {filteredModels.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-24">

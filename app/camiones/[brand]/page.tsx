@@ -86,7 +86,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
         } else {
             params.set('categoria', cat);
         }
-        router.replace(`${window.location.pathname}?${params.toString()}`, { scroll: false });
+        window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
     };
 
     const quoteTruck = (truck: Truck) => {
