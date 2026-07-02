@@ -313,7 +313,7 @@ function CotizarContent() {
             </div>
 
             <div className="max-w-[1200px] mx-auto px-4 sm:px-6 pt-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 lg:gap-12">
 
                     {/* LEFT COLUMN: Form */}
                     <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-2xl shadow-sm border border-gray-100">
@@ -457,6 +457,37 @@ function CotizarContent() {
                                 {isSubmitting ? 'Procesando...' : 'Cotizar'}
                             </button>
                         </form>
+
+                        {/* ── INFO DINÁMICA DE CONTACTO (MOBILE ONLY) ── */}
+                        <div className="block lg:hidden mt-10 pt-8 border-t border-gray-200 space-y-4">
+                            {(() => {
+                                const salesBranch = brandBranches.find(b => b.city === formData.ciudad) 
+                                                    || brandBranches[0] 
+                                                    || { address: 'Avenida Balmaceda 3681', city: 'La Serena', phone: '+56 9 8474 9397' }; // Fallback
+
+                                return (
+                                    <>
+                                        <div className="flex items-start gap-3">
+                                            <MapPin size={18} className="text-[#d2001c] mt-0.5 flex-shrink-0" />
+                                            <div>
+                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Donde encontrarnos</p>
+                                                <p className="text-sm font-semibold text-gray-900">
+                                                    {salesBranch.address}
+                                                </p>
+                                                <p className="text-[11px] text-gray-500">{salesBranch.city}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <Phone size={18} className="text-[#d2001c] flex-shrink-0" />
+                                            <div>
+                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-0.5">Central de Ventas</p>
+                                                <p className="text-sm font-semibold text-gray-900">{salesBranch.phone || '+56 9 8474 9397'}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+                            })()}
+                        </div>
                     </div>
 
                     {/* RIGHT COLUMN: Resumen del Vehículo */}
@@ -549,8 +580,8 @@ function CotizarContent() {
                                             </div>
                                         </div>
                                     )}
-                                    {/* ── INFO DINÁMICA DE CONTACTO ── */}
-                                    <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
+                                    {/* ── INFO DINÁMICA DE CONTACTO (DESKTOP ONLY) ── */}
+                                    <div className="hidden lg:block mt-8 pt-6 border-t border-gray-100 space-y-4">
                                         {(() => {
                                             const salesBranch = brandBranches.find(b => b.city === formData.ciudad) 
                                                                 || brandBranches[0] 
