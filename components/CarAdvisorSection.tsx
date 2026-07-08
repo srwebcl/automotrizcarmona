@@ -120,7 +120,7 @@ export default function CarAdvisorSection({ data, brandFilter, reasonFilter }: C
 
                 {/* ── Logo Car Advisor ── */}
                 <div className="flex flex-col items-center mb-8">
-                    <a href="https://www.caradvisor.at/betrieb/carmona/CL-29019" target="_blank" rel="noopener noreferrer" className="block text-center mb-4 transition-transform hover:scale-105">
+                    <a href="https://www.car-advisor.cl/empresa/carmona/CL-29019" target="_blank" rel="noopener noreferrer" className="block text-center mb-4 transition-transform hover:scale-105">
                         <Image src="/logo-car-advisor.png" alt="Car Advisor" width={200} height={50} className="mx-auto" />
                     </a>
                     <p className="text-[11px] font-bold tracking-[0.2em] text-gray-400 uppercase mb-6">
