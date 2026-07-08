@@ -34,11 +34,12 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                         src={vehicle.image.startsWith('http') ? vehicle.image : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${vehicle.image.replace(/^\//, '')}`}
                         alt={`${vehicle.brand} ${vehicle.name}`}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-contain object-bottom p-4 group-hover:scale-105 transition-transform duration-500"
                     />
                     {/* Badges */}
                     <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
-                        {vehicle.isNew && <span className="bg-carmona-gold text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Nuevo</span>}
+                        {vehicle.isNew && <span className="bg-carmona-gold text-gray-900 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Nuevo</span>}
                         {vehicle.isHybrid && <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Híbrido</span>}
                     </div>
                 </div>
@@ -47,7 +48,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
                         <div className="mb-3">
-                            <span className="text-[10px] font-extrabold text-carmona-orange uppercase tracking-[0.2em] mb-1 block">{vehicle.brand}</span>
+                            <span className="text-[10px] font-extrabold text-[#d2001c] uppercase tracking-[0.2em] mb-1 block">{vehicle.brand}</span>
                             <h3 className="text-xl font-bold text-gray-900 group-hover:text-carmona-orange transition-colors uppercase leading-tight">{vehicle.name}</h3>
                             {vehicle.version && <p className="text-sm text-gray-500 truncate mt-1">{vehicle.version}</p>}
                         </div>
@@ -56,11 +57,11 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                     {/* Footer - Price & Link */}
                     <div className="pt-4 mt-auto border-t border-gray-50 flex items-center justify-between">
                         <div className="flex flex-col">
-                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Precio desde</span>
+                            <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">Precio desde</span>
                             <span className="text-2xl font-black text-gray-900 leading-tight tracking-tight">
                                 {formatPrice(vehicle.price)}
                             </span>
-                            <p className="text-[10px] text-gray-400 font-bold mt-1 italic">
+                            <p className="text-[10px] text-gray-500 font-bold mt-1 italic">
                                 *Consultar condiciones
                             </p>
                         </div>

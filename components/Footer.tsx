@@ -25,13 +25,13 @@ export default function Footer() {
                             Somos el concesionario automotriz más grande de la tercera y cuarta región. Representantes oficiales de las principales marcas del mercado.
                         </p>
                         <div className="flex gap-4 pt-2">
-                            <a href="https://www.instagram.com/carmonaycia.cl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://www.instagram.com/carmonaycia.cl" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Instagram size={18} />
                             </a>
-                            <a href="https://web.facebook.com/profile.php?id=61555852684093" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://web.facebook.com/profile.php?id=61555852684093" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Facebook size={18} />
                             </a>
-                            <a href="https://www.linkedin.com/company/carmonaycia" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
+                            <a href="https://www.linkedin.com/company/carmonaycia" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 bg-white/5 flex items-center justify-center rounded-xl hover:bg-white hover:text-black transition-all">
                                 <Linkedin size={18} />
                             </a>
                         </div>
@@ -100,7 +100,7 @@ export default function Footer() {
 
             {/* Legal Strip */}
             <div className="bg-black py-6 border-t border-white/5">
-                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 test-xs text-gray-500">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-400">
                     <p className="text-xs order-3 md:order-1 text-center md:text-left">&copy; {new Date().getFullYear()} Automotriz Carmona. Todos los derechos reservados.</p>
                     
                     <a href="https://www.webpay.cl/company/33128" target="_blank" rel="noopener noreferrer" className="order-1 md:order-2 hover:opacity-80 transition-opacity" aria-label="Verificado por Webpay">

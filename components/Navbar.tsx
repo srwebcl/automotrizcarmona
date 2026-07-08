@@ -172,6 +172,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                             {/* Unified Menu Toggle (Mobile) - Icon Only */}
                             <button
                                 onClick={toggleUnifiedMenu}
+                                aria-label="Abrir Menú Principal"
                                 className={`w-11 h-11 flex items-center justify-center rounded-2xl border transition-all ${isUnifiedMenuOpen ? 'bg-white text-black border-white' : 'bg-white/5 text-white border-white/10 hover:bg-white/10'}`}
                             >
                                 {isUnifiedMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -183,6 +184,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                                     setIsOpen(true);
                                     closeUnifiedMenu();
                                 }}
+                                aria-label="Abrir Asistente Virtual"
                                 className="w-11 h-11 flex items-center justify-center bg-gradient-to-r from-carmona-gold to-carmona-orange text-white rounded-2xl border border-white/10 shadow-lg shadow-carmona-gold/20 active:scale-95 transition-all"
                             >
                                 <Sparkles size={20} className="fill-white/20 animate-pulse" />

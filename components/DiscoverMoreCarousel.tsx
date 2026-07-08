@@ -90,6 +90,7 @@ export default function DiscoverMoreCarousel({
                                         src={item.image}
                                         alt={item.title}
                                         fill
+                                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 40vw, 25vw"
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
 
