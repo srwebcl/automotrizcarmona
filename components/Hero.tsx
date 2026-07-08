@@ -153,7 +153,7 @@ export default function Hero({ banners, layoutBrands }: HeroProps) {
     }, [mobileApi, onMobileSelect]);
 
     return (
-        <section className="relative bg-white pt-24 md:pt-32 pb-0 px-4 md:px-8" style={{ backgroundColor: '#ffffff' }}>
+        <section className="relative bg-white pt-32 md:pt-[140px] pb-0 px-4 md:px-8" style={{ backgroundColor: '#ffffff' }}>
             {/* Mobile Slider (4 slides) */}
             <div className="w-full mx-auto mb-2 md:hidden relative group">
                 <div className="overflow-hidden rounded-3xl" ref={mobileRef}>

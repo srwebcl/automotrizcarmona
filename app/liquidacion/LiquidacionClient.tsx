@@ -58,6 +58,11 @@ export default function LiquidacionClient({
         return 'Todas';
     }, [targetVin, allPromoUnits, searchParams, layoutBrands]);
 
+    const getBrandLogo = (brandName: string) => {
+        const b = [...layoutBrands.cars, ...layoutBrands.trucks].find(x => slugify(x.name) === slugify(brandName));
+        return b?.logo_url;
+    };
+
     const [activeBrand, setActiveBrand] = useState(initialBrand);
     const gridRef = React.useRef<HTMLDivElement>(null);
 
@@ -175,6 +180,7 @@ export default function LiquidacionClient({
                             const isSold = unit.status === 'vendido';
                             const isReserved = unit.status === 'reservado';
                             const isAvailable = !isSold && !isReserved;
+                            const logoUrl = getBrandLogo(unit.brand);
 
                             return (
                             <div 
@@ -195,25 +201,38 @@ export default function LiquidacionClient({
                                     </div>
                                 )}
 
-                                {/* Main Card Body - Striking Design */}
-                                <div className={`relative rounded-[2.5rem] bg-white pt-8 px-8 pb-24 transition-all duration-500 border-2 border-gray-50 overflow-visible shadow-sm ${isAvailable ? 'group-hover:shadow-[0_20px_50px_rgba(210,0,28,0.1)] group-hover:border-[#d2001c]/20' : 'opacity-80 grayscale-[0.3]'}`}>
-                                    {/* Top Controls: Liquidation Tag & Share */}
-                                    <div className="absolute top-6 left-6 right-6 z-30 flex justify-between items-center">
-                                        <div className="bg-[#d2001c] text-white px-3 py-1 rounded-full flex items-center gap-1.5 shadow-lg shadow-[#d2001c]/20">
-                                            <Flame size={12} fill="currentColor" />
-                                            <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
+                                {/* Single Compact Card Body */}
+                                <div className={`relative flex flex-col rounded-[2rem] bg-white p-6 transition-all duration-500 border border-gray-100 shadow-sm overflow-hidden ${isAvailable ? 'group-hover:shadow-[0_15px_40px_rgba(0,0,0,0.06)]' : 'opacity-80 grayscale-[0.3]'}`}>
+                                    
+                                    {/* Top Controls: Logo & Share + Liquidation Tag */}
+                                    <div className="relative z-30 flex justify-between items-start">
+                                        <div className="flex-1">
+                                            {logoUrl ? (
+                                                <div className="relative w-16 h-8 opacity-80 mix-blend-multiply">
+                                                    <Image src={logoUrl} alt={unit.brand} fill className="object-contain object-left" />
+                                                </div>
+                                            ) : (
+                                                <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.2em]">{unit.brand}</p>
+                                            )}
                                         </div>
-                                        <ShareButton 
-                                            title={`Liquidación ${unit.brand} ${unit.modelName}`}
-                                            url={typeof window !== 'undefined' ? `${window.location.origin}/liquidacion?vin=${unit.vin}` : `https://automotrizcarmona.cl/liquidacion?vin=${unit.vin}`}
-                                        />
+                                        <div className="flex flex-col items-end gap-2">
+                                            <div className="flex items-center gap-2">
+                                                <div className="bg-[#d2001c] text-white px-2.5 py-1 rounded-md flex items-center gap-1 shadow-sm">
+                                                    <Flame size={12} fill="currentColor" />
+                                                    <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
+                                                </div>
+                                                <ShareButton 
+                                                    title={`Liquidación ${unit.brand} ${unit.modelName}`}
+                                                    url={typeof window !== 'undefined' ? `${window.location.origin}/liquidacion?vin=${unit.vin}` : `https://automotrizcarmona.cl/liquidacion?vin=${unit.vin}`}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
 
                                     {/* Info Header */}
                                     <div className="relative z-10 mt-4">
-                                        <p className="text-[#d2001c] text-[10px] font-black mb-1 uppercase tracking-[0.2em]">{unit.brand}</p>
-                                        <h3 className={`text-xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-1 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
-                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-4">{unit.versionName}</p>
+                                        <h3 className={`text-xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-0.5 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
+                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-2">{unit.versionName}</p>
                                         
                                         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">
                                             <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Unidad VIN:</span>
@@ -221,24 +240,23 @@ export default function LiquidacionClient({
                                         </div>
                                     </div>
 
-                                    {/* Overlapping Image - More compact */}
-                                    <div className="absolute bottom-[-3.5rem] left-1/2 transform -translate-x-1/2 w-[105%] max-w-[340px] aspect-[16/10] z-20">
+                                    {/* Compact Flowing Image */}
+                                    <div className="relative mx-auto mt-2 w-full max-w-[280px] aspect-[16/10] z-20">
                                         <Image
                                             src={unit.image}
                                             alt={unit.modelName}
                                             fill
-                                            className={`object-contain drop-shadow-2xl transition-transform duration-700 ease-out ${isAvailable ? 'group-hover:scale-105' : ''}`}
+                                            className={`object-contain drop-shadow-lg transition-transform duration-700 ease-out ${isAvailable ? 'group-hover:scale-105' : ''}`}
                                         />
                                     </div>
                                     
                                     {/* Subtle Background Badge */}
-                                    <div className={`absolute bottom-10 right-10 text-[6rem] font-black text-gray-50 select-none -z-0 pointer-events-none transition-colors uppercase italic ${isAvailable ? 'group-hover:text-red-50' : ''}`}>
+                                    <div className={`absolute top-1/2 right-4 transform -translate-y-1/2 text-[4rem] font-black text-gray-50/40 select-none -z-0 pointer-events-none transition-colors uppercase italic ${isAvailable ? 'group-hover:text-red-50/40' : ''}`}>
                                         {unit.brand.substring(0, 3)}
                                     </div>
-                                </div>
 
-                                {/* Price Info - Striking & Compact */}
-                                <div className="mt-14 px-4 text-center pb-2">
+                                    {/* Price Info - Integrated */}
+                                    <div className="mt-4 text-center relative z-30">
                                     <div className="flex flex-col items-center">
                                         <div className="flex items-center gap-4 mb-3">
                                             <span className="text-sm font-bold text-gray-300 line-through decoration-[#d2001c]/30">
@@ -249,10 +267,10 @@ export default function LiquidacionClient({
                                             </div>
                                         </div>
                                         
-                                        <div className={`mb-6 bg-gray-50 w-full py-4 rounded-2xl border border-gray-100 transition-colors ${isAvailable ? 'group-hover:bg-[#d2001c]/5 group-hover:border-[#d2001c]/10' : ''}`}>
-                                            <p className="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Precio Final de Liquidación</p>
-                                            <p className="text-5xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
-                                            <p className="text-[10px] text-gray-500 mt-2">*Precio con financiamiento</p>
+                                        <div className={`mb-4 bg-transparent w-full transition-colors`}>
+                                            <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-0.5">Precio Final de Liquidación</p>
+                                            <p className="text-3xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
+                                            <p className="text-[9px] text-gray-500 mt-1">*Precio con financiamiento</p>
                                         </div>
 
                                         {isAvailable ? (
@@ -270,8 +288,9 @@ export default function LiquidacionClient({
                                     </div>
                                 </div>
                             </div>
-                            );
-                        })}
+                        </div>
+                    );
+                })}
                     </div>
                 ) : (
                     <div className="py-32 text-center bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">

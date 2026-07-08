@@ -14,21 +14,15 @@ function SmartWhatsAppButtonContent() {
     const searchParams = useSearchParams();
     const [showMenu, setShowMenu] = useState(false);
     const [isBubbleDismissed, setIsBubbleDismissed] = useState(false);
-    const [config, setConfig] = useState({
-        text: "¡Hola! ¿Necesitas ayuda?",
-        message: "Hola, estoy en el sitio web de Automotriz Carmona y me gustaría recibir asesoría.",
-        source: "Ventas"
-    });
     const menuRef = useRef<HTMLDivElement>(null);
 
     // State para sucursales dinámicas de servicio técnico
     const [branches, setBranches] = useState<any[]>([]);
     const [allBrands, setAllBrands] = useState<BrandLight[]>([]);
-    const [dynamicNumber, setDynamicNumber] = useState<string>(NUMBER);
     const [menuView, setMenuView] = useState<'main' | 'service_brands'>('main');
 
-    // Dynamic config based on path
-    useEffect(() => {
+    // Dynamic config based on path (Computed instead of state to avoid cascading renders)
+    const config = useMemo(() => {
         let newConfig = {
             text: "¡Hola! ¿En qué te ayudamos hoy?",
             message: "Hola, vengo de la web de Automotriz Carmona y me gustaría recibir atención.",
@@ -84,8 +78,11 @@ function SmartWhatsAppButtonContent() {
                 source: "Ventas"
             };
         }
+        return newConfig;
+    }, [pathname]);
 
-        setConfig(newConfig);
+    // Close menu when route changes
+    useEffect(() => {
         setShowMenu(false);
     }, [pathname]);
 
@@ -100,8 +97,8 @@ function SmartWhatsAppButtonContent() {
         }).catch(console.error);
     }, []);
 
-    // Calculate dynamic number if a brand is selected in services
-    useEffect(() => {
+    // Calculate dynamic number if a brand is selected in services (Computed)
+    const dynamicNumber = useMemo(() => {
         let newNumber = NUMBER; // default Tecnom number
         if ((pathname.startsWith('/servicios') || pathname.startsWith('/dyp')) && branches.length > 0) {
             const currentMarca = searchParams.get('marca');
@@ -116,7 +113,7 @@ function SmartWhatsAppButtonContent() {
                 }
             }
         }
-        setDynamicNumber(newNumber);
+        return newNumber;
     }, [pathname, searchParams, branches]);
 
     // Extract unique service brands with their specific whatsapp number and logo
@@ -160,18 +157,15 @@ function SmartWhatsAppButtonContent() {
         }
     }, [showMenu]);
 
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
     const buildLink = (baseMessage: string, sourceParam?: string, targetNumber?: string) => {
-        const currentUrl = isMounted ? window.location.href : `https://automotrizcarmona.cl${pathname}`;
+        const queryStr = searchParams.toString();
+        const currentUrl = `https://automotrizcarmona.cl${pathname}${queryStr ? '?' + queryStr : ''}`;
         const finalSource = sourceParam || config.source;
         const num = targetNumber || dynamicNumber;
 
         // Adjunta los UTM para el CRM
-        const finalMessage = `${baseMessage}\n\nEnlace: ${currentUrl}?utm_source=${encodeURIComponent(finalSource)}&utm_medium=wsp_web`;
+        const separator = currentUrl.includes('?') ? '&' : '?';
+        const finalMessage = `${baseMessage}\n\nEnlace: ${currentUrl}${separator}utm_source=${encodeURIComponent(finalSource)}&utm_medium=wsp_web`;
         return `https://wa.me/${num}?text=${encodeURIComponent(finalMessage)}`;
     };
 

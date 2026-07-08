@@ -27,9 +27,9 @@ export default async function ElectromovilidadPage() {
     const legalExcerpt = landingInfo?.legal_documents?.[0]?.excerpt || null;
 
     return (
-        <main className="min-h-screen bg-white pt-20 font-sans selection:bg-green-600 selection:text-white">
+        <main className="min-h-screen bg-white pt-[110px] lg:pt-[88px] font-sans selection:bg-green-600 selection:text-white">
             {/* HERO SECTION */}
-            <section className="relative w-full bg-black overflow-hidden flex items-center pt-20 md:pt-14">
+            <section className="relative w-full bg-black overflow-hidden flex items-center">
                 <div className="relative w-full">
                     {/* Desktop / Fallback Image */}
                     <Image 

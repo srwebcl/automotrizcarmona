@@ -84,7 +84,7 @@ export default async function RootLayout({
       >
         {/* Scripts de inicio de <body> (ej. GTM noscript fallback o custom body_start) */}
         <MarketingScripts scripts={marketingScripts} placement="body_start" />
-
+        
         <Navbar layoutBrands={layoutBrands} />
         {children}
         <SmartWhatsAppButton />
