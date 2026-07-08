@@ -102,9 +102,19 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
 
     return (
         <>
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-bruno-black shadow-lg py-1' : 'bg-bruno-black/95 backdrop-blur-md py-3'}`}>
+            <nav className={`fixed w-full z-50 flex flex-col transition-all duration-300 ${isScrolled ? 'bg-bruno-black shadow-lg py-1' : 'bg-bruno-black/95 backdrop-blur-md pt-0 pb-2 lg:py-3'}`}>
 
-                <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Mobile Top Bar */}
+                <div className={`lg:hidden flex w-full border-b border-white/10 bg-black/40 transition-all duration-300 overflow-hidden ${isScrolled ? 'h-0 opacity-0 border-transparent' : 'h-8 opacity-100'}`}>
+                    <Link href="/liquidacion" onClick={closeUnifiedMenu} className="flex-1 flex items-center justify-center gap-1.5 border-r border-white/10 hover:bg-white/5 transition-colors text-[9px] uppercase font-bold tracking-widest text-red-400">
+                        <span>🔥</span> Liquidación
+                    </Link>
+                    <Link href="/electromovilidad" onClick={closeUnifiedMenu} className="flex-1 flex items-center justify-center gap-1.5 hover:bg-white/5 transition-colors text-[9px] uppercase font-bold tracking-widest text-green-400">
+                        <span>⚡</span> Electromovilidad
+                    </Link>
+                </div>
+
+                <div className="max-w-[1920px] mx-auto w-full px-4 sm:px-6 lg:px-8 mt-1 lg:mt-0">
                     <div className="flex justify-between items-center h-16">
 
                         <Link href="/" className="relative flex items-center gap-3 group z-50" onClick={closeUnifiedMenu}>
@@ -187,7 +197,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                 onClick={closeUnifiedMenu}
             />
 
-            <div className={`fixed top-0 left-0 w-full bg-white z-[45] shadow-2xl transform transition-transform duration-500 ease-in-out ${isUnifiedMenuOpen ? 'translate-y-[70px]' : '-translate-y-full'}`}>
+            <div className={`fixed top-0 left-0 w-full bg-white z-[45] shadow-2xl transform transition-all duration-500 ease-in-out ${isUnifiedMenuOpen ? (isScrolled ? 'translate-y-[72px]' : 'translate-y-[104px] lg:translate-y-[88px]') : '-translate-y-full'}`}>
                 {/* DESKTOP VERSION */}
                 <div className="hidden lg:flex max-w-[1920px] mx-auto min-h-[500px]">
                     <div className="w-1/4 bg-gray-50 border-r border-gray-100 flex flex-col pt-10 p-6">
@@ -401,21 +411,9 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                 </div>
 
                 {/* MOBILE MEGA MENU (Accordion Pro Layout) */}
-                <div className="lg:hidden w-full h-[calc(100vh-70px)] bg-white overflow-y-auto pb-24">
+                <div className={`lg:hidden w-full bg-white overflow-y-auto pb-24 transition-all duration-300 ${isScrolled ? 'h-[calc(100vh-72px)]' : 'h-[calc(100vh-104px)]'}`}>
                     <div className="flex flex-col">
                         
-                        {/* Direct Landings (Mobile) */}
-                        <div className="grid grid-cols-2 gap-3 p-5 border-b border-gray-100 bg-gray-50/50">
-                            <Link href="/liquidacion" onClick={closeUnifiedMenu} className="flex flex-col items-center justify-center p-4 rounded-[1.5rem] bg-gradient-to-br from-red-50 to-orange-50 border border-red-100 active:scale-95 transition-all shadow-sm">
-                                <span className="text-2xl mb-1 animate-pulse">🔥</span>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-red-600 text-center">Liquidación</span>
-                            </Link>
-                            <Link href="/electromovilidad" onClick={closeUnifiedMenu} className="flex flex-col items-center justify-center p-4 rounded-[1.5rem] bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 active:scale-95 transition-all shadow-sm">
-                                <span className="text-2xl mb-1 animate-pulse">⚡</span>
-                                <span className="text-[10px] font-black uppercase tracking-widest text-green-600 text-center">Electromovilidad</span>
-                            </Link>
-                        </div>
-
                         {/* 1. AUTOS NUEVOS */}
                         <div className="border-b border-gray-100">
                             <button 
