@@ -37,11 +37,15 @@ export async function sendQuoteToSalesforce(payload: any) {
             phone = phone.replace(/\s+/g, ''); // Deja +569...
         }
 
+        let rut = payload.customer?.rut || '';
+        // Salesforce suele requerir RUT sin puntos (ej: 11111111-8)
+        rut = rut.replace(/\./g, '');
+
         const quotePayload = {
             client: {
                 fullName: `${payload.customer?.first_name || ''} ${payload.customer?.last_name || ''}`.trim(),
                 email: payload.customer?.email || '',
-                rut: payload.customer?.rut || '',
+                rut: rut,
                 phone: phone,
                 originAccount: "Web concesionario"
             },
@@ -56,11 +60,13 @@ export async function sendQuoteToSalesforce(payload: any) {
             products: [
                 {
                     version: payload.vehicle?.sap_material_code || "UNKNOWN",
-                    price: payload.vehicle?.price || 20000000, 
-                    typeMaterial: "vehicle"
+                    price: Math.floor(Number(payload.vehicle?.price || 20000000)), 
+                    typeMaterial: "Vehicle" // Capitalizado por si Salesforce lo requiere así
                 }
             ]
         };
+
+        console.log("DEBUG MULESOFT PAYLOAD ENVIADO:", JSON.stringify(quotePayload, null, 2));
 
         // 3. Enviar Cotización
         const quoteResponse = await fetch(quoteUrl, {
