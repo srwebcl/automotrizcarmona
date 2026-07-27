@@ -162,7 +162,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
     return (
         <main className="min-h-screen bg-white font-sans">
             {/* Hero Section Adaptive Slider */}
-            <section className="relative w-full bg-gray-100 overflow-hidden pt-20">
+            <section className="relative w-full bg-gray-100 overflow-hidden pt-[104px] lg:pt-[88px]">
                 <div className="relative group" ref={heroEmblaRef}>
                     <div className="flex">
                         {bannerSlides.map((slide: any, index: number) => {

@@ -145,7 +145,7 @@ function TruckBrandContent({ brandId, config }: { brandId: string, config: any }
         <main className="min-h-screen bg-white font-sans selection:bg-gray-900 selection:text-white">
 
             {/* Hero Section - Adaptive Slider */}
-            <section className="relative w-full bg-gray-100 overflow-hidden pt-16 md:pt-20">
+            <section className="relative w-full bg-gray-100 overflow-hidden pt-[104px] lg:pt-[88px]">
                 <div className={`${mobileAspectRatio} md:aspect-[16/9] lg:aspect-[1200/420] w-full`} ref={heroEmblaRef}>
                     <div className="flex h-full">
                         {allBanners.map((slide: any, index: number) => (

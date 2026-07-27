@@ -257,7 +257,7 @@ function AgendarContent() {
     // ── FORM ────────────────────────────────────────────────────────────────
     return (
         <>
-        <main className="min-h-screen pt-[88px] pb-16 bg-[#f4f6f8] font-sans selection:bg-[#d2001c] selection:text-white">
+        <main className="min-h-screen pt-[104px] lg:pt-[88px] pb-16 bg-[#f4f6f8] font-sans selection:bg-[#d2001c] selection:text-white">
 
             {/* ── TOPBAR: Volver + Pasos ── sticky, sigue la altura del navbar ── */}
             <div className={`sticky z-40 bg-white border-b border-gray-100 shadow-sm transition-all duration-300 ${isScrolled ? 'top-[72px]' : 'top-[88px]'}`}>

@@ -33,7 +33,7 @@ export default async function NoticiasPage() {
     const newsItems = newsFromApi.length > 0 ? newsFromApi : [];
 
     return (
-        <main className="min-h-screen bg-white font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[104px] lg:pt-[88px]">
 
             {/* HEADER SECCIÓN */}
             <section className="bg-white py-14 md:py-20 border-b border-gray-100">

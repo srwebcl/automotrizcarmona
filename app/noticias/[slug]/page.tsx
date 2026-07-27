@@ -60,7 +60,7 @@ export default async function NoticiaDetailPage({ params }: { params: Promise<{ 
     }
 
     return (
-        <main className="min-h-screen bg-white font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[104px] lg:pt-[88px]">
             {/* VOLVER */}
             <div className="max-w-[800px] mx-auto px-4 pt-12">
                 <Link href="/noticias" className="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-widest">

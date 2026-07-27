@@ -81,7 +81,7 @@ export default function SucursalesPage() {
     );
 
     return (
-        <main className="min-h-screen bg-gray-50 pt-[90px] font-sans pb-20">
+        <main className="min-h-screen bg-gray-50 pt-[104px] lg:pt-[90px] font-sans pb-20">
             <div className="max-w-[1300px] mx-auto px-4 md:px-8 py-10 md:py-16">
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 

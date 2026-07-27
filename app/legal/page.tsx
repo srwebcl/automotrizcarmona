@@ -44,7 +44,7 @@ export default async function LegalPage() {
     }, {} as Record<string, { logo_url: string | null; documents: LegalDocument[] }>);
 
     return (
-        <main className="min-h-screen bg-[#f4f6f8] pt-[88px] pb-24 font-sans selection:bg-[#d2001c] selection:text-white">
+        <main className="min-h-screen bg-[#f4f6f8] pt-[104px] lg:pt-[88px] pb-24 font-sans selection:bg-[#d2001c] selection:text-white">
             <CustomStyles />
             
             {/* Header / Hero */}

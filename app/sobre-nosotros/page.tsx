@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function SobreNosotrosPage() {
     return (
-        <main className="min-h-screen bg-white font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[104px] lg:pt-[88px]">
             {/* HEADER SECCIÓN */}
             <section className="bg-white py-14 md:py-20 border-b border-gray-100">
                 <div className="max-w-[1200px] mx-auto px-4 sm:px-6">

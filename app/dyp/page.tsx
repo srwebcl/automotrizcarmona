@@ -51,7 +51,7 @@ export default async function DypPage() {
         }));
 
     return (
-        <main className="min-h-screen bg-white font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[104px] lg:pt-[88px]">
 
             {/* ── 1. BANNER PROMOCIONAL ──────────────────────────────────────── */}
             <DypBanner banners={dypBanners.length > 0 ? dypBanners : undefined} />

@@ -49,7 +49,7 @@ export default async function ServiciosPage() {
         }));
 
     return (
-        <main className="min-h-screen bg-white font-sans pt-[88px]">
+        <main className="min-h-screen bg-white font-sans pt-[104px] lg:pt-[88px]">
 
             {/* ── 1. BANNER PROMOCIONAL ──────────────────────────────────────── */}
             <ServicioBanner banners={serviceBanners.length > 0 ? serviceBanners : undefined} />
