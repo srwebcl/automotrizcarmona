@@ -61,7 +61,7 @@ export async function sendQuoteToSalesforce(payload: any) {
                 {
                     version: payload.vehicle?.sap_material_code || "UNKNOWN",
                     price: Math.floor(Number(payload.vehicle?.price || 20000000)), 
-                    typeMaterial: "Vehicle" // Capitalizado por si Salesforce lo requiere así
+                    typeMaterial: "vehicle"
                 }
             ]
         };
