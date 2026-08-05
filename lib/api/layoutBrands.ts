@@ -4,6 +4,7 @@ export interface BrandLight {
     name: string;
     slug: string;
     logo_url: string;
+    is_active: boolean;
     show_in_services: boolean;
     show_in_parts: boolean;
     show_in_dyp: boolean;

@@ -26,6 +26,10 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
     const carBrands = layoutBrands?.cars || [];
     const truckBrands = layoutBrands?.trucks || [];
 
+    // Filtered versions for display in the sales menus
+    const activeCarBrands = carBrands.filter(b => b.is_active !== false);
+    const activeTruckBrands = truckBrands.filter(b => b.is_active !== false);
+
     // Unified Menu State
     const [isUnifiedMenuOpen, setIsUnifiedMenuOpen] = useState(false);
     const [activeCategory, setActiveCategory] = useState<MenuCategory>('nuevos');
@@ -242,7 +246,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                         <div className="flex-1 animate-in fade-in zoom-in-95 duration-300">
                             {activeCategory === 'nuevos' && (
                                 <div className="grid grid-cols-6 gap-6">
-                                    {carBrands.map((brand) => (
+                                    {activeCarBrands.map((brand) => (
                                         <Link
                                             key={brand.name}
                                             href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -260,7 +264,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
 
                             {activeCategory === 'camiones' && (
                                 <div className="grid grid-cols-4 gap-8">
-                                    {truckBrands.map((brand) => (
+                                    {activeTruckBrands.map((brand) => (
                                         <Link
                                             key={brand.name}
                                             href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -433,7 +437,7 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                             
                             <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'nuevos' ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
-                                    {carBrands.map((brand) => (
+                                    {activeCarBrands.map((brand) => (
                                         <Link 
                                             key={brand.name} 
                                             href={`/nuevos/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
@@ -467,17 +471,17 @@ export default function Navbar({ layoutBrands }: { layoutBrands?: LayoutBrandsDa
                             
                             <div className={`overflow-hidden transition-all duration-500 ${mobileActiveCategory === 'camiones' ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
                                 <div className="p-6 pt-0 grid grid-cols-2 gap-3 pb-8">
-                                    {truckBrands.map((brand) => (
+                                    {activeTruckBrands.map((brand) => (
                                         <Link 
                                             key={brand.name} 
                                             href={`/camiones/${brand.name.toLowerCase().replace(/\s+/g, '-')}`}
                                             onClick={closeUnifiedMenu}
                                             className="flex flex-col items-center justify-center p-5 rounded-[1.5rem] bg-gray-50 active:scale-95 transition-all gap-2"
                                         >
-                                            <div className="relative w-full h-8">
+                                            <div className="relative w-full h-10 mb-2">
                                                 <Image src={brand.logo_url} alt={brand.name} fill className="object-contain grayscale active:grayscale-0" />
                                             </div>
-                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none text-center">{brand.name}</span>
+                                            <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest text-center">{brand.name}</span>
                                         </Link>
                                     ))}
                                 </div>

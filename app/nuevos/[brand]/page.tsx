@@ -65,6 +65,10 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             showReviews ? getCarAdvisorData() : Promise.resolve(null),
         ]);
 
+        if (brandDetails && brandDetails.is_active === false) {
+            notFound();
+        }
+
         const models = apiModels && apiModels.length > 0 ? apiModels : (MODELS_REGISTRY[brandId] || []);
         
         // Unir config dinámica y estática - Solo sobreescribimos si el backend trae algo válido
