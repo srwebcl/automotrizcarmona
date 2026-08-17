@@ -1,42 +1,35 @@
+import { cleanRut, computeDv, formatRut } from './rut';
+
 /**
  * Normaliza un RUT chileno al formato "cuerpo-DV" que espera Salesforce
  * (ej: "13360037-k"), sin importar cómo lo haya escrito el cliente en el
  * formulario (con puntos, con o sin guión, con espacios, etc.).
  *
- * Además valida el dígito verificador con el algoritmo estándar (módulo 11).
- * Si no calza, IGUAL se envía el RUT normalizado (mejor esfuerzo: preferimos
- * no bloquear la cotización por esto), pero se deja un warning explícito en
- * el log para poder distinguir "el cliente escribió mal su RUT" de "hay un
- * bug en la integración" — que es justamente lo que costó diagnosticar en
- * el incidente del 2026-08-17.
+ * Con el formulario ya validando el DV en vivo (ver lib/rut.ts +
+ * app/cotizar/page.tsx), esto no debería recibir RUTs con dígito
+ * verificador inválido — pero igual lo dejamos como red de contención:
+ * si llegara a pasar (ej. otro formulario que aún no valide, o el cliente
+ * bypasseó el JS), se envía igual el RUT normalizado (mejor esfuerzo, no
+ * bloqueamos la cotización por esto) y se deja un warning explícito en el
+ * log para distinguir "el cliente escribió mal su RUT" de "hay un bug en
+ * la integración" — que es justamente lo que costó diagnosticar en el
+ * incidente del 2026-08-17.
  */
 function normalizeRut(rawRut: string): string {
     if (!rawRut) return '';
 
-    // 1. Dejar solo dígitos y k/K (saca puntos, guiones, espacios, etc.)
-    const clean = rawRut.replace(/[^0-9kK]/g, '');
+    const clean = cleanRut(rawRut);
     if (clean.length < 2) return clean; // Muy corto para tener cuerpo + DV; se envía tal cual
 
-    // 2. Separar cuerpo y dígito verificador (siempre es el último caracter)
     const body = clean.slice(0, -1);
     const dv = clean.slice(-1).toLowerCase();
-
-    // 3. Validar el DV (módulo 11) solo para poder loguear si no calza
-    let sum = 0;
-    let multiplier = 2;
-    for (let i = body.length - 1; i >= 0; i--) {
-        sum += parseInt(body[i], 10) * multiplier;
-        multiplier = multiplier === 7 ? 2 : multiplier + 1;
-    }
-    const remainder = 11 - (sum % 11);
-    const expectedDv = remainder === 11 ? '0' : remainder === 10 ? 'k' : String(remainder);
+    const expectedDv = computeDv(body);
 
     if (expectedDv !== dv) {
         console.warn(`RUT con dígito verificador inválido recibido del formulario: "${rawRut}" (se esperaba DV "${expectedDv}", vino "${dv}"). Se envía igual a Salesforce en formato normalizado "${body}-${dv}".`);
     }
 
-    // 4. Reinsertar el guión en la posición correcta, sin importar el input original
-    return `${body}-${dv}`;
+    return formatRut(rawRut);
 }
 
 export async function sendQuoteToSalesforce(payload: any) {

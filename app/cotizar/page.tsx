@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { getModelDetails, getTruckBrands, getTrucksByBrand, API_URL } from '@/lib/api';
+import { formatRutMasked, isValidRut } from '@/lib/rut';
 import { CheckCircle, Info, ChevronDown, ArrowLeft, Car, User, Truck as TruckIcon, MapPin, Phone, Store } from 'lucide-react';
 
 
@@ -165,11 +166,22 @@ function CotizarContent() {
                 return;
             }
         }
+        if (name === 'rut') {
+            // Auto-formatea con puntos y guión mientras el cliente escribe
+            // (ej: "17.625.818-7"), sin importar cómo lo haya tipeado.
+            setFormData(prev => ({ ...prev, rut: formatRutMasked(value) }));
+            return;
+        }
         setFormData(prev => ({
             ...prev,
             [name]: type === 'checkbox' ? checked : value
         }));
     };
+
+    // RUT válido (dígito verificador correcto) — solo se marca error si ya
+    // hay algo escrito, para no mostrar el error apenas se abre el formulario.
+    const rutTouched = formData.rut.length > 0;
+    const rutIsValid = !rutTouched || isValidRut(formData.rut);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -355,13 +367,21 @@ function CotizarContent() {
                                 <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">RUT *</label>
                                 <input
                                     type="text"
+                                    inputMode="text"
                                     name="rut"
                                     value={formData.rut}
                                     onChange={handleChange}
                                     placeholder="Ej: 12.345.678-9"
-                                    className="w-full bg-[#f8f9fa] border-2 border-transparent focus:border-[#d2001c] focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all placeholder:text-gray-400"
+                                    maxLength={12}
+                                    aria-invalid={!rutIsValid}
+                                    className={`w-full bg-[#f8f9fa] border-2 focus:bg-white text-gray-900 font-medium rounded-xl px-4 py-3.5 outline-none transition-all placeholder:text-gray-400 ${rutIsValid ? 'border-transparent focus:border-[#d2001c]' : 'border-red-300 focus:border-red-400'}`}
                                     required
                                 />
+                                {!rutIsValid && (
+                                    <p className="mt-1.5 text-xs font-medium text-red-500">
+                                        El RUT ingresado no es válido. Revisa el número y el dígito verificador.
+                                    </p>
+                                )}
                             </div>
 
                             {/* Nombre & Apellido */}
@@ -453,7 +473,7 @@ function CotizarContent() {
                             {/* Submit Button */}
                             <button
                                 type="submit"
-                                disabled={isSubmitting || !formData.acceptPolicy}
+                                disabled={isSubmitting || !formData.acceptPolicy || !isValidRut(formData.rut)}
                                 className="w-full sm:w-auto mt-4 px-10 py-4 bg-gray-900 hover:bg-black text-white disabled:bg-gray-400 disabled:cursor-not-allowed font-extrabold uppercase tracking-widest rounded-xl transition-colors min-w-[200px]"
                             >
                                 {isSubmitting ? 'Procesando...' : 'Cotizar'}
