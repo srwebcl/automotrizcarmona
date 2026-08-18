@@ -222,9 +222,16 @@ export default function LiquidacionClient({
                                         <div className="flex flex-col items-end gap-2">
                                             <div className="flex items-center gap-2">
                                                 {badgeLogoUrl ? (
-                                                    <div className="relative h-6 w-16 shadow-sm">
-                                                        <Image src={badgeLogoUrl} alt={badgeText || 'Promoción'} fill className="object-contain object-right" />
-                                                    </div>
+                                                    // Alto fijo, ancho automático según la proporción real de la imagen
+                                                    // subida en Filament — se adapta solo a cualquier forma/tamaño de
+                                                    // logo que se use en futuras campañas, sin tocar código.
+                                                    <Image
+                                                        src={badgeLogoUrl}
+                                                        alt={badgeText || 'Promoción'}
+                                                        width={200}
+                                                        height={200}
+                                                        className="h-11 sm:h-12 w-auto max-w-[100px] sm:max-w-[120px] object-contain drop-shadow-sm"
+                                                    />
                                                 ) : (
                                                     <div className="bg-[#d2001c] text-white px-2.5 py-1 rounded-md flex items-center gap-1 shadow-sm">
                                                         <Flame size={12} fill="currentColor" />
