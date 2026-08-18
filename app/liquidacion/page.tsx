@@ -166,10 +166,12 @@ export default async function LiquidacionPage({ searchParams }: Props) {
 
             {/* CATALOG CONTENT */}
             <Suspense fallback={<div className="min-h-[500px] bg-white w-full" />}>
-                <LiquidacionClient 
-                    allPromoUnits={allPromoUnits} 
+                <LiquidacionClient
+                    allPromoUnits={allPromoUnits}
                     title={heroTitle}
                     subtitle={heroSubtitle}
+                    badgeText={landingInfo?.badge_text}
+                    badgeLogoUrl={landingInfo?.badge_logo_url}
                     layoutBrands={layoutBrands}
                     targetVin={targetVin}
                 />

@@ -23,16 +23,20 @@ const slugify = (text: string) => {
         .replace(/-+$/, '');
 };
 
-export default function LiquidacionClient({ 
-    allPromoUnits, 
-    title, 
+export default function LiquidacionClient({
+    allPromoUnits,
+    title,
     subtitle,
+    badgeText,
+    badgeLogoUrl,
     layoutBrands,
     targetVin
-}: { 
-    allPromoUnits: any[], 
-    title: string, 
+}: {
+    allPromoUnits: any[],
+    title: string,
     subtitle?: string,
+    badgeText?: string,
+    badgeLogoUrl?: string,
     layoutBrands: { cars: any[], trucks: any[] },
     targetVin?: string
 }) {
@@ -217,12 +221,18 @@ export default function LiquidacionClient({
                                         </div>
                                         <div className="flex flex-col items-end gap-2">
                                             <div className="flex items-center gap-2">
-                                                <div className="bg-[#d2001c] text-white px-2.5 py-1 rounded-md flex items-center gap-1 shadow-sm">
-                                                    <Flame size={12} fill="currentColor" />
-                                                    <span className="text-[9px] font-black uppercase tracking-widest">Liquidación</span>
-                                                </div>
-                                                <ShareButton 
-                                                    title={`Liquidación ${unit.brand} ${unit.modelName}`}
+                                                {badgeLogoUrl ? (
+                                                    <div className="relative h-6 w-16 shadow-sm">
+                                                        <Image src={badgeLogoUrl} alt={badgeText || 'Promoción'} fill className="object-contain object-right" />
+                                                    </div>
+                                                ) : (
+                                                    <div className="bg-[#d2001c] text-white px-2.5 py-1 rounded-md flex items-center gap-1 shadow-sm">
+                                                        <Flame size={12} fill="currentColor" />
+                                                        <span className="text-[9px] font-black uppercase tracking-widest">{badgeText || 'Liquidación'}</span>
+                                                    </div>
+                                                )}
+                                                <ShareButton
+                                                    title={`${badgeText || 'Liquidación'} ${unit.brand} ${unit.modelName}`}
                                                     url={typeof window !== 'undefined' ? `${window.location.origin}/liquidacion?vin=${unit.vin}` : `https://automotrizcarmona.cl/liquidacion?vin=${unit.vin}`}
                                                 />
                                             </div>

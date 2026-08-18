@@ -97,6 +97,8 @@ export interface LandingInfo {
     slug: string;
     title: string;
     subtitle?: string;
+    badge_text?: string;
+    badge_logo_url?: string;
     desktop_banner_url?: string;
     mobile_banner_url?: string;
     is_active: boolean;
