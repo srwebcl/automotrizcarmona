@@ -16,15 +16,27 @@ export async function POST(request: Request) {
         console.log("DEBUG PAYLOAD VEHICLE:", JSON.stringify(payload.vehicle));
 
         // INTEGRACION TOYOTA SALESFORCE (OPCION A)
+        // Los leads Toyota de "ventas" no deben viajar a Tecnom (ver LeadController.php en Laravel).
+        // Le informamos a Laravel el resultado de Salesforce para que decida: si tuvo éxito, omite
+        // Tecnom; si falló, dispara una alerta por correo para gestión manual en vez de perder el lead.
+        let salesforceResult: { success: boolean; error?: string } | null = null;
         if (payload.vehicle?.brand_name?.toLowerCase() === 'toyota' && payload.vehicle?.sap_material_code) {
             console.log("Detectado Toyota con SAP Material Code. Enviando a Salesforce...");
             try {
-                await sendQuoteToSalesforce(payload);
-            } catch (e) {
+                salesforceResult = await sendQuoteToSalesforce(payload);
+            } catch (e: any) {
                 console.error("Error en sendQuoteToSalesforce:", e);
+                salesforceResult = { success: false, error: e?.message || 'Error desconocido enviando a Salesforce' };
             }
         }
 
+        const leadPayload = salesforceResult
+            ? {
+                ...payload,
+                salesforce_synced: salesforceResult.success,
+                salesforce_error: salesforceResult.success ? null : (salesforceResult.error || 'Error desconocido')
+            }
+            : payload;
 
         const response = await fetch(`${API_URL}/leads`, {
             method: 'POST',
@@ -32,7 +44,7 @@ export async function POST(request: Request) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(leadPayload)
         });
 
         const data = await response.json();
