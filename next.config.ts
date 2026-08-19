@@ -47,6 +47,12 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Las imágenes en R2 nunca se sobreescriben bajo la misma URL (Filament genera
+    // un nombre de archivo único en cada subida), así que es seguro cachear las
+    // variantes optimizadas por mucho tiempo. El default de Next.js es 60 segundos,
+    // lo que forzaba a regenerar (y volver a cobrar como transformación en Vercel)
+    // la misma imagen constantemente bajo tráfico normal. 1 año = 31536000 segundos.
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: 'https',
