@@ -36,18 +36,23 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
 
     const hasHybrids = models.some(m => m.isHybrid);
     const hasElectrics = models.some(m => m.isElectric);
-    
-    const existsHybrid = availableCategories.some(c => 
+    const hasMicrohybrids = models.some(m => m.isMicrohybrid);
+
+    const existsHybrid = availableCategories.some(c =>
         c.toLowerCase().includes('híbrido') || c.toLowerCase().includes('hibrido')
     );
-    const existsElectric = availableCategories.some(c => 
+    const existsElectric = availableCategories.some(c =>
         c.toLowerCase().includes('eléctrico') || c.toLowerCase().includes('electrico')
+    );
+    const existsMicrohybrid = availableCategories.some(c =>
+        c.toLowerCase().includes('microhíbrido') || c.toLowerCase().includes('microhibrido')
     );
 
     const dynamicCategories = ['Todos', ...availableCategories];
-    
+
     if (hasHybrids && !existsHybrid) dynamicCategories.push('Híbrido');
     if (hasElectrics && !existsElectric) dynamicCategories.push('Eléctrico');
+    if (hasMicrohybrids && !existsMicrohybrid) dynamicCategories.push('Microhíbrido');
 
     const CATEGORIES = dynamicCategories;
 
@@ -105,7 +110,9 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
             ? models.filter(m => m.isHybrid)
             : activeCategory === 'Eléctrico'
                 ? models.filter(m => m.isElectric)
-                : models.filter(m => m.category.split(',').map(c => c.trim()).includes(activeCategory));
+                : activeCategory === 'Microhíbrido'
+                    ? models.filter(m => m.isMicrohybrid)
+                    : models.filter(m => m.category.split(',').map(c => c.trim()).includes(activeCategory));
 
     const handleCategoryChange = (cat: string) => {
         setActiveCategory(cat);
@@ -294,7 +301,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                 const finalImgSrc = model.image.startsWith('http') ? model.image : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${model.image.replace(/^\//, '')}`;
                                 return (
                                 <Link key={model.id} href={`/nuevos/${brandId}/${model.id}`} className="group block">
-                                    <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
+                                    <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric || model.isMicrohybrid ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
                                         <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
                                             {model.isElectric && (
                                                 <div className="flex items-center gap-1 border border-emerald-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -306,6 +313,12 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                                 <div className="flex items-center gap-1 border border-blue-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
                                                     <span className="text-[10px]">🌱</span>
                                                     <span className="text-[9px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
+                                                </div>
+                                            )}
+                                            {model.isMicrohybrid && !model.isElectric && !model.isHybrid && (
+                                                <div className="flex items-center gap-1 border border-teal-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <span className="text-[10px]">🍃</span>
+                                                    <span className="text-[9px] font-black text-teal-800 tracking-wider uppercase">Microhíbrido</span>
                                                 </div>
                                             )}
                                             <ShareButton
@@ -414,7 +427,7 @@ export default function BrandPageClient({ brandId, models, config }: BrandPageCl
                                     id: 3, 
                                     title: `${config.name} Usados`, 
                                     subtitle: "Seminuevos", 
-                                    link: `https://seminuevos.automotrizcarmona.cl/catalogo?brand=${brandId}`, 
+                                    link: `https://seminuevos.automotrizcarmona.cl/catalogo?is_premium=1&brand=${brandId}`,
                                     image: config.serviceImages?.usados ?? (brandId === 'toyota' ? "autos-nuevos/toyota/mas-info/usados-toyota" : `autos-nuevos/${brandId}/mas-info/usados-${brandId}`),
                                     isExternal: true 
                                 },

@@ -387,9 +387,9 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                             <div className="flex items-center justify-between gap-4 mb-4">
                                 <div className="flex items-center gap-2">
                                     {model.isNew && <span className="px-3 py-1 bg-gray-900 text-white text-[11px] font-bold uppercase tracking-wider rounded">Nuevo</span>}
-                                    {(model.isHybrid || model.isElectric) && (
+                                    {(model.isHybrid || model.isElectric || model.isMicrohybrid) && (
                                         <span className="px-3 py-1 bg-blue-100 text-blue-800 text-[11px] font-bold uppercase tracking-wider rounded">
-                                            {model.isElectric ? '100% Eléctrico' : 'Híbrido'}
+                                            {model.isElectric ? '100% Eléctrico' : model.isHybrid ? 'Híbrido' : 'Microhíbrido'}
                                         </span>
                                     )}
                                 </div>

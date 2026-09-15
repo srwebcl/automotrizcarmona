@@ -136,6 +136,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         vehicleType: data.vehicle_type,
         isHybrid: data.is_hybrid,
         isElectric: data.is_electric,
+        isMicrohybrid: data.is_microhybrid,
         isPromotion: data.is_promotion,
         ivaIncluded: data.includes_iva === undefined ? true : Boolean(data.includes_iva),
         promoUnits: parsedPromoUnits,

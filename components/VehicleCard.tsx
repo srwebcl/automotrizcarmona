@@ -12,6 +12,7 @@ interface VehicleCardProps {
         image: string;
         isNew?: boolean;
         isHybrid?: boolean;
+        isMicrohybrid?: boolean;
         version?: string;
         year?: number;
         mileage?: number;
@@ -41,6 +42,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
                     <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
                         {vehicle.isNew && <span className="bg-carmona-gold text-gray-900 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Nuevo</span>}
                         {vehicle.isHybrid && <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Híbrido</span>}
+                        {vehicle.isMicrohybrid && <span className="bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider shadow-sm">Microhíbrido</span>}
                     </div>
                 </div>
 

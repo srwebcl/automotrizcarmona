@@ -108,7 +108,7 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                             const finalImgSrc = model.image.startsWith('http') ? model.image : `${process.env.NEXT_PUBLIC_CDN_URL || ''}/${model.image.replace(/^\//, '')}`;
                             return (
                                 <Link key={model.id} href={`/nuevos/${model.brand}/${model.id}`} className="group block">
-                                    <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
+                                    <div className={`relative rounded-[2rem] pt-8 px-8 pb-32 transition-colors ${model.isHybrid || model.isElectric || model.isMicrohybrid ? 'bg-[#dbeafe]' : 'bg-[#f8f8f8]'}`}>
                                         <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
                                             {model.isElectric && (
                                                 <div className="flex items-center gap-1 border border-emerald-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
@@ -120,6 +120,12 @@ export default function ElectromovilidadClient({ ecoModels }: { ecoModels: any[]
                                                 <div className="flex items-center gap-1 border border-blue-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
                                                     <span className="text-[10px]">🌱</span>
                                                     <span className="text-[9px] font-black text-blue-800 tracking-wider uppercase">Híbrido</span>
+                                                </div>
+                                            )}
+                                            {model.isMicrohybrid && !model.isElectric && !model.isHybrid && (
+                                                <div className="flex items-center gap-1 border border-teal-200 rounded-full pl-1.5 pr-2.5 py-1 bg-white/90 backdrop-blur-sm shadow-sm">
+                                                    <span className="text-[10px]">🍃</span>
+                                                    <span className="text-[9px] font-black text-teal-800 tracking-wider uppercase">Microhíbrido</span>
                                                 </div>
                                             )}
                                             <ShareButton

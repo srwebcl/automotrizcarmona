@@ -74,6 +74,7 @@ export interface Vehicle {
     ivaIncluded?: boolean;
     isHybrid?: boolean;
     isElectric?: boolean;
+    isMicrohybrid?: boolean;
     isNew?: boolean;
     isFeatured?: boolean;
     /** Indica si el modelo está en promoción/oferta especial */
