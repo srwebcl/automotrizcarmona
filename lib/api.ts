@@ -92,6 +92,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
         const listPrice = Number(v.list_price) || 0;
         const brandBonus = Number(v.brand_bonus) || 0;
         const financingBonus = Number(v.finance_bonus || v.financing_bonus) || 0;
+        const vppBonus = Number(v.vpp_bonus) || 0;
         let bonusPrice = Number(v.final_price || v.finance_price) || 0;
         
         // Si el backend envió 0 en el final_price, lo calculamos al vuelo restando los bonos.
@@ -114,6 +115,7 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
             listPrice,
             brandBonus,
             financingBonus,
+            vppBonus,
             bonusPrice,
             image: formatImageUrl(v.thumbnail)
         };

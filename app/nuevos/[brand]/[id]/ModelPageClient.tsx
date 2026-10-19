@@ -116,7 +116,153 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
         notFound();
     }
 
+    const minPrice = (model.versions && model.versions.length > 0) 
+        ? Math.min(...model.versions.map((v: any) => v.bonusPrice > 0 ? v.bonusPrice : v.listPrice)) 
+        : model.price;
 
+    // Resumen dinámico de especificaciones considerando el catálogo completo de versiones (desde versión base a más equipada)
+    const summarySpecs = React.useMemo(() => {
+        if (!mockVersions || mockVersions.length === 0) {
+            return {
+                motor: '—',
+                fuel: '—',
+                transmission: '—',
+                performance: '—',
+                isElectric: false,
+                hasMultipleVersions: false,
+            };
+        }
+
+        // Ordenamos las versiones de menor a mayor precio (versión de entrada a la más equipada)
+        const versionsByPrice = [...mockVersions].sort((a, b) => {
+            const pA = (a.bonusPrice > 0 ? a.bonusPrice : a.listPrice) || 0;
+            const pB = (b.bonusPrice > 0 ? b.bonusPrice : b.listPrice) || 0;
+            return pA - pB;
+        });
+
+        // 1. Motor
+        const motors = Array.from(
+            new Set(
+                versionsByPrice
+                    .map((v) => v.motor?.trim())
+                    .filter((m) => m && m !== '-' && m !== '—')
+            )
+        );
+        let motorStr = '—';
+        if (motors.length === 1) {
+            motorStr = motors[0];
+        } else if (motors.length === 2) {
+            motorStr = `${motors[0]} — ${motors[1]}`;
+        } else if (motors.length > 2) {
+            motorStr = `${motors[0]} — ${motors[motors.length - 1]}`;
+        }
+
+        // 2. Combustible
+        const fuels = Array.from(
+            new Set(
+                versionsByPrice
+                    .map((v) => v.fuel?.trim())
+                    .filter((f) => f && f !== '-' && f !== '—')
+            )
+        );
+        let fuelStr = '—';
+        if (fuels.length === 1) {
+            fuelStr = fuels[0];
+        } else if (fuels.length > 1) {
+            fuelStr = fuels.join(' / ');
+        }
+
+        // 3. Transmisión
+        const normalizeTrans = (t?: string) => {
+            if (!t || t === '-' || t === '—') return null;
+            const lower = t.toLowerCase();
+            if (lower.includes('auto') || lower.includes('at') || lower.includes('cvt') || lower.includes('dct')) {
+                return 'Automática';
+            }
+            if (lower.includes('man') || lower.includes('mt') || lower.includes('mec')) {
+                return 'Manual';
+            }
+            return t;
+        };
+        const transmissions = Array.from(
+            new Set(
+                versionsByPrice
+                    .map((v) => normalizeTrans(v.transmission))
+                    .filter((t): t is string => Boolean(t))
+            )
+        );
+        let transStr = '—';
+        if (transmissions.length === 1) {
+            transStr = transmissions[0];
+        } else if (transmissions.length > 1) {
+            transStr = transmissions.join(' / ');
+        }
+
+        // 4. Rendimiento / Autonomía
+        const isElec = Boolean(
+            model.isElectric ||
+            versionsByPrice.some((v) => v.electricRange && v.electricRange !== '-' && v.electricRange !== '—')
+        );
+
+        const parseNum = (val: any): number | null => {
+            if (!val || val === '-' || val === '—') return null;
+            const cleaned = String(val).replace(',', '.').replace(/[^0-9.]/g, '');
+            const n = parseFloat(cleaned);
+            return isNaN(n) || n <= 0 ? null : n;
+        };
+
+        let perfStr = '—';
+        if (isElec) {
+            const elecNums = versionsByPrice
+                .map((v) => parseNum(v.electricRange))
+                .filter((n): n is number => n !== null);
+            if (elecNums.length > 0) {
+                const min = Math.min(...elecNums);
+                const max = Math.max(...elecNums);
+                perfStr = min === max ? `${min} km` : `${min} — ${max} km`;
+            } else {
+                const rawElec = Array.from(
+                    new Set(
+                        versionsByPrice
+                            .map((v) => v.electricRange?.trim())
+                            .filter((r) => r && r !== '-' && r !== '—')
+                    )
+                );
+                if (rawElec.length === 1) perfStr = rawElec[0];
+                else if (rawElec.length > 1) perfStr = `${rawElec[0]} — ${rawElec[rawElec.length - 1]}`;
+            }
+        } else {
+            const mixNums = versionsByPrice
+                .map((v) => parseNum(v.consumptionMixed || (v as any).consumo))
+                .filter((n): n is number => n !== null);
+            if (mixNums.length > 0) {
+                const min = Math.min(...mixNums);
+                const max = Math.max(...mixNums);
+                perfStr = min === max ? `${min} km/l` : `${min} — ${max} km/l`;
+            } else {
+                const rawMix = Array.from(
+                    new Set(
+                        versionsByPrice
+                            .map((v) => (v.consumptionMixed || (v as any).consumo)?.trim())
+                            .filter((r) => r && r !== '-' && r !== '—')
+                    )
+                );
+                if (rawMix.length === 1) perfStr = rawMix[0];
+                else if (rawMix.length > 1) perfStr = `${rawMix[0]} — ${rawMix[rawMix.length - 1]}`;
+            }
+        }
+
+        return {
+            motor: motorStr,
+            fuel: fuelStr,
+            transmission: transStr,
+            performance: perfStr,
+            isElectric: isElec,
+            hasMultipleVersions: versionsByPrice.length > 1,
+        };
+    }, [mockVersions, model]);
+
+    const baseVersion = sortedVersions.find((v) => (v.bonusPrice > 0 ? v.bonusPrice : v.listPrice) === minPrice) || sortedVersions[0] || mockVersions[0];
 
     const parsedFeatures = model.features?.map((f: any) => ({ ...f, image: f.image || f.icon || '' })) || [];
     const highlightFeatures = parsedFeatures.length > 0 ? parsedFeatures : [
@@ -124,10 +270,6 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
         { title: "", desc: "", image: model.gallery?.[0] || model.image },
         { title: "", desc: "", image: model.gallery?.[1] || model.image }
     ];
-
-    const minPrice = (model.versions && model.versions.length > 0) 
-        ? Math.min(...model.versions.map((v: any) => v.bonusPrice)) 
-        : model.price;
 
     // Sub-component for features for consistency
     const FeatureCard = ({ feature, isActive }: { feature: any, isActive: boolean }) => (
@@ -199,8 +341,10 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                 
                 <p className="text-[11px] text-gray-500 font-medium mb-6 leading-tight min-h-[32px]">
                     {(v.financingBonus > 0 || v.bonus > 0 || v.brandBonus > 0) 
-                        ? `Incluye Bono de ${formatPrice((v.financingBonus||0) + (v.bonus||0) + (v.brandBonus||0))} con financiamiento`
-                        : `Precio al contado o con cualquier medio de pago`}
+                        ? `Incluye Bono de ${formatPrice((v.financingBonus||0) + (v.bonus||0) + (v.brandBonus||0))} con financiamiento${v.vppBonus > 0 ? ` (+ ${formatPrice(v.vppBonus)} Bono VPP)` : ''}`
+                        : (v.vppBonus > 0 
+                            ? `Incluye Bono VPP de ${formatPrice(v.vppBonus)} con parte de pago`
+                            : `Precio al contado o con cualquier medio de pago`)}
                 </p>
 
                 {/* Icons Grid */}
@@ -240,6 +384,12 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                                 <span>Precio con Financiamiento</span>
                                 <b>{formatPrice(v.bonusPrice || v.listPrice)}{v.ivaIncluded === false && ' + IVA'}</b>
                             </div>
+                            {v.vppBonus > 0 && (
+                                <div className="flex justify-between items-center text-emerald-600 font-medium">
+                                    <span>Bono VPP (Parte de Pago)</span>
+                                    <b>- {formatPrice(v.vppBonus)}</b>
+                                </div>
+                            )}
                             <div className="flex justify-between items-center text-gray-500">
                                 <span>Todo medio de pago</span>
                                 <b>{formatPrice(v.listPrice - (v.brandBonus || 0))}{v.ivaIncluded === false && ' + IVA'}</b>
@@ -463,20 +613,22 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                                             {formatPrice(minPrice)}{model.ivaIncluded === false && <span className="text-xl ml-1 opacity-50 font-bold text-[#0B1221]">+ IVA</span>}
                                         </span>
                                         <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest leading-tight">
-                                            {((mockVersions[0]?.financingBonus || 0) > 0 || (mockVersions[0]?.bonus || 0) > 0 || (mockVersions[0]?.brandBonus || 0) > 0) 
-                                                ? `*Incluye bono de financiamiento de ${formatPrice((mockVersions[0]?.financingBonus||0) + (mockVersions[0]?.bonus||0) + (mockVersions[0]?.brandBonus||0))}`
-                                                : `*Precio con todo medio de pago`}
+                                            {((baseVersion?.financingBonus || 0) > 0 || (baseVersion?.bonus || 0) > 0 || (baseVersion?.brandBonus || 0) > 0) 
+                                                ? `*Incluye bono de financiamiento de ${formatPrice((baseVersion?.financingBonus||0) + (baseVersion?.bonus||0) + (baseVersion?.brandBonus||0))}${baseVersion?.vppBonus > 0 ? ` (+ ${formatPrice(baseVersion.vppBonus)} Bono VPP)` : ''}`
+                                                : (baseVersion?.vppBonus > 0 
+                                                    ? `*Incluye Bono VPP de ${formatPrice(baseVersion.vppBonus)}`
+                                                    : `*Precio con todo medio de pago`)}
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* ICONS (General data from first version or model) */}
-                                <div className="flex flex-col mb-10 w-full">
+                                {/* ICONS (General data / ranges from base to full version) */}
+                                <div className="flex flex-col mb-8 w-full">
                                     {[  
-                                        { label: 'Motor', value: mockVersions[0]?.motor, icon: <Cog size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
-                                        { label: 'Combustible', value: mockVersions[0]?.fuel, icon: <Fuel size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
-                                        { label: 'Transmisión', value: mockVersions[0]?.transmission?.includes('Auto') ? 'Automática' : (mockVersions[0]?.transmission || 'Manual'), icon: <Settings2 size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
-                                        { label: 'Rendimiento', value: mockVersions[0]?.electricRange || mockVersions[0]?.consumptionMixed || (mockVersions[0] as any)?.consumo, icon: mockVersions[0]?.electricRange ? <Zap size={22} strokeWidth={1.5} className="text-[#0B1221]" /> : <Route size={22} strokeWidth={1.5} className="text-[#0B1221]" /> },
+                                        { label: 'Motor', value: summarySpecs.motor, icon: <Cog size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Combustible', value: summarySpecs.fuel, icon: <Fuel size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Transmisión', value: summarySpecs.transmission, icon: <Settings2 size={22} strokeWidth={1.5} className="text-[#0B1221]"/> },
+                                        { label: 'Rendimiento', value: summarySpecs.performance, icon: summarySpecs.isElectric ? <Zap size={22} strokeWidth={1.5} className="text-[#0B1221]" /> : <Route size={22} strokeWidth={1.5} className="text-[#0B1221]" /> },
                                     ].map(({ label, value, icon }, idx) => (
                                         <div key={idx} className={`flex items-center py-4 ${idx !== 0 ? 'border-t border-gray-100' : ''}`}>
                                             <div className="w-8 flex justify-start">{icon}</div>
@@ -484,6 +636,16 @@ export default function ModelPageClient({ brand, id, initialModel, config, legal
                                             <span className="text-[13px] font-bold text-[#0B1221] uppercase ml-auto text-right">{value || '—'}</span>
                                         </div>
                                     ))}
+
+                                    {/* Nota explicativa de rangos */}
+                                    <div className="pt-3 border-t border-gray-100 flex items-start gap-1.5">
+                                        <Info size={13} className="text-gray-400 shrink-0 mt-0.5" />
+                                        <p className="text-[10px] text-gray-400 font-medium leading-relaxed">
+                                            {summarySpecs.hasMultipleVersions
+                                                ? '* Rangos calculados según versión (desde la versión de entrada hasta la más equipada).'
+                                                : '* Valores correspondientes a la versión disponible.'}
+                                        </p>
+                                    </div>
                                 </div>
 
                                 {/* Cotizar General Button */}

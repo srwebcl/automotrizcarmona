@@ -29,6 +29,8 @@ export interface VehicleVersion {
     brandBonus?: number;
     /** Bono por financiamiento bancario / Smart Credit */
     financingBonus?: number;
+    /** Bono vehículo en parte de pago (Bono VPP) */
+    vppBonus?: number;
     /** Precio final con todos los bonos aplicados */
     bonusPrice: number;
     /** @deprecated Usar brandBonus + financingBonus. Se mantiene para retrocompat. */
