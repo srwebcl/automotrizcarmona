@@ -141,6 +141,12 @@ export default function ContactoPageClient() {
 
                         {/* Formulario (Derecha) */}
                         <div className="lg:w-2/3 bg-white p-6 sm:p-10 rounded-2xl border border-gray-200 shadow-xl shadow-gray-200/20">
+                            <p className="bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-600 mb-6">
+                                Si necesitas hacer un reclamo,{' '}
+                                <Link href="/reclamos" className="font-bold text-[#d2001c] hover:underline">
+                                    presiona aquí
+                                </Link>.
+                            </p>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Nombre */}
@@ -202,7 +208,7 @@ export default function ContactoPageClient() {
                                                 <option value="Ventas">Cotización o consulta de Ventas</option>
                                                 <option value="Servicios">Consulta sobre Servicio Técnico</option>
                                                 <option value="Repuestos">Consulta sobre Repuestos</option>
-                                                <option value="Sugerencias">Sugerencias o Reclamos</option>
+                                                <option value="Sugerencias">Sugerencias</option>
                                                 <option value="Otro">Otro Motivo</option>
                                             </select>
                                             <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500">

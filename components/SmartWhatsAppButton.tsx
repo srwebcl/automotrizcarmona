@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useMemo, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { X, Car, Settings, Wrench, ChevronLeft } from 'lucide-react';
+import { Car, Settings, Wrench, ChevronLeft } from 'lucide-react';
 import { API_URL } from '@/lib/api';
 import Image from 'next/image';
 import { getLayoutBrands, BrandLight } from '@/lib/api/layoutBrands';
@@ -13,7 +13,6 @@ function SmartWhatsAppButtonContent() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [showMenu, setShowMenu] = useState(false);
-    const [isBubbleDismissed, setIsBubbleDismissed] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
     // State para sucursales dinámicas de servicio técnico
@@ -183,38 +182,7 @@ function SmartWhatsAppButtonContent() {
     const mainHref = (isHome || isServiceMenu) ? "#" : buildLink(config.message);
 
     return (
-        <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3 group" ref={menuRef}>
-
-            {/* Context Bubble */}
-            <div
-                className={`
-                    relative max-w-[280px] w-max bg-white text-gray-800 p-4 rounded-3xl rounded-br-md shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-gray-100
-                    transform transition-all duration-300 ease-out origin-bottom
-                    ${(showMenu || isBubbleDismissed) ? 'hidden' : 'opacity-0 scale-75 translate-y-8 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto'}
-                `}
-            >
-                <button 
-                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsBubbleDismissed(true); }}
-                    className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors bg-gray-50 hover:bg-gray-100 rounded-full p-1"
-                    aria-label="Cerrar mensaje"
-                >
-                    <X size={12} />
-                </button>
-                <div className="flex items-start gap-3 pr-4">
-                    <div className="relative shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-lg">
-                            👨‍💻
-                        </div>
-                        <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
-                    </div>
-                    <div>
-                        <p className="text-[13px] font-bold text-gray-900 mb-0.5">Asesor Carmona</p>
-                        <p className="text-xs font-medium leading-snug text-gray-600">
-                            {config.text}
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3" ref={menuRef}>
 
             {/* Menú Expandido */}
             <div
