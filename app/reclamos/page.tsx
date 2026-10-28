@@ -1,24 +1,43 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
-    CheckCircle, MessageSquare, Mail, Phone,
+    CheckCircle, MessageSquare, Mail, Phone, Paperclip, X as XIcon,
     ArrowLeft, ArrowRight, User, FileText, Share2, AlertCircle, ChevronDown, MapPin, Building, Clock
 } from 'lucide-react';
 
-// ─── Constants ───────────────────────────────────────────────────────────────
-const DEPARTMENTS = [
-    'Centro Automotriz (Ventas)',
-    'Servicio Técnico',
-    'Desabolladura y Pintura',
-    'Repuestos',
-    'Camiones y Buses',
-    'Seminuevos',
-    'Otro'
+// ─── CRM endpoint ──────────────────────────────────────────────────────────
+const CRM_API_URL = 'https://reclamos.automotrizcarmona.cl/api/public/claims';
+
+// ─── Catálogos (iguales a los del CRM — src/lib/constants.ts) ─────────────
+const BRANDS = [
+    'Audi', 'BMW', 'BMW Motorrad', 'CUPRA', 'Dongfeng', 'Foton', 'Geely',
+    'Honda', 'Jetour', 'Kaiyi', 'Karry', 'Maxus', 'MG', 'MINI', 'SEAT',
+    'Soueast', 'Toyota', 'Volkswagen', 'Volvo',
+    'Foton Camiones', 'Iveco', 'MAN', 'VW Camiones',
 ];
+const USED_CAR_BRANDS = ['Usados', 'Usados Premium'];
+const AREAS = ['Ventas', 'Servicio Técnico', 'Repuestos', 'Recursos Humanos'];
+const BRANCHES = ['La Serena', 'Copiapó'];
+
+// ─── Validación de RUT chileno (igual al CRM — src/lib/rut.ts) ────────────
+function isValidRut(raw: string): boolean {
+    const clean = raw.replace(/[.\s]/g, '').toUpperCase();
+    const match = clean.match(/^(\d{1,8})-?([0-9K])$/);
+    if (!match) return false;
+    const [, body, checkDigit] = match;
+    let sum = 0;
+    let multiplier = 2;
+    for (let i = body.length - 1; i >= 0; i--) {
+        sum += Number(body[i]) * multiplier;
+        multiplier = multiplier === 7 ? 2 : multiplier + 1;
+    }
+    const remainder = 11 - (sum % 11);
+    const expected = remainder === 11 ? '0' : remainder === 10 ? 'K' : String(remainder);
+    return expected === checkDigit;
+}
 
 const STEPS = [
     { id: 1, label: 'Tus datos', icon: User },
@@ -34,11 +53,15 @@ const labelCls = 'block text-xs font-bold text-gray-500 uppercase tracking-wider
 // ─── Main ─────────────────────────────────────────────────────────────────────
 function ReclamosContent() {
     const router = useRouter();
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [step, setStep] = useState(1);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [ticketCode, setTicketCode] = useState('');
+    const [submitError, setSubmitError] = useState('');
     const [isScrolled, setIsScrolled] = useState(false);
+    const [files, setFiles] = useState<File[]>([]);
 
     useEffect(() => {
         const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -47,19 +70,22 @@ function ReclamosContent() {
     }, []);
 
     const [form, setForm] = useState({
-        // Paso 1
+        // Paso 1 — Tus datos
+        customerName: '',
         rut: '',
-        nombre: '',
-        apellido: '',
-        correo: '',
-        celular: '+56 9 ',
-        // Paso 2
-        departamento: '',
-        patente: '',
-        nroDocumento: '',
-        // Paso 3
-        tipo: '', // Sugerencia, Reclamo, Felicitacion
-        mensaje: '',
+        email: '',
+        phone: '+56 9 ',
+        branch: '',
+        // Paso 2 — Antecedentes (vehículo / caso)
+        noVehicle: false,
+        brand: '',
+        vehicleModel: '',
+        plate: '',
+        eventDate: '',
+        area: '',
+        // Paso 3 — Mensaje
+        description: '',
+        expectedSolution: '',
         acceptPolicy: false,
     });
 
@@ -67,57 +93,87 @@ function ReclamosContent() {
         const target = e.target as HTMLInputElement;
         const { name, value, type } = target;
         const checked = type === 'checkbox' ? target.checked : undefined;
-        if (name === 'celular' && !value.startsWith('+56 9 ')) return;
-        setForm(p => ({ ...p, [name]: type === 'checkbox' ? checked : value }));
+        if (name === 'phone' && !value.startsWith('+56 9 ')) return;
+        setForm((p) => ({ ...p, [name]: type === 'checkbox' ? checked : value }));
     };
+
+    // El input de archivo reemplaza su selección completa cada vez que se
+    // reabre el explorador — se fusiona con lo ya elegido para poder ir
+    // agregando adjuntos de a uno, igual que en el formulario del CRM.
+    const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const picked = Array.from(e.target.files ?? []);
+        setFiles((prev) => {
+            const merged = [...prev];
+            for (const f of picked) {
+                if (!merged.some((m) => m.name === f.name && m.size === f.size && m.lastModified === f.lastModified)) {
+                    merged.push(f);
+                }
+            }
+            return merged;
+        });
+    };
+    const removeFile = (index: number) => setFiles((prev) => prev.filter((_, i) => i !== index));
 
     // ── Step validation ──────────────────────────────────────────────────────
-    const step1Valid = form.rut && form.nombre && form.apellido && form.correo && form.celular.length > 6;
-    const step2Valid = form.departamento; // patente y nro documento son opcionales pero ayudan
-    const step3Valid = form.tipo && form.mensaje && form.acceptPolicy;
+    const step1Valid = Boolean(
+        form.customerName.trim().length > 1 &&
+        isValidRut(form.rut) &&
+        /\S+@\S+\.\S+/.test(form.email) &&
+        form.phone.length > 6 &&
+        form.branch,
+    );
+    const step2Valid = Boolean(
+        form.area &&
+        form.eventDate &&
+        (form.noVehicle || (form.brand && form.vehicleModel.trim() && form.plate.trim())),
+    );
+    const step3Valid = Boolean(form.description.trim().length >= 10 && form.expectedSolution.trim() && form.acceptPolicy);
 
     const handleNext = () => {
-        if (step < 3) setStep(s => s + 1);
+        if (step < 3) setStep((s) => s + 1);
     };
     const handleBack = () => {
-        if (step > 1) setStep(s => s - 1);
+        if (step > 1) setStep((s) => s - 1);
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!step3Valid) return;
         setIsSubmitting(true);
-        
-        try {
-            const response = await fetch('/api/leads', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    source: 'reclamos',
-                    customer: {
-                        rut: form.rut,
-                        first_name: form.nombre,
-                        last_name: form.apellido,
-                        email: form.correo,
-                        phone: form.celular,
-                    },
-                    request_details: {
-                        service_type: form.departamento,
-                        message: `[${form.tipo}] Patente: ${form.patente || 'N/A'} | Doc: ${form.nroDocumento || 'N/A'} | Mensaje: ${form.mensaje}`
-                    }
-                }),
-            });
+        setSubmitError('');
 
-            if (response.ok) {
+        try {
+            const fd = new FormData();
+            fd.set('customerName', form.customerName);
+            fd.set('rut', form.rut);
+            fd.set('email', form.email);
+            fd.set('phone', form.phone);
+            fd.set('branch', form.branch);
+            fd.set('eventDate', form.eventDate);
+            fd.set('area', form.area);
+            fd.set('description', form.description);
+            fd.set('expectedSolution', form.expectedSolution);
+            if (form.noVehicle) {
+                fd.set('noVehicle', 'true');
+            } else {
+                fd.set('brand', form.brand);
+                fd.set('vehicleModel', form.vehicleModel);
+                fd.set('plate', form.plate);
+            }
+            for (const file of files) fd.append('attachments', file);
+
+            const response = await fetch(CRM_API_URL, { method: 'POST', body: fd });
+            const data = await response.json();
+
+            if (response.ok && data.success) {
+                setTicketCode(data.code);
                 setSuccess(true);
             } else {
-                throw new Error('Error al enviar el formulario');
+                throw new Error(data.error || 'Error al enviar el formulario');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Submission error:', error);
-            alert("Hubo un problema al enviar tu formulario. Por favor intentalo más tarde.");
+            setSubmitError(error?.message || 'Hubo un problema al enviar tu formulario. Por favor intentalo más tarde.');
         } finally {
             setIsSubmitting(false);
         }
@@ -134,17 +190,17 @@ function ReclamosContent() {
                     </div>
                     <h2 className="text-3xl font-extrabold text-gray-900 mb-2">¡Formulario Enviado!</h2>
                     <p className="text-gray-500 mb-8 border-b border-gray-100 pb-8 text-sm sm:text-base">
-                        Hemos recibido tu <strong className="text-gray-900">{form.tipo.toLowerCase()}</strong> para el área de <strong className="text-gray-900">{form.departamento}</strong>.<br />
+                        Hemos recibido tu reclamo para el área de <strong className="text-gray-900">{form.area}</strong>.<br />
                         Nuestro equipo de Atención al Cliente revisará los antecedentes y se pondrá en contacto contigo a la brevedad.
                     </p>
                     <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-left mb-8 text-sm space-y-3">
                         <p className="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4">Resumen</p>
                         {[
-                            ['Ticket', `#${Math.floor(Math.random() * 90000) + 10000}`],
-                            ['Nombre', `${form.nombre} ${form.apellido}`],
+                            ['Ticket', ticketCode],
+                            ['Nombre', form.customerName],
                             ['RUT', form.rut],
-                            ['Tipo', form.tipo],
-                            ['Departamento', form.departamento],
+                            ['Área', form.area],
+                            ['Sucursal', form.branch],
                         ].map(([k, v]) => (
                             <div key={k} className="flex justify-between">
                                 <span className="text-gray-500">{k}</span>
@@ -224,31 +280,40 @@ function ReclamosContent() {
                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Paso 1 — Tus datos personales</p>
 
                                     <div>
+                                        <label className={labelCls}>Nombre Completo *</label>
+                                        <input type="text" name="customerName" value={form.customerName} onChange={handleChange} className={inputCls} required />
+                                    </div>
+
+                                    <div>
                                         <label className={labelCls}>RUT *</label>
                                         <input type="text" name="rut" value={form.rut} onChange={handleChange}
                                             placeholder="Ej: 12.345.678-9" className={inputCls} required />
-                                    </div>
-
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                        <div>
-                                            <label className={labelCls}>Nombre *</label>
-                                            <input type="text" name="nombre" value={form.nombre} onChange={handleChange} className={inputCls} required />
-                                        </div>
-                                        <div>
-                                            <label className={labelCls}>Apellido *</label>
-                                            <input type="text" name="apellido" value={form.apellido} onChange={handleChange} className={inputCls} required />
-                                        </div>
+                                        {form.rut && !isValidRut(form.rut) && (
+                                            <p className="text-xs text-red-600 font-medium mt-1.5">RUT inválido — revisa el dígito verificador.</p>
+                                        )}
                                     </div>
 
                                     <div>
                                         <label className={labelCls}>Correo Electrónico *</label>
-                                        <input type="email" name="correo" value={form.correo} onChange={handleChange}
+                                        <input type="email" name="email" value={form.email} onChange={handleChange}
                                             placeholder="tucorreo@ejemplo.cl" className={inputCls} required />
                                     </div>
 
                                     <div>
                                         <label className={labelCls}>Celular *</label>
-                                        <input type="tel" name="celular" value={form.celular} onChange={handleChange} className={inputCls} required />
+                                        <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={inputCls} required />
+                                    </div>
+
+                                    <div>
+                                        <label className={labelCls}>Sucursal *</label>
+                                        <div className="relative">
+                                            <select name="branch" value={form.branch} onChange={handleChange}
+                                                className={`${inputCls} appearance-none cursor-pointer pr-10`} required>
+                                                <option value="">Selecciona una sucursal...</option>
+                                                {BRANCHES.map((b) => <option key={b} value={b}>{b}</option>)}
+                                            </select>
+                                            <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -259,33 +324,65 @@ function ReclamosContent() {
                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Paso 2 — Antecedentes del Caso</p>
 
                                     <div>
-                                        <label className={labelCls}>Departamento / Área de atención *</label>
+                                        <label className={labelCls}>Área relacionada *</label>
                                         <div className="relative">
-                                            <select name="departamento" value={form.departamento} onChange={handleChange}
+                                            <select name="area" value={form.area} onChange={handleChange}
                                                 className={`${inputCls} appearance-none cursor-pointer pr-10`} required>
                                                 <option value="">Selecciona un área...</option>
-                                                {DEPARTMENTS.map(d => <option key={d} value={d}>{d}</option>)}
+                                                {AREAS.map((a) => <option key={a} value={a}>{a}</option>)}
                                             </select>
                                             <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className={labelCls}>Patente de tu vehículo <span className="normal-case font-normal text-gray-400">(Opcional)</span></label>
-                                        <input type="text" name="patente" value={form.patente} onChange={handleChange}
-                                            placeholder="Ej: AB1234 o ABCD12" className={`${inputCls} uppercase`} />
+                                        <label className={labelCls}>Fecha de compra o visita *</label>
+                                        <input type="date" name="eventDate" value={form.eventDate} onChange={handleChange} className={inputCls} required />
                                     </div>
 
-                                    <div>
-                                        <label className={labelCls}>Nro. de Factura, Guía o Cotización <span className="normal-case font-normal text-gray-400">(Opcional)</span></label>
-                                        <input type="text" name="nroDocumento" value={form.nroDocumento} onChange={handleChange}
-                                            placeholder="Ej: 123456" className={inputCls} />
-                                    </div>
+                                    <label className="flex items-center gap-3 p-3.5 rounded-xl bg-[#f8f9fa] cursor-pointer">
+                                        <input type="checkbox" name="noVehicle" checked={form.noVehicle} onChange={handleChange}
+                                            className="w-5 h-5 rounded border-gray-300 accent-[#d2001c] cursor-pointer" />
+                                        <span className="text-sm font-medium text-gray-700">Este reclamo no está relacionado con un vehículo</span>
+                                    </label>
+
+                                    {!form.noVehicle && (
+                                        <>
+                                            <div>
+                                                <label className={labelCls}>Marca *</label>
+                                                <div className="relative">
+                                                    <select name="brand" value={form.brand} onChange={handleChange}
+                                                        className={`${inputCls} appearance-none cursor-pointer pr-10`} required={!form.noVehicle}>
+                                                        <option value="">Selecciona una marca...</option>
+                                                        <optgroup label="Vehículos Usados">
+                                                            {USED_CAR_BRANDS.map((b) => <option key={b} value={b}>{b}</option>)}
+                                                        </optgroup>
+                                                        <optgroup label="Marcas Oficiales">
+                                                            {BRANDS.map((b) => <option key={b} value={b}>{b}</option>)}
+                                                        </optgroup>
+                                                    </select>
+                                                    <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label className={labelCls}>Modelo *</label>
+                                                <input type="text" name="vehicleModel" value={form.vehicleModel} onChange={handleChange}
+                                                    placeholder="Ej: Yaris Cross" className={inputCls} required={!form.noVehicle} />
+                                            </div>
+
+                                            <div>
+                                                <label className={labelCls}>Patente *</label>
+                                                <input type="text" name="plate" value={form.plate} onChange={handleChange}
+                                                    placeholder="Ej: AB1234 o ABCD12" className={`${inputCls} uppercase`} required={!form.noVehicle} />
+                                            </div>
+                                        </>
+                                    )}
 
                                     <div className="bg-blue-50 p-4 rounded-xl flex items-start gap-3 mt-4">
                                         <AlertCircle className="text-blue-500 mt-0.5 flex-shrink-0" size={18} />
                                         <p className="text-sm text-blue-800">
-                                            Proporcionar antecedentes como patente o número de documento nos ayuda a identificar tu caso mucho más rápido.
+                                            Si tu reclamo no está relacionado con un vehículo (ej. Recursos Humanos), marca la casilla de arriba.
                                         </p>
                                     </div>
                                 </div>
@@ -297,28 +394,39 @@ function ReclamosContent() {
                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Paso 3 — Detalle de tu mensaje</p>
 
                                     <div>
-                                        <label className={labelCls}>Tipo de mensaje *</label>
-                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                            {['Sugerencia', 'Reclamo', 'Felicitación'].map((t) => (
-                                                <label key={t}
-                                                    className={`flex items-center justify-center p-3 sm:p-4 rounded-xl border-2 cursor-pointer transition-all ${form.tipo === t
-                                                        ? 'border-[#d2001c] bg-red-50 text-[#d2001c]'
-                                                        : 'border-gray-100 bg-[#f8f9fa] hover:border-red-200 text-gray-600'
-                                                        }`}>
-                                                    <input type="radio" name="tipo" value={t}
-                                                        checked={form.tipo === t} onChange={handleChange}
-                                                        className="hidden" />
-                                                    <span className="text-sm font-bold">{t}</span>
-                                                </label>
-                                            ))}
-                                        </div>
+                                        <label className={labelCls}>Describe los hechos *</label>
+                                        <textarea name="description" value={form.description} onChange={handleChange}
+                                            rows={5} placeholder="Escribe el detalle de tu situación de forma clara..."
+                                            className={`${inputCls} resize-none`} required />
                                     </div>
 
                                     <div>
-                                        <label className={labelCls}>Mensaje *</label>
-                                        <textarea name="mensaje" value={form.mensaje} onChange={handleChange}
-                                            rows={6} placeholder="Escribe el detalle de tu situación de forma clara..."
+                                        <label className={labelCls}>Solución que esperas *</label>
+                                        <textarea name="expectedSolution" value={form.expectedSolution} onChange={handleChange}
+                                            rows={3} placeholder="¿Qué solución esperas de parte de Carmona?"
                                             className={`${inputCls} resize-none`} required />
+                                    </div>
+
+                                    <div>
+                                        <label className={labelCls}>Adjuntar imágenes o documentos <span className="normal-case font-normal text-gray-400">(Opcional)</span></label>
+                                        {files.length > 0 && (
+                                            <div className="flex flex-wrap gap-2 mb-3">
+                                                {files.map((file, i) => (
+                                                    <span key={`${file.name}-${file.size}-${file.lastModified}`} className="flex items-center gap-1.5 bg-red-50 text-[#d2001c] border border-red-100 text-xs font-semibold pl-2.5 pr-1.5 py-1 rounded-lg">
+                                                        <Paperclip size={12} />
+                                                        <span className="max-w-[160px] truncate">{file.name}</span>
+                                                        <button type="button" onClick={() => removeFile(i)} className="p-0.5 rounded-full hover:bg-red-100 transition-colors">
+                                                            <XIcon size={13} />
+                                                        </button>
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
+                                        <button type="button" onClick={() => fileInputRef.current?.click()}
+                                            className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-gray-200 hover:border-[#d2001c] rounded-xl py-4 text-sm font-bold text-gray-500 hover:text-[#d2001c] transition-colors">
+                                            <Paperclip size={18} /> Seleccionar Archivos
+                                        </button>
+                                        <input type="file" ref={fileInputRef} onChange={handleFilesChange} className="hidden" multiple />
                                     </div>
 
                                     {/* Policy */}
@@ -332,6 +440,10 @@ function ReclamosContent() {
                                             Autorizo a Automotriz Carmona a usar mis datos para dar seguimiento a este caso.
                                         </label>
                                     </div>
+
+                                    {submitError && (
+                                        <div className="bg-red-50 border border-red-200 text-red-700 text-sm font-medium rounded-xl p-4">{submitError}</div>
+                                    )}
                                 </div>
                             )}
 
