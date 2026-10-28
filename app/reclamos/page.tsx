@@ -99,6 +99,22 @@ function ReclamosContent() {
         setForm((p) => ({ ...p, [name]: type === 'checkbox' ? checked : value }));
     };
 
+    // El RUT siempre queda formateado como "12.345.678-9" mientras se
+    // escribe: se descarta todo lo que no sea dígito o "K" (dígito
+    // verificador), se limita a 8 dígitos de cuerpo + 1 verificador, y se
+    // van agregando los puntos y el guion automáticamente.
+    const handleRutChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const clean = e.target.value.replace(/[^0-9kK]/g, '').toUpperCase().slice(0, 9);
+        if (clean.length === 0) {
+            setForm((p) => ({ ...p, rut: '' }));
+            return;
+        }
+        const body = clean.slice(0, -1).replace(/\D/g, '');
+        const checkDigit = clean.slice(-1);
+        const formatted = body.length === 0 ? checkDigit : `${body.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}-${checkDigit}`;
+        setForm((p) => ({ ...p, rut: formatted }));
+    };
+
     // El celular siempre queda como "+56 9 XXXX XXXX": se descarta todo lo
     // que no sea dígito, se saca el "56 9" fijo si el usuario lo reescribe,
     // se limita a 8 dígitos reales y se formatea con el espacio al medio.
@@ -323,7 +339,7 @@ function ReclamosContent() {
 
                                     <div>
                                         <label className={labelCls}>RUT *</label>
-                                        <input type="text" name="rut" value={form.rut} onChange={handleChange}
+                                        <input type="text" inputMode="text" name="rut" value={form.rut} onChange={handleRutChange}
                                             placeholder="Ej: 12.345.678-9" className={inputCls} />
                                         {form.rut && !isValidRut(form.rut) && (
                                             <p className="text-xs text-red-600 font-medium mt-1.5">RUT inválido — revisa el dígito verificador.</p>
