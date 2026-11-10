@@ -19,7 +19,7 @@ const BRANDS = [
     'Foton Camiones', 'Iveco', 'MAN', 'VW Camiones',
 ];
 const USED_CAR_BRANDS = ['Usados', 'Usados Premium'];
-const AREAS = ['Ventas', 'Servicio Técnico', 'Repuestos', 'Recursos Humanos'];
+const AREAS = ['Ventas', 'Servicio Técnico', 'Repuestos', 'Recursos Humanos', 'Desabolladura y Pintura', 'Transportes'];
 const BRANCHES = ['La Serena', 'Copiapó'];
 
 const PHONE_PREFIX = '+56 9 ';
