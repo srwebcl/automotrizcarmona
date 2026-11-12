@@ -80,11 +80,14 @@ function mapVehicleModel(data: any, defaultBrandSlug?: string): Vehicle {
 
     const parsedPromoUnits = (data.promotion_units || []).map((u: any) => ({
         vin: u.vin,
+        image: u.thumbnail ? formatImageUrl(u.thumbnail) : undefined,
         versionName: u.version_name,
         listPrice: Number(u.list_price) || 0,
         promoBonus: Number(u.promo_bonus) || 0,
         promoPrice: Number(u.promo_price) || 0,
+        priceType: u.price_type === 'todo_medio_pago' ? 'todo_medio_pago' : 'financiamiento',
         status: u.status,
+        isTestCar: Boolean(u.is_test_car),
         order: Number(u.order) || 0
     }));
 

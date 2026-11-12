@@ -41,12 +41,12 @@ export async function generateMetadata(
 
     try {
         const promotionModels = await getPromotionModels();
-        const allPromoUnits = promotionModels.flatMap(model => 
+        const allPromoUnits = promotionModels.flatMap(model =>
             (model.promoUnits || []).map(unit => ({
                 ...unit,
                 modelId: model.id,
                 brand: model.brand,
-                image: model.image,
+                image: unit.image || model.image,
                 modelName: model.name
             }))
         ).sort((a, b) => (a.order || 0) - (b.order || 0));
@@ -116,7 +116,7 @@ export default async function LiquidacionPage({ searchParams }: Props) {
             modelId: model.id,
             brand: model.brand,
             category: model.category,
-            image: model.image,
+            image: unit.image || model.image,
             modelName: model.name
         }))
     ).sort((a, b) => (a.order || 0) - (b.order || 0));

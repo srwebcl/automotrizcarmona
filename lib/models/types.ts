@@ -39,6 +39,8 @@ export interface VehicleVersion {
 
 export interface PromotionUnit {
     vin: string;
+    /** Foto propia de esta unidad (VIN). Si no existe, se usa la del modelo. */
+    image?: string;
     versionName: string;
     /** Precio original de lista */
     listPrice?: number;
@@ -46,8 +48,12 @@ export interface PromotionUnit {
     promoBonus: number;
     /** Precio final de venta para esta unidad específica */
     promoPrice: number;
+    /** 'financiamiento' = precio solo con financiamiento | 'todo_medio_pago' = precio válido con cualquier medio de pago */
+    priceType?: 'financiamiento' | 'todo_medio_pago';
     /** Estado de la unidad: disponible, reservado, vendido */
     status?: string;
+    /** Unidad usada previamente como vehículo de pruebas (tiene kilometraje) */
+    isTestCar?: boolean;
     color?: string;
     year?: number;
     /** Comentario adicional (ej: "Unidad Test Drive", "Única unidad") */

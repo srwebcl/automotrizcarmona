@@ -251,9 +251,16 @@ export default function LiquidacionClient({
                                         <h3 className={`text-xl font-black text-[#1a1a1a] tracking-tight uppercase leading-tight mb-0.5 transition-colors ${isAvailable ? 'group-hover:text-[#d2001c]' : ''}`}>{unit.modelName}</h3>
                                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider line-clamp-1 mb-2">{unit.versionName}</p>
                                         
-                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">
-                                            <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Unidad VIN:</span>
-                                            <span className="text-[10px] font-bold text-gray-900 tracking-tighter">{unit.vin}</span>
+                                        <div className="flex flex-wrap items-center gap-1.5">
+                                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-gray-50 rounded-lg border border-gray-100">
+                                                <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">Unidad VIN:</span>
+                                                <span className="text-[10px] font-bold text-gray-900 tracking-tighter">{unit.vin}</span>
+                                            </div>
+                                            {unit.isTestCar && (
+                                                <div className="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-50 rounded-lg border border-amber-100">
+                                                    <span className="text-[8px] font-black text-amber-600 uppercase tracking-widest">Test Car</span>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
@@ -288,7 +295,7 @@ export default function LiquidacionClient({
                                         <div className={`mb-4 bg-transparent w-full transition-colors`}>
                                             <p className="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-0.5">Precio Final de Liquidación</p>
                                             <p className="text-3xl font-black text-gray-900 tracking-tighter leading-none">{formatPrice(unit.promoPrice)}</p>
-                                            <p className="text-[9px] text-gray-500 mt-1">*Precio con financiamiento</p>
+                                            <p className="text-[9px] text-gray-500 mt-1">{unit.priceType === 'todo_medio_pago' ? '*Precio con todo medio de pago' : '*Precio con financiamiento'}</p>
                                         </div>
 
                                         {isAvailable ? (
